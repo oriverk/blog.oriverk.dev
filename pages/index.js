@@ -168,6 +168,15 @@ export default function Index() {
         * {
           box-sizing: border-box;
         }
+
+        ::-webkit-scrollbar {
+          width: .5rem;
+          }
+
+        ::-webkit-scrollbar-thumb {
+          background-color: gray;
+          border-radius: .3rem;
+        }
       `}</style>
     </React.Fragment>
   )
