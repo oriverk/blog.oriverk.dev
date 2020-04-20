@@ -1,4 +1,8 @@
-import Head from 'next/head'
+import Head from 'next/head';
+import Header from '../components/header.js';
+import About from '../components/about.js';
+import History from '../components/history.js';
+import Works from '../components/works.js';
 
 export default function Index() {
   return (
@@ -8,84 +12,25 @@ export default function Index() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header>
-        <div className="header-link">
-        <h1 className="title"><a href="#home">Kawano Yudai</a></h1>
-        {/* component/header */}
-        <p>B.Agr / JobSeeker</p>
-        <nav>
-          <a href="#about">About</a>
-          <a href="#history">History</a>
-          <a href="#works">Works</a>
-          <a href="#blog">Blog</a>
-        </nav>
-        {/* component/header */}
+        <h1 className="title"><a href="#home">Kawano<wbr></wbr> Yudai</a></h1>
+        <p>B.Agr <wbr></wbr>/ JobSeeker</p>
+        <Header />
         <div>リンク類</div>
-          <p><small lang="en">ⓒ 2020 Kawano Yudai</small></p>
-        </div>
+        <p><small lang="en">ⓒ 2020 Kawano Yudai</small></p>
       </header>
       <main>
-        {/* component/main */}
         <section id="home"></section>
-        <section id="about">
-          <h2>About</h2>
-          <p>
-            About About About About About About About About About About About
-            About About About About About About About About About About About
-            About About About About About About About About About About About
-            About About About About About About About About About About About
-            About About About About About About About About About About About
-            About About About About About About About About About About About
-            About About About About About About About About About About About
-          </p>
-        </section>
-        <br />
-        <section id="history">
-          <h2>History</h2>
-          <p>
-            History History History History History History History History History 
-            History History History History History History History History History 
-            History History History History History History History History History 
-            History History History History History History History History History 
-            History History History History History History History History History 
-            History History History History History History History History History 
-            History History History History History History History History History 
-            History History History History History History History History History 
-            History History History History History History History History History 
-          </p>
-        </section>
-        <section id="works">
-          <h2>Works</h2>
-          <p>
-            Works Works Works Works Works Works Works Works Works Works Works Works 
-            Works Works Works Works Works Works Works Works Works Works Works Works 
-            Works Works Works Works Works Works Works Works Works Works Works Works 
-            Works Works Works Works Works Works Works Works Works Works Works Works 
-            Works Works Works Works Works Works Works Works Works Works Works Works 
-            Works Works Works Works Works Works Works Works Works Works Works Works 
-            Works Works Works Works Works Works Works Works Works Works Works Works 
-            Works Works Works Works Works Works Works Works Works Works Works Works 
-            Works Works Works Works Works Works Works Works Works Works Works Works 
-            Works Works Works Works Works Works Works Works Works Works Works Works 
-            Works Works Works Works Works Works Works Works Works Works Works Works 
-            Works Works Works Works Works Works Works Works Works Works Works Works 
-            Works Works Works Works Works Works Works Works Works Works Works Works 
-          </p>
-        </section>
-        {/* component/main */}
+        <About />
+        <History />
+        <Works />
       </main>
       <style jsx>{`
-        .header-link {
-          position: absolute;
-          left: 0;
-          bottom: 0;
-        }
         main {
           flex: 1;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          border: 1px solid yellow;
           position: absolute;
           top: 0;
           left: 20%;
@@ -96,75 +41,13 @@ export default function Index() {
           height: 100vh;
           width: 100%;
           background-color: gray;
-          background-image: url("/top20200418.jpg");
+          background-image: url("/top2.jpg");
           background-size: cover;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #FFF;
-          text-decoration: none;
-          font-weight: lighter;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        img {
-          height: 100vh;
-          width: 100%;
-        }
-
-        nav a {
-          display: block;
         }
 
       `}</style>
 
       <style jsx global>{`
-        html,
-        body {
-          color: #FFF;
-          background-color: #121212;
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-        }
-
-        #__next {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        
-        header {
-          margin-top: 0;
-          padding-top: 50px;
-          border:1px solid #FFF;
-          height: 100vh;
-          width: 20%;
-          text-align: center;
-          position: fixed;
-          top: 0;
-          left: 0;
-        }
-
         * {
           box-sizing: border-box;
         }
@@ -177,6 +60,83 @@ export default function Index() {
           background-color: gray;
           border-radius: .3rem;
         }
+
+        html, body {
+          color: #FFF;
+          background-color: #121212;
+          padding: 0 20px;
+          margin: 0;
+          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        #__next {
+          min-height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        h1, h2, h3, h4, h5, h6, strong, em {
+          color: #FFF;
+          margin-bottom: .5rem;
+          font-weight: "Semi Bold";
+          line-height: 1.25;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        h2 {
+          margin-top: 1rem;
+          font-size: 1.5rem;
+        }
+
+        h3 {
+          margin-top: 1.5rem;
+          font-size: 1.25rem;
+        }
+
+        h4, h5, h6 {
+          margin-top: 1rem;
+          font-size: 1rem;
+        }
+
+        p {
+          margin-top: 0;
+          margin-bottom: 1rem;
+        }
+
+        span{
+          font-size: 1rem;
+        }
+
+        a{
+          color: #FFF;
+          text-decoration: none;
+        }
+
+        a:hover, a:focus, a:active {
+          color: #7BD0E7;
+          text-decoration: underline;
+        }
+      
+        header {
+          margin-top: 0;
+          padding-top: 50px;
+          border:1px solid #FFF;
+          height: 100vh;
+          width: 20%;
+          text-align: center;
+          position: fixed;
+          top: 0;
+          left: 0;
+        }
+
+        section {
+          border: 1px solid yellow;
+        }
+
       `}</style>
     </React.Fragment>
   )
