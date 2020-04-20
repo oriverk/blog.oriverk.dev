@@ -3,6 +3,7 @@ import Header from '../components/header.js';
 import About from '../components/about.js';
 import History from '../components/history.js';
 import Works from '../components/works.js';
+import HeaderLink from "../components/headerLink.js";
 
 export default function Index() {
   return (
@@ -15,7 +16,7 @@ export default function Index() {
         <h1 className="title"><a href="#home">Kawano<wbr></wbr> Yudai</a></h1>
         <p>B.Agr <wbr></wbr>/ JobSeeker</p>
         <Header />
-        <div>リンク類</div>
+        <HeaderLink />
         <p><small lang="en">ⓒ 2020 Kawano Yudai</small></p>
       </header>
       <main>
