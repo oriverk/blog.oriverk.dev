@@ -1,5 +1,5 @@
 import React from 'react';
-import NoImage from './parts/noImage.js';
+import NoImage from '../utils/noImage';
 
 export default class Works extends React.Component{
   render() {

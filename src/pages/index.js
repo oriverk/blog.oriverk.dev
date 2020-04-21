@@ -1,23 +1,17 @@
-import Head from 'next/head';
-import Header from '../components/header.js';
-import About from '../components/about.js';
-import History from '../components/history.js';
-import Works from '../components/works.js';
-import HeaderLink from "../components/headerLink.js";
+import Link from 'next/link';
+
+import Header from '../components/header';
+import About from '../components/about';
+import History from '../components/history';
+import Works from '../components/works';
 
 export default function Index() {
   return (
     <React.Fragment>
-      <Head>
-        <title>NextPortfolio</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <header>
-        <h1 className="title"><a href="#home">Kawano<wbr></wbr> Yudai</a></h1>
+        <h1 className="title"><Link href="#home"><a>Kawano<wbr /> Yudai</a></Link></h1>
         <p>B.Agr <wbr></wbr>/ JobSeeker</p>
         <Header />
-        <HeaderLink />
-        <p><small lang="en">ⓒ 2020 Kawano Yudai</small></p>
       </header>
       <main>
         <section id="home"></section>
@@ -26,29 +20,19 @@ export default function Index() {
         <Works />
       </main>
       <style jsx>{`
-        main {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          position: absolute;
-          top: 0;
-          left: 20%;
-        }
-
         #home {
           display: block;
           height: 100vh;
           width: 100%;
           background-color: gray;
-          background-image: url("/top2.jpg");
           background-size: cover;
+          background-position: right;
+          background-image: url("/top2.jpg");
         }
 
       `}</style>
 
-      <style jsx global>{`
+      {/* <style jsx global>{`
         * {
           box-sizing: border-box;
         }
@@ -134,11 +118,22 @@ export default function Index() {
           left: 0;
         }
 
+        main {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          top: 0;
+          left: 20%;
+        }
+
         section {
           border: 1px solid yellow;
         }
 
-      `}</style>
+      `}</style> */}
     </React.Fragment>
   )
 }
