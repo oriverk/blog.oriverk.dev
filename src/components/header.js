@@ -19,8 +19,8 @@ export default class HederLink extends React.Component{
           <a href="https://twitter.com/not_you_die" target="_blank" rel="noopener noreferrer"><TwitterIcon /></a>
         </div>
         <style jsx>{`
-          a { display: inline-block;}
-          .icon a{ margin: 0 .5rem;}
+          {/* a { display: inline-block;}
+          .icon a{ margin: 0 .5rem;} */}
           `}</style>
       </React.Fragment>
     );

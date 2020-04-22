@@ -60,7 +60,7 @@ export default class Works extends React.Component{
           </article>
         </section>
         <style jsx>{`
-          #works { padding: 0 5%;margin-bottom: 5vh;}  
+          {/* #works { padding: 0 5%;margin-bottom: 5vh;}   */}
         `}</style>
       </React.Fragment>
     );

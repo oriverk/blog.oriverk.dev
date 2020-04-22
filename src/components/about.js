@@ -20,7 +20,7 @@ export default class About extends React.Component{
           <p>Now I'm seeking job in Japan. So If you get interested in me, please contact me. </p>
         </section>
         <style jsx>{`
-          #about { padding: 0 5%;margin-bottom: 5vh;}  
+          {/* #about { padding: 0 5%;margin-bottom: 5vh;}   */}
         `}</style>
       </React.Fragment>
     );

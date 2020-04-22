@@ -47,12 +47,12 @@ export default class History extends React.Component {
           </article>
         </section>
         <style jsx>{`
-          #history { 
+          {/* #history { 
             padding: 0 5%;
             margin-bottom: 5vh;
           }
           picture { width: 25%;}
-          source, img {width: 25%;}
+          source, img {width: 25%;} */}
         `}</style>
       </React.Fragment>
     );

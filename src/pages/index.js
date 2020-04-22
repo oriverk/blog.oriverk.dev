@@ -1,18 +1,51 @@
+import React from 'react';
 import Link from 'next/link';
+
+import { makeStyles, AppBar, Toolbar, Typography, Button, IconButton } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
 
 import Header from '../components/header';
 import About from '../components/about';
 import History from '../components/history';
 import Works from '../components/works';
 
+import SwipeableTemporaryDrawer from './test.js';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+}));
+
 export default function Index() {
+  const classes = useStyles();
   return (
     <React.Fragment>
-      <header>
+      {/* Top Bar */}
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+            <MenuIcon><SwipeableTemporaryDrawer /></MenuIcon>
+          </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            News
+          </Typography>
+          <Button color="inherit">Login</Button>
+        </Toolbar>
+      </AppBar>
+
+      {/* Side header */}
+      {/* <header>
         <h1 className="title"><Link href="#home"><a>Kawano<wbr /> Yudai</a></Link></h1>
         <p>B.Agr <wbr></wbr>/ JobSeeker</p>
         <Header />
-      </header>
+      </header> */}
       <main>
         <section id="home"></section>
         <About />
@@ -29,7 +62,6 @@ export default function Index() {
           background-position: right;
           background-image: url("/top2.jpg");
         }
-
       `}</style>
 
       {/* <style jsx global>{`
