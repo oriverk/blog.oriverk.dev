@@ -1,171 +1,75 @@
 import React from 'react';
-import Link from 'next/link';
 
-import { makeStyles, AppBar, Toolbar, Typography, Button, IconButton } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { AppBar, Toolbar } from '@material-ui/core';
+import { List, ListItem, ListItemIcon, ListItemText, Divider } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MailIcon from '@material-ui/icons/Mail';
+import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import Header from '../components/header';
-import About from '../components/about';
-import History from '../components/history';
-import Works from '../components/works';
+import MyHeader from '../components/header';
+import MyPermanentDrawerLeft from '../components/PermanentDrawerLeft'
+import SwipeableTemporaryDrawwer from '../components/SwipeableTemporaryDrawer'
 
-import SwipeableTemporaryDrawer from './test.js';
+import About from "../components/about";
+import History from "../components/history";
+import Works from "../components/works";
+
+import Hidden from '@material-ui/core/Hidden';
+
+
+const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    display: 'flex',
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
+  appBar: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: drawerWidth,
   },
-  title: {
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  // necessary for content to be below app bar
+  toolbar: theme.mixins.toolbar,
+  content: {
     flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing(3),
   },
 }));
 
 export default function Index() {
   const classes = useStyles();
-  return (
-    <React.Fragment>
-      {/* Top Bar */}
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon><SwipeableTemporaryDrawer /></MenuIcon>
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
 
-      {/* Side header */}
-      {/* <header>
-        <h1 className="title"><Link href="#home"><a>Kawano<wbr /> Yudai</a></Link></h1>
-        <p>B.Agr <wbr></wbr>/ JobSeeker</p>
-        <Header />
-      </header> */}
-      <main>
-        <section id="home"></section>
+  return (
+    <div className={classes.root}>
+      <CssBaseline />
+      <MyHeader />
+      <aside>
+        <Hidden mdDown>
+        <MyPermanentDrawerLeft />
+        </Hidden>
+        <Hidden lgUp>
+        <SwipeableTemporaryDrawwer />
+        </Hidden>
+      </aside>
+      <div></div>
+      <main className={classes.content}>
+        <div className={classes.toolbar} />
         <About />
         <History />
         <Works />
       </main>
-      <style jsx>{`
-        #home {
-          display: block;
-          height: 100vh;
-          width: 100%;
-          background-color: gray;
-          background-size: cover;
-          background-position: right;
-          background-image: url("/top2.jpg");
-        }
-      `}</style>
-
-      {/* <style jsx global>{`
-        * {
-          box-sizing: border-box;
-        }
-
-        ::-webkit-scrollbar {
-          width: .5rem;
-          }
-
-        ::-webkit-scrollbar-thumb {
-          background-color: gray;
-          border-radius: .3rem;
-        }
-
-        html, body {
-          color: #FFF;
-          background-color: #121212;
-          padding: 0 20px;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-        }
-
-        #__next {
-          min-height: 100vh;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        h1, h2, h3, h4, h5, h6, strong, em {
-          color: #FFF;
-          margin-bottom: .5rem;
-          font-weight: "Semi Bold";
-          line-height: 1.25;
-        }
-
-        h1 {
-          font-size: 2rem;
-        }
-
-        h2 {
-          margin-top: 1rem;
-          font-size: 1.5rem;
-        }
-
-        h3 {
-          margin-top: 1.5rem;
-          font-size: 1.25rem;
-        }
-
-        h4, h5, h6 {
-          margin-top: 1rem;
-          font-size: 1rem;
-        }
-
-        p {
-          margin-top: 0;
-          margin-bottom: 1rem;
-        }
-
-        span{
-          font-size: 1rem;
-        }
-
-        a{
-          color: #FFF;
-          text-decoration: none;
-        }
-
-        a:hover, a:focus, a:active {
-          color: #7BD0E7;
-          text-decoration: underline;
-        }
-      
-        header {
-          margin-top: 0;
-          padding-top: 50px;
-          border:1px solid #FFF;
-          height: 100vh;
-          width: 20%;
-          text-align: center;
-          position: fixed;
-          top: 0;
-          left: 0;
-        }
-
-        main {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          position: absolute;
-          top: 0;
-          left: 20%;
-        }
-
-        section {
-          border: 1px solid yellow;
-        }
-
-      `}</style> */}
-    </React.Fragment>
-  )
+    </div>
+  );
 }
