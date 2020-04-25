@@ -1,13 +1,27 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
+import clsx from 'clsx';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+
+import Hidden from '@material-ui/core/Hidden';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+
+import Button from '@material-ui/core/Button';
 
 import MyDrawerList from '../components/myDrawerList';
+import { Typography } from '@material-ui/core';
+
+import Drawer from '@material-ui/core/Drawer';
+
+import Container from '@material-ui/core/Container';
+
+import About from '../components/about';
+import History from '../components/history';
+import Works from '../components/works';
+
+import { List, Divider } from '@material-ui/core';
+
 
 const drawerWidth = 250;
 
@@ -15,66 +29,134 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
-  appBar: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
+  header: {
+    width: '100%',
+    position: 'fixed',
+    bottom: 0,
+    zIndex: 100,
+    backgroundColor: 'grey',
   },
-  drawer: {
+  profileImg: {
+    width: `calc(0.5 *  ${drawerWidth}px)`,
+  },
+  swipeableList: {
     width: drawerWidth,
-    flexShrink: 0,
   },
-  drawerPaper: {
+  permanentDrawer: {
+    width: drawerWidth,
+    flexShrink: 1,
+    backgroundColor: 'grey',
+    color: 'white',
+  },
+  permanentDrawerPaper: {
     width: drawerWidth,
   },
-  // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
   content: {
+    position: 'absolute',
+    top: 0,
     flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3),
+    [theme.breakpoints.up('lg')]: {
+      // with permanentDrawer
+      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: drawerWidth,
+    },
+    [theme.breakpoints.down('md')]: {
+      // with swipeableDrawer
+      width: '100%',
+      marginLeft: 0,
+    }
   },
+  container: {
+    margin: 0,
+    padding: 0,
+  },
+  topImg: {
+    display: 'block',
+    height: '100vh',
+    width: '100%',
+    backgroundColor: 'gray',
+    backgroundSize: 'cover',
+    backgroundPosition: 'right',
+    backgroundImage: 'url("/img/top2.jpg")',
+  }
 }));
 
-export default function PermanentDrawerLeft() {
+export default function SwipeableTemporaryDrawer() {
   const classes = useStyles();
+  const theme = useTheme();
+  const [state, setState] = React.useState({
+    left: false,
+  });
+
+  // toggleDrawerは弄ると壊れる
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+    setState({ ...state, [anchor]: open });
+  };
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6">
-            Permanent
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-        anchor="left"
-      >
-        <div className={classes.toolbar} />
-        <Divider />
-        <MyDrawerList />
-      </Drawer>
+    <React.Fragment key='left'>
+      <Hidden lgUp>
+        <header className={classes.header}>
+          <IconButton
+            aria-label="Open swipeable temporary drawer"
+            onClick={toggleDrawer('left', true)}
+          >
+            {/* small: fontSize20, normal: 25, large: 35,  */}
+            <MenuIcon color="primary" style={{ fontSize: 35 }} />
+          </IconButton>
+        </header>
+      </Hidden>
+      <Hidden lgUp>
+        <SwipeableDrawer
+          anchor='left'
+          open={state['left']}
+          onClose={toggleDrawer('left', false)}
+          onOpen={toggleDrawer('left', true)}
+        >
+          <div
+            className={classes.swipeableList}
+            role="presentation"
+            onClick={toggleDrawer('left', false)}
+            onKeyDown={toggleDrawer('left', false)}
+          >
+            
+            <List>
+              
+              <picture>
+                <source srcSet="./img/wheel400.webp" type="image/webp" className={classes.profileImg} />
+                  <img src="./img/wheel400.png" alt="avatar"  className={classes.profileImg}/>
+                </picture>
+            
+              </List>
+            <Divider />
+            <MyDrawerList />
+          </div>
+        </SwipeableDrawer>
+      </Hidden>
+      <Hidden mdDown>
+        <aside>
+          <Drawer
+            className={classes.permanentDrawer}
+            variant="permanent"
+            anchor="left"
+            classes={{
+              paper: classes.permanentDrawerPaper,
+            }}
+          >
+            <MyDrawerList />
+          </Drawer>
+        </aside>
+      </Hidden>
       <main className={classes.content}>
-        <div className={classes.toolbar} />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
-          facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-          gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
-          donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-          Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
-          imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
-          arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-          donec massa sapien faucibus et molestie ac.
-        </Typography>
+        <section id="top" className={classes.topImg}></section>
+        <About />
+        <History />
+        <Works />
       </main>
-    </div>
+      
+    </React.Fragment>
   );
 }
