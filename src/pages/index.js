@@ -1,75 +1,67 @@
 import React from 'react';
-
+import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { AppBar, Toolbar } from '@material-ui/core';
-import { List, ListItem, ListItemIcon, ListItemText, Divider } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+
+import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import MyHeader from '../components/header';
-import MyPermanentDrawerLeft from '../components/PermanentDrawerLeft'
-import SwipeableTemporaryDrawwer from '../components/SwipeableTemporaryDrawer'
+import Button from '@material-ui/core/Button';
 
-import About from "../components/about";
-import History from "../components/history";
-import Works from "../components/works";
+import MyDrawerList from '../components/myDrawerList';
 
-import Hidden from '@material-ui/core/Hidden';
-
-
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
+const useStyles = makeStyles({
+  list: {
+    width: 250,
   },
-  appBar: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3),
-  },
-}));
+});
 
-export default function Index() {
+export default function SwipeableTemporaryDrawer() {
   const classes = useStyles();
+  const [state, setState] = React.useState({
+    left: false,
+  });
+
+  // toggleDrawerは弄ると壊れる
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <MyHeader />
-      <aside>
-        <Hidden mdDown>
-        <MyPermanentDrawerLeft />
-        </Hidden>
+    <React.Fragment key='left'>
+      <header>
         <Hidden lgUp>
-        <SwipeableTemporaryDrawwer />
+          <IconButton
+            color="inherit"
+            aria-label="Open swipeable temporary drawer"
+            onClick={toggleDrawer('left', true)}
+          >
+            <MenuIcon />
+          </IconButton>
         </Hidden>
-      </aside>
-      <div></div>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        <About />
-        <History />
-        <Works />
-      </main>
-    </div>
+      </header>
+      <Hidden lgUp>
+        <SwipeableDrawer
+          anchor='left'
+          open={state['left']}
+          onClose={toggleDrawer('left', false)}
+          onOpen={toggleDrawer('left', true)}
+        >
+          <div
+            className={clsx(classes.list)}
+            role="presentation"
+            onClick={toggleDrawer('left', false)}
+            onKeyDown={toggleDrawer('left', false)}
+          >
+            <MyDrawerList />
+          </div>
+        </SwipeableDrawer>
+      </Hidden>
+    </React.Fragment>
   );
 }

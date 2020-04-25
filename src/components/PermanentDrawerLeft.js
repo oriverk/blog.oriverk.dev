@@ -2,23 +2,18 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import { List, ListItem, ListItemIcon, ListItemText, Divider } from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-
-{/* About, History, Works, Post */}
-import PermIdentityIcon from '@material-ui/icons/PermIdentity';
-import WorkIcon from '@material-ui/icons/Work';
-import DeveloperModeIcon from '@material-ui/icons/DeveloperMode';
-import BorderColorIcon from '@material-ui/icons/BorderColor';
-
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import TwitterIcon from '@material-ui/icons/Twitter';
 
-const drawerWidth = 300;
+const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,19 +39,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MyPermanentDrawerLeft() {
+export default function PermanentDrawerLeft() {
   const classes = useStyles();
-  const ThirdParty = [
-    ['Gihub', <GitHubIcon />],
-    ['Qiita', <MailIcon />],
-    ['Wantedly', <MailIcon />],
-    ['LinkedIn', <LinkedInIcon />],
-    ['Twitter', <TwitterIcon />],
-  ];
 
   return (
-    <React.Fragment>
-      {/* <MyHeader /> */}
+    <div className={classes.root}>
+      <CssBaseline />
+      <AppBar position="fixed" className={classes.appBar}>
+        <Toolbar>
+          <Typography variant="h6" noWrap>
+            Permanent drawer
+          </Typography>
+        </Toolbar>
+      </AppBar>
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -66,64 +61,51 @@ export default function MyPermanentDrawerLeft() {
         anchor="left"
       >
         <div className={classes.toolbar} />
+        <Divider />
         <List>
-          <ListItem key='Profile'>
-            <picture>
-              <source srcSet="/wheel400.webp" type="image/webp" />
-              <img src="/wheel400.png" alt="wheel" />
-            </picture>
-          </ListItem>
+          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
         </List>
         <Divider />
         <List>
-          <ListItem button key='About'>
-            <Typography variant="h5" noWrap>
-              Kawano<wbr />Yudai
-            </Typography>
-          </ListItem>
-        </List>
-        <Divider />
-        <List>
-          <ListItem button key='About'>
-            <ListItemIcon><PermIdentityIcon /></ListItemIcon>
-            <ListItemText primary='About' />
-          </ListItem>
-          <ListItem button key='History'>
-            <ListItemIcon><WorkIcon /></ListItemIcon>
-            <ListItemText primary='History' />
-          </ListItem>
-          <ListItem button key='Works'>
-            <ListItemIcon><DeveloperModeIcon /></ListItemIcon>
-            <ListItemText primary='Works' />
-          </ListItem>
-          <ListItem button key='Posts'>
-            <ListItemIcon><BorderColorIcon /></ListItemIcon>
-            <ListItemText primary='Posts( under construction...' />
-          </ListItem>
-        </List>
-        <Divider />
-        <List id="thirt-party">
-          <ListItem button key='Github'>
-            <ListItemIcon><GitHubIcon /></ListItemIcon>
-          </ListItem>
-          <ListItem button key='Qiita'>
-            <ListItemIcon><MailIcon /></ListItemIcon>
-          </ListItem>
-          {/* <ListItem button key='Wantedly'>
-            <ListItemIcon><MailIcon /></ListItemIcon>
-          </ListItem> */}
-          <ListItem button key='LinkedIn'>
-            <ListItemIcon><LinkedInIcon /></ListItemIcon>
-          </ListItem>
-          {/* <ListItem button key='Twitter'>
-            <ListItemIcon><TwitterIcon /></ListItemIcon>
-          </ListItem> */}
+          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
         </List>
       </Drawer>
-      <style jsx>{`
-        picture, source, img { width: 200px;}
-        `}
-      </style>
-    </React.Fragment>
+      <main className={classes.content}>
+        <div className={classes.toolbar} />
+        <Typography paragraph>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
+          facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
+          gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
+          donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
+          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
+          Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
+          imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
+          arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
+          donec massa sapien faucibus et molestie ac.
+        </Typography>
+        <Typography paragraph>
+          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
+          facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
+          tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat
+          consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
+          vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In
+          hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem et
+          tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin
+          nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
+          accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
+        </Typography>
+      </main>
+    </div>
   );
 }
