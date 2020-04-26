@@ -16,7 +16,13 @@ import Drawer from '@material-ui/core/Drawer';
 
 import Container from '@material-ui/core/Container';
 
-import About from '../components/about'
+// import HomeContents from '../components/homeContents';
+import About from '../components/about';
+import History from '../components/history';
+import Works from '../components/works';
+
+import { List, Divider } from '@material-ui/core';
+
 
 const drawerWidth = 250;
 
@@ -25,9 +31,17 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   header: {
+    width: '100%',
     position: 'fixed',
-    top: 0,
+    bottom: 0,
     zIndex: 100,
+    backgroundColor: 'grey',
+  },
+  drawerProfileImg: {
+    textAlign: 'center',
+  },
+  profileImg: {
+    width: `calc(0.5 *  ${drawerWidth}px)`,
   },
   swipeableList: {
     width: drawerWidth,
@@ -41,24 +55,22 @@ const useStyles = makeStyles((theme) => ({
   permanentDrawerPaper: {
     width: drawerWidth,
   },
-  content: {
+  contents: {
     position: 'absolute',
     top: 0,
     flexGrow: 1,
+    [theme.breakpoints.down('md')]: {
+      // with swipeableDrawer
+      width: '100%',
+      marginBottom: `59px`,
+      paddingBottom: '10px',
+      marginLeft: 0,
+    },
     [theme.breakpoints.up('lg')]: {
       // with permanentDrawer
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
     },
-    [theme.breakpoints.down('md')]: {
-      // with swipeableDrawer
-      width: '100%',
-      marginLeft: 0,
-    }
-  },
-  container: {
-    margin: 0,
-    padding: 0,
   },
   topImg: {
     display: 'block',
@@ -66,9 +78,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     backgroundColor: 'gray',
     backgroundSize: 'cover',
-    backgroundPosition: 'right',
-    backgroundImage: 'url("/img/top2.jpg")',
-  }
+    backgroundPosition: 'center',
+    backgroundImage: 'url("/img/adelaide2.jpg")',
+  },
 }));
 
 export default function SwipeableTemporaryDrawer() {
@@ -88,18 +100,17 @@ export default function SwipeableTemporaryDrawer() {
 
   return (
     <React.Fragment key='left'>
-      <header className={classes.header}>
-        <Hidden lgUp>
+      <Hidden lgUp>
+        <header className={classes.header}>
           <IconButton
-            color="black"
             aria-label="Open swipeable temporary drawer"
             onClick={toggleDrawer('left', true)}
           >
             {/* small: fontSize20, normal: 25, large: 35,  */}
-            <MenuIcon style={{ fontSize: 40 }} />
+            <MenuIcon color="primary" style={{ fontSize: 35 }} />
           </IconButton>
-        </Hidden>
-      </header>
+        </header>
+      </Hidden>
       <Hidden lgUp>
         <SwipeableDrawer
           anchor='left'
@@ -113,6 +124,15 @@ export default function SwipeableTemporaryDrawer() {
             onClick={toggleDrawer('left', false)}
             onKeyDown={toggleDrawer('left', false)}
           >
+            <List>
+              <div className={classes.drawerProfileImg}>
+                <picture>
+                  <source srcSet="./img/wheel400.webp" type="image/webp" className={classes.profileImg} />
+                  <img src="./img/wheel400.png" alt="avatar" className={classes.profileImg} />
+                </picture>
+              </div>
+            </List>
+            <Divider />
             <MyDrawerList />
           </div>
         </SwipeableDrawer>
@@ -127,15 +147,26 @@ export default function SwipeableTemporaryDrawer() {
               paper: classes.permanentDrawerPaper,
             }}
           >
+            <List>
+              <div className={classes.drawerProfileImg}>
+                <picture>
+                  <source srcSet="./img/wheel400.webp" type="image/webp" className={classes.profileImg} />
+                  <img src="./img/wheel400.png" alt="avatar" className={classes.profileImg} />
+                </picture>
+              </div>
+            </List>
+            <Divider />
             <MyDrawerList />
           </Drawer>
         </aside>
       </Hidden>
-      <main className={classes.content}>
+      <main className={classes.contents}>
         <section id="top" className={classes.topImg}></section>
+        {/* <HomeContents /> */}
         <About />
+        <History />
+        <Works />
       </main>
-
     </React.Fragment>
   );
 }

@@ -7,8 +7,8 @@ export default function NoImage (){
         <h2>no image</h2>
       </div>
       <style jsx>{`
-        div {text-align:center;background:#242657;margin-bottom:1rem;}
-        h2 {color:#fff;font-weight:bold;display:inline-block;margin:1rem;}
+        div {text-align:center;}
+        h2 {color:#fff;font-weight:bold;background:#242657;}
       `}</style>
     </React.Fragment>
   );
