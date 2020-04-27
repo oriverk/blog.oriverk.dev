@@ -13,6 +13,9 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import QiitaIcon from '../utils/qiitaSvg.js';
 import WantedlyIcon from '../utils/wantedlySvg.js';
 
+import Link from 'next/link'
+
+
 const useStyles = makeStyles({
   links: {
     color: 'black',

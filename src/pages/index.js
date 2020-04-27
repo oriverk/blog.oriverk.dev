@@ -1,27 +1,24 @@
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-
 import Hidden from '@material-ui/core/Hidden';
+import { List, Divider } from '@material-ui/core';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import Drawer from '@material-ui/core/Drawer';
+import Container from '@material-ui/core/Container';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import Button from '@material-ui/core/Button';
-
 import MyDrawerList from '../components/myDrawerList';
-import { Typography } from '@material-ui/core';
-
-import Drawer from '@material-ui/core/Drawer';
-
-import Container from '@material-ui/core/Container';
-
-// import HomeContents from '../components/homeContents';
+import Top from '../components/top'
 import About from '../components/about';
 import History from '../components/history';
 import Works from '../components/works';
 
-import { List, Divider } from '@material-ui/core';
+import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+
+
 
 
 const drawerWidth = 250;
@@ -37,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 100,
     backgroundColor: 'grey',
   },
-  drawerProfileImg: {
+  profileImgContainer: {
     textAlign: 'center',
   },
   profileImg: {
@@ -72,15 +69,6 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: drawerWidth,
     },
   },
-  topImg: {
-    display: 'block',
-    height: '100vh',
-    width: '100%',
-    backgroundColor: 'gray',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundImage: 'url("/img/adelaide2.jpg")',
-  },
 }));
 
 export default function SwipeableTemporaryDrawer() {
@@ -107,7 +95,7 @@ export default function SwipeableTemporaryDrawer() {
             onClick={toggleDrawer('left', true)}
           >
             {/* small: fontSize20, normal: 25, large: 35,  */}
-            <MenuIcon color="primary" style={{ fontSize: 35 }} />
+            <DoubleArrowIcon color="primary" style={{ fontSize: 35 }} />
           </IconButton>
         </header>
       </Hidden>
@@ -125,7 +113,7 @@ export default function SwipeableTemporaryDrawer() {
             onKeyDown={toggleDrawer('left', false)}
           >
             <List>
-              <div className={classes.drawerProfileImg}>
+              <div className={classes.profileImgContainer}>
                 <picture>
                   <source srcSet="./img/wheel400.webp" type="image/webp" className={classes.profileImg} />
                   <img src="./img/wheel400.png" alt="avatar" className={classes.profileImg} />
@@ -148,7 +136,7 @@ export default function SwipeableTemporaryDrawer() {
             }}
           >
             <List>
-              <div className={classes.drawerProfileImg}>
+              <div className={classes.profileImgContainer}>
                 <picture>
                   <source srcSet="./img/wheel400.webp" type="image/webp" className={classes.profileImg} />
                   <img src="./img/wheel400.png" alt="avatar" className={classes.profileImg} />
@@ -161,8 +149,7 @@ export default function SwipeableTemporaryDrawer() {
         </aside>
       </Hidden>
       <main className={classes.contents}>
-        <section id="top" className={classes.topImg}></section>
-        {/* <HomeContents /> */}
+        <Top />
         <About />
         <History />
         <Works />

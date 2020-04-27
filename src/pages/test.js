@@ -15,6 +15,10 @@ import About from '../components/about';
 import History from '../components/history';
 import Works from '../components/works';
 
+import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+
+
 
 
 const drawerWidth = 250;
@@ -91,7 +95,7 @@ export default function SwipeableTemporaryDrawer() {
             onClick={toggleDrawer('left', true)}
           >
             {/* small: fontSize20, normal: 25, large: 35,  */}
-            <MenuIcon color="primary" style={{ fontSize: 35 }} />
+            <DoubleArrowIcon color="primary" style={{ fontSize: 35 }} />
           </IconButton>
         </header>
       </Hidden>
