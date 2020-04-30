@@ -3,6 +3,8 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import NoImage from '../utils/noImage';
 
+import Link from 'next/link'
+
 
 const useStyles = makeStyles((theme) => ({
   content: {
