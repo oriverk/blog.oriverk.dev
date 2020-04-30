@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100',
     maxWidth: '1000px',
     margin: '0 auto 10px auto',
-    padding: '5%',
+    padding: '0 5%',
     flexGrow: 1,
   },
   centeredH1: {

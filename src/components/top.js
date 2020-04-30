@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundImage: 'url("/img/adelaide2.jpg")',
+    [theme.breakpoints.down('md')]: {
+      hight: `calc(100vh - 59px)`,
+    },
   },
   topTitleContainer: {
     color: 'white',
