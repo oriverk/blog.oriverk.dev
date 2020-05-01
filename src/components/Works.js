@@ -27,10 +27,13 @@ const useStyles = makeStyles((theme) => ({
       width: '60%',
     },
   },
-  contentUl: {
+  links: {
     marginTop: '7px',
     marginBottom: '0px',
     paddingLeft: '20px',
+  },
+  link: {
+    color: '#F48FB1', 
   }
 }));
 
@@ -53,9 +56,9 @@ export default function Works() {
               <b>GithubPages</b><br/>
                 : My 1st GithubPages.<br/>
                 with Ruby, Jekyll
-              <ul className={classes.contentUl}>
-                <li><a href="https://github.com/oriverk/oriverk.github.io">Github repositry</a></li>
-                <li><a href="https://qiita.com/OriverK/items/ce48102c66c9fa97b33e">Qiita: "GithubPages with Jekyll"</a></li>
+              <ul className={classes.links}>
+                <li><a className={classes.link} href="https://github.com/oriverk/oriverk.github.io">Github repositry</a></li>
+                <li><a className={classes.link} href="https://qiita.com/OriverK/items/ce48102c66c9fa97b33e">Qiita: "GithubPages with Jekyll"</a></li>
               </ul>
             </Grid>
           </Grid>
@@ -70,9 +73,9 @@ export default function Works() {
               <b>Coder0</b><br/>
                 : enable to share code with syntax-highlight<br/>
                 with RubyonRails, PostgreSQL, S3
-              <ul className={classes.contentUl}>
-                <li><a href="https://github.com/oriverk/Codr">Github repositry</a></li>
-                <li><a href="https://qiita.com/OriverK/items/df41ec6b57b40a06a64d">Qiita: "Share code beautifully on Twitter"</a></li>
+              <ul className={classes.links}>
+                <li><a className={classes.link} href="https://github.com/oriverk/Codr">Github repositry</a></li>
+                <li><a className={classes.link} href="https://qiita.com/OriverK/items/df41ec6b57b40a06a64d">Qiita: "Share code beautifully on Twitter"</a></li>
               </ul>
             </Grid>
           </Grid>
@@ -84,10 +87,10 @@ export default function Works() {
               <b>Ticket sales System</b><br/>
                 : based on the FE exam on Autumn 2018.<br/>
                 with RubyonRails, PostgreSQL, Heroku
-              <ul className={classes.contentUl}>
-                <li><a href="https://github.com/oriverk/ConcertTicket">Github repositry</a></li>
-                <li><a href="https://qiita.com/OriverK/items/4e71ebd81a6ef372dcf9">Post on Qiita</a></li>
-                <li><a href="https://www.jitec.ipa.go.jp/1_04hanni_sukiru/mondai_kaitou_2018h30_2/2018h30a_fe_pm_qs.pdf">IPA FE exam</a></li>
+              <ul className={classes.links}>
+                <li><a className={classes.link} href="https://github.com/oriverk/ConcertTicket">Github repositry</a></li>
+                <li><a className={classes.link} href="https://qiita.com/OriverK/items/4e71ebd81a6ef372dcf9">Post on Qiita</a></li>
+                <li><a className={classes.link} href="https://www.jitec.ipa.go.jp/1_04hanni_sukiru/mondai_kaitou_2018h30_2/2018h30a_fe_pm_qs.pdf">IPA FE exam</a></li>
               </ul>
             </Grid>
           </Grid>

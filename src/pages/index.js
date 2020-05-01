@@ -1,25 +1,19 @@
 import React from 'react';
-import clsx from 'clsx';
+
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Hidden from '@material-ui/core/Hidden';
 import { List, Divider } from '@material-ui/core';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Drawer from '@material-ui/core/Drawer';
-import Container from '@material-ui/core/Container';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 
-import MyDrawerList from '../components/myDrawerList';
-import Top from '../components/top'
-import About from '../components/about';
-import History from '../components/history';
-import Works from '../components/works';
+import MyDrawerList from '../components/MyDrawerList';
+import Top from '../components/Top'
+import About from '../components/About';
+import History from '../components/History';
+import Works from '../components/Works';
 
 import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-
-
-
 
 const drawerWidth = 250;
 
@@ -95,7 +89,7 @@ export default function SwipeableTemporaryDrawer() {
             onClick={toggleDrawer('left', true)}
           >
             {/* small: fontSize20, normal: 25, large: 35,  */}
-            <DoubleArrowIcon color="primary" style={{ fontSize: 35 }} />
+            <DoubleArrowIcon color="secondary" style={{ fontSize: 35 }} />
           </IconButton>
         </header>
       </Hidden>
