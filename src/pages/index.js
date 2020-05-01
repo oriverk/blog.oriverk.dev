@@ -88,7 +88,6 @@ export default function SwipeableTemporaryDrawer() {
             aria-label="Open swipeable temporary drawer"
             onClick={toggleDrawer('left', true)}
           >
-            {/* small: fontSize20, normal: 25, large: 35,  */}
             <DoubleArrowIcon color="secondary" style={{ fontSize: 35 }} />
           </IconButton>
         </header>
@@ -109,8 +108,8 @@ export default function SwipeableTemporaryDrawer() {
             <List>
               <div className={classes.profileImgContainer}>
                 <picture>
-                  <source srcSet="./img/wheel400.webp" type="image/webp" className={classes.profileImg} />
-                  <img src="./img/wheel400.png" alt="avatar" className={classes.profileImg} />
+                  <source srcSet="./image/wheel400.webp" type="image/webp" className={classes.profileImg} />
+                  <img src="./image/wheel400.png" alt="avatar" className={classes.profileImg} />
                 </picture>
               </div>
             </List>
@@ -132,8 +131,8 @@ export default function SwipeableTemporaryDrawer() {
             <List>
               <div className={classes.profileImgContainer}>
                 <picture>
-                  <source srcSet="./img/wheel400.webp" type="image/webp" className={classes.profileImg} />
-                  <img src="./img/wheel400.png" alt="avatar" className={classes.profileImg} />
+                  <source srcSet="./image/wheel400.webp" type="image/webp" className={classes.profileImg} />
+                  <img src="./image/wheel400.png" alt="avatar" className={classes.profileImg} />
                 </picture>
               </div>
             </List>

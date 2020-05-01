@@ -19,11 +19,17 @@ export default function MyApp(props) {
   return (
     <React.Fragment>
       <Head>
-        <title>My page</title>
+        <title>Kawano Yudai</title>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+        <meta name="format-detection" content="email=no,telephone=no,address=no" />
+        <link rel="apple-touch-icon" sizes="180x180" href="./image/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="./image/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="./image/favicon-16x16.png" />
+        <link rel="manifest" href="./manifest.json" />
       </Head>
       <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>

@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'gray',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    backgroundImage: 'url("/img/adelaide2.jpg")',
+    backgroundImage: 'url("/image/adelaide2.jpg")',
     [theme.breakpoints.down('md')]: {
       hight: `calc(100vh - 59px)`,
     },

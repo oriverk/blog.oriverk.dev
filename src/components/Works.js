@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     color: '#F48FB1', 
+    textDecoration: 'none',
   }
 }));
 
@@ -48,8 +49,8 @@ export default function Works() {
           <Grid container spacing={3} className={classes.gridContainer}>
             <Grid item xs={5}>
               <picture>
-                <source srcSet="/img/githubpages1st.webp" type="image/webp" className={classes.contentImg}/>
-                <img src="/img/githubpages1st.jpg" alt="screen-shot from 1st Githubpages" className={classes.contentImg}/>
+                <source srcSet="/image/githubpages1st.webp" type="image/webp" className={classes.contentImg}/>
+                <img src="/image/githubpages1st.jpg" alt="screen-shot from 1st Githubpages" className={classes.contentImg}/>
               </picture>
             </Grid>
             <Grid item xs={7}>
@@ -65,8 +66,8 @@ export default function Works() {
           <Grid container spacing={2} className={classes.gridContainer}>
             <Grid item xs={5}>
               <picture>
-                <source srcSet="/img/codr.webp" type="image/webp" className={classes.contentImg} />
-                <img src="/img/codr.jpg" alt="screen-shot from this webpage" className={classes.contentImg} />
+                <source srcSet="/image/codr.webp" type="image/webp" className={classes.contentImg} />
+                <img src="/image/codr.jpg" alt="screen-shot from this webpage" className={classes.contentImg} />
               </picture>
             </Grid>
             <Grid item xs={7}>

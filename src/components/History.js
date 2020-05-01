@@ -51,8 +51,8 @@ export default function History() {
           <Grid container spacing={4} className={classes.gridContainer}>
             <Grid item xs={5}>
               <picture>
-                <source srcSet="/img/weeding.webp" type="image/webp" className={classes.contentImg} />
-                <img src="/img/weeding.jpg" alt="photograph of weeding robot" className={classes.contentImg} />
+                <source srcSet="/image/weeding.webp" type="image/webp" className={classes.contentImg} />
+                <img src="/image/weeding.jpg" alt="photograph of weeding robot" className={classes.contentImg} />
               </picture>
             </Grid>
             <Grid item xs={7}>
@@ -64,8 +64,8 @@ export default function History() {
           <Grid container spacing={4} className={classes.gridContainer}>
             <Grid item xs={5}>
               <picture>
-                <source srcSet="/img/miyazakiUniv.webp" type="image/webp" className={classes.contentImg} />
-                <img src="/img/miyazakiUniV.png" alt="logo of miyazaki university" className={classes.contentImg} />
+                <source srcSet="/image/miyazakiUniv.webp" type="image/webp" className={classes.contentImg} />
+                <img src="/image/miyazakiUniV.png" alt="logo of miyazaki university" className={classes.contentImg} />
               </picture>
             </Grid>
             <Grid item xs={7}>

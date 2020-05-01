@@ -108,8 +108,8 @@ export default function SwipeableTemporaryDrawer() {
             <List>
               <div className={classes.profileImgContainer}>
                 <picture>
-                  <source srcSet="./img/wheel400.webp" type="image/webp" className={classes.profileImg} />
-                  <img src="./img/wheel400.png" alt="avatar"  className={classes.profileImg}/>
+                  <source srcSet="./image/wheel400.webp" type="image/webp" className={classes.profileImg} />
+                  <img src="./image/wheel400.png" alt="avatar"  className={classes.profileImg}/>
                 </picture>
               </div>
             </List>
@@ -131,8 +131,8 @@ export default function SwipeableTemporaryDrawer() {
             <List>
               <div className={classes.profileImgContainer}>
                 <picture>
-                  <source srcSet="./img/wheel400.webp" type="image/webp" className={classes.profileImg} />
-                  <img src="./img/wheel400.png" alt="avatar" className={classes.profileImg} />
+                  <source srcSet="./image/wheel400.webp" type="image/webp" className={classes.profileImg} />
+                  <img src="./image/wheel400.png" alt="avatar" className={classes.profileImg} />
                 </picture>
               </div>
             </List>

@@ -31,8 +31,8 @@ export default function About() {
         <Grid container spacing={4}>
           <Grid item md={12} lg={5} className={classes.aboutTop}>
             <picture>
-              <source srcSet="/img/LongRidgeLookout.webp" type="image/webp" className={classes.aboutImg}/>
-              <img src="/img/LongRidgeLookout.jpg" alt="the secenary from Long-Ridge-Lookout in Adelaide" className={classes.aboutImg} />
+              <source srcSet="/image/LongRidgeLookout.webp" type="image/webp" className={classes.aboutImg}/>
+              <img src="/image/LongRidgeLookout.jpg" alt="the secenary from Long-Ridge-Lookout in Adelaide" className={classes.aboutImg} />
             </picture>
             <p><small>Here is in Adelaide, Australia. My selfie is little ...</small></p>
           </Grid>
