@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     [theme.breakpoints.up('lg')]: {
       // with permanentDrawer
-      width: '60%',
+      width: '80%',
     },
   },
 }));
@@ -51,27 +51,26 @@ export default function History() {
           <Grid container spacing={4} className={classes.gridContainer}>
             <Grid item xs={5}>
               <picture>
-                <source srcSet="/image/weeding.webp" type="image/webp" className={classes.contentImg} />
-                <img src="/image/weeding.jpg" alt="photograph of weeding robot" className={classes.contentImg} />
+                <source srcSet="/assets/weeding700.webp" type="image/webp" className={classes.contentImg} />
+                <img src="/assets/weeding700.jpg" alt="photograph of weeding robot" className={classes.contentImg} />
               </picture>
             </Grid>
             <Grid item xs={7}>
               <b>Agricultural Enginnering Lab.</b><br/>
               2015/04 - 2017/03<br/>
-              crop row detecting tech
+              Thesis was about agricultural crop row detecting tech by image processing
             </Grid>
           </Grid>
           <Grid container spacing={4} className={classes.gridContainer}>
             <Grid item xs={5}>
               <picture>
-                <source srcSet="/image/miyazakiUniv.webp" type="image/webp" className={classes.contentImg} />
-                <img src="/image/miyazakiUniV.png" alt="logo of miyazaki university" className={classes.contentImg} />
+                <img src="/assets/miyazakiUniv.png" alt="miyazaki university" className={classes.contentImg} />
               </picture>
             </Grid>
             <Grid item xs={7}>
               <b>Faculty of Agriculture <wbr/>in Miyazaki University</b><br/>
                 2013/04 - 2017/03<br/>
-                Majored Botanics, Agricultural Engineering
+                Majored Botanics and Agricultural Engineering
             </Grid>
           </Grid>
         </article>

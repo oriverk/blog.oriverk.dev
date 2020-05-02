@@ -9,10 +9,10 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
     width: '100%',
     position: 'relative',
-    backgroundColor: 'gray',
+    backgroundColor: '212121',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    backgroundImage: 'url("/image/adelaide2.jpg")',
+    backgroundImage: 'url("/assets/adelaide2.webp")',
     [theme.breakpoints.down('md')]: {
       hight: `calc(100vh - 59px)`,
     },

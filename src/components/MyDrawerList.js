@@ -20,6 +20,9 @@ const useStyles = makeStyles({
     color: 'white',
     textDecoration: 'none',
   },
+  third: {
+    marginTop:'1rem',
+  },
 });
 
 export default function MyDrawerList() {
@@ -53,7 +56,7 @@ export default function MyDrawerList() {
         </a>
       </List>
       <Divider />
-      <div className="third">
+      <div className={classes.third}>
         <IconButton href="https://github.com/oriverk" target="_blank" rel="noopener noreferrer" color="secondary" alt="github"><GitHubIcon /></IconButton>
         <IconButton href="https://qiita.com/OriverK" target="_blank" rel="noopener noreferrer" color="secondary"><QiitaIcon /></IconButton>
         <IconButton href="https://www.wantedly.com/users/40069986" target="_blank" rel="noopener noreferrer" color="secondary"><WantedlyIcon /></IconButton>

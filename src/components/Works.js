@@ -3,9 +3,6 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import NoImage from '../utils/noImage';
 
-import Link from 'next/link'
-
-
 const useStyles = makeStyles((theme) => ({
   content: {
     width: '100%',
@@ -24,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     [theme.breakpoints.up('lg')]: {
       // with permanentDrawer
-      width: '60%',
+      width: '80%',
     },
   },
   links: {
@@ -49,8 +46,8 @@ export default function Works() {
           <Grid container spacing={3} className={classes.gridContainer}>
             <Grid item xs={5}>
               <picture>
-                <source srcSet="/image/githubpages1st.webp" type="image/webp" className={classes.contentImg}/>
-                <img src="/image/githubpages1st.jpg" alt="screen-shot from 1st Githubpages" className={classes.contentImg}/>
+                <source srcSet="/assets/githubPages1st700.webp" type="image/webp" className={classes.contentImg}/>
+                <img src="/assets/githubPages1st700.jpg" alt="screen-shot from 1st Githubpages" className={classes.contentImg}/>
               </picture>
             </Grid>
             <Grid item xs={7}>
@@ -66,8 +63,8 @@ export default function Works() {
           <Grid container spacing={2} className={classes.gridContainer}>
             <Grid item xs={5}>
               <picture>
-                <source srcSet="/image/codr.webp" type="image/webp" className={classes.contentImg} />
-                <img src="/image/codr.jpg" alt="screen-shot from this webpage" className={classes.contentImg} />
+                <source srcSet="/assets/codr700.webp" type="image/webp" className={classes.contentImg} />
+                <img src="/assets/codr700.jpg" alt="screen-shot from this webpage" className={classes.contentImg} />
               </picture>
             </Grid>
             <Grid item xs={7}>

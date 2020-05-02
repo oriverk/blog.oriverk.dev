@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
   aboutImg: {
     width: '100%',
   },
+  recruit: {
+    color: '#F48FB1',
+  },
 }));
 
 export default function About() {
@@ -31,18 +34,18 @@ export default function About() {
         <Grid container spacing={4}>
           <Grid item md={12} lg={5} className={classes.aboutTop}>
             <picture>
-              <source srcSet="/image/LongRidgeLookout.webp" type="image/webp" className={classes.aboutImg}/>
-              <img src="/image/LongRidgeLookout.jpg" alt="the secenary from Long-Ridge-Lookout in Adelaide" className={classes.aboutImg} />
+              <source srcSet="/assets/LongRidge700.webp" type="image/webp" className={classes.aboutImg}/>
+              <img src="/assets/LongRidge700.jpg" alt="the secenary from Long-Ridge-Lookout in Adelaide" className={classes.aboutImg} />
             </picture>
-            <p><small>Here is in Adelaide, Australia. My selfie is little ...</small></p>
+            <p><small>This is in Adelaide, Australia. My selfie is little ...</small></p>
           </Grid>
           <Grid item md={12} lg={7}>
             <p>My name is Kawano Yudai.</p>
             <p>I graduated from Miyazaki Universiy as Bachelor of Agriculture.</p>
             <p>I belonged to agricultural engineering lablatory and studied crop row detecting tech by image processing with C++ and OpenCV.</p>
-            <p>After I quited first job in egg company, I was in Australia as working holiday. Then I studied Ruby and other tech like database, website system.</p>
+            <p>After I quited egg company, I stayed at Australia as working holiday. Then I studied Ruby and other tech like database, website system.</p>
             <p>So, I'm very interested in both nature and machinery</p>
-            <p><em>Now, I'm seeking job as web system developer. Please contact me.</em></p> 
+            <p className={classes.recruit}><em>Now, I'm seeking job as developer. Please contact me from left drawer.</em></p> 
           </Grid>
         </Grid>
       </section>

@@ -9,7 +9,7 @@ export default function TwitterCard() {
         <meta name="twitter:site" content="@no_you_die" />
         <meta name="twitter:title" content="OriverK's website" />
         <meta name="twitter:description" content="portfolio with React + Next.js" />
-        <meta name="twitter:image" content="./image/prtsc.webp" />
+        <meta name="twitter:image" content="./image/prtsc700.jpg" />
       </Head>
     </React.Fragment>
   );
