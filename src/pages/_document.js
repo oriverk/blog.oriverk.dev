@@ -2,7 +2,7 @@ import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import theme from '../plugins/Theme';
-import TwitterCard from '../utils/twitterCard';
+import OGP from '../utils/OGP';
 
 export default class MyDocument extends Document {
   render() {
@@ -14,7 +14,7 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
-          <TwitterCard />
+          <OGP />
         </Head>
         <body>
           <Main />

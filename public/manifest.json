@@ -1,7 +1,7 @@
 {
-  "name":"Kawano Oriver Yudai",
-  "short_name":"OriverK",
-  "start_url": ".",
+  "name":"Kawano Yudai's website",
+  "short_name":"OriverK's site",
+  "start_url": "/",
   "display":"browser",
   "background_color":"#212121",
   "theme_color":"#212121",

@@ -1,6 +1,7 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Link from 'next/link';
 
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Hidden from '@material-ui/core/Hidden';
 import { List, Divider } from '@material-ui/core';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -9,10 +10,6 @@ import IconButton from '@material-ui/core/IconButton';
 import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 
 import MyDrawerList from '../components/MyDrawerList';
-import Top from '../components/Top'
-import About from '../components/About';
-import History from '../components/History';
-import Works from '../components/Works';
 
 const drawerWidth = 250;
 
@@ -62,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SwipeableTemporaryDrawer() {
+export default function Custom404() {
   const classes = useStyles();
   const theme = useTheme();
   const [state, setState] = React.useState({
@@ -130,10 +127,10 @@ export default function SwipeableTemporaryDrawer() {
       </Hidden>
       <div id="back-to-top-anchor" />
       <main className={classes.contents}>
-        <Top />
-        <About />
-        <History />
-        <Works />
+        <div style={{ textAlign: 'center' }}>
+          <h1>404 - Page Not Found</h1>
+          <p><Link href="/"><a style={{textDecoration:'none', color: '#F48FB1'}}>Please go back to Home.</a></Link></p>
+        </div>
       </main>
       {/* <MyScrollTop /> */}
       <footer className={classes.footer}>
