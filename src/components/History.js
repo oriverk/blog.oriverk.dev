@@ -64,6 +64,7 @@ export default function History() {
           <Grid container spacing={4} className={classes.gridContainer}>
             <Grid item xs={5}>
               <picture>
+                <source srcSet="/assets/miyazakiUniv.webp" type="image/webp" className={classes.contentImg} />
                 <img src="/assets/miyazakiUniv.png" alt="miyazaki university" className={classes.contentImg} />
               </picture>
             </Grid>

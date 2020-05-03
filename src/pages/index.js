@@ -1,11 +1,11 @@
 import React from 'react';
-
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Hidden from '@material-ui/core/Hidden';
 import { List, Divider } from '@material-ui/core';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
+import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 
 import MyDrawerList from '../components/MyDrawerList';
 import Top from '../components/Top'
@@ -13,14 +13,9 @@ import About from '../components/About';
 import History from '../components/History';
 import Works from '../components/Works';
 
-import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
-
 const drawerWidth = 250;
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
   header: {
     width: '100%',
     position: 'fixed',
@@ -30,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   profileImgContainer: {
     textAlign: 'center',
+    margin: '1rem',
   },
   profileImg: {
     width: `calc(0.5 *  ${drawerWidth}px)`,

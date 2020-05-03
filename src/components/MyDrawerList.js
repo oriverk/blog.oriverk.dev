@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     textDecoration: 'none',
   },
   third: {
-    marginTop:'1rem',
+    marginTop: '1rem',
   },
 });
 

@@ -19,9 +19,6 @@ const useStyles = makeStyles((theme) => ({
   aboutImg: {
     width: '100%',
   },
-  recruit: {
-    color: '#F48FB1',
-  },
 }));
 
 export default function About() {
@@ -45,7 +42,7 @@ export default function About() {
             <p>I belonged to agricultural engineering lablatory and studied crop row detecting tech by image processing with C++ and OpenCV.</p>
             <p>After I quited egg company, I stayed at Australia as working holiday. Then I studied Ruby and other tech like database, website system.</p>
             <p>So, I'm very interested in both nature and machinery</p>
-            <p className={classes.recruit}><em>Now, I'm seeking job as developer. Please contact me from left drawer.</em></p> 
+            <p style={{ color: '#F48FB1' }}><em>Now, I'm seeking job as developer. Please contact me from left drawer.</em></p> 
           </Grid>
         </Grid>
       </section>

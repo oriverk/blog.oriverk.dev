@@ -1,11 +1,12 @@
 import React from 'react';
-
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+
 import Hidden from '@material-ui/core/Hidden';
 import { List, Divider } from '@material-ui/core';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
+import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 
 import MyDrawerList from '../components/MyDrawerList';
 import Top from '../components/Top'
@@ -13,15 +14,10 @@ import About from '../components/About';
 import History from '../components/History';
 import Works from '../components/Works';
 
-import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
-
 const drawerWidth = 250;
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
-  header: {
+  footer: {
     width: '100%',
     position: 'fixed',
     bottom: 0,
@@ -30,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
   profileImgContainer: {
     textAlign: 'center',
+    margin: '1rem',
   },
   profileImg: {
     width: `calc(0.5 *  ${drawerWidth}px)`,
@@ -83,16 +80,6 @@ export default function SwipeableTemporaryDrawer() {
   return (
     <React.Fragment key='left'>
       <Hidden lgUp>
-        <header className={classes.header}>
-          <IconButton
-            aria-label="Open swipeable temporary drawer"
-            onClick={toggleDrawer('left', true)}
-          >
-            <DoubleArrowIcon color="secondary" style={{ fontSize: 35 }} />
-          </IconButton>
-        </header>
-      </Hidden>
-      <Hidden lgUp>
         <SwipeableDrawer
           anchor='left'
           open={state['left']}
@@ -141,12 +128,24 @@ export default function SwipeableTemporaryDrawer() {
           </Drawer>
         </aside>
       </Hidden>
+      <div id="back-to-top-anchor" />
       <main className={classes.contents}>
         <Top />
         <About />
         <History />
         <Works />
       </main>
+          {/* <MyScrollTop /> */}
+      <footer className={classes.footer}>
+        <Hidden lgUp>
+          <IconButton
+            aria-label="Open swipeable temporary drawer"
+            onClick={toggleDrawer('left', true)}
+          >
+            <DoubleArrowIcon color="secondary" style={{ fontSize: 35 }} />
+          </IconButton>
+        </Hidden>
+      </footer>
     </React.Fragment>
   );
 }
