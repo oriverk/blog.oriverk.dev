@@ -25,35 +25,40 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MyDrawerList() {
+export default function MyDrawerList({children, home}) {
   const classes = useStyles();
   return (
     <React.Fragment>
       <List>
-        <a href="#about" className={classes.link}>
-          <ListItem button>
-            <ListItemIcon><PermContactCalendarIcon /></ListItemIcon>
-            <ListItemText primary="About"/>
-          </ListItem>
-        </a>
-        <a href="#history" className={classes.link}>
-          <ListItem button>
-            <ListItemIcon><WorkIcon /></ListItemIcon>
-            <ListItemText primary="History" />
-          </ListItem>
-        </a>
-        <a href="#works" className={classes.link}>
-          <ListItem button>
-            <ListItemIcon><CodeIcon /></ListItemIcon>
-            <ListItemText primary="Works" />
-          </ListItem>
-        </a>
-        <a href="#" className={classes.link}>
+        {home && (
+          <>
+            <a href="#about" className={classes.link}>
+              <ListItem button>
+                <ListItemIcon><PermContactCalendarIcon /></ListItemIcon>
+                <ListItemText primary="About" />
+              </ListItem>
+            </a>
+            <a href="#history" className={classes.link}>
+              <ListItem button>
+                <ListItemIcon><WorkIcon /></ListItemIcon>
+                <ListItemText primary="History" />
+              </ListItem>
+            </a>
+            <a href="#works" className={classes.link}>
+              <ListItem button>
+                <ListItemIcon><CodeIcon /></ListItemIcon>
+                <ListItemText primary="Works" />
+              </ListItem>
+            </a>
+          </>
+        )}
+        <a href="/posts" className={classes.link}>
           <ListItem button>
             <ListItemIcon><CreateIcon /></ListItemIcon>
             <ListItemText primary="Blog" />
           </ListItem>
         </a>
+
       </List>
       <Divider />
       <div className={classes.third}>
