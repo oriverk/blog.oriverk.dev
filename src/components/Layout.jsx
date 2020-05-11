@@ -7,19 +7,11 @@ import Link from 'next/link'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 import Hidden from '@material-ui/core/Hidden';
-// import { List, Divider } from '@material-ui/core';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
 import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
-
-// import React from 'react';
-
 import { List, ListItem, ListItemIcon, ListItemText, Divider } from '@material-ui/core';
-// import { makeStyles } from '@material-ui/core/styles';
-
-// import IconButton from '@material-ui/core/IconButton';
-
 import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
 import WorkIcon from '@material-ui/icons/Work';
 import CodeIcon from '@material-ui/icons/Code';
@@ -58,13 +50,6 @@ const useStyles = makeStyles((theme) => ({
   },
   permanentDrawerPaper: {
     width: drawerWidth,
-  },
-  link: {
-    color: 'white',
-    textDecoration: 'none',
-  },
-  third: {
-    marginTop: '1rem',
   },
   contents: {
     position: 'absolute',
@@ -136,27 +121,37 @@ function Layout({ children, home }) {
             <List>
               {home && (
                 <>
-                  <a href="#about" className={classes.link}>
+                  <Link href="./#about">
                     <ListItem button>
                       <ListItemIcon><PermContactCalendarIcon /></ListItemIcon>
                       <ListItemText primary="About" />
                     </ListItem>
-                  </a>
-                  <a href="#history" className={classes.link}>
+                  </Link>
+                  <Link href="./#history">
                     <ListItem button>
                       <ListItemIcon><WorkIcon /></ListItemIcon>
                       <ListItemText primary="History" />
                     </ListItem>
-                  </a>
-                  <a href="#works" className={classes.link}>
+                  </Link>
+                  <Link href="./#works">
                     <ListItem button>
                       <ListItemIcon><CodeIcon /></ListItemIcon>
                       <ListItemText primary="Works" />
                     </ListItem>
+                  </Link>
+                </>
+              )}
+              {!home && (
+                <>
+                  <a href="./">
+                    <ListItem button>
+                      <ListItemIcon><CreateIcon /></ListItemIcon>
+                      <ListItemText primary="Home" />
+                    </ListItem>
                   </a>
                 </>
               )}
-              <a href="/posts" className={classes.link}>
+              <a href="/posts">
                 <ListItem button>
                   <ListItemIcon><CreateIcon /></ListItemIcon>
                   <ListItemText primary="Blog" />
@@ -200,32 +195,42 @@ function Layout({ children, home }) {
             <List>
               {home && (
                 <>
-                  <a href="#about" className={classes.link}>
+                  <Link href="./#about">
                     <ListItem button>
                       <ListItemIcon><PermContactCalendarIcon /></ListItemIcon>
                       <ListItemText primary="About" />
                     </ListItem>
-                  </a>
-                  <a href="#history" className={classes.link}>
+                  </Link>
+                  <Link href="./#history">
                     <ListItem button>
                       <ListItemIcon><WorkIcon /></ListItemIcon>
                       <ListItemText primary="History" />
                     </ListItem>
-                  </a>
-                  <a href="#works" className={classes.link}>
+                  </Link>
+                  <Link href="./#works">
                     <ListItem button>
                       <ListItemIcon><CodeIcon /></ListItemIcon>
                       <ListItemText primary="Works" />
                     </ListItem>
+                  </Link>
+                </>
+              )}
+              {!home && (
+                <>
+                  <a href="./">
+                    <ListItem button>
+                      <ListItemIcon><CreateIcon /></ListItemIcon>
+                      <ListItemText primary="Home" />
+                    </ListItem>
                   </a>
                 </>
               )}
-              <a href="/posts" className={classes.link}>
+              <Link href="/posts">
                 <ListItem button>
                   <ListItemIcon><CreateIcon /></ListItemIcon>
                   <ListItemText primary="Blog" />
                 </ListItem>
-              </a>
+              </Link>
 
             </List>
             <Divider />
