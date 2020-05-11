@@ -1,20 +1,24 @@
-import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import React from 'react'
+import Link from 'next/link'
 
-import Hidden from '@material-ui/core/Hidden';
-import { List, Divider } from '@material-ui/core';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Drawer from '@material-ui/core/Drawer';
-import IconButton from '@material-ui/core/IconButton';
-import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
+import styles from './Layout.module.css'
+import utilStyles from '../styles/utils.module.css'
 
-import MyDrawerList from '../components/MyDrawerList';
-import Top from '../components/Top'
-import About from '../components/About';
-import History from '../components/History';
-import Works from '../components/Works';
+import { makeStyles, useTheme } from '@material-ui/core/styles'
 
-const drawerWidth = 250;
+import Hidden from '@material-ui/core/Hidden'
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
+import Drawer from '@material-ui/core/Drawer'
+import IconButton from '@material-ui/core/IconButton'
+import DoubleArrowIcon from '@material-ui/icons/DoubleArrow'
+import { List, ListItem, ListItemIcon, ListItemText, Divider } from '@material-ui/core'
+
+import HomeIcon from '@material-ui/icons/Home'
+import CreateIcon from '@material-ui/icons/Create'
+
+import MyDrawerList from '../components/MyDrawerList'
+
+const drawerWidth = 250
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -48,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       // with swipeableDrawer
       width: '100%',
-      marginBottom: `2rem`,
+      marginBottom: `59px`,
       paddingBottom: '10px',
       marginLeft: 0,
     },
@@ -58,34 +62,46 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: drawerWidth,
     },
   },
-}));
+}))
 
-export default function Portfolio() {
-  const classes = useStyles();
-  const theme = useTheme();
+function PostLayout({ children }) {
+  const classes = useStyles()
+  const theme = useTheme()
   const [state, setState] = React.useState({
     left: false,
-  });
+  })
 
   // Do Not Touch
   const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
+      return
     }
-    setState({ ...state, [anchor]: open });
-  };
+    setState({ ...state, [anchor]: open })
+  }
 
-  const MyProfileImg = () => {
+  const PostDrawerList = () => {
     return (
-      <React.Fragment>
-        <div className={classes.profileImgContainer}>
-          <picture>
-            <source srcSet="/favicon/android-chrome-192x192.webp" type="image/webp" className={classes.profileImg} />
-            <img src="/assets/wheel192.png" alt="avatar" className={classes.profileImg} />
-          </picture>
-        </div>
-      </React.Fragment>
-    );
+      <MyDrawerList>
+        <List>
+          <Link href="/">
+            <ListItem button>
+              <ListItemIcon><HomeIcon /></ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItem>
+          </Link>
+          <Link href="/posts">
+            <ListItem button>
+              <ListItemIcon><CreateIcon /></ListItemIcon>
+              <ListItemText primary="Blog" />
+            </ListItem>
+          </Link>
+        </List>
+        <Divider />
+        <List>
+          <div style={{textAlign: 'center'}}><p>h2 index</p></div>
+        </List>
+      </MyDrawerList>
+    )
   }
 
   return (
@@ -103,11 +119,7 @@ export default function Portfolio() {
             onClick={toggleDrawer('left', false)}
             onKeyDown={toggleDrawer('left', false)}
           >
-            <List>
-              <MyProfileImg />
-            </List>
-            <Divider />
-            <MyDrawerList />
+            <PostDrawerList />
           </div>
         </SwipeableDrawer>
         <footer className={classes.footer}>
@@ -129,20 +141,15 @@ export default function Portfolio() {
               paper: classes.permanentDrawerPaper,
             }}
           >
-            <List>
-              <MyProfileImg />
-            </List>
-            <Divider />
-            <MyDrawerList />
+            <PostDrawerList />
           </Drawer>
         </aside>
       </Hidden>
       <main className={classes.contents}>
-        <Top />
-        <About />
-        <History />
-        <Works />
+        {children}
       </main>
     </React.Fragment>
-  );
+  )
 }
+
+export default PostLayout

@@ -1,8 +1,7 @@
-import React from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheets } from '@material-ui/core/styles';
-import theme from '../plugins/Theme';
-import OGP from '../utils/OGP';
+import React from 'react'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
+import { ServerStyleSheets } from '@material-ui/core/styles'
+import theme from '../plugins/Theme'
 
 export default class MyDocument extends Document {
   render() {
@@ -14,14 +13,25 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
-          <OGP />
+          <meta content="KawanoYudai's website" name="title" />
+          <meta content="My name is Kawano Yudai. I majored Botanics, Agricultural Engineering and studied crop row detection tech by image processing. Now, I'm seeking job as developer in Japan." name="description" />
+          <meta content="developer, ruby, react" name='keywords' />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content="website with React + Next.js" />
+          <meta property="og:description" content="My name is Kawano Yudai. I majored Botanics, Agricultural Engineering and studied crop row detection tech by image processing. Now, I'm seeking job as developer in Japan." />
+          <meta property="og:image" content="./assets/prtsc700.jpg" />
+          <meta property="og:url" content="/" />
+          <meta property="og:site_name" content="Kawano Yudai's website" />
+          <meta property="og:locale" content="ja_JP" />
+          <meta content="summary_large_image" name="twitter:card" />
+          <meta content="@not_you_die" name="twitter:site" />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }
 
@@ -49,7 +59,7 @@ MyDocument.getInitialProps = async (ctx) => {
   // 4. page.render
 
   // Render app and page and get the context of the page with collected side effects.
-  const sheets = new ServerStyleSheets();
+  const sheets = new ServerStyleSheets()
   const originalRenderPage = ctx.renderPage;
 
   ctx.renderPage = () =>
@@ -63,5 +73,5 @@ MyDocument.getInitialProps = async (ctx) => {
     ...initialProps,
     // Styles fragment is rendered after the app and page rendering finish.
     styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
-  };
-};
+  }
+}

@@ -1,30 +1,27 @@
-import React from 'react';
+import React from 'react'
 import Head from 'next/head'
 import styles from './Layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles'
 
-import Hidden from '@material-ui/core/Hidden';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Drawer from '@material-ui/core/Drawer';
-import IconButton from '@material-ui/core/IconButton';
-import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
-import { List, ListItem, ListItemIcon, ListItemText, Divider } from '@material-ui/core';
-import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
-import WorkIcon from '@material-ui/icons/Work';
-import CodeIcon from '@material-ui/icons/Code';
-import CreateIcon from '@material-ui/icons/Create';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import QiitaIcon from '../utils/qiitaSvg.js';
-import WantedlyIcon from '../utils/wantedlySvg.js';
+import Hidden from '@material-ui/core/Hidden'
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
+import Drawer from '@material-ui/core/Drawer'
+import IconButton from '@material-ui/core/IconButton'
+import DoubleArrowIcon from '@material-ui/icons/DoubleArrow'
+import { List, ListItem, ListItemIcon, ListItemText, Divider } from '@material-ui/core'
 
-// import MyDrawerList from '../components/MyDrawerList';
+import HomeIcon from '@material-ui/icons/Home'
+import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar'
+import WorkIcon from '@material-ui/icons/Work'
+import CodeIcon from '@material-ui/icons/Code'
+import CreateIcon from '@material-ui/icons/Create'
 
-const drawerWidth = 250;
+import MyDrawerList from '../components/MyDrawerList'
+
+const drawerWidth = 250
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -68,35 +65,60 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: drawerWidth,
     },
   },
-}));
+}))
 
-
-function Layout({ children, home }) {
-  const classes = useStyles();
-  const theme = useTheme();
+function Layout({ children }) {
+  const classes = useStyles()
+  const theme = useTheme()
   const [state, setState] = React.useState({
     left: false,
-  });
+  })
 
   // Do Not Touch
   const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
+      return
     }
-    setState({ ...state, [anchor]: open });
-  };
+    setState({ ...state, [anchor]: open })
+  }
 
-  const MyProfileImg = () => {
+  const HomeDrawerList = () => {
     return (
-      <React.Fragment>
-        <div className={classes.profileImgContainer}>
-          <picture>
-            <source srcSet="/favicon/android-chrome-192x192.webp" type="image/webp" className={classes.profileImg} />
-            <img src="/assets/wheel192.png" alt="avatar" className={classes.profileImg} />
-          </picture>
-        </div>
-      </React.Fragment>
-    );
+      <MyDrawerList>
+        <List>
+          <Link href="/">
+            <ListItem button>
+              <ListItemIcon><HomeIcon /></ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItem>
+          </Link>
+          <Link href="./#about">
+            <ListItem button>
+              <ListItemIcon><PermContactCalendarIcon /></ListItemIcon>
+              <ListItemText primary="About" />
+            </ListItem>
+          </Link>
+          <Link href="./#history">
+            <ListItem button>
+              <ListItemIcon><WorkIcon /></ListItemIcon>
+              <ListItemText primary="History" />
+            </ListItem>
+          </Link>
+          <Link href="./#works">
+            <ListItem button>
+              <ListItemIcon><CodeIcon /></ListItemIcon>
+              <ListItemText primary="Works" />
+            </ListItem>
+          </Link>
+          <Link href="/posts">
+            <ListItem button>
+              <ListItemIcon><CreateIcon /></ListItemIcon>
+              <ListItemText primary="Blog" />
+            </ListItem>
+          </Link>
+        </List>
+      </MyDrawerList>
+    )
   }
 
   return (
@@ -114,59 +136,7 @@ function Layout({ children, home }) {
             onClick={toggleDrawer('left', false)}
             onKeyDown={toggleDrawer('left', false)}
           >
-            <List>
-              <MyProfileImg />
-            </List>
-            <Divider />
-            <List>
-              {home && (
-                <>
-                  <Link href="./#about">
-                    <ListItem button>
-                      <ListItemIcon><PermContactCalendarIcon /></ListItemIcon>
-                      <ListItemText primary="About" />
-                    </ListItem>
-                  </Link>
-                  <Link href="./#history">
-                    <ListItem button>
-                      <ListItemIcon><WorkIcon /></ListItemIcon>
-                      <ListItemText primary="History" />
-                    </ListItem>
-                  </Link>
-                  <Link href="./#works">
-                    <ListItem button>
-                      <ListItemIcon><CodeIcon /></ListItemIcon>
-                      <ListItemText primary="Works" />
-                    </ListItem>
-                  </Link>
-                </>
-              )}
-              {!home && (
-                <>
-                  <a href="./">
-                    <ListItem button>
-                      <ListItemIcon><CreateIcon /></ListItemIcon>
-                      <ListItemText primary="Home" />
-                    </ListItem>
-                  </a>
-                </>
-              )}
-              <a href="/posts">
-                <ListItem button>
-                  <ListItemIcon><CreateIcon /></ListItemIcon>
-                  <ListItemText primary="Blog" />
-                </ListItem>
-              </a>
-
-            </List>
-            <Divider />
-            <div className={classes.third}>
-              <IconButton href="https://github.com/oriverk" target="_blank" rel="noopener noreferrer" color="secondary" alt="github"><GitHubIcon /></IconButton>
-              <IconButton href="https://qiita.com/OriverK" target="_blank" rel="noopener noreferrer" color="secondary"><QiitaIcon /></IconButton>
-              <IconButton href="https://www.wantedly.com/users/40069986" target="_blank" rel="noopener noreferrer" color="secondary"><WantedlyIcon /></IconButton>
-              <IconButton href="https://www.linkedin.com/in/yudai-k/" target="_blank" rel="noopener noreferrer" color="secondary"><LinkedInIcon /></IconButton>
-              <IconButton href="https://twitter.com/not_you_die" target="_blank" rel="noopener noreferrer" color="secondary"><TwitterIcon /></IconButton>
-            </div>
+            <HomeDrawerList />
           </div>
         </SwipeableDrawer>
         <footer className={classes.footer}>
@@ -188,59 +158,7 @@ function Layout({ children, home }) {
               paper: classes.permanentDrawerPaper,
             }}
           >
-            <List>
-              <MyProfileImg />
-            </List>
-            <Divider />
-            <List>
-              {home && (
-                <>
-                  <Link href="./#about">
-                    <ListItem button>
-                      <ListItemIcon><PermContactCalendarIcon /></ListItemIcon>
-                      <ListItemText primary="About" />
-                    </ListItem>
-                  </Link>
-                  <Link href="./#history">
-                    <ListItem button>
-                      <ListItemIcon><WorkIcon /></ListItemIcon>
-                      <ListItemText primary="History" />
-                    </ListItem>
-                  </Link>
-                  <Link href="./#works">
-                    <ListItem button>
-                      <ListItemIcon><CodeIcon /></ListItemIcon>
-                      <ListItemText primary="Works" />
-                    </ListItem>
-                  </Link>
-                </>
-              )}
-              {!home && (
-                <>
-                  <a href="./">
-                    <ListItem button>
-                      <ListItemIcon><CreateIcon /></ListItemIcon>
-                      <ListItemText primary="Home" />
-                    </ListItem>
-                  </a>
-                </>
-              )}
-              <Link href="/posts">
-                <ListItem button>
-                  <ListItemIcon><CreateIcon /></ListItemIcon>
-                  <ListItemText primary="Blog" />
-                </ListItem>
-              </Link>
-
-            </List>
-            <Divider />
-            <div className={classes.third}>
-              <IconButton href="https://github.com/oriverk" target="_blank" rel="noopener noreferrer" color="secondary" alt="github"><GitHubIcon /></IconButton>
-              <IconButton href="https://qiita.com/OriverK" target="_blank" rel="noopener noreferrer" color="secondary"><QiitaIcon /></IconButton>
-              <IconButton href="https://www.wantedly.com/users/40069986" target="_blank" rel="noopener noreferrer" color="secondary"><WantedlyIcon /></IconButton>
-              <IconButton href="https://www.linkedin.com/in/yudai-k/" target="_blank" rel="noopener noreferrer" color="secondary"><LinkedInIcon /></IconButton>
-              <IconButton href="https://twitter.com/not_you_die" target="_blank" rel="noopener noreferrer" color="secondary"><TwitterIcon /></IconButton>
-            </div>
+            <HomeDrawerList />
           </Drawer>
         </aside>
       </Hidden>

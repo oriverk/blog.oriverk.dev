@@ -1,7 +1,7 @@
-import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import NoImage from '../utils/noImage';
+import React from 'react'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
+import NoImage from '../utils/noImage'
 
 const useStyles = makeStyles((theme) => ({
   topContainer: {
@@ -42,11 +42,11 @@ const useStyles = makeStyles((theme) => ({
   topSubtitle: {
     fontSize: '2rem',
   },
-}));
+}))
 
 export default function Top() {
-  const classes = useStyles();
-  const theme = useTheme();
+  const classes = useStyles()
+  const theme = useTheme()
   return (
     <React.Fragment>
       <section id="top" className={classes.topContainer}>
@@ -56,5 +56,5 @@ export default function Top() {
         </div>
       </section>
     </React.Fragment>
-  );
+  )
 }

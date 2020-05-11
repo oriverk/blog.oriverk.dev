@@ -1,6 +1,6 @@
-import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
+import React from 'react'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
 
 const useStyles = makeStyles((theme) => ({ 
   content: {
@@ -19,11 +19,11 @@ const useStyles = makeStyles((theme) => ({
   aboutImg: {
     width: '100%',
   },
-}));
+}))
 
 export default function About() {
-  const classes = useStyles();
-  const theme = useTheme();
+  const classes = useStyles()
+  const theme = useTheme()
   return (
     <React.Fragment>
       <section id="about" className={classes.content}>
