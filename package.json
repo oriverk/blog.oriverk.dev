@@ -12,6 +12,7 @@
     "@material-ui/icons": "^4.9.1",
     "@mdx-js/loader": "^1.5.8",
     "@next/mdx": "^9.3.5",
+    "date-fns": "^2.13.0",
     "gray-matter": "^4.0.2",
     "next": "9.3.5",
     "react": "16.13.1",
