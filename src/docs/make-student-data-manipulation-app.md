@@ -1,0 +1,920 @@
+---
+date: '2019-03-17'
+update: '2019-12-04'
+title: 'Qiita: 9, 10, 11, 14日目：大学生データ操作App'
+tags: Qiita Ruby Rails MySQL
+author: OriverK
+slide: false
+---
+
+from Qiita
+- [9日目：大学生データ（マスターデータ](https://qiita.com/OriverK/items/80dc52ba9753f8bf6c82)
+- [10日目(1)：マスターデータ（DBへ情報入力、ページに出力](https://qiita.com/OriverK/items/b7eae8f195d9d2111ea4)
+- [11日目(1)、12日目：マスターデータ。ページUIの編集、ページャ導入](https://qiita.com/OriverK/items/93e864c070425f9bc9cd)
+- [14日目：Scaffoldで作成したサイトにgem devise等を組み合わせていく](https://qiita.com/OriverK/items/a2830d992d8d75c53b38)
+
+# 9日目
+今回の授業は、やたらエラーや勘違いに悩まされた。
+
+- rails newで動かない不具合
+    - stop springで解消
+- ruby側で整数型をintと書き間違えることによるエラー
+    - **rubyの整数型はinteger**  , mysqlはint (C++経験上、intの方が馴染み深い
+- rails db:migrateコマでのエラー
+    - 中間テーブルを先に作ってしまった為。
+    - 中間テーブルは主テーブルのid等参照するので、作成は一番後。
+- 最適なデータ型を選択できなかった
+
+不具合改善の中で、Vagrantfileで、使用できるRAMのサイズを8GBに変更
+
+```rb:vagrantfile
+config.vm.provider "virtualbox" do |vb
+  vb.memory = "8192"
+end
+```
+
+# 使用環境
+ホストOS: Windows10 Home
+仮想環境OS: Ubuntu Bento/Bionic
+Ruby：2.51
+Rails:5.2.2
+
+## 作成データ
+- テーブル
+  - student (id, name,email, gender, age, opinion, updated_at, created_at)
+  - ExamResult (id, student, subject, name, score, updated_at, created_at)
+      - 中間テーブル
+  - Subject (id, name, max_score, updated_at, created_at)
+      - ※教科の意
+  - ClubStudent (id, student, club, name, updated_at, created_at)
+      - 中間テーブル
+  - Club (id, name, updated_at, created_at)
+
+# テーブル同士の関連性
+
+![マスターデータ関連.jpg](https://qiita-image-store.s3.amazonaws.com/0/294402/f879117d-9f4b-5224-6500-3f87f97449e4.jpeg)
+    
+# 準備
+## rails new
+```sh:
+rails new self_univ -d mysql
+```
+
+```rb:Gemfile
+gem 'mini_racer', platforms: :ruby
+```
+
+`bundle install`
+
+```yml:qpp/config/database.yml
+password: 
+```
+
+`rails db:create`
+
+# scaffold(本段階
+**scaffoldではcontrollerとmodelが同時に作成される)**
+**rubyの整数型はinteger**
+**中間テーブルは一番最後に作成**
+**中間テーブルのうち、主キーを参照するcolumnをreferenceで指定**
+=> 自動で、bigintに設定される
+
+# rails g scaffoldで作成
+```sh:
+# Studentテーブル
+rails generate scaffold Student name:string email:string gender:integer age:integer opinion:text
+# Subjectテーブル
+rails generate scaffold Subject name:string max_score:integer
+# Clubテーブル
+rails generate scaffold Club name:string
+# ExamResultテーブル
+rails generate scaffold ExamResult student:references subject:references name:string score:integer
+# ClubStudentテーブル（中間テーブルなので最後
+rails generate scaffold ClubStudent student:references club:references name:string
+```
+
+## mysql側に反映
+`rails db:migrate`
+
+## テーブル同士の関連性を定義
+- 参照
+  -`[Active Record Associations](https://guides.rubyonrails.org/association_basics.html)
+` - [Active Record の関連付け](https://railsguides.jp/association_basics.html#belongs-to%E9%96%A2%E9%80%A3%E4%BB%98%E3%81%91)
+
+```rb:app/models/student.rb
+class Student < ApplicationRecord
+  has_many :exam_results
+  has_many :subjects, through: :exam_results
+  has_many :club_students
+  has_many :clubs, through: :club_students
+end
+```
+
+```rb:app/models/subject.rb
+class Subject < ApplicationRecord
+  has_many :exam_results
+  has_many :students, through: :exam_results
+end
+```
+
+```rb:app/models/exam_result.rb
+class ExamResult < ApplicationRecord
+  belongs_to :student
+  belongs_to :subject
+end
+```
+
+主キー側の設定の結果、中間テーブル側の設定が自動で変更されていた
+
+```rb:app/models/club.rb
+class Club < ApplicationRecord
+  has_many :club_students
+  has_many :students, through: :club_students
+end
+```
+
+```rb:app/models/club_student.rb
+class ClubStudent < ApplicationRecord
+  belongs_to :student
+  belongs_to :club
+end
+```
+
+# マスターデータ作成
+studentテーブルへ
+
+```rb:console
+(1..100).each do |num|
+  if num % 2 == 0
+    gen = 0
+    ag = 0
+    at = 0
+  else
+    gen = 1
+    ag = 1
+    at = 1
+  end
+  op = (0..20).map{('あ'..'わ').to_a[rand(26)]}.join
+
+  user = Student.create(name: "taro-#{num}", email: "val-#{num}@gmail.com", gender: gen, age: ag, opinion: op)
+end
+```
+
+clubテーブルへ
+
+```rb:console
+Club.create(name: '自転車')
+Club.create(name: 'サッカー')
+Club.create(name: 'バスケットボール')
+Club.create(name: 'バレーボール')
+Club.create(name: '空手')
+Club.create(name: '水泳')
+Club.create(name: '登山')
+Club.create(name: '陸上')
+Club.create(name: 'バイク')
+Club.create(name: '英会話')
+Club.create(name: 'カメラ')
+Club.create(name: '軽音')
+Club.create(name: 'サーフィン')
+```
+
+subjectテーブルへ
+
+```rb:console
+Subject.create(name: '数学', max_score: 200);
+Subject.create(name: '国語', max_score: 200);
+Subject.create(name: '英語', max_score: 200);
+Subject.create(name: '化学', max_score: 100);
+Subject.create(name: '物理', max_score: 100);
+Subject.create(name: '生物', max_score: 100);
+Subject.create(name: '世界史', max_score: 100);
+Subject.create(name: '日本史', max_score: 100);
+Subject.create(name: '地理', max_score: 100);
+```
+
+## (0..20).map{('あ'..'わ').to_a[rand(26)]}.join
+いろいろ詰まってる
+
+### 範囲オブジェクト
+文字も使える
+
+### mapメソッド
+要素の数だけ繰り返しブロックを実行し、ブロックの戻り値を集めた配列を作成して返す。
+collectメソッドの別名です。
+
+```rb:
+# 配列の入った変数.map {|変数名| 処理内容 }
+numbers = ["68", "65", "6C", "6C", "6F"]
+p numbers.map {|item| item.to_i(16) }
+[104, 101, 108, 108, 111]
+#上では16進数を10進数に変換
+```
+
+### to_a(Array)
+Arrayオブジェクトを返す
+
+### rand(max)
+max が 0 の場合は 0.0 以上 1.0 未満の実数を、正の整数の場合は 0 以上 max 未満の整数を返す
+
+### join(sep =)
+joinメソッドは、配列の各要素を文字列に変換し、引数sepを区切り文字として結合した文字列を返します。
+引数を省略すると区切り文字なしで要素を結合した文字列になる
+
+# 関連付けがされたか確認
+取り敢えず、student idが1番の人に、データを突っ込んでみる.
+rails c側で、うまくできなかったので、mysql側から。
+
+```sql:mysql
+INSERT INTO exam_results (student_id,subject_id,name,score,created_at,updated_at) VALUE 
+(1,1,'一次試験',181,now(),now()),(1,2,'一次試験',146,now(),now()),(1,3,'一次試験',199,now(),now()),(1,4,'一次試験',99,now(),now()),(1,5,'一次試験',62,now(),now()),
+(1,6,'一次試験',83,now(),now()),(1,7,'一次試験',62,now(),now()),(1,8,'一次試験',77,now(),now()),(1,9,'一次試験',81,now(),now());
+```
+
+```rb:console
+stu = Student.first
+stu.exam_results
+
+# 結果
+# 分かりづらいので、4教科目以降省略、および編集
+ stu = Student.first
+SET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483
+  Student Load (0.2ms)  　
+=> #<Student id: 1, name: "taro-1", email: "val-1@gmail.com", gender: 1, age: 1, opinion: "すぎこじぅかいけさぎさあえぃざきこぎごえぎ", created_at: "2019-03-16 11:02:23", updated_at: "2019-03-16 11:02:23">
+
+stu.exam_results
+  ExamResult Load (0.2ms)  SELECT  `exam_results`.* FROM `exam_results` WHERE `exam_results`.`student_id` = 1 LIMIT 11
+=> #<ActiveRecord::Associations::CollectionProxy 
+[#<ExamResult id: 1, student_id: 1, subject_id: 1, name: "一次試験", score: 181, created_at: "2019-03-16 14:33:04", updated_at: "2019-03-16 14:33:04">, 
+#<ExamResult id: 2, student_id: 1, subject_id: 2, name: "一次試験", score: 146, created_at: "2019-03-16 14:33:04", updated_at: "2019-03-16 14:33:04">, 
+#<ExamResult id: 3, student_id: 1, subject_id: 3, name: "一次試験", score: 199, created_at: "2019-03-16 14:33:04", updated_at: "2019-03-16 14:33:04">,
+```
+
+結果の中の、``SELECT  `students`.* FROM `students` ORDER BY `students`.`id` ASC LIMIT 1``と``SELECT` `exam_results`.* FROM `exam_results` WHERE `exam_results`.`student_id` = 1 LIMIT 11``を使えば、MySQLからでも見れる。はず
+
+```sql:MySQL
+SELECT students.* FROM students ORDER BY students.id ASC LIMIT 1;
++----+--------+-----------------+--------+------+-----------------------------------------------------------------+---------------------+---------------------+
+| id | name   | email           | gender | age  | opinion                                                         | created_at          | updated_at          |
++----+--------+-----------------+--------+------+-----------------------------------------------------------------+---------------------+---------------------+
+|  1 | taro-1 | val-1@gmail.com |      1 |    1 | すぎこじぅかいけさぎさあえぃざきこぎごえぎ                      | 2019-03-16 11:02:23 | 2019-03-16 11:02:23 |
++----+--------+-----------------+--------+------+-----------------------------------------------------------------+---------------------+---------------------+
+
+SELECT exam_results.* FROM exam_results WHERE exam_results.student_id = 1 LIMIT 11;
++----+------------+------------+--------------+-------+---------------------+---------------------+
+| id | student_id | subject_id | name         | score | created_at          | updated_at          |
++----+------------+------------+--------------+-------+---------------------+---------------------+
+|  1 |          1 |          1 | 一次試験     |   181 | 2019-03-16 14:33:04 | 2019-03-16 14:33:04 |
+|  2 |          1 |          2 | 一次試験     |   146 | 2019-03-16 14:33:04 | 2019-03-16 14:33:04 |
+|  3 |          1 |          3 | 一次試験     |   199 | 2019-03-16 14:33:04 | 2019-03-16 14:33:04 |
+|  4 |          1 |          4 | 一次試験     |    99 | 2019-03-16 14:33:04 | 2019-03-16 14:33:04 |
+|  5 |          1 |          5 | 一次試験     |    62 | 2019-03-16 14:33:04 | 2019-03-16 14:33:04 |
+|  6 |          1 |          6 | 一次試験     |    83 | 2019-03-16 14:33:04 | 2019-03-16 14:33:04 |
+|  7 |          1 |          7 | 一次試験     |    62 | 2019-03-16 14:33:04 | 2019-03-16 14:33:04 |
+|  8 |          1 |          8 | 一次試験     |    77 | 2019-03-16 14:33:04 | 2019-03-16 14:33:04 |
+|  9 |          1 |          9 | 一次試験     |    81 | 2019-03-16 14:33:04 | 2019-03-16 14:33:04 |
++----+------------+------------+--------------+-------+---------------------+---------------------+
+```
+
+# 10日目
+# テーブル同士の関連図
+
+![マスターデータ関連.jpg](https://qiita-image-store.s3.amazonaws.com/0/294402/1f4d86a7-e127-dbd7-9dd1-b7101479f92a.jpeg)
+
+# 前回の流れ
+1. rails newからのScaffold
+2. Student, Subject, Club, ExamResult(中間）, ClubStudent(中間)テーブルの作成
+3. app/modelsで各テーブルの関連性定義
+4. 主キー側のテーブルへデータ入力
+
+# 今回の流れ
+1. 中間テーブルにデータ入力
+2. 性別の0 or 1の表記を、male or femaleに変更
+3. Studentのshowページに、生徒ごとの試験結果等、データを出力
+
+# 実段階
+Studentsのshowページの、前回までの状態
+
+![マスターデータshowの最初.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/0911c472-4d57-d145-9c6d-41bdf8b8e66c.jpeg)
+
+## 生徒データと関連付けするときは
+```rb:
+student1 = Student.first
+student1.clubs << Club.first
+student1.save
+```
+
+## データ入力
+生徒の部活情報
+id1からid100までの生徒に、0から4個の部活(選択肢は13部)に入ってもらう。
+
+```rb:
+(1..100).each do |i|
+  student = Student.find(i)
+  1.upto(rand(0..4)) do
+    student.clubs << Club.find(rand(1..13))
+    student.save
+  end
+end
+```
+
+生徒の試験結果情報
+id100までの生徒に、9科目の試験を受けてもらう。
+なお、点数は0点から各教科ごとに設定の最大点までのランダム
+
+```rb
+(1..100).each do |i|
+  student = Student.find(i)
+  1.upto(9) do |num|
+    sub = Subject.find(num)
+    exam_res = ExamResult.new
+    exam_res.name = "試験#{num}"
+    exam_res.score = rand(1..sub.max_score)
+    exam_res.subject = sub
+    student.exam_results << exam_res
+    student.save
+  end
+end
+```
+
+## Studentsのindexページの表記を変更
+```rb:app/models/studetns.rb
+enum gender: { male: 0 ,female: 1}
+enum age: {"teen": 0, "twenty": 1}
+```
+
+```rb:app/views/_form.html.erb
+<div class="field">
+  <%= form.label :gender %>
+  <%= form.radio_button :gender, 'male' %>男性
+  <%= form.radio_button :gender, 'female' %>女性
+</div>
+<div class="field">
+  <%= form.label :age %>
+  <%= form.radio_button :age, '20代' %>20代
+  <%= form.radio_button :age, '30代' %>30代
+</div>
+```
+
+## 出力を考える
+- 学生ごとのshowページで表示したいもの
+    - 生徒のデータ(name, mail, gender, age, opinion)
+    - 生徒の教科ごとの試験結果点数
+    - 性と全体の試験結果の平均点、最大点、最小点
+
+### MySQL上の出力
+```sql:
+SELECT
+    subjects.name,
+    CAST(AVG(exam_results.score) as unsigned) as avg_score,
+    MAX(exam_results.score) as max_score,
+    MIN(exam_results.score) as min_score
+FROM
+    students
+INNER JOIN exam_results
+    ON students.id = exam_results.student_id
+INNER JOIN subjects
+    ON exam_results.subject_id = subjects.id
+GROUP BY subjects.id, subjects.name
+```
+
+```
+# 出力結果
++--------+--------------+-----------+-------+-------+
+| name   | name         | name      | score | ratio |
++--------+--------------+-----------+-------+-------+
+| taro-1 | 一次試験     | 数学      |   181 |    91 |
+| taro-1 | 試験1        | 数学      |    61 |    31 |
+| taro-1 | 一次試験     | 国語      |   146 |    73 |
+| taro-1 | 試験2        | 国語      |   200 |   100 |
+| taro-1 | 一次試験     | 英語      |   199 |   100 |
+| taro-1 | 試験3        | 英語      |   108 |    54 |
+| taro-1 | 一次試験     | 化学      |    99 |    99 |
+| taro-1 | 試験4        | 化学      |    42 |    42 |
+| taro-1 | 一次試験     | 物理      |    62 |    62 |
+| taro-1 | 試験5        | 物理      |    56 |    56 |
+| taro-1 | 一次試験     | 生物      |    83 |    83 |
+| taro-1 | 試験6        | 生物      |    42 |    42 |
+| taro-1 | 一次試験     | 世界史    |    62 |    62 |
+| taro-1 | 試験7        | 世界史    |    83 |    83 |
+| taro-1 | 一次試験     | 日本史    |    77 |    77 |
+| taro-1 | 試験8        | 日本史    |    63 |    63 |
+| taro-1 | 一次試験     | 地理      |    81 |    81 |
+| taro-1 | 試験9        | 地理      |    15 |    15 |
++--------+--------------+-----------+-------+-------+
+```
+
+### ページ上の出力
+#### students_controllerのshowアクション編集
+参照：[Active Record クエリインターフェイス](https://railsguides.jp/active_record_querying.html#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%8B%E3%82%89%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%99)
+
+```rb:app/controllers/studetns_controller.rb
+def show
+  @students = 
+    Student.joins(:subjects)
+            .select('students.name, students.email, students.age, students.gender, students.opinion, subjects.id as subject_id')
+            .select('exam_results.name as exam_result_name, subjects.name as subject_name, exam_results.score')
+            .select('CAST((exam_results.score / subjects.max_score) * 100 as unsigned) as ratio')
+            .where(id: params[:id])
+
+  avg_result = 
+    Student.joins(:subjects)
+            .select('subjects.id as subject_id')
+            .select('CAST(AVG(exam_results.score) as unsigned) as avg_score')
+            .select('MAX(exam_results.score) as max_score')
+            .select('MIN(exam_results.score) as min_score')
+            .group('subjects.id')
+            .order('subjects.id')
+  @score_hash = {}
+  avg_result.each do |avg_res|
+    h = Hash.new
+    h[:avg_score] = avg_res.avg_score
+    h[:max_score] = avg_res.max_score
+    h[:min_score] = avg_res.min_score                                                                                                                                     
+    @score_hash[avg_res.subject_id] = h
+  end
+end
+```
+
+#### showページのviewを編集
+```rb:app/views/students/show.html.erb
+<table border="1">
+  <tr>
+    <th>科目名</th>
+    <th>点数</th>
+    <th>平均</th>
+    <th>最高</th>
+    <th>最小</th>
+  </tr>
+  <% @students.each do |student| %>
+    <tr>
+      <td><%= student.subject_name %></td>
+      <td><%= student.score %></td>
+      <td><%= @score_hash[student.subject_id][:avg_score] %></td>
+      <td><%= @score_hash[student.subject_id][:max_score] %></td>
+      <td><%= @score_hash[student.subject_id][:min_score] %></td>
+    </tr>              
+  <% end %>
+</table>
+```
+
+## ページ上の出力結果
+
+![studentのshowページ編集後.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/1f72f0ae-12a5-f5db-f0a1-4d68dbc67c1c.jpeg)
+
+毎回、コードを自分で考えるも結局自力で辿り着けず、
+今回のアウトプットもだか、上コードは講師が正解として出したもの。
+見れば、あ～となるけど、まだ自分でコーディングしきれない。
+
+---
+# 11日目
+# 作成テーブルと関連性
+
+![マスターデータ関連.jpg](https://qiita-image-store.s3.amazonaws.com/0/294402/98c1819e-f557-5a93-1027-b44bbc9ac600.jpeg)
+
+# 前回までの流れ
+1. rails new -d mysql
+2. rails g scaffold で5テーブル作成
+3. app/modelsで各テーブルの関連性定義
+4. 各テーブルにデータ入力
+5. Studentのshowページに、生徒ごとの試験結果のデータを出力
+
+# 今回の流れ
+1. ExamResultsのindexページのデータ出力を編集
+2. ExamRusultの新規作成ページのUIを変更
+3. gem kaminariでページャー追加(授業内では時間足らず）
+
+# 現状
+
+![ExamResults-show編集前.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/2d6a54fd-ce6e-95af-12d9-adcdedc91669.jpeg)
+
+![ExamResults-new編集前.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/680c18b9-5d0a-68d6-ac33-8b1ddc2c30e3.jpeg)
+
+# 実段階
+## インデックスページの表示を編集
+※app/views/exam_results/show.html.erbも同様にやる
+
+```rb:app/views/exam_results/index.html.erb
+#　編集前
+#  <td><%= exam_result.student %></td>
+#  <td><%= exam_result.subject %></td>
+
+#  編集後
+<td><%= exam_result.student.name %></td>
+<td><%= exam_result.subject.name %></td>
+```
+
+## newページにセレクトボックス
+[参照：Action View Form Helpers](https://guides.rubyonrails.org/form_helpers.html#select-boxes-for-dealing-with-models)
+
+```rb:app/views/exam_results/_form.html.erb
+<div class="field">
+    <%= form.label :student_id %>
+    <%= form.select :student_id, @students %>
+ </div>
+<div class="field">
+    <%= form.label :subject_id %>
+    <%= form.select :subject_id, @subjects %>
+</div>
+```
+
+```rb:app/controllers/exam_results_controller.rb
+before_action :set_students_subjects, only: [:new, :edit]
+
+def set_students_subjects
+  @students = Student.all.pluck(:name, :id)
+  @subjects = Subject.all.pluck(:name, :id)
+end
+```
+
+# 編集後
+
+![ExamResult-show編集後.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/52921abc-ff3d-faf9-a36b-b1f0b74496d6.jpeg)
+
+![ExamResults-new編集前.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/2196b207-baa9-8f61-3d49-66af44bb47a7.jpeg)
+
+# ページャの導入(kaminari)
+インデックス表示データが、studentページは100行、ExamResultページは900行と、見づらい.
+なので、studentとExamResultのindexページを、数ページに区切って表示させたい。
+
+今回はgemのkaminariを用いる。
+参照：[kaminari -github](https://github.com/kaminari/kaminari)
+
+## kaminariのインストール
+```rb:Gemfile
+gem 'kaminari'
+```
+
+`bundle install`
+
+## studentのindexページから変更
+indexアクションを編集
+
+```rb:app/controllers/students_controller.rb
+def index
+　　# 編集前：@students = Student.all
+    @students = Student.page(params[:page]).per(20)
+end
+```
+
+viewを編集
+
+```rb:app/views/students/index.html.erb
+# ファイル先頭行に追加
+<div class="page-header">
+# ファイル最終行に追加
+<%= paginate @students %>
+</div>
+```
+
+出来た
+
+![pagenate.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/8d725379-0d21-7b0f-263a-d70fe7fe5319.jpeg)
+
+## ExamResultのindexページ編集
+app/controllers/exam_result_controller.rbのindexアクションと
+app/view/exam_results/index.html.erbを同様に編集
+
+## ページャの見た目を変える
+```sh:terminal
+rails g kaminari:views default
+
+# 実行結果
+  create  app/views/kaminari/_next_page.html.erb
+      create  app/views/kaminari/_gap.html.erb
+      create  app/views/kaminari/_prev_page.html.erb
+      create  app/views/kaminari/_last_page.html.erb
+      create  app/views/kaminari/_first_page.html.erb
+      create  app/views/kaminari/_paginator.html.erb
+      create  app/views/kaminari/_page.html.erb
+```
+
+## ページャの設定を変える
+```sh:terminal
+rails g kaminari:config
+
+#実行結果
+create  config/initializers/kaminari_config.rb
+# ここで作成されたファイルに設定がある。
+```
+
+Bootstrap対応のページャテーマもある.
+[amatsuda/kaminari_themes](https://github.com/amatsuda/kaminari_themes)
+
+```rb:config/initializers/kaminari_config.rb
+# frozen_string_literal: true
+Kaminari.configure do |config|
+  # config.default_per_page = 25
+  # config.max_per_page = nil
+  # config.window = 4
+  # config.outer_window = 0
+  # config.left = 0
+  # config.right = 0
+  # config.page_method_name = :page
+  # config.param_name = :page
+  # config.params_on_first_page = false
+end
+```
+---
+# 12日目
+## kaminariの別のファイル設定
+11日目に私がやったものとの違いは、
+
+- modelsにpaginates_per 30と記述
+- controllerのindexアクションの末尾にある、per()を削除
+    - (ビューファイルは同じ)
+
+exam_resultも編集は同じ。
+
+```rb:app/models/student.rb
+paginates_per 30
+```
+
+```rb:app/controllers/students_controller.rb
+@students = Student.page(params[:page])
+```
+
+```rb:app/views/students/index.html.erb
+# ファイル先頭
+<div class="page-header">
+# ファイル末尾
+<%= paginate @students %>
+</div>
+```
+
+## studentのindexページに、exam_resultのnewへのリンク作成
+リンクを作成
+
+```rb:app/views/student/index.html.erb
+<td><%= link_to 'New Exam Result', new_exam_result_path(student_id: student.id) %></td>
+```
+
+```rb:app/controllers/exam_results_controller.rb
+def new
+  if params[:student_id]
+    @student = Student.find(params[:student_id])
+    @selected_student = [@student.name, @student.id]
+  end
+  @exam_result = ExamResult.new
+end
+```
+
+```rb:app/views/exam_result/_form.html.erb
+<%= form.select :student_id, options_for_select(@students, @selected_student) %>
+```
+
+studentのindexから'New Exam Result'リンクを押すと、exam_resultのnewページに飛び、
+フォームのセレクトボタンのうち、生徒が自動で選択されるようになった。
+
+---
+# 14日目
+今週からは、scaffoldで作成した大学データと、gemのdevise、Bootstrap等を組み合わせる。
+
+#やった事
+- Railsの命名規則(単数形と複数形)
+- DBのカラム定義を後から変更
+- render partial: 部分テンプレの参照
+- validation
+- **UNSIGNEDという型が存在しないPostgreSQL**
+
+# 使用環境
+- ホストOS: Windows10 Home
+- 仮想環境: Ubuntu Bento/Bionic
+- Ruby：2.51
+- Rails: 5.2.2
+    - gem 'devise' :　ログイン等の機能用
+    - gem 'kaminari' : ページネーション
+- DB: PostgreSQL
+
+
+# Railsの命名規則(単数形と複数形)
+rails gコマンドで、controller名やmodel名を指定する際に、混乱した。
+
+```sh
+# rails generate scaffold model名の単数形　フィールド名の型と並び
+# rails g controller controller名の複数形
+# カラムの追加
+# rails generate migration AddカラムToモデル名の複数形 フィールド名と並び
+```
+- model名は単数形で、頭文字を大文字にする
+    - scaffoldの場合、modelが基準
+    - modelは設計書であり、（テーブル1つに付き）1つなため
+- controller名は複数形で、頭文字を大文字にする。
+    - 1つのcontrollerに複数のactionが含まれるため
+
+# DBのカラム定義を後から変更
+rails g scaffoldコマンド時に、ClubStudentの外部キーの定義をreferecesとミスタイプしていた。
+
+### 修正方法：app/db/migrate下のファイルを修正
+```rb:db/migrate/20190326030303_create_club_students.rb
+class CreateClubStudents < ActiveRecord::Migration[5.2]
+  def change
+    create_table :club_students do |t|
+     #スペリングミス
+     #t.refereces :student
+     #訂正分
+      t.references :student
+      t.references :club, foreign_key: true
+      t.timestamps
+    end
+  end
+end
+```
+
+なお、ALTTER TABLEコマンドを使って、あとから修正する方法は
+DB内のデータを書き換えるだけで、アプリ自体のファイル等は編集されない。
+
+```sql:mysql
+# ALTER TABLE テーブル名 MODIFY COLUMN カラム名 新しい定義
+ALTER TABLE ClubStudent MODIFY COLUMN student references
+```
+
+つまり、原因の根本的な部分を修正できないので、駄目
+
+# render partial: 部分テンプレ
+参照：[render レンダリング(render) - railsドキュメント](http://railsdoc.com/references/render)
+
+全てのページのヘッダー(上部）に、ログアウトや他のstudentやclubs等のリンクを乗せる
+
+![tempsnip.jpg](https://qiita-image-store.s3.amazonaws.com/0/294402/2bd10526-e610-0345-62aa-bc33270eafbc.jpeg)
+
+共通して表示させるので、/app/views/layouts/application.html.erb　を編集する。
+なお、部分テンプレファイル名は『_』アンダーバー始まり
+
+```rb:/app/views/layouts/application.html.erb
+<body>
+# <%= render :partial => '部分テンプレ名' %>
+  <%= render :partial => 'shared/header' %>
+</body>
+```
+
+表示させたいリンクを書きこむ。
+
+```rb:/app/views/shared/_header.html.erb
+<%= link_to 'Student list', students_path %> 
+<%= link_to 'subjects list', subjects_path %> 
+<%= link_to 'clubs list', clubs_path %> 
+<%= link_to 'exam_result list', exam_results_path %>
+<%= link_to 'club_stdent list', club_students_path %>
+<%= link_to 'Log Out', destroy_student_session_path, method: :delete %>
+```
+
+# validation
+参照：[Active Record Validations](https://guides.rubyonrails.org/active_record_validations.html)
+バリデーションは有効なデータだけをDBに保存するのを確実にするための最善策。
+
+今回の実装先：clubの新規作成ページ
+
+![newclub_form.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/7d4b09ce-2f84-9616-2a78-e0ceb6b779f1.jpeg)
+
+## validate条件
+```rb:
+# 空でないこと
+validates :name, presence: true
+
+# 因みに、空が条件ならば
+# validates :name, absence: true
+
+#入力文字の長さ
+# **文字の最大長は、データ型を要参照。varcharなら255文字まで**
+# 2文字以上
+validates :name, length:{minimum:2}
+# 255文字以上
+validates :name, length:{maximum:255}
+
+# exclusion含まない
+validates :name, exclusion: { in: %w(部 サークル) }
+# 『含む』ならinclusion
+```
+
+## 実装結果
+空白や文字列長、『サークル』という語には、validatesが発動した
+
+![validate-clubnew.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/ed56c5ae-e53c-493a-efd2-2b32b6a7c003.jpeg)
+
+ただ、現状だと、『テニスサークル』の様に文字列と連結すると、validateが動かない
+
+```sh
+Club was successfully updated.
+
+Name: サークル部
+```
+
+# type "unsigned" does not exist (※Postgresql)
+validatesの実装していく最中に、エラーに気づいた
+studentのeditページで更新すると、
+
+```sh
+ActiveRecord::StatementInvalid in StudentsController#show
+
+PG::UndefinedObject: ERROR: type "unsigned" does not exist LINE 1: ...id as subject_id, CAST(AVG(exam_results.score) as unsigned) ... ^ : SELECT subjects.id as subject_id, CAST(AVG(exam_results.score) as unsigned) as avg_score, MAX(exam_results.score) as max_score, MIN(exam_results.score) as min_score FROM "students" INNER JOIN "exam_results" ON "exam_results"."student_id" = "students"."id" INNER JOIN "subjects" ON "subjects"."id" = "exam_results"."subject_id" GROUP BY subjects.id ORDER BY subjects.id
+```
+
+と、エラーを吐き、因みに、ブラウザの戻るボタンで戻ると、更新されている。
+また、エラー原因であると思わる、StudentController#showは
+
+```rb:app/controllers/students_controller.rb
+def show
+  @students = 
+    Student.joins(:subjects)
+            .select('students.name, students.email, students.age, students.gender, students.opinion, subjects.id as subject_id')
+            .select('exam_results.name as exam_result_name, subjects.name as subject_name, exam_results.score')
+            .select('CAST((exam_results.score / subjects.max_score) * 100 as unsigned) as ratio')
+            .where(id: params[:id])
+
+  avg_result = 
+    Student.joins(:subjects)
+            .select('subjects.id as subject_id')
+            .select('CAST(AVG(exam_results.score) as unsigned) as avg_score')
+            .select('MAX(exam_results.score) as max_score')
+            .select('MIN(exam_results.score) as min_score')
+            .group('subjects.id')
+            .order('subjects.id')
+# (以下略)
+```
+
+因みに、このcontrollerは、以前の大学データのcontrollerからコピーしてきたものだ。
+つまり、MySQLで動くアプリのcontroller。
+
+## unsigned　(MySQL)
+- MySQLにおいては正と負の整数を扱うことができる。
+- unsignedを指定すると、正の数しか格納できなくなり、代わりに範囲が2倍になる。
+- **unsignedにした値が負になると、エラーを起こす**
+    - UNSIGNEDは、マイナス値が入らないだけでなく、マイナスになる計算もできない。
+    - CASTで一時的に型を変える事で回避は可能。
+
+## `Postgresqlにはunsined型は存在しない(最重要)`
+### 対応策
+まだ、試験結果のデータを入れてないので、功を奏すか分からないけれども
+
+- unsignedをint等の型に置き換える
+    - 今回は試験点数を扱っていて、intで事足りると思われる。
+    - ただ、MySQLでint unsignedだと、範囲が正の方向に2倍になっている。
+    - **扱う数によっては、intより1つ上ののbigintに変える必要がある**
+- CAST as unsignedの部分を消す
+    - MySQLでCAST as unsingedは、一時的に型を指定している
+
+前回の大学データに倣って、今回はcast as intに変更した
+
+```rb:app/controllers/students_controller.rb
+# (該当部分だけ抜き出し）
+.select('CAST((exam_results.score / subjects.max_score) * 100 as int) as ratio')
+
+.select('CAST(AVG(exam_results.score) as int) as avg_score') 
+```
+
+正常に、studentデータのedit、updateが機能した。
+
+# データ入力にはpassword情報が必要
+deviseの関係上、パスワード情報入りのデータでないと、コンソールから入力できない。
+##passwordカラムの追加
+deviseのモデル等がある、Studentテーブルに、パスワードカラムを追加した。
+
+```sh:terminal
+# rails generate migration AddカラムToモデル名の複数形 フィールド名と並び
+rails g migration AddPasswordToStudents password:string
+```
+
+db/migrate下にファイルが生成される
+
+```rb:/db/migrate/20190327144825_add_password_to_students.rb
+class AddPasswordToStudents < ActiveRecord::Migration[5.2]
+  def change
+    add_column :students, :password, :integer
+  end
+end
+```
+
+これで、パスワード情報入りの生徒データをDBに入力できる。
+
+## データ入力
+未だデータの無い、生徒データと試験結果データをコンソールで入力した。
+
+```rb:
+(1..100).each do |num|
+  if num % 2 == 0 && num % 3 ==0
+    gen = 0
+    ag = 1
+    elsif num % 2 == 0
+    gen = rand(2)
+    ag = rand(3)
+  else
+    gen = 1
+    ag = 0
+  end
+  op = (1..10).map{('あ'..'わ').to_a[rand(26)]}.join
+  nm = (1..3).map{('あ'..'わ').to_a[rand(26)]}.join
+
+  user = Student.create!(name: "#{nm}", email: "#{nm}-#{rand(98)}@gmail.com", gender: gen, age: ag, opinion: op,password: 'password')
+  end
+```
+
+```rb:
+  (1..100).each do |i|
+  student = Student.find(i)
+  1.upto(rand(0..4)) do
+    student.clubs << Club.find(rand(1..14))
+    student.save
+  end
+end
+```
+

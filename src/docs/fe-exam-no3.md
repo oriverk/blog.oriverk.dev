@@ -1,0 +1,114 @@
+---
+date: '2019-08-29'
+title: Qiita H30秋基本情報技術者試験問3システム（随時加筆
+tags: Qiita Rails Ruby memo
+author: OriverK
+slide: false
+---
+
+Qiita: [H30基本情報技術者試験問題3 DB問題](https://qiita.com/OriverK/items/4e71ebd81a6ef372dcf9) より
+
+2019年3，4月の間はエンジニアの下で、Rubyを中心に色々学んだ。
+その中で、H30秋基本情報技術者試験問3のコンサートに則したサイトを実際に作っていた。
+
+# 参照
+## 自分のサイト
+[コンサート問題のGithubレポジトリ](https://github.com/oriverk/ConcertTicket)
+[GithubPages](https://oriverk.github.io/)
+## 自分の関連アウトプット
+- [21日目：H30秋基本情報技術者試験の問3データベース]
+(https://qiita.com/OriverK/items/6efe454be2d6be84ceb5)
+- [プログラミングを2か月間、セブで学んできた](https://qiita.com/OriverK/items/30d8941c7799c9aa6dfd)
+
+# トランザクション（Paymentコントローラ）
+エンジニアの下で学び、仕組みを理解し、アウトプット[18日目：トランザクションって
+](https://qiita.com/OriverK/items/2359c9159b55c74f15d1)を書いてはいたが、深くまで理解しておらず、実装時にてこずった。
+
+![modified.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/c1332cc4-6c2d-2eb6-f212-11108f817d26.png)
+
+コンサートチケットの支払い時の、ポイント使用・追加あたりの、Paymentコントローラ内に実装。
+※※※なお、Userテーブルに所持金カラムを追加してないので
+
+## トランザクションの流れ
+1. ユーザはポイントUser.pointを持っている。
+2. 購入時にUser.pointの一部／全部を支払額Sale.amountに充てることができる。
+3. 使用ポイントSale.used_pointが更新される
+4. 支払額から使用したUser.pointを引いたものが、決済額Payment.amountとなる。
+5. 決済額Payment.amountのうち、既定の割合が付与ポイントPayment.added_pointとなる。
+6. ユーザのポイント残高は、(支払前の）`User.point - Sale.used_point + Payment.added_point`で更新される。
+
+## 支払い完了の条件
+- User.point、Sale.used_point、Payment.added_pointは全て0以上(>=0)
+    - モデル側のバリデーション`validates :point, numericality: { greater_than_or_equal_to: 0 }`利用
+- User.point >= Sale.used_point
+    - Falseとなる操作は悪意しかないので、トランザクション外のif文で
+
+## 実装自体
+ User.point、Sale.used_point、Payment.added_pointは全て0以上(>=0)
+
+```rb:それぞれのモデル.rb
+validates :point, numericality: { greater_than_or_equal_to: 0 } # User
+validates :used_point, numericality: { greater_than_or_equal_to: 0 } # Sale
+validates :added_point, numericality: { greater_than_or_equal_to: 0 } # Payment
+```
+
+```rb:users_controller.rb
+def payment
+    @user = 割愛
+    @sale = 割愛
+    @concert = 割愛
+    @payment = Payment.new(sale_id: @sale.id, date: Date.current)
+    respond_to do |format|
+      if current_user.point < params_used_point 
+        # 所持ポイントを超過している旨の警告文　(以下、ポイントをPと略す）
+      else # 所持P範囲内で支払おうとしている場合
+        begin
+          ActiveRecord::Base.transaction do
+            if @sale.amount <= params_used_point # 使用Pが販売額を超えてる時。
+              @sale.update!(used_point: @sale.amount)
+              @payment.update(amount: 0, added_point: 0) # 支払成功。決済額が0なので、追加Pもゼロ
+            else
+              @sale.update!(used_point: params_used_point)
+              @payment.update!(amount: pay_amount, added_point: 追加P計算関数)
+            end
+            @user.update!(point: ユーザP更新関数)
+            # 支払い完了と表示
+          end
+        rescue StandardError => e　# トランザクション失敗したら
+          logger.error e
+          logger.error e.backtrace.join("\n")
+          @sale = 割愛
+          @concert = 割愛
+          format.html { render :confirm, notice: 'エラー' }
+        end
+      end
+    end
+end
+```
+
+まあ、駄目な部分もあると思う。が、まあ、
+
+# Githubセキュリティアラート
+
+![キャプチャ.JPG](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/5aa2410a-3c25-ea42-9082-5ce7c23728d3.jpeg)
+nokogiriに関するセキュリティアラートが来ていた。
+nokogiri。。。Gemfileには書いてない。Gemfile.lockの方のみ。
+
+確か、Gemfile.lockには、Gemfileには書いてなくても依存関係にあるものは、書かれるのだから、今回はその他gemがnokogiriに依存しているのだろう。
+
+今回は`bundle update`が適当だろう。
+
+- `gem update`
+    - gem コマンドは Gemfile や Gemfile.lock とは無関係に動作
+    - 被インストールgemについて，より新しいバージョンがあれば最新版をインストール
+- `bundle update`
+    - Gemfile と Gemfile.lock に基づいて動作
+
+```sh:terminal
+bundle update nokogiri 
+git add -i
+git commit -m 'update nokogiri'
+git push origin master'
+```
+セキュリティアラートが消えた。
+

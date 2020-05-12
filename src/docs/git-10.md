@@ -1,0 +1,374 @@
+---
+date: '2019-03-20'
+title: 'Qiita: 10～12日目：Git'
+tags: Qiita Git
+author: OriverK
+slide: false
+---
+
+from Qiita: [10日目(2)：Git](https://qiita.com/OriverK/items/7cadfeac74a03889a687)
+from Qiita: [11日目(2)と12日目：Git](https://qiita.com/OriverK/items/6180770c373314303794)
+
+# what is Git
+プログラムのソースコードなどの変更履歴を記録・追跡するための分散型バージョン管理システム
+
+# Gitコマンドの流れ
+
+![一般的な計算.jpg](https://qiita-image-store.s3.amazonaws.com/0/294402/5ba01d37-0263-601b-aa5b-c53cb0a7587c.jpeg)
+
+## Gitを使う為の準備
+```sh:
+git init
+```
+
+# 共同開発の流れ
+1. コード変更
+2. 共有準備
+3. 共有
+
+# コマンド
+## 共有する準備
+### 共有したいファイルを選択
+```sh
+# git add ファイル名
+git add indext.html
+```
+
+### コミット
+選択したファイルを記録する
+
+```sh
+# git commit -m "適当なメッセージ"
+git commit -m "Create index.html"
+```
+
+## 共有
+### リモートを登録
+リモートとは、Git共有ファイルの置き場所
+また、originはリモート名のこと
+
+```sh
+git remote add origin URL名
+```
+
+### **push** リモートにファイルアップロード
+```sh
+git putsh origin mastaer
+```
+
+### **pull** リモート上のファイルをDL
+```sh
+git pull origin master
+```
+
+### 変更ファイルを把握
+追加分を緑色、変更分を赤色で表示
+
+```sh
+# 変更ファイル名を表示
+git status
+
+#変更コードを表示
+git diff
+```
+
+### 履歴を見る
+```sh
+# コミット履歴を見る
+git log
+
+# コミット履歴と変更内容を見る
+git log -p
+```
+
+![一般的な計算.jpg](https://qiita-image-store.s3.amazonaws.com/0/294402/4fc726eb-d9d5-06db-4056-28a14a2108b0.jpeg)
+
+# 使用環境
+- ホストOS: Windows10 Home
+- 仮想環境OS: Ubuntu Bento/Bionic
+
+## 初段階
+仮想環境にGitがあるか確認
+
+```sh:terminal
+which git
+```
+
+### Github上でリポジトリ作成
+
+![repo-new.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/b66fc7e1-f0ff-1be1-4420-ba5876020c58.jpeg)
+
+
+### ローカルリポジトリ作成
+下コードはGithubで指示されたもの。
+
+```sh:terminal
+echo "# self-repo" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/oriverk/self-repo.git
+git push -u origin master
+
+# 実行結果
+# Read.mdファイル作成
+# github上のリポジトリにRead.mdファイルがプッシュ。
+# Branch 'master' set up to track remote branch 'master' from 'origin'.
+```
+
+### gitリモートの確認
+```sh:
+git remote -v
+# 実行
+origin  https://github.com/oriverk/self-repo.git (fetch)
+origin  https://github.com/oriverk/self-repo.git (push)
+```
+
+### git log
+```sh:
+git log
+
+# 実行
+# commit e2282c28ea661e588143201d9109ed9572f3d276 (HEAD -> master, origin/master)
+# Author: oriverk <se.sterroristalqaeda@gmail.com>
+# Date:   Wed Mar 20 22:09:38 2019 +0000
+
+#     first commit
+```
+
+自分でpushしてみる
+
+```sh:terminal
+#　ファイル作成
+touch tes1.txt
+touch tes2.txt
+
+# git add
+git add tes1.txt
+git add tes2.txt
+
+# git commit
+git commit -m "second commit"
+
+# 実行結果
+# [master 5b5b220] second commit
+#  2 files changed, 0 insertions(+), 0 deletions(-)
+#  create mode 100644 tes1.txt
+#  create mode 100644 tes2.txt
+
+# git log
+git log
+
+# 実行結果
+# commit 5b5b220fce07f6772b9aeeca1fe60d9ba0e63c74 (HEAD -> master)
+# Author: oriverk <se.sterroristalqaeda@gmail.com>
+# Date:   Wed Mar 20 22:25:49 2019 +0000
+
+#     second commit
+
+# diff --git a/tes1.txt b/tes1.txt
+# new file mode 100644
+# index 0000000..e69de29
+# diff --git a/tes2.txt b/tes2.txt
+# new file mode 100644
+# index 0000000..e69de29
+
+#githubに反映
+git push origin master
+
+# 実行結果
+# Counting objects: 3, done.
+# Compressing objects: 100% (2/2), done.
+# Writing objects: 100% (3/3), 283 bytes | 141.00 KiB/s, done.
+# Total 3 (delta 0), reused 0 (delta 0)
+# To https://github.com/oriverk/self-repo.git
+#    e2282c2..5b5b220  master -> master
+```
+
+確かに反映されている
+
+![secondcommit.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/0f189604-fe14-71dd-81cf-a6ef295496fe.jpeg)
+
+## interactive mode
+適当にファイル作成
+
+```sh:terminal
+touch tes3.txt
+touch tes3.txt
+```
+
+対話モードの呼び出し
+
+```sh:terminal
+git add -i
+# 対話モード
+# *** Commands ***
+#   1: status       2: update       3: revert       4: add untracked
+#   5: patch        6: diff         7: quit         8: help
+
+# 1：ステータス確認　2：ファイルをステージ　3：ステージを取り消す
+# 4：一度もトラッキングされていない新規ファイルをステージする
+# 5：部分的にステージ　6：ステージしたファイルの差分確認
+```
+
+2つのファイルをトラッキングし、tes2.txtのステージを取り消し、状態を確認
+
+```sh:
+# *** Commands ***
+#   1: status       2: update       3: revert       4: add untracked
+#   5: patch        6: diff         7: quit         8: help
+# What now> 4
+#   1: tes3.txt
+#   2: tes4.txt
+# Add untracked>> 1-2
+# * 1: tes3.txt
+# * 2: tes4.txt
+# Add untracked>>
+# added 2 paths
+```
+
+## 更新分をステージ
+```sh:terminal
+git add -i
+# 5を選択肢、tes1.txtを選択
+# 更新分が表示される
+# y：ステージする　n:ステージしない　q:対話モードを終了
+
+# Stage this hunk [y,n,q,a,d,e,?]? y
+
+# githubに反映
+git commit -m "cat pass"
+git push origin master
+```
+
+## ファイルを戻す
+### 削除したファイルを戻す
+```sh:
+# ファイルを削除
+rm tes1.txt
+# 元に戻す。直近の"cat pass"のバージョンが戻った
+git checkout tes1.txt
+```
+### バージョン指定で戻す
+```sh
+# git logの結果
+# commit 5b5b220fce07f6772b9aeeca1fe60d9ba0e63c74
+# Author: oriverk <se.sterroristalqaeda@gmail.com>
+# Date:   Wed Mar 20 22:25:49 2019 +0000
+
+    # second commit
+
+# "second commit"のバージョンのtes1.txtに戻してみる
+git checkout 5b5b220fce07f6772b9aeeca1fe60d9ba0e63c7 tes1.txt
+```
+
+### 最新版に戻す
+```sh
+git reset --hard HEAD
+# 実行
+HEAD is now at 48bfffa cat pass
+# 最新版なので、tes1.txtも"cat pass"のバージョンに戻ってる
+```
+
+## ブランチの確認、作成
+### 現在のブランチを確認
+```sh
+git branch -v 
+#実行
+* master 48bfffa cat pass
+```
+
+### 新規のブランチ作成
+```sh
+git checkout -b other-bran
+```
+
+ファイル編集し、other-branにpush
+
+```sh
+cat /etc/mysql/conf.d/mysql.cnf >> tes1.txt
+cat /etc/apache2/conf-available/javascript-common.conf >> tes2.txt 
+cat /etc/passwd >> tes3.txt 
+cat /etc/nsswitch.conf >> tes4.txt
+
+git commit -m :"for other-bran"
+git push origin other-bran
+```
+
+## pull request
+other-branブランチからmasterブランチにプルリクエスト
+
+![compare pull request.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/1c1511c7-e6a3-0c11-cb54-92e62d3cf1ed.jpeg)
+
+![create pull request.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/75cda934-9c5d-05d3-eff1-db652ca98db5.jpeg)
+
+![merge button.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/33def436-27ff-2c2f-a86d-675068e08028.jpeg)
+
+![merged.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/839925b9-9d7f-c195-6796-c4928591c4b4.jpeg)
+
+## リモートの変更をローカルに反映
+```sh
+# masterブランチに移動
+git checkout master
+# 反映
+git pull origin master
+```
+
+## 認証鍵の作成
+push時に毎回パスワ等聞かれるので、作成する
+```sh
+git config --global --edit
+# ユーザ名とメールを記入し、コメントイン
+```
+
+### sshのkeyを作成
+既に授業で作成したので、実行はパス
+
+```sh:
+ssh-keygen -t rsa -b 4096 -C "自分のemail@gmail.com"
+cat ~/.ssh/id_rsa.pub 
+```
+
+リポジトリのSetting内のDeployKeysに上のcatの結果をコピペ
+
+![tempsnip.jpg](https://qiita-image-store.s3.amazonaws.com/0/294402/55933d21-c304-addb-5e85-87d072bac4c3.jpeg)
+
+これで、pushを、パスワ等を聞かれずに実行できる。
+
+# 12日目
+## ブランチの確認
+### 現在のブランチを確認
+
+```sh:
+git branch -l
+# 実行
+  master
+* new-branch-jaji
+```
+
+### 現在のブランチと情報を確認
+```sh
+git branch -v
+# 実行
+  master          50dc6c7 added
+* new-branch-joji be070c0 他のフィアルを追加
+```
+
+### リモートを含む、ブランチを確認
+```sh
+git fetch
+git branch -a
+# 実行
+vagrant@vagrant:~/cebu_lessons/mactan-repo$ git branch -a
+  master
+* new-branch-joji
+  remotes/origin/master
+  remotes/origin/new-branch-joji
+  remotes/origin/test-repo
+```
+
+### git fetch
+リモートブランチの最新の履歴だけを取得
+これをした状態でgit mergeをすると、git pullと同じ履歴になる
+
+git pull = git fetch + git pull
