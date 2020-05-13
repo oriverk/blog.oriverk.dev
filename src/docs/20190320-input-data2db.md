@@ -34,6 +34,7 @@ Rails:5.2.2
 
 # 実段階
 Studentsのshowページの、前回までの状態
+
 ![マスターデータshowの最初.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/0911c472-4d57-d145-9c6d-41bdf8b8e66c.jpeg)
 
 ## 生徒データと関連付けするときは

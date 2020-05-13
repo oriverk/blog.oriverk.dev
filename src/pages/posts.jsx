@@ -40,7 +40,7 @@ export default function Index({allPostsData}) {
       <style jsx>{`
         .content {
           width: 100%;
-          max-width: 1000px;
+          max-width: 800px;
           margin: 0 auto 10px auto;
           padding: 5%;
           flex-grow: 1;

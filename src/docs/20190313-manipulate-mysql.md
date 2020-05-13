@@ -486,9 +486,6 @@ LEFT JOIN clubs
 ```
 
 # 部活ごとに、男性と女性それぞれ何人所属しているか、出力せよ
-下の様に、出力しないといけない。
-![800ebcde8cdf4d68d74d78537a6c33c7.gif](https://qiita-image-store.s3.amazonaws.com/0/294402/9d9fe078-f551-698d-bbc6-d646851fc89a.gif)
-
 ## 解答
 ()の中に、CASE WHEN THENを入れられるとは
 

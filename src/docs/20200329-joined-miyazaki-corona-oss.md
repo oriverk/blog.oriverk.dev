@@ -12,20 +12,20 @@ Qiita: [宮崎県COVID-19対策サイトを見つけ、出身者として何か�
 出身の宮崎県用の対策サイトが出来、同時に感染者数が3人に増えていたことを知った。何かできる事は無いかと思ったので、Qiitaに記録しつつ、色々やってみた。
 
 # Introduction
-## 参照
+## Referrence
 - [宮崎県 新型コロナウイルス 対策サイト](https://covid19-miyazaki.netlify.com/)
     - [covid19-miyazaki/covid19](https://github.com/covid19-miyazaki/covid19)
 - [東京都 新型コロナウイルス 対策サイト](https://stopcovid19.metro.tokyo.lg.jp/)
     - [tokyo-metropolitan-gov/covid19](https://github.com/tokyo-metropolitan-gov/covid19)
 - [東京都 新型コロナウイルス対策サイトへの貢献方法を解説](https://qiita.com/FPC_COMMUNITY/items/b9cc072813dc2231b2b2)
 
-## 誰よ
+## Who is 
 - 宮崎県出身
 - PRしたことない人
 - Vue, TypeScript何も分らん
 - 現在、住所不定無職。[再就職活動中](https://oriverk.github.io/)
 
-## 環境
+## Environment
 - Ubuntu 18.04 ( vm with Vagrant
     - Node.js: v12.16. (>= 10.19.0
     - yarn: 1.22.4
@@ -50,17 +50,25 @@ Qiita: [宮崎県COVID-19対策サイトを見つけ、出身者として何か�
 # 対象をforkしておく
 git clone https://github.com/oriverk/covid19.git
 cd covid19
-```
-```sh:terminal
-# yarnが入ってなかったのでinstallした後。
+
+# yarnが入ってなかった
+sudo apt install yarn
+
 yarn install
 yarn dev
 ```
-私にとっては、ここから未知の領域。(yarn devとは　:rolling_eyes:
-![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/6653f1e1-1d26-bf15-08f4-8117f8a858ac.png)
 
-`yarn dev`の処理？が終わった後、`http://localhost:3000/`にアクセスすると
-![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/65ea01cb-612c-e921-86f3-e359157d9d55.png)
+<picture>
+  <source srcSet="/assets/posts/20200300/20200329 (3).webp" type="image/webp" />
+  <img src="/assets/posts/20200300/20200329 (3).jpg" alt="localhost" />
+</picture>
+
+`http://localhost:3000/`にアクセスすると
+
+<picture>
+  <source srcSet="/assets/posts/20200300/20200329 (1).webp" type="image/webp" />
+  <img src="/assets/posts/20200300/20200329 (1).jpg" alt="miyazaki corona site" />
+</picture>
 
 # やったこと
 最初に書いた通り、Vue（と言うかJS）何もわからない人であり、コード修正は厳しいと考えたので、表示される自然言語の修正をする事にした。因みにどのファイルがどこにあるかも判らなかったので、commit履歴から探しました(^^;
@@ -71,11 +79,14 @@ yarn dev
 ## 内容
 1. `CODE_OF_CONDUCT.md`の修正
 
-![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/62b9eb72-9bb9-4b62-0508-d872ddeb44b3.png)
+<picture>
+  <source srcSet="/assets/posts/20200300/20200329 (5).webp" type="image/webp" />
+  <img src="/assets/posts/20200300/20200329 (5).jpg" alt="code of conduct" />
+</picture>
 
 東京都verから宮崎県verにした際の地域表記変更の漏れであり、1文字の修正だった。
 
-```CODE_OF_CONDUCT.md
+```md:CODE_OF_CONDUCT.md
 # 33行目：都庁の人だけではなく
 => 県庁の人だけでなく
 ```
@@ -85,14 +96,25 @@ git add .
 git commit -m "都庁を県庁に修正" --no-verify
 git push コピーしてきたURL development
 ```
+
 ## はじめてのpull request
-無職&&個人で勉強なのでPRの機会は初めてで、[ここ](https://qiita.com/FPC_COMMUNITY/items/b9cc072813dc2231b2b2#%E3%83%97%E3%83%AB%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E9%80%81%E3%82%8B)をよく見ながらしましたが、怖かった:cry:
+無職&&個人で勉強なのでPRの機会は初めてだったので、下を参照しながら行った。
+
+- 参照[東京都 新型コロナウイルス対策サイトへの貢献方法を解説](https://qiita.com/FPC_COMMUNITY/items/b9cc072813dc2231b2b2#%E3%83%97%E3%83%AB%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E9%80%81%E3%82%8B)
 
 やってることは同じなので割愛。こんな感じで書いた。
-![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/294956b2-0ffd-b8da-4521-d8a5aa204135.png)
 
-無事にpull requestがmergeされ、OSS活動(？)の実績解除となりました。:blush:
-![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/c3bd5f76-5a1b-f094-f393-eda9e4c8eaa8.png)
+<picture>
+  <source srcSet="/assets/posts/20200300/20200329 (4).webp" type="image/webp" />
+  <img src="/assets/posts/20200300/20200329 (4).jpg" alt="first pull request" />
+</picture>
+
+無事にpull requestがmergeされ、OSS活動(？)の実績解除となりました。
+
+<picture>
+  <source srcSet="/assets/posts/20200300/20200329 (2).webp" type="image/webp" />
+  <img src="/assets/posts/20200300/20200329 (2).jpg" alt="first merged pull request" />
+</picture>
 
 # やりたいこと
 - 表示自然言語の部分を中心に修正改善
