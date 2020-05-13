@@ -178,9 +178,7 @@ Ubuntuデスクトップ版(GUI)をインストールする
 sudo apt install ubuntu-desktop
 ```
 
-完
-
-![キャプチャ.JPG](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/6b1609c1-da18-c152-2673-31adb417b31b.jpeg)
-
-
-
+<picture>
+  <source srcSet="/assets/posts/202001/ubuntu1.webp" type="image/webp">
+  <img src="/assets/posts/202001/ubuntu1.jpg" alt="ubuntu desktop">
+</picture>

@@ -17,7 +17,10 @@ GithubPagesJekyllを利用し、静的ページを作成した。
     - 目的：自分の情報等を纏めるサイト作成の為
     - remote theme：[fongandrew / hydeout](https://github.com/fongandrew/hydeout)
 
-![キャプチャ.JPG](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/942c1434-8629-33d2-0bfb-25583fb44678.jpeg)
+<picture>
+  <source srcSet="/assets/posts/201908/jekyll1.webp" type="image/webp">
+  <img src="/assets/posts/201908/jekyll1.jpg" alt="jekyll">
+</picture>
 
 - 20191206：デザイン等変更
   - 目的：アクセシビリティ改善、デバイスによる見た目差を小さく
@@ -107,25 +110,9 @@ githubpages公式のgem等由来であれば、[Troubleshooting GitHub Pages bui
 ## Invalid theme folder: _sass
 - 参照
   - [`Invalid theme folder: _sass` when using Github Pages with remote_theme #7630](https://github.com/jekyll/jekyll/issues/7630)
-  - [Page build failed: Invalid Sass or SCSS
-](https://help.github.com/en/articles/page-build-failed-invalid-sass-or-scss)
+  - [Page build failed: Invalid Sass or SCSS](https://help.github.com/en/articles/page-build-failed-invalid-sass-or-scss)
 
 参照先での議論を見る限り、問題ない・・・・？
-
-## Liquid Exception: invalid byte sequence in UTF-8
-- 参照
-  - [Github: "Liquid Exception: invalid byte sequence in UTF-8..." with binaries #5181](https://github.com/jekyll/jekyll/issues/5181)
-  - [Jekyll: Error: invalid byte sequence in UTF-8](https://talk.jekyllrb.com/t/error-invalid-byte-sequence-in-utf-8/1384/9)
-
-単なる文字コードのエラーではあるが、最初に後者の方を参考にした。後者で質問している人は、同僚と共同編集している際にスペイン語の特殊文字が混入したという事に気づき、エラー解消したみたいだ。
-
-![キャプチャ.JPG](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/d63ddd00-6953-f525-21e2-9fb886280676.jpeg)
-
-nav-linksでのWantedly用svgファイル中のsvgタグid属性が"ãƒ¬ã‚¤ãƒ¤ãƒ¼_1"となっている。。。
-
-[公式からダウンロード](https://wantedlyinc.com/ja/brand_assets)したのにな。。
-
-20191024追記：結局エラー処理できなかったので、泣く泣くエラー発生前までgit resetしました。。
 
 # カスタマイズ
 ※使用テーマやテーマの追加方法によって、ディレクトリ構造が違うので、他テーマは知らない
@@ -250,7 +237,11 @@ githubに上げて完了。
 3. gitにpushし、[Twitter Card Validator](https://cards-dev.twitter.com/validator) で確認
 
 ## sidebar-nav-link
-![キャプチャ.JPG](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/1e635242-b348-25b4-d29d-063294b06bf6.jpeg)
+
+<picture>
+  <source srcSet="/assets/posts/201908/jekyll2.webp" type="image/webp">
+  <img src="/assets/posts/201908/jekyll2.jpg" alt="side drawer">
+</picture>
 
 こんな感じで、サイドバーにnavlink付け足したい。
 

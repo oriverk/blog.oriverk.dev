@@ -49,7 +49,10 @@ Webエンジニアに転職するために、独りで勉強を進めていま�
 ### 1か月目
 時間割に沿って行われました。
 
-![セブ3月時間割.JPG](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/8e2b88fe-a131-9b3e-2ff6-d0c33f0678e5.jpeg)
+<picture>
+  <source srcSet="/assets/posts/201905/cebu1.webp" type="image/webp">
+  <img src="/assets/posts/201905/cebu1.jpg" alt="class time schedule">
+</picture>
 
 #### Ruby認定試験を用いた勉強
 参照：[Ruby認定試験のアウトプット](https://qiita.com/search?utf8=%E2%9C%93&sort=&q=OriverK+Ruby%E8%AA%8D%E5%AE%9A%E8%A9%A6%E9%A8%93)
@@ -66,14 +69,21 @@ File.open("data") do |io|
 end
 ```
 
-![io class.jpg](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/20aca7c1-1a4f-2d8f-e4fb-87269d1c8c22.jpeg)
+<picture>
+  <img src="/assets/posts/201905/cebu2.png" alt="input text">
+</picture>
 
 #### Scaffoldなしの掲示板
 BootstrapやDBを組み合わせ、生徒データ情報一覧になりました。
 
-![大学データER.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/58f9099f-3008-072c-86ed-374f9649e0cc.png)
+<picture>
+  <source srcSet="/assets/posts/201905/cebu3.webp" type="image/webp">
+  <img src="/assets/posts/201905/cebu3.png" alt="table">
+</picture>
 　
-![cebu_college2.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/0d09f4aa-00a9-9fec-1a5e-08ec85277191.gif)
+<picture>
+  <img src="/assets/posts/201905/cebu4.gif" alt="student data app">
+</picture>
 
 一部、Bootstrap等を適用してないページがあるが、気にしない。
 
@@ -95,9 +105,13 @@ BootstrapやDBを組み合わせ、生徒データ情報一覧になりました
     - [18日目：トランザクションって](https://qiita.com/OriverK/items/2359c9159b55c74f15d1)
     - [21日目：H30秋基本情報技術者試験の問3データベース](https://qiita.com/OriverK/items/6efe454be2d6be84ceb5)
 
-![transparent modified.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/b3f62973-9ed7-55fc-47a9-1b072a52331f.png)
+<picture>
+  <img src="/assets/posts/201905/cebu5.png" alt="table">
+</picture>
 
-![concert ticket sys.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/60bc5d1d-e602-2a9d-c199-9227a7ff8e56.gif)
+<picture>
+  <img src="/assets/posts/201905/cebu6.gif" alt="ticket sale app">
+</picture>
 
 JS等、追加で勉強しなければと感じています。
 

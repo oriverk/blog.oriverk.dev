@@ -19,8 +19,10 @@ from Qiita
 - [Github : oriverk/Codr](https://github.com/oriverk/Codr)
 - [GithubPage](https://oriverk.github.io/)
 
-![キャプチャ.JPG](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/3885d60b-5e63-b16a-40b8-fe264516f2fd.jpeg)
-
+<picture>
+  <source srcSet="/assets/posts/201911/twitter1.webp" type="image/webp">
+  <img src="/assets/posts/201911/twitter1.jpg" alt="post code on twitter">
+</picture>
 
 # 作成の過程で収穫物
 - Rails5.2での追加分（Active Record Storage含む
@@ -30,7 +32,10 @@ from Qiita
 - XSS対策
 
 # 作成要件
-![Untitled.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/274118dc-c781-d053-e075-e0cb9dfe00f9.png)
+
+<picture>
+  <img src="/assets/posts/201911/twitter2.png" alt="table">
+</picture>
 
 - マークダウン投稿、シンタックスハイライト
     - gem: redcarpet, rouge（結局syntax-hightlightだけは反映されないまま
@@ -54,6 +59,7 @@ from Qiita
 rails new codr -d postgresql
 # DB設定等は割愛
 ```
+
 ## Gem
 今回は公開にまで至る予定なので、railsやdeviseの日本語化等も。が、想定ユーザはエンジニアだしと思い、殆ど英語になった。
 
