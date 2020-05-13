@@ -34,8 +34,7 @@ end
 ```
 
 # 使用環境
-ホストOS: Windows10 Home
-仮想環境OS: Ubuntu Bento/Bionic
+仮想環境OS: Ubuntu 18.04
 Ruby：2.51
 Rails:5.2.2
 
@@ -93,7 +92,6 @@ rails generate scaffold ExamResult student:references subject:references name:st
 rails generate scaffold ClubStudent student:references club:references name:string
 ```
 
-## mysql側に反映
 `rails db:migrate`
 
 ## テーブル同士の関連性を定義
@@ -101,39 +99,34 @@ rails generate scaffold ClubStudent student:references club:references name:stri
   -`[Active Record Associations](https://guides.rubyonrails.org/association_basics.html)
 ` - [Active Record の関連付け](https://railsguides.jp/association_basics.html#belongs-to%E9%96%A2%E9%80%A3%E4%BB%98%E3%81%91)
 
-```rb:app/models/student.rb
+```rb:それぞれのmodel.rb
+# Studentモデル
 class Student < ApplicationRecord
   has_many :exam_results
   has_many :subjects, through: :exam_results
   has_many :club_students
   has_many :clubs, through: :club_students
 end
-```
 
-```rb:app/models/subject.rb
+# Subject model
 class Subject < ApplicationRecord
   has_many :exam_results
   has_many :students, through: :exam_results
 end
-```
 
-```rb:app/models/exam_result.rb
+# ExamResult model
 class ExamResult < ApplicationRecord
   belongs_to :student
   belongs_to :subject
 end
-```
 
-主キー側の設定の結果、中間テーブル側の設定が自動で変更されていた
-
-```rb:app/models/club.rb
+# Club model
 class Club < ApplicationRecord
   has_many :club_students
   has_many :students, through: :club_students
 end
-```
 
-```rb:app/models/club_student.rb
+# ClubStudent model
 class ClubStudent < ApplicationRecord
   belongs_to :student
   belongs_to :club
@@ -141,9 +134,8 @@ end
 ```
 
 # マスターデータ作成
-studentテーブルへ
-
-```rb:console
+```rb
+# student table
 (1..100).each do |num|
   if num % 2 == 0
     gen = 0
@@ -158,43 +150,23 @@ studentテーブルへ
 
   user = Student.create(name: "taro-#{num}", email: "val-#{num}@gmail.com", gender: gen, age: ag, opinion: op)
 end
-```
 
-clubテーブルへ
-
-```rb:console
+# club table
 Club.create(name: '自転車')
 Club.create(name: 'サッカー')
 Club.create(name: 'バスケットボール')
 Club.create(name: 'バレーボール')
 Club.create(name: '空手')
-Club.create(name: '水泳')
-Club.create(name: '登山')
-Club.create(name: '陸上')
-Club.create(name: 'バイク')
-Club.create(name: '英会話')
-Club.create(name: 'カメラ')
-Club.create(name: '軽音')
-Club.create(name: 'サーフィン')
-```
+# 割愛
 
-subjectテーブルへ
-
-```rb:console
+# subject table
 Subject.create(name: '数学', max_score: 200);
 Subject.create(name: '国語', max_score: 200);
 Subject.create(name: '英語', max_score: 200);
-Subject.create(name: '化学', max_score: 100);
-Subject.create(name: '物理', max_score: 100);
-Subject.create(name: '生物', max_score: 100);
-Subject.create(name: '世界史', max_score: 100);
-Subject.create(name: '日本史', max_score: 100);
-Subject.create(name: '地理', max_score: 100);
+# 割愛
 ```
 
 ## (0..20).map{('あ'..'わ').to_a[rand(26)]}.join
-いろいろ詰まってる
-
 ### 範囲オブジェクト
 文字も使える
 
@@ -220,73 +192,11 @@ max が 0 の場合は 0.0 以上 1.0 未満の実数を、正の整数の場合
 joinメソッドは、配列の各要素を文字列に変換し、引数sepを区切り文字として結合した文字列を返します。
 引数を省略すると区切り文字なしで要素を結合した文字列になる
 
-# 関連付けがされたか確認
-取り敢えず、student idが1番の人に、データを突っ込んでみる.
-rails c側で、うまくできなかったので、mysql側から。
-
-```sql:mysql
-INSERT INTO exam_results (student_id,subject_id,name,score,created_at,updated_at) VALUE 
-(1,1,'一次試験',181,now(),now()),(1,2,'一次試験',146,now(),now()),(1,3,'一次試験',199,now(),now()),(1,4,'一次試験',99,now(),now()),(1,5,'一次試験',62,now(),now()),
-(1,6,'一次試験',83,now(),now()),(1,7,'一次試験',62,now(),now()),(1,8,'一次試験',77,now(),now()),(1,9,'一次試験',81,now(),now());
-```
-
-```rb:console
-stu = Student.first
-stu.exam_results
-
-# 結果
-# 分かりづらいので、4教科目以降省略、および編集
- stu = Student.first
-SET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483
-  Student Load (0.2ms)  　
-=> #<Student id: 1, name: "taro-1", email: "val-1@gmail.com", gender: 1, age: 1, opinion: "すぎこじぅかいけさぎさあえぃざきこぎごえぎ", created_at: "2019-03-16 11:02:23", updated_at: "2019-03-16 11:02:23">
-
-stu.exam_results
-  ExamResult Load (0.2ms)  SELECT  `exam_results`.* FROM `exam_results` WHERE `exam_results`.`student_id` = 1 LIMIT 11
-=> #<ActiveRecord::Associations::CollectionProxy 
-[#<ExamResult id: 1, student_id: 1, subject_id: 1, name: "一次試験", score: 181, created_at: "2019-03-16 14:33:04", updated_at: "2019-03-16 14:33:04">, 
-#<ExamResult id: 2, student_id: 1, subject_id: 2, name: "一次試験", score: 146, created_at: "2019-03-16 14:33:04", updated_at: "2019-03-16 14:33:04">, 
-#<ExamResult id: 3, student_id: 1, subject_id: 3, name: "一次試験", score: 199, created_at: "2019-03-16 14:33:04", updated_at: "2019-03-16 14:33:04">,
-```
-
-結果の中の、``SELECT  `students`.* FROM `students` ORDER BY `students`.`id` ASC LIMIT 1``と``SELECT` `exam_results`.* FROM `exam_results` WHERE `exam_results`.`student_id` = 1 LIMIT 11``を使えば、MySQLからでも見れる。はず
-
-```sql:MySQL
-SELECT students.* FROM students ORDER BY students.id ASC LIMIT 1;
-+----+--------+-----------------+--------+------+-----------------------------------------------------------------+---------------------+---------------------+
-| id | name   | email           | gender | age  | opinion                                                         | created_at          | updated_at          |
-+----+--------+-----------------+--------+------+-----------------------------------------------------------------+---------------------+---------------------+
-|  1 | taro-1 | val-1@gmail.com |      1 |    1 | すぎこじぅかいけさぎさあえぃざきこぎごえぎ                      | 2019-03-16 11:02:23 | 2019-03-16 11:02:23 |
-+----+--------+-----------------+--------+------+-----------------------------------------------------------------+---------------------+---------------------+
-
-SELECT exam_results.* FROM exam_results WHERE exam_results.student_id = 1 LIMIT 11;
-+----+------------+------------+--------------+-------+---------------------+---------------------+
-| id | student_id | subject_id | name         | score | created_at          | updated_at          |
-+----+------------+------------+--------------+-------+---------------------+---------------------+
-|  1 |          1 |          1 | 一次試験     |   181 | 2019-03-16 14:33:04 | 2019-03-16 14:33:04 |
-|  2 |          1 |          2 | 一次試験     |   146 | 2019-03-16 14:33:04 | 2019-03-16 14:33:04 |
-|  3 |          1 |          3 | 一次試験     |   199 | 2019-03-16 14:33:04 | 2019-03-16 14:33:04 |
-|  4 |          1 |          4 | 一次試験     |    99 | 2019-03-16 14:33:04 | 2019-03-16 14:33:04 |
-|  5 |          1 |          5 | 一次試験     |    62 | 2019-03-16 14:33:04 | 2019-03-16 14:33:04 |
-|  6 |          1 |          6 | 一次試験     |    83 | 2019-03-16 14:33:04 | 2019-03-16 14:33:04 |
-|  7 |          1 |          7 | 一次試験     |    62 | 2019-03-16 14:33:04 | 2019-03-16 14:33:04 |
-|  8 |          1 |          8 | 一次試験     |    77 | 2019-03-16 14:33:04 | 2019-03-16 14:33:04 |
-|  9 |          1 |          9 | 一次試験     |    81 | 2019-03-16 14:33:04 | 2019-03-16 14:33:04 |
-+----+------------+------------+--------------+-------+---------------------+---------------------+
-```
+---
 
 # 10日目
-# テーブル同士の関連図
+今回の流れ
 
-![マスターデータ関連.jpg](https://qiita-image-store.s3.amazonaws.com/0/294402/1f4d86a7-e127-dbd7-9dd1-b7101479f92a.jpeg)
-
-# 前回の流れ
-1. rails newからのScaffold
-2. Student, Subject, Club, ExamResult(中間）, ClubStudent(中間)テーブルの作成
-3. app/modelsで各テーブルの関連性定義
-4. 主キー側のテーブルへデータ入力
-
-# 今回の流れ
 1. 中間テーブルにデータ入力
 2. 性別の0 or 1の表記を、male or femaleに変更
 3. Studentのshowページに、生徒ごとの試験結果等、データを出力
@@ -377,7 +287,7 @@ INNER JOIN subjects
 GROUP BY subjects.id, subjects.name
 ```
 
-```
+```sql:
 # 出力結果
 +--------+--------------+-----------+-------+-------+
 | name   | name         | name      | score | ratio |
@@ -457,37 +367,12 @@ end
 </table>
 ```
 
-## ページ上の出力結果
-
-![studentのshowページ編集後.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/1f72f0ae-12a5-f5db-f0a1-4d68dbc67c1c.jpeg)
-
-毎回、コードを自分で考えるも結局自力で辿り着けず、
-今回のアウトプットもだか、上コードは講師が正解として出したもの。
-見れば、あ～となるけど、まだ自分でコーディングしきれない。
-
 ---
 # 11日目
-# 作成テーブルと関連性
-
-![マスターデータ関連.jpg](https://qiita-image-store.s3.amazonaws.com/0/294402/98c1819e-f557-5a93-1027-b44bbc9ac600.jpeg)
-
-# 前回までの流れ
-1. rails new -d mysql
-2. rails g scaffold で5テーブル作成
-3. app/modelsで各テーブルの関連性定義
-4. 各テーブルにデータ入力
-5. Studentのshowページに、生徒ごとの試験結果のデータを出力
-
-# 今回の流れ
+今回の流れ
 1. ExamResultsのindexページのデータ出力を編集
 2. ExamRusultの新規作成ページのUIを変更
 3. gem kaminariでページャー追加(授業内では時間足らず）
-
-# 現状
-
-![ExamResults-show編集前.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/2d6a54fd-ce6e-95af-12d9-adcdedc91669.jpeg)
-
-![ExamResults-new編集前.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/680c18b9-5d0a-68d6-ac33-8b1ddc2c30e3.jpeg)
 
 # 実段階
 ## インデックスページの表示を編集
@@ -504,7 +389,8 @@ end
 ```
 
 ## newページにセレクトボックス
-[参照：Action View Form Helpers](https://guides.rubyonrails.org/form_helpers.html#select-boxes-for-dealing-with-models)
+参照：
+- [Action View Form Helpers](https://guides.rubyonrails.org/form_helpers.html#select-boxes-for-dealing-with-models)
 
 ```rb:app/views/exam_results/_form.html.erb
 <div class="field">
@@ -566,8 +452,6 @@ viewを編集
 </div>
 ```
 
-出来た
-
 ![pagenate.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/8d725379-0d21-7b0f-263a-d70fe7fe5319.jpeg)
 
 ## ExamResultのindexページ編集
@@ -579,13 +463,13 @@ app/view/exam_results/index.html.erbを同様に編集
 rails g kaminari:views default
 
 # 実行結果
-  create  app/views/kaminari/_next_page.html.erb
-      create  app/views/kaminari/_gap.html.erb
-      create  app/views/kaminari/_prev_page.html.erb
-      create  app/views/kaminari/_last_page.html.erb
-      create  app/views/kaminari/_first_page.html.erb
-      create  app/views/kaminari/_paginator.html.erb
-      create  app/views/kaminari/_page.html.erb
+  # create  app/views/kaminari/_next_page.html.erb
+  #     create  app/views/kaminari/_gap.html.erb
+  #     create  app/views/kaminari/_prev_page.html.erb
+  #     create  app/views/kaminari/_last_page.html.erb
+  #     create  app/views/kaminari/_first_page.html.erb
+  #     create  app/views/kaminari/_paginator.html.erb
+  #     create  app/views/kaminari/_page.html.erb
 ```
 
 ## ページャの設定を変える
@@ -598,7 +482,7 @@ create  config/initializers/kaminari_config.rb
 ```
 
 Bootstrap対応のページャテーマもある.
-[amatsuda/kaminari_themes](https://github.com/amatsuda/kaminari_themes)
+- [amatsuda/kaminari_themes](https://github.com/amatsuda/kaminari_themes)
 
 ```rb:config/initializers/kaminari_config.rb
 # frozen_string_literal: true
@@ -614,11 +498,10 @@ Kaminari.configure do |config|
   # config.params_on_first_page = false
 end
 ```
+
 ---
 # 12日目
 ## kaminariの別のファイル設定
-11日目に私がやったものとの違いは、
-
 - modelsにpaginates_per 30と記述
 - controllerのindexアクションの末尾にある、per()を削除
     - (ビューファイルは同じ)
@@ -669,24 +552,14 @@ studentのindexから'New Exam Result'リンクを押すと、exam_resultのnew�
 # 14日目
 今週からは、scaffoldで作成した大学データと、gemのdevise、Bootstrap等を組み合わせる。
 
-#やった事
+## やった事
 - Railsの命名規則(単数形と複数形)
 - DBのカラム定義を後から変更
 - render partial: 部分テンプレの参照
 - validation
 - **UNSIGNEDという型が存在しないPostgreSQL**
 
-# 使用環境
-- ホストOS: Windows10 Home
-- 仮想環境: Ubuntu Bento/Bionic
-- Ruby：2.51
-- Rails: 5.2.2
-    - gem 'devise' :　ログイン等の機能用
-    - gem 'kaminari' : ページネーション
-- DB: PostgreSQL
-
-
-# Railsの命名規則(単数形と複数形)
+## Railsの命名規則(単数形と複数形)
 rails gコマンドで、controller名やmodel名を指定する際に、混乱した。
 
 ```sh
@@ -701,10 +574,9 @@ rails gコマンドで、controller名やmodel名を指定する際に、混乱�
 - controller名は複数形で、頭文字を大文字にする。
     - 1つのcontrollerに複数のactionが含まれるため
 
-# DBのカラム定義を後から変更
+## DBのカラム定義を後から変更
 rails g scaffoldコマンド時に、ClubStudentの外部キーの定義をreferecesとミスタイプしていた。
 
-### 修正方法：app/db/migrate下のファイルを修正
 ```rb:db/migrate/20190326030303_create_club_students.rb
 class CreateClubStudents < ActiveRecord::Migration[5.2]
   def change
@@ -724,25 +596,23 @@ end
 DB内のデータを書き換えるだけで、アプリ自体のファイル等は編集されない。
 
 ```sql:mysql
-# ALTER TABLE テーブル名 MODIFY COLUMN カラム名 新しい定義
+ALTER TABLE テーブル名 MODIFY COLUMN カラム名 新しい定義
 ALTER TABLE ClubStudent MODIFY COLUMN student references
 ```
 
 つまり、原因の根本的な部分を修正できないので、駄目
 
 # render partial: 部分テンプレ
-参照：[render レンダリング(render) - railsドキュメント](http://railsdoc.com/references/render)
+参照：
+- [render レンダリング(render) - railsドキュメント](http://railsdoc.com/references/render)
 
 全てのページのヘッダー(上部）に、ログアウトや他のstudentやclubs等のリンクを乗せる
-
-![tempsnip.jpg](https://qiita-image-store.s3.amazonaws.com/0/294402/2bd10526-e610-0345-62aa-bc33270eafbc.jpeg)
 
 共通して表示させるので、/app/views/layouts/application.html.erb　を編集する。
 なお、部分テンプレファイル名は『_』アンダーバー始まり
 
 ```rb:/app/views/layouts/application.html.erb
 <body>
-# <%= render :partial => '部分テンプレ名' %>
   <%= render :partial => 'shared/header' %>
 </body>
 ```
@@ -759,12 +629,9 @@ ALTER TABLE ClubStudent MODIFY COLUMN student references
 ```
 
 # validation
-参照：[Active Record Validations](https://guides.rubyonrails.org/active_record_validations.html)
+参照：
+- [Active Record Validations](https://guides.rubyonrails.org/active_record_validations.html)
 バリデーションは有効なデータだけをDBに保存するのを確実にするための最善策。
-
-今回の実装先：clubの新規作成ページ
-
-![newclub_form.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/7d4b09ce-2f84-9616-2a78-e0ceb6b779f1.jpeg)
 
 ## validate条件
 ```rb:
@@ -786,18 +653,7 @@ validates :name, exclusion: { in: %w(部 サークル) }
 # 『含む』ならinclusion
 ```
 
-## 実装結果
-空白や文字列長、『サークル』という語には、validatesが発動した
-
-![validate-clubnew.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/ed56c5ae-e53c-493a-efd2-2b32b6a7c003.jpeg)
-
-ただ、現状だと、『テニスサークル』の様に文字列と連結すると、validateが動かない
-
-```sh
-Club was successfully updated.
-
-Name: サークル部
-```
+空白や文字列長、『サークル』という語には、validatesが発動するが、『テニスサークル』だと発動しないので、正規表現等を使う必要がある。
 
 # type "unsigned" does not exist (※Postgresql)
 validatesの実装していく最中に、エラーに気づいた
@@ -810,7 +666,7 @@ PG::UndefinedObject: ERROR: type "unsigned" does not exist LINE 1: ...id as subj
 ```
 
 と、エラーを吐き、因みに、ブラウザの戻るボタンで戻ると、更新されている。
-また、エラー原因であると思わる、StudentController#showは
+また、エラー原因であると思わる、`StudentController#show`は
 
 ```rb:app/controllers/students_controller.rb
 def show

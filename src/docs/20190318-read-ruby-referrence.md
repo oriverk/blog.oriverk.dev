@@ -7,17 +7,18 @@ author: OriverK
 slide: false
 ---
 
-from Qiita: [Rubyリファレンスを読んでの、メモ](https://qiita.com/OriverK/items/49148e7116b86e3f36a9)
+from Qiita: 
+- [Rubyリファレンスを読んでの、メモ](https://qiita.com/OriverK/items/49148e7116b86e3f36a9)
 
 - 参照
-  - [オブジェクト指向スクリプト言語 Ruby リファレンスマニュアル](https://docs.ruby-lang.org/ja/2.6.0/doc/index.html)　を読んだ。
+  - [オブジェクト指向スクリプト言語 Ruby リファレンスマニュアル](https://docs.ruby-lang.org/ja/2.6.0/doc/index.html)
+  - [正規表現](https://docs.ruby-lang.org/ja/2.6.0/doc/spec=2fregexp.html)
+  - [組み込みライブラリ](https://docs.ruby-lang.org/ja/2.6.0/library/_builtin.html)
+      - ホントに長かったので、メモせず、読んで覚えることにしました
+  - [ヒアドキュメント (行指向文字列リテラル)](https://docs.ruby-lang.org/ja/2.6.0/doc/spec=2fliteral.html)
+  - [手続きオブジェクトの挙動の詳細](https://docs.ruby-lang.org/ja/2.6.0/doc/spec=2flambda_proc.html)
+  - [Ruby用語集](https://docs.ruby-lang.org/ja/2.6.0/doc/glossary.html)
 
-- 後回しにした項目(別記事でも作成）
-    - [正規表現](https://docs.ruby-lang.org/ja/2.6.0/doc/spec=2fregexp.html)
-    - [組み込みライブラリ](https://docs.ruby-lang.org/ja/2.6.0/library/_builtin.html)
-        - ホントに長かったので、メモせず、読んで覚えることにしました
-    - [ヒアドキュメント (行指向文字列リテラル)](https://docs.ruby-lang.org/ja/2.6.0/doc/spec=2fliteral.html)
-    - [手続きオブジェクトの挙動の詳細](https://docs.ruby-lang.org/ja/2.6.0/doc/spec=2flambda_proc.html)
 
 
 # 字句構造
@@ -213,6 +214,4 @@ alias $MATCH $&
 ## defined? 式
 式が定義されていなければ、偽を返す。定義されていれば式の種別を表す文字列を返す
 
-# Ruby用語集
-面白かった
-[リンク](https://docs.ruby-lang.org/ja/2.6.0/doc/glossary.html)
+

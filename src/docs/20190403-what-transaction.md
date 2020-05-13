@@ -7,9 +7,8 @@ author: OriverK
 slide: false
 ---
 
-Qiita: [18日目: トランザクションって](https://qiita.com/OriverK/items/2359c9159b55c74f15d1) より
-
-授業でやった扱った『トランザクション』について、書く。
+from Qiita: 
+- [18日目: トランザクションって](https://qiita.com/OriverK/items/2359c9159b55c74f15d1)
 
 - 参考
   - [「トランザクション」とは何か？を超わかりやすく語ってみた！](https://qiita.com/zd6ir7/items/6568b6c3efc5d6a13865)
@@ -103,6 +102,7 @@ mysql> select name from students where id =3;
 +-------------+
 1 row in set (0.00 sec)
 ```
+
 #### ROLLBACKするパターン
 ```sql:
 mysql> START TRANSACTION;
@@ -135,12 +135,11 @@ mysql> SELECT name FROM students WHERE id = 3;
 +-------------+
 1 row in set (0.00 sec)
 ```
+
 ## RubyonRailsで動かしてみる
 新しく、アプリを作成する。
 今回はDBの操作だけなので、rails g modelコマンドのみ使用
 テーブルはUserとReviewの２つ。
-
-準備
 
 ```sh:terminal
 rails new transact_self -d mysql
@@ -153,19 +152,19 @@ rails g model Review user:references rate:integer approved:boolean
 rails db:migrate
 ```
 
-データ入力
-
 ```rb:
+# input data
+# user
 (1..5).each do |i|
   User.create(name: "taro-#{i}", approved: true, deleted: false)
 end
-```
-```rb:
+
 (1..5).each do |i|
   user = User.first
   Review.create!(user_id: user.id, rate: i, approved: true)
 end
 ```
+
 DB内で確認
 
 ```sql:
@@ -191,6 +190,7 @@ mysql> SELECT * FROM reviews;
 |  5 |       1 |    5 |        1 | 2019-04-03 09:01:38 | 2019-04-03 09:01:38 |
 +----+---------+------+----------+---------------------+---------------------+
 ```
+
 userとreviewとの、関連付け
 
 ```app/models/user.rb
@@ -198,6 +198,7 @@ class User < ApplicationRecord
   has_many :reviews
 end
 ```
+
 reviewモデルにvalidation追加
 approvedカラムを空欄不可にしておく。
 
@@ -217,15 +218,17 @@ User.transaction do
   user.update!(approved: false)
   user.reviews.each { |review| review.update!(approved: true) }
 end
-=>(0.1ms)  BEGIN
-  User Update (0.3ms)  UPDATE `users` SET `approved` = FALSE, `updated_at` = '2019-04-03 09:10:46' WHERE `users`.`id` = 1
-  Review Load (0.2ms)  SELECT `reviews`.* FROM `reviews` WHERE `reviews`.`user_id` = 1
-   (6.8ms)  COMMIT
-=> [#<Review id: 1, user_id: 1, rate: 1, approved: true, created_at: "2019-04-03 09:01:38", updated_at: "2019-04-03 09:01:38">, 
+
+# =>(0.1ms)  BEGIN
+#   User Update (0.3ms)  UPDATE `users` SET `approved` = FALSE, `updated_at` = '2019-04-03 09:10:46' WHERE `users`.`id` = 1
+#   Review Load (0.2ms)  SELECT `reviews`.* FROM `reviews` WHERE `reviews`.`user_id` = 1
+#    (6.8ms)  COMMIT
+# => <Review id: 1, user_id: 1, rate: 1, approved: true, created_at: "2019-04-03 09:01:38", updated_at: "2019-04-03 09:01:38">, 
 #<Review id: 2, user_id: 1, rate: 2,approved: true, created_at: "2019-04-03 09:01:38", updated_at: "2019-04-03 09:01:38">, 
 #<Review id: 3, user_id: 1, rate: 3, approved: true, created_at: "2019-04-03 09:01:38", updated_at: "2019-04-03 09:01:38">,
 
 ```
+
 userテーブルのid1のtaro-1が、更新されてる
 
 ```sql:
@@ -235,7 +238,9 @@ mysql> select * from users;
 +----+--------+----------+---------+---------------------+---------------------+
 |  1 | taro-1 |        0 |       0 | 2019-04-03 09:01:31 | 2019-04-03 09:10:46 |
 ```
+
 2.  トランザクション処理に失敗し、rollbackされるパターン
+
 ```rb:
 user = User.first
 User.transaction do
@@ -252,10 +257,11 @@ Traceback (most recent call last):
         1: from (irb):4:in `block (2 levels) in irb_binding'
 ActiveRecord::RecordInvalid (Validation failed: Approved can't be blank)
 ```
+
 トランザクション処理に失敗し、rollbackしたため、DBに変化はない。
 
 ### modelファイルを編集して実装
-```app/models/user.rb
+```rb:app/models/user.rb
 class User < ApplicationRecord
   has_many :reviews
 
@@ -264,20 +270,15 @@ class User < ApplicationRecord
       disapprove_user!
       disapprove_reviews!
     end
-  end                                                                                                                                                              
+  end
 
 private
   def disapprove_user!
     self.update!(approved: false)
   end
-
   def disapprove_reviews!
     reviews.each { |review| review.update!(approved: false) }
   end
 end
 ```
-と、ここまでが授業でやった分。
-トランザクション処理の概念は理解できた(と思う）。
-
-
 

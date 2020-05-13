@@ -7,27 +7,18 @@ author: OriverK
 slide: false
 ---
 
-Qiita: [16日目：deviseだけで管理者を追加したい](https://qiita.com/OriverK/items/d7704d23cf74c51503b4) より
-
-授業で作っている、大学生情報をまとめたwebアプリの今の状態は、
-サインアップさえすれば、誰でもデータ閲覧、編集、削除等が出来る状態。
-
-それでは、非常にまずいので、管理者を追加した。
-今回はシンプルな機能だけで良いので、devise以外にはgemを追加しなった。
+from Qiita: 
+- [16日目：deviseだけで管理者を追加したい](https://qiita.com/OriverK/items/d7704d23cf74c51503b4)
 
 # 使用環境
-- ホストOS: Windows10 Home
-- 仮想環境: Ubuntu Bento/Bionic
+- 仮想環境: Ubuntu 18.04
 - Ruby：2.51
 - Rails: 5.2.2
     - gem ：'devise'（ログイン等の機能用）、'kaminari' （ページネーション）
 - DB: PostgreSQL
-- Heroku
 
 # 実作業
 ## テーブルにadminカラム追加
-カラム追加方法は、前日のパスワードカラム追加と同じ。
-
 ```sh:terminal
 # rails g migration Addカラム名Toテーブル名　カラム定義
 rails g migration AddAdminToStudent admin:boolean
@@ -42,7 +33,7 @@ Rubyでは偽はfalseとnilで、それ以外がtrueになる。
 boolean型と定義する際は、デフォルト値を設定しないといけない。
 adminのデフォルト値に引数falseを渡し、デフォルトではadmin権限がない、と指定する。
 
-```/db/migrate/20190328011407_add_admin_to_student.rb
+```rb:/db/migrate/20190328011407_add_admin_to_student.rb
 class AddAdminToStudent < ActiveRecord::Migration[5.2]
   def change
     add_column :students, :admin, :boolean,default: false
@@ -50,14 +41,9 @@ class AddAdminToStudent < ActiveRecord::Migration[5.2]
 end
 ```
 
-## マイグレーション実行
-
-```sh:
-rails db:migrate
-```
+`rails db:migrate`
 
 ## admin権限を確認付与
-
 ```rb:
 stu = Student.find(1)
 stu.admin?
@@ -67,15 +53,13 @@ stu.save
 stu.admin?
 =>true
 ```
+
 admin属性が追加され、またadmin?メソッドを使用できるようになっている。
 
-# adminのみが全データを見れるようにする
+## adminのみが全データを見れるようにする
 admin以外は、自分のデータしか見れないようにしたい。
 
-## controllerのindexアクション編集
-adminかどうかで、アクション動作を変える
-
-```rb:
+```rb:users_controller.rb
  def index
     if current_student.admin?
       @students = Student.page params[:page]
@@ -84,9 +68,6 @@ adminかどうかで、アクション動作を変える
     end
   end
 ```
-
-## viewを編集
-adminかどうかで、viewを変える。
 
 ```rb:app/views/student
  <tbody>
@@ -125,6 +106,3 @@ adminかどうかで、viewを変える。
   <%= paginate @students %>
 <% end %>
 ```
-adminでなければ、ページネーションが必要でなくなるので、そこも編集。
-
-まだ、一般ユーザでもその他のデータを触れる状態なので、編集しないと。

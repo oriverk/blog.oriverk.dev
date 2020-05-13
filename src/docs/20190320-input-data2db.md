@@ -7,36 +7,23 @@ author: OriverK
 slide: false
 ---
 
-Qiita: [10日目(1)：マスターデータ（DBへ情報入力、ページに出力](https://qiita.com/OriverK/items/b7eae8f195d9d2111ea4)より
-
-[大学生データを扱った、前回の分はこちら](https://qiita.com/OriverK/items/80dc52ba9753f8bf6c82)
-
+from Qiita: 
+- [10日目(1)：マスターデータ（DBへ情報入力、ページに出力](https://qiita.com/OriverK/items/b7eae8f195d9d2111ea4)
 
 # 使用環境
-ホストOS: Windows10 Home
-仮想環境OS: Ubuntu Bento/Bionic
+仮想環境OS: Ubuntu 18.04
 Ruby：2.51
 Rails:5.2.2
 
 # テーブル同士の関連図
 ![マスターデータ関連.jpg](https://qiita-image-store.s3.amazonaws.com/0/294402/1f4d86a7-e127-dbd7-9dd1-b7101479f92a.jpeg)
 
-# 前回の流れ
-1. rails newからのScaffold
-2. Student, Subject, Club, ExamResult(中間）, ClubStudent(中間)テーブルの作成
-3. app/modelsで各テーブルの関連性定義
-4. 主キー側のテーブルへデータ入力
-
-# 今回の流れ
+# 流れ
 1. 中間テーブルにデータ入力
 2. 性別の0 or 1の表記を、male or femaleに変更
 3. Studentのshowページに、生徒ごとの試験結果等、データを出力
 
 # 実段階
-Studentsのshowページの、前回までの状態
-
-![マスターデータshowの最初.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/0911c472-4d57-d145-9c6d-41bdf8b8e66c.jpeg)
-
 ## 生徒データと関連付けするときは
 ```rb:
 student1 = Student.first
@@ -45,7 +32,6 @@ student1.save
 ```
 
 ## データ入力
-生徒の部活情報
 id1からid100までの生徒に、0から4個の部活(選択肢は13部)に入ってもらう。
 
 ```rb:
@@ -60,10 +46,8 @@ end
 
 生徒の試験結果情報
 id100までの生徒に、9科目の試験を受けてもらう。
-なお、点数は0点から各教科ごとに設定の最大点までのランダム
 
 ```rb
-
 (1..100).each do |i|
   student = Student.find(i)
   1.upto(9) do |num|
@@ -119,7 +103,6 @@ GROUP BY subjects.id, subjects.name
 ```
 
 ```sql:
-# 出力結果
 +--------+--------------+-----------+-------+-------+
 | name   | name         | name      | score | ratio |
 +--------+--------------+-----------+-------+-------+
@@ -146,25 +129,30 @@ GROUP BY subjects.id, subjects.name
 
 ### ページ上の出力
 #### students_controllerのshowアクション編集
+
 - 参照
   - [Active Record クエリインターフェイス](https://railsguides.jp/active_record_querying.html#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%8B%E3%82%89%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%99)
 
 ```rb:app/controllers/studetns_controller.rb
 def show
-    @students = Student.joins(:subjects)
-                       .select('students.name, students.email, students.age, students.gender, students.opinion, subjects.id as subject_id')
-                       .select('exam_results.name as exam_result_name, subjects.name as subject_name, exam_results.score')
-                       .select('CAST((exam_results.score / subjects.max_score) * 100 as unsigned) as ratio')
-                       .where(id: params[:id])
+    @students = 
+      Student.joins(:subjects)
+              .select('students.name, students.email, students.age, students.gender, students.opinion, subjects.id as subject_id')
+              .select('exam_results.name as exam_result_name, subjects.name as subject_name, exam_results.score')
+              .select('CAST((exam_results.score / subjects.max_score) * 100 as unsigned) as ratio')
+              .where(id: params[:id])
 
-    avg_result = Student.joins(:subjects)
-                        .select('subjects.id as subject_id')
-                        .select('CAST(AVG(exam_results.score) as unsigned) as avg_score')
-                        .select('MAX(exam_results.score) as max_score')
-                        .select('MIN(exam_results.score) as min_score')
-                        .group('subjects.id')
-                        .order('subjects.id')
+    avg_result = 
+      Student.joins(:subjects)
+              .select('subjects.id as subject_id')
+              .select('CAST(AVG(exam_results.score) as unsigned) as avg_score')
+              .select('MAX(exam_results.score) as max_score')
+              .select('MIN(exam_results.score) as min_score')
+              .group('subjects.id')
+              .order('subjects.id')
+
     @score_hash = {}
+
     avg_result.each do |avg_res|
       h = Hash.new
       h[:avg_score] = avg_res.avg_score
@@ -174,8 +162,9 @@ def show
     end
   end
 ```
+
 #### showページのviewを編集
-```erb:app/views/students/show.html.erb
+```rb:app/views/students/show.html.erb
 <table border="1">
   <tr>
     <th>科目名</th>
@@ -195,10 +184,3 @@ def show
   <% end %>
 </table>
 ```
-
-## ページ上の出力結果
-![studentのshowページ編集後.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/1f72f0ae-12a5-f5db-f0a1-4d68dbc67c1c.jpeg)
-
-毎回、コードを自分で考えるも結局自力で辿り着けず、
-今回のアウトプットもだか、上コードは講師が正解として出したもの。
-見れば、あ～となるけど、まだ自分でコーディングしきれない。

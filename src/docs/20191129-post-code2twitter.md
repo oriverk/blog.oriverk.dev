@@ -7,7 +7,8 @@ author: OriverK
 slide: false
 ---
 
-Qiita: [Twitterにコードを身えばよく投稿したい](https://qiita.com/OriverK/items/df41ec6b57b40a06a64d#comments) より
+from Qiita
+- [Twitterにコードを身えばよく投稿したい](https://qiita.com/OriverK/items/df41ec6b57b40a06a64d#comments)
 
 # きっかけ（こんな呟きを見かけた
 
@@ -27,12 +28,6 @@ Qiita: [Twitterにコードを身えばよく投稿したい](https://qiita.com/
 - JSの基礎（getElementByIdやsetAttribute、文字カウントなど
 - AWS S3の使い方
 - XSS対策
-
-# 未だ残る改修すべき箇所
-- 検索結果画面のリダイレクトエラー（多分route.rbの書き順番由来
-- js辺りのエラー（動いてるけど、consoleではjs/mapのルーティングが何とか
-- スマホで`<div>`タグ等を打つの面倒なので、なにか投稿補助ボタンでも
-- 本来の目的をよく考えたら、マークダウンの方は不要なのでは。
 
 # 作成要件
 ![Untitled.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/274118dc-c781-d053-e075-e0cb9dfe00f9.png)
@@ -63,10 +58,9 @@ rails new codr -d postgresql
 今回は公開にまで至る予定なので、railsやdeviseの日本語化等も。が、想定ユーザはエンジニアだしと思い、殆ど英語になった。
 
 ```rb:Gemfile
-gem 'mini_racer' # uncomment
-gem 'rails-i18n' # japanize
+gem 'mini_racer'
+gem 'rails-i18n'
 
-# authentication
 gem 'devise' # login
 gem 'omniauth' # SNS login
 gem 'omniauth-twitter' # twitter login
@@ -80,7 +74,9 @@ gem 'meta-tags'
 
 gem 'aws-sdk-s3' # for aws s3
 ```
-[kpumuk/meta-tags：Search Engine Optimization (SEO) for Ruby on Rails applications.](https://github.com/kpumuk/meta-tags)は割愛。
+
+参照:
+- [kpumuk/meta-tags：Search Engine Optimization (SEO) for Ruby on Rails applications.](https://github.com/kpumuk/meta-tags)
 
 ## gitignore => rails.credentials.yml
 当初は.`gitignore`と`gem 'dotenv'`等を使っていた。が、作成途中でRails5.2からの`rails.credentials.yml`を利用した。復号化には`/config/master.key`を利用。
@@ -181,7 +177,7 @@ end
 html_safeではXSS対策としては駄目と知った。名前詐欺である。
 [sanitizeヘルパーを使用した。ホワイトリスト方式。要参照](https://edgeapi.rubyonrails.org/classes/ActionView/Helpers/SanitizeHelper.html#method-i-sanitize)
 
-```erb:app/views/posts/index.html.erb
+```rb:app/views/posts/index.html.erb
 # sanitize(html, options = {})
  <div id="capture" class="content">
     <%= sanitize(markdown(@post.content), tags: %w(div img h1 h2 h3 h4 h5 strong em a p pre code ), attributes: %w(class href)) %>
@@ -262,7 +258,7 @@ jsはProgateレベルだったので、DOM操作は初めてで、なんか楽�
 2. `html2canvas.js`を`app/assets/javascripts`ディレクトリ配下に保存。
 3. html上に置くscriptコードを改修
 
-```erb:app/views/posts/show.html.erb
+```rb:app/views/posts/show.html.erb
 <%= form_with(model: @post, local: true) do |form| %>
   <%= form.hidden_field :id, value: @post.id %>
   <%= form.hidden_field :prtsc, value: "" %>　# idはpost_prtscになる。
@@ -270,7 +266,7 @@ jsはProgateレベルだったので、DOM操作は初めてで、なんか楽�
 <% end %>
 ```
 
-```erb:app/views/layouts/application.html.erb
+```rb:app/views/layouts/application.html.erb
 <script type="text/javascript">
   html2canvas(document.querySelector("#capture"),{scale:1, width:600}).then(canvas => {
     var base64 = canvas.toDataURL('image/jpeg', 1.0);
@@ -278,11 +274,11 @@ jsはProgateレベルだったので、DOM操作は初めてで、なんか楽�
  });
 </script>
 ```
-## Base64デコード
-- [参考：python-twitter で BASE64 形式の画像をツイートする](https://qiita.com/maguro_tuna/items/184f63e37f3724f18e33)
-- [参考２：base64でエンコードされた画像をActive Storageで保存する](https://qiita.com/ozin/items/5ec81a4b126b8ebf7a96)
 
-大学で画像処理していたとはいえ、　Base64とは？Blobとは？となり、良い機会だった。
+## Base64デコード
+- 参照
+  - [python-twitter で BASE64 形式の画像をツイートする](https://qiita.com/maguro_tuna/items/184f63e37f3724f18e33)
+  - [base64でエンコードされた画像をActive Storageで保存する](https://qiita.com/ozin/items/5ec81a4b126b8ebf7a96)
 
 ```rb:app/models/post.rb
 attr_accessor :img
@@ -299,16 +295,16 @@ def parse_base64(img)
   end
 end
 ```
+
 あとはposts_controllerで、paramsから受け取ったBase64データを上の`parse_base64(img)`で変換し、保存すれば完了。
 
 ## [AWS S3](https://aws.amazon.com/jp/s3/)
 AWS上での登録、設定、バケット作成等は割愛。
 
-
 ## [Tweet button](https://publish.twitter.com/#)
 公式で生成されるTweetボタンのURLを利用し、押下時にwindow.openでTweet投稿ページを開くようにした。rubyonrailsで用意した変数をjsに渡す`gem 'gon'`も考えたが、見送った。
 
-```erb:app/views/layouts/application.html.erb
+```rb:app/views/layouts/application.html.erb
 <script>
   var base = 'https://twitter.com/intent/tweet?url=';
   var pageUrl = 'https://codr0.herokuapp.com/posts/' + document.getElementById('post_id').value;
@@ -331,7 +327,7 @@ AWS上での登録、設定、バケット作成等は割愛。
 基本的にはどちらも、ActiveStorageに保存したデータのUrlを取得するメソッドの様だ。
 どちらもセキュリティの為にリンクの有効期限が短いみたいだが、違いが分からなかった。今回はTweetボタン押下し、Tweetした際にog:imageとして表示されればいい。
 
-```erb:app/views/posts/show.html.erb
+```rb:app/views/posts/show.html.erb
 # 画像がActive StorageでAWS S3に保存されて入れば
 <% if @post.prtsc.attached? %>
   <% set_meta_tags og:{image: @post.prtsc.service_url} %>
@@ -339,13 +335,12 @@ AWS上での登録、設定、バケット作成等は割愛。
 ```
 
 # Twitterログイン
-
 [TwitterDeveloperAccount](https://developer.twitter.com/content/developer-twitter/ja.html)が必要。割愛。
 
-- [参照：gem 'omniauth-twitter'　github](https://github.com/arunagw/omniauth-twitter)
-- [参考：[*Rails*] deviseの使い方（rails5版）](https://qiita.com/cigalecigales/items/f4274088f20832252374)
-
-なお、omniauthは脆弱性が見つかっており、githubの方でもアラートが来るのだが、パッチが無いのだが。[クックパッドの人が対処してくれたので、感謝したい。](https://github.com/cookpad/omniauth-rails_csrf_protection)
+- 参照
+  - [gem 'omniauth-twitter'　github](https://github.com/arunagw/omniauth-twitter)
+  - [[*Rails*] deviseの使い方（rails5版）](https://qiita.com/cigalecigales/items/f4274088f20832252374)
+  - [ominiauth脆弱性に対するクックパドによるパッチ]](https://github.com/cookpad/omniauth-rails_csrf_protection)
 
 ```rb:app/models/user.rb
 # 参考ページと同じ基礎的な所は割愛する。
@@ -381,10 +376,8 @@ class User < ApplicationRecord
   end
 end
 ```
-Twitterのニックネームが取得できるようになったので、元からあるUserのnameテーブルは削除した。
 
-# css
-今回はBootstrapを部分的に使用した。cssの優先順位など収穫があった。
+Twitterのニックネームが取得できるようになったので、元からあるUserのnameテーブルは削除した。
 
 # 改修(加筆
 ## メディアクエリ
@@ -407,6 +400,5 @@ $tab: 680px;
 ```
 
 # 最後に
-gist等がコードスクショをog:imageで表示してくれたら全て済むんじゃと思った。
-因みにもう1段階先のWebアプリを考えてあるけど、たぶんjsの知識が足りないので、今は無理。
+gist等がコードスクショをog:imageで表示してくれたら全て済むのでは
 

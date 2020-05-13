@@ -74,12 +74,10 @@ DB上では1つのカラムに複数のデータは入れることが出来な�
 | 4  | 5  |
 
 実際にDBで触るときは、生徒テーブルと中間テーブルをJOINし、さらに中間テーブルと部活テーブルをJOINする
-実際のデータいじりは、明日分のアウトプットにて。
-
 
 # 使うデータ
-- データベース:univ
-- 生徒テーブル：students
+- データベース: univ
+- 生徒テーブル: students
     - name, grade, email, age, gender, others, created_at, updated_at
 - 試験結果テーブル: exam_results
     - name, student_id, score, max_score, created_at, updated_at
@@ -114,7 +112,7 @@ updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 - シングルクォート：データの文字列に使う
 
 **但し、バッククォートは必須ではない**
-バッククォートよって、テーブル名やカラム名で使用できないように指定されている予約語（Reserved Words）を使えるようにできる。が使わない方が良い。
+バッククォートよって、テーブル名やカラム名で使用できないように指定されている予約語（Reserved Words）を使えるようにできる。が、使わない方が良い。
 参照：[phpMyAdminのSQLに付加される「'」に似た記号「`」は何？](https://php1st.com/1184/)
 
 ### PRIMARY KEY、AUTO_INCREMENT
@@ -296,21 +294,21 @@ ON students.id = exam_results.student_id;
 ## データ削除
 ### テーブル情報の削除
 ```sql:mysql
-# DELETE FROM テーブル名 WHERE 条件;
+DELETE FROM テーブル名 WHERE 条件;
 DELETE FROM students;
 DELETE FROM exam_results;
 ```
 
 ### テーブルの削除
 ```sql:mysql
-# DROP TABLE テーブル名;
+DROP TABLE テーブル名;
 DROP TABLE students;
 DROP TABLE exam_results;
 ```
 
 ### データベースの削除
 ```sql:mysql
-# DROP DATABASE データベース名;
+DROP DATABASE データベース名;
 DROP DATABASE univ;
 ```
 

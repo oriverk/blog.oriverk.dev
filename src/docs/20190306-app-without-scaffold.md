@@ -15,74 +15,19 @@ from Qiita:
 
 　　　　　　　　 
 # 使用環境
-- ホストOS: Windows10 home
-- 仮想環境OS: Ubuntu Bento/Bionic
+- 仮想環境OS: Ubuntu 18.04
 - Ruby：2.51
   - Rails:5.2.2
-- エディタ: VSCode + nano
 
-# Scaffoldを用いたページ作成
-最初にScaffoldを利用して掲示板を作ってみる
 
-## Scaffoldとは
-使用するデータの型などを指定して、作りたいものの土台(アプリケーションの雛形）を作成。
-*Scaffoldは英で足場の意で、個人的には初段階用の便利簡単即席ツールという認識。
-
-##　まずrails newあたりから、rails serverまで。
-```sh:terminal
-rails new sample -d mysql
-cd sample
-```
-
-作成されたGemfileを開き、中の`mini-racer`をコメントアウトし、`bundle install`
-
-```yml:config/database.yml
-# passwordを書き込む。
-rails db:create
-# database.ymlを読み込み，これに基づいてデータベースを作成
-```
-
-`rails server`でサーバーを立ち上げる
-
-## Scaffold使用段階
-```sh:terminal
-rails generate model User name:string email:string sex:integer age:integer address:integer attendance:integer opinion:text
-# rails generate scaffold (コントローラ名/モデル名) カラム名1:データ型1 カラム名2:データ型 2 …
-
-rails db:migrate
-```
-
+# hoge（割愛
+## rails db:migrate
 >Railsドキュメントより(http://railsdoc.com/references/rake%20db:migrate)
 >>rails db:migrateを実行
 >>schema_migrationsテーブルを調べ、存在しなければ作成
 >>db/migrateディレクトリ内のすべてのマイグレーションファイルを調べる
 >>データベースの現在のバージョンと異なるバージョンがあった場合、データベースに適応
 >>schema_migrationsテーブルの更新
-
-この状態で、rails sで立ち上げ、localhost:3000/usersに接続し、データ入力しようとすると、
-
-![dc16e3b0540b67f8e5999a15dde5ad82.jpg](https://qiita-image-store.s3.amazonaws.com/0/294402/e5e0fca3-7a91-c3bf-809b-8d87535916e6.jpeg)
-
-のように、integer型で指定したカラムに±∞の数値を入力できてしまう。
-そこで
-
-```rb:app/models/user.rb
-class User < ApplicationRecord  
-  enum sex: { male: 0, female: 1 }
-end
-```
-
-```rb:app/views/users/_form.html.erb
-# ラジオボタンに変更
-<div class"field">
-<%= form.label :sex %>
-<%= form.radio_button :sex, 'male' %>男性
-<%= form.radio_button :sex, 'female' %>女性
-</div>
-```
-
-とすると、性別がラジオボタンとなり、意図したデータ入力ができる。
-その他のカラムも同様にラジオボタンに変更するなり出来る。
 
 ---
 # 3日目
@@ -116,24 +61,7 @@ modelはデータベース情報が必要な時だけ使用.今回は必要で�
 rails generate controller Users
 ```
 
-```sh
-# rails routes
-
- Prefix Verb URI Pattern                                                                              Controller#Action
-       rails_service_blob GET  /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
-rails_blob_representation GET  /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
-       rails_disk_service GET  /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
-update_rails_disk_service PUT  /rails/active_storage/disk/:encoded_token(.:format)                                      active_storage/disk#update
-     rails_direct_uploads POST /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
-```
-
-となる。また、`rails server`を行うと、
-
-![routing_error.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/a646ba25-39f5-193d-0a98-0506b83d78f8.jpeg)
-
-これは、routingを未だ設定していない為。
 ### routingの設定：ブラウザとコントローラをつなぐ
-
 ```rb:config/routes.rb
 Rails.application.routes.draw do
   get 'users', action: :index, controller: 'users'
@@ -143,14 +71,11 @@ end
 ```sh:
 # rails routes
 
-Prefix Verb URI Pattern                                                                              Controller#Action
-users GET  /users(.:format) 　 #追加された行                                                                       users#index   　　　　　　　　　#追加された行
-2行が追加
+Prefix Verb URI Pattern
+Controller#Action
+users GET  /users(.:format) 　 #追加された行
+users#index   　　　　　　　　　#追加された行
 ```
-
-`rails s`で確認
-
-![unknown_action.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/2cb463ca-c50b-81ad-ceb4-707dfc9c1c72.jpeg)
 
 ### controller：modelとviewをつなぐ
 ```rb:app/controllers/users_controller.rb
@@ -167,16 +92,6 @@ end
 上controller編集時に用いた、renderメソッドは実際に画面に表示される内容を生成する。今回のrenderのplainオプションを指定すると、文字列を直接表示できる。
 **Railsのcontrollerでrenderを省略すると、代わりにapp/views/コントローラ名/アクション名.html.erbを用いる**
 =>ということはcontroller作成コマンドは `rails g controller コントローラ名　アクション名`
-
-### 明日以降やると思われること=Model、View
-- model
-    - データベースを操作する。
-    - app/models下に配置される
-    - データベースに含まれるテーブル毎に用意され、データの登録・取得・更新・削除などを行う
-    
-- view
-    - app/views/users/に配置され、ファイル拡張子はhtml.erb
-    - viewの中身がブラウザに表示される内容。編集すると表示内容を変更することができる。
 
 ## 参考
 - 参照
@@ -270,30 +185,13 @@ mysql> SELECT * FROM users;
 +----+------+---------------+------+------+---------+------------+---------+---------------------+---------------------+
 ```
 
-## rails consoleからレコードを確認
-```rb:
-# MySQLの外、Rails Console上でレコード確認
-# すべてのレコードを取得
-User.all
-# 表示結果
-irb(main):001:0> User.all
-   (0.2ms)  SET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483
-  User Load (0.3ms)  SELECT  `users`.* FROM `users` LIMIT 11
-=> #<ActiveRecord::Relation [#<User id: 1, name: "foo", email: "foo@gmail.com", sex: 1, age: 23, address: 2, attendance: 0, opinion: "foooo", created_at: "2017-04-04 04:44:44", updated_at: "2018-04-04 04:44:44">]>
-```
-
 ## `rails console`側から新たにレコードを追加する。
 ```rb:
-irb(main):002:0> user = User.create(name: "taro", email: "val@gmail.com", sex: 0, address: 1, attendance: 1, opinion: 'nothing special')
-   (0.1ms)  BEGIN
-user.save  User Create (2.6ms)  INSERT INTO `users` (`name`, `email`, `sex`, `address`, `attendance`, `opinion`, `created_at`, `updated_at`) VALUES ('taro', 'val@gmail.com', 0, 1, 1, 'nothing special', '2019-03-07 13:18:53', '2019-03-07 13:18:53')
-   (3.8ms)  COMMIT
-=> #<User id: 2, name: "taro", email: "val@gmail.com", sex: 0, age: nil, address: 1, attendance: 1, opinion: "nothing special", created_at: "2019-03-07 13:18:53", updated_at: "2019-03-07 13:18:53">
-irb(main):003:0> user.save
-   (0.5ms)  BEGIN
-   (0.2ms)  COMMIT
-=> true
+user = User.create(name: "taro", email: "val@gmail.com", sex: 0, address: 1, attendance: 1, opinion: 'nothing special')
+
 #user.saveでDBに保存する
+user.save
+# => true
 ```
 
 ## Rails Console上でレコード取得コマンド
@@ -364,11 +262,7 @@ end
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CebuApp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    # 割愛
   </head>
   <body>
     <%= yield %>
@@ -423,12 +317,6 @@ end
 
 ![name-ga-link-ni.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/ac09780d-212e-b0b3-c2e0-393cf99049ab.jpeg)
 
-さらに、fooさんのname部分のリンクにアクセスすると、
-
-![showaction-ga-missing.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/fdd404d4-d4eb-926a-a3fc-b67729dc02af.jpeg)
-
-まだ、showアクションを定義していなかった。
-
 ## showアクション
 - users_pathはusers#indexへのリンク
 - new_user_pathはusers#newへのリンク
@@ -445,45 +333,18 @@ end
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
-<p>
-  <strong>Sex:</strong>
-  <%= @user.sex %>
-</p>
-<p>
-  <strong>Age:</strong>
-  <%= @user.age %>
-</p>
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
-<p>
-  <strong>Attendance:</strong>
-  <%= @user.attendance %>
-</p>
-<p>
-  <strong>Opinion:</strong>
-  <%= @user.opinion %>
-</p>
+# 割愛
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
 ```
 
-## showアクションの定義
+## show, edit アクションの定義
 ```rb:app/controllers/users_controller.rb
 def show
-    @user = User.find params[:id]
-  end
-```
+  @user = User.find params[:id]
+end
 
-nameリンクにアクセスできるようになった
-
-![showアクション.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/d7f4a8b2-527f-fdbb-5940-6ab40a50be63.jpeg)
-
-しかし、まだeditアクションを定義してないので、editリンクにアクセスしても、『UsersController#edit is missing a template』エラーが出るだろう。(そろそろ、エラーのパターンが見えてくる）
-
-## editアクションの定義
-```rb:app/controllers/users_controller.rb
 def edit
   @user = User.find(params[:id])
 end
@@ -513,36 +374,9 @@ end
     <%= form.label :sex %>
     <%= form.number_field :sex %>
   </div>
-  <div class="field">
-    <%= form.label :age %>
-    <%= form.number_field :age %>
-  </div>
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.number_field :address %>
-  </div>
-  <div class="field">
-    <%= form.label :attendance %>
-    <%= form.number_field :attendance %>
-  </div>
-  <div class="field">
-    <%= form.label :opinion %>
-    <%= form.text_area :opinion %>
-  </div>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  # 割愛
 <% end %>
 ```
-
-ここで、`rails s`すると、
-
-![editacton-make.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/aaaad782-116e-410f-8928-97069b47f8e8.jpeg)
-
-ようやく、editページが表示された。
-だが、しかし、updateアクションをまだ定義していないので、updateを押すと
-
-![no-update-aciton-error.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/d94c279b-4a89-0d9a-ad35-9075b21af67b.jpeg)
 
 # 追加：2日目を参考にし、表示を触ってみる。
 性別の値0or1を男性or女性で表示させる。
@@ -567,13 +401,10 @@ end
 </div>
 ```
 
-![seibetu-radiobutton.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/cd6cbebc-2c61-fa66-157b-90f30ae52be3.jpeg)
-
 同様に、年齢、住所、参加不参加もラジオボタンにしておく。
 
 ![性別住所参加をラジオ化.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/1d044efe-e23c-1967-de5c-132f800b42ad.jpeg)
 
-fooさんが『23歳』なのは都合が悪いかったので、0に書き換える。
 
 ```rb:console
 # レコードの中から、nameがfooであるユーザ情報を取得
@@ -656,29 +487,8 @@ end
     <%= form.label :email %>
     <%= form.text_field :email %>
   </div>
-  <div class="field">
-    <%= form.label :sex %>
-    <%= form.number_field :sex %>
-  </div>
-  <div class="field">
-    <%= form.label :age %>
-    <%= form.number_field :age %>
-  </div>
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.number_field :address %>
-  </div>
-  <div class="field">
-    <%= form.label :attendance %>
-    <%= form.number_field :attendance %>
-  </div>
-  <div class="field">
-    <%= form.label :opinion %>
-    <%= form.text_area :opinion %>
-  <div>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  # 割愛
+  
 <% end %>
 <%= link_to 'Back', users_path %>
 ```

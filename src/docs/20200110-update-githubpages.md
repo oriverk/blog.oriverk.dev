@@ -9,14 +9,10 @@ permalink: blog/:title
 <!-- # {{ page.title }}
 <span>{% include svg/tag.svg %}{% for tag in site.tags %}{{ tag[0] }},&nbsp;{% endfor %}&nbsp;Updated at&nbsp;{{ "now" | date: "%Y.%m.%d" }}</span> -->
 
-まず始めに、改修後のデザイン(色)は完全に自分好みに仕上げた。
-
-- ダークテーマ（目に優しい
-- 青と黒
-- モバイルファーストスタイル
-
 ## 改修内容
 - デザインの変更
+  - dark theme
+  - mobile first
 	- Bootstrapの排除
 - Posts.indexページの追加
 - Post.showページの追加
@@ -64,6 +60,7 @@ _config.yml
 markdown: kramdown
 highlighter: rouge
 ```
+
 この場合だと通常通りの`highlight`と`endhighlight`を用いるが、Qiitaの様なコードブロックの記法にしたかったので、kramdownのオプション等を指定した。(下)
 
 ```yml
@@ -79,8 +76,4 @@ highlighter: rouge
 
 ## 改修予定
 - IE, Edge対応（IE対応は見送りました。)
-  - picture属性、svg属性など
-  - 他全部
-- Postページの運用方法を考える
-  - Qiitaに投稿するのか、こちらに書くか、別にはてぶを用意するのか。
 - AMPの導入。興味があるだけ

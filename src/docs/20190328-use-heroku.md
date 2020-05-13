@@ -7,7 +7,8 @@ author: OriverK
 slide: false
 ---
 
-Qiita: [15日目：アプリをネットに公開したく、Herokuを使ってみた。](https://qiita.com/OriverK/items/03c39ffbccb13c653d92) より
+from Qiita: 
+- [15日目：アプリをネットに公開したく、Herokuを使ってみた。](https://qiita.com/OriverK/items/03c39ffbccb13c653d92)
 
 Rails製アプリをネットにあげるため、Herokuを使ってみた。
 Herokuとは、PaaSお呼ばれるサービス。
@@ -21,8 +22,7 @@ Herokuとは、PaaSお呼ばれるサービス。
 要はネットアプリ作成の開発環境に必要なものを揃えてくれてるもの。
  
 # 使用環境
-- ホストOS: Windows10 Home
-- 仮想環境: Ubuntu Bento/Bionic
+- 仮想環境: Ubuntu 18.04
 - Ruby：2.51
 - Rails: 5.2.2
     - gem ：'devise'（ログイン等の機能用）、'kaminari' （ページネーション）
@@ -51,10 +51,9 @@ heroku: Waiting for login...
 Logging in... done
 Logged in as me@example.com
 ```
-ローカルのプロジェクトディレクトリに移動
 
-# アプリをHerokuへデプロイ
-## アプリのソースコードを受け取るHerokuを準備する
+## アプリをHerokuへデプロイ
+アプリのソースコードを受け取るHerokuを準備する
 
 ```sh:terminal
 heroku create
@@ -64,40 +63,27 @@ http://polar-inlet-4930.herokuapp.com/ | https://git.heroku.com/polar-inlet-4930
 Git remote heroku added
 ```
 
-この時、herokuにより自動でgit remoteが生成され、local git repositoryと紐付けられる。
-
-## コードをデプロイする。
 ```sh:terminal
 git add .
 git commit -m "init"
 git push heroku master
 ```
 
-## Herokuでマイグレーションを行う
 ```sh:terminal
 heroku run rails db:migrate
 ```
 
-# Herokuのその他コマンド
-## Heroku上にデータを追加する
-まず、git push heroku masterしてもローカルにあるデータはアップロードされない。なので、Herokuと連携させたコンソールで入力しないといけない。
-
+## Herokuのその他コマンド
 ```sh:terminal
+# Heroku上にデータを追加する
 heroku run rails console
-```
-コンソールでのデータ入力は、ローカル環境用と同じ。
 
-## 操作ログを見る
-```sh:terminal
+# 操作ログを見る
 heroku logs --tail
-```
-## Heroku上のファイルの詳細を見る
-```sh:terminal
+
+# Heroku上のファイルの詳細を見る
 heroku "ls -l"
-```
-## Heroku上のアプリのURLとその他を確認
-```sh:terminal
+
+# Heroku上のアプリのURLとその他を確認
 heroku info
 ```
-
-授業のRubyonRails製のサイトをアップロードした。

@@ -6,11 +6,12 @@ tags: Gist DB PostgreSQL MySQL
 author: oriverk
 ---
 
-from Gist: [oriverk/InstallDB2Ubuntu.md ](https://gist.github.com/oriverk/aa5ded308dfb5e143e388a74915e2093)
+from Gist: 
+- [oriverk/InstallDB2Ubuntu.md ](https://gist.github.com/oriverk/aa5ded308dfb5e143e388a74915e2093)
 
 # Install DB
 ## PostgreSQL
-```
+```sh
 sudo apt install postgresql libpq-dev
 
 # set postgreSQL
@@ -19,18 +20,20 @@ sudo -u postgres createuser admin -s
 # login postgresql with admin
 sudo -u postgres psql
 ```
-```
+
+```sql
 # in postgresql
 \password admin
 \q
 ```
-```
+
+```sh
 # login posgresql
 rails dbconsole
 ```
 
 ### update psql upto 12.0 for ubuntu18.04
-```
+```sh
 # add repositry
 ## make /etc/apt/sources.list.d/pgdg.list
 ## write repositry
@@ -54,19 +57,20 @@ psql
 ```
 
 ## MySQL
-```
+```sh
 sudo apt -y install mysql-server libmysqlclient-dev
 # set password
 sudo mysql_secure_installation
 ```
-```
+
+```sql
 # inner mysql
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'TegetegePassword';
 flush privileges;
 ```
 
 ## Heroku
-```
+```sh
 sudo snap install heroku --classic
 heroku login --interactive
 ```

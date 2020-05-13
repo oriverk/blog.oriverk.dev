@@ -7,10 +7,10 @@ author: OriverK
 slide: false
 ---
 
-Qiita: [1日目 LinuxとShellscriptとPermission](https://qiita.com/OriverK/items/23509ae58fc0b4cbf462) より
+from 
+- Qiita: [1日目 LinuxとShellscriptとPermission](https://qiita.com/OriverK/items/23509ae58fc0b4cbf462)
 
 # Linux
-
 ## メイン課題
 1. ディレクトリ1を作成
 2. ディレクトリ1の中にファイル1を作成
@@ -18,17 +18,14 @@ Qiita: [1日目 LinuxとShellscriptとPermission](https://qiita.com/OriverK/item
 4. ディレクトリ2の中にディレクトリ3を作成
 5. ディレクトリ1をディレクトリ3の中に移動
 
-なお、ディレクトリ1/2/3をdir1/2/3、ファイル1をfile1とした。
-最終的に簡潔になったコード。
-
 ```sh:terminal
 mkdir dir1
 touch dir1/file1
 mkdir -p dir2/dir3
 mv dir1 dir2/dir3
 ```
-### コマンドのオプションが分からなくなった時
 
+## コマンドのオプションが分からなくなった時
 ```sh:terminal
 man コマンド名
 ```
@@ -74,7 +71,7 @@ mv dir1 dir2/dir3
 ```
 
 1行目は『シバン』と呼ばれ、UNIXのスクリプトの`#!` から始まる1行目を指す。起動してスクリプトを読み込むインタプリタを指定する。
-インタプリタ（interpreter）とは、プログラミング言語で書かれたソースコードないし中間表現を逐次解釈しながら実行（英語版）するプログラムのこと。(※よくわからなかったので、あとで調べる）
+インタプリタ（interpreter）とは、プログラミング言語で書かれたソースコードないし中間表現を逐次解釈しながら実行（英語版）するプログラムのこと。
 
 このtest.shを活用することで、先の課題を自動的に行うことができる。
 
@@ -83,8 +80,7 @@ mv dir1 dir2/dir3
 ./test.sh
 ```
 
-#　Permission
-まず、先のtest.shに対する権限を確認。
+# Permission
 
 ```sh:terminal
 ls -la test.sh
@@ -114,7 +110,7 @@ r-xr--r--    =>  544
 #すべてのユーザーに書き込み権限と読込権限を与える。
 chmod 666 test.sh
 ```
-# PermissionとPermitの違い（※プログラムはPermission
+## PermissionとPermitの違い（※プログラムはPermission
 どちらも名詞で『許可』を意味するが、ニュアンスが違う。
 日本語で説明するとズレるので、英英辞典で確認したい。
 あと、Permissionのスペル注意。

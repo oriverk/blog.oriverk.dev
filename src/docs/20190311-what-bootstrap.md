@@ -11,8 +11,7 @@ from Qiita
 - [5日目：Bootstrapを初めて触ってみた](https://qiita.com/OriverK/items/7cff4e36a2d19759cccb)
 
 # 使用環境
-ホストOS: Windows10 Home
-仮想環境OS: Ubuntu Bento/Bionic
+仮想環境OS: Ubuntu 18.04
 ruby 2.5.1p57
 Rails 5.2.2
 MySQL
@@ -65,11 +64,6 @@ show table;
 end
 ```
 
-## `rails s`で一応確認
-太郎100人兄弟入ってる。
-
-![buto1.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/acbaff5f-7a12-7e7d-d3ce-af7e4f1142f7.jpeg)
-
 # Bootstrapで見栄え修正
 ## ButostrapのCSSの読み込み
 参照
@@ -87,8 +81,6 @@ end
 
 リンクが青くなった。
 
-![buto2.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/640313b9-b4bf-095e-9f93-696099a3eade.jpeg)
-
 ## indexページのNewUserボタンの変更
 ```rb:app/views/users/index.html.erb
 # 元のコード
@@ -100,7 +92,8 @@ end
 同様にshow、edit、destroyボタンも変更
 
 ## tableの見栄えも変更
-参照：[bootstrap table](https://getbootstrap.com/docs/4.3/content/tables/)
+参照：
+- [bootstrap table](https://getbootstrap.com/docs/4.3/content/tables/)
 
 ```rb:app/views/layouts/application.html.erb
 # 元のコード
@@ -109,11 +102,8 @@ end
 <table class="table table-hover table-dark">
 ```
 
-NewUserボタンをblockに、テーブルを黒くし、ホバリングで色が変わるようにみた。、修正しようと思えば、いくらでもなので、indexページだけにしておく（白地も気にしない）
-
 ![buto4.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/4091e819-a755-2bea-bd3c-e012e5c9ace1.jpeg)
 
-Bootstrapが、こんなに簡単だとは思いもしなかった。
 
 # jsファイルの挿入部分を考える
 ## 授業の中で言われたこと

@@ -218,58 +218,46 @@ githubに上げて完了。
 
 1. `_include/twitter-card.html`を作成
 
-```_include/twitter-card.html
-<!-- Twitter cards -->
+```html:_include/twitter-card.html
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@not_you_die"/>
 <!-- <meta name="twitter:creator" content="@{{ page.author }}"/> -->
 <meta name="twitter:title" content="{{ page.title }}"/>
 
 {% if page.summary %}
-<meta name="twitter:description" content="{{ page.summary }}"/>
+  <meta name="twitter:description" content="{{ page.summary }}"/>
 {% else %}
-<meta name="twitter:description" content="{{ site.description }}"/>
+  <meta name="twitter:description" content="{{ site.description }}"/>
 {% endif %}
 
 {% if page.image %}
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="{{ site.url }}{{ page.image }}"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image" content="{{ site.url }}{{ page.image }}"/>
 {% else %}
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:image" content="{{ site.title_image }}"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:image" content="{{ site.title_image }}"/>
 {% endif %}
-<!-- end of Twitter cards -->
 ```
-2．`_include/head.html`内に書き加える
 
-```_include/head.html
+2. `_include/head.html`内に書き加える
+
+```html:_include/head.html
 <head>
-<!-- Twitter card-->
     {% include twitter-card.html %}
 </haed>
 ```
 
-3．gitにpushし、[Twitter Card Validator](https://cards-dev.twitter.com/validator) で確認
+3. gitにpushし、[Twitter Card Validator](https://cards-dev.twitter.com/validator) で確認
 
 ## sidebar-nav-link
 ![キャプチャ.JPG](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/1e635242-b348-25b4-d29d-063294b06bf6.jpeg)
+
 こんな感じで、サイドバーにnavlink付け足したい。
 
 ## svgファイルの最適化
-順序的には下の文字コードエラーの後なのだが、まあ。
 SVGファイルの最適化を、vscodeの拡張機能[svgo](https://marketplace.visualstudio.com/items?itemName=1000ch.svgo)を利用して行った。
 
-使い方は、書いてある通り。
-長々と数行に渡って記述されていたsvgファイルから余計なタグが取り払われ、1行コードになってた。
-
-```wantedly.svg
-# ※wantedly公式ダウンロードサイトからDLしたものを最適化した。DLリンクはエラー↓の文字コードの所。
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900"><path fill="#fff" d="M100 208.6h100l150 362.1L400 450 300 208.6h100l50 120.7 50-120.7h100L500 450l50 120.7 150-362.1h100L600 691.4H500l-50-120.7-50 120.7H300z"/></svg>
-```
-
 # デザインを大幅修正した件
-前のは自分好みのデザインではあったが、PCファーストで訪問者的にはよろしくなかった。
 
 - 改修方針
   - モバイルファースト
@@ -277,14 +265,13 @@ SVGファイルの最適化を、vscodeの拡張機能[svgo](https://marketplace
   - サイズ指定にpxを極力使わず、remや％を使う
 
 ## 実作業
-GithubPages公開にはマスターブランチしか使えない。ので、ブランチを作成して、そこで作業する。
 
-```terminal:
+```sh
 git branch changeDesign
 git checkout changeDesign
 ```
+
 ### `Gemfile`と`_config.yml`から不要なものを削除
-今回は外部テーマを使わないので、外部テーマのgem類は要らない。削除した結果↓
 
 ```rb:Gemfile
 source 'https://rubygems.org'
@@ -304,7 +291,6 @@ end
 gem 'wdm', '~> 0.1.0', install_if: Gem.win_platform?
 gem 'jekyll-coffeescript'
 ```
-`_config.yml`は割愛。今回はpaginationも削除した。
 
 ### 最低限必要なディレクトリ構造を考える
 自分でデザインを構成するには、jekyllとliquidで出来る事を理解する必要があった。
@@ -334,7 +320,6 @@ gem 'jekyll-coffeescript'
 ```
 
 ### スクロール関連の変更
-サイトコンテンツが画面高を超えると、右端にスクロールバーが現れ、背景画像サイズが変わるのがいやっだ。あと、スクロールしても背景画像は動かないようにした。なお、背景画像はbodyにcssで指定。
 
 ```scss:_layout.scss
 body{

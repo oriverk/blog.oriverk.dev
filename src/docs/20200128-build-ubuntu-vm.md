@@ -6,19 +6,19 @@ tags: VM Linux Ubuntu
 author: oriverk
 ---
 
-from Gist: [ oriverk/buildVMwithUbuntu.md](https://gist.github.com/oriverk/34a82751aa11ea19d5b74a0a442cfa2f)
+from Gist: 
+- [ oriverk/buildVMwithUbuntu.md](https://gist.github.com/oriverk/34a82751aa11ea19d5b74a0a442cfa2f)
 
-# how to
+# how to build CUI
 ## vagrant init
-
-```
+```sh
 mkdir -p vm/MyVagrant/hogehoge
 cd hogehoge
 vagrant init
 ```
-## add or modify file "Vagrantfile" in hogehoge directory (↓
 
-```
+## add or modify file "Vagrantfile" in hogehoge directory (↓
+```rb
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
@@ -95,7 +95,7 @@ end
 ```
 
 ## lastly
-```
+```sh
 vagrant up
 vagrant global-status
 # for WSL@ setting information
@@ -104,13 +104,13 @@ vagrant ssh
 ```
 
 ## Inner SSH
-```
+```sh
 sudo apt update
 # If build Desktop ver
 sudo apt install ubuntu-desktop
 ```
 ## Change locale and timezone
-```
+```sh
 # change locale to ja_JP.utf-8
 # make japanize environmet
 sudo locale-gen ja_JP.UTF-8
@@ -125,3 +125,62 @@ sudo timedatectl set-timezone Asia/Tokyo
 # confirm
 date
 # => 2019年  1月 30日 水曜日 14:49:48 JST
+
+# GUI版の構築
+GUI版を構築する際はVagrantfileの編集から少し異なる。
+
+```rb:Vagrantfile
+# 編集後
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/ubuntu-18.04"
+  config.vm.network "private_network", ip: "192.168.33.10"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.gui = true
+    vb.memory = "8192"　# RAMを使える量を変更
+    # cpu の数
+    vb.cpus = 4
+    vb.customize [
+      "modifyvm", :id,
+      "--vram", "256", # ビデオメモリ確保（フルスクリーンモードにするため
+      "--clipboard", "bidirectional", # クリップボードの共有
+      "--accelerate3d", "on",
+      "--hwvirtex", "on",
+      "--nestedpaging", "on",
+      "--largepages", "on",
+      "--ioapic", "on",
+      "--pae", "on",
+      "--paravirtprovider", "kvm",
+    ]
+   end
+end
+```
+
+仮想環境の立ち上げ
+
+```sh:terminal
+vagrant up
+```
+
+SSH接続、パッケージ更新
+
+```sh:terminal
+vagrant ssh
+
+sudo apt update
+sudo apt upgrade
+```
+
+Ubuntuデスクトップ版(GUI)をインストールする
+ここで、非常に時間が掛かるので注意
+
+```sh:terminal
+sudo apt install ubuntu-desktop
+```
+
+完
+
+![キャプチャ.JPG](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/6b1609c1-da18-c152-2673-31adb417b31b.jpeg)
+
+
+

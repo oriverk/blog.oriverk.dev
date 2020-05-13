@@ -1,6 +1,6 @@
 ---
 date: '2020-01-06'
-title: confirm font-size and design
+title: フォントサイズの確認
 categories: [blog]
 tags: 
 ---
