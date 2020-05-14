@@ -40,27 +40,37 @@ export default function Post({ postData }) {
         a{
           color: #F48FB1;
         }
+        code{
+          display: inline-block;
+          margin: 0 1rem;
+          background-color: #555;
+        }
         pre{
+          border: .8px solid grey;
+          border-radius: 0.25rem;
+          display: block;
+          white-space: pre;
+          background-color: #272c34;
+         
+          width: 100%;
+          max-width: 1000px;
+          margin-bottom: 2rem;
+          padding: 1rem;
+          overflow: auto;
+        }
+        pre code{
+          background-color: #272c34;
           color: white;
           font-size: 1rem;
           font-weight: 400;
           word-break: break-word;
           line-height: 1.5;
-          overflow: auto;
-
-          border-radius: 0.25rem;
-          display: block;
-          white-space: pre;
-          background-color: #272c34;
-          max-height: 1000px;
-          max-width: 800px;
-          margin-bottom: 2rem;
-          padding: 1rem;
         }
         source, img{
           display: block;
           margin: 2rem auto;
           background-color: #424242;
+          width: 95%;
         }
       `}</style>
       <style jsx>{`

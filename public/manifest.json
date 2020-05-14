@@ -2,7 +2,7 @@
   "name":"Kawano Yudai's website",
   "short_name":"Yudai's site",
   "start_url": "/",
-  "display":"minimal-ui",
+  "display":"standalone",
   "background_color":"#212121",
   "theme_color":"#212121",
   "description": "Kawano Yudai Portfolio",

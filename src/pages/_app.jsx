@@ -34,6 +34,17 @@ export default function MyApp(props) {
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>
+      <style jsx global>{`
+        ::-webkit-scrollbar {
+          width: 0;
+          height: .5rem;
+        }
+        /*スクロールバーの動く部分*/
+        ::-webkit-scrollbar-thumb {
+          background-color: rgb(128, 128, 128);
+          border-radius: .3rem;
+        }
+      `}</style>
     </React.Fragment>
   )
 }
