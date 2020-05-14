@@ -20,8 +20,8 @@ from Qiita
 - [GithubPage](https://oriverk.github.io/)
 
 <picture>
-  <source srcSet="/assets/posts/201911/twitter1.webp" type="image/webp">
-  <img src="/assets/posts/201911/twitter1.jpg" alt="post code on twitter">
+  <source srcSet="/assets/codr700.webp" type="image/webp" className={classes.contentImg} />
+  <img src="/assets/codr700.jpg" alt="screen-shot from this webpage" className={classes.contentImg} />
 </picture>
 
 # 作成の過程で収穫物

@@ -17,8 +17,6 @@ import TwitterIcon from '@material-ui/icons/Twitter'
 import QiitaIcon from '../utils/qiitaSvg'
 import WantedlyIcon from '../utils/wantedlySvg'
 
-import Copyright from '../utils/Copyright'
-
 const drawerWidth = 250
 
 const useStyles = makeStyles({
@@ -42,7 +40,7 @@ export default function MyDrawerList({children}) {
       <List>
         <div className={classes.profileImgContainer}>
           <picture>
-            <source srcSet="/favicon/android-chrome-192x192.webp" type="image/webp" className={classes.profileImg} />
+            <source srcSet="/assets/wheel192.webp" type="image/webp" className={classes.profileImg} />
             <img src="/assets/wheel192.png" alt="avatar" className={classes.profileImg} />
           </picture>
         </div>
@@ -89,8 +87,6 @@ export default function MyDrawerList({children}) {
         <IconButton href="https://www.linkedin.com/in/yudai-k/" target="_blank" rel="noopener noreferrer" color="secondary"><LinkedInIcon /></IconButton>
         <IconButton href="https://twitter.com/not_you_die" target="_blank" rel="noopener noreferrer" color="secondary"><TwitterIcon /></IconButton>
       </div>
-      <Divider />
-      <Copyright />
     </React.Fragment>
   )
 }

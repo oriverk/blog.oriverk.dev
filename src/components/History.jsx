@@ -65,7 +65,7 @@ export default function History() {
             <Grid item xs={5}>
               <picture>
                 <source srcSet="/assets/miyazakiUniv.webp" type="image/webp" className={classes.contentImg} />
-                <img src="/assets/miyazakiUniv.png" alt="miyazaki university" className={classes.contentImg} />
+                <img src="/assets/miyazakiUniv.jpg" alt="miyazaki university" className={classes.contentImg} />
               </picture>
             </Grid>
             <Grid item xs={7}>

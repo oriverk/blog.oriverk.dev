@@ -55,7 +55,8 @@ Rails:5.2.2
   <source srcSet="/assets/posts/201905/cebu3.webp" type="image/webp">
   <img src="/assets/posts/201905/cebu3.png" alt="table realtion">
 </picture>
-    
+
+
 # 準備
 ## rails new
 ```sh:
@@ -424,7 +425,7 @@ end
   <source srcSet="/assets/posts/201903/student3.webp" type="image/webp">
   <img src="/assets/posts/201903/student3.jpg" alt="exam result index">
 </picture>
-
+<br />
 <picture>
   <source srcSet="/assets/posts/201903/student4.webp" type="image/webp">
   <img src="/assets/posts/201903/student4.jpg" alt="exam new">
