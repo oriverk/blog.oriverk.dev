@@ -2,7 +2,6 @@ import Head from 'next/head'
 import PostLayout from '../../components/PostLayout'
 // import Date from '../../components/date'
 import { getAllPostIds, getPostData } from '../../lib/posts'
-// import utilStyles from '../../styles/utils.module.css'
 
 export async function getStaticPaths() {
   const paths = getAllPostIds()
@@ -32,14 +31,38 @@ export default function Post({ postData }) {
         <article className="content">
           <h1>{postData.title}</h1>
           <div>
-          {/* <h1 className={utilStyles.headingXl}>{postData.title}</h1>
-          <div className={utilStyles.lightText}> */}
-            {/* <Date dateString={postData.date} /> */}
             <time dateTime={postData.date}>posted on: {postData.date}</time>
           </div>
           <div dangerouslySetInnerHTML={{ __html: postData.contentHtml}} />
         </article>
       </PostLayout>
+      <style jsx global>{`
+        a{
+          color: #F48FB1;
+        }
+        pre{
+          color: white;
+          font-size: 1rem;
+          font-weight: 400;
+          word-break: break-word;
+          line-height: 1.5;
+          overflow: auto;
+
+          border-radius: 0.25rem;
+          display: block;
+          white-space: pre;
+          background-color: #272c34;
+          max-height: 1000px;
+          max-width: 800px;
+          margin-bottom: 2rem;
+          padding: 1rem;
+        }
+        source, img{
+          display: block;
+          margin: 2rem auto;
+          background-color: #424242;
+        }
+      `}</style>
       <style jsx>{`
         .content {
           width: 100%;
@@ -51,15 +74,6 @@ export default function Post({ postData }) {
         h1{
           font-size: 1.5rem;
           text-align: center;
-        }
-        a {
-          color: red;
-          
-        }
-        img{
-          width: 100%;
-          max-width: 100px;
-          display: block;
         }
       `}</style>
     </>

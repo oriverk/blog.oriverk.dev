@@ -19,8 +19,6 @@ from Qiita:
 - Ruby：2.51
   - Rails:5.2.2
 
-
-# hoge（割愛
 ## rails db:migrate
 >Railsドキュメントより(http://railsdoc.com/references/rake%20db:migrate)
 >>rails db:migrateを実行
@@ -31,7 +29,7 @@ from Qiita:
 
 ---
 # 3日目
-これから、`scaffold`を利用せずにApp作成をし、Scaffoldの有難みを知る
+`scaffold`を利用せずにApp作成をし、Scaffoldの有難みを知る
 
 ## 前準備
 1. rails s new qiita_routes -d mysql

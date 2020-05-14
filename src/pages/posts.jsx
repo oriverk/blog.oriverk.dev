@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '../components/Layout'
-// import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
 
 export async function getStaticProps() {
@@ -24,14 +23,12 @@ export default function Index({allPostsData}) {
           <h1>Blog Posts</h1>
           <ul>
             {allPostsData.map(({ id, date, title }) => (
-              // <li className={utilStyles.listItem} key={id}>
               <li key={id}>
+                <time dateTime={date}>{date}</time>
                 <Link href="/posts/[id]" as={`posts/${id}`}>
                   <a><h2>{title}</h2></a>
                 </Link>
-                <br/>
-                {/* <small className={utilStyles.lightText}> */}
-                <time dateTime={date}>{date}</time>
+
               </li>
             ))}
           </ul>
@@ -40,17 +37,22 @@ export default function Index({allPostsData}) {
       <style jsx>{`
         .content {
           width: 100%;
-          max-width: 800px;
-          margin: 0 auto 10px auto;
+          max-width: 900px;
+          margin: 0 auto 3rem;
           padding: 5%;
           flex-grow: 1;
         }
         h1{
           text-align: center;
         }
+        h2{
+          margin: .5rem auto 1.5rem;
+        }
+        ul{
+          padding-left: 1.25rem;
+        }
         a {
           color: #FFF;
-          {/* border-bottom: 0.25rem solid #50CAF9; */}
         }
       `}</style>
     </>

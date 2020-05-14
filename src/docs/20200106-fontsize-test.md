@@ -5,9 +5,6 @@ categories: [blog]
 tags: 
 ---
 
-<!-- # {{ page.title }}
-<span>{% include svg/tag.svg %}{% for tag in site.tags %}{{ tag[0] }},&nbsp;{% endfor %}&nbsp;Updated at&nbsp;{{ "now" | date: "%Y.%m.%d" }}</span> -->
-
 ## h2 tag あいうえお
 post一覧のページで、日付順に表示したいけど、わからない・・・
 → 西暦を2019と間違えてただけでした。

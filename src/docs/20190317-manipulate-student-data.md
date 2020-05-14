@@ -100,8 +100,8 @@ rails generate scaffold ClubStudent student:references club:references name:stri
 
 ## テーブル同士の関連性を定義
 - 参照
-  -`[Active Record Associations](https://guides.rubyonrails.org/association_basics.html)
-` - [Active Record の関連付け](https://railsguides.jp/association_basics.html#belongs-to%E9%96%A2%E9%80%A3%E4%BB%98%E3%81%91)
+  - [Active Record Associations](https://guides.rubyonrails.org/association_basics.html)
+  - [Active Record の関連付け](https://railsguides.jp/association_basics.html#belongs-to%E9%96%A2%E9%80%A3%E4%BB%98%E3%81%91)
 
 ```rb:それぞれのmodel.rb
 # Studentモデル
@@ -150,8 +150,8 @@ end
     ag = 1
     at = 1
   end
-  op = (0..20).map{('あ'..'わ').to_a[rand(26)]}.join
 
+  op = (0..20).map{('あ'..'わ').to_a[rand(26)]}.join
   user = Student.create(name: "taro-#{num}", email: "val-#{num}@gmail.com", gender: gen, age: ag, opinion: op)
 end
 
@@ -295,7 +295,7 @@ GROUP BY subjects.id, subjects.name
 ```
 
 ```sql:
-# 出力結果
+-- 出力結果
 +--------+--------------+-----------+-------+-------+
 | name   | name         | name      | score | ratio |
 +--------+--------------+-----------+-------+-------+
@@ -425,7 +425,7 @@ end
   <source srcSet="/assets/posts/201903/student3.webp" type="image/webp">
   <img src="/assets/posts/201903/student3.jpg" alt="exam result index">
 </picture>
-<br />
+
 <picture>
   <source srcSet="/assets/posts/201903/student4.webp" type="image/webp">
   <img src="/assets/posts/201903/student4.jpg" alt="exam new">
@@ -738,7 +738,7 @@ def show
 
 # データ入力にはpassword情報が必要
 deviseの関係上、パスワード情報入りのデータでないと、コンソールから入力できない。
-##passwordカラムの追加
+## passwordカラムの追加
 deviseのモデル等がある、Studentテーブルに、パスワードカラムを追加した。
 
 ```sh:terminal
@@ -773,6 +773,7 @@ end
     gen = 1
     ag = 0
   end
+  
   op = (1..10).map{('あ'..'わ').to_a[rand(26)]}.join
   nm = (1..3).map{('あ'..'わ').to_a[rand(26)]}.join
 

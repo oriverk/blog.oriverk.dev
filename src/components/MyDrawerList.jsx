@@ -2,10 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 import { List, ListItem, ListItemIcon, ListItemText, Divider } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-
 import IconButton from '@material-ui/core/IconButton'
-
 import HomeIcon from '@material-ui/icons/Home'
 import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar'
 import WorkIcon from '@material-ui/icons/Work'
@@ -17,31 +14,14 @@ import TwitterIcon from '@material-ui/icons/Twitter'
 import QiitaIcon from '../utils/qiitaSvg'
 import WantedlyIcon from '../utils/wantedlySvg'
 
-const drawerWidth = 250
-
-const useStyles = makeStyles({
-  profileImgContainer: {
-    textAlign: 'center',
-    margin: '1rem',
-  },
-  profileImg: {
-    width: `calc(0.5 *  ${drawerWidth}px)`,
-  },
-  third: {
-    marginTop: '1rem',
-  },
-})
-
 export default function MyDrawerList({children}) {
-  const classes = useStyles()
-
   return (
     <React.Fragment>
       <List>
-        <div className={classes.profileImgContainer}>
+        <div className="profileImgContainer">
           <picture>
-            <source srcSet="/assets/wheel192.webp" type="image/webp" className={classes.profileImg} />
-            <img src="/assets/wheel192.png" alt="avatar" className={classes.profileImg} />
+            <source srcSet="/assets/wheel192.webp" type="image/webp" className="profileImg" />
+            <img src="/assets/wheel192.png" alt="avatar" className="profileImg" />
           </picture>
         </div>
       </List>
@@ -80,13 +60,28 @@ export default function MyDrawerList({children}) {
       </List> */}
       {children}
       <Divider />
-      <div className={classes.third}>
+      <div className="third">
         <IconButton href="https://github.com/oriverk" target="_blank" rel="noopener noreferrer" color="secondary" alt="github"><GitHubIcon /></IconButton>
         <IconButton href="https://qiita.com/OriverK" target="_blank" rel="noopener noreferrer" color="secondary"><QiitaIcon /></IconButton>
         <IconButton href="https://www.wantedly.com/users/40069986" target="_blank" rel="noopener noreferrer" color="secondary"><WantedlyIcon /></IconButton>
         <IconButton href="https://www.linkedin.com/in/yudai-k/" target="_blank" rel="noopener noreferrer" color="secondary"><LinkedInIcon /></IconButton>
         <IconButton href="https://twitter.com/not_you_die" target="_blank" rel="noopener noreferrer" color="secondary"><TwitterIcon /></IconButton>
       </div>
+      <style jsx>{`
+        .profileImgContainer {
+          text-align: center;
+          margin: 1rem;
+        }
+        .profileImg{
+          width: 80%;
+        }
+        .third {
+          margin-top: 1rem;
+        }
+        div{
+          fill: #50CAF9;
+        }
+      `}</style>
     </React.Fragment>
   )
 }

@@ -4,9 +4,6 @@ title: GithubPagesのメジャーアップデートをした。
 tags: githubpages ruby jekyll
 ---
 
-<!-- # {{ page.title }}
-<span>{% include svg/tag.svg %}{% for tag in site.tags %}{{ tag[0] }},&nbsp;{% endfor %}&nbsp;Updated at&nbsp;{{ "now" | date: "%Y.%m.%d" }}</span> -->
-
 ## What I did
 - Introduce IE Buster
 - Update Ruby version from 2.5.1

@@ -19,8 +19,6 @@ from Qiita:
   - [手続きオブジェクトの挙動の詳細](https://docs.ruby-lang.org/ja/2.6.0/doc/spec=2flambda_proc.html)
   - [Ruby用語集](https://docs.ruby-lang.org/ja/2.6.0/doc/glossary.html)
 
-
-
 # 字句構造
 ## 予約語
 回避方法はあるが、使わない方が身のため。

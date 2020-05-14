@@ -48,32 +48,17 @@ from Qiita:
 - fork, clone, yarn install
 
 ```sh:terminal
-# 対象をforkしておく
 git clone https://github.com/oriverk/covid19.git
 cd covid19
-
-# yarnが入ってなかった
-sudo apt install yarn
 
 yarn install
 yarn dev
 ```
 
-<!-- <picture>
-  <source srcSet="/assets/posts/20200300/20200329.webp" type="image/webp" />
-  <img src="/assets/posts/20200300/20200329.jpg" alt="localhost" />
-</picture> -->
-
-<!-- <picture>
-![localhost](/assets/posts/20200300/20200329.webp)
-![localhost](/assets/posts/20200300/20200329.jpg)
-</picture> -->
-
 <picture>
   <source srcSet="/assets/posts/202003/miyazaki-oss.webp" type="image/webp">
   <img src="/assets/posts/202003/miyazaki-oss.jpg" alt="localhost">
 </picture>
-
 
 `http://localhost:3000/`にアクセスすると
 
@@ -104,7 +89,6 @@ yarn dev
 ```
 ```sh:terminal
 git add .
-# pre-commit.shでエラーが出たので（触ってない
 git commit -m "都庁を県庁に修正" --no-verify
 git push コピーしてきたURL development
 ```
@@ -112,7 +96,7 @@ git push コピーしてきたURL development
 ## はじめてのpull request
 無職&&個人で勉強なのでPRの機会は初めてだったので、下を参照しながら行った。
 
-- 参照[東京都 新型コロナウイルス対策サイトへの貢献方法を解説](https://qiita.com/FPC_COMMUNITY/items/b9cc072813dc2231b2b2#%E3%83%97%E3%83%AB%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E9%80%81%E3%82%8B)
+- 参照: [東京都 新型コロナウイルス対策サイトへの貢献方法を解説](https://qiita.com/FPC_COMMUNITY/items/b9cc072813dc2231b2b2#%E3%83%97%E3%83%AB%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E9%80%81%E3%82%8B)
 
 やってることは同じなので割愛。こんな感じで書いた。
 
@@ -121,7 +105,7 @@ git push コピーしてきたURL development
   <img src="/assets/posts/202003/miyazaki-oss3.jpg" alt="localhost">
 </picture>
 
-無事にpull requestがmergeされ、OSS活動(？)の実績解除となりました。
+無事にpull requestがmergeされ、OSS活動(?)の実績解除となりました。
 
 <picture>
   <source srcSet="/assets/posts/202003/miyazaki-oss4.webp" type="image/webp">

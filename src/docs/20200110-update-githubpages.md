@@ -6,9 +6,6 @@ tags: rugy jekyll githubpages
 permalink: blog/:title
 ---
 
-<!-- # {{ page.title }}
-<span>{% include svg/tag.svg %}{% for tag in site.tags %}{{ tag[0] }},&nbsp;{% endfor %}&nbsp;Updated at&nbsp;{{ "now" | date: "%Y.%m.%d" }}</span> -->
-
 ## 改修内容
 - デザインの変更
   - dark theme

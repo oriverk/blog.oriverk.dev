@@ -67,18 +67,18 @@ rails new codr -d postgresql
 gem 'mini_racer'
 gem 'rails-i18n'
 
-gem 'devise' # login
-gem 'omniauth' # SNS login
+gem 'devise'
+gem 'omniauth'
 gem 'omniauth-twitter' # twitter login
 gem 'devise-i18n' # japanize devise
 gem 'devise-i18n-views'
 
-gem 'redcarpet' # for markdown
-gem 'rouge' # for syntax highlight
+gem 'redcarpet' # markdown processor
+gem 'rouge' # syntax highlight
 
 gem 'meta-tags'
 
-gem 'aws-sdk-s3' # for aws s3
+gem 'aws-sdk-s3' # aws s3
 ```
 
 参照:
@@ -105,7 +105,6 @@ Rails.application.credentials.dig(:twitter, :API_Key)
 ## rails gあれこれ
 ```sh:terminal
 # devise
-# install devise
 rails g devise:install
 rails g devise User name:String
 
@@ -123,16 +122,18 @@ rails g devise:views users
 config.i18n.default_locale = :ja
 => create /config/locale/devise.view.ja.yml
 ```
+
 ```sh:terminal
 # scaffold post
 rails g scaffold Post user:references name:string content:text date:datetime
 ```
 
 ## Active Record Associations関連付け
-```/app/model/user.rb
+```rb:/app/model/
+# user
 has_many :posts
-```
-```/app/model/post.rb
+
+# post
 belongs_to :user
 ```
 
@@ -204,7 +205,7 @@ Rail5.2からの機能で、今までのcarrievaveやpaperclip等を使わずに
 ```sh:terminal
 # set up
 rails active_storage:install
-# 今回は画像が紐づくPostテーブルが既にあるので、不要
+
 # rails g resource comment content:text
 rails db:migrate
 ```
@@ -277,7 +278,7 @@ jsはProgateレベルだったので、DOM操作は初めてで、なんか楽�
   html2canvas(document.querySelector("#capture"),{scale:1, width:600}).then(canvas => {
     var base64 = canvas.toDataURL('image/jpeg', 1.0);
     document.getElementById('post_prtsc').setAttribute('value', base64);
- });
+  });
 </script>
 ```
 
@@ -318,8 +319,8 @@ AWS上での登録、設定、バケット作成等は割愛。
   var href = base + pageUrl + option;
   var twit = document.getElementById('tweet');
   twit.addEventListener('click', function() {
-        window.open( href );
-      });
+    window.open( href );
+  });
 </script>
 ```
 
@@ -390,7 +391,7 @@ Twitterのニックネームが取得できるようになったので、元か�
 想定ユーザは殆どスマホなのに、PCで作成し、CSSをPCの見た目でやってた。折角SCSSでやってるので、変数を利用した。
 
 ```scss:app/assets/stylesheets/scaffold.scss
-# ディスプレイサイズが680pxまでなら。
+// ディスプレイサイズが680pxまでなら。
 $tab: 680px; 
 @mixin tab {
   @media (max-width: ($tab)) {

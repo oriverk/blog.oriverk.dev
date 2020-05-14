@@ -1,11 +1,7 @@
 import React from 'react'
-import Head from 'next/head'
-import styles from './Layout.module.css'
-import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-
 import Hidden from '@material-ui/core/Hidden'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import Drawer from '@material-ui/core/Drawer'
@@ -24,27 +20,6 @@ import MyDrawerList from '../components/MyDrawerList'
 const drawerWidth = 250
 
 const useStyles = makeStyles((theme) => ({
-  footer: {
-    width: '100%',
-    position: 'fixed',
-    bottom: 0,
-    zIndex: 100,
-    backgroundColor: 'grey',
-  },
-  profileImgContainer: {
-    textAlign: 'center',
-    margin: '1rem',
-  },
-  profileImg: {
-    width: `calc(0.5 *  ${drawerWidth}px)`,
-  },
-  swipeableList: {
-    width: drawerWidth,
-  },
-  permanentDrawer: {
-    width: drawerWidth,
-    flexShrink: 1,
-  },
   permanentDrawerPaper: {
     width: drawerWidth,
   },
@@ -131,7 +106,7 @@ function Layout({ children }) {
           onOpen={toggleDrawer('left', true)}
         >
           <div
-            className={classes.swipeableList}
+            className="swipeableList"
             role="presentation"
             onClick={toggleDrawer('left', false)}
             onKeyDown={toggleDrawer('left', false)}
@@ -139,7 +114,7 @@ function Layout({ children }) {
             <HomeDrawerList />
           </div>
         </SwipeableDrawer>
-        <footer className={classes.footer}>
+        <footer>
           <IconButton
             aria-label="Open swipeable temporary drawer"
             onClick={toggleDrawer('left', true)}
@@ -151,7 +126,7 @@ function Layout({ children }) {
       <Hidden mdDown>
         <aside>
           <Drawer
-            className={classes.permanentDrawer}
+            className="permanentDrawer"
             variant="permanent"
             anchor="left"
             classes={{
@@ -165,6 +140,24 @@ function Layout({ children }) {
       <main className={classes.contents}>
         {children}
       </main>
+      <style jsx>{`
+        *{
+          --drawerWidth: 250px;
+        }
+        .swipeableList, .permanentDrawer {
+          width: var(--drawerWidth);
+        }
+        .permanentDrawer {
+          flex-shrink: 1;
+        }
+        footer{
+          width: 100%;
+          position: fixed;
+          bottom: 0;
+          z-index: 100;
+          background-color: grey;
+        }
+      `}</style>
     </React.Fragment>
   )
 }
