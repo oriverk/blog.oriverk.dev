@@ -315,7 +315,10 @@ end
 
 この時点で`rails s`で立ち上げると
 
-![name-ga-link-ni.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/ac09780d-212e-b0b3-c2e0-393cf99049ab.jpeg)
+<picture>
+  <source srcSet="/assets/posts/201903/scaffold1.webp" type="image/webp">
+  <img src="/assets/posts/201903/scaffold1.jpg" alt="scaffold first">
+</picture>
 
 ## showアクション
 - users_pathはusers#indexへのリンク
@@ -389,7 +392,10 @@ end
 
 男性、女性で表示されるようになった。だが、editページは、テキスト入力のままだ。
 
-![dansei-josei.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/c002c8da-4d41-e7e1-9d1f-dc95ef0d8bb1.jpeg)
+<picture>
+  <source srcSet="/assets/posts/201903/scaffold2.webp" type="image/webp">
+  <img src="/assets/posts/201903/scaffold2.jpg" alt="male / female enum">
+</picture>
 
 ラジオボタンに変更
 
@@ -403,7 +409,10 @@ end
 
 同様に、年齢、住所、参加不参加もラジオボタンにしておく。
 
-![性別住所参加をラジオ化.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/1d044efe-e23c-1967-de5c-132f800b42ad.jpeg)
+<picture>
+  <source srcSet="/assets/posts/201903/scaffold3.webp" type="image/webp">
+  <img src="/assets/posts/201903/scaffold3.jpg" alt="change to radio button">
+</picture>
 
 
 ```rb:console
@@ -421,10 +430,12 @@ User.find_by(name: "foo")
 ```
 
 ## 年齢に、10代、20代、30代のラジオボタンを追加しておく
-![全部日本語表記.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/bc21679f-17f7-0fea-fb1f-2741f63e70a5.jpeg)
-![エディットも全部ラジオ.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/22d8a59c-35a9-8997-b1bf-7b2a7c5459f2.jpeg)
-ブラウザ上のカラム表記を日本語にするにはどうすればいいのだろう、また次に。
-<strong> </strong>でした
+
+<picture>
+  <source srcSet="/assets/posts/201903/scaffold5.webp" type="image/webp">
+  <img src="/assets/posts/201903/scaffold5.jpg" alt="changed to radiobutton">
+</picture>
+
 
 ---
 # 8日目
@@ -632,6 +643,8 @@ end
 ```
 
 # 完
-全部出来るようになったが、アクション定義方法やら覚えないと。。
 
-![scanashilast.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/ab456ea8-52b6-fd9b-0a9e-4ce3d25cfc38.jpeg)
+<picture>
+  <source srcSet="/assets/posts/201903/scaffold6.webp" type="image/webp">
+  <img src="/assets/posts/201903/scaffold6.jpg" alt="change result">
+</picture>

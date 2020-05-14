@@ -102,7 +102,10 @@ end
 <table class="table table-hover table-dark">
 ```
 
-![buto4.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/4091e819-a755-2bea-bd3c-e012e5c9ace1.jpeg)
+<picture>
+  <source srcSet="/assets/posts/201903/bootstrap1.webp" type="image/webp">
+  <img src="/assets/posts/201903/bootstrap1.jpg" alt="bootstrap table">
+</picture>
 
 
 # jsファイルの挿入部分を考える

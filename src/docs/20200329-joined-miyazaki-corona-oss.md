@@ -131,9 +131,3 @@ git push コピーしてきたURL development
 - 表示自然言語の部分を中心に修正改善
 - Warningと出ている部分の修正
   - 恐らくTypescriptの型由来の警告なので、ドキュメントと格闘しながら。
-
-# 序に
-PCを触ってない時は、これを動かしてます。
-
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr"><a href="https://twitter.com/hashtag/%E6%8B%A1%E6%95%A3%E5%B8%8C%E6%9C%9BRT%E3%81%8A%E9%A1%98%E3%81%84%E3%81%97%E3%81%BE%E3%81%99?src=hash&amp;ref_src=twsrc%5Etfw">#拡散希望RTお願いします</a> <br>ASRockerでもそうでない人も<br>リソース余ってたり、stresstestしたい自作erかもーん！<br><br>新型コロナ解析で分散処理プロジェクト「Folding@home」<a href="https://t.co/4EheevUKsK">https://t.co/4EheevUKsK</a> <a href="https://twitter.com/pc_watch?ref_src=twsrc%5Etfw">@pc_watch</a>さんから <a href="https://t.co/pUtQyuQgPp">pic.twitter.com/pUtQyuQgPp</a></p>&mdash; ASRock Japan (@AsrockJ) <a href="https://twitter.com/AsrockJ/status/1243107649094184960?ref_src=twsrc%5Etfw">March 26, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-

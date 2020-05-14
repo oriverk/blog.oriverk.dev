@@ -51,7 +51,10 @@ Rails:5.2.2
 
 # テーブル同士の関連性
 
-![マスターデータ関連.jpg](https://qiita-image-store.s3.amazonaws.com/0/294402/f879117d-9f4b-5224-6500-3f87f97449e4.jpeg)
+<picture>
+  <source srcSet="/assets/posts/201905/cebu3.webp" type="image/webp">
+  <img src="/assets/posts/201905/cebu3.png" alt="table realtion">
+</picture>
     
 # 準備
 ## rails new
@@ -204,7 +207,10 @@ joinメソッドは、配列の各要素を文字列に変換し、引数sepを�
 # 実段階
 Studentsのshowページの、前回までの状態
 
-![マスターデータshowの最初.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/0911c472-4d57-d145-9c6d-41bdf8b8e66c.jpeg)
+<picture>
+  <source srcSet="/assets/posts/201903/student2.webp" type="image/webp">
+  <img src="/assets/posts/201903/student2.jpg" alt="student show">
+</picture>
 
 ## 生徒データと関連付けするときは
 ```rb:
@@ -414,9 +420,15 @@ end
 
 # 編集後
 
-![ExamResult-show編集後.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/52921abc-ff3d-faf9-a36b-b1f0b74496d6.jpeg)
+<picture>
+  <source srcSet="/assets/posts/201903/student3.webp" type="image/webp">
+  <img src="/assets/posts/201903/student3.jpg" alt="exam result index">
+</picture>
 
-![ExamResults-new編集前.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/2196b207-baa9-8f61-3d49-66af44bb47a7.jpeg)
+<picture>
+  <source srcSet="/assets/posts/201903/student4.webp" type="image/webp">
+  <img src="/assets/posts/201903/student4.jpg" alt="exam new">
+</picture>
 
 # ページャの導入(kaminari)
 インデックス表示データが、studentページは100行、ExamResultページは900行と、見づらい.
@@ -452,7 +464,10 @@ viewを編集
 </div>
 ```
 
-![pagenate.JPG](https://qiita-image-store.s3.amazonaws.com/0/294402/8d725379-0d21-7b0f-263a-d70fe7fe5319.jpeg)
+<picture>
+  <source srcSet="/assets/posts/201903/student5.webp" type="image/webp">
+  <img src="/assets/posts/201903/student5.jpg" alt="pagination">
+</picture>
 
 ## ExamResultのindexページ編集
 app/controllers/exam_result_controller.rbのindexアクションと

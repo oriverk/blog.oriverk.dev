@@ -11,8 +11,10 @@ from Qiita:
 
 # Webページが表示される流れのごく一部
 
-![HTTPmethod図.jpg](https://qiita-image-store.s3.amazonaws.com/0/294402/42488d5e-582d-9f31-eaf5-97857487587d.jpeg)
-
+<picture>
+  <source srcSet="/assets/posts/201903/http1.webp" type="image/webp">
+  <img src="/assets/posts/201903/http1.jpg" alt="https method">
+</picture>
 
 1. ブラウザでURLにアクセスして、DNSサーバーにIPを問い合わせ、DNSサーバーがIPを返す
 2. htmlなどの情報をやり取りするためのProtocol Cliantがサーバー上のquery(何を)とHttpメソッド(行いたい処理）をサーバーにHttpリクエストする。

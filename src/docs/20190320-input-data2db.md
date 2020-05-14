@@ -16,7 +16,11 @@ Ruby：2.51
 Rails:5.2.2
 
 # テーブル同士の関連図
-![マスターデータ関連.jpg](https://qiita-image-store.s3.amazonaws.com/0/294402/1f4d86a7-e127-dbd7-9dd1-b7101479f92a.jpeg)
+
+<picture>
+  <source srcSet="/assets/posts/201905/cebu3.webp" type="image/webp">
+  <img src="/assets/posts/201905/cebu3.jpg" alt="data table">
+</picture>
 
 # 流れ
 1. 中間テーブルにデータ入力
