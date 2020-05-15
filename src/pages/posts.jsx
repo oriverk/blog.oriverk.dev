@@ -38,7 +38,7 @@ export default function Index({allPostsData}) {
         .content {
           width: 100%;
           max-width: 900px;
-          margin: 0 auto 3rem;
+          margin: 0 auto 1rem;
           padding: 5%;
           flex-grow: 1;
         }

@@ -6,7 +6,7 @@ export default function Works() {
     <section id="works" className="content">
       <h2>Works</h2>
       <article>
-        <Grid container spacing={4} className="gridContainer">
+        <Grid container spacing={2} className="gridContainer">
           <Grid item xs={5}>
             <picture>
               <source srcSet="/assets/githubPages1st700.webp" type="image/webp" className="contentImg"/>
@@ -23,7 +23,7 @@ export default function Works() {
             </ul>
           </Grid>
         </Grid>
-        <Grid container spacing={4} className="gridContainer">
+        <Grid container spacing={2} className="gridContainer">
           <Grid item xs={5}>
             <picture>
               <source srcSet="/assets/codr700.webp" type="image/webp" className="contentImg" />
@@ -40,7 +40,7 @@ export default function Works() {
             </ul>
           </Grid>
         </Grid>
-        <Grid container spacing={4}>
+        <Grid container spacing={2}>
           <Grid item xs={5}>
             <NoImage />
           </Grid>

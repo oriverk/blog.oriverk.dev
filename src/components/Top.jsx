@@ -11,7 +11,6 @@ export default function Top() {
       </section>
       <style jsx>{`
         .topContainer {
-          display: block;
           height: 100vh;
           position: relative;
           background-color: #212121;

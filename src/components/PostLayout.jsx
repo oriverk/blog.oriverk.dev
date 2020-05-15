@@ -5,7 +5,6 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Hidden from '@material-ui/core/Hidden'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import Drawer from '@material-ui/core/Drawer'
-import IconButton from '@material-ui/core/IconButton'
 import DoubleArrowIcon from '@material-ui/icons/DoubleArrow'
 import { List, ListItem, ListItemIcon, ListItemText, Divider } from '@material-ui/core'
 import HomeIcon from '@material-ui/icons/Home'
@@ -16,17 +15,14 @@ import MyDrawerList from '../components/MyDrawerList'
 const drawerWidth = 250
 
 const useStyles = makeStyles((theme) => ({
-  
-  contents: {
-    position: 'absolute',
-    top: 0,
+  permanentDrawerPaper: {
+    width: drawerWidth,
+  },
+  contents: { 
     flexGrow: 1,
     [theme.breakpoints.down('md')]: {
       // with swipeableDrawer
       width: '100%',
-      marginBottom: `59px`,
-      paddingBottom: '10px',
-      marginLeft: 0,
     },
     [theme.breakpoints.up('lg')]: {
       // with permanentDrawer
@@ -94,13 +90,10 @@ function PostLayout({ children }) {
             <PostDrawerList />
           </div>
         </SwipeableDrawer>
-        <footer className={classes.footer}>
-          <IconButton
-            aria-label="Open swipeable temporary drawer"
-            onClick={toggleDrawer('left', true)}
-          >
-            <DoubleArrowIcon color="secondary" style={{ fontSize: 35 }} />
-          </IconButton>
+        <footer>
+          <button aria-label="Open swipeable temporary drawer" onClick={toggleDrawer('left', true)}>
+            <DoubleArrowIcon color="secondary" style={{ fontSize: 34 }} />
+          </button>
         </footer>
       </Hidden>
       <Hidden mdDown>
@@ -135,7 +128,15 @@ function PostLayout({ children }) {
           position: fixed;
           bottom: 0;
           z-index: 100;
-          background-color: grey;
+        }
+        footer button {
+          position: fixed;
+          left: .4rem;
+          bottom: .4rem;
+          height: 3rem;
+          width: 3rem;
+          border-radius : 50%;
+          background-color: #424242;
         }
       `}</style>
     </React.Fragment>

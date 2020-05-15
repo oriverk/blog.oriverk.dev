@@ -23,6 +23,9 @@ export default function Home() {
             padding: 0 5%;
             flex-grow: 1;
         }
+        #works {
+          margin-bottom: 1rem;
+        }
         h2 {
           text-align: center;
         }
@@ -30,7 +33,7 @@ export default function Home() {
           margin-bottom: 3rem;
         }
         .contentImg {
-          width: 95%;
+          width: 100%;
         }
         ul {
           margin-top: 7px;
