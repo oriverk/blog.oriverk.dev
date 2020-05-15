@@ -1,13 +1,12 @@
 import React from 'react'
-import Link from 'next/link'
 
-import { List, ListItem, ListItemIcon, ListItemText, Divider } from '@material-ui/core'
+import { List, Divider } from '@material-ui/core'
 import IconButton from '@material-ui/core/IconButton'
-import HomeIcon from '@material-ui/icons/Home'
-import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar'
-import WorkIcon from '@material-ui/icons/Work'
-import CodeIcon from '@material-ui/icons/Code'
-import CreateIcon from '@material-ui/icons/Create'
+// import HomeIcon from '@material-ui/icons/Home'
+// import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar'
+// import WorkIcon from '@material-ui/icons/Work'
+// import CodeIcon from '@material-ui/icons/Code'
+// import CreateIcon from '@material-ui/icons/Create'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import LinkedInIcon from '@material-ui/icons/LinkedIn'
 import TwitterIcon from '@material-ui/icons/Twitter'
@@ -20,8 +19,8 @@ export default function MyDrawerList({children}) {
       <List>
         <div className="profileImgContainer">
           <picture>
-            <source srcSet="/assets/wheel192.webp" type="image/webp" className="profileImg" />
-            <img src="/assets/wheel192.png" alt="avatar" className="profileImg" />
+            <source srcSet="/assets/human192x192.webp" type="image/webp" className="profileImg" />
+            <img src="/assets/human192x192.png" alt="avatar" className="profileImg" />
           </picture>
         </div>
       </List>

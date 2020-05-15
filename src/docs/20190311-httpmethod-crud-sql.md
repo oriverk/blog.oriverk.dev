@@ -24,13 +24,13 @@ from Qiita:
 - Hypertext Transfer Protocolの略
 - HTMLとXMLによるHypertextの送信を主に、その他様々なデータのやり取りができる。
 - リクエスト-レスポンス型のプロトコルで、
-    - webブラウザ「あれが欲しいんだが。これをしてくれ」
+    - webブラウザ「あれが欲しい。これをしてくれ」
     - (※あれ＝query、これをして＝http method)
-    - webサーバ「おかのした、ほらよっ」
-
+    - webサーバ「OK、はいよ」
 
 # HTTPメソッドの内訳とSQLの関係、CRUDとRESTful
 
+```
 |  HTTPメソッド  | 内容 | CRUD  |MYSql| MySQL|
 |:-:|:-:|:-:|:-:|:-:|
 |  GET 　| リソース取得 | CREATE  | 生成| INSERT |
@@ -42,6 +42,7 @@ from Qiita:
 | OPTION | リソースがサポートしているメソッドの取得  |
 | TRACE | プロキシ動作の確保  |
 | CONNECT | プロキシ動作のトンネル接続への変更  |
+```
 
 ## CRUDとは
 - CREATE, READ, UPDATE, DELETEの4つの単語のイニシャルを並べたもの

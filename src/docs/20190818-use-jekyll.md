@@ -45,7 +45,7 @@ GithubPagesJekyllを利用し、静的ページを作成した。
 # デフォルトのGithubPages作成
 ## jekyllの準備、作成
 
-```terminal:
+```sh:terminal:
 gem install bundler jekyll
 jekyll new oriverk.github.io
 ```
@@ -53,8 +53,8 @@ jekyll new oriverk.github.io
 ## gitリモートレポジトリ作成、git push
 **リポジトリ名を `username.github.io`にすること**
 
->Github Pages HPより引用
->>If the first part of the repository doesn’t exactly match your username, it won’t work, so make sure to get it right.
+- Github Pages HPより引用
+  - If the first part of the repository doesn’t exactly match your username, it won’t work, so make sure to get it right.
 
 ##デフォルト状態完成
 上記に従ったデフォルト状態では、[テーマminimaが適用され、こんなページになる。](https://jekyll.github.io/minima/)
@@ -77,11 +77,12 @@ gem "github-pages", group: :jekyll_plugins
 # add gem
 gem "jekyll-theme-hydeout"
 ```
+
 次に、_config.ymlを編集。
 今回はリモートテーマを使用するので、`theme`を`remote_theme`に変更する。
 更に、プラグインも追加しておく。
 
-```_config.yml
+```yml:_config.yml
 # theme: mininma
 remote_theme: fongandrew/hydeout
 
@@ -91,7 +92,7 @@ plugins:
   - github-pages # added
 ```
 
-```terminal:
+```sh:terminal:
 bundle install
 bundle exec jekyll server
 ```
@@ -122,12 +123,11 @@ githubpages公式のgem等由来であれば、[Troubleshooting GitHub Pages bui
 ## headタグ内の情報を書き込む
 `_include`フォルダ内に、`head.html`ファイルを作成する
 
-```:head.html
+```html
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-  <!-- Enable responsiveness on mobile devices-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
 
   <title>
@@ -138,7 +138,6 @@ githubpages公式のgem等由来であれば、[Troubleshooting GitHub Pages bui
     {% endif %}
   </title>
 
-  <!-- CSS -->
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}" />
 </head>
 ```
@@ -146,7 +145,7 @@ githubpages公式のgem等由来であれば、[Troubleshooting GitHub Pages bui
 ## ページネーション機能
 jekyll関連gemにページネーションがあり、プラグインなので`_config.yml`に書き加える。
 
-```_config.yml
+```yml:_config.yml
 plugins:
   - jekyll-paginate
 
@@ -154,7 +153,8 @@ paginate: 5
 paginate_path: '/blog/page:num'
 sidebar_blog_link: '/blog'
 ```
-```:terminal
+
+```sh:terminal
 bundle install
 bundle exec jekyll server
 ```
@@ -166,7 +166,7 @@ bundle exec jekyll server
 1． まず、GoogleアナリティクスをトラッキングIDを取得する。(割愛
 2． `google-analytics.html`を作成
 
-```google-analytics.html
+```html:google-analytics.html
 {% if jekyll.environment == 'production' and site.google_analytics %}
 <script>
   (function (i, s, o, g, r, a, m) {
@@ -180,18 +180,20 @@ bundle exec jekyll server
 </script>
 {% endif %}
 ```
+
 3． `_include/head.html`に書き加える。
 
-```_include/head.html
+```html:_include/head.html
 
 <head>
     {% include google-analytics.html %}
 </head>
 ```
+
 4． `_config.yml`にトラッキングIDを書き加える
 トラッキングIDは、UA-　から始まるID。
 
-```_config.yml
+```yml:_config.yml
 # Google Analytics
 google_analytics: UA-〇〇〇〇〇
 ```
@@ -268,17 +270,14 @@ git checkout changeDesign
 source 'https://rubygems.org'
 
 gem 'github-pages', group: :jekyll_plugins
-
 group :jekyll_plugins do
   gem 'jekyll-admin'
   gem 'jekyll-feed', '~> 0.6'
 end
-
 install_if -> { RUBY_PLATFORM =~ /mingw|mswin|java/ } do
   gem 'tzinfo', '~> 1.2'
   gem 'tzinfo-data'
 end
-
 gem 'wdm', '~> 0.1.0', install_if: Gem.win_platform?
 gem 'jekyll-coffeescript'
 ```
@@ -300,13 +299,9 @@ gem 'jekyll-coffeescript'
 |   ├── svgファイル類
 |   └── `head`内パーツ類（head.html, twitter-card, google-analytics, bootstrap ...
 |   └── `body`内のhtmlパーツ類
-├── _layouts
-|   └── default.html
-├── _posts
-|   ├── 2007-10-29-why-every-programmer-should-play-nethack.md
-|   └── 2009-04-26-barcamp-boston-4-roundup.md
-├── assets
-|   └── jpg / png 画像類
+├── _layouts ─ default.html
+├── _posts   ─ 2007-10-29-why-every-programmer-should-play-nethack.md
+├── assets   ─ jpg / png 画像類
 └── index.html # can also be an 'index.md' with valid front matter
 ```
 

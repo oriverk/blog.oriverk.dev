@@ -151,10 +151,12 @@ function Layout({ children }) {
           position: fixed;
           left: .4rem;
           bottom: .4rem;
-          height: 3rem;
-          width: 3rem;
+          height: 3.5rem;
+          width: 3.5rem;
+          border: 1px solid grey;
           border-radius : 50%;
           background-color: #424242;
+          outline: none;
         }
       `}</style>
     </React.Fragment>

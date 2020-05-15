@@ -1,6 +1,5 @@
 import React from 'react'
 import Layout from '../components/Layout'
-
 import Top from '../components/Top'
 import About from '../components/About'
 import History from '../components/History'
@@ -17,20 +16,24 @@ export default function Home() {
       </Layout>
       <style jsx global>{`
         .content {
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto 3rem;
-            padding: 0 5%;
-            flex-grow: 1;
+          width: 100%;
+          max-width: 1000px;
+          margin: 0 auto 3rem;
+          padding: 0 5%;
+          flex-grow: 1;
         }
-        #works {
-          margin-bottom: 1rem;
+        #works{
+          margin-bottom: 3.5rem;
         }
-        h2 {
+        h2, h3 {
           text-align: center;
         }
-        .gridContainer {
-          margin-bottom: 3rem;
+        .gridContainer:not(:last-child){
+          margin: 2rem auto;
+          border-bottom: 1px solid grey;
+        }
+        .gridItem{
+          margin-bottom: .5rem;
         }
         .contentImg {
           width: 100%;

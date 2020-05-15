@@ -31,7 +31,7 @@ export default function Top() {
           border-radius: 2px;
         }
         .topTitle {
-          font-weight: bold;
+          font-weight: 500;
           font-size: 4rem;
         }
         .topSubtitle {

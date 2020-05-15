@@ -11,7 +11,7 @@ export default function About() {
             <source srcSet="/assets/LongRidge700.webp" type="image/webp" className="contentImg"/>
             <img src="/assets/LongRidge700.jpg" alt="the secenary from Long-Ridge-Lookout in Adelaide" className="contentImg" />
           </picture>
-          <p style={{textAlign: 'center' }}><small>This is in Adelaide, Australia. My selfie is little ...</small></p>
+          <p style={{textAlign: 'center' }}><small>This is in Adelaide, Australia. My selfie is little</small></p>
         </Grid>
         <Grid item md={12} lg={7}>
           <p>My name is Kawano Yudai.</p>

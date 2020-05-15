@@ -84,13 +84,9 @@ password:
 
 # rails g scaffoldで作成
 ```sh:
-# Studentテーブル
 rails generate scaffold Student name:string email:string gender:integer age:integer opinion:text
-# Subjectテーブル
 rails generate scaffold Subject name:string max_score:integer
-# Clubテーブル
 rails generate scaffold Club name:string
-# ExamResultテーブル
 rails generate scaffold ExamResult student:references subject:references name:string score:integer
 # ClubStudentテーブル（中間テーブルなので最後
 rails generate scaffold ClubStudent student:references club:references name:string
@@ -306,18 +302,7 @@ GROUP BY subjects.id, subjects.name
 | taro-1 | 一次試験     | 英語      |   199 |   100 |
 | taro-1 | 試験3        | 英語      |   108 |    54 |
 | taro-1 | 一次試験     | 化学      |    99 |    99 |
-| taro-1 | 試験4        | 化学      |    42 |    42 |
-| taro-1 | 一次試験     | 物理      |    62 |    62 |
-| taro-1 | 試験5        | 物理      |    56 |    56 |
-| taro-1 | 一次試験     | 生物      |    83 |    83 |
-| taro-1 | 試験6        | 生物      |    42 |    42 |
-| taro-1 | 一次試験     | 世界史    |    62 |    62 |
-| taro-1 | 試験7        | 世界史    |    83 |    83 |
-| taro-1 | 一次試験     | 日本史    |    77 |    77 |
-| taro-1 | 試験8        | 日本史    |    63 |    63 |
-| taro-1 | 一次試験     | 地理      |    81 |    81 |
-| taro-1 | 試験9        | 地理      |    15 |    15 |
-+--------+--------------+-----------+-------+-------+
+(割愛)
 ```
 
 ### ページ上の出力

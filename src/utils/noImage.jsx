@@ -10,9 +10,10 @@ export default function NoImage (){
         .parent {
           height: 100%;
           background-color:#242657;
+          border: 1px solid grey;
         }
         .child {
-          padding: 5%;
+          padding: .5rem;
           text-align: center;
           position: relative;
           top: 50%;
