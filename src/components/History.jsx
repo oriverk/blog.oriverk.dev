@@ -12,8 +12,8 @@ export default function History() {
             <NoImage />
           </Grid>
           <Grid item xs={12} sm={7}>
-            <b>Egg company in Miyazaki</b>
-            <wbr /><small> : 2017/04 - 2018/08</small>
+            <small>2017/04 - 2018/08 : </small>
+            <br /><b>Egg company in Miyazaki</b>
             <br />Production Management
           </Grid>
         </Grid>
@@ -28,9 +28,9 @@ export default function History() {
             </picture>
           </Grid>
           <Grid item xs={12} sm={7} className="gridItem">
-            <b>Agricultural Enginnering Lab.</b>
-            <wbr /><small> : 2015/04 - 2017/03</small>
-            <br />about agricultural crop row detecting tech by image processing
+            <small>2015/04 - 2017/03 :</small>
+            <br /><b>Agricultural Enginnering Lab.</b>
+            <br />Agricultural crop row detecting tech by image processing
           </Grid>
         </Grid>
         <Grid container spacing={2} className="gridContainer">
@@ -41,8 +41,8 @@ export default function History() {
             </picture>
           </Grid>
           <Grid item xs={12} sm={7} className="gridItem">
-            <b>Faculty of Agriculture <wbr />in Miyazaki University</b>
-            <wbr /><small> : 2013/04 - 2017/03</small>
+            <small>2013/04 - 2017/03 :</small>
+            <br /><b>Faculty of Agriculture <wbr />in Miyazaki University</b>
             <br />Majored Botanics and Agricultural Engineering
           </Grid>
         </Grid>

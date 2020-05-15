@@ -64,7 +64,7 @@ function Layout({ children }) {
           <Link href="./#about">
             <ListItem button>
               <ListItemIcon><PermContactCalendarIcon /></ListItemIcon>
-              <ListItemText primary="About" />
+              About
             </ListItem>
           </Link>
           <Link href="./#history">

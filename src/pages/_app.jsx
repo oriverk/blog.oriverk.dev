@@ -44,6 +44,9 @@ export default function MyApp(props) {
           background-color: rgb(128, 128, 128);
           border-radius: .3rem;
         }
+        *{
+          font-family: 'Hiragino Sans', 'Meiryo', sans-serif;
+        }
         div, p, a, li, b{
           font-size: 1rem;
         }

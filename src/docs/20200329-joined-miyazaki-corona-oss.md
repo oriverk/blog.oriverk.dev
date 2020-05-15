@@ -24,7 +24,6 @@ from Qiita:
 - 宮崎県出身
 - PRしたことない人
 - Vue, TypeScript何も分らん
-- 現在、住所不定無職。[再就職活動中](https://oriverk.github.io/)
 
 ## Environment
 - Ubuntu 18.04 ( vm with Vagrant
@@ -40,7 +39,7 @@ from Qiita:
 - Vimの設定
     - [oriverk/dotfiles/.vimrc](https://github.com/oriverk/dotfiles/blob/master/init.vim)からコピペ
     - 環境のデフォルトエディタを変更し、vimを選択
-        - `sudo update-alternatives --config editor`
+        - sudo update-alternatives --config editor
 - Vue用の仮想環境を用意した。（割愛
     - [仮想環境をUbuntu 18.04 （CUI/GUI）で構築する](https://qiita.com/OriverK/items/115c0c4d3c25c89327bc)
 - Node.js >= v10.19.0の用意（割愛
@@ -60,15 +59,13 @@ yarn dev
   <img src="/assets/posts/202003/miyazaki-oss.jpg" alt="localhost">
 </picture>
 
-`http://localhost:3000/`にアクセスすると
-
 <picture>
   <source srcSet="/assets/posts/202003/miyazaki-oss1.webp" type="image/webp">
   <img src="/assets/posts/202003/miyazaki-oss1.jpg" alt="miyazaki-oss">
 </picture>
 
 # やったこと
-最初に書いた通り、Vue（と言うかJS）何もわからない人であり、コード修正は厳しいと考えたので、表示される自然言語の修正をする事にした。因みにどのファイルがどこにあるかも判らなかったので、commit履歴から探しました(^^;
+最初に書いた通り、Vue（と言うかJS）何もわからないので、表示される自然言語の修正をする事にした。因みにどのファイルがどこにあるかも判らなかったので、commit履歴から探しました(^^;
 
 - 表示言語選択メニューバー: [covid19/nuxt-i18n.config.ts](https://github.com/covid19-miyazaki/covid19/blob/development/nuxt-i18n.config.ts)
 - 他言語表示用json: [covid19/assets/locales/](https://github.com/covid19-miyazaki/covid19/tree/development/assets/locales)

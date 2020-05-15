@@ -16,14 +16,12 @@ import WantedlyIcon from '../utils/wantedlySvg'
 export default function MyDrawerList({children}) {
   return (
     <React.Fragment>
-      <List>
-        <div className="profileImgContainer">
-          <picture>
-            <source srcSet="/assets/human192x192.webp" type="image/webp" className="profileImg" />
-            <img src="/assets/human192x192.png" alt="avatar" className="profileImg" />
-          </picture>
-        </div>
-      </List>
+      <div className="profileImgContainer">
+        <picture>
+          <source srcSet="/assets/human192x192.webp" type="image/webp" className="profileImg" />
+          <img src="/assets/human192x192.png" alt="avatar" className="profileImg" />
+        </picture>
+      </div>
       <Divider />
       {/* <List>
         <Link href="/">

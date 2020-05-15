@@ -22,6 +22,9 @@ export default function Home() {
           padding: 0 5%;
           flex-grow: 1;
         }
+        article {
+          margin-bottom: 1rem;
+        }
         #works{
           margin-bottom: 3.5rem;
         }
@@ -46,6 +49,9 @@ export default function Home() {
         a {
           color: #F48FB1; 
           text-decoration: none;
+        }
+        #about p{
+          margin: 0 auto .5rem;
         }
       `}</style>
     </>

@@ -38,11 +38,13 @@ export default function Post({ postData }) {
       </PostLayout>
       <style jsx global>{`
         a{
-          color: #F48FB1;
+          color: #50CAF9;
+          text-decoration: none;
         }
         code{
           display: inline-block;
           margin: 0 1rem;
+          padding: 0 .5rem;
           background-color: #555;
         }
         pre{
