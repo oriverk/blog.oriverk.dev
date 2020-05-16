@@ -17,8 +17,6 @@ import CreateIcon from '@material-ui/icons/Create'
 
 import MyDrawerList from '../components/MyDrawerList'
 
-import Meta from '../components/Meta'
-
 const drawerWidth = 250
 
 const useStyles = makeStyles((theme) => ({
@@ -95,9 +93,6 @@ function Layout({ children }) {
 
   return (
     <React.Fragment key='left'>
-      <Head>
-        <Meta />
-      </Head>
       <Hidden lgUp>
         <SwipeableDrawer
           anchor='left'

@@ -2,7 +2,6 @@ import Head from 'next/head'
 import PostLayout from '../../components/PostLayout'
 // import Date from '../../components/date'
 import { getAllPostIds, getPostData } from '../../lib/posts'
-// import MyHead from '../../componets/MyHead'
 
 export async function getStaticPaths() {
   const paths = getAllPostIds()
