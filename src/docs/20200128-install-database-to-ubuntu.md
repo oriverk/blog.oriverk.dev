@@ -1,9 +1,11 @@
 ---
 date: '2020-01-28'
 update: '2020-03-17'
+author: Kawano Yudai
 title: 'Gist: how to install db to ubuntu'
 tags: Gist DB PostgreSQL MySQL
-author: oriverk
+image: ''
+slide: false
 ---
 
 from Gist: 

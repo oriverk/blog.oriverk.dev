@@ -1,10 +1,20 @@
 ---
 date: '2020-01-10'
+author: Kawano Yudai
 title: Postページを中心に改修した（N度目
+tags: githubapages ruby jekyll
+image: '/assets/posts/202001/githubpages2post.jpg'
 categories: [blog]
-tags: rugy jekyll githubpages
 permalink: blog/:title
+slide: false
 ---
+
+# 改修結果
+
+<picture>
+  <source srcSet="/assets/posts/202001/githubpages2post.webp" type="image/webp">
+  <img src="/assets/posts/202001/githubpages2post.jpg" alt="jekyll">
+</picture>
 
 ## 改修内容
 - デザインの変更

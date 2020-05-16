@@ -1,9 +1,10 @@
 ---
 date: '2019-03-06'
 update: '2019-12-4'
+author: Kawano Yudai
 title: 'Qiita: 2日目(2)：Scaffoldなしでの掲示板作成'
 tags: Qiita Ubuntu Ruby Rails scaffold
-author: OriverK
+image: '/assets/posts/201903/scaffold6.jpg'
 slide: false
 ---
 
@@ -20,12 +21,12 @@ from Qiita:
   - Rails:5.2.2
 
 ## rails db:migrate
->Railsドキュメントより(http://railsdoc.com/references/rake%20db:migrate)
->>rails db:migrateを実行
->>schema_migrationsテーブルを調べ、存在しなければ作成
->>db/migrateディレクトリ内のすべてのマイグレーションファイルを調べる
->>データベースの現在のバージョンと異なるバージョンがあった場合、データベースに適応
->>schema_migrationsテーブルの更新
+- Railsドキュメントより(http://railsdoc.com/references/rake%20db:migrate)
+  - rails db:migrateを実行
+  - schema_migrationsテーブルを調べ、存在しなければ作成
+  - db/migrateディレクトリ内のすべてのマイグレーションファイルを調べる
+  - データベースの現在のバージョンと異なるバージョンがあった場合、データベースに適応
+  - schema_migrationsテーブルの更新
 
 ---
 # 3日目

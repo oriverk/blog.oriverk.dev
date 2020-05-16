@@ -1,9 +1,10 @@
 ---
 date: '2019-03-17'
 update: '2019-12-04'
+author: Kawano Yudai
 title: 'Qiita: 9, 10, 11, 14日目：大学生データ操作App'
 tags: Qiita Ruby Rails MySQL
-author: OriverK
+image: 'assets/posts/201905/cebu3.webp'
 slide: false
 ---
 

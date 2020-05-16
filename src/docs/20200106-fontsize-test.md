@@ -1,8 +1,10 @@
 ---
 date: '2020-01-06'
+author: Kawano Yudai
 title: フォントサイズの確認
+tags: font-size test
+image: ''
 categories: [blog]
-tags: 
 ---
 
 ## h2 tag あいうえお

@@ -1,8 +1,16 @@
 ---
 date: '2020-02-04'
+author: Kawano Yudai
 title: GithubPagesのメジャーアップデートをした。
 tags: githubpages ruby jekyll
+image: 'assets/posts/202002/githubpages2home.jpg'
+slide: false
 ---
+
+<picture>
+  <source srcSet="/assets/posts/202002/githubpages2home.webp" type="image/webp">
+  <img src="/assets/posts/202002/githubpages2home.jpg" alt="jekyll">
+</picture>
 
 ## What I did
 - Introduce IE Buster
@@ -11,7 +19,8 @@ tags: githubpages ruby jekyll
 - Add top-image and githubpage-svg
 
 ## IE Buster
-リンク:[https://ie-buster.qranoko.jp/](IE BUSTER)
+リンク: [IE Buster](https://ie-buster.qranoko.jp/)
+
 IE環境下ではSVG周辺でデザインが崩れることが確認されたが、Chrome使用を促すJSを追加した。
 
 ## Update Ruby-version to 2.7.0

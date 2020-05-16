@@ -2,6 +2,7 @@ import Head from 'next/head'
 import PostLayout from '../../components/PostLayout'
 // import Date from '../../components/date'
 import { getAllPostIds, getPostData } from '../../lib/posts'
+// import MyHead from '../../componets/MyHead'
 
 export async function getStaticPaths() {
   const paths = getAllPostIds()
@@ -22,14 +23,17 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Post({ postData }) {
+  const pageTitle = postData.title ? `${postData.title} | Kawano Yudai' site` : "Kawano Yudai's site"
+  const pageTags = postData.tags ? postData.tags.replace(' ', ', ') : 'GithubPages, React, Next.js'
+  const pageImage = postData.image ? postData.image : './assets/prtsc700.jpg'
+
   return (
     <>
       <PostLayout>
-        <Head>
-          <title>{postData.title}</title>
-        </Head>
-        <article className="content">
+        <article className='content'>
           <h1>{postData.title}</h1>
+          <h2>{pageTags}</h2>
+          <h2>{pageImage}</h2>
           <div>
             <time dateTime={postData.date}>posted on: {postData.date}</time>
           </div>

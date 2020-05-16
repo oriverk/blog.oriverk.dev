@@ -1,9 +1,11 @@
 ---
 date: '2020-01-28'
 update: '2020-05-13'
+author: Kawano Yudai
 title: 'Gist: how to build VM with linux Ubuntu'
 tags: VM Linux Ubuntu
-author: oriverk
+image: ''
+slide: false
 ---
 
 from Gist: 

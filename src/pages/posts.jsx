@@ -16,19 +16,15 @@ export default function Index({allPostsData}) {
   return (
     <>
       <Layout>
-        <Head>
-          <title>Blog Index</title>
-        </Head>
-        <article className="content">
+        <article className='content'>
           <h1>Blog Posts</h1>
           <ul>
             {allPostsData.map(({ id, date, title }) => (
               <li key={id}>
                 <time dateTime={date}>{date}</time>
-                <Link href="/posts/[id]" as={`posts/${id}`}>
+                <Link href='/posts/[id]' as={`posts/${id}`}>
                   <a><h2>{title}</h2></a>
                 </Link>
-
               </li>
             ))}
           </ul>
@@ -37,7 +33,7 @@ export default function Index({allPostsData}) {
       <style jsx>{`
         .content {
           width: 100%;
-          max-width: 900px;
+          max-width: 950px;
           margin: 0 auto 1rem;
           padding: 5%;
           flex-grow: 1;

@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import Link from 'next/link'
 
 import { makeStyles, useTheme } from '@material-ui/core/styles'
@@ -11,6 +12,8 @@ import HomeIcon from '@material-ui/icons/Home'
 import CreateIcon from '@material-ui/icons/Create'
 
 import MyDrawerList from '../components/MyDrawerList'
+
+import Meta from '../components/Meta'
 
 const drawerWidth = 250
 
@@ -74,6 +77,9 @@ function PostLayout({ children }) {
 
   return (
     <React.Fragment key='left'>
+      <Head>
+        <Meta />
+      </Head>
       <Hidden lgUp>
         <SwipeableDrawer
           anchor='left'

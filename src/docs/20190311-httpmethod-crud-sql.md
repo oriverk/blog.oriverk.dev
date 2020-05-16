@@ -1,8 +1,9 @@
 ---
 date: '2019-03-11'
+author: Kawano Yudai
 title: 'Qiita: 3日目(2)：HTTPメソッドとCRUDとSQL'
 tags: Qiita HTTP crud SQL MySQL RESTful
-author: OriverK
+image: '/assets/posts/201903/http1.jpg'
 slide: false
 ---
 
@@ -57,6 +58,6 @@ from Qiita:
 - 参照:
     - [Architectural Styles and the Design of Network-based Software Architectures](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
 
-> [wikipedia「Representational State Transfer」より](https://ja.wikipedia.org/wiki/Representational_State_Transfer)
->> フィールディングのRESTアーキテクチャスタイルの原則に合わせたWebサービスシステム。
->> 遠隔手続き呼出し(RPC)スタイルに合わせた簡易なXML + HTTPインタフェースを採用したシステム
+- [wikipedia「Representational State Transfer」より](https://ja.wikipedia.org/wiki/Representational_State_Transfer)
+    - フィールディングのRESTアーキテクチャスタイルの原則に合わせたWebサービスシステム。
+    - 遠隔手続き呼出し(RPC)スタイルに合わせた簡易なXML + HTTPインタフェースを採用したシステム
