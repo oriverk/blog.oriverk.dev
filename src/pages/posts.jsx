@@ -16,6 +16,15 @@ export default function Index({allPostsData}) {
   return (
     <>
       <Layout>
+        <Head>
+          <title>Blog | Kawano Yudai's site</title>
+          <meta name='title' content="Blog | Kawano Yudai's site" />
+          <meta name='description' content="My name is Kawano Yudai. I majored Botanics, Agricultural Engineering and studied crop row detection tech by image processing. Now, I'm seeking job as developer in Japan." />
+          <meta property='og:title' content="Blog | Kawano Yudai's site" />
+          <meta property='og:description' content="My name is Kawano Yudai. I majored Botanics, Agricultural Engineering and studied crop row detection tech by image processing. Now, I'm seeking job as developer in Japan." />
+          <meta property='og:image' content='./assets/prtsc700.jpg' />
+          <meta property='og:url' content='/' />
+        </Head>
         <article className='content'>
           <h1>Blog Posts</h1>
           <ul>

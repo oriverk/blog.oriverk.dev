@@ -1,12 +1,20 @@
 import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheets } from '@material-ui/core/styles'
-import theme from '../plugins/Theme'
 
 export default class MyDocument extends Document {
   render() {
     return (
       <Html lang='en'>
+        <Head>
+          <meta name="theme-color" content='#212121' />
+          <meta content="developer, ruby, react" name='keywords' />
+          <meta property="og:type" content="website" />
+          <meta property="og:site_name" content="Kawano Yudai's website" />
+          <meta property="og:locale" content="ja_JP" />
+          <meta content="summary_large_image" name="twitter:card" />
+          <meta content="@not_you_die" name="twitter:site" />
+        </Head>
         <body>
           <Main />
           <NextScript />

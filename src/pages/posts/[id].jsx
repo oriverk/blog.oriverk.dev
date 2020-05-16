@@ -22,17 +22,24 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Post({ postData }) {
-  const pageTitle = postData.title ? `${postData.title} | Kawano Yudai' site` : "Kawano Yudai's site"
+  const pageTitle = `${postData.title} | Kawano Yudai' site`
   const pageTags = postData.tags ? postData.tags.replace(' ', ', ') : 'GithubPages, React, Next.js'
   const pageImage = postData.image ? postData.image : './assets/prtsc700.jpg'
 
   return (
     <>
       <PostLayout>
+        <Head>
+          <title>{pageTitle}</title>
+          <meta name='title' content={pageTitle} />
+          <meta name='description' content={pageTags} />
+          <meta property="og:title" content={pageTitle} />
+          <meta property="og:description" content={pageTags} />
+          <meta property="og:image" content={pageImage} />
+          <meta property="og:url" content={`/posts/${postData.id}`} />
+        </Head>
         <article className='content'>
           <h1>{postData.title}</h1>
-          <h2>{pageTags}</h2>
-          <h2>{pageImage}</h2>
           <div>
             <time dateTime={postData.date}>posted on: {postData.date}</time>
           </div>
@@ -76,6 +83,9 @@ export default function Post({ postData }) {
           margin: 2rem auto;
           background-color: #424242;
           width: 95%;
+        }
+        twitter-widget{
+          margin: 0 auto;
         }
       `}</style>
       <style jsx>{`
