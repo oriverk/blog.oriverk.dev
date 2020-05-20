@@ -3,7 +3,7 @@ date: '2020-03-29'
 update: '2020-04-7'
 author: Kawano Yudai
 title: 'Qiita: 宮崎県COVID-19対策サイトのOSS活動に参加した。'
-tags: Qiita COVID-19 OSS GitHub Vue.js TypeScript
+tags: 'Qiita COVID-19 OSS GitHub Vue.js TypeScript'
 image: '/assets/posts/202003/miyazaki-oss1.jpg'
 slide: false
 ---
@@ -16,15 +16,15 @@ from Qiita:
 # Introduction
 ## Referrence
 - [宮崎県 新型コロナウイルス 対策サイト](https://covid19-miyazaki.netlify.com/)
-    - [covid19-miyazaki/covid19](https://github.com/covid19-miyazaki/covid19)
+    - [Github covid19-miyazaki/covid19](https://github.com/covid19-miyazaki/covid19)
 - [東京都 新型コロナウイルス 対策サイト](https://stopcovid19.metro.tokyo.lg.jp/)
     - [tokyo-metropolitan-gov/covid19](https://github.com/tokyo-metropolitan-gov/covid19)
-- [東京都 新型コロナウイルス対策サイトへの貢献方法を解説](https://qiita.com/FPC_COMMUNITY/items/b9cc072813dc2231b2b2)
+- [Qiita: 東京都 新型コロナウイルス対策サイトへの貢献方法を解説](https://qiita.com/FPC_COMMUNITY/items/b9cc072813dc2231b2b2)
 
 ## Who is 
-- 宮崎県出身
-- PRしたことない人
+- OSS活動したことない
 - Vue, TypeScript何も分らん
+  - 今回をきっかけに、Reactを触り始めました。
 
 ## Environment
 - Ubuntu 18.04 ( vm with Vagrant
@@ -32,9 +32,9 @@ from Qiita:
     - yarn: 1.22.4
 
 # 環境構築
-[リポジトリのREADME.md中の開発者向け情報->環境構築の手順](https://github.com/covid19-miyazaki/covid19#%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%81%AE%E6%89%8B%E9%A0%86)に従う
+[Github: リポジトリのREADME.md中の開発者向け情報->環境構築の手順](https://github.com/covid19-miyazaki/covid19#%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%81%AE%E6%89%8B%E9%A0%86)に従う
 
-- Gitの設定（今回は新しく環境を用意したので。
+- Gitの設定（今回は新しくvm環境を用意したので。
     - git config --global user.name "usename"
     - git config --global user.email "email"
 - Vimの設定

@@ -48,12 +48,14 @@ export default function Post({ postData }) {
         <div className='sns'>
           <div className='twitter'>
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" className="twitter-share-button" data-show-count="false"
-              data-size="large" data-text={postData.title} data-url={`https://next-portfolio-blue.now.sh/posts/${postData.id}`}>Tweet</a>
+              data-size="large" data-text={postData.title} data-url={`https://next-portfolio-blue.now.sh/posts/${postData.id}`}
+              target="_blank" rel="noopener noreferrer">Tweet</a>
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           </div>
           <div className='hatena'>
-            <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="touch-counter"
-              title={postData.title}><img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png"
+            <a href={`https://b.hatena.ne.jp/entry/https://next-portfolio-blue.now.sh/posts/${postData.id}`} className="hatena-bookmark-button" data-hatena-bookmark-layout="touch-counter"
+              title={postData.title} target="_blank" rel="noopener noreferrer">
+              <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png"
                 alt="このエントリーをはてなブックマークに追加" style={{ width:'20px', height:'20px', border: 'none' }} /></a>
             <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
           </div>
@@ -97,8 +99,8 @@ export default function Post({ postData }) {
           background-color: #424242;
           width: 95%;
         }
-        twitter-widget{
-          margin: 0 auto;
+        .twitter, .hatena {
+          float: left;
         }
       `}</style>
       <style jsx>{`
