@@ -10,53 +10,53 @@ import { QiitaIcon, WantedlyIcon } from '../utils/customSvg'
 export function MyDrawerList({children}) {
   return (
     <React.Fragment>
-      <div className="profileImgContainer">
+      <div className='profileImgContainer'>
         <picture>
-          <source srcSet="/assets/human192x192.webp" type="image/webp" className="profileImg" />
-          <img src="/assets/human192x192.png" alt="avatar" className="profileImg" />
+          <source srcSet='/assets/human192x192.webp' type='image/webp' className='profileImg' />
+          <img src='/assets/human192x192.png' alt='avatar' className='profileImg' />
         </picture>
       </div>
       <Divider />
       {/* <List>
-        <Link href="/">
+        <Link href='/'>
           <ListItem button>
             <ListItemIcon><HomeIcon /></ListItemIcon>
-            <ListItemText primary="Home" />
+            <ListItemText primary='Home' />
           </ListItem>
         </Link>
-        <Link href="./#about">
+        <Link href='./#about'>
           <ListItem button>
             <ListItemIcon><PermContactCalendarIcon /></ListItemIcon>
-            <ListItemText primary="About" />
+            <ListItemText primary='About' />
           </ListItem>
         </Link>
-        <Link href="./#history">
+        <Link href='./#history'>
           <ListItem button>
             <ListItemIcon><WorkIcon /></ListItemIcon>
-            <ListItemText primary="History" />
+            <ListItemText primary='History' />
           </ListItem>
         </Link>
-        <Link href="./#works">
+        <Link href='./#works'>
           <ListItem button>
             <ListItemIcon><CodeIcon /></ListItemIcon>
-            <ListItemText primary="Works" />
+            <ListItemText primary='Works' />
           </ListItem>
         </Link>
-        <Link href="/posts">
+        <Link href='/posts'>
           <ListItem button>
             <ListItemIcon><CreateIcon /></ListItemIcon>
-            <ListItemText primary="Blog" />
+            <ListItemText primary='Blog' />
           </ListItem>
         </Link>
       </List> */}
       {children}
       <Divider />
-      <div className="third">
-        <IconButton href="https://github.com/oriverk" target="_blank" rel="noopener noreferrer" color="secondary" alt="github"><GitHubIcon /></IconButton>
-        <IconButton href="https://qiita.com/OriverK" target="_blank" rel="noopener noreferrer" color="secondary"><QiitaIcon /></IconButton>
-        <IconButton href="https://www.wantedly.com/users/40069986" target="_blank" rel="noopener noreferrer" color="secondary"><WantedlyIcon /></IconButton>
-        <IconButton href="https://www.linkedin.com/in/yudai-k/" target="_blank" rel="noopener noreferrer" color="secondary"><LinkedInIcon /></IconButton>
-        <IconButton href="https://twitter.com/not_you_die" target="_blank" rel="noopener noreferrer" color="secondary"><TwitterIcon /></IconButton>
+      <div className='third'>
+        <IconButton href='https://github.com/oriverk' target='_blank' rel='noopener noreferrer' color='secondary' alt='Github'><GitHubIcon /></IconButton>
+        <IconButton href='https://qiita.com/OriverK' target='_blank' rel='noopener noreferrer' color='secondary' alt='Qiita'><QiitaIcon /></IconButton>
+        <IconButton href='https://www.wantedly.com/users/40069986' target='_blank' rel='noopener noreferrer' color='secondary' alt='Wantedly'><WantedlyIcon /></IconButton>
+        <IconButton href='https://www.linkedin.com/in/yudai-k/' target='_blank' rel='noopener noreferrer' color='secondary' alt='LinkedIn'><LinkedInIcon /></IconButton>
+        <IconButton href='https://twitter.com/not_you_die' target='_blank' rel='noopener noreferrer' color='secondary' alt='Twitter'><TwitterIcon /></IconButton>
       </div>
       <style jsx>{`
         .profileImgContainer {

@@ -7,7 +7,7 @@ export default function Portfolio() {
     <Layout home>
       <div style={{ textAlign: 'center' }}>
         <h1>404 - Page Not Found</h1>
-        <p><Link href="/"><a style={{textDecoration:'none', color: '#F48FB1'}}>Please go back to Home.</a></Link></p>
+        <p><Link href='/'><a style={{textDecoration:'none', color: '#F48FB1'}}>Please go back to Home.</a></Link></p>
       </div>
     </Layout>
   )

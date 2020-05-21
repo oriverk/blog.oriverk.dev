@@ -3,8 +3,8 @@ import React from 'react'
 export default function NoImage (){
   return (
     <React.Fragment>
-      <div className="parent">
-        <div className="child">no image</div>
+      <div className='parent'>
+        <div className='child'>no image</div>
       </div>
       <style jsx>{`
         .parent {

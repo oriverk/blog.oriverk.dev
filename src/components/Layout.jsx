@@ -55,34 +55,34 @@ export function Layout({ children }) {
     return (
       <MyDrawerList>
         <List>
-          <Link href="/">
+          <Link href='/'>
             <ListItem button>
               <ListItemIcon><HomeIcon /></ListItemIcon>
-              <ListItemText primary="Home" />
+              <ListItemText primary='Home' />
             </ListItem>
           </Link>
-          <Link href="./#about">
+          <Link href='./#about'>
             <ListItem button>
               <ListItemIcon><PermContactCalendarIcon /></ListItemIcon>
               About
             </ListItem>
           </Link>
-          <Link href="./#history">
+          <Link href='./#history'>
             <ListItem button>
               <ListItemIcon><WorkIcon /></ListItemIcon>
-              <ListItemText primary="History" />
+              <ListItemText primary='History' />
             </ListItem>
           </Link>
-          <Link href="./#works">
+          <Link href='./#works'>
             <ListItem button>
               <ListItemIcon><CodeIcon /></ListItemIcon>
-              <ListItemText primary="Works" />
+              <ListItemText primary='Works' />
             </ListItem>
           </Link>
-          <Link href="/posts">
+          <Link href='/posts'>
             <ListItem button>
               <ListItemIcon><CreateIcon /></ListItemIcon>
-              <ListItemText primary="Blog" />
+              <ListItemText primary='Blog' />
             </ListItem>
           </Link>
         </List>
@@ -100,8 +100,8 @@ export function Layout({ children }) {
           onOpen={toggleDrawer('left', true)}
         >
           <div
-            className="swipeableList"
-            role="presentation"
+            className='swipeableList'
+            role='presentation'
             onClick={toggleDrawer('left', false)}
             onKeyDown={toggleDrawer('left', false)}
           >
@@ -109,7 +109,7 @@ export function Layout({ children }) {
           </div>
         </SwipeableDrawer>
         <footer>
-          <button aria-label="Open swipeable temporary drawer" onClick={toggleDrawer('left', true)}>
+          <button aria-label='Open swipeable temporary drawer' onClick={toggleDrawer('left', true)}>
             <DoubleArrowIcon color='secondary' style={{ fontSize: 34 }} />
           </button>
         </footer>
@@ -117,9 +117,9 @@ export function Layout({ children }) {
       <Hidden mdDown>
         <aside>
           <Drawer
-            className="permanentDrawer"
-            variant="permanent"
-            anchor="left"
+            className='permanentDrawer'
+            variant='permanent'
+            anchor='left'
             classes={{
               paper: classes.permanentDrawerPaper,
             }}

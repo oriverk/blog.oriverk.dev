@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   contents: { 
     flexGrow: 1,
+    // width: '100%',
     [theme.breakpoints.down('md')]: {
       // with swipeableDrawer
       width: '100%',
@@ -51,16 +52,16 @@ export function PostLayout({ children }) {
     return (
       <MyDrawerList>
         <List>
-          <Link href="/">
+          <Link href='/'>
             <ListItem button>
               <ListItemIcon><HomeIcon /></ListItemIcon>
-              <ListItemText primary="Home" />
+              <ListItemText primary='Home' />
             </ListItem>
           </Link>
-          <Link href="/posts">
+          <Link href='/posts'>
             <ListItem button>
               <ListItemIcon><CreateIcon /></ListItemIcon>
-              <ListItemText primary="Blog" />
+              <ListItemText primary='Blog' />
             </ListItem>
           </Link>
         </List>
@@ -82,8 +83,8 @@ export function PostLayout({ children }) {
           onOpen={toggleDrawer('left', true)}
         >
           <div
-            className="swipeableList"
-            role="presentation"
+            className='swipeableList'
+            role='presentation'
             onClick={toggleDrawer('left', false)}
             onKeyDown={toggleDrawer('left', false)}
           >
@@ -91,17 +92,17 @@ export function PostLayout({ children }) {
           </div>
         </SwipeableDrawer>
         <footer>
-          <button aria-label="Open swipeable temporary drawer" onClick={toggleDrawer('left', true)}>
-            <DoubleArrowIcon color="secondary" style={{ fontSize: 34 }} />
+          <button aria-label='Open swipeable temporary drawer' onClick={toggleDrawer('left', true)}>
+            <DoubleArrowIcon color='secondary' style={{ fontSize: 34 }} />
           </button>
         </footer>
       </Hidden>
       <Hidden mdDown>
         <aside>
           <Drawer
-            className="permanentDrawer"
-            variant="permanent"
-            anchor="left"
+            className='permanentDrawer'
+            variant='permanent'
+            anchor='left'
             classes={{
               paper: classes.permanentDrawerPaper,
             }}

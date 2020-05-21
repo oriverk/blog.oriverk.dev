@@ -2,6 +2,9 @@ import Head from 'next/head'
 import { PostLayout } from '../../components/PostLayout'
 // import Date from '../../components/date'
 import { getAllPostIds, getPostData } from '../../lib/posts'
+import TwitterIcon from '@material-ui/icons/Twitter'
+import { HatenaIcon } from '../../utils/customSvg'
+
 
 export async function getStaticPaths() {
   const paths = getAllPostIds()
@@ -33,10 +36,10 @@ export default function Post({ postData }) {
           <title>{pageTitle}</title>
           <meta name='title' content={pageTitle} />
           <meta name='description' content={pageTags} />
-          <meta property="og:title" content={pageTitle} />
-          <meta property="og:description" content={pageTags} />
-          <meta property="og:image" content={pageImage} />
-          <meta property="og:url" content={`/posts/${postData.id}`} />
+          <meta property='og:title' content={pageTitle} />
+          <meta property='og:description' content={pageTags} />
+          <meta property='og:image' content={pageImage} />
+          <meta property='og:url' content={`/posts/${postData.id}`} />
         </Head>
         <article className='content'>
           <h1>{postData.title}</h1>
@@ -47,11 +50,11 @@ export default function Post({ postData }) {
           <div className='sns'>
             <button className='twitter'>
               <a href={`https://twitter.com/share?text=${postData.title}&hashtags=react,nextjs&url=https://next-portfolio-blue.now.sh/posts/${postData.id}&related=not_you_die`}
-                target="_blank" rel="noopener noreferrer">Tweet</a>
+                target='_blank' rel='noopener noreferrer'><TwitterIcon /></a>
             </button>
             <button className='hatena'>
-              <a href={`https://b.hatena.ne.jp/entry/https://next-portfolio-blue.now.sh/posts/${postData.id}`} className="hatena-bookmark-button" data-hatena-bookmark-layout="touch-counter"
-                title={postData.title} target="_blank" rel="noopener noreferrer">はてぶ</a>
+              <a href={`https://b.hatena.ne.jp/entry/https://next-portfolio-blue.now.sh/posts/${postData.id}`} className='hatena-bookmark-button' data-hatena-bookmark-layout='touch-counter'
+                title={postData.title} target='_blank' rel='noopener noreferrer'><HatenaIcon /></a>
             </button>
           </div>
         </article>
@@ -110,21 +113,16 @@ export default function Post({ postData }) {
         .sns {
           position: absolute;
           left: 50%;
+          transform: translate(-50%, 0);
+          margin: 1rem 0;
         }
         .twitter, .hatena {
-          height: 3rem;
           float: left;
+          margin: 0 .5rem;
           color: #FFF;
-          font-weight: bold;
           background-color: transparent;
+          border: transparent;
           border-radius: .5rem;
-          margin: 0 1rem;
-        }
-        .twitter {
-          border: 2px solid #00ACEE;
-        }
-        .hatena {
-          border: 2px solid #00A4DE;
         }
       `}</style>
     </>

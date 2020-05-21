@@ -35,7 +35,7 @@ export function MyScrollTop() {
   return (
     <Zoom in={trigger}>
       <div onClick={handleClick} className={classes.scroll}>
-        <Fab color="secondary" size="large">
+        <Fab color='secondary' size='large'>
           <KeyboardArrowUpIcon />
         </Fab>
       </div>
