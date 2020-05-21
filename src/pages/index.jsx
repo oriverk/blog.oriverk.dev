@@ -1,10 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
-import Layout from '../components/Layout'
-import Top from '../components/Top'
-import About from '../components/About'
-import History from '../components/History'
-import Works from '../components/Works'
+import { Layout } from '../components/Layout'
+import { Top, About, History, Works } from '../components/HomeContents'
 
 export default function Home() {
   return (

@@ -11,7 +11,7 @@ import { List, ListItem, ListItemIcon, ListItemText, Divider } from '@material-u
 import HomeIcon from '@material-ui/icons/Home'
 import CreateIcon from '@material-ui/icons/Create'
 
-import MyDrawerList from '../components/MyDrawerList'
+import { MyDrawerList } from '../components/MyDrawerList'
 
 const drawerWidth = 250
 
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-function PostLayout({ children }) {
+export function PostLayout({ children }) {
   const classes = useStyles()
   const theme = useTheme()
   const [state, setState] = React.useState({
@@ -145,5 +145,3 @@ function PostLayout({ children }) {
     </React.Fragment>
   )
 }
-
-export default PostLayout

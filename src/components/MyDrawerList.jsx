@@ -5,10 +5,9 @@ import IconButton from '@material-ui/core/IconButton'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import LinkedInIcon from '@material-ui/icons/LinkedIn'
 import TwitterIcon from '@material-ui/icons/Twitter'
-import QiitaIcon from '../utils/qiitaSvg'
-import WantedlyIcon from '../utils/wantedlySvg'
+import { QiitaIcon, WantedlyIcon } from '../utils/customSvg'
 
-export default function MyDrawerList({children}) {
+export function MyDrawerList({children}) {
   return (
     <React.Fragment>
       <div className="profileImgContainer">

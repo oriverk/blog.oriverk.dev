@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import PostLayout from '../../components/PostLayout'
+import { PostLayout } from '../../components/PostLayout'
 // import Date from '../../components/date'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 
@@ -49,15 +49,15 @@ export default function Post({ postData }) {
           <div className='twitter'>
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" className="twitter-share-button" data-show-count="false"
               data-size="large" data-text={postData.title} data-url={`https://next-portfolio-blue.now.sh/posts/${postData.id}`}
-              target="_blank" rel="noopener noreferrer">Tweet</a>
-            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              target="_blank" rel="noopener noreferrer"></a>
+            <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
           </div>
           <div className='hatena'>
             <a href={`https://b.hatena.ne.jp/entry/https://next-portfolio-blue.now.sh/posts/${postData.id}`} className="hatena-bookmark-button" data-hatena-bookmark-layout="touch-counter"
               title={postData.title} target="_blank" rel="noopener noreferrer">
               <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png"
                 alt="このエントリーをはてなブックマークに追加" style={{ width:'20px', height:'20px', border: 'none' }} /></a>
-            <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+            <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charSet="utf-8" async="async"></script>
           </div>
         </div>
       </PostLayout>

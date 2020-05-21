@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function MyScrollTop() {
+export function MyScrollTop() {
   const classes = useStyles()
  
   const trigger = useScrollTrigger({

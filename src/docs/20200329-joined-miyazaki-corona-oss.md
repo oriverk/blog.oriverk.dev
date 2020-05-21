@@ -47,7 +47,7 @@ from Qiita:
     - [Ubuntuで使う言語のインストール方法とか環境構築とか](https://qiita.com/OriverK/items/9da9facc9d8007146e73#nodejs)
 - fork, clone, yarn install
 
-```sh:terminal
+```sh
 git clone https://github.com/oriverk/covid19.git
 cd covid19
 
@@ -81,11 +81,12 @@ yarn dev
 
 東京都verから宮崎県verにした際の地域表記変更の漏れであり、1文字の修正だった。
 
-```md:CODE_OF_CONDUCT.md
+```md
+# CODE_OF_CONDUCT.md
 # 33行目：都庁の人だけではなく
 => 県庁の人だけでなく
 ```
-```sh:terminal
+```sh
 git add .
 git commit -m "都庁を県庁に修正" --no-verify
 git push コピーしてきたURL development

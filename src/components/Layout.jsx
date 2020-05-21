@@ -15,7 +15,7 @@ import WorkIcon from '@material-ui/icons/Work'
 import CodeIcon from '@material-ui/icons/Code'
 import CreateIcon from '@material-ui/icons/Create'
 
-import MyDrawerList from '../components/MyDrawerList'
+import { MyDrawerList } from '../components/MyDrawerList'
 
 const drawerWidth = 250
 
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-function Layout({ children }) {
+export function Layout({ children }) {
   const classes = useStyles()
   const theme = useTheme()
   const [state, setState] = React.useState({
@@ -163,5 +163,3 @@ function Layout({ children }) {
     </React.Fragment>
   )
 }
-
-export default Layout
