@@ -43,23 +43,18 @@ export default function Post({ postData }) {
           <div>
             <time dateTime={postData.date}>posted on: {postData.date}</time>
           </div>
-          <div dangerouslySetInnerHTML={{ __html: postData.contentHtml}} />
+          <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+          <div className='sns'>
+            <button className='twitter'>
+              <a href={`https://twitter.com/share?text=${postData.title}&hashtags=react,nextjs&url=https://next-portfolio-blue.now.sh/posts/${postData.id}&related=not_you_die`}
+                target="_blank" rel="noopener noreferrer">Tweet</a>
+            </button>
+            <button className='hatena'>
+              <a href={`https://b.hatena.ne.jp/entry/https://next-portfolio-blue.now.sh/posts/${postData.id}`} className="hatena-bookmark-button" data-hatena-bookmark-layout="touch-counter"
+                title={postData.title} target="_blank" rel="noopener noreferrer">はてぶ</a>
+            </button>
+          </div>
         </article>
-        <div className='sns'>
-          <div className='twitter'>
-            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" className="twitter-share-button" data-show-count="false"
-              data-size="large" data-text={postData.title} data-url={`https://next-portfolio-blue.now.sh/posts/${postData.id}`}
-              target="_blank" rel="noopener noreferrer"></a>
-            <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
-          </div>
-          <div className='hatena'>
-            <a href={`https://b.hatena.ne.jp/entry/https://next-portfolio-blue.now.sh/posts/${postData.id}`} className="hatena-bookmark-button" data-hatena-bookmark-layout="touch-counter"
-              title={postData.title} target="_blank" rel="noopener noreferrer">
-              <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png"
-                alt="このエントリーをはてなブックマークに追加" style={{ width:'20px', height:'20px', border: 'none' }} /></a>
-            <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charSet="utf-8" async="async"></script>
-          </div>
-        </div>
       </PostLayout>
       <style jsx global>{`
         a{
@@ -99,9 +94,6 @@ export default function Post({ postData }) {
           background-color: #424242;
           width: 95%;
         }
-        .twitter, .hatena {
-          float: left;
-        }
       `}</style>
       <style jsx>{`
         .content {
@@ -114,6 +106,25 @@ export default function Post({ postData }) {
         h1{
           font-size: 1.5rem;
           text-align: center;
+        }
+        .sns {
+          position: absolute;
+          left: 50%;
+        }
+        .twitter, .hatena {
+          height: 3rem;
+          float: left;
+          color: #FFF;
+          font-weight: bold;
+          background-color: transparent;
+          border-radius: .5rem;
+          margin: 0 1rem;
+        }
+        .twitter {
+          border: 2px solid #00ACEE;
+        }
+        .hatena {
+          border: 2px solid #00A4DE;
         }
       `}</style>
     </>
