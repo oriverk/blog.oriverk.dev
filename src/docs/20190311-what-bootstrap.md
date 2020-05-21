@@ -23,7 +23,7 @@ MySQL
   - Bootstrap is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with our Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.
 
 # いつもの`rails s`辺りまでの準備
-```sh:terminal
+```sh
 rails new private_butostrap -d mysql
 #Gemfileのmini-racerコメントイン
 bundle install
@@ -33,13 +33,13 @@ rails s  # 一応確認
 ```
 
 # Scaffoldでテーブル作成
-```sh:terminal
+```sh
 # rails g scaffold (コントローラ名/モデル名)　カラム名：データ型　・・・
 rails g scaffold User name:string email:string sex:integer age:integer address:integer attendance:integer opinion:text
 ```
 
 ## rails db:migrate
-```sh:terminal
+```sh
 rails db:migrate
 # 一応確認として
 use private_butostrap_development;
@@ -47,7 +47,7 @@ show table;
 ```
 
 ## consoleでデータ追加
-```rb:console
+```rb
 (1..100).each do |num|
   if num % 2 == 0
     s = 0
@@ -69,7 +69,8 @@ end
 参照
 - [Bootstrap introduction](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
 
-```html:app/views/layouts/application.html.erb
+```html
+<!-- app/views/layouts/application.html.erb -->
 <!-- <head>の中で読み込む -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -82,7 +83,8 @@ end
 リンクが青くなった。
 
 ## indexページのNewUserボタンの変更
-```rb:app/views/users/index.html.erb
+```rb
+# app/views/users/index.html.erb
 # 元のコード
 <%= link_to 'New User', new_user_path" %>
 # Bootstrap用のclass追加
@@ -95,7 +97,8 @@ end
 参照：
 - [bootstrap table](https://getbootstrap.com/docs/4.3/content/tables/)
 
-```rb:app/views/layouts/application.html.erb
+```rb
+# app/views/layouts/application.html.erb
 # 元のコード
 <table>
 # 修正後

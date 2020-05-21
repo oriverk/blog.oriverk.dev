@@ -56,7 +56,7 @@ from Qiita
     - Postgresql
 
 # 実作業： アプリ作成、諸準備
-```rb:
+```rb
 rails new codr -d postgresql
 # DB設定等は割愛
 ```
@@ -64,7 +64,8 @@ rails new codr -d postgresql
 ## Gem
 今回は公開にまで至る予定なので、railsやdeviseの日本語化等も。が、想定ユーザはエンジニアだしと思い、殆ど英語になった。
 
-```rb:Gemfile
+```rb
+# Gemfile
 gem 'mini_racer'
 gem 'rails-i18n'
 
@@ -88,7 +89,7 @@ gem 'aws-sdk-s3' # aws s3
 ## gitignore => rails.credentials.yml
 当初は.`gitignore`と`gem 'dotenv'`等を使っていた。が、作成途中でRails5.2からの`rails.credentials.yml`を利用した。復号化には`/config/master.key`を利用。
 
-```sh:terminal
+```sh
 # editor setting
  EDITOR="vim" rails credentials:edit
 # edit credentials.yml
@@ -104,7 +105,7 @@ Rails.application.credentials.dig(:twitter, :API_Key)
 ```
 
 ## rails gあれこれ
-```sh:terminal
+```sh
 # devise
 rails g devise:install
 rails g devise User name:String
@@ -124,13 +125,14 @@ config.i18n.default_locale = :ja
 => create /config/locale/devise.view.ja.yml
 ```
 
-```sh:terminal
+```sh
 # scaffold post
 rails g scaffold Post user:references name:string content:text date:datetime
 ```
 
 ## Active Record Associations関連付け
-```rb:/app/model/
+```rb
+# /app/model/
 # user
 has_many :posts
 
@@ -145,7 +147,8 @@ belongs_to :user
 基本：`Redcarpet::Markdown.new(renderer, extensions = {}).render(@post.content)`
 オプションやXSS対策等を追加したく、helperメソッドを作成した。
 
-```rb:app/helpers/posts_helper.rb
+```rb
+# app/helpers/posts_helper.rb
 Module PostsHelper
   require 'rouge/plugins/redcarpet'
   class RougeRedcarpetRenderer < Redcarpet::Render::HTML
@@ -185,7 +188,8 @@ end
 html_safeではXSS対策としては駄目と知った。名前詐欺である。
 [sanitizeヘルパーを使用した。ホワイトリスト方式。要参照](https://edgeapi.rubyonrails.org/classes/ActionView/Helpers/SanitizeHelper.html#method-i-sanitize)
 
-```rb:app/views/posts/index.html.erb
+```rb
+# app/views/posts/index.html.erb
 # sanitize(html, options = {})
  <div id="capture" class="content">
     <%= sanitize(markdown(@post.content), tags: %w(div img h1 h2 h3 h4 h5 strong em a p pre code ), attributes: %w(class href)) %>
@@ -203,7 +207,7 @@ html_safeではXSS対策としては駄目と知った。名前詐欺である�
 ## [Active Storage](https://railsguides.jp/active_storage_overview.html)
 Rail5.2からの機能で、今までのcarrievaveやpaperclip等を使わずに、クラウドストレージ等へのアップロードが容易になる。今回はAWS S3を使った。
 
-```sh:terminal
+```sh
 # set up
 rails active_storage:install
 
@@ -211,14 +215,16 @@ rails active_storage:install
 rails db:migrate
 ```
 
-```rb:app/models/post.rb
+```rb
+# app/models/post.rb
 class Post < ApplicationRecord
 # 今回は1つの投稿につき、1枚の画像なので。複数なら => has_many_attached :prtscs
   has_one_attached :prtsc
 end
 ```
 
-```rb:app/config/environments/
+```rb
+# app/config/environments/
 # ファイル保存先変更
 # development.rb
 config.active_storage.service = :local
@@ -228,13 +234,15 @@ config.active_storage.service = :amazon
 
 `rails credentials:edit`でAWSアクセスキーとシークレットキーを追加。
 
-```yaml:config/credentials.yml.enc
+```yaml
+# config/credentials.yml.enc
 aws:
   access_key_id: 
   secret_access_key: 
 ```
 
-```yml:config/storage.yml
+```yml
+# config/storage.yml
 test:
   service: Disk
   root: <%= Rails.root.join("tmp/storage") %>
@@ -251,7 +259,8 @@ amazon:
   bucket: codr0
 ```
 
-```rb:Gemfile
+```rb
+# Gemfile
 # gemが必要
 gem 'aws-sdk-s3', require: false
 # 今回は不要だったので、入れず。
@@ -266,7 +275,8 @@ jsはProgateレベルだったので、DOM操作は初めてで、なんか楽�
 2. `html2canvas.js`を`app/assets/javascripts`ディレクトリ配下に保存。
 3. html上に置くscriptコードを改修
 
-```rb:app/views/posts/show.html.erb
+```rb
+# app/views/posts/show.html.erb
 <%= form_with(model: @post, local: true) do |form| %>
   <%= form.hidden_field :id, value: @post.id %>
   <%= form.hidden_field :prtsc, value: "" %>　# idはpost_prtscになる。
@@ -274,7 +284,8 @@ jsはProgateレベルだったので、DOM操作は初めてで、なんか楽�
 <% end %>
 ```
 
-```rb:app/views/layouts/application.html.erb
+```rb
+# app/views/layouts/application.html.erb
 <script type="text/javascript">
   html2canvas(document.querySelector("#capture"),{scale:1, width:600}).then(canvas => {
     var base64 = canvas.toDataURL('image/jpeg', 1.0);
@@ -288,7 +299,8 @@ jsはProgateレベルだったので、DOM操作は初めてで、なんか楽�
   - [python-twitter で BASE64 形式の画像をツイートする](https://qiita.com/maguro_tuna/items/184f63e37f3724f18e33)
   - [base64でエンコードされた画像をActive Storageで保存する](https://qiita.com/ozin/items/5ec81a4b126b8ebf7a96)
 
-```rb:app/models/post.rb
+```rb
+# app/models/post.rb
 attr_accessor :img
 
 def parse_base64(img)
@@ -312,7 +324,8 @@ AWS上での登録、設定、バケット作成等は割愛。
 ## [Tweet button](https://publish.twitter.com/#)
 公式で生成されるTweetボタンのURLを利用し、押下時にwindow.openでTweet投稿ページを開くようにした。rubyonrailsで用意した変数をjsに渡す`gem 'gon'`も考えたが、見送った。
 
-```rb:app/views/layouts/application.html.erb
+```rb
+# app/views/layouts/application.html.erb
 <script>
   var base = 'https://twitter.com/intent/tweet?url=';
   var pageUrl = 'https://codr0.herokuapp.com/posts/' + document.getElementById('post_id').value;
@@ -335,7 +348,8 @@ AWS上での登録、設定、バケット作成等は割愛。
 基本的にはどちらも、ActiveStorageに保存したデータのUrlを取得するメソッドの様だ。
 どちらもセキュリティの為にリンクの有効期限が短いみたいだが、違いが分からなかった。今回はTweetボタン押下し、Tweetした際にog:imageとして表示されればいい。
 
-```rb:app/views/posts/show.html.erb
+```rb
+# app/views/posts/show.html.erb
 # 画像がActive StorageでAWS S3に保存されて入れば
 <% if @post.prtsc.attached? %>
   <% set_meta_tags og:{image: @post.prtsc.service_url} %>
@@ -350,7 +364,8 @@ AWS上での登録、設定、バケット作成等は割愛。
   - [[*Rails*] deviseの使い方（rails5版）](https://qiita.com/cigalecigales/items/f4274088f20832252374)
   - [ominiauth脆弱性に対するクックパドによるパッチ]](https://github.com/cookpad/omniauth-rails_csrf_protection)
 
-```rb:app/models/user.rb
+```rb
+# app/models/user.rb
 # 参考ページと同じ基礎的な所は割愛する。
 class User < ApplicationRecord
   def self.from_omniauth(auth)
@@ -391,7 +406,8 @@ Twitterのニックネームが取得できるようになったので、元か�
 ## メディアクエリ
 想定ユーザは殆どスマホなのに、PCで作成し、CSSをPCの見た目でやってた。折角SCSSでやってるので、変数を利用した。
 
-```scss:app/assets/stylesheets/scaffold.scss
+```scss
+# app/assets/stylesheets/scaffold.scss
 // ディスプレイサイズが680pxまでなら。
 $tab: 680px; 
 @mixin tab {

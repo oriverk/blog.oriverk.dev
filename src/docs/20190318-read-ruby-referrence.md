@@ -39,7 +39,7 @@ case     end      next     return   until
 @@で始まる変数はクラス変数
 親クラスに、子クラスで既に定義されている同名のクラス変数を追加したら、 子クラスのクラス変数が上書きされる。
 
-```rb:
+```rb
 class Foo
 end
 class Bar < Foo

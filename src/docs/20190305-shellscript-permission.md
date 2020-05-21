@@ -19,7 +19,7 @@ from
 4. ディレクトリ2の中にディレクトリ3を作成
 5. ディレクトリ1をディレクトリ3の中に移動
 
-```sh:terminal
+```sh
 mkdir dir1
 touch dir1/file1
 mkdir -p dir2/dir3
@@ -27,12 +27,12 @@ mv dir1 dir2/dir3
 ```
 
 ## コマンドのオプションが分からなくなった時
-```sh:terminal
+```sh
 man コマンド名
 ```
 
 ## 今回使用したオプション付きコマンド
-```sh:terminal
+```sh
 mkdir -p
  # -p, --parents　no error if existing, make parent directories as needed
 
@@ -58,7 +58,7 @@ ls -la
 # シェルスクリプト
 OSのシェルまたはコマンドラインインタプリタ向けに書かれたスクリプト言語。拡張子は`.sh`。
 
-```sh:terminal
+```sh
 #シェルスクリプト作成
 touch test.sh
 
@@ -76,14 +76,14 @@ mv dir1 dir2/dir3
 
 このtest.shを活用することで、先の課題を自動的に行うことができる。
 
-```sh:terminal
+```sh
 #起動方法
 ./test.sh
 ```
 
 # Permission
 
-```sh:terminal
+```sh
 ls -la test.sh
 #表示結果
 -rw-rw-r-- 1 vagrant vagrant 0 Mar  4 23:48 test.sh
@@ -94,7 +94,7 @@ ls -la test.sh
 ## 権限編集方法
 chmod=change mode
 
-```sh:
+```sh
 # すべてのユーザーに実行権限を与える／禁止する。
 chmod +x test.sh　/ chmod -x test.sh
 #グループに書き込み権限をその他のユーザーには実行権限を禁止する。
@@ -102,7 +102,7 @@ chmod g+w,o-x test.sh
 ```
 ## 別の表示方法(数字）
 
-```sh:
+```sh
 # r、w、xにそれぞれ4，2，1を割り当て、表すことができる。
 rw-r--r--    =>  644
 r-xr--r--    =>  544

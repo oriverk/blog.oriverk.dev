@@ -30,7 +30,7 @@ Rails:5.2.2
 
 # 実段階
 ## 生徒データと関連付けするときは
-```rb:
+```rb
 student1 = Student.first
 student1.clubs << Club.first
 student1.save
@@ -39,7 +39,7 @@ student1.save
 ## データ入力
 id1からid100までの生徒に、0から4個の部活(選択肢は13部)に入ってもらう。
 
-```rb:
+```rb
 (1..100).each do |i|
   student = Student.find(i)
   1.upto(rand(0..4)) do
@@ -68,11 +68,13 @@ end
 ```
 
 ## Studentsのindexページの表記を変更
-```rb:app/models/studetns.rb
+```rb
+# app/models/studetns.rb
 enum gender: { male: 0 ,female: 1}
 enum age: {"teen": 0, "twenty": 1}
 ```
-```erb:app/views/_form.html.erb
+```rb
+# app/views/_form.html.erb
 <div class="field">
     <%= form.label :gender %>
     <%= form.radio_button :gender, 'male' %>男性
@@ -92,7 +94,7 @@ enum age: {"teen": 0, "twenty": 1}
     - 性と全体の試験結果の平均点、最大点、最小点
 
 ### MySQL上の出力
-```sql:
+```sql
 SELECT
     subjects.name,
     CAST(AVG(exam_results.score) as unsigned) as avg_score,
@@ -105,20 +107,19 @@ INNER JOIN exam_results
 INNER JOIN subjects
     ON exam_results.subject_id = subjects.id
 GROUP BY subjects.id, subjects.name
-```
 
-```sql:
-+--------+--------------+-----------+-------+-------+
-| name   | name         | name      | score | ratio |
-+--------+--------------+-----------+-------+-------+
-| taro-1 | 一次試験     | 数学      |   181 |    91 |
-| taro-1 | 試験1        | 数学      |    61 |    31 |
-| taro-1 | 一次試験     | 国語      |   146 |    73 |
-| taro-1 | 試験2        | 国語      |   200 |   100 |
-| taro-1 | 一次試験     | 英語      |   199 |   100 |
-| taro-1 | 試験3        | 英語      |   108 |    54 |
-| taro-1 | 一次試験     | 化学      |    99 |    99 |
-(割愛)
+-- =>
+-- +--------+--------------+-----------+-------+-------+
+-- | name   | name         | name      | score | ratio |
+-- +--------+--------------+-----------+-------+-------+
+-- | taro-1 | 一次試験     | 数学      |   181 |    91 |
+-- | taro-1 | 試験1        | 数学      |    61 |    31 |
+-- | taro-1 | 一次試験     | 国語      |   146 |    73 |
+-- | taro-1 | 試験2        | 国語      |   200 |   100 |
+-- | taro-1 | 一次試験     | 英語      |   199 |   100 |
+-- | taro-1 | 試験3        | 英語      |   108 |    54 |
+-- | taro-1 | 一次試験     | 化学      |    99 |    99 |
+-- (割愛)
 ```
 
 ### ページ上の出力
@@ -127,7 +128,8 @@ GROUP BY subjects.id, subjects.name
 - 参照
   - [Active Record クエリインターフェイス](https://railsguides.jp/active_record_querying.html#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%8B%E3%82%89%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%99)
 
-```rb:app/controllers/studetns_controller.rb
+```rb
+# app/controllers/studetns_controller.rb
 def show
     @students = 
       Student.joins(:subjects)
@@ -158,7 +160,8 @@ def show
 ```
 
 #### showページのviewを編集
-```rb:app/views/students/show.html.erb
+```rb
+# app/views/students/show.html.erb
 <table border="1">
   <tr>
     <th>科目名</th>

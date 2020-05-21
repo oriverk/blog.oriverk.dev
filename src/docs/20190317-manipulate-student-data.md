@@ -28,7 +28,8 @@ from Qiita
 
 不具合改善の中で、Vagrantfileで、使用できるRAMのサイズを8GBに変更
 
-```rb:vagrantfile
+```rb
+# Vagrantfile
 config.vm.provider "virtualbox" do |vb
   vb.memory = "8192"
 end
@@ -60,17 +61,19 @@ Rails:5.2.2
 
 # 準備
 ## rails new
-```sh:
+```sh
 rails new self_univ -d mysql
 ```
 
-```rb:Gemfile
+```rb
+# Gemfile
 gem 'mini_racer', platforms: :ruby
 ```
 
 `bundle install`
 
-```yml:qpp/config/database.yml
+```yml
+# qpp/config/database.yml
 password: 
 ```
 
@@ -84,7 +87,7 @@ password:
 => 自動で、bigintに設定される
 
 # rails g scaffoldで作成
-```sh:
+```sh
 rails generate scaffold Student name:string email:string gender:integer age:integer opinion:text
 rails generate scaffold Subject name:string max_score:integer
 rails generate scaffold Club name:string
@@ -100,7 +103,8 @@ rails generate scaffold ClubStudent student:references club:references name:stri
   - [Active Record Associations](https://guides.rubyonrails.org/association_basics.html)
   - [Active Record の関連付け](https://railsguides.jp/association_basics.html#belongs-to%E9%96%A2%E9%80%A3%E4%BB%98%E3%81%91)
 
-```rb:それぞれのmodel.rb
+```rb
+# それぞれのmodel.rb
 # Studentモデル
 class Student < ApplicationRecord
   has_many :exam_results
@@ -175,7 +179,7 @@ Subject.create(name: '英語', max_score: 200);
 要素の数だけ繰り返しブロックを実行し、ブロックの戻り値を集めた配列を作成して返す。
 collectメソッドの別名です。
 
-```rb:
+```rb
 # 配列の入った変数.map {|変数名| 処理内容 }
 numbers = ["68", "65", "6C", "6C", "6F"]
 p numbers.map {|item| item.to_i(16) }
@@ -211,7 +215,7 @@ Studentsのshowページの、前回までの状態
 </picture>
 
 ## 生徒データと関連付けするときは
-```rb:
+```rb
 student1 = Student.first
 student1.clubs << Club.first
 student1.save
@@ -221,7 +225,7 @@ student1.save
 生徒の部活情報
 id1からid100までの生徒に、0から4個の部活(選択肢は13部)に入ってもらう。
 
-```rb:
+```rb
 (1..100).each do |i|
   student = Student.find(i)
   1.upto(rand(0..4)) do
@@ -251,12 +255,14 @@ end
 ```
 
 ## Studentsのindexページの表記を変更
-```rb:app/models/studetns.rb
+```rb
+# app/models/studetns.rb
 enum gender: { male: 0 ,female: 1}
 enum age: {"teen": 0, "twenty": 1}
 ```
 
-```rb:app/views/_form.html.erb
+```rb
+# app/views/_form.html.erb
 <div class="field">
   <%= form.label :gender %>
   <%= form.radio_button :gender, 'male' %>男性
@@ -276,7 +282,7 @@ enum age: {"teen": 0, "twenty": 1}
     - 性と全体の試験結果の平均点、最大点、最小点
 
 ### MySQL上の出力
-```sql:
+```sql
 SELECT
     subjects.name,
     CAST(AVG(exam_results.score) as unsigned) as avg_score,
@@ -291,7 +297,7 @@ INNER JOIN subjects
 GROUP BY subjects.id, subjects.name
 ```
 
-```sql:
+```sql
 -- 出力結果
 +--------+--------------+-----------+-------+-------+
 | name   | name         | name      | score | ratio |
@@ -310,7 +316,8 @@ GROUP BY subjects.id, subjects.name
 #### students_controllerのshowアクション編集
 参照：[Active Record クエリインターフェイス](https://railsguides.jp/active_record_querying.html#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%8B%E3%82%89%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%99)
 
-```rb:app/controllers/studetns_controller.rb
+```rb
+# app/controllers/studetns_controller.rb
 def show
   @students = 
     Student.joins(:subjects)
@@ -339,7 +346,8 @@ end
 ```
 
 #### showページのviewを編集
-```rb:app/views/students/show.html.erb
+```rb
+# app/views/students/show.html.erb
 <table border="1">
   <tr>
     <th>科目名</th>
@@ -371,7 +379,8 @@ end
 ## インデックスページの表示を編集
 ※app/views/exam_results/show.html.erbも同様にやる
 
-```rb:app/views/exam_results/index.html.erb
+```rb
+# app/views/exam_results/index.html.erb
 #　編集前
 #  <td><%= exam_result.student %></td>
 #  <td><%= exam_result.subject %></td>
@@ -385,7 +394,8 @@ end
 参照：
 - [Action View Form Helpers](https://guides.rubyonrails.org/form_helpers.html#select-boxes-for-dealing-with-models)
 
-```rb:app/views/exam_results/_form.html.erb
+```rb
+# app/views/exam_results/_form.html.erb
 <div class="field">
     <%= form.label :student_id %>
     <%= form.select :student_id, @students %>
@@ -396,7 +406,8 @@ end
 </div>
 ```
 
-```rb:app/controllers/exam_results_controller.rb
+```rb
+# app/controllers/exam_results_controller.rb
 before_action :set_students_subjects, only: [:new, :edit]
 
 def set_students_subjects
@@ -425,7 +436,8 @@ end
 参照：[kaminari -github](https://github.com/kaminari/kaminari)
 
 ## kaminariのインストール
-```rb:Gemfile
+```rb
+# Gemfile
 gem 'kaminari'
 ```
 
@@ -434,7 +446,8 @@ gem 'kaminari'
 ## studentのindexページから変更
 indexアクションを編集
 
-```rb:app/controllers/students_controller.rb
+```rb
+# app/controllers/students_controller.rb
 def index
 　　# 編集前：@students = Student.all
     @students = Student.page(params[:page]).per(20)
@@ -443,7 +456,8 @@ end
 
 viewを編集
 
-```rb:app/views/students/index.html.erb
+```rb
+# app/views/students/index.html.erb
 # ファイル先頭行に追加
 <div class="page-header">
 # ファイル最終行に追加
@@ -461,7 +475,7 @@ app/controllers/exam_result_controller.rbのindexアクションと
 app/view/exam_results/index.html.erbを同様に編集
 
 ## ページャの見た目を変える
-```sh:terminal
+```sh
 rails g kaminari:views default
 
 # 実行結果
@@ -475,7 +489,7 @@ rails g kaminari:views default
 ```
 
 ## ページャの設定を変える
-```sh:terminal
+```sh
 rails g kaminari:config
 
 #実行結果
@@ -486,7 +500,8 @@ create  config/initializers/kaminari_config.rb
 Bootstrap対応のページャテーマもある.
 - [amatsuda/kaminari_themes](https://github.com/amatsuda/kaminari_themes)
 
-```rb:config/initializers/kaminari_config.rb
+```rb
+# config/initializers/kaminari_config.rb
 # frozen_string_literal: true
 Kaminari.configure do |config|
   # config.default_per_page = 25
@@ -510,15 +525,18 @@ end
 
 exam_resultも編集は同じ。
 
-```rb:app/models/student.rb
+```rb
+# app/models/student.rb
 paginates_per 30
 ```
 
-```rb:app/controllers/students_controller.rb
+```rb
+# app/controllers/students_controller.rb
 @students = Student.page(params[:page])
 ```
 
-```rb:app/views/students/index.html.erb
+```rb
+# app/views/students/index.html.erb
 # ファイル先頭
 <div class="page-header">
 # ファイル末尾
@@ -529,11 +547,13 @@ paginates_per 30
 ## studentのindexページに、exam_resultのnewへのリンク作成
 リンクを作成
 
-```rb:app/views/student/index.html.erb
+```rb
+# app/views/student/index.html.erb
 <td><%= link_to 'New Exam Result', new_exam_result_path(student_id: student.id) %></td>
 ```
 
-```rb:app/controllers/exam_results_controller.rb
+```rb
+# app/controllers/exam_results_controller.rb
 def new
   if params[:student_id]
     @student = Student.find(params[:student_id])
@@ -543,7 +563,8 @@ def new
 end
 ```
 
-```rb:app/views/exam_result/_form.html.erb
+```rb
+# app/views/exam_result/_form.html.erb
 <%= form.select :student_id, options_for_select(@students, @selected_student) %>
 ```
 
@@ -579,7 +600,8 @@ rails gコマンドで、controller名やmodel名を指定する際に、混乱�
 ## DBのカラム定義を後から変更
 rails g scaffoldコマンド時に、ClubStudentの外部キーの定義をreferecesとミスタイプしていた。
 
-```rb:db/migrate/20190326030303_create_club_students.rb
+```rb
+# db/migrate/20190326030303_create_club_students.rb
 class CreateClubStudents < ActiveRecord::Migration[5.2]
   def change
     create_table :club_students do |t|
@@ -597,7 +619,7 @@ end
 なお、ALTTER TABLEコマンドを使って、あとから修正する方法は
 DB内のデータを書き換えるだけで、アプリ自体のファイル等は編集されない。
 
-```sql:mysql
+```sql
 ALTER TABLE テーブル名 MODIFY COLUMN カラム名 新しい定義
 ALTER TABLE ClubStudent MODIFY COLUMN student references
 ```
@@ -613,7 +635,8 @@ ALTER TABLE ClubStudent MODIFY COLUMN student references
 共通して表示させるので、/app/views/layouts/application.html.erb　を編集する。
 なお、部分テンプレファイル名は『_』アンダーバー始まり
 
-```rb:/app/views/layouts/application.html.erb
+```rb
+# /app/views/layouts/application.html.erb
 <body>
   <%= render :partial => 'shared/header' %>
 </body>
@@ -621,7 +644,8 @@ ALTER TABLE ClubStudent MODIFY COLUMN student references
 
 表示させたいリンクを書きこむ。
 
-```rb:/app/views/shared/_header.html.erb
+```rb
+# /app/views/shared/_header.html.erb
 <%= link_to 'Student list', students_path %> 
 <%= link_to 'subjects list', subjects_path %> 
 <%= link_to 'clubs list', clubs_path %> 
@@ -636,7 +660,7 @@ ALTER TABLE ClubStudent MODIFY COLUMN student references
 バリデーションは有効なデータだけをDBに保存するのを確実にするための最善策。
 
 ## validate条件
-```rb:
+```rb
 # 空でないこと
 validates :name, presence: true
 
@@ -662,15 +686,16 @@ validatesの実装していく最中に、エラーに気づいた
 studentのeditページで更新すると、
 
 ```sh
-ActiveRecord::StatementInvalid in StudentsController#show
+# ActiveRecord::StatementInvalid in StudentsController#show
 
-PG::UndefinedObject: ERROR: type "unsigned" does not exist LINE 1: ...id as subject_id, CAST(AVG(exam_results.score) as unsigned) ... ^ : SELECT subjects.id as subject_id, CAST(AVG(exam_results.score) as unsigned) as avg_score, MAX(exam_results.score) as max_score, MIN(exam_results.score) as min_score FROM "students" INNER JOIN "exam_results" ON "exam_results"."student_id" = "students"."id" INNER JOIN "subjects" ON "subjects"."id" = "exam_results"."subject_id" GROUP BY subjects.id ORDER BY subjects.id
+# PG::UndefinedObject: ERROR: type "unsigned" does not exist LINE 1: ...id as subject_id, CAST(AVG(exam_results.score) as unsigned) ... ^ : SELECT subjects.id as subject_id, CAST(AVG(exam_results.score) as unsigned) as avg_score, MAX(exam_results.score) as max_score, MIN(exam_results.score) as min_score FROM "students" INNER JOIN "exam_results" ON "exam_results"."student_id" = "students"."id" INNER JOIN "subjects" ON "subjects"."id" = "exam_results"."subject_id" GROUP BY subjects.id ORDER BY subjects.id
 ```
 
 と、エラーを吐き、因みに、ブラウザの戻るボタンで戻ると、更新されている。
 また、エラー原因であると思わる、`StudentController#show`は
 
-```rb:app/controllers/students_controller.rb
+```rb
+# app/controllers/students_controller.rb
 def show
   @students = 
     Student.joins(:subjects)
@@ -713,10 +738,10 @@ def show
 
 前回の大学データに倣って、今回はcast as intに変更した
 
-```rb:app/controllers/students_controller.rb
+```rb
+# app/controllers/students_controller.rb
 # (該当部分だけ抜き出し）
 .select('CAST((exam_results.score / subjects.max_score) * 100 as int) as ratio')
-
 .select('CAST(AVG(exam_results.score) as int) as avg_score') 
 ```
 
@@ -727,14 +752,15 @@ deviseの関係上、パスワード情報入りのデータでないと、コ�
 ## passwordカラムの追加
 deviseのモデル等がある、Studentテーブルに、パスワードカラムを追加した。
 
-```sh:terminal
+```sh
 # rails generate migration AddカラムToモデル名の複数形 フィールド名と並び
 rails g migration AddPasswordToStudents password:string
 ```
 
 db/migrate下にファイルが生成される
 
-```rb:/db/migrate/20190327144825_add_password_to_students.rb
+```rb
+# /db/migrate/20190327144825_add_password_to_students.rb
 class AddPasswordToStudents < ActiveRecord::Migration[5.2]
   def change
     add_column :students, :password, :integer
@@ -747,7 +773,7 @@ end
 ## データ入力
 未だデータの無い、生徒データと試験結果データをコンソールで入力した。
 
-```rb:
+```rb
 (1..100).each do |num|
   if num % 2 == 0 && num % 3 ==0
     gen = 0
@@ -767,7 +793,7 @@ end
   end
 ```
 
-```rb:
+```rb
   (1..100).each do |i|
   student = Student.find(i)
   1.upto(rand(0..4)) do

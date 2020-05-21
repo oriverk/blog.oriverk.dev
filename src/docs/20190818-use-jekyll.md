@@ -46,7 +46,7 @@ GithubPagesJekyllを利用し、静的ページを作成した。
 # デフォルトのGithubPages作成
 ## jekyllの準備、作成
 
-```sh:terminal:
+```sh
 gem install bundler jekyll
 jekyll new oriverk.github.io
 ```
@@ -72,7 +72,8 @@ jekyll new oriverk.github.io
 デフォルトでは`gem "github-pages"がコメントアウトされてるので、アンコメント。
 また、今回使用するテーマhydeoutのgemを書き加える。
 
-```rb:Gemfile
+```rb
+# Gemfile
 # uncomment
 gem "github-pages", group: :jekyll_plugins
 # add gem
@@ -83,7 +84,8 @@ gem "jekyll-theme-hydeout"
 今回はリモートテーマを使用するので、`theme`を`remote_theme`に変更する。
 更に、プラグインも追加しておく。
 
-```yml:_config.yml
+```yml
+# _config.yml
 # theme: mininma
 remote_theme: fongandrew/hydeout
 
@@ -93,7 +95,7 @@ plugins:
   - github-pages # added
 ```
 
-```sh:terminal:
+```sh
 bundle install
 bundle exec jekyll server
 ```
@@ -146,7 +148,8 @@ githubpages公式のgem等由来であれば、[Troubleshooting GitHub Pages bui
 ## ページネーション機能
 jekyll関連gemにページネーションがあり、プラグインなので`_config.yml`に書き加える。
 
-```yml:_config.yml
+```yml
+# _config.yml
 plugins:
   - jekyll-paginate
 
@@ -155,7 +158,7 @@ paginate_path: '/blog/page:num'
 sidebar_blog_link: '/blog'
 ```
 
-```sh:terminal
+```sh
 bundle install
 bundle exec jekyll server
 ```
@@ -164,10 +167,11 @@ bundle exec jekyll server
   - [Google Analytics for Jekyll](https://desiredpersona.com/google-analytics-jekyll/)
 
 
-1． まず、GoogleアナリティクスをトラッキングIDを取得する。(割愛
-2． `google-analytics.html`を作成
+1. まず、GoogleアナリティクスをトラッキングIDを取得する。(割愛
+2. `google-analytics.html`を作成
 
-```html:google-analytics.html
+```html
+# google-analytics.html
 {% if jekyll.environment == 'production' and site.google_analytics %}
 <script>
   (function (i, s, o, g, r, a, m) {
@@ -182,19 +186,21 @@ bundle exec jekyll server
 {% endif %}
 ```
 
-3． `_include/head.html`に書き加える。
+3. `_include/head.html`に書き加える。
 
-```html:_include/head.html
+```html
+# _include/head.html
 
 <head>
     {% include google-analytics.html %}
 </head>
 ```
 
-4． `_config.yml`にトラッキングIDを書き加える
+4. `_config.yml`にトラッキングIDを書き加える
 トラッキングIDは、UA-　から始まるID。
 
-```yml:_config.yml
+```yml
+# _config.yml
 # Google Analytics
 google_analytics: UA-〇〇〇〇〇
 ```
@@ -208,7 +214,8 @@ githubに上げて完了。
 
 1. `_include/twitter-card.html`を作成
 
-```html:_include/twitter-card.html
+```html
+<!-- _include/twitter-card.html -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@not_you_die"/>
 <!-- <meta name="twitter:creator" content="@{{ page.author }}"/> -->
@@ -231,7 +238,8 @@ githubに上げて完了。
 
 2. `_include/head.html`内に書き加える
 
-```html:_include/head.html
+```html
+<!-- _include/head.html -->
 <head>
     {% include twitter-card.html %}
 </haed>
@@ -267,7 +275,8 @@ git checkout changeDesign
 
 ### `Gemfile`と`_config.yml`から不要なものを削除
 
-```rb:Gemfile
+```rb
+# Gemfile
 source 'https://rubygems.org'
 
 gem 'github-pages', group: :jekyll_plugins
@@ -293,7 +302,7 @@ gem 'jekyll-coffeescript'
 自分の結果
 
 ```
-# 一部割愛
+# ...
 .
 ├── _config.yml
 ├── _includes
@@ -308,7 +317,8 @@ gem 'jekyll-coffeescript'
 
 ### スクロール関連の変更
 
-```scss:_layout.scss
+```scss
+// _layout.scss
 body{
   background-image:url("../taiwan.jpg");
   background-size:cover;

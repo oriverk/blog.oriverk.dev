@@ -34,12 +34,12 @@ Herokuとは、PaaSお呼ばれるサービス。
 - 参照
   - [Getting Started on Heroku with Ruby](https://devcenter.heroku.com/articles/getting-started-with-ruby?singlepage=true)
 
-```sh:terminal
+```sh
 sudo snap install heroku --clasic
 ```
 ## Herokuにログイン
 
-```sh:terminal
+```sh
 heroku login
 # こんなのが出る。自動でブラウザが開かないときは、自分で開いてあげる必要がある。
 heroku: Press any key to open up the browser to login or q to exit
@@ -53,7 +53,7 @@ Logged in as me@example.com
 ## アプリをHerokuへデプロイ
 アプリのソースコードを受け取るHerokuを準備する
 
-```sh:terminal
+```sh
 heroku create
 # 出力例
 # Creating polar-inlet-4930... done, stack is cedar-14
@@ -68,7 +68,7 @@ heroku run rails db:migrate
 ```
 
 ## Herokuのその他コマンド
-```sh:terminal
+```sh
 # Heroku上にデータを追加する
 heroku run rails console
 # 操作ログを見る

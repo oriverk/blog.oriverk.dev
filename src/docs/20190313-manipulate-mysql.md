@@ -91,7 +91,7 @@ CREATE TABLE :テーブル作成
 # テーブル名は複数形で。
 ```
 
-```sql:mysql
+```sql
 -- CREATE TABLE `students`(`カラム名`　データ型　その他指定, `カラム名`　データ型　その他指定, ...);
 CREATE TABLE `students`(
 `id` INT NOT NULL PRIMARY KEY  AUTO_INCREMENT,
@@ -128,7 +128,7 @@ updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
     - [参照：MySQL 5.6 リファレンスマニュアル  /  データ型](https://dev.mysql.com/doc/refman/5.6/ja/data-types.html)
 
 ## DESC :テーブル情報の確認(Describeの略
-```sql:mysql
+```sql
 DESC students;
 -- 結果
 +------------+--------------+------+-----+-------------------+----------------+
@@ -148,7 +148,7 @@ DESC students;
 
 同様に、exam_resultsテーブルも作成
 
-```sql:mysql
+```sql
 CREATE TABLE `exam_results` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
 　`student_id` int(11) NOT NULL,
@@ -178,7 +178,7 @@ sql> DESC exam_results;
 ```
 
 ### ALTER TABLE :カラム変更
-```sql:mysql
+```sql
 ALTER TABLE テーブル名 ADD COLUMN カラム名 カラム定義,
                       DROP COLUMN カラム名,
                       CHANGE COLUMN 変えるカラム名 新しいカラム名 カラム定義,
@@ -186,7 +186,7 @@ ALTER TABLE テーブル名 ADD COLUMN カラム名 カラム定義,
 ```
 
 ## INSERT INTO :データ追加
-```sql:mysql
+```sql
 -- INSERT INTO テーブル名 (カラム1, カラム2, カラム3, ...) 
 VALUE (カラム1データ, カラム2データ, カラム3データ, ...),(カラム1データ, ........);
 
@@ -203,7 +203,7 @@ INSERT INTO students (name, grade,email, age, gender, others, created_at, update
 +----+--------+-------+--------------+-----+--------+-----------------------------------+-
 ```
 
-```sql:mysql
+```sql
 -- exam_results試験結果テーブル
 INSERT INTO exam_results (student_id,name, score, max_score, created_at, updated_at ) value 
 (14,'育種学',65,100,NOW(),NOW()),(14,'技術者倫理',70,100,NOW(),NOW()),(14,'農業機械',89,100,NOW(),NOW()),(14,'植物病理学',91,100,NOW(),NOW()),(14,'応用昆虫学',66,100,NOW(),NOW()),
@@ -224,7 +224,7 @@ INSERT INTO exam_results (student_id,name, score, max_score, created_at, updated
 ## UPDATE SET WHERE:テーブル情報の更新
 今の時点では、max_scoreが100点だが、200点満点に変更してみる
 
-```sql:mysql
+```sql
 # UPDATE テーブル名 SET カラム名 = 新しい情報 WHERE 条件
 UPDATE exam_results SET max_score = 200;
 # 結果
@@ -240,7 +240,7 @@ UPDATE exam_results SET max_score = 200;
 
 ## JOIN :複数テーブル結合
 ### 基本構文
-```sql:mysql
+```sql
 SELECT table1.column1, table1.column2
        table2,column1
 FROM table1
@@ -261,7 +261,7 @@ INNER JOIN table2
 ### INNER JOINで結合してみる
 students生徒テーブルとexam_results試験結果の、主キーと外部キーを使って結合
 
-```sql:mysql
+```sql
 SELECT students.name, students.grade, students.gender, 
        exam_results.name, exam_results.score
 FROM students
@@ -278,35 +278,27 @@ ON students.id = exam_results.student_id;
 | taro   |     1 |      0 | 植物病理学      |    91 |
 | taro   |     1 |      0 | 応用昆虫学      |    66 |
 | oriver |     3 |      1 | 育種学          |    83 |
-| oriver |     3 |      1 | 技術者倫理      |    74 |
-| oriver |     3 |      1 | 農業機械        |    56 |
-| oriver |     3 |      1 | 植物病理学      |    45 |
-| oriver |     3 |      1 | 応用昆虫学      |    72 |
-| yuki   |     1 |      1 | 育種学          |    72 |
-| yuki   |     1 |      1 | 技術者倫理      |    83 |
-| yuki   |     1 |      1 | 農業機械        |    69 |
-| yuki   |     1 |      1 | 植物病理学      |    99 |
-| yuki   |     1 |      1 | 応用昆虫学      |    69 |
-+--------+-------+--------+-----------------+-------+
+-- ...
+
 ```
 
 ## データ削除
 ### テーブル情報の削除
-```sql:mysql
+```sql
 DELETE FROM テーブル名 WHERE 条件;
 DELETE FROM students;
 DELETE FROM exam_results;
 ```
 
 ### テーブルの削除
-```sql:mysql
+```sql
 DROP TABLE テーブル名;
 DROP TABLE students;
 DROP TABLE exam_results;
 ```
 
 ### データベースの削除
-```sql:mysql
+```sql
 DROP DATABASE データベース名;
 DROP DATABASE univ;
 ```
@@ -317,12 +309,12 @@ DROP DATABASE univ;
 
 # データベースとテーブル作成、データ追加
 ## データベース作成
-```sql:mysql
+```sql
 CREATE DATABASE univ1;
 ```
 
 ## テーブル作成
-```sql:mysql
+```sql
 USE univ1_development;
 # 生徒テーブル作成
 CREATE TABLE `students` (
@@ -342,7 +334,7 @@ CREATE TABLE `students` (
 INSERT INTO students (name, grade, email, age, gender, others, created_at, updated_at) VALUE ('じょじ',1, 'jo@gmail.com', 20, 0, 'こんにちは、備考です。', now(), now()),('yuka',2, 'yuka@email', 22, 1,'特に',now(),now()),('なつこ',1, 'natsu@email', 28, 1,'夏来たれ',now(),now()), ('おりば',3,'oriver@email',23,0,'nothing',now(),now()),('masaya',2,'masaya@email',20,0,'nothing',now(),now());
 ```
 
-```sql:mysql
+```sql
 # 試験結果テーブル作成
 CREATE TABLE `exam_results` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -359,7 +351,7 @@ CREATE TABLE `exam_results` (
 INSERT INTO exam_results (name, student_id, score, max_score, created_at, updated_at) VALUE  ('物理', 12, 85, 100, now(), now()), ('数学', 12 ,64, 100, now(), now()), ('化学', 12 ,55, 100, now(), now()),('物理',13 ,85, 100, now(), now()), ('数学',13 ,65, 100, now(), now()), ('化学',13, 71, 100, now(), now()),('物理',14 ,88, 100, now(), now()), ('数学',14 ,73, 100, now(), now()), ('化学',14, 67, 100, now(), now()),('物理',15 ,100, 100, now(), now()), ('数学',15 ,92, 100, now(), now()), ('化学',15, 99, 100, now(), now()),('物理',16 ,30, 100, now(), now()), ('数学',16 ,43, 100, now(), now()), ('化学',16, 99, 100, now(), now());
 ```
 
-```sql:mysql
+```sql
 #　部活テーブル作成
 CREATE TABLE `clubs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -374,7 +366,7 @@ INSERT INTO clubs (name, created_at, updated_at) VALUE
 ('サッカー', now(), now()),('野球', now(), now()),('囲碁', now(), now()),('空手', now(), now()),('合気道', now(), now()),('自転車',now(),now()),('軽音',now(),now());
 ```
 
-```sql:mysql
+```sql
 # 生徒ー部活関連テーブル作成
 CREATE TABLE `club_students` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -395,7 +387,7 @@ INSERT INTO club_students (student_id, club_id, created_at, updated_at) VALUE
 
 # 本題：MySQL操作
 ## scoreの最高、最小、平均、(score / max_score)の最大値
-```sql:mysql
+```sql
 SELECT MAX(score),MIN(score),AVG(score),MAX(score/max_score)
 FROM exam_results;
 #　結果
@@ -407,7 +399,7 @@ FROM exam_results;
 ```
 
 ## GROUP BY : 科目毎の最大値、最小値、平均値を求め、名前を最大、最小、平均に変更
-```sql:mysql
+```sql
 SELECT name, 
 MAX(score) as 最大 ,
  MIN(score) as 最小,
@@ -427,7 +419,7 @@ GROUP BY name;
 ## INNER JOIN
 studentsとexam_resultsを結合し、生徒毎の、最高得点、最少得点、平均得点を出力
 
-```sql:mysql
+```sql
 SELECT students.name, MAX(score), MIN(score), AVG(score)
 FROM students
 INNER JOIN exam_results
@@ -447,7 +439,7 @@ GROUP BY students.name;
 
 ## CASE WHEN  条件分岐
 ### NULLがあったら、出力上の表記を変える
-```sql:mysql
+```sql
 SELECT
     students.name,
     students.age,
@@ -476,7 +468,7 @@ LEFT JOIN clubs
 ## 解答
 ()の中に、CASE WHEN THENを入れられるとは
 
-```sql:mysql
+```sql
 SELECT
     clubs.name,
     SUM(CASE WHEN students.gender = 0 THEN 1 ELSE 0 END) as male,

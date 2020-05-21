@@ -127,11 +127,13 @@ sudo timedatectl set-timezone Asia/Tokyo
 # confirm
 date
 # => 2019年  1月 30日 水曜日 14:49:48 JST
+```
 
 # GUI版の構築
 GUI版を構築する際はVagrantfileの編集から少し異なる。
 
-```rb:Vagrantfile
+```rb
+# Vagrantfile
 # 編集後
 Vagrant.configure("2") do |config|
   config.vm.box = "bento/ubuntu-18.04"
@@ -160,13 +162,10 @@ end
 
 仮想環境の立ち上げ
 
-```sh:terminal
+```sh
 vagrant up
-```
 
-SSH接続、パッケージ更新
-
-```sh:terminal
+# SSH接続、パッケージ更新
 vagrant ssh
 
 sudo apt update
@@ -176,7 +175,7 @@ sudo apt upgrade
 Ubuntuデスクトップ版(GUI)をインストールする
 ここで、非常に時間が掛かるので注意
 
-```sh:terminal
+```sh
 sudo apt install ubuntu-desktop
 ```
 

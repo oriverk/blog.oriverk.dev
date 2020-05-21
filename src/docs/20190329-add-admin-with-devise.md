@@ -20,7 +20,7 @@ from Qiita:
 
 # 実作業
 ## テーブルにadminカラム追加
-```sh:terminal
+```sh
 # rails g migration Addカラム名Toテーブル名　カラム定義
 rails g migration AddAdminToStudent admin:boolean
 ```
@@ -34,7 +34,8 @@ Rubyでは偽はfalseとnilで、それ以外がtrueになる。
 boolean型と定義する際は、デフォルト値を設定しないといけない。
 adminのデフォルト値に引数falseを渡し、デフォルトではadmin権限がない、と指定する。
 
-```rb:/db/migrate/20190328011407_add_admin_to_student.rb
+```rb
+# /db/migrate/20190328011407_add_admin_to_student.rb
 class AddAdminToStudent < ActiveRecord::Migration[5.2]
   def change
     add_column :students, :admin, :boolean,default: false
@@ -45,7 +46,7 @@ end
 `rails db:migrate`
 
 ## admin権限を確認付与
-```rb:
+```rb
 stu = Student.find(1)
 stu.admin?
 =>false
@@ -60,7 +61,8 @@ admin属性が追加され、またadmin?メソッドを使用できるように
 ## adminのみが全データを見れるようにする
 admin以外は、自分のデータしか見れないようにしたい。
 
-```rb:users_controller.rb
+```rb
+# users_controller.rb
  def index
     if current_student.admin?
       @students = Student.page params[:page]
@@ -70,7 +72,8 @@ admin以外は、自分のデータしか見れないようにしたい。
   end
 ```
 
-```rb:app/views/student
+```rb
+# app/views/student
  <tbody>
     <% if current_student.admin? %>
       <% @students.each do |student| %>

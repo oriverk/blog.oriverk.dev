@@ -39,10 +39,10 @@ MySQLはデフォルトで、自動コミットモードが有効になった状
 ### 実作業
 今回はMySQLと、以前に作成した大学生徒データAppのデータを再利用する
 
-```:terminal
+```
 mysql -u root -p
 ```
-```sql:
+```sql
 #使用するデータベース情報の選択
 mysql> USE cebu_college_development;
 
@@ -62,7 +62,7 @@ mysql> DESC students;
 +------------+--------------+------+-----+---------+----------------+
 ```
 
-```sql:
+```sql
 #id3のtaro-2さんを使ってみる
 mysql> SELECT name FROM students WHERE id = 3;
 +--------+
@@ -72,7 +72,7 @@ mysql> SELECT name FROM students WHERE id = 3;
 +--------+
 ```
 #### COMMITするパターン
-```sql:
+```sql
 #
 mysql> START TRANSACTION;
 
@@ -105,7 +105,7 @@ mysql> select name from students where id =3;
 ```
 
 #### ROLLBACKするパターン
-```sql:
+```sql
 mysql> START TRANSACTION;
 Query OK, 0 rows affected (0.00 sec)
 
@@ -142,7 +142,7 @@ mysql> SELECT name FROM students WHERE id = 3;
 今回はDBの操作だけなので、rails g modelコマンドのみ使用
 テーブルはUserとReviewの２つ。
 
-```sh:terminal
+```sh
 rails new transact_self -d mysql
 # database.ymlを編集後
 rails db:create
@@ -153,7 +153,7 @@ rails g model Review user:references rate:integer approved:boolean
 rails db:migrate
 ```
 
-```rb:
+```rb
 # input data
 # user
 (1..5).each do |i|
@@ -168,7 +168,7 @@ end
 
 DB内で確認
 
-```sql:
+```sql
 mysql> SELECT * FROM users;
 +----+--------+----------+---------+---------------------+---------------------+
 | id | name   | approved | deleted | created_at          | updated_at          |
@@ -194,7 +194,8 @@ mysql> SELECT * FROM reviews;
 
 userとreviewとの、関連付け
 
-```app/models/user.rb
+```rb
+# app/models/user.rb
 class User < ApplicationRecord
   has_many :reviews
 end
@@ -203,7 +204,8 @@ end
 reviewモデルにvalidation追加
 approvedカラムを空欄不可にしておく。
 
-```app/models/review.rb
+```rb
+# app/models/review.rb
 class Review < ApplicationRecord
   belongs_to :user
   validates :approved, presence: true
@@ -213,7 +215,7 @@ end
 ### コンソールで、トランザクション処理の挙動を確認
 1. トランザクション処理に成功し、commitされるパターン
 
-```rb:
+```rb
 user = User.first
 User.transaction do
   user.update!(approved: false)
@@ -232,7 +234,7 @@ end
 
 userテーブルのid1のtaro-1が、更新されてる
 
-```sql:
+```sql
 mysql> select * from users;
 +----+--------+----------+---------+---------------------+---------------------+
 | id | name   | approved | deleted | created_at          | updated_at          |
@@ -242,7 +244,7 @@ mysql> select * from users;
 
 2.  トランザクション処理に失敗し、rollbackされるパターン
 
-```rb:
+```rb
 user = User.first
 User.transaction do
   user.update!(approved: true)
@@ -262,7 +264,8 @@ ActiveRecord::RecordInvalid (Validation failed: Approved can't be blank)
 トランザクション処理に失敗し、rollbackしたため、DBに変化はない。
 
 ### modelファイルを編集して実装
-```rb:app/models/user.rb
+```rb
+# app/models/user.rb
 class User < ApplicationRecord
   has_many :reviews
 

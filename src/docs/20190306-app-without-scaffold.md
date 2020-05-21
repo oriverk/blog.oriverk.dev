@@ -55,19 +55,20 @@ modelはデータベース情報が必要な時だけ使用.今回は必要で�
 
 ## 本段階
 ### ①controllerを作成
-```sh:terminal
+```sh
 #rails generate controller コントローラ名 (+アクション名)
 rails generate controller Users
 ```
 
 ### routingの設定：ブラウザとコントローラをつなぐ
-```rb:config/routes.rb
+```rb
+# config/routes.rb
 Rails.application.routes.draw do
   get 'users', action: :index, controller: 'users'
 end
 ```
 
-```sh:
+```sh
 # rails routes
 
 Prefix Verb URI Pattern
@@ -77,7 +78,8 @@ users#index   　　　　　　　　　#追加された行
 ```
 
 ### controller：modelとviewをつなぐ
-```rb:app/controllers/users_controller.rb
+```rb
+# app/controllers/users_controller.rb
 class UsersController < ApplicationController
   def index
     render plain: 'Hello'
@@ -114,7 +116,7 @@ end
 - データベースに含まれるテーブル毎に用意され、データの登録・取得・更新・削除などを行う
 
 ## model作成コマンド
-```sh:terminal
+```sh
 # rails generate model モデル名 カラム名:データ型 カラム名:データ型 ...
 rails generate model User name:string email:string sex:integer age:integer address:integer attendance:integer opinion:text
 # string型は文字型、integer型は整数型
@@ -122,13 +124,13 @@ rails generate model User name:string email:string sex:integer age:integer addre
 
 # DBの操作
 ## テーブルの作成をする。
-```sh:terminal
+```sh
 rails db:migrate
 ```
 
 ## 出来たテーブルをMySQL側で確認してみる。
 
-```sql:mysql
+```sql
 mysql>USE scanashi0307_development;
 Reading table information for completion of table and column names
 You can turn off this feature to get a quicker startup with -A
@@ -147,7 +149,7 @@ mysql> SHOW TABLES;
 # usersテーブルが作成されたことが分かる。
 ```
 
-```sql:mysql
+```sql
 mysql> SHOW CREATE TABLE users;
 (ハイフン省略)
 | users | CREATE TABLE `users` (
@@ -169,13 +171,13 @@ mysql> SHOW CREATE TABLE users;
 `rails g models`で設定したカラム名が作成されているのが分かる。
 
 ## データベースにfooさんのレコードを追加してみる
-```sql:MySQL
+```sql
 mysql> INSERT INTO `users` (`name`, `email`, `sex`, `age`, `address`, `attendance`, `opinion`, `created_at`, `updated_at`) VALUES ('foo', 'foo@gmail.com', 1, 23, 2, 0, 'foooo', '2017-04-04 04:44:44', '2018-04-04 04:44:44');
 Query OK, 1 row affected (0.00 sec)
 ```
 
 ## MySQLの中から、追加されているレコードを確認してみる。
-```sql:mysql
+```sql
 mysql> SELECT * FROM users;
 +----+------+---------------+------+------+---------+------------+---------+---------------------+---------------------+
 | id | name | email         | sex  | age  | address | attendance | opinion | created_at          | updated_at          |
@@ -185,7 +187,7 @@ mysql> SELECT * FROM users;
 ```
 
 ## `rails console`側から新たにレコードを追加する。
-```rb:
+```rb
 user = User.create(name: "taro", email: "val@gmail.com", sex: 0, address: 1, attendance: 1, opinion: 'nothing special')
 
 #user.saveでDBに保存する
@@ -214,7 +216,8 @@ User.all.count
 ```
 
 ## controllerのアクションの整備
-```rb:app/controllers/users_controller.rb
+```rb
+# app/controllers/users_controller.rb
 class UsersController < ApplicationController
   def index
     @users = User.all
@@ -223,7 +226,8 @@ end
 ```
 
 ## viewの整備
-```rb:erb:app/view/index.html.erb
+```rb
+# app/view/index.html.erb
  <body>
     <h1>Users</h1>
     <table>
@@ -257,7 +261,8 @@ end
   </body>
 ```
 
-```rb:app/views/layouts/application.html.erb
+```rb
+# app/views/layouts/application.html.erb
 <!DOCTYPE html>
 <html>
   <head>
@@ -271,7 +276,8 @@ end
 
 ルーティングを変更
 
-```rb:app/config/routes.erb
+```rb
+# app/config/routes.erb
 resources :users
 ```
 
@@ -294,7 +300,8 @@ edit_user GET    /users/:id/edit(.:format)   users#edit
 次に上にある、「users GET    /users(.:format)  users#index 」を実装
 UserControllerの中にshowアクションを作成
 
-```rb:app/controllers/users_controller.rb
+```rb
+# app/controllers/users_controller.rb
 class UsersController < ApplicationController
     def index
         @users = User.all
@@ -305,7 +312,8 @@ class UsersController < ApplicationController
 end
 ```
 
-```rb:app/views/users/index.html.erb
+```rb
+# app/views/users/index.html.erb
 # user.nameのラインを下の様に変更
 <td><%= link_to user.name, user_path(user.id) %></td>
 # <% link_to ("A"."/B") %>
@@ -325,7 +333,8 @@ end
 - edit_user_pathはusers#editへのリンク
 - user_pathはusers#showへのリンク
 
-```rb:app/views/users/show.html.erb
+```rb
+# app/views/users/show.html.erb
 <p id="notice"><%= notice %></p>
 <p>
   <strong>Name:</strong>
@@ -342,7 +351,8 @@ end
 ```
 
 ## show, edit アクションの定義
-```rb:app/controllers/users_controller.rb
+```rb
+# app/controllers/users_controller.rb
 def show
   @user = User.find params[:id]
 end
@@ -352,7 +362,8 @@ def edit
 end
 ```
 
-```rb:app/views/users/edit.html.erb
+```rb
+# app/views/users/edit.html.erb
 <%= form_with(model: @user, local: true) do |form| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -383,7 +394,8 @@ end
 # 追加：2日目を参考にし、表示を触ってみる。
 性別の値0or1を男性or女性で表示させる。
 
-```rb:app/models/user.rb
+```rb
+# app/models/user.rb
 class User < ApplicationRecord
     enum sex: { male: 0 ,female: 1}
 end
@@ -398,7 +410,8 @@ end
 
 ラジオボタンに変更
 
-```rb:erb:app/views/users/edit.html.erb
+```rb
+# app/views/users/edit.html.erb
 <div class"field">
     <%= form.label :sex %>
     <%= form.radio_button :sex, 'male' %>男性
@@ -414,7 +427,7 @@ end
 </picture>
 
 
-```rb:console
+```rb
 # レコードの中から、nameがfooであるユーザ情報を取得
 user = User.find_by(name:"foo")
 # 取得したユーザ情報のうち、ageを0にオーバーライド
@@ -440,7 +453,8 @@ User.find_by(name: "foo")
 # 8日目
 
 ## users_controller定義
-```rb:app/controllers/uupdate.rb
+```rb
+# app/controllers/uupdate.rb
 # updateアクション
 def update
     @user = User.find params[:id]
@@ -471,12 +485,14 @@ end
 ```
 
 ## indexページからのdestroyへのリンク作成
-```rb:app/views/users/index.html.erb
+```rb
+# app/views/users/index.html.erb
 <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 ```
 
 ## newページ編集
-```rb:app/views/users/new.html.erb
+```rb
+# app/views/users/new.html.erb
 <h1>New User</h1>
 <%= form_with(model: @user, local: true) do |form| %>
   <% if @user.errors.any? %>
@@ -504,12 +520,14 @@ end
 ```
 
 ## indexからnewへのリンク作成
-```rb:app/views/users/index.html.erb
+```rb
+# app/views/users/index.html.erb
 <%= link_to 'New User', new_user_path %>
 ```
 
 ## createアクション定義
-```rb:app/controllers/users_controller.rb
+```rb
+# app/controllers/users_controller.rb
 def create
     @user = User.new(params.require(:user).permit(:name, :email, :sex, :age, :address, :attendance, :opinion))
     if @user.save
@@ -531,12 +549,14 @@ end
 ## createアクションとupdateアクションの共通化
 2アクションに下の共通箇所がある
 
-```rb:app/controllers/users_controller.rb
+```rb
+# app/controllers/users_controller.rb
 @user = User.new(params.require(:user).permit(:name, :email, :sex, :age, :address, :attendance, :opinion))
 ```
 リファクタリング後
 
-```rb:app/controllers/users_controller.rb
+```rb
+# app/controllers/users_controller.rb
 def create
   @user = User.new(user_params)
   if @user.save
@@ -572,7 +592,8 @@ end
 ```
 
 ## show. edit. updata, destroyの共通化
-```rb:app/controllers/users_controller.rb
+```rb
+# app/controllers/users_controller.rb
 # 共通している部分
 @user = User.find params[:id]
 
@@ -589,7 +610,8 @@ class UsersController < ApplicationController
 ```
 
 ## アクションのリファクタリング後（全体）
-```rb:app/controllers/users_controller.rb
+```rb
+# app/controllers/users_controller.rb
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 

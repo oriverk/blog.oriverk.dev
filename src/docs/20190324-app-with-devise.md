@@ -26,26 +26,28 @@ from Qiita:
 
 # 実作業
 ## make migration file
-```sh:
+```sh
 rails g migration AddNameToStudents name:string gender:integer age:integer opinion:text
 #　実行
  create    db/migrate/20190324043018_add_name_to_students.rb
 ```
 
 ### reflect change to DBに反映
-```sh:
+```sh
 rails db:migrate
 ```
 
 ## modify routing
-```rb:app/confing/routes.rb
+```rb
+# app/confing/routes.rb
 # 追加
 resources :students
 root to: 'students#index'
 ```
 
 ## modify views
-```rb:app/views/student.html.erb
+```rb
+# app/views/student.html.erb
 # 今回不要なExamResultNewのリンク削除
 # ログアウトリンクの作成
 <% @students.each do |student| %>
@@ -64,7 +66,8 @@ root to: 'students#index'
 ```
 
 ## コントローラ変更
-```rb:app/controllers/student_controller.rb
+```rb
+# app/controllers/student_controller.rb
 class StudentsController < ApplicationController
   before_action :authenticate_student!
 end

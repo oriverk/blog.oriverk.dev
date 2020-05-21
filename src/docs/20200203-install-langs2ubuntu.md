@@ -16,7 +16,7 @@ from Gist: [oriverk/InstallLanguage2Ubuntu.md](https://gist.github.com/oriverk/5
 2. [How to Install Ruby 2.6 & Rails 6 on Ubuntu 19.04](https://www.techiediaries.com/install-ruby-and-ruby-on-rails-ubuntu/)
 
 ## Install latest version
-```sh:terminal
+```sh
 # install in one time
 sudo apt install autoconf bison build-essential libssl-dev libreadline-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev
 
@@ -49,7 +49,7 @@ rails webpacker:install
 ```
 
 ## Install RubyonRails by "apt install"
-```sh:terminal
+```sh
 sudo apt install -y ruby ruby-dev build-essential
 sudo apt install yarn
 
@@ -64,7 +64,7 @@ sudo gem install rails
 # Nodejs
 rails6 uses webpacker, which needs nodejs
 
-```sh:terminal
+```sh
 # first, install nodejs and npm
 sudo apt install -y nodejs npm
 
@@ -85,7 +85,7 @@ node -v
 # Rust
 I tried this installation and coded a little when discord changed golang to rust.
 
-```sh:terminal
+```sh
 sudo apt install build-essential
 
 # install rust
@@ -95,7 +95,7 @@ curl https://sh.rustup.rs -sSf | sh
 source $HOME/.cargo/env
 ```
 # Java
-```:terminal
+```
 sudo apt update
 sudo apt install git
 sudo apt install openjdk-11-jdk
