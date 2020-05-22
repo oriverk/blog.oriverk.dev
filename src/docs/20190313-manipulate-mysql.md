@@ -29,7 +29,7 @@ slide: false
 (例)  学生と部活の関係。学生は複数の部活に所属し、1つの部活には複数の学生が所属。
 　　　当然、まったく所属していない学生も居る可能性がある
 
-```
+```sh
 | 生徒 | 部活１ | 部活２ | 部活３ | 部活4 |
 |:-:|:-:|:-:|:-:|:-:|
 | Aさん  | 自転車部  | 軽音部  | 水泳部  | バスケ部  |
@@ -46,7 +46,7 @@ DB上では1つのカラムに複数のデータは入れることが出来な�
 ### 解決法：中間テーブル(/関連テーブル)、
 まず、生徒と部活にIDを持たせる
 
-```
+```sh
 | 生徒 | 生徒ID |
 |:-:|:-:|
 | Aさん  | 1  |
@@ -88,7 +88,7 @@ DB上では1つのカラムに複数のデータは入れることが出来な�
 CREATE DATABASE データベース名;
 CREATE DATABASE univ;
 CREATE TABLE :テーブル作成
-# テーブル名は複数形で。
+-- テーブル名は複数形で。
 ```
 
 ```sql
@@ -163,7 +163,7 @@ CREATE TABLE `exam_results` (
 DESC subjects;
 
 -- 結果
-sql> DESC exam_results;
+DESC exam_results;
 +------------+--------------+------+-----+-------------------+----------------+
 | Field      | Type         | Null | Key | Default           | Extra          |
 +------------+--------------+------+-----+-------------------+----------------+
@@ -218,14 +218,14 @@ INSERT INTO exam_results (student_id,name, score, max_score, created_at, updated
 | 52 |         14 | 技術者倫理      |    70 |       100 | 2019-03-12 23:01:58 | 2019-03-12 23:01:58 |
 | 53 |         14 | 農業機械        |    89 |       100 | 2019-03-12 23:01:58 | 2019-03-12 23:01:58 |
 | 54 |         14 | 植物病理学      |    91 |       100 | 2019-03-12 23:01:58 | 2019-03-12 23:01:58 |
-※長いので、以下省略
+-- ...
 ```
 
 ## UPDATE SET WHERE:テーブル情報の更新
 今の時点では、max_scoreが100点だが、200点満点に変更してみる
 
 ```sql
-# UPDATE テーブル名 SET カラム名 = 新しい情報 WHERE 条件
+-- UPDATE テーブル名 SET カラム名 = 新しい情報 WHERE 条件
 UPDATE exam_results SET max_score = 200;
 # 結果
 +----+------------+-----------------+-------+-----------+---------------------+---------------------+
@@ -235,7 +235,7 @@ UPDATE exam_results SET max_score = 200;
 | 52 |         14 | 技術者倫理      |    70 |       200 | 2019-03-12 23:01:58 | 2019-03-12 23:01:58 |
 | 53 |         14 | 農業機械        |    89 |       200 | 2019-03-12 23:01:58 | 2019-03-12 23:01:58 |
 | 54 |         14 | 植物病理学      |    91 |       200 | 2019-03-12 23:01:58 | 2019-03-12 2
-(※以下略)
+-- ...
 ```
 
 ## JOIN :複数テーブル結合
@@ -268,7 +268,7 @@ FROM students
 INNER JOIN exam_results
 ON students.id = exam_results.student_id;
 
-# 結果
+-- 結果
 +--------+-------+--------+-----------------+-------+
 | name   | grade | gender | name            | score |
 +--------+-------+--------+-----------------+-------+
@@ -279,27 +279,26 @@ ON students.id = exam_results.student_id;
 | taro   |     1 |      0 | 応用昆虫学      |    66 |
 | oriver |     3 |      1 | 育種学          |    83 |
 -- ...
-
 ```
 
 ## データ削除
 ### テーブル情報の削除
 ```sql
-DELETE FROM テーブル名 WHERE 条件;
+-- DELETE FROM テーブル名 WHERE 条件;
 DELETE FROM students;
 DELETE FROM exam_results;
 ```
 
 ### テーブルの削除
 ```sql
-DROP TABLE テーブル名;
+-- DROP TABLE テーブル名;
 DROP TABLE students;
 DROP TABLE exam_results;
 ```
 
 ### データベースの削除
 ```sql
-DROP DATABASE データベース名;
+-- DROP DATABASE データベース名;
 DROP DATABASE univ;
 ```
 
@@ -316,7 +315,7 @@ CREATE DATABASE univ1;
 ## テーブル作成
 ```sql
 USE univ1_development;
-# 生徒テーブル作成
+-- 生徒テーブル作成
 CREATE TABLE `students` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -328,14 +327,14 @@ CREATE TABLE `students` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+)
 
-# 生徒テーブルにデータ追加
+-- 生徒テーブルにデータ追加
 INSERT INTO students (name, grade, email, age, gender, others, created_at, updated_at) VALUE ('じょじ',1, 'jo@gmail.com', 20, 0, 'こんにちは、備考です。', now(), now()),('yuka',2, 'yuka@email', 22, 1,'特に',now(),now()),('なつこ',1, 'natsu@email', 28, 1,'夏来たれ',now(),now()), ('おりば',3,'oriver@email',23,0,'nothing',now(),now()),('masaya',2,'masaya@email',20,0,'nothing',now(),now());
 ```
 
 ```sql
-# 試験結果テーブル作成
+-- 試験結果テーブル作成
 CREATE TABLE `exam_results` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `student_id` int(11) NOT NULL,
@@ -345,29 +344,29 @@ CREATE TABLE `exam_results` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8; 
+)
 
-# 試験結果テーブルにデータ追加
+-- 試験結果テーブルにデータ追加
 INSERT INTO exam_results (name, student_id, score, max_score, created_at, updated_at) VALUE  ('物理', 12, 85, 100, now(), now()), ('数学', 12 ,64, 100, now(), now()), ('化学', 12 ,55, 100, now(), now()),('物理',13 ,85, 100, now(), now()), ('数学',13 ,65, 100, now(), now()), ('化学',13, 71, 100, now(), now()),('物理',14 ,88, 100, now(), now()), ('数学',14 ,73, 100, now(), now()), ('化学',14, 67, 100, now(), now()),('物理',15 ,100, 100, now(), now()), ('数学',15 ,92, 100, now(), now()), ('化学',15, 99, 100, now(), now()),('物理',16 ,30, 100, now(), now()), ('数学',16 ,43, 100, now(), now()), ('化学',16, 99, 100, now(), now());
 ```
 
 ```sql
-#　部活テーブル作成
+-- 部活テーブル作成
 CREATE TABLE `clubs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+)
 
-# 部活テーブルにデータ追加
+-- 部活テーブルにデータ追加
 INSERT INTO clubs (name, created_at, updated_at) VALUE 
 ('サッカー', now(), now()),('野球', now(), now()),('囲碁', now(), now()),('空手', now(), now()),('合気道', now(), now()),('自転車',now(),now()),('軽音',now(),now());
 ```
 
 ```sql
-# 生徒ー部活関連テーブル作成
+-- 生徒ー部活関連テーブル作成
 CREATE TABLE `club_students` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `student_id` int(11) NOT NULL,
@@ -375,9 +374,9 @@ CREATE TABLE `club_students` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8; 
+)
 
-# 生徒ー部活関連テーブルへデータ追加
+-- 生徒ー部活関連テーブルへデータ追加
 INSERT INTO club_students (student_id, club_id, created_at, updated_at) VALUE  (12, 1, now(), now()),(12, 3, now(), now()),(12, 5, now(), now()),(12, 7, now(), now());
 INSERT INTO club_students (student_id, club_id, created_at, updated_at) VALUE  (13, 2, now(), now()),(13, 4, now(), now()),(13, 6, now(), now());
 INSERT INTO club_students (student_id, club_id, created_at, updated_at) VALUE  (14, 1, now(), now()),(14, 3, now(), now()),(14, 4, now(), now()),(14, 5, now(), now());
@@ -390,7 +389,7 @@ INSERT INTO club_students (student_id, club_id, created_at, updated_at) VALUE
 ```sql
 SELECT MAX(score),MIN(score),AVG(score),MAX(score/max_score)
 FROM exam_results;
-#　結果
+-- 結果
 +------------+------------+------------+----------------------+
 | MAX(score) | MIN(score) | AVG(score) | MAX(score/max_score) |
 +------------+------------+------------+----------------------+
@@ -406,7 +405,7 @@ MAX(score) as 最大 ,
 AVG(score) as 平均
 FROM exam_results
 GROUP BY name;
-# 結果
+-- 結果
 +--------+--------+--------+---------+
 | name   | 最大   | 最小   | 平均    |
 +--------+--------+--------+---------+
@@ -425,7 +424,7 @@ FROM students
 INNER JOIN exam_results
 ON students.id = exam_results.student_id
 GROUP BY students.name;
-# 結果
+-- 結果
 +-----------+------------+------------+------------+
 | name      | MAX(score) | MIN(score) | AVG(score) |
 +-----------+------------+------------+------------+
@@ -460,7 +459,7 @@ LEFT JOIN clubs
 | じょじ    |  20 | 合気道       |
 | じょじ    |  20 | 軽音         |
 | yuka      |  22 | 野球         |
-(割愛)
+-- ...
 -- INNER JOINの場合、masayaのレコード自体が表示されない。
 ```
 

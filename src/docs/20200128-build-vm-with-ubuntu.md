@@ -111,6 +111,7 @@ sudo apt update
 # If build Desktop ver
 sudo apt install ubuntu-desktop
 ```
+
 ## Change locale and timezone
 ```sh
 # change locale to ja_JP.utf-8
@@ -164,8 +165,6 @@ end
 
 ```sh
 vagrant up
-
-# SSH接続、パッケージ更新
 vagrant ssh
 
 sudo apt update

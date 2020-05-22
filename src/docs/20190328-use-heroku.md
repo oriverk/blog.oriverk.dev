@@ -42,13 +42,15 @@ sudo snap install heroku --clasic
 ```sh
 heroku login
 # こんなのが出る。自動でブラウザが開かないときは、自分で開いてあげる必要がある。
-heroku: Press any key to open up the browser to login or q to exit
- ›   Warning: If browser does not open, visit
- ›   https://cli-auth.heroku.com/auth/browser/***
-heroku: Waiting for login...
-Logging in... done
-Logged in as me@example.com
+# heroku: Press any key to open up the browser to login or q to exit
+#  ›   Warning: If browser does not open, visit
+#  ›   https://cli-auth.heroku.com/auth/browser/***
+# heroku: Waiting for login...
+# Logging in... done
+# Logged in as me@example.com
 ```
+
+`heroku login -i`でインタラクティブモードでするとよい
 
 ## アプリをHerokuへデプロイ
 アプリのソースコードを受け取るHerokuを準備する

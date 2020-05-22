@@ -3,8 +3,8 @@ import path from 'path'
 import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
-// import highlight from 'remark-highlight.js'
 
+const highlight = require('remark-highlight.js')
 
 const postsDirectory = path.join(process.cwd(), './src/docs')
 
@@ -64,17 +64,16 @@ export async function getPostData(id) {
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   // use gray-matter to analyze post meta data
   const matterResult = matter(fileContents)
-
-  const highlight = require('remark-highlight.js')
+  const mdx = require('@mdx-js/mdx')
 
   //use remark to convert markdonw to html string
   const processedContent = await remark()
     .use(highlight)
     .use(html)
     .process(matterResult.content)
+
   const contentHtml = processedContent.toString()
 
-  // bring data together with id
   return {
     id,
     contentHtml,

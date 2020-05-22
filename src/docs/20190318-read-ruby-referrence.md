@@ -24,7 +24,7 @@ from Qiita:
 ## 予約語
 回避方法はあるが、使わない方が身のため。
 
-```
+```rb
 BEGIN    class    ensure   nil      self     when
 END      def      false    not      super    while
 alias    defined? for      or       then     yield
@@ -120,7 +120,7 @@ a || b && c   #=>  a || (b && c)
 ```
 
 ## 再定義できない演算子
-```
+```rb
  =  ?:  ..  ...  not  &&  and  ||  or  ::
 ```
 

@@ -301,18 +301,18 @@ gem 'jekyll-coffeescript'
 
 自分の結果
 
-```
+```sh
 # ...
-.
-├── _config.yml
-├── _includes
-|   ├── svgファイル類
-|   └── `head`内パーツ類（head.html, twitter-card, google-analytics, bootstrap ...
-|   └── `body`内のhtmlパーツ類
-├── _layouts ─ default.html
-├── _posts   ─ 2007-10-29-why-every-programmer-should-play-nethack.md
-├── assets   ─ jpg / png 画像類
-└── index.html # can also be an 'index.md' with valid front matter
+# .
+# ├── _config.yml
+# ├── _includes
+# |   ├── svgファイル類
+# |   └── `head`内パーツ類（head.html, twitter-card, google-analytics, bootstrap ...
+# |   └── `body`内のhtmlパーツ類
+# ├── _layouts ─ default.html
+# ├── _posts   ─ 2007-10-29-why-every-programmer-should-play-nethack.md
+# ├── assets   ─ jpg / png 画像類
+# └── index.html # can also be an 'index.md' with valid front matter
 ```
 
 ### スクロール関連の変更

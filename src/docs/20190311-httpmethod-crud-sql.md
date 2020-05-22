@@ -31,7 +31,7 @@ from Qiita:
 
 # HTTPメソッドの内訳とSQLの関係、CRUDとRESTful
 
-```
+```md
 |  HTTPメソッド  | 内容 | CRUD  |MYSql| MySQL|
 |:-:|:-:|:-:|:-:|:-:|
 |  GET 　| リソース取得 | CREATE  | 生成| INSERT |

@@ -1,91 +1,17 @@
 import React from 'react'
-import css from 'styled-jsx/css'
 import Grid from '@material-ui/core/Grid'
 import NoImage from '../utils/noImage'
 
-const CommonStyles = css`
-  .content {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto 3rem;
-    padding: 0 5%;
-    flex-grow: 1;
-  }
-  article {
-    margin-bottom: 1rem;
-  }
-  #works{
-    margin-bottom: 3.5rem;
-  }
-  h2, h3 {
-    text-align: center;
-  }
-  .gridContainer:not(:last-child){
-    margin: 2rem auto;
-    border-bottom: 1px solid grey;
-  }
-  .gridItem{
-    margin-bottom: .5rem;
-  }
-  .contentImg {
-    width: 100%;
-  }
-  ul {
-    margin-top: 7px;
-    margin-bottom: 0px;
-    padding-left: 20px;
-  }
-  a {
-    color: #F48FB1; 
-    text-decoration: none;
-  }
-  #about p{
-    margin: 0 auto .5rem;
-  }
-`
-
-const TopStyles = css`
-  .topContainer {
-    height: 100vh;
-    position: relative;
-    background-color: #212121;
-    background-size: cover;
-    background-position: center;
-    background-image: url('/assets/adelaide2.webp');
-  }
-  .topTitleContainer {
-    color: white;
-    padding: 5%;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0,0,0,0.3);
-    border-bottom: 2px double rgb(255,255,255);
-    border-radius: 2px;
-  }
-  .topTitle {
-    font-weight: 500;
-    font-size: 4rem;
-  }
-  .topSubtitle {
-    font-size: 2rem
-  }
-`
-
 export function Top() {
   return (
-    <React.Fragment>
+    <>
       <section id='top' className='topContainer'>
         <div className='topTitleContainer'>
           <div className='topTitle'>Kawano <wbr />Yudai</div>
           <div className='topSubtitle'>B.Agr. /<wbr />JobSeeker</div>
         </div>
       </section>
-      <style jsx>{CommonStyles}</style>
-      <style jsx>{TopStyles}</style>
-    </React.Fragment>
+    </>
   )
 }
 
@@ -112,7 +38,6 @@ export function About() {
           </Grid>
         </Grid>
       </section>
-      <style jsx>{CommonStyles}</style>  
     </>    
   );
 }
@@ -153,7 +78,7 @@ export function Works() {
               <br />with RubyonRails, PostgreSQL, S3
               <ul>
                 <li><a href='https://github.com/oriverk/Codr' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
-                <li><a href='https://qiita.com/OriverK/items/df41ec6b57b40a06a64d' target='_blank' rel='noopener noreferrer' >Qiita: Share code beautifully on Twitter</a></li>
+                <li><a href='https://qiita.com/OriverK/items/df41ec6b57b40a06a64d' target='_blank' rel='noopener noreferrer' >Qiita: Wanna Share code beautifully on Twitter</a></li>
               </ul>
             </Grid>
           </Grid>
@@ -174,7 +99,6 @@ export function Works() {
           </Grid>
         </article>
       </section>
-      <style jsx>{CommonStyles}</style>
     </>  
   );
 }
@@ -227,7 +151,6 @@ export function History() {
           </Grid>
         </article>
       </section>
-      <style jsx>{CommonStyles}</style>
     </>
   )
 }

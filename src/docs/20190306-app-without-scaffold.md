@@ -69,12 +69,12 @@ end
 ```
 
 ```sh
-# rails routes
+rails routes
 
-Prefix Verb URI Pattern
-Controller#Action
-users GET  /users(.:format) 　 #追加された行
-users#index   　　　　　　　　　#追加された行
+# Prefix Verb URI Pattern
+# Controller#Action
+# users GET  /users(.:format) 　 #追加された行
+# users#index   　　　　　　　　　#追加された行
 ```
 
 ### controller：modelとviewをつなぐ
@@ -104,7 +104,7 @@ end
 - /app : アプリケーション開発中にメインで使用するディレクトリ
 - /controllers..Controller クラスを格納する
 - /models :　Modelクラスを格納する
-/views :View クラスを格納する
+- /views :View クラスを格納する
 
 ---
 # 4日目
@@ -131,27 +131,28 @@ rails db:migrate
 ## 出来たテーブルをMySQL側で確認してみる。
 
 ```sql
-mysql>USE scanashi0307_development;
-Reading table information for completion of table and column names
-You can turn off this feature to get a quicker startup with -A
+-- mysql
+USE scanashi0307_development;
+-- Reading table information for completion of table and column names
+-- You can turn off this feature to get a quicker startup with -A
 
-Database changed
-mysql> SHOW TABLES;
-+------------------------------------+
-| Tables_in_scanashi0307_development |
-+------------------------------------+
-| ar_internal_metadata               |
-| schema_migrations                  |
-| users                              |
-+------------------------------------+
-3 rows in set (0.00 sec)
+-- Database changed
+-- mysql> SHOW TABLES;
+-- +------------------------------------+
+-- | Tables_in_scanashi0307_development |
+-- +------------------------------------+
+-- | ar_internal_metadata               |
+-- | schema_migrations                  |
+-- | users                              |
+-- +------------------------------------+
+-- 3 rows in set (0.00 sec)
 
-# usersテーブルが作成されたことが分かる。
+-- usersテーブルが作成されたことが分かる。
 ```
 
 ```sql
-mysql> SHOW CREATE TABLE users;
-(ハイフン省略)
+SHOW CREATE TABLE users;
+
 | users | CREATE TABLE `users` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
@@ -165,25 +166,24 @@ mysql> SHOW CREATE TABLE users;
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 |
-(以下省略)
 ```
 
 `rails g models`で設定したカラム名が作成されているのが分かる。
 
 ## データベースにfooさんのレコードを追加してみる
 ```sql
-mysql> INSERT INTO `users` (`name`, `email`, `sex`, `age`, `address`, `attendance`, `opinion`, `created_at`, `updated_at`) VALUES ('foo', 'foo@gmail.com', 1, 23, 2, 0, 'foooo', '2017-04-04 04:44:44', '2018-04-04 04:44:44');
-Query OK, 1 row affected (0.00 sec)
+INSERT INTO `users` (`name`, `email`, `sex`, `age`, `address`, `attendance`, `opinion`, `created_at`, `updated_at`) VALUES ('foo', 'foo@gmail.com', 1, 23, 2, 0, 'foooo', '2017-04-04 04:44:44', '2018-04-04 04:44:44');
+-- Query OK, 1 row affected (0.00 sec)
 ```
 
 ## MySQLの中から、追加されているレコードを確認してみる。
 ```sql
-mysql> SELECT * FROM users;
-+----+------+---------------+------+------+---------+------------+---------+---------------------+---------------------+
-| id | name | email         | sex  | age  | address | attendance | opinion | created_at          | updated_at          |
-+----+------+---------------+------+------+---------+------------+---------+---------------------+---------------------+
-|  1 | foo  | foo@gmail.com |    1 |   23 |       2 |          0 | foooo   | 2017-04-04 04:44:44 | 2018-04-04 04:44:44 |
-+----+------+---------------+------+------+---------+------------+---------+---------------------+---------------------+
+SELECT * FROM users;
+-- +----+------+---------------+------+------+---------+------------+---------+---------------------+---------------------+
+-- | id | name | email         | sex  | age  | address | attendance | opinion | created_at          | updated_at          |
+-- +----+------+---------------+------+------+---------+------------+---------+---------------------+---------------------+
+-- |  1 | foo  | foo@gmail.com |    1 |   23 |       2 |          0 | foooo   | 2017-04-04 04:44:44 | 2018-04-04 04:44:44 |
+-- +----+------+---------------+------+------+---------+------------+---------+---------------------+---------------------+
 ```
 
 ## `rails console`側から新たにレコードを追加する。
@@ -283,7 +283,7 @@ resources :users
 
 `rails routes`実行
 
-```
+```rb
  Prefix Verb   URI Pattern Controller#Action
 
     users GET    /users(.:format)            users#index

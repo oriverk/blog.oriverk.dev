@@ -309,12 +309,13 @@ GROUP BY subjects.id, subjects.name
 | taro-1 | 一次試験     | 英語      |   199 |   100 |
 | taro-1 | 試験3        | 英語      |   108 |    54 |
 | taro-1 | 一次試験     | 化学      |    99 |    99 |
-(割愛)
+-- ...
 ```
 
 ### ページ上の出力
 #### students_controllerのshowアクション編集
-参照：[Active Record クエリインターフェイス](https://railsguides.jp/active_record_querying.html#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%8B%E3%82%89%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%99)
+- 参照
+  - [Active Record クエリインターフェイス](https://railsguides.jp/active_record_querying.html#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%8B%E3%82%89%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%99)
 
 ```rb
 # app/controllers/studetns_controller.rb

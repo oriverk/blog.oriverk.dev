@@ -29,7 +29,7 @@ from Qiita:
 ```sh
 rails g migration AddNameToStudents name:string gender:integer age:integer opinion:text
 #　実行
- create    db/migrate/20190324043018_add_name_to_students.rb
+#  create    db/migrate/20190324043018_add_name_to_students.rb
 ```
 
 ### reflect change to DBに反映

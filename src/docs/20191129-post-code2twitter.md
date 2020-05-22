@@ -167,16 +167,19 @@ Module PostsHelper
     }
    
     extensions = {
-      autolink: true,　# <>で囲まれていない時は、リンクとして認識しない
-      fenced_code_blocks: true,   #  ```\n ```内をコード部分と見做す
+      # <>で囲まれていない時は、リンクとして認識しない
+      autolink: true,
+      # ```/m```をコードとする
+      fenced_code_blocks: true,
       lax_spacing: true, 
       no_intra_emphasis: true,
       strikethrough: true,
       superscript: true,
-      tables: false,  # テーブルを認識しない
+      tables: false,
       highlight: true,
       disable_indented_code_blocks: true,
-      space_after_headers: false # #の後にスペースが無くても、h1等とする。
+      # #の後にスペースが無くても良いか
+      space_after_headers: false
     }
     renderer = RougeRedcarpetRenderer.new(render_options)
     Redcarpet::Markdown.new(renderer, extensions).render(text).html_safe
@@ -210,7 +213,6 @@ Rail5.2からの機能で、今までのcarrievaveやpaperclip等を使わずに
 ```sh
 # set up
 rails active_storage:install
-
 # rails g resource comment content:text
 rails db:migrate
 ```

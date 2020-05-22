@@ -15,7 +15,7 @@ from Qiita:
 - 仮想環境: Ubuntu 18.04
 - Ruby：2.51
 - Rails: 5.2.2
-    - gem ：'devise'（ログイン等の機能用）、'kaminari' （ページネーション）
+    - gem: 'devise'（ログイン等の機能用), 'kaminari'( pagination )
 - DB: PostgreSQL
 
 # 実作業

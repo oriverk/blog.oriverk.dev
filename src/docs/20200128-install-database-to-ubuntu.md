@@ -24,7 +24,7 @@ sudo -u postgres psql
 ```
 
 ```sql
-# in postgresql
+-- in postgresql
 \password admin
 \q
 ```
@@ -39,7 +39,7 @@ rails dbconsole
 # add repositry
 ## make /etc/apt/sources.list.d/pgdg.list
 ## write repositry
-sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 
 ## add certification key
 sudo apt install curl ca-certificates

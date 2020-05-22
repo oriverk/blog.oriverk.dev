@@ -27,6 +27,7 @@ export default function MyApp(props) {
         <link rel='icon' type='image/png' sizes='32x32' href='/favicon/favicon-32x32.png' />
         <link rel='icon' type='image/png' sizes='16x16' href='/favicon/favicon-16x16.png' />
         <link rel='manifest' href='./manifest.json' />
+        <meta property='og:image' content='./assets/prtsc700.jpg' />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
@@ -46,7 +47,12 @@ export default function MyApp(props) {
           font-family: 'Hiragino Sans', 'Meiryo', sans-serif;
         }
         div, p, a, li, b{
+          color: #FFF;
           font-size: 1rem;
+        }
+        a{
+          color: #50CAF9;
+          text-decoration: none;
         }
       `}</style>
     </React.Fragment>

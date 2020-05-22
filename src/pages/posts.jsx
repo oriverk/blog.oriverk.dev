@@ -22,7 +22,7 @@ export default function Index({allPostsData}) {
           <meta name='description' content="My name is Kawano Yudai. I majored Botanics, Agricultural Engineering and studied crop row detection tech by image processing. Now, I'm seeking job as developer in Japan." />
           <meta property='og:title' content="Blog | Kawano Yudai's site" />
           <meta property='og:description' content="My name is Kawano Yudai. I majored Botanics, Agricultural Engineering and studied crop row detection tech by image processing. Now, I'm seeking job as developer in Japan." />
-          <meta property='og:image' content='./assets/prtsc700.jpg' />
+          {/* <meta property='og:image' content='./assets/prtsc700.jpg' /> */}
           <meta property='og:url' content='/' />
         </Head>
         <article className='content'>
@@ -58,6 +58,7 @@ export default function Index({allPostsData}) {
         }
         a {
           color: #FFF;
+          text-decoration: underline;
         }
       `}</style>
     </>

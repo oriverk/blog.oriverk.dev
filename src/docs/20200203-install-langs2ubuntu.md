@@ -95,7 +95,7 @@ curl https://sh.rustup.rs -sSf | sh
 source $HOME/.cargo/env
 ```
 # Java
-```
+```sh
 sudo apt update
 sudo apt install git
 sudo apt install openjdk-11-jdk

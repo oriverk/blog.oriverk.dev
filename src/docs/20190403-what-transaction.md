@@ -39,15 +39,15 @@ MySQLはデフォルトで、自動コミットモードが有効になった状
 ### 実作業
 今回はMySQLと、以前に作成した大学生徒データAppのデータを再利用する
 
-```
+```sh
 mysql -u root -p
 ```
 ```sql
-#使用するデータベース情報の選択
-mysql> USE cebu_college_development;
+-- 使用するデータベース情報の選択
+USE cebu_college_development;
 
-#使用するstudentsテーブルの構造を確認
-mysql> DESC students;
+-- 使用するstudentsテーブルの構造を確認
+DESC students;
 +------------+--------------+------+-----+---------+----------------+
 | Field      | Type         | Null | Key | Default | Extra          |
 +------------+--------------+------+-----+---------+----------------+
@@ -63,8 +63,8 @@ mysql> DESC students;
 ```
 
 ```sql
-#id3のtaro-2さんを使ってみる
-mysql> SELECT name FROM students WHERE id = 3;
+-- id=3のtaro-2さんを使ってみる
+SELECT name FROM students WHERE id = 3;
 +--------+
 | name   |
 +--------+
@@ -73,16 +73,15 @@ mysql> SELECT name FROM students WHERE id = 3;
 ```
 #### COMMITするパターン
 ```sql
-#
-mysql> START TRANSACTION;
+START TRANSACTION;
 
-# id=3のnameを"tran-sakuko"に更新
-mysql> UPDATE students SET name = "tran-sakuko" WHERE id = 3;
-Query OK, 1 row affected (0.01 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
+-- id=3のnameを"tran-sakuko"に更新
+UPDATE students SET name = "tran-sakuko" WHERE id = 3;
+-- Query OK, 1 row affected (0.01 sec)
+-- Rows matched: 1  Changed: 1  Warnings: 0
 
-# 確認してみる
-mysql> SELECT name FROM students WHERE id =3;
+-- 確認してみる
+SELECT name FROM students WHERE id =3;
 +-------------+
 | name        |
 +-------------+
@@ -90,12 +89,12 @@ mysql> SELECT name FROM students WHERE id =3;
 +-------------+
 1 row in set (0.00 sec)
 
-# コミットする
-mysql> COMMIT;
-Query OK, 0 rows affected (0.00 sec)
+-- コミットする
+COMMIT;
+-- Query OK, 0 rows affected (0.00 sec)
 
-# COMMITされてるか確認
-mysql> select name from students where id =3;
+-- COMMITされてるか確認
+-- select name from students where id =3;
 +-------------+
 | name        |
 +-------------+
@@ -106,16 +105,16 @@ mysql> select name from students where id =3;
 
 #### ROLLBACKするパターン
 ```sql
-mysql> START TRANSACTION;
-Query OK, 0 rows affected (0.00 sec)
+START TRANSACTION;
+-- Query OK, 0 rows affected (0.00 sec)
 
-# id3のnameを"tran sakutarou"に更新
-mysql> UPDATE students SET name = "tran sakutarou" WHERE id =3;
-Query OK, 1 row affected (0.00 sec)
+-- id=3のnameを"tran sakutarou"に更新
+UPDATE students SET name = "tran sakutarou" WHERE id =3;
+-- Query OK, 1 row affected (0.00 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
-# id3のnameに新しいデータの"tran sakutarou"がセットされてる
-mysql> SELECT name FROM students WHERE id = 3;
+-- id3のnameに新しいデータの"tran sakutarou"がセットされてる
+SELECT name FROM students WHERE id = 3;
 +----------------+
 | name           |
 +----------------+
@@ -123,12 +122,12 @@ mysql> SELECT name FROM students WHERE id = 3;
 +----------------+
 1 row in set (0.00 sec)
 
-# ロールバックしてみる
-mysql> ROLLBACK;
-Query OK, 0 rows affected (0.01 sec)
+ロールバックしてみる
+ROLLBACK;
+-- Query OK, 0 rows affected (0.01 sec)
 
-#セットした"trans sakutarou"というデータはDBに格納されない。
-mysql> SELECT name FROM students WHERE id = 3;
+-- セットした"trans sakutarou"というデータはDBに格納されない。
+SELECT name FROM students WHERE id = 3;
 +-------------+
 | name        |
 +-------------+
@@ -169,7 +168,7 @@ end
 DB内で確認
 
 ```sql
-mysql> SELECT * FROM users;
+SELECT * FROM users;
 +----+--------+----------+---------+---------------------+---------------------+
 | id | name   | approved | deleted | created_at          | updated_at          |
 +----+--------+----------+---------+---------------------+---------------------+
@@ -180,7 +179,7 @@ mysql> SELECT * FROM users;
 |  5 | taro-5 |        1 |       0 | 2019-04-03 09:01:31 | 2019-04-03 09:01:31 |
 +----+--------+----------+---------+---------------------+---------------------+
 
-mysql> SELECT * FROM reviews;
+SELECT * FROM reviews;
 +----+---------+------+----------+---------------------+---------------------+
 | id | user_id | rate | approved | created_at          | updated_at          |
 +----+---------+------+----------+---------------------+---------------------+
@@ -235,7 +234,7 @@ end
 userテーブルのid1のtaro-1が、更新されてる
 
 ```sql
-mysql> select * from users;
+select * from users;
 +----+--------+----------+---------+---------------------+---------------------+
 | id | name   | approved | deleted | created_at          | updated_at          |
 +----+--------+----------+---------+---------------------+---------------------+
