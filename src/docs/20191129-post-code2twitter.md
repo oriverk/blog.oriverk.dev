@@ -21,8 +21,8 @@ from Qiita
 - [GithubPage](https://oriverk.github.io/)
 
 <picture>
-  <source srcSet="/assets/codr700.webp" type="image/webp" className={classes.contentImg} />
-  <img src="/assets/codr700.jpg" alt="screen-shot from this webpage" className={classes.contentImg} />
+  <source srcSet="/assets/codr700.webp" type="image/webp" />
+  <img src="/assets/codr700.jpg" alt="screen-shot from this webpage" />
 </picture>
 
 # 作成の過程で収穫物
@@ -35,7 +35,7 @@ from Qiita
 # 作成要件
 
 <picture>
-  <img src="/assets/posts/201911/twitter2.png" alt="table">
+  <img src="/assets/posts/201911/twitter2.png" alt="table" />
 </picture>
 
 - マークダウン投稿、シンタックスハイライト

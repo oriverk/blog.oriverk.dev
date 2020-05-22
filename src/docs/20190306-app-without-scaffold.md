@@ -323,8 +323,8 @@ end
 この時点で`rails s`で立ち上げると
 
 <picture>
-  <source srcSet="/assets/posts/201903/scaffold1.webp" type="image/webp">
-  <img src="/assets/posts/201903/scaffold1.jpg" alt="scaffold first">
+  <source srcSet="/assets/posts/201903/scaffold1.webp" type="image/webp" />
+  <img src="/assets/posts/201903/scaffold1.jpg" alt="scaffold first" />
 </picture>
 
 ## showアクション
@@ -404,8 +404,8 @@ end
 男性、女性で表示されるようになった。だが、editページは、テキスト入力のままだ。
 
 <picture>
-  <source srcSet="/assets/posts/201903/scaffold2.webp" type="image/webp">
-  <img src="/assets/posts/201903/scaffold2.jpg" alt="male / female enum">
+  <source srcSet="/assets/posts/201903/scaffold2.webp" type="image/webp" />
+  <img src="/assets/posts/201903/scaffold2.jpg" alt="male / female enum" />
 </picture>
 
 ラジオボタンに変更
@@ -422,8 +422,8 @@ end
 同様に、年齢、住所、参加不参加もラジオボタンにしておく。
 
 <picture>
-  <source srcSet="/assets/posts/201903/scaffold3.webp" type="image/webp">
-  <img src="/assets/posts/201903/scaffold3.jpg" alt="change to radio button">
+  <source srcSet="/assets/posts/201903/scaffold3.webp" type="image/webp" />
+  <img src="/assets/posts/201903/scaffold3.jpg" alt="change to radio button" />
 </picture>
 
 
@@ -444,8 +444,8 @@ User.find_by(name: "foo")
 ## 年齢に、10代、20代、30代のラジオボタンを追加しておく
 
 <picture>
-  <source srcSet="/assets/posts/201903/scaffold5.webp" type="image/webp">
-  <img src="/assets/posts/201903/scaffold5.jpg" alt="changed to radiobutton">
+  <source srcSet="/assets/posts/201903/scaffold5.webp" type="image/webp" />
+  <img src="/assets/posts/201903/scaffold5.jpg" alt="changed to radiobutton" />
 </picture>
 
 
@@ -666,6 +666,6 @@ end
 # 完
 
 <picture>
-  <source srcSet="/assets/posts/201903/scaffold6.webp" type="image/webp">
-  <img src="/assets/posts/201903/scaffold6.jpg" alt="change result">
+  <source srcSet="/assets/posts/201903/scaffold6.webp" type="image/webp" />
+  <img src="/assets/posts/201903/scaffold6.jpg" alt="change result" />
 </picture>

@@ -19,8 +19,8 @@ Rails:5.2.2
 # テーブル同士の関連図
 
 <picture>
-  <source srcSet="/assets/posts/201905/cebu3.webp" type="image/webp">
-  <img src="/assets/posts/201905/cebu3.jpg" alt="data table">
+  <source srcSet="/assets/posts/201905/cebu3.webp" type="image/webp" />
+  <img src="/assets/posts/201905/cebu3.jpg" alt="data table" />
 </picture>
 
 # 流れ

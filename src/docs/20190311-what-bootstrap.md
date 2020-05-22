@@ -106,8 +106,8 @@ end
 ```
 
 <picture>
-  <source srcSet="/assets/posts/201903/bootstrap1.webp" type="image/webp">
-  <img src="/assets/posts/201903/bootstrap1.jpg" alt="bootstrap table">
+  <source srcSet="/assets/posts/201903/bootstrap1.webp" type="image/webp" />
+  <img src="/assets/posts/201903/bootstrap1.jpg" alt="bootstrap table" />
 </picture>
 
 

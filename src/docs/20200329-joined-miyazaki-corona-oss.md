@@ -56,13 +56,13 @@ yarn dev
 ```
 
 <picture>
-  <source srcSet="/assets/posts/202003/miyazaki-oss.webp" type="image/webp">
-  <img src="/assets/posts/202003/miyazaki-oss.jpg" alt="localhost">
+  <source srcSet="/assets/posts/202003/miyazaki-oss.webp" type="image/webp" />
+  <img src="/assets/posts/202003/miyazaki-oss.jpg" alt="localhost" />
 </picture>
 
 <picture>
-  <source srcSet="/assets/posts/202003/miyazaki-oss1.webp" type="image/webp">
-  <img src="/assets/posts/202003/miyazaki-oss1.jpg" alt="miyazaki-oss">
+  <source srcSet="/assets/posts/202003/miyazaki-oss1.webp" type="image/webp" />
+  <img src="/assets/posts/202003/miyazaki-oss1.jpg" alt="miyazaki-oss" />
 </picture>
 
 # やったこと
@@ -75,8 +75,8 @@ yarn dev
 1. `CODE_OF_CONDUCT.md`の修正
 
 <picture>
-  <source srcSet="/assets/posts/202003/miyazaki-oss2.webp" type="image/webp">
-  <img src="/assets/posts/202003/miyazaki-oss2.jpg" alt="localhost">
+  <source srcSet="/assets/posts/202003/miyazaki-oss2.webp" type="image/webp" />
+  <img src="/assets/posts/202003/miyazaki-oss2.jpg" alt="localhost" />
 </picture>
 
 東京都verから宮崎県verにした際の地域表記変更の漏れであり、1文字の修正だった。
@@ -100,15 +100,15 @@ git push コピーしてきたURL development
 やってることは同じなので割愛。こんな感じで書いた。
 
 <picture>
-  <source srcSet="/assets/posts/202003/miyazaki-oss3.webp" type="image/webp">
-  <img src="/assets/posts/202003/miyazaki-oss3.jpg" alt="localhost">
+  <source srcSet="/assets/posts/202003/miyazaki-oss3.webp" type="image/webp" />
+  <img src="/assets/posts/202003/miyazaki-oss3.jpg" alt="localhost" />
 </picture>
 
 無事にpull requestがmergeされ、OSS活動(?)の実績解除となりました。
 
 <picture>
-  <source srcSet="/assets/posts/202003/miyazaki-oss4.webp" type="image/webp">
-  <img src="/assets/posts/202003/miyazaki-oss4.jpg" alt="localhost">
+  <source srcSet="/assets/posts/202003/miyazaki-oss4.webp" type="image/webp" />
+  <img src="/assets/posts/202003/miyazaki-oss4.jpg" alt="localhost" />
 </picture>
 
 # やりたいこと

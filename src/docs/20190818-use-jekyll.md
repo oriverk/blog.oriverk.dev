@@ -19,8 +19,8 @@ GithubPagesJekyllを利用し、静的ページを作成した。
     - remote theme：[fongandrew / hydeout](https://github.com/fongandrew/hydeout)
 
 <picture>
-  <source srcSet="/assets/posts/201908/jekyll1.webp" type="image/webp">
-  <img src="/assets/posts/201908/jekyll1.jpg" alt="jekyll">
+  <source srcSet="/assets/posts/201908/jekyll1.webp" type="image/webp" />
+  <img src="/assets/posts/201908/jekyll1.jpg" alt="jekyll" />
 </picture>
 
 - 20191206：デザイン等変更
@@ -250,8 +250,8 @@ githubに上げて完了。
 ## sidebar-nav-link
 
 <picture>
-  <source srcSet="/assets/posts/201908/jekyll2.webp" type="image/webp">
-  <img src="/assets/posts/201908/jekyll2.jpg" alt="side drawer">
+  <source srcSet="/assets/posts/201908/jekyll2.webp" type="image/webp" />
+  <img src="/assets/posts/201908/jekyll2.jpg" alt="side drawer" />
 </picture>
 
 こんな感じで、サイドバーにnavlink付け足したい。

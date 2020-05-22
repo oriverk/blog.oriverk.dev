@@ -13,8 +13,8 @@ from Qiita:
 # Webページが表示される流れのごく一部
 
 <picture>
-  <source srcSet="/assets/posts/201903/http1.webp" type="image/webp">
-  <img src="/assets/posts/201903/http1.jpg" alt="https method">
+  <source srcSet="/assets/posts/201903/http1.webp" type="image/webp" />
+  <img src="/assets/posts/201903/http1.jpg" alt="https method" />
 </picture>
 
 1. ブラウザでURLにアクセスして、DNSサーバーにIPを問い合わせ、DNSサーバーがIPを返す

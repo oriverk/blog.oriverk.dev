@@ -12,8 +12,8 @@ slide: false
 # 改修結果
 
 <picture>
-  <source srcSet="/assets/posts/202001/githubpages2post.webp" type="image/webp">
-  <img src="/assets/posts/202001/githubpages2post.jpg" alt="jekyll">
+  <source srcSet="/assets/posts/202001/githubpages2post.webp" type="image/webp" />
+  <img src="/assets/posts/202001/githubpages2post.jpg" alt="jekyll" />
 </picture>
 
 ## 改修内容

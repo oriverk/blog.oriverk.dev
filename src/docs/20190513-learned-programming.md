@@ -51,8 +51,8 @@ Webエンジニアに転職するために、独りで勉強を進めていま�
 時間割に沿って行われました。
 
 <picture>
-  <source srcSet="/assets/posts/201905/cebu1.webp" type="image/webp">
-  <img src="/assets/posts/201905/cebu1.jpg" alt="class time schedule">
+  <source srcSet="/assets/posts/201905/cebu1.webp" type="image/webp" />
+  <img src="/assets/posts/201905/cebu1.jpg" alt="class time schedule" />
 </picture>
 
 #### Ruby認定試験を用いた勉強
@@ -71,19 +71,19 @@ end
 ```
 
 <picture>
-  <img src="/assets/posts/201905/cebu2.png" alt="input text">
+  <img src="/assets/posts/201905/cebu2.png" alt="input text" />
 </picture>
 
 #### Scaffoldなしの掲示板
 BootstrapやDBを組み合わせ、生徒データ情報一覧になりました。
 
 <picture>
-  <source srcSet="/assets/posts/201905/cebu3.webp" type="image/webp">
+  <source srcSet="/assets/posts/201905/cebu3.webp" type="image/webp" />
   <img src="/assets/posts/201905/cebu3.png" alt="table">
 </picture>
 　
 <picture>
-  <img src="/assets/posts/201905/cebu4.gif" alt="student data app">
+  <img src="/assets/posts/201905/cebu4.gif" alt="student data app" />
 </picture>
 
 一部、Bootstrap等を適用してないページがあるが、気にしない。
@@ -107,11 +107,11 @@ BootstrapやDBを組み合わせ、生徒データ情報一覧になりました
     - [21日目：H30秋基本情報技術者試験の問3データベース](https://qiita.com/OriverK/items/6efe454be2d6be84ceb5)
 
 <picture>
-  <img src="/assets/posts/201905/cebu5.png" alt="table">
+  <img src="/assets/posts/201905/cebu5.png" alt="table" />
 </picture>
 
 <picture>
-  <img src="/assets/posts/201905/cebu6.gif" alt="ticket sale app">
+  <img src="/assets/posts/201905/cebu6.gif" alt="ticket sale app" />
 </picture>
 
 JS等、追加で勉強しなければと感じています。

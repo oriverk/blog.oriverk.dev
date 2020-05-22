@@ -180,6 +180,6 @@ sudo apt install ubuntu-desktop
 ```
 
 <picture>
-  <source srcSet="/assets/posts/202001/ubuntu1.webp" type="image/webp">
-  <img src="/assets/posts/202001/ubuntu1.jpg" alt="ubuntu desktop">
+  <source srcSet="/assets/posts/202001/ubuntu1.webp" type="image/webp" />
+  <img src="/assets/posts/202001/ubuntu1.jpg" alt="ubuntu desktop" />
 </picture>

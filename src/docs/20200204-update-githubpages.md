@@ -8,8 +8,8 @@ slide: false
 ---
 
 <picture>
-  <source srcSet="/assets/posts/202002/githubpages2home.webp" type="image/webp">
-  <img src="/assets/posts/202002/githubpages2home.jpg" alt="jekyll">
+  <source srcSet="/assets/posts/202002/githubpages2home.webp" type="image/webp" />
+  <img src="/assets/posts/202002/githubpages2home.jpg" alt="jekyll" />
 </picture>
 
 ## What I did
