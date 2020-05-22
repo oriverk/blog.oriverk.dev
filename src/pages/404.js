@@ -2,12 +2,12 @@ import React from 'react'
 import Link from 'next/link'
 import { Layout } from '../components/Layout'
 
-export default function Portfolio() {
+export default function Custom404() {
   return (
-    <Layout home>
+    <Layout>
       <div style={{ textAlign: 'center' }}>
         <h1>404 - Page Not Found</h1>
-        <p><Link href='/'><a style={{textDecoration:'none', color: '#F48FB1'}}>Please go back to Home.</a></Link></p>
+        <p><Link href='/'><a>Please go back to Home.</a></Link></p>
       </div>
     </Layout>
   )

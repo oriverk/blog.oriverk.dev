@@ -3,18 +3,20 @@ import Head from 'next/head'
 import { Layout } from '../components/Layout'
 import { Top, About, History, Works } from '../components/HomeContents'
 
+const manifest = require('../../public/manifest.json')
+
 export default function Home() {
   return (
     <>
       <Layout>
         <Head>
-          <title>Kawano Yudai's site</title>
-          <meta name='title' content="Kawano Yudai's site" />
-          <meta name='description' content="My name is Kawano Yudai. I majored Botanics, Agricultural Engineering and studied crop row detection tech by image processing. Now, I'm seeking job as developer in Japan." />
-          <meta property='og:title' content="Kawano Yudai's site" />
-          <meta property='og:description' content="My name is Kawano Yudai. I majored Botanics, Agricultural Engineering and studied crop row detection tech by image processing. Now, I'm seeking job as developer in Japan." />
-          {/* <meta property='og:image' content='./assets/prtsc700.jpg' /> */}
-          <meta property='og:url' content='/posts' />
+          <title>{manifest.name}</title>
+          <meta name='title' content={manifest.name} />
+          <meta name='description' content={manifest.description} />
+          <meta property='og:title' content={manifest.name} />
+          <meta property='og:description' content={manifest.description} />
+          <meta property='og:image' content={`${manifest.vercel}/assets/prtsc700.jpg`} />
+          <meta property='og:url' content={`${manifest.vercel}`} />
         </Head>
         <Top />
         <About />

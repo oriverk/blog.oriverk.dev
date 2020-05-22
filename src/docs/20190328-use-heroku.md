@@ -3,7 +3,7 @@ date: '2019-03-28'
 update: '2019-12-04'
 author: Kawano Yudai
 title: 'Qiita: 15日目：Herokuでアプリを公開しよう'
-tags: Qiita Ruby Rails Heroku
+tags: [Qiita, Ruby, Rails, Heroku]
 image: ''
 slide: false
 ---

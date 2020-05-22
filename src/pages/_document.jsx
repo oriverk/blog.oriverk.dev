@@ -2,19 +2,20 @@ import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheets } from '@material-ui/core/styles'
 
+const manifest = require('../../public/manifest.json')
+
 export default class MyDocument extends Document {
   render() {
     return (
       <Html lang='en'>
         <Head>
-          <meta name='theme-color' content='#212121' />
+          <meta name='theme-color' content={manifest.theme_color} />
           <meta content='developer, ruby, react' name='keywords' />
           <meta property='og:type' content='website' />
-          <meta property='og:site_name' content="Kawano Yudai's website" />
-          <meta property='og:locale' content='ja_JP' />
+          <meta property='og:site_name' content={manifest.name} />
+          <meta property='og:locale' content={manifest.lang} />
           <meta content='summary_large_image' name='twitter:card' />
           <meta content='@not_you_die' name='twitter:site' />
-          <meta property='og:image' content='./assets/prtsc700.jpg' />
         </Head>
         <body>
           <Main />

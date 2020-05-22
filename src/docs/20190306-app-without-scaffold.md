@@ -3,7 +3,7 @@ date: '2019-03-06'
 update: '2019-12-4'
 author: Kawano Yudai
 title: 'Qiita: 2日目(2)：Scaffoldなしでの掲示板作成'
-tags: Qiita Ubuntu Ruby Rails scaffold
+tags: [Qiita, Ubuntu, Ruby, Rails, scaffold]
 image: '/assets/posts/201903/scaffold6.jpg'
 slide: false
 ---

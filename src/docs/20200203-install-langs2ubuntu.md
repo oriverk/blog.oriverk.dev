@@ -3,7 +3,7 @@ date: '2020-02-03'
 update: '2020-03-17'
 author: Kawano Yudai
 title: 'Gist: installl langs to ubuntu'
-tags: Gist Ubuntu Ruby Rails Node.js Rust Java PHP Pytyon
+tags: [Gist, Ubuntu, Ruby, Rails, Node.js, Rust, Java]
 image: ''
 slide: false
 ---

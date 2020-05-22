@@ -3,7 +3,7 @@ date: '2019-03-29'
 update: '2019-12-04'
 author: Kawano Yudai
 title: 'Qiita: 16日目：deviseで管理者を追加する'
-tags: Qiita Ruby Rails devise
+tags: [Qiita, Ruby, Rails, devise]
 image: ''
 slide: false
 ---

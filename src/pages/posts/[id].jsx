@@ -5,6 +5,9 @@ import { getAllPostIds, getPostData } from '../../lib/posts'
 import TwitterIcon from '@material-ui/icons/Twitter'
 import { HatenaIcon } from '../../utils/customSvg'
 
+// const info = require('../../../package.json')
+const manifest = require('../../../public/manifest.json')
+
 export async function getStaticPaths() {
   const paths = getAllPostIds()
   return {
@@ -24,10 +27,10 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Post({ postData }) {
-  const pageTitle = `${postData.title} | Kawano Yudai' site`
-  const pageTags = postData.tags ? postData.tags.replace(' ', ', ') : 'GithubPages, React, Next.js'
-  // const pageImage = postData.image ? postData.image : './assets/prtsc700.jpg'
-
+  const pageTitle = `${postData.title} | ${manifest.name}`
+  const pageTags = postData.tags ? postData.tags.join(' ') : 'React, Next.js'
+  const pageImageUrl = postData.image ? postData.image : '/assets/prtsc700.jpg'
+  
   return (
     <>
       <PostLayout>
@@ -37,8 +40,8 @@ export default function Post({ postData }) {
           <meta name='description' content={pageTags} />
           <meta property='og:title' content={pageTitle} />
           <meta property='og:description' content={pageTags} />
-          {/* <meta property='og:image' content={pageImage} /> */}
-          <meta property='og:url' content={`/posts/${postData.id}`} />
+          <meta property='og:image' content={`${manifest.vercel}${pageImageUrl}`} />
+          <meta property='og:url' content={`${manifest.vercel}/posts/${postData.id}`} />
           <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
         </Head>
         <article className='content'>

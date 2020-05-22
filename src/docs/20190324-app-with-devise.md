@@ -3,7 +3,7 @@ date: '2019-03-24'
 update: '2019-12-04'
 author: Kawano Yudai
 title: 'Qiita: 13日目(1)：Deviseによるログイン機能付きサイトの作成'
-tags: Qiita Ruby Rails
+tags: [Qiita, Ruby, Rails]
 image: ''
 slide: false
 ---

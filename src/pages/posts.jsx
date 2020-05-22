@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { Layout } from '../components/Layout'
 import { getSortedPostsData } from '../lib/posts'
 
+const manifest = require('../../public/manifest.json')
+
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
   return {
@@ -17,13 +19,13 @@ export default function Index({allPostsData}) {
     <>
       <Layout>
         <Head>
-          <title>Blog | Kawano Yudai's site</title>
-          <meta name='title' content="Blog | Kawano Yudai's site" />
-          <meta name='description' content="My name is Kawano Yudai. I majored Botanics, Agricultural Engineering and studied crop row detection tech by image processing. Now, I'm seeking job as developer in Japan." />
-          <meta property='og:title' content="Blog | Kawano Yudai's site" />
-          <meta property='og:description' content="My name is Kawano Yudai. I majored Botanics, Agricultural Engineering and studied crop row detection tech by image processing. Now, I'm seeking job as developer in Japan." />
-          {/* <meta property='og:image' content='./assets/prtsc700.jpg' /> */}
-          <meta property='og:url' content='/' />
+          <title>Blog | {manifest.name}</title>
+          <meta name='title' content={`Blog | ${manifest.name}`} />
+          <meta name='description' content={manifest.description} />
+          <meta property='og:title' content={`Blog | ${manifest.name}`} />
+          <meta property='og:description' content={manifest.description} />
+          <meta property='og:image' content={`${manifest.vercel}/assets/prtsc700.jpg`} />
+          <meta property='og:url' content={`${manifest.vercel}/posts`} />
         </Head>
         <article className='content'>
           <h1>Blog Posts</h1>

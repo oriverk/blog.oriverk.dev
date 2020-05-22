@@ -3,7 +3,7 @@ date: '2019-04-03'
 update: '2019-12-04'
 author: Kawano Yudai
 title: 'Qiita: 18日目: トランザクションって'
-tags: Qiita トランザクション Ruby MySQL
+tags: [Qiita, トランザクション, Ruby, MySQL]
 image: ''
 slide: false
 ---

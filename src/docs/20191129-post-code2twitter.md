@@ -3,7 +3,7 @@ date: '2019-11-29'
 update: '2020-03-10'
 author: Kawano Yudai
 title: 'Qiita: Twitterに見栄え良くコード投稿したかった'
-tags: Qiita Ruby Rails OmniAuth AWS JavaScript
+tags: [Qiita, Ruby, Rails, OmniAuth, AWS, JavaScript]
 image: '/assets/codr700.jpg'
 slide: false
 ---
