@@ -23,8 +23,8 @@ export function About() {
         <Grid container spacing={4}>
           <Grid item md={12} lg={5}>
             <picture>
-              <source srcSet='/assets/LongRidge700.webp' type='image/webp' className='contentImg' />
-              <img src='/assets/LongRidge700.jpg' alt='the secenary from Long-Ridge-Lookout in Adelaide' className='contentImg' />
+              <source srcSet='/assets/LongRidge500.webp' type='image/webp' className='contentImg' />
+              <img src='/assets/LongRidge500.jpg' alt='the secenary from Long-Ridge-Lookout in Adelaide' className='contentImg' />
             </picture>
             <p style={{ textAlign: 'center' }}><small>This is in Adelaide, Australia. My selfie is little</small></p>
           </Grid>
@@ -51,8 +51,8 @@ export function Works() {
           <Grid container spacing={2} className='gridContainer'>
             <Grid item xs={12} sm={5} className='gridItem'>
               <picture>
-                <source srcSet='/assets/githubPages1st700.webp' type='image/webp' className='contentImg' />
-                <img src='/assets/githubPages1st700.jpg' alt='screen-shot from 1st Githubpages' className='contentImg' />
+                <source srcSet='/assets/githubPages1st500.webp' type='image/webp' className='contentImg' />
+                <img src='/assets/githubPages1st500.jpg' alt='screen-shot from 1st Githubpages' className='contentImg' />
               </picture>
             </Grid>
             <Grid item xs={12} sm={7} className='gridItem'>
@@ -68,8 +68,8 @@ export function Works() {
           <Grid container spacing={2} className='gridContainer'>
             <Grid item xs={12} sm={5} className='gridItem'>
               <picture>
-                <source srcSet='/assets/codr700.webp' type='image/webp' className='contentImg' />
-                <img src='/assets/codr700.jpg' alt='screen-shot from this webpage' className='contentImg' />
+                <source srcSet='/assets/codr500.webp' type='image/webp' className='contentImg' />
+                <img src='/assets/codr500.jpg' alt='screen-shot from this webpage' className='contentImg' />
               </picture>
             </Grid>
             <Grid item xs={12} sm={7} className='gridItem'>
@@ -126,8 +126,8 @@ export function History() {
           <Grid container spacing={2} className='gridContainer'>
             <Grid item xs={12} sm={5} className='gridItem'>
               <picture>
-                <source srcSet='/assets/weeding700.webp' type='image/webp' className='contentImg' />
-                <img src='/assets/weeding700.jpg' alt='photograph of weeding robot' className='contentImg' />
+                <source srcSet='/assets/weeding500.webp' type='image/webp' className='contentImg' />
+                <img src='/assets/weeding500.jpg' alt='photograph of weeding robot' className='contentImg' />
               </picture>
             </Grid>
             <Grid item xs={12} sm={7} className='gridItem'>
