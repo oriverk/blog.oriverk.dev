@@ -14,7 +14,8 @@ export async function getStaticProps() {
   }
 }
 
-export default function Index({allPostsData}) {
+export default function Posts({ allPostsData }) {
+  // console.log(allPostsData)
   return (
     <>
       <Layout>
@@ -30,12 +31,11 @@ export default function Index({allPostsData}) {
         <article className='content'>
           <h1>Blog Posts</h1>
           <ul>
-            {allPostsData.map(({ id, date, title }) => (
+            {allPostsData.map(({ id, date, title, tags }) => (
               <li key={id}>
-                <time dateTime={date}>{date}</time>
-                <Link href='/posts/[id]' as={`posts/${id}`}>
-                  <a><h2>{title}</h2></a>
-                </Link>
+                <time key={id} dateTime={date}>{date}</time>
+                <span key={id} className='tags'>{tags.map((tag) => (<code key={id}><Link href={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
+                <Link href='/posts/[id]' as={`posts/${id}`}><a><h2>{title}</h2></a></Link>
               </li>
             ))}
           </ul>
@@ -54,13 +54,25 @@ export default function Index({allPostsData}) {
         }
         h2{
           margin: .5rem auto 1.5rem;
+          font-weight: 600;
         }
         ul{
           padding-left: 1.25rem;
         }
         a {
-          color: #FFF;
+          color: #D9D9D9;
           text-decoration: underline;
+        }
+        code{
+          /* color: #DDD; */
+          display: inline-block;
+          margin: 0 .5rem;
+          padding: 0 .3rem;
+          background-color: #555;
+        }
+        .tags a{
+          font-size: .8rem;
+          color: #50CAF9
         }
       `}</style>
     </>

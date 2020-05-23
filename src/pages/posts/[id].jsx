@@ -1,11 +1,11 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import { PostLayout } from '../../components/PostLayout'
 // import Date from '../../components/date'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 import TwitterIcon from '@material-ui/icons/Twitter'
 import { HatenaIcon } from '../../utils/customSvg'
 
-// const info = require('../../../package.json')
 const manifest = require('../../../public/manifest.json')
 
 export async function getStaticPaths() {
@@ -48,6 +48,8 @@ export default function Post({ postData }) {
           <h1>{postData.title}</h1>
           <div>
             <time dateTime={postData.date}>posted on: {postData.date}</time>
+            <wbr />
+            <span>{postData.tags.map((tag) => (<code><Link href={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
           </div>
           <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
           {/* <div>`${postData.jsx}`</div> */}
@@ -91,6 +93,16 @@ export default function Post({ postData }) {
           word-break: break-word;
           line-height: 1.5;
         } */}
+        .tags code{
+          display: inline-block;
+          margin: 0 .5rem;
+          padding: 0 .3rem;
+          background-color: #555;
+        }
+        .tags a{
+          font-size: .8rem;
+          /* color: #DDD; */
+        }
         source, img{
           display: block;
           margin: 2rem auto;

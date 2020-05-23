@@ -19,7 +19,6 @@ export function getSortedPostsData() {
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     // use gray-matter to analyze meta data from post
     const matterResult = matter(fileContents)
-    
     // bring data together with id
     return {
       id,
@@ -79,5 +78,35 @@ export async function getPostData(id) {
     contentHtml,
     ...matterResult.data
   }
+}
 
+export function getPostsTags() {
+  const fileNames = fs.readdirSync(postsDirectory)
+  const allPostsData = fileNames.map(fileName => {
+    const fullPath = path.join(postsDirectory, fileName)
+    const fileContents = fs.readFileSync(fullPath, 'utf8')
+    const matterTags = matter(fileContents).data.tags
+    const matterTagsLower = matterTags.map((tag) => tag.toLowerCase())
+    return matterTagsLower
+  })
+
+  // [['qiita', 'ruby', 'hoge'],
+  //  ['qiita','ruby', 'python']]
+  
+  // convert Two dimentional array to One that
+  const allPostsTags = []
+  for (var m = 0; m < allPostsData.length; m++){
+    for (var n = 0; n < allPostsData[m].length; n++){
+      allPostsTags.push(allPostsData[m][n])
+    };
+  }
+
+  // ['qiita','ruby','hoge','qiita','ruby','python']
+
+  // sort and unique allPostsTags
+  const set = new Set(allPostsTags.sort());
+  let postsTags = Array.from(set)
+  // 上2行は下1行と同じ
+  // const setToArr = [...new Set(allPostsTags.sort())]
+  return postsTags
 }

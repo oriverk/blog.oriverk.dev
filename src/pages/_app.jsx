@@ -46,7 +46,7 @@ export default function MyApp(props) {
           font-family: 'Hiragino Sans', 'Meiryo', sans-serif;
         }
         div, p, a, li, b{
-          color: #FFF;
+          color: #EEE;
           font-size: 1rem;
         }
         a{
