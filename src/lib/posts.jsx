@@ -19,10 +19,13 @@ export function getSortedPostsData() {
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     // use gray-matter to analyze meta data from post
     const matterResult = matter(fileContents)
+    const LowerCaseTags = matterResult.data.tags.map((tag) => (tag.toLowerCase()))
+
     // bring data together with id
     return {
       id,
-      ...matterResult.data
+      LowerCaseTags,
+      ...matterResult.data,
     }
   })
   // sort posts by date
@@ -63,6 +66,7 @@ export async function getPostData(id) {
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   // use gray-matter to analyze post meta data
   const matterResult = matter(fileContents)
+  const LowerCaseTags = matterResult.data.tags.map((tag) => (tag.toLowerCase()))
   const mdx = require('@mdx-js/mdx')
 
   //use remark to convert markdonw to html string
@@ -76,7 +80,8 @@ export async function getPostData(id) {
   return {
     id,
     contentHtml,
-    ...matterResult.data
+    LowerCaseTags,
+    ...matterResult.data,
   }
 }
 
@@ -109,4 +114,30 @@ export function getPostsTags() {
   // 上2行は下1行と同じ
   // const setToArr = [...new Set(allPostsTags.sort())]
   return postsTags
+}
+
+export function getPostsWithTag(args) {
+  const fileNames = fs.readdirSync(postsDirectory)
+  const allPostsData = fileNames.map(fileName => {
+    const id = fileName.replace(/\.md$/, '')
+    const fullPath = path.join(postsDirectory, fileName)
+    const fileContents = fs.readFileSync(fullPath, 'utf8')
+    const matterResult = matter(fileContents)
+    const lowerTags = matterResult.data.tags.map((elm) => elm.toLowerCase())
+    if (lowerTags.includes(args.toLowerCase())) {
+      // delete matterResult.data.tags
+      return {
+        id,
+        ...matterResult.data
+      }
+    }
+  })
+  // sort posts by date
+  return allPostsData.sort((a, b) => {
+    if (a.date < b.date) {
+      return 1
+    } else {
+      return -1
+    }
+  })
 }

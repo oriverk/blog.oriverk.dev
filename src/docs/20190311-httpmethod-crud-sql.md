@@ -2,7 +2,7 @@
 date: '2019-03-11'
 author: Kawano Yudai
 title: 'Qiita: 3日目(2)：HTTPメソッドとCRUDとSQL'
-tags: [Qiita, HTTPm, crud, SQL, RESTful]
+tags: [Qiita, HTTP, CRUD, SQL, RESTful]
 image: '/assets/posts/201903/http1.jpg'
 slide: false
 ---

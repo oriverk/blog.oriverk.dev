@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import Grid from '@material-ui/core/Grid'
 import NoImage from '../utils/noImage'
 
@@ -51,17 +52,36 @@ export function Works() {
           <Grid container spacing={2} className='gridContainer'>
             <Grid item xs={12} sm={5} className='gridItem'>
               <picture>
-                <source srcSet='/assets/githubPages1st500.webp' type='image/webp' className='contentImg' />
-                <img src='/assets/githubPages1st500.jpg' alt='screen-shot from 1st Githubpages' className='contentImg' />
+                <source srcSet='/assets/prtsc-500.webp' type='image/webp' className='contentImg' />
+                <img src='/assets/prtsc-500.jpg' alt='screen-shot' className='contentImg' />
               </picture>
             </Grid>
             <Grid item xs={12} sm={7} className='gridItem'>
-              <b>GithubPages</b>
-              <br /> :My 1st GithubPages.
-              <br />with Ruby, Jekyll
+              <b>This site with React + Next.js</b>
+              <br /> :to study modern JS and gather info about me.
+              <br />with React, Next.js
               <ul>
-                <li><a href='https://github.com/oriverk/oriverk.github.io' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
-                <li><a href='https://qiita.com/OriverK/items/ce48102c66c9fa97b33e' target='_blank' rel='noopener noreferrer' >Qiita: GithubPages with Jekyll</a></li>
+                <li><a href='https://github.com/oriverk/next-portfolio' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
+                <li><a href='https://next-portfolio-blue.now.sh/' target='_blank' rel='noopener noreferrer' >This site link</a></li>
+                <li><Link href='#'><a>for post about this ( under construction)</a></Link></li>
+              </ul>
+            </Grid>
+          </Grid>
+          <Grid container spacing={2} className='gridContainer'>
+            <Grid item xs={12} sm={5} className='gridItem'>
+              <picture>
+                <source srcSet='/assets/posts/202003/miyazaki-oss1.webp' type='image/webp' className='contentImg' />
+                <img src='/assets/posts/202003/miyazaki-oss1.jpg' alt='screen-shot' className='contentImg' />
+              </picture>
+            </Grid>
+            <Grid item xs={12} sm={7} className='gridItem'>
+              <b>Miyazaki COVID-19 Task Force website (OSS)</b>
+              <br /> :to inform data in miyazaki
+              <br />with Vue.js, TypeScript
+              <ul>
+                <li><a href='https://github.com/oriverk/covid19' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
+                <li><a href='https://covid19-miyazaki.netlify.app/' target='_blank' rel='noopener noreferrer' >The site on Netlify</a></li>
+                <li><Link href='https://next-portfolio-blue.now.sh/posts/20200329-joined-miyazaki-corona-oss'><a>Joined OSS group to infrom of COVID-19 in Miyazaki, Japan.</a></Link></li>
               </ul>
             </Grid>
           </Grid>
@@ -69,7 +89,7 @@ export function Works() {
             <Grid item xs={12} sm={5} className='gridItem'>
               <picture>
                 <source srcSet='/assets/codr500.webp' type='image/webp' className='contentImg' />
-                <img src='/assets/codr500.jpg' alt='screen-shot from this webpage' className='contentImg' />
+                <img src='/assets/codr500.jpg' alt='screen-shot' className='contentImg' />
               </picture>
             </Grid>
             <Grid item xs={12} sm={7} className='gridItem'>
@@ -79,6 +99,23 @@ export function Works() {
               <ul>
                 <li><a href='https://github.com/oriverk/Codr' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
                 <li><a href='https://qiita.com/OriverK/items/df41ec6b57b40a06a64d' target='_blank' rel='noopener noreferrer' >Qiita: Wanna Share code beautifully on Twitter</a></li>
+              </ul>
+            </Grid>
+          </Grid>
+          <Grid container spacing={2} className='gridContainer'>
+            <Grid item xs={12} sm={5} className='gridItem'>
+              <picture>
+                <source srcSet='/assets/githubPages1st500.webp' type='image/webp' className='contentImg' />
+                <img src='/assets/githubPages1st500.jpg' alt='screen-shot' className='contentImg' />
+              </picture>
+            </Grid>
+            <Grid item xs={12} sm={7} className='gridItem'>
+              <b>GithubPages</b>
+              <br /> :My 1st GithubPages.
+              <br />with Ruby, Jekyll
+              <ul>
+                <li><a href='https://github.com/oriverk/oriverk.github.io' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
+                <li><a href='https://qiita.com/OriverK/items/ce48102c66c9fa97b33e' target='_blank' rel='noopener noreferrer' >Qiita: GithubPages with Jekyll</a></li>
               </ul>
             </Grid>
           </Grid>

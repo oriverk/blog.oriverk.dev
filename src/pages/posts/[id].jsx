@@ -28,7 +28,8 @@ export async function getStaticProps({ params }) {
 
 export default function Post({ postData }) {
   const pageTitle = `${postData.title} | ${manifest.name}`
-  const pageTags = postData.tags ? postData.tags.join(' ') : 'React, Next.js'
+  const tags = postData.LowerCaseTags
+  const pageTags = tags ? tags.join(' ') : 'React, Next.js'
   const pageImageUrl = postData.image ? postData.image : '/assets/prtsc700.jpg'
   
   return (
@@ -49,7 +50,7 @@ export default function Post({ postData }) {
           <div>
             <time dateTime={postData.date}>posted on: {postData.date}</time>
             <wbr />
-            <span>{postData.tags.map((tag) => (<code><Link href={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
+            <span>{tags.map((tag) => (<code><Link href={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
           </div>
           <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
           {/* <div>`${postData.jsx}`</div> */}
