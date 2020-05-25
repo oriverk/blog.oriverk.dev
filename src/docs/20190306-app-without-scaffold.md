@@ -54,7 +54,7 @@ from Qiita:
 modelはデータベース情報が必要な時だけ使用.今回は必要ではないので、とばす。
 
 ## 本段階
-### ①controllerを作成
+### controllerを作成
 ```sh
 #rails generate controller コントローラ名 (+アクション名)
 rails generate controller Users

@@ -57,7 +57,7 @@ jekyll new oriverk.github.io
 - Github Pages HPより引用
   - If the first part of the repository doesn’t exactly match your username, it won’t work, so make sure to get it right.
 
-##デフォルト状態完成
+## デフォルト状態完成
 上記に従ったデフォルト状態では、[テーマminimaが適用され、こんなページになる。](https://jekyll.github.io/minima/)
 
 # jekyllテーマを変更
@@ -99,13 +99,12 @@ plugins:
 bundle install
 bundle exec jekyll server
 ```
+
 これで、テーマがhydeoutに変更されているはず。
 
 # エラー
-githubpages公式のgem等由来であれば、[Troubleshooting GitHub Pages builds
-](https://help.github.com/en/articles/troubleshooting-github-pages-builds)で、大体は悩み解消されるのではと思う。実は、投稿中に存在に気づきました。
-
-追記：[GitHub Pages ビルドのトラブルシューティング](https://help.github.com/ja/articles/troubleshooting-github-pages-builds)
+参照:
+- [GitHub Pages ビルドのトラブルシューティング](https://help.github.com/ja/articles/troubleshooting-github-pages-builds)
 
 ## Layoutが見つからないエラー
 記事投稿中にターミナルログを消してしまって、エラー文を覚えていないが、
@@ -130,9 +129,7 @@ githubpages公式のgem等由来であれば、[Troubleshooting GitHub Pages bui
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-
   <title>
     {% if page.title == "Home" %}
     {{ site.title }}{% if site.tagline %} &middot; {{ site.tagline }}{% endif %}
@@ -140,7 +137,6 @@ githubpages公式のgem等由来であれば、[Troubleshooting GitHub Pages bui
     {{ page.title }} &middot; {{ site.title }}
     {% endif %}
   </title>
-
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}" />
 </head>
 ```
@@ -162,12 +158,12 @@ sidebar_blog_link: '/blog'
 bundle install
 bundle exec jekyll server
 ```
+
 ## Googleアナリティクス
 - 参照
   - [Google Analytics for Jekyll](https://desiredpersona.com/google-analytics-jekyll/)
 
-
-1. まず、GoogleアナリティクスをトラッキングIDを取得する。(割愛
+1. まず、GoogleアナリティクスをトラッキングIDを取得する。
 2. `google-analytics.html`を作成
 
 ```html
@@ -189,8 +185,7 @@ bundle exec jekyll server
 3. `_include/head.html`に書き加える。
 
 ```html
-# _include/head.html
-
+<!-- _include/head.html -->
 <head>
     {% include google-analytics.html %}
 </head>
@@ -241,7 +236,7 @@ githubに上げて完了。
 ```html
 <!-- _include/head.html -->
 <head>
-    {% include twitter-card.html %}
+  {% include twitter-card.html %}
 </haed>
 ```
 
@@ -254,10 +249,7 @@ githubに上げて完了。
   <img src="/assets/posts/201908/jekyll2.jpg" alt="side drawer" />
 </picture>
 
-こんな感じで、サイドバーにnavlink付け足したい。
-
-## svgファイルの最適化
-SVGファイルの最適化を、vscodeの拡張機能[svgo](https://marketplace.visualstudio.com/items?itemName=1000ch.svgo)を利用して行った。
+こんな感じで、サイドバーにnav-link付け足したい。
 
 # デザインを大幅修正した件
 

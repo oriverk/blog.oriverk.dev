@@ -11,11 +11,15 @@ slide: false
 from Qiita
 - [Twitterにコードを身えばよく投稿したい](https://qiita.com/OriverK/items/df41ec6b57b40a06a64d#comments)
 
-# きっかけ（こんな呟きを見かけた
+# はじめに
+## きっかけ（こんな呟きを見かけた
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">ソースコードをツイートするときに<br><br>```<br>source code<br>```<br><br>ってやってマークダウンみたいに引用文にして欲しい。<br>ここはもうURLとかハッシュタグとかも全部エスケープして欲しい。</p>&mdash; える＠個人事業主 ❄半ニートえんじにゃー❄ (@ellnore_pad_267) <a href="https://twitter.com/ellnore_pad_267/status/1190693466793074689?ref_src=twsrc%5Etfw">November 2, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"> 
+  <a href="https://twitter.com/ellnore_pad_267/status/1190693466793074689?ref_src=twsrc%5Etfw"></a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
 
-# 出来たもの
+## 出来たもの
 - [Codr0：https://codr0.herokuapp.com/](https://codr0.herokuapp.com/)
 - [Github : oriverk/Codr](https://github.com/oriverk/Codr)
 - [GithubPage](https://oriverk.github.io/)
@@ -25,44 +29,47 @@ from Qiita
   <img src="/assets/codr700.jpg" alt="screen-shot from this webpage" />
 </picture>
 
-# 作成の過程で収穫物
-- Rails5.2での追加分（Active Record Storage含む
-- Twitter Login方法と仕組み、そのたTwitterあれこれ
+## 作成の過程で収穫物
+- Active Record Storage等のRails5.2
+- Twitter Login方法と仕組みなど
 - JSの基礎（getElementByIdやsetAttribute、文字カウントなど
-- AWS S3の使い方
+- AWS S3関連
 - XSS対策
 
-# 作成要件
+# 作成の前に
+## 作成要件
 
 <picture>
   <img src="/assets/posts/201911/twitter2.png" alt="table" />
 </picture>
 
 - マークダウン投稿、シンタックスハイライト
-    - gem: redcarpet, rouge（結局syntax-hightlightだけは反映されないまま
+    - gem: redcarpet, rouge
 - 投稿から画像生成
-   - html2canvas : 参照：[公式サイト](http://html2canvas.hertzen.com/)、[参考](https://wakubeku.com/?p=175)
+   - html2canvas
+   - 参照：[html2canvas](http://html2canvas.hertzen.com/)
+   - 参照：[JSでhtmlを画像化する方法(html2canvasの使い方) from 湧くべく](https://wakubeku.com/?p=175)
 - AWS S3にog:image用の画像を保存
 
-# 作成の流れ：予定
+## 作成の流れ：予定
 1. rails new codr, git init, heroku create、Active Storage
 2. AWS S3あれこれ 
 3. twitter登録、ログイン機能作成
 
-# 開発環境
+## 開発環境
 - vm : Linux Ubuntu (virtualbox + vagrant)
     - Ruby 2.5.1p57
     - Rails 5.2.3
     - Postgresql
+  
+# 実作業
 
-# 実作業： アプリ作成、諸準備
 ```rb
 rails new codr -d postgresql
-# DB設定等は割愛
 ```
+DB設定等は割愛
 
 ## Gem
-今回は公開にまで至る予定なので、railsやdeviseの日本語化等も。が、想定ユーザはエンジニアだしと思い、殆ど英語になった。
 
 ```rb
 # Gemfile
@@ -72,11 +79,11 @@ gem 'rails-i18n'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter' # twitter login
-gem 'devise-i18n' # japanize devise
+gem 'devise-i18n' # make devise japanize
 gem 'devise-i18n-views'
 
 gem 'redcarpet' # markdown processor
-gem 'rouge' # syntax highlight
+gem 'rouge' # highlighter
 
 gem 'meta-tags'
 
@@ -84,10 +91,10 @@ gem 'aws-sdk-s3' # aws s3
 ```
 
 参照:
-- [kpumuk/meta-tags：Search Engine Optimization (SEO) for Ruby on Rails applications.](https://github.com/kpumuk/meta-tags)
+- [kpumuk/meta-tags](https://github.com/kpumuk/meta-tags)
 
 ## gitignore => rails.credentials.yml
-当初は.`gitignore`と`gem 'dotenv'`等を使っていた。が、作成途中でRails5.2からの`rails.credentials.yml`を利用した。復号化には`/config/master.key`を利用。
+当初は.`gitignore`と`dotenv`等を使っていたが、作成途中でRails5.2からの`rails.credentials.yml`を利用した。復号化には`/config/master.key`を利用。
 
 ```sh
 # editor setting
@@ -98,7 +105,7 @@ rails credentials:edit
 rails credentials.yml:show
 
 # herokuにmaster.keyを環境変数として指定
-heroku config:set ENV_VAR="環境変数" --app "アプリ名"
+# heroku config:set ENV_VAR="環境変数" --app "アプリ名"
 
 # 追加した変数を使用するには
 Rails.application.credentials.dig(:twitter, :API_Key)
@@ -154,7 +161,8 @@ Module PostsHelper
   class RougeRedcarpetRenderer < Redcarpet::Render::HTML
     include Rouge::Plugins::Redcarpet
 
-    def header(text, level)  # #や##等がh2、h3となるようにした。
+    def header(text, level)
+    # make # => h2, ## => h3
       level += 1
       "<h#{level}>#{text}</h#{level}>"
     end
@@ -162,7 +170,8 @@ Module PostsHelper
 
   def markdown(text)
     render_options = {
-      filter_html: true,  # do not allow any user-inputted HTML in the output.
+      # do not allow any user-inputted HTML in the output.
+      filter_html: true,
       hard_wrap: true,
     }
    
@@ -188,8 +197,7 @@ end
 ```
 
 ## html_safe => sanitize
-html_safeではXSS対策としては駄目と知った。名前詐欺である。
-[sanitizeヘルパーを使用した。ホワイトリスト方式。要参照](https://edgeapi.rubyonrails.org/classes/ActionView/Helpers/SanitizeHelper.html#method-i-sanitize)
+[sanitizeヘルパーを使用した。ホワイトリスト方式](https://edgeapi.rubyonrails.org/classes/ActionView/Helpers/SanitizeHelper.html#method-i-sanitize)
 
 ```rb
 # app/views/posts/index.html.erb
@@ -200,15 +208,17 @@ html_safeではXSS対策としては駄目と知った。名前詐欺である�
 ```
 
 ## 投稿内容のデータ化、AWSへの画像保存
-最初はTwitterAPIを利用して、投稿から作成、DBに直接保存した画像でTwitter投稿しようとした。だが、Herokuでは画像が保持されない事、TwitterAPIの変更などいろいろ面倒なことが発生したので、最終的には画像をAWS S3に保存し、og:imageに添付する形を取った。
+Herokuでは画像保持がされないので、作成画像をAWS S3に保存し、og:imageに添付する形を取った。
 
 1. Webアプリ内で通常投稿
 2. showページ表示（同時にhtml2canvasでBase64としてデータ取得、hidden_fieldに格納
 3. Tweetボタン押す（Postされ、postモデル内でbase64をデコード
 4. Active Storageを通して、AWS S3に保存
 
-## [Active Storage](https://railsguides.jp/active_storage_overview.html)
-Rail5.2からの機能で、今までのcarrievaveやpaperclip等を使わずに、クラウドストレージ等へのアップロードが容易になる。今回はAWS S3を使った。
+## Active Storage
+参照
+- [Active Storage](https://railsguides.jp/active_storage_overview.html)
+  - Rail5.2からの機能で、今までのcarrievaveやpaperclip等を使わずに、クラウドストレージ等へのアップロードが容易になる。今回はAWS S3を使った。
 
 ```sh
 # set up
@@ -220,7 +230,8 @@ rails db:migrate
 ```rb
 # app/models/post.rb
 class Post < ApplicationRecord
-# 今回は1つの投稿につき、1枚の画像なので。複数なら => has_many_attached :prtscs
+# 今回は1つの投稿につき、1枚の画像なので。
+# 複数なら => has_many_attached :prtscs
   has_one_attached :prtsc
 end
 ```
@@ -248,11 +259,9 @@ aws:
 test:
   service: Disk
   root: <%= Rails.root.join("tmp/storage") %>
-
 local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
-
 amazon:
   service: S3
   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
@@ -269,11 +278,9 @@ gem 'aws-sdk-s3', require: false
 gem 'mini_magick'
 ```
 
-## [html2canvas](https://html2canvas.hertzen.com/)
-[参考：htmlを画像化する方法(html2canvasの使い方)](https://wakubeku.com/?p=175)
-jsはProgateレベルだったので、DOM操作は初めてで、なんか楽しかったぞ。
+## html2canvas
 
-1. Tweetボタン押下時に、画像をPostするためのフォーム、hidden_fieldを用意
+1. Tweetボタン押下時に画像をPostするためのフォーム`hidden_field`を用意
 2. `html2canvas.js`を`app/assets/javascripts`ディレクトリ配下に保存。
 3. html上に置くscriptコードを改修
 
@@ -323,8 +330,7 @@ end
 ## [AWS S3](https://aws.amazon.com/jp/s3/)
 AWS上での登録、設定、バケット作成等は割愛。
 
-## [Tweet button](https://publish.twitter.com/#)
-公式で生成されるTweetボタンのURLを利用し、押下時にwindow.openでTweet投稿ページを開くようにした。rubyonrailsで用意した変数をjsに渡す`gem 'gon'`も考えたが、見送った。
+## Tweet Share Button
 
 ```rb
 # app/views/layouts/application.html.erb
@@ -341,11 +347,12 @@ AWS上での登録、設定、バケット作成等は割愛。
 ```
 
 ## og:imageに画像添付
-なお、headのmeta情報セットには、`gem 'meta-tags'`を使用。[参照 : kpumuk/meta-tags](https://github.com/kpumuk/meta-tags)
+なお、headのmeta情報セットには、`gem 'meta-tags'`を使用
 
 ### service_url()とurl_for()
-- [参照：service_url() from api.rubyonrails](https://api.rubyonrails.org/classes/ActiveStorage/Variant.html#method-i-service_url)
-- [参照：url_for() from rails guide](https://railsguides.jp/active_storage_overview.html#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%99%E3%82%8B)
+- 参照
+  - [service_url() from api.rubyonrails](https://api.rubyonrails.org/classes/ActiveStorage/Variant.html#method-i-service_url)
+  - [url_for() from rails guide](https://railsguides.jp/active_storage_overview.html#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%99%E3%82%8B)
 
 基本的にはどちらも、ActiveStorageに保存したデータのUrlを取得するメソッドの様だ。
 どちらもセキュリティの為にリンクの有効期限が短いみたいだが、違いが分からなかった。今回はTweetボタン押下し、Tweetした際にog:imageとして表示されればいい。

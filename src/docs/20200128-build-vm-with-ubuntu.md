@@ -19,7 +19,10 @@ cd hogehoge
 vagrant init
 ```
 
-## add or modify file "Vagrantfile" in hogehoge directory (↓
+## add or modify file "Vagrantfile"
+
+<details><summary><code>Vagrantfile</code></summary><div>
+
 ```rb
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
@@ -95,6 +98,8 @@ Vagrant.configure("2") do |config|
   # SHELL
 end
 ```
+
+</div></details>
 
 ## lastly
 ```sh
