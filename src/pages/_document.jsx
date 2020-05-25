@@ -16,6 +16,7 @@ export default class MyDocument extends Document {
           <meta property='og:locale' content={manifest.lang} />
           <meta content='summary_large_image' name='twitter:card' />
           <meta content='@not_you_die' name='twitter:site' />
+          <link rel='manifest' crossOrigin="use-credentials" href='./manifest.json' />
         </Head>
         <body>
           <Main />

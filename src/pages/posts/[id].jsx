@@ -50,7 +50,7 @@ export default function Post({ postData }) {
           <div>
             <time dateTime={postData.date}>posted on: {postData.date}</time>
             <wbr />
-            <span>{tags.map((tag) => (<code><Link href={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
+            <span>{tags.map((tag) => (<code key={tag}><Link href={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
           </div>
           <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
           {/* <div>`${postData.jsx}`</div> */}

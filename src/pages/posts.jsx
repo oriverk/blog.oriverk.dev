@@ -33,9 +33,9 @@ export default function Posts({ allPostsData }) {
           <ul>
             {allPostsData.map(({ id, date, title, LowerCaseTags }) => (
               <li key={id}>
-                <time key={id} dateTime={date}>{date}</time>
-                <span key={id} className='tags'>{LowerCaseTags.map((tag) => (<code key={id}><Link key={id} href={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
-                <Link key={id} href='/posts/[id]' as={`posts/${id}`}><a key={id}><h2 key={id}>{title}</h2></a></Link>
+                <time dateTime={date}>{date}</time>
+                <span className='tags'>{LowerCaseTags.map((tag) => (<code key={tag}><Link href='/tags/[tag]' as={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
+                <Link href='/posts/[id]' as={`/posts/${id}`}><a><h2>{title}</h2></a></Link>
               </li>
             ))}
           </ul>

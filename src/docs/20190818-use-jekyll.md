@@ -30,7 +30,7 @@ GithubPagesJekyllを利用し、静的ページを作成した。
 
 <blockquote class="twitter-tweet"><p lang="und" dir="ltr"><a href="https://t.co/8OewG37cGD">https://t.co/8OewG37cGD</a></p>&mdash; Yudai Oriver K@転職活動してる無職 (@not_you_die) <a href="https://twitter.com/not_you_die/status/1204474648223576064?ref_src=twsrc%5Etfw">December 10, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-[ーデザインを大幅修正した件](https://qiita.com/OriverK/items/ce48102c66c9fa97b33e#%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%82%92%E5%A4%A7%E5%B9%85%E4%BF%AE%E6%AD%A3%E3%81%97%E3%81%9F%E4%BB%B6)
+- [デザインを大幅修正した件](https://qiita.com/OriverK/items/ce48102c66c9fa97b33e#%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%82%92%E5%A4%A7%E5%B9%85%E4%BF%AE%E6%AD%A3%E3%81%97%E3%81%9F%E4%BB%B6)
 
 # 環境
 - ホストOS: Windows10 Home with Windows Insider Program

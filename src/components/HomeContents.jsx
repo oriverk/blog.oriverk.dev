@@ -61,9 +61,9 @@ export function Works() {
               <br /> :to study modern JS and gather info about me.
               <br />with React, Next.js
               <ul>
+                <li><Link href=''><a>for post about this( under construction )</a></Link></li>
                 <li><a href='https://github.com/oriverk/next-portfolio' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
                 <li><a href='https://next-portfolio-blue.now.sh/' target='_blank' rel='noopener noreferrer' >This site link</a></li>
-                <li><Link href='#'><a>for post about this ( under construction)</a></Link></li>
               </ul>
             </Grid>
           </Grid>
@@ -79,9 +79,9 @@ export function Works() {
               <br /> :to inform data in miyazaki
               <br />with Vue.js, TypeScript
               <ul>
+                <li><Link href='/posts/[id]' as='/posts/20200329-joined-miyazaki-corona-oss'><a>Blog: Joined OSS group to infrom of COVID-19 in Miyazaki, Japan.</a></Link></li>
                 <li><a href='https://github.com/oriverk/covid19' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
                 <li><a href='https://covid19-miyazaki.netlify.app/' target='_blank' rel='noopener noreferrer' >The site on Netlify</a></li>
-                <li><Link href='https://next-portfolio-blue.now.sh/posts/20200329-joined-miyazaki-corona-oss'><a>Joined OSS group to infrom of COVID-19 in Miyazaki, Japan.</a></Link></li>
               </ul>
             </Grid>
           </Grid>
@@ -97,8 +97,8 @@ export function Works() {
               <br /> :to share code with syntax-highlight
               <br />with RubyonRails, PostgreSQL, S3
               <ul>
+                <li><Link href='posts/[id]' as='/posts/20191129-post-code2twitter'><a>Blog: Wanna Share code beautifully on Twitter</a></Link></li>
                 <li><a href='https://github.com/oriverk/Codr' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
-                <li><a href='https://qiita.com/OriverK/items/df41ec6b57b40a06a64d' target='_blank' rel='noopener noreferrer' >Qiita: Wanna Share code beautifully on Twitter</a></li>
               </ul>
             </Grid>
           </Grid>
@@ -114,8 +114,8 @@ export function Works() {
               <br /> :My 1st GithubPages.
               <br />with Ruby, Jekyll
               <ul>
+                <li><Link href='/posts/[id]' as='/posts/20190818-use-jekyll'><a>Blog: buid GithubPages with Ruby + Jekyll</a></Link></li>
                 <li><a href='https://github.com/oriverk/oriverk.github.io' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
-                <li><a href='https://qiita.com/OriverK/items/ce48102c66c9fa97b33e' target='_blank' rel='noopener noreferrer' >Qiita: GithubPages with Jekyll</a></li>
               </ul>
             </Grid>
           </Grid>
@@ -128,8 +128,8 @@ export function Works() {
               <br /> :from the 2018 Autumn FE exam
               <br />with RubyonRails, PostgreSQL, Heroku
               <ul>
-                <li><a href='https://github.com/oriverk/ConcertTicket' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
                 <li><a href='https://qiita.com/OriverK/items/4e71ebd81a6ef372dcf9' target='_blank' rel='noopener noreferrer' >Post on Qiita</a></li>
+                <li><a href='https://github.com/oriverk/ConcertTicket' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
                 <li><a href='https://www.jitec.ipa.go.jp/1_04hanni_sukiru/mondai_kaitou_2018h30_2/2018h30a_fe_pm_qs.pdf'>IPA FE exam</a></li>
               </ul>
             </Grid>

@@ -31,7 +31,7 @@ export default function Tags({ postsTags }) {
         <article className='content'>
           <h1>Blog Tags</h1>
           <div className='tags'>
-            {postsTags.map((tag) => (<span className={tag}><code><Link href={`/tags/${tag}`}><a>{tag}</a></Link></code></span>))}
+            {postsTags.map((tag) => (<span key={tag} className={tag}><code><Link href='/tags/[tag]' as={`/tags/${tag}`}><a>{tag}</a></Link></code></span>))}
           </div>
         </article>
       </Layout>
