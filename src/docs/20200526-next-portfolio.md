@@ -2,8 +2,8 @@
 date: '2020-05-26'
 author: Kawano Yudai
 title: 'Qiita: Next.jsでポートフォリオサイトを作成した'
-tags: [Qiita, React, Next.js]
-image: '/assets/posts/202003/miyazaki-oss1.jpg'
+tags: [Qiita, React, next.js, remark.js, Vercel]
+image: '/assets/prtsc-1000.jpg'
 slide: false
 ---
 
@@ -37,7 +37,9 @@ ReactとNext.jsのtutorialとdocsを一通りやりました。
 - [サイト：https://next-portfolio-blue.now.sh/](https://next-portfolio-blue.now.sh/)
 
 
-![prtsc-800.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/2dea47f2-3556-c63a-cc9c-1d894f8a4419.gif)
+<picture>
+  <img src='/assets/posts/202005/next-portfolio-prtsc.gif' alt='screen-shot of next.js portfolio' />
+</picture>
 
 まだ、ドキュメントや人のコードを参照しながら色々試している最中なので、コードが汚いです。
 
@@ -83,7 +85,10 @@ yarn create next-app next-portfolio
 
 `yarn dev`すると
 
-![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/a4aad096-1c13-a304-f01a-2be26f40b4ac.png)
+<picture>
+  <source srcSet='/assets/posts/202005/next1.webp' type='image/webp' />
+  <img src='/assets/posts/202005/next1.jpg' alt='Hello Next.js' />
+</picture>
 
 <details><summary>作成されるディレクトリ、<code>package.json</code></summary><div>
 
@@ -372,7 +377,10 @@ export default function Post(){
 - `localhost:3000/posts/hoge/`にアクセスすると`pages/posts/hoge.jsx`が読み込まれる。(これは普通)
 - `localhost:3000/posts/foobar`だと、`pages/posts/foobar.jsx`が読み込まれ、
 
-![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/84d1a797-f188-29e5-438e-e5cc3860b3a4.png)
+<picture>
+  <source srcSet='/assets/posts/202005/next2.webp' type='image/webp' />
+  <img src='/assets/posts/202005/next2.jpg' alt='dynamic route' />
+</picture>
 
 `dynamic route`と`Link( next/link )`を併用する時は、`href`に合わせて`as`も使うなど注意点があるが、非常に便利な代物かと。
 
@@ -400,11 +408,15 @@ export default function Post(){
 実装は下を参照しながらしました。タグの方は自分で用意しましたが。
 [Next.jsのチュートリアルのこのページ](https://nextjs.org/learn/basics/dynamic-routes/implement-getstaticpaths)
 
-![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/4c15b2ff-e5be-bf9a-5abf-7ab006048d37.png)
+<picture>
+  <img src='/assets/posts/202005/next3.png' alt='posts index' />
+</picture>
 
 tagsページのスタイルが未だ・・・
 
-![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/d7286a7f-7b26-7c31-7859-549acaca3417.png)
+<picture>
+  <img src='/assets/posts/202005/next4.png' alt='tags index' />
+</picture>
 
 ### マークダウン
 
@@ -459,11 +471,16 @@ export async function getPostData(id) {
 
 ### `<head><meta /></head>`
 
-![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/6c52813b-3374-b74e-6b3e-dcbd936bfdfb.png)
+<picture>
+  <source srcSet='/assets/posts/202005/next5.webp' type='image/webp' />
+  <img src='/assets/posts/202005/next5.jpg' alt='next.js syntax-highlight' />
+</picture>
 
 以前に[rubyとjekyllで作ったgithubpages](https://oriverk.github.io/blog/confirm-font-size)と比較して、syntax-highlightが粗いので改善が必要
 
-![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/e38d9583-ec5c-206c-b9b2-645c7002b4c1.png)
+<picture>
+  <img src='/assets/posts/202005/next6.jpg' alt='githubpages syntax-highlight' />
+</picture>
 
 また、`front-matter`は下の様にQiitaと同じにしてあって、またpost情報は`gray-matter`を使ってpostコンテンツ取得と同時に取得し、`next/head`で`<head><meta /><head>`に格納してある。
 
@@ -500,7 +517,9 @@ snsシェアボタンも上記の`<meta />`と同様にした。初めて、hate
 - Material-uiからの脱却
   - swipeable-drawer以外は自分で実装出来そうなので 
 
-![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/294402/b9141bdb-26e4-8ae1-6d85-0c569dc59605.png)
+<picture>
+  <img src='/assets/posts/202005/next7.png' alt='page score' />
+</picture>
 
 - CSSの統一(module.cssなのかstyled-jsxなのか等)
   - 現在は色々試すために、混在中
