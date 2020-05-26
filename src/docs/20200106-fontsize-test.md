@@ -8,15 +8,10 @@ categories: [blog]
 ---
 
 ## h2 tag あいうえお
-post一覧のページで、日付順に表示したいけど、わからない・・・
-→ 西暦を2019と間違えてただけでした。
-### h3 tag あいうえお
-
-p tag あいうえお祇園精舎の鐘の声、諸行無常の響きあり。 沙羅双樹の花の色、盛者必衰の理をあらはす。 奢れる人も久からず、ただ春の夜の夢のごとし。
-
 つれづれなるまゝに、日くらし、硯にむかひて、心に移りゆくよしなし事を、そこはかとなく書きつくれば、あやしうこそものぐるほしけれ・・・
 
-That signboad shows the burn site on Mt.Lofty, Adelaide, South Australia, Australia on Autumn 2010. 
+### h3 tag あいうえお
+あいうえお祇園精舎の鐘の声、諸行無常の響きあり。 沙羅双樹の花の色、盛者必衰の理をあらはす。 奢れる人も久からず、ただ春の夜の夢のごとし。
 
 **strong tag あいうえお**
 
@@ -42,7 +37,6 @@ puts markdown.to_html
 ```
 
 #### C++
-
 ```cpp
 #include "stdafx.h"
 #include <opencv2\core\core.hpp>
