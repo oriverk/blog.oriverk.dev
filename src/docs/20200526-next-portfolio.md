@@ -511,6 +511,20 @@ snsシェアボタンも上記の`<meta />`と同様にした。初めて、hate
 </button>
 ```
 
+# 更新
+## README.md充実化( 20200527 )
+- 参照
+  - [【GitHub】README.mdをカッコ可愛くデザインしてアプリの魅力を120%にする](https://qiita.com/aocattleya/items/5f836e9c65ba3eb3af03)
+
+Qiita投稿の公開に当たり、[`README.md`の充実を図った。
+=> [`README.md`へのリンク](https://github.com/oriverk/next-portfolio/blob/master/README.md)
+
+## `npm install`禁止化( 20200527 )
+- 参照
+  - [yarnを使うプロジェクトでnpm installを禁止する方法](https://qiita.com/suin/items/a7bf214f48eb9b2d9afc)
+
+特に理由はないが、このサイトは`yarn`を用いて作成したので、`npm`の仕様を禁じることにした。方法は参照通り。
+
 # 残る改善点、したい事など
 ## サイト全体
 

@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "npm": "please_use_yarn_instead"
+  },
   "name": "next-portfolio",
   "version": "0.1.0",
   "private": true,
