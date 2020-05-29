@@ -1,4 +1,4 @@
-import { Github, LinkedIn, Qiita, Twitter, Wantedly, Home, Human, Cv, Page, Pen, Arrow } from './svg.jsx'
+import { Github, LinkedIn, Hatena, Qiita, Twitter, Wantedly, Home, Human, Cv, Page, Pen, Arrow } from './svg.jsx'
 
 function SvgIcon(props) {
   return (
@@ -39,6 +39,10 @@ export const GithubIcon = () => {
 
 export const LinkedInIcon = () => {
   return <SvgIcon><LinkedIn /></SvgIcon>
+}
+
+export const HatenaIcon = () => {
+  return <SvgIcon><Hatena /></SvgIcon>
 }
 
 export const QiitaIcon = () => {

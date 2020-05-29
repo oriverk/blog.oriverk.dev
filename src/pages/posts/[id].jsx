@@ -1,10 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { PostLayout } from '../../components/PostLayout'
-// import Date from '../../components/date'
 import { getAllPostIds, getPostData } from '../../lib/posts'
-import TwitterIcon from '@material-ui/icons/Twitter'
-import { HatenaIcon } from '../../utils/customSvg'
+import { HatenaIcon, TwitterIcon } from '../../utils/svgIcon'
 
 const manifest = require('../../../public/manifest.json')
 
@@ -18,7 +16,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id)
-  // ↑await is for reamrk. if not use remark, remove async
+  // ↑ await is for reamrk. if not use remark, remove async
   return {
     props: {
       postData
