@@ -6,7 +6,7 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import { HomeIcon, AboutIcon, HistoryIcon, WorksIcon, BlogIcon, ArrowIcon } from '../utils/svgIcon'
 import { MyDrawerList } from '../components/MyDrawerList'
 
-const ListItem = React.forwardRef(( props , ref) => {
+const ListItem = React.forwardRef((props, ref) => {
   return (
     <>
       <a href={props.href} onClick={props.onClick} ref={ref}>
