@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 
-import { HomeIcon, AboutIcon, HistoryIcon, WorksIcon, BlogIcon, ArrowIcon } from '../utils/svgIcon'
+import { HomeIcon,  BlogIcon, ArrowIcon } from '../utils/svgIcon'
 import { MyDrawerList, Divider } from '../components/MyDrawerList'
 
 const ListItem = React.forwardRef((props, ref) => {

@@ -7,8 +7,7 @@ import { Layout } from '../../components/Layout'
 
 // import { getPostsWithTag } from '../../lib/posts'
 // import { getAllPostIds, getPostData } from '../../lib/posts'
-// import TwitterIcon from '@material-ui/icons/Twitter'
-// import { HatenaIcon } from '../../utils/customSvg'
+
 
 const manifest = require('../../../public/manifest.json')
 
