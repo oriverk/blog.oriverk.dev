@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+
 import { PostLayout } from '../../components/PostLayout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 import { HatenaIcon, TwitterIcon } from '../../utils/svgIcon'
@@ -16,7 +17,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id)
-  // ↑ await is for reamrk. if not use remark, remove async
+  // await is for reamrk. if not use remark, remove async
   return {
     props: {
       postData
@@ -71,6 +72,7 @@ export default function Post({ postData }) {
           padding: 0 .5rem;
           background-color: #555;
         }
+
         pre{
           border: .8px solid grey;
           border-radius: 0.25rem;
@@ -78,42 +80,47 @@ export default function Post({ postData }) {
           white-space: pre;
           /* background-color: #272c34; */
           background-color: #1E1E1E;
-         
           width: 100%;
           max-width: 1000px;
           margin-bottom: 2rem;
           /* padding: 1rem; */
           overflow: auto;
         }
-        {/* pre code{
+
+        /* pre code{
           color: white;
           font-size: 1rem;
           font-weight: 400;
           word-break: break-word;
           line-height: 1.5;
-        } */}
+        } */
+
         .tags code{
           display: inline-block;
           margin: 0 .5rem;
           padding: 0 .3rem;
           background-color: #555;
         }
+
         .tags a{
           font-size: .8rem;
-          /* color: #DDD; */
+
         }
+
         source, img{
           display: block;
           margin: 2rem auto;
           background-color: #424242;
           width: 95%;
         }
+
         blockquote{
           color: #bbb;
           border-left: 5px solid #bbb;
           margin: 1rem 0;
           padding: .5rem 0 .5rem .5rem;
         }
+
         blockquote p{
           font-size:1.1rem;
         }

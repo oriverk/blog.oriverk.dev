@@ -14,10 +14,10 @@ export async function getStaticProps() {
   }
 }
 
-export default function Posts({ allPostsData }) {
+export default function Posts({ allPostsData, posts }) {
   return (
     <>
-      <Layout>
+      <Layout posts>
         <Head>
           <title>Blog | {manifest.name}</title>
           <meta name='title' content={`Blog | ${manifest.name}`} />

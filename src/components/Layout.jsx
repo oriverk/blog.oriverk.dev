@@ -1,40 +1,15 @@
 import React from 'react'
-import Link from 'next/link'
 
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 
-import { HomeIcon, AboutIcon, HistoryIcon, WorksIcon, BlogIcon, ArrowIcon } from '../utils/svgIcon'
-import { MyDrawerList } from '../components/MyDrawerList'
+import { ArrowIcon } from '../utils/svgIcon'
+import { DrawerLists } from '../components/DrawerLists'
 
-const ListItem = React.forwardRef((props, ref) => {
-  return (
-    <>
-      <a href={props.href} onClick={props.onClick} ref={ref}>
-        <div role="button">{props.children}</div>
-      </a>
-      <style jsx>{`
-        div{
-          transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-          padding: .5rem 1rem;
-          width: 100%;
-          justify-content: flex-start;
-          user-select: none;
-        }
-        div:hover {
-          text-decoration: none;
-          background-color: rgba(255, 255, 255, 0.08);
-        }
-      `}</style>
-    </>
-  )
-})
-
-export function Layout({ children }) {
+export function Layout({children, home, posts}) {
   const [state, setState] = React.useState({
     left: false,
   })
 
-  // Do Not Touch
   const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return
@@ -42,73 +17,7 @@ export function Layout({ children }) {
     setState({ ...state, [anchor]: open })
   }
 
-  const HomeDrawerList = () => {
-    return (
-      <>
-        <MyDrawerList>
-          <div className='list'>
-            <Link href='/' passHref>
-              <ListItem>
-                <div className='listItemIcon'>
-                  <HomeIcon />
-                </div>
-                Home
-              </ListItem>
-            </Link>
-            <Link href='/#about' passHref>
-              <ListItem>
-                <div className='listItemIcon'>
-                  <AboutIcon />
-                </div>
-                About
-              </ListItem>
-            </Link>
-            <Link href='/#history' passHref>
-              <ListItem>
-                <div className='listItemIcon'>
-                  <HistoryIcon />
-                </div>
-                History
-              </ListItem>
-            </Link>
-            <Link href='/#works' passHref>
-              <ListItem>
-                <div className='listItemIcon'>
-                  <WorksIcon />
-                </div>
-                Works
-              </ListItem>
-            </Link>
-            <Link href='/posts' passHref>
-              <ListItem>
-                <div className='listItemIcon'>
-                  <BlogIcon />
-                </div>
-                Blog
-              </ListItem>
-            </Link>
-          </div>
-        </MyDrawerList>
-        <style jsx>{`
-          .list{
-            margin: 0;
-            padding: 0;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-          }
-
-          .listItemIcon {
-            color: #fff;
-            display: inline-flex;
-            vertical-align: middle;
-            padding-right: 2rem;
-          }
-        `}</style>
-      </>
-    )
-  }
-
+  // drawer width is defined at _app.jsx
   return (
     <React.Fragment key='left'>
       <SwipeableDrawer
@@ -124,11 +33,11 @@ export function Layout({ children }) {
           onClick={toggleDrawer('left', false)}
           onKeyDown={toggleDrawer('left', false)}
         >
-          <HomeDrawerList />
+          <DrawerLists home={home} posts={posts} />
         </div>
       </SwipeableDrawer>
       <aside>
-        <div className='permanentDrawer'><HomeDrawerList /></div>
+        <div className='permanentDrawer'><DrawerLists home={home} posts={posts} /></div>
       </aside>
       <main>
         {children}
@@ -138,16 +47,7 @@ export function Layout({ children }) {
           <ArrowIcon />
         </button>
       </footer>
-      <style jsx global>{`
-        #__next{
-          display: flex;
-        }
-      `}</style>
       <style jsx>{`
-        *{
-          --drawerWidth: 250px;
-        } 
-        
         /* general */
         .swipeableList, .permanentDrawer {
           width: var(--drawerWidth);
@@ -165,26 +65,26 @@ export function Layout({ children }) {
         }
 
         /* mobile and for swipe */
-          .permanentDrawer {
-            display: none;
-          }
+        .permanentDrawer {
+          display: none;
+        }
 
-          footer button {
-            position: fixed;
-            left: .4rem;
-            bottom: .4rem;
-            height: 3.5rem;
-            width: 3.5rem;
-            border: 1px solid grey;
-            border-radius : 50%;
-            background-color: #424242;
-            outline: none;
-          }
+        footer button {
+          position: fixed;
+          left: .4rem;
+          bottom: .4rem;
+          height: 3.5rem;
+          width: 3.5rem;
+          border: 1px solid grey;
+          border-radius : 50%;
+          background-color: #424242;
+          outline: none;
+        }
 
-          main{
-            width: 100%;
-            margin-left: - var(--drawerWidth);
-          }
+        main{
+          width: 100%;
+          margin-left: - var(--drawerWidth);
+        }
 
         @media ( min-width: 1280px ){
           /* pc and for permanent */

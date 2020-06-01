@@ -7,7 +7,7 @@ export default function Custom404() {
     <Layout>
       <div style={{ textAlign: 'center' }}>
         <h1>404 - Page Not Found</h1>
-        <p><Link href='/'><a>Please go back to Home.</a></Link></p>
+        <p><Link href=''><a>Please go back to Home.</a></Link></p>
       </div>
     </Layout>
   )

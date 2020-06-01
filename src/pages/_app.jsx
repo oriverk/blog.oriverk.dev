@@ -37,18 +37,27 @@ export default function MyApp(props) {
           width: 0;
           height: .5rem;
         }
+        
         /*スクロールバーの動く部分*/
         ::-webkit-scrollbar-thumb {
           background-color: rgb(128, 128, 128);
           border-radius: .3rem;
         }
+
         *{
           font-family: 'Hiragino Sans', 'Meiryo', sans-serif;
+          --drawerWidth: 250px;
         }
+
+        #__next{
+          display: flex;
+        }
+
         div, p, a, li, b{
           color: #EEE;
           font-size: 1rem;
         }
+
         a{
           color: #50CAF9;
           text-decoration: none;

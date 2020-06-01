@@ -7,12 +7,10 @@ image: '/assets/prtsc-1000.jpg'
 slide: false
 ---
 
-※自分がやった事、経歴等を纏めたサイトという意味でのポートフォリオ
-
 # はじめに
 [Ruby + JekyllによるGihubPagesは既にある](https://github.com/oriverk/oriverk.github.io)のですが、宮崎版コロナ対策サイトでVueに触れ、勉強がてら実際にJSによるサイト作成をする事にしました。
 
-- 作成に取り掛かる前に、JSの現状を知るために参照した主サイト
+- JSの現状を知るために参照した主サイト
   - [2020年 React軸で学ぶべき技術 from mizchi's blog](https://mizchi.hatenablog.com/entry/2020/01/04/172041)
   - [ユーザー体験を向上させるサーバーサイドレンダリングJavaScript — 歴史と利点](https://medium.com/@sundaycrafts/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E4%BD%93%E9%A8%93%E3%82%92%E5%90%91%E4%B8%8A%E3%81%95%E3%81%9B%E3%82%8B%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%83%AC%E3%83%B3%E3%83%80%E3%83%AA%E3%83%B3%E3%82%B0javascript-%E6%AD%B4%E5%8F%B2%E3%81%A8%E5%88%A9%E7%82%B9-df68cd7cd991)
 
@@ -31,11 +29,9 @@ ReactとNext.jsのtutorialとdocsを一通りやりました。
   - GithubPagesやQiita、Gistへの投稿物を一か所にまとめる
   - Markdonwによるページ作成
 
-
 ## つくったもの
 - [Github リポジトリ](https://github.com/oriverk/next-portfolio)
 - [サイト：https://next-portfolio-blue.now.sh/](https://next-portfolio-blue.now.sh/)
-
 
 <picture>
   <img src='/assets/posts/202005/next-portfolio-prtsc.gif' alt='screen-shot of next.js portfolio' />
@@ -49,7 +45,7 @@ ReactとNext.jsのtutorialとdocsを一通りやりました。
         - あとで[mdx-js/mdx](https://mdxjs.com/)に変更するかも
     - シンタックスハイライト: highlight.js
     - UIコンポーネント：[Material-UI mui-org/material-ui](https://material-ui.com/)
-- 目に優しいダークテーマ
+- ダークテーマ
 
 ## 環境
 - vm：virtualbox + vagrant
@@ -130,8 +126,7 @@ yarn create next-app next-portfolio
   - [React.Fragment](https://ja.reactjs.org/docs/fragments.html#keyed-fragments)
 
 ## Material-UI 導入
-見た目重視でmaterial-uiを導入し、主にサイドバーのpermanent / swipeable drawerとGrid
-デザインの箇所に使用した。手軽に今風なものが作成できて良かったが、別のuiコンポーネントに変更した際のデザイン崩れが大きそうなので、あとで脱material-uiを図りたい。
+見た目重視でmaterial-uiを導入し、主にサイドバーのpermanent / swipeable drawerとGridに使用。
 
 - 参照：[Material-UI top 日本語ページ](https://material-ui.com/ja/)
   - [material-ui/examples/nextjs/](https://github.com/mui-org/material-ui/tree/master/examples/nextjs)
@@ -305,7 +300,7 @@ export function About() {
       <Grid container spacing={4}>
         <Grid item md={12} lg={5}>
           <picture>
-            // ...
+            ...
           </picture>
         </Grid>
         <Grid item md={12} lg={7}>
@@ -340,7 +335,7 @@ export function History() {
   - global cssを追加する場所
 - `_document.jsx`
   - SSRされる箇所なので、`onclick`などイベントハンドラは動かない
-  - `<Main />`の外側にあるコンポーネントはブラウザによる初期化がされないので、Appロジック等を追加したければ、`app.jsx`に書いて。
+  - `<Main />`の外側にあるコンポーネントはブラウザによる初期化がされないので、Appロジック等は`app.jsx`に記述
   - `<title>`や`<Head />`、`styled-jsx`を書いちゃ駄目。
 
 ## Posts周辺の作成
@@ -482,7 +477,6 @@ export async function getPostData(id) {
   <img src='/assets/posts/202005/next6.jpg' alt='githubpages syntax-highlight' />
 </picture>
 
-また、`front-matter`は下の様にQiitaと同じにしてあって、またpost情報は`gray-matter`を使ってpostコンテンツ取得と同時に取得し、`next/head`で`<head><meta /><head>`に格納してある。
 
 ```sh
 # front-matter
@@ -497,7 +491,6 @@ slide: false
 ```
 
 ### SNSシェアボタン
-snsシェアボタンも上記の`<meta />`と同様にした。初めて、hatenaに垢登録しました。
 
 ```jsx
 // ./src/pages/posts/[id].jsx
@@ -535,21 +528,16 @@ Qiita投稿の公開に当たり、[`README.md`の充実を図った。
   <img src='/assets/posts/202005/next7.png' alt='page score' />
 </picture>
 
-- CSSの統一(module.cssなのかstyled-jsxなのか等)
-  - 現在は色々試すために、混在中
-- TypeScript化（触ってみたいだけ
-- AMP一部対応( [参照: Next.js next/amp](https://nextjs.org/docs/api-reference/next/amp)
-- google analytics, PWA対応
-- カスタムドメイン
-- api routeを試す
+[ ]CSSの統一(module.cssなのかstyled-jsxなのか等)
+[ ]TypeScript化（触ってみたいだけ
+[ ]AMP一部対応( [参照: Next.js next/amp](https://nextjs.org/docs/api-reference/next/amp)
+[ ]google analytics, PWA対応
+[x]カスタムドメイン
+[ ]api routeを試す
 
 ## posts, tags周辺
 
-- `/tags`ページの整備
-- コードブロックの言語またはファイル名の表示
-  - Qiitaの様にしたい( 現状だとエラーになる )
-- syntax-highlightの改善
-- rssの対応
-
-## その他
-**働きたいでござる**
+[ ]`/tags`ページの整備
+[ ]コードブロックの言語またはファイル名の出力
+[ ]syntax-highlightの改善
+[ ]rssの対応

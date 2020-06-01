@@ -4,10 +4,8 @@ import { useRouter } from 'next/router'
 
 import { Layout } from '../../components/Layout'
 
-
 // import { getPostsWithTag } from '../../lib/posts'
 // import { getAllPostIds, getPostData } from '../../lib/posts'
-
 
 const manifest = require('../../../public/manifest.json')
 
@@ -69,6 +67,7 @@ export default function Tag() {
         h2{
           margin: .5rem auto 1.5rem;
           font-weight: 600;
+          text-align: center;
         }
         ul{
           padding-left: 1.25rem;

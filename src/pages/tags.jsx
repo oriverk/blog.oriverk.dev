@@ -14,7 +14,6 @@ export async function getStaticProps() {
   }
 }
 
-
 export default function Tags({ postsTags }) {
   return (
     <>
@@ -43,9 +42,11 @@ export default function Tags({ postsTags }) {
           padding: 5%;
           flex-grow: 1;
         }
+
         h1{
           text-align: center;
         }
+
         code{
           /* color: #DDD; */
           display: inline-block;
@@ -53,6 +54,7 @@ export default function Tags({ postsTags }) {
           padding: 0 .3rem;
           background-color: #555;
         }
+        
         .tags a{
           font-size: .8rem;
           color: #50CAF9
