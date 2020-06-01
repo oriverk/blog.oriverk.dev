@@ -60,4 +60,4 @@ Now I'm unemployment and seeking job in Japan ...
 - [ ] TypeScript
 - [ ] PWA
 - [ ] Google Analytics
-- [ ] Custom dmain
+- [x] Custom dmain
