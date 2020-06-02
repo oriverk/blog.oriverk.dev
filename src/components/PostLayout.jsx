@@ -46,7 +46,7 @@ export function PostLayout({ children }) {
     return (
       <>
         <MyDrawerList>
-          <ul className='list'>
+          <div className='list'>
             <Link href='/' passHref>
               <ListItem>
                 <div className='listItemIcon'>
@@ -63,26 +63,24 @@ export function PostLayout({ children }) {
                 Blog
               </ListItem>
             </Link>
-          </ul>
+          </div>
           <Divider />
-          <u className='list'>
+          <div className='list'>
             <div style={{textAlign: 'center'}}><p>underConstruction</p></div>
-          </u>
+          </div>
         </MyDrawerList>
         <style jsx>{`
           .list{
             margin: 0;
             padding: 0;
             position: relative;
-            list-style: none;
+            display: flex;
+            flex-direction: column;
           }
 
           .listItemIcon {
             color: #fff;
             display: inline-flex;
-            min-width: 56px;
-            flex-shrink: 0;
-            fill: #FFF;
             vertical-align: middle;
             padding-right: 2rem;
           }
@@ -109,17 +107,17 @@ export function PostLayout({ children }) {
           <PostDrawerList />
         </div>
       </SwipeableDrawer>
-      <footer>
-        <button aria-label='Open swipeable drawer' onClick={toggleDrawer('left', true)}>
-          <ArrowIcon />
-        </button>
-      </footer>
       <aside>
         <div className='permanentDrawer'><PostDrawerList /></div>
       </aside>
       <main>
         {children}
       </main>
+      <footer>
+        <button aria-label='Open drawer' onClick={toggleDrawer('left', true)}>
+          <ArrowIcon />
+        </button>
+      </footer>
       <style jsx global>{`
         #__next{
           display: flex;
@@ -130,6 +128,7 @@ export function PostLayout({ children }) {
           --drawerWidth: 250px;
         } 
         
+        /* general */
         .swipeableList, .permanentDrawer {
           width: var(--drawerWidth);
         }
@@ -145,11 +144,11 @@ export function PostLayout({ children }) {
           flex: 1;
         }
 
-        @media ( max-width: 1280px ){
-          /* mobile and for swipe */
+        /* mobile and for swipe */
           .permanentDrawer {
             display: none;
           }
+
           footer button {
             position: fixed;
             left: .4rem;
@@ -166,14 +165,15 @@ export function PostLayout({ children }) {
             width: 100%;
             margin-left: - var(--drawerWidth);
           }
-        }
 
         @media ( min-width: 1280px ){
           /* pc and for permanent */
           .swipeableDrawer, footer button{
             display: none;
           }
+
           .permanentDrawer{
+            display: block;
             height: 100vh;
             background-color: #424242;
             position: fixed;
@@ -185,7 +185,6 @@ export function PostLayout({ children }) {
             margin-left: var(--drawerWidth);
           }
         }
-
       `}</style>
     </React.Fragment>
   )

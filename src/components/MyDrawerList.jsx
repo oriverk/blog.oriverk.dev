@@ -4,13 +4,19 @@ import { GithubIcon, LinkedInIcon, QiitaIcon, TwitterIcon, WantedlyIcon } from '
 const IconButton = (props) => {
   return (
     <>
-      <a href={props.href} alt={props.alt} target='_blank' rel='noopener noreferrer'>
+      <a href={props.href} aria-label={props.label} target='_blank' rel='noopener noreferrer'>
         {props.children}
       </a>
       <style jsx>{`
         a {
+          display: inline-block;
+          transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+          border-radius: 50%;
           fill: #50CAF9;
           float: left;
+        }
+        a:hover{
+          background-color: rgba(255,255,255,0.08);
         }
       `}</style>
     </>
@@ -47,11 +53,11 @@ export function MyDrawerList(props) {
       {props.children}
       <Divider />
       <div className='third'>
-        <IconButton href='https://github.com/oriverk' alt='Github' ><GithubIcon /></IconButton>
-        <IconButton href='https://qiita.com/OriverK' alt='Qiita'><QiitaIcon /></IconButton>
-        <IconButton href='https://www.wantedly.com/users/40069986' alt='Wantedly'><WantedlyIcon /></IconButton>
-        <IconButton href='https://www.linkedin.com/in/yudai-k/' alt='LinkedIn'><LinkedInIcon /></IconButton>
-        <IconButton href='https://twitter.com/not_you_die' alt='Twitter'><TwitterIcon /></IconButton>
+        <IconButton href='https://github.com/oriverk' label='Github' ><GithubIcon /></IconButton>
+        <IconButton href='https://qiita.com/OriverK' label='Qiita'><QiitaIcon /></IconButton>
+        <IconButton href='https://www.wantedly.com/users/40069986' label='Wantedly'><WantedlyIcon /></IconButton>
+        <IconButton href='https://www.linkedin.com/in/yudai-k/' label='LinkedIn'><LinkedInIcon /></IconButton>
+        <IconButton href='https://twitter.com/not_you_die' label='Twitter'><TwitterIcon /></IconButton>
       </div>
       <style jsx>{`
         .profileImgContainer {
@@ -60,9 +66,6 @@ export function MyDrawerList(props) {
         }
         .profileImg{
           width: 80%;
-        }
-        .third {
-          margin-top: 1rem;
         }
       `}</style>
     </React.Fragment>

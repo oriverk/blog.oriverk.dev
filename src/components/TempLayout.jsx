@@ -46,7 +46,7 @@ export function Layout({ children }) {
     return (
       <>
         <MyDrawerList>
-          <div className='list'>
+          <ul className='list'>
             <Link href='/' passHref>
               <ListItem>
                 <div className='listItemIcon'>
@@ -87,20 +87,22 @@ export function Layout({ children }) {
                 Blog
               </ListItem>
             </Link>
-          </div>
+          </ul>
         </MyDrawerList>
         <style jsx>{`
           .list{
             margin: 0;
             padding: 0;
             position: relative;
-            display: flex;
-            flex-direction: column;
+            list-style: none;
           }
 
           .listItemIcon {
             color: #fff;
             display: inline-flex;
+            min-width: 56px;
+            flex-shrink: 0;
+            fill: #FFF;
             vertical-align: middle;
             padding-right: 2rem;
           }
@@ -127,17 +129,17 @@ export function Layout({ children }) {
           <HomeDrawerList />
         </div>
       </SwipeableDrawer>
+      <footer>
+        <button aria-label='Open swipeable drawer' onClick={toggleDrawer('left', true)}>
+          <ArrowIcon />
+        </button>
+      </footer>
       <aside>
         <div className='permanentDrawer'><HomeDrawerList /></div>
       </aside>
       <main>
         {children}
       </main>
-      <footer>
-        <button aria-label='Open drawer' onClick={toggleDrawer('left', true)}>
-          <ArrowIcon />
-        </button>
-      </footer>
       <style jsx global>{`
         #__next{
           display: flex;
@@ -148,7 +150,6 @@ export function Layout({ children }) {
           --drawerWidth: 250px;
         } 
         
-        /* general */
         .swipeableList, .permanentDrawer {
           width: var(--drawerWidth);
         }
@@ -164,11 +165,11 @@ export function Layout({ children }) {
           flex: 1;
         }
 
-        /* mobile and for swipe */
+        @media ( max-width: 1280px ){
+          /* mobile and for swipe */
           .permanentDrawer {
             display: none;
           }
-
           footer button {
             position: fixed;
             left: .4rem;
@@ -185,15 +186,14 @@ export function Layout({ children }) {
             width: 100%;
             margin-left: - var(--drawerWidth);
           }
+        }
 
         @media ( min-width: 1280px ){
           /* pc and for permanent */
           .swipeableDrawer, footer button{
             display: none;
           }
-
           .permanentDrawer{
-            display: block;
             height: 100vh;
             background-color: #424242;
             position: fixed;
@@ -205,6 +205,7 @@ export function Layout({ children }) {
             margin-left: var(--drawerWidth);
           }
         }
+
       `}</style>
     </React.Fragment>
   )
