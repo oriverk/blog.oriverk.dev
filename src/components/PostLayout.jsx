@@ -21,7 +21,6 @@ export function PostLayout({ children }) {
   return (
     <React.Fragment key='left'>
       <SwipeableDrawer
-        className='swipeableDrawer'
         anchor='left'
         open={state['left']}
         onClose={toggleDrawer('left', false)}
@@ -46,8 +45,15 @@ export function PostLayout({ children }) {
       </footer>
       <style jsx>{`
         /* general */
-        .swipeableList, .permanentDrawer {
+        .swipeableList {
           width: var(--drawerWidth);
+          background-color: #424242;
+          height: 100vh;
+        }
+
+        main{
+          flex: 1;
+          width: 100%;
         }
 
         footer{
@@ -55,11 +61,6 @@ export function PostLayout({ children }) {
           position: fixed;
           bottom: 0;
           z-index: 100;
-        }
-
-        main{
-          flex: 1;
-          width: 100%;
         }
 
         footer button {

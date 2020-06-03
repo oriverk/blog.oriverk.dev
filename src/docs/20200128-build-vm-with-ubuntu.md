@@ -11,15 +11,15 @@ slide: false
 from Gist: 
 - [ oriverk/buildVMwithUbuntu.md](https://gist.github.com/oriverk/34a82751aa11ea19d5b74a0a442cfa2f)
 
-# how to build CUI
-## vagrant init
+## how to build CUI
+### vagrant init
 ```sh
 mkdir -p vm/MyVagrant/hogehoge
 cd hogehoge
 vagrant init
 ```
 
-## add or modify file "Vagrantfile"
+### add or modify file "Vagrantfile"
 
 <details><summary><code>Vagrantfile</code></summary><div>
 
@@ -101,7 +101,7 @@ end
 
 </div></details>
 
-## lastly
+### lastly
 ```sh
 vagrant up
 vagrant global-status
@@ -110,14 +110,14 @@ vagrant ssh-config
 vagrant ssh
 ```
 
-## Inner SSH
+### Inner SSH
 ```sh
 sudo apt update
 # If build Desktop ver
 sudo apt install ubuntu-desktop
 ```
 
-## Change locale and timezone
+### Change locale and timezone
 ```sh
 # change locale to ja_JP.utf-8
 # make japanize environmet
@@ -135,7 +135,7 @@ date
 # => 2019年  1月 30日 水曜日 14:49:48 JST
 ```
 
-# GUI版の構築
+## GUI版の構築
 GUI版を構築する際はVagrantfileの編集から少し異なる。
 
 ```rb

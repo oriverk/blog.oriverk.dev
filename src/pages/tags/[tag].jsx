@@ -61,29 +61,31 @@ export default function Tag() {
           padding: 5%;
           flex-grow: 1;
         }
-        h1{
-          text-align: center;
-        }
-        h2{
+         
+        h2 {
           margin: .5rem auto 1.5rem;
           font-weight: 600;
           text-align: center;
         }
-        ul{
+
+        ul {
           padding-left: 1.25rem;
         }
+
         a {
           color: #D9D9D9;
           text-decoration: underline;
         }
-        code{
+
+        code {
           /* color: #DDD; */
           display: inline-block;
           margin: 0 .5rem;
           padding: 0 .3rem;
           background-color: #555;
         }
-        .tags a{
+
+        .tags a {
           font-size: .8rem;
           color: #50CAF9
         }

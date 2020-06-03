@@ -7,29 +7,29 @@ image: '/assets/prtsc-1000.jpg'
 slide: false
 ---
 
-# はじめに
+## はじめに
 [Ruby + JekyllによるGihubPagesは既にある](https://github.com/oriverk/oriverk.github.io)のですが、宮崎版コロナ対策サイトでVueに触れ、勉強がてら実際にJSによるサイト作成をする事にしました。
 
 - JSの現状を知るために参照した主サイト
   - [2020年 React軸で学ぶべき技術 from mizchi's blog](https://mizchi.hatenablog.com/entry/2020/01/04/172041)
   - [ユーザー体験を向上させるサーバーサイドレンダリングJavaScript — 歴史と利点](https://medium.com/@sundaycrafts/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E4%BD%93%E9%A8%93%E3%82%92%E5%90%91%E4%B8%8A%E3%81%95%E3%81%9B%E3%82%8B%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%83%AC%E3%83%B3%E3%83%80%E3%83%AA%E3%83%B3%E3%82%B0javascript-%E6%AD%B4%E5%8F%B2%E3%81%A8%E5%88%A9%E7%82%B9-df68cd7cd991)
 
-## 自分
+### 自分
 大学研究でcppを利用しただけの、農学部卒。
 ただいま無職、転職活動中（ここ2か月は自粛でstay home
 
-# 作成に当たって
+## 作成に当たって
 ReactとNext.jsのtutorialとdocsを一通りやりました。
 
 - [React チュートリアル](https://ja.reactjs.org/tutorial/tutorial.html)
 - [Next.js チュートリアル](https://nextjs.org/docs/getting-started)
 - 
-## サイト自体の目的
+### サイト自体の目的
 - 経歴や作成したもののリンクをまとめる
   - GithubPagesやQiita、Gistへの投稿物を一か所にまとめる
   - Markdonwによるページ作成
 
-## つくったもの
+### つくったもの
 - [Github リポジトリ](https://github.com/oriverk/next-portfolio)
 - [サイト：https://next-portfolio-blue.now.sh/](https://next-portfolio-blue.now.sh/)
 
@@ -39,7 +39,7 @@ ReactとNext.jsのtutorialとdocsを一通りやりました。
 
 まだ、ドキュメントや人のコードを参照しながら色々試している最中なので、コードが汚いです。
 
-## 技術・要件など
+### 技術・要件など
 - React.js, Next.js
     - マークダウン変換: [remarkjs/reamrk](https://remark.js.org/)
         - あとで[mdx-js/mdx](https://mdxjs.com/)に変更するかも
@@ -47,14 +47,14 @@ ReactとNext.jsのtutorialとdocsを一通りやりました。
     - UIコンポーネント：[Material-UI mui-org/material-ui](https://material-ui.com/)
 - ダークテーマ
 
-## 環境
+### 環境
 - vm：virtualbox + vagrant
     - OS: Ubuntu18.04 bionic
 - node -v :v12.16.1
 - yarn -v :1.22.4
 
-# 実作業
-## `yarn create next-app`
+## 実作業
+### `yarn create next-app`
 
 ```sh
 yarn create next-app next-portfolio
@@ -64,7 +64,7 @@ yarn create next-app next-portfolio
 #    Example from the Next.js repo
 ```
 
-### Example from the Next.js repoを選択したら
+#### Example from the Next.js repo
 - amp類
     - amp, amp-story, amp-first
         - [参考: ビジュアルに訴える AMP ストーリーを作成する from AMP](https://amp.dev/ja/documentation/guides-and-tutorials/start/visual_story/?format=stories)
@@ -76,7 +76,7 @@ yarn create next-app next-portfolio
 - [参照：Github: zeit/next.js/example](https://github.com/zeit/next.js/tree/master/examples)
 
 
-### Default starter appの場合
+#### Default starter appの場合
 今回はReact Next.jsの勉強も兼ねているので、defaultの方を利用した。
 
 `yarn dev`すると
@@ -121,11 +121,11 @@ yarn create next-app next-portfolio
 
 </div></details>
 
-- 参照：
+- 参照
   - [React.Component](https://ja.reactjs.org/docs/react-component.html#gatsby-focus-wrapper)
   - [React.Fragment](https://ja.reactjs.org/docs/fragments.html#keyed-fragments)
 
-## Material-UI 導入
+### Material-UI 導入
 見た目重視でmaterial-uiを導入し、主にサイドバーのpermanent / swipeable drawerとGridに使用。
 
 - 参照：[Material-UI top 日本語ページ](https://material-ui.com/ja/)
@@ -138,7 +138,7 @@ yarn add @material-ui/core
 yarn add @material-ui/icons
 ```
 
-## サイトトップ: `src/pages/index.jsx` の作成
+### create src/pages/index.jsx
 
 1. `src`ディレクトリを作成し、下に`pages`を収める。
 2. `src/components/Layout.jsx`の作成
@@ -325,7 +325,7 @@ export function History() {
 
 </div></details>
 
-## `_app.jsx`, `_document.jsx`, `404.jsx`の作成
+### _app.jsx, _document.jsx, 404.jsx
 - 参照
   - [Custom `App` from Next.js](https://nextjs.org/docs/advanced-features/custom-app)
   - [Custom `Document` from Next.js](https://nextjs.org/docs/advanced-features/custom-document)
@@ -338,8 +338,8 @@ export function History() {
   - `<Main />`の外側にあるコンポーネントはブラウザによる初期化がされないので、Appロジック等は`app.jsx`に記述
   - `<title>`や`<Head />`、`styled-jsx`を書いちゃ駄目。
 
-## Posts周辺の作成
-### ダイナミックルーティング
+### Posts周辺の作成
+#### ダイナミックルーティング
 - 参照
   - [Next.js - Pages](https://nextjs.org/docs/basic-features/pages#pages-with-dynamic-routes)
   - [Next.js - Dynamic routes](https://nextjs.org/docs/routing/dynamic-routes)
@@ -379,7 +379,7 @@ export default function Post(){
 
 `dynamic route`と`Link( next/link )`を併用する時は、`href`に合わせて`as`も使うなど注意点があるが、非常に便利な代物かと。
 
-### `getStaticProps`と`getStaticPaths`
+#### getStaticProps, getStaticPaths
 今回はmdファイルを`/src/pages/docs`に入れる。
 
 - `baseUrl/posts`へのアクセス時は、docs下のmdファイルを読込み、posts一覧の出力
@@ -413,7 +413,7 @@ tagsページのスタイルが未だ・・・
   <img src='/assets/posts/202005/next4.png' alt='tags index' />
 </picture>
 
-### マークダウン
+#### マークダウン
 
 - 実現したい事
     - QiitaやGist等での投稿を可能な限り手間なく集約したい
@@ -464,7 +464,7 @@ export async function getPostData(id) {
 
 </div></details>
 
-### `<head><meta /></head>`
+#### meta
 
 <picture>
   <source srcSet='/assets/posts/202005/next5.webp' type='image/webp' />
@@ -490,7 +490,7 @@ slide: false
 ---
 ```
 
-### SNSシェアボタン
+#### SNSシェアボタン
 
 ```jsx
 // ./src/pages/posts/[id].jsx
@@ -504,22 +504,22 @@ slide: false
 </button>
 ```
 
-# 更新
-## README.md充実化( 20200527 )
+## 更新
+### README.md充実化( 20200527 )
 - 参照
   - [【GitHub】README.mdをカッコ可愛くデザインしてアプリの魅力を120%にする](https://qiita.com/aocattleya/items/5f836e9c65ba3eb3af03)
 
 Qiita投稿の公開に当たり、[`README.md`の充実を図った。
 => [`README.md`へのリンク](https://github.com/oriverk/next-portfolio/blob/master/README.md)
 
-## `npm install`禁止化( 20200527 )
+### npm install 禁止化( 20200527 )
 - 参照
   - [yarnを使うプロジェクトでnpm installを禁止する方法](https://qiita.com/suin/items/a7bf214f48eb9b2d9afc)
 
 特に理由はないが、このサイトは`yarn`を用いて作成したので、`npm`の仕様を禁じることにした。方法は参照通り。
 
-# 残る改善点、したい事など
-## サイト全体
+## 残る改善点、したい事など
+### サイト全体
 
 - Material-uiからの脱却
   - swipeable-drawer以外は自分で実装出来そうなので 
@@ -535,7 +535,7 @@ Qiita投稿の公開に当たり、[`README.md`の充実を図った。
 [x]カスタムドメイン
 [ ]api routeを試す
 
-## posts, tags周辺
+### posts, tags周辺
 
 [ ]`/tags`ページの整備
 [ ]コードブロックの言語またはファイル名の出力

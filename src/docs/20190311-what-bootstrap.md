@@ -11,18 +11,17 @@ slide: false
 from Qiita
 - [5日目：Bootstrapを初めて触ってみた](https://qiita.com/OriverK/items/7cff4e36a2d19759cccb)
 
-# 使用環境
+## Environment
 仮想環境OS: Ubuntu 18.04
 ruby 2.5.1p57
 Rails 5.2.2
 MySQL
 
-# Bootstrapとは
-- [Bootstrapホームページトップより](https://getbootstrap.com/)
-  - Build responsive, mobile-first projects on the web with the world’s most popular front-end component library.
-  - Bootstrap is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with our Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.
+## What is Bootstrap
+> [Bootstrapホームページトップより](https://getbootstrap.com/)
+>>Build responsive, mobile-first projects on the web with the world’s most popular front-end component library.Bootstrap is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with our Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.
 
-# いつもの`rails s`辺りまでの準備
+## preparation till rails s
 ```sh
 rails new private_butostrap -d mysql
 #Gemfileのmini-racerコメントイン
@@ -32,13 +31,13 @@ rails db:create
 rails s  # 一応確認
 ```
 
-# Scaffoldでテーブル作成
+## Scaffoldでテーブル作成
 ```sh
 # rails g scaffold (コントローラ名/モデル名)　カラム名：データ型　・・・
 rails g scaffold User name:string email:string sex:integer age:integer address:integer attendance:integer opinion:text
 ```
 
-## rails db:migrate
+### rails db:migrate
 ```sh
 rails db:migrate
 # 一応確認として
@@ -46,7 +45,7 @@ use private_butostrap_development;
 show table;
 ```
 
-## consoleでデータ追加
+### consoleでデータ追加
 ```rb
 (1..100).each do |num|
   if num % 2 == 0
@@ -64,8 +63,8 @@ show table;
 end
 ```
 
-# Bootstrapで見栄え修正
-## ButostrapのCSSの読み込み
+## Bootstrapで見栄え修正
+### ButostrapのCSSの読み込み
 参照
 - [Bootstrap introduction](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
 
@@ -82,7 +81,7 @@ end
 
 リンクが青くなった。
 
-## indexページのNewUserボタンの変更
+### indexページのNewUserボタンの変更
 ```rb
 # app/views/users/index.html.erb
 # 元のコード
@@ -93,9 +92,9 @@ end
 
 同様にshow、edit、destroyボタンも変更
 
-## tableの見栄えも変更
-参照：
-- [bootstrap table](https://getbootstrap.com/docs/4.3/content/tables/)
+### tableの見栄えも変更
+- 参照
+  - [bootstrap table](https://getbootstrap.com/docs/4.3/content/tables/)
 
 ```rb
 # app/views/layouts/application.html.erb
@@ -111,16 +110,16 @@ end
 </picture>
 
 
-# jsファイルの挿入部分を考える
-## 授業の中で言われたこと
+## jsファイルの挿入部分を考える
+### 授業の中で言われたこと
 - headかbodyどうかが、ユーザビリティに影響を与える
     - head内：jsファイルが重い場合は、jsファイルが読み込まれるまで、ページが表示されない。
     - body内：先にページが表示されて、その後にjsファイルが読み込まれます。
     - HTML解析前に実行されるべきjsファイルなどはheadタグ内に記述するべし
 
-## ページ読み込み時間は、ユーザの直帰率等に影響を及ぼす
-参考:
-- [一次データ:Does Page Load Time Really Affect Bounce Rate? pingdom](https://royal.pingdom.com/page-load-time-really-affect-bounce-rate/)
+### ページ読み込み時間は、ユーザの直帰率等に影響を及ぼす
+- 参考
+  - [一次データ:Does Page Load Time Really Affect Bounce Rate? pingdom](https://royal.pingdom.com/page-load-time-really-affect-bounce-rate/)
 
 上の一次データによると、ページ読み込み時間3秒までは直帰率は10%弱だが、5秒で38%、7秒で50%を超える
 

@@ -11,8 +11,8 @@ slide: false
 from Gist: 
 - [oriverk/InstallDB2Ubuntu.md ](https://gist.github.com/oriverk/aa5ded308dfb5e143e388a74915e2093)
 
-# Install DB
 ## PostgreSQL
+
 ```sh
 sudo apt install postgresql libpq-dev
 
@@ -53,9 +53,8 @@ sudo apt install postgresql-12
 
 # confirmation
 sudo su - postgres
-## inner psql
 psql
--> psql (12.0 (Ubuntu 12.0-2.pgdg18.04+1))
+# -> psql (12.0 (Ubuntu 12.0-2.pgdg18.04+1))
 ```
 
 ## MySQL
@@ -66,7 +65,6 @@ sudo mysql_secure_installation
 ```
 
 ```sql
-# inner mysql
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'TegetegePassword';
 flush privileges;
 ```

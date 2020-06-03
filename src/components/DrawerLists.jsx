@@ -1,8 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import {
-  GithubIcon, LinkedInIcon, QiitaIcon, TwitterIcon, WantedlyIcon,
-  HomeIcon, AboutIcon, HistoryIcon, WorksIcon, BlogIcon
+  GithubIcon, LinkedInIcon, QiitaIcon, TwitterIcon, WantedlyIcon,HomeIcon, AboutIcon, HistoryIcon, WorksIcon, BlogIcon
 } from '../utils/svgIcon'
 
 export const Divider = () => {
@@ -25,7 +24,7 @@ export const Divider = () => {
 const ListItem = React.forwardRef((props, ref) => {
   return (
     <>
-      <a href={props.href} onClick={props.onClick} ref={ref}>
+      <a href={props.href} key={props.key} onClick={props.onClick} ref={ref}>
         <div role="button">{props.children}</div>
       </a>
       <style jsx>{`
@@ -79,36 +78,36 @@ export const DrawerLists = (props) => {
       <Divider />
       <div className='list'>
         {!props.home && (
-          <Link href='/' passHref>
+          <Link href='/' key='home' passHref>
             <ListItem>
               <div className='listItemIcon'><HomeIcon /></div>
-              Home
+              <span>Home</span>
             </ListItem>
           </Link>
         )}
-        <Link href='/#about' passHref>
+        <Link href='#about' key='about' passHref>
           <ListItem>
             <div className='listItemIcon'><AboutIcon /></div>
-            About
+            <span>About</span>
           </ListItem>
         </Link>
-        <Link href='/#history' passHref>
+        <Link href='#history' key='history' passHref>
           <ListItem>
             <div className='listItemIcon'><HistoryIcon /></div>
-            History
+            <span>History</span>
           </ListItem>
         </Link>
-        <Link href='/#works' passHref>
+        <Link href='#works' key='works' passHref>
           <ListItem>
             <div className='listItemIcon'><WorksIcon /></div>
-            Works
+            <span>Works</span>
           </ListItem>
         </Link>
         {!props.posts && (
-          <Link href='/posts' passHref>
+          <Link href='/posts' key='blog' passHref>
             <ListItem>
               <div className='listItemIcon'><BlogIcon /></div>
-              Blog
+              <span>Blog</span>
             </ListItem>
           </Link>
         )}
@@ -127,20 +126,26 @@ export const DrawerLists = (props) => {
           margin: 1rem;
         }
 
-        .profileImg{
+        .profileImg {
           width: 80%;
+          border-radius: 50%;
         }
 
-        .list{
-            margin: 0;
-            padding: 0;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-          }
+        .list {
+          margin: 0;
+          padding: 0;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          color: #EEE;
+        }
+
+        .list span {
+          color: #EEE;
+        }
 
         .listItemIcon {
-          color: #fff;
+          color: #FFF;
           display: inline-flex;
           vertical-align: middle;
           padding-right: 2rem;

@@ -21,7 +21,6 @@ export function Layout({children, home, posts}) {
   return (
     <React.Fragment key='left'>
       <SwipeableDrawer
-        className='swipeableDrawer'
         anchor='left'
         open={state['left']}
         onClose={toggleDrawer('left', false)}
@@ -51,6 +50,19 @@ export function Layout({children, home, posts}) {
         /* general */
         .swipeableList, .permanentDrawer {
           width: var(--drawerWidth);
+          background-color: #424242;
+          height: 100vh;
+        }
+        
+        .permanentDrawer {
+        /* mobile and for swipe */
+          display: none;
+        }
+
+        main{
+          flex: 1;
+          width: 100%;
+          margin-left: - var(--drawerWidth);
         }
 
         footer{
@@ -58,15 +70,6 @@ export function Layout({children, home, posts}) {
           position: fixed;
           bottom: 0;
           z-index: 100;
-        }
-
-        main{
-          flex: 1;
-        }
-
-        /* mobile and for swipe */
-        .permanentDrawer {
-          display: none;
         }
 
         footer button {
@@ -80,15 +83,9 @@ export function Layout({children, home, posts}) {
           background-color: #424242;
           outline: none;
         }
-
-        main{
-          width: 100%;
-          margin-left: - var(--drawerWidth);
-        }
-
         @media ( min-width: 1280px ){
           /* pc and for permanent */
-          .swipeableDrawer, footer button{
+          .swipeableList, footer button{
             display: none;
           }
 

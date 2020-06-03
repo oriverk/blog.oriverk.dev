@@ -48,9 +48,7 @@ export default function Posts({ allPostsData, posts }) {
           padding: 5%;
           flex-grow: 1;
         }
-        h1{
-          text-align: center;
-        }
+
         h2{
           margin: .5rem auto 1.5rem;
           font-weight: 600;

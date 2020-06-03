@@ -4,7 +4,6 @@ import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
 
-
 const postsDirectory = path.join(process.cwd(), './src/docs')
 
 export function getSortedPostsData() {
@@ -39,57 +38,48 @@ export function getSortedPostsData() {
 
 export function getAllPostIds() {
   const fileNames = fs.readdirSync(postsDirectory)
+  return fileNames.map(fileName => {
+    return {
+      params: {
+        id: fileName.replace(/\.md$/, '')
+      }
+    }
+  })
+}
+      
+export async function getPostData(id) {
+  // ↑async is for remark. if not use remark, remove async
   
-  // return bellow array
-  // [
-    //   {
-      //   params: {
-        //       id:'ssg-ssr'
-        //     }
-        //   },
-        // ]
-        return fileNames.map(fileName => {
-          return {
-            params: {
-              id: fileName.replace(/\.md$/, '')
-            }
-          }
-        })
-      }
+  // fetch data to render post with id and return post data
+  const fullPath = path.join(postsDirectory, `${id}.md`)
+  const fileContents = fs.readFileSync(fullPath, 'utf8')
+  // use gray-matter to analyze post meta data
+  const matterResult = matter(fileContents)
+  const LowerCaseTags = matterResult.data.tags.map((tag) => (tag.toLowerCase()))
+  // const mdx = require('@mdx-js/mdx')
+  const highlight = require('remark-highlight.js')
+  
+  //use remark to convert markdonw to html string
+  const processedContent = await remark()
+  .use(highlight)
+  .use(html)
+  .process(matterResult.content)
+  
+  const contentHtml = processedContent.toString()
+  
+  return {
+    id,
+    contentHtml,
+    LowerCaseTags,
+    ...matterResult.data,
+  }
+}
       
-      export async function getPostData(id) {
-        // ↑async is for remark. if not use remark, remove async
-        
-        // fetch data to render post with id and return post data
-        const fullPath = path.join(postsDirectory, `${id}.md`)
-        const fileContents = fs.readFileSync(fullPath, 'utf8')
-        // use gray-matter to analyze post meta data
-        const matterResult = matter(fileContents)
-        const LowerCaseTags = matterResult.data.tags.map((tag) => (tag.toLowerCase()))
-        // const mdx = require('@mdx-js/mdx')
-        const highlight = require('remark-highlight.js')
-        
-        //use remark to convert markdonw to html string
-        const processedContent = await remark()
-        .use(highlight)
-        .use(html)
-        .process(matterResult.content)
-        
-        const contentHtml = processedContent.toString()
-        
-        return {
-          id,
-          contentHtml,
-          LowerCaseTags,
-          ...matterResult.data,
-        }
-      }
-      
-      export function getPostsTags() {
-        const fileNames = fs.readdirSync(postsDirectory)
-        const allPostsData = fileNames.map(fileName => {
-          const fullPath = path.join(postsDirectory, fileName)
-          const fileContents = fs.readFileSync(fullPath, 'utf8')
+export function getPostsTags() {
+  const fileNames = fs.readdirSync(postsDirectory)
+  const allPostsData = fileNames.map(fileName => {
+    const fullPath = path.join(postsDirectory, fileName)
+    const fileContents = fs.readFileSync(fullPath, 'utf8')
     const matterTags = matter(fileContents).data.tags
     const matterTagsLower = matterTags.map((tag) => tag.toLowerCase())
     return matterTagsLower

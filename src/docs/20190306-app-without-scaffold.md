@@ -15,12 +15,12 @@ from Qiita:
 - [8日目(1)：Scaffoldなしの掲示板作成：まとめ](https://qiita.com/OriverK/items/589efb97d7c6667319b9)
 
 　　　　　　　　 
-# 使用環境
+## 使用環境
 - 仮想環境OS: Ubuntu 18.04
 - Ruby：2.51
   - Rails:5.2.2
 
-## rails db:migrate
+### rails db:migrate
 - Railsドキュメントより(http://railsdoc.com/references/rake%20db:migrate)
   - rails db:migrateを実行
   - schema_migrationsテーブルを調べ、存在しなければ作成
@@ -29,17 +29,17 @@ from Qiita:
   - schema_migrationsテーブルの更新
 
 ---
-# 3日目
+## 3日目
 `scaffold`を利用せずにApp作成をし、Scaffoldの有難みを知る
 
-## 前準備
+### 前準備
 1. rails s new qiita_routes -d mysql
 2. Gemfileのminiracerコメントインして、bundle install
 3. config/database.ymlのpassword情報編集
 4. rails db:create
 
-## 前提：知識
-### ページ作成に必要なもの
+### 前提：知識
+#### ページ作成に必要なもの
 - view(@ /app/views/コントローラ名/
     - 今日はしなかったので、今投稿には未記載
     - viewの中身がブラウザに表示される内容
@@ -49,18 +49,18 @@ from Qiita:
 - routing(ルーティング
     - ブラウザとcontrollerを繋ぐ。
 
-### ページ表示の流れ
+#### ページ表示の流れ
 **Routing => Controller => Model => View**
 modelはデータベース情報が必要な時だけ使用.今回は必要ではないので、とばす。
 
-## 本段階
-### controllerを作成
+### 本段階
+#### controllerを作成
 ```sh
 #rails generate controller コントローラ名 (+アクション名)
 rails generate controller Users
 ```
 
-### routingの設定：ブラウザとコントローラをつなぐ
+#### routingの設定：ブラウザとコントローラをつなぐ
 ```rb
 # config/routes.rb
 Rails.application.routes.draw do
@@ -77,7 +77,7 @@ rails routes
 # users#index   　　　　　　　　　#追加された行
 ```
 
-### controller：modelとviewをつなぐ
+#### controller：modelとviewをつなぐ
 ```rb
 # app/controllers/users_controller.rb
 class UsersController < ApplicationController
@@ -89,14 +89,13 @@ end
 
 無事に、ブラウザ上でHelloが表示された。
 
-### renderメソッド
+#### renderメソッド
 上controller編集時に用いた、renderメソッドは実際に画面に表示される内容を生成する。今回のrenderのplainオプションを指定すると、文字列を直接表示できる。
 **Railsのcontrollerでrenderを省略すると、代わりにapp/views/コントローラ名/アクション名.html.erbを用いる**
 =>ということはcontroller作成コマンドは `rails g controller コントローラ名　アクション名`
 
-## 参考
-- 参照
-  - [Ruby on Rails でページを作成する仕組み by @np_misaki氏](https://qiita.com/np_misaki/items/1c5ff951272a91f70e5f)
+### 参考
+- [Ruby on Rails でページを作成する仕組み by @np_misaki氏](https://qiita.com/np_misaki/items/1c5ff951272a91f70e5f)
 
 - config : アプリケーションの設定情報を格納する
 - /routes.rb : ルーティングの設定を行う
@@ -107,28 +106,28 @@ end
 - /views :View クラスを格納する
 
 ---
-# 4日目
+## 4日目
 
-# モデルを作成
-## modelとは
-- データベースを操作する。
-- app/models下に配置される
-- データベースに含まれるテーブル毎に用意され、データの登録・取得・更新・削除などを行う
+## モデルを作成
+- modelとは
+  - データベースを操作する。
+  - app/models下に配置される
+  - データベースに含まれるテーブル毎に用意され、データの登録・取得・更新・削除などを行う
 
-## model作成コマンド
+### model作成コマンド
 ```sh
 # rails generate model モデル名 カラム名:データ型 カラム名:データ型 ...
 rails generate model User name:string email:string sex:integer age:integer address:integer attendance:integer opinion:text
 # string型は文字型、integer型は整数型
 ```
 
-# DBの操作
-## テーブルの作成をする。
+## DBの操作
+### テーブルの作成をする。
 ```sh
 rails db:migrate
 ```
 
-## 出来たテーブルをMySQL側で確認してみる。
+### 出来たテーブルをMySQL側で確認してみる。
 
 ```sql
 -- mysql
@@ -170,13 +169,13 @@ SHOW CREATE TABLE users;
 
 `rails g models`で設定したカラム名が作成されているのが分かる。
 
-## データベースにfooさんのレコードを追加してみる
+### データベースにfooさんのレコードを追加してみる
 ```sql
 INSERT INTO `users` (`name`, `email`, `sex`, `age`, `address`, `attendance`, `opinion`, `created_at`, `updated_at`) VALUES ('foo', 'foo@gmail.com', 1, 23, 2, 0, 'foooo', '2017-04-04 04:44:44', '2018-04-04 04:44:44');
 -- Query OK, 1 row affected (0.00 sec)
 ```
 
-## MySQLの中から、追加されているレコードを確認してみる。
+### MySQLの中から、追加されているレコードを確認してみる。
 ```sql
 SELECT * FROM users;
 -- +----+------+---------------+------+------+---------+------------+---------+---------------------+---------------------+
@@ -186,7 +185,7 @@ SELECT * FROM users;
 -- +----+------+---------------+------+------+---------+------------+---------+---------------------+---------------------+
 ```
 
-## `rails console`側から新たにレコードを追加する。
+### rails console から新たにレコードを追加する。
 ```rb
 user = User.create(name: "taro", email: "val@gmail.com", sex: 0, address: 1, attendance: 1, opinion: 'nothing special')
 
@@ -195,7 +194,7 @@ user.save
 # => true
 ```
 
-## Rails Console上でレコード取得コマンド
+### Rails Console上でレコード取得
 ```rb
 # レコードの全てのユーザ情報を取得
 User.all
@@ -215,7 +214,7 @@ User.all.count
 (.ex) User.find_by(id:2)
 ```
 
-## controllerのアクションの整備
+### controllerのアクションの整備
 ```rb
 # app/controllers/users_controller.rb
 class UsersController < ApplicationController
@@ -225,7 +224,7 @@ class UsersController < ApplicationController
 end
 ```
 
-## viewの整備
+### viewの整備
 ```rb
 # app/view/index.html.erb
  <body>
@@ -294,7 +293,7 @@ edit_user GET    /users/:id/edit(.:format)   users#edit
           PATCH  /users/:id(.:format)        users#update
           PUT    /users/:id(.:format)        users#update
           DELETE /users/:id(.:format)        users#destroy
-(以下省略)
+# ...
 ```
 
 次に上にある、「users GET    /users(.:format)  users#index 」を実装
@@ -327,7 +326,7 @@ end
   <img src="/assets/posts/201903/scaffold1.jpg" alt="scaffold first" />
 </picture>
 
-## showアクション
+### showアクション
 - users_pathはusers#indexへのリンク
 - new_user_pathはusers#newへのリンク
 - edit_user_pathはusers#editへのリンク
@@ -350,7 +349,7 @@ end
 <%= link_to 'Back', users_path %>
 ```
 
-## show, edit アクションの定義
+### show, edit アクションの定義
 ```rb
 # app/controllers/users_controller.rb
 def show
@@ -391,8 +390,8 @@ end
 <% end %>
 ```
 
-# 追加：2日目を参考にし、表示を触ってみる。
-性別の値0or1を男性or女性で表示させる。
+### 追加：2日目を参考にし、表示を触ってみる。
+性別の値 0 or 1 を男性or女性で表示させる。
 
 ```rb
 # app/models/user.rb
@@ -441,7 +440,7 @@ User.find_by(name: "foo")
 # DB上に格納される性別や住所、参加有無も自然言語で保存されるように編集したのか。
 ```
 
-## 年齢に、10代、20代、30代のラジオボタンを追加しておく
+### 年齢に、10代、20代、30代のラジオボタンを追加
 
 <picture>
   <source srcSet="/assets/posts/201903/scaffold5.webp" type="image/webp" />
@@ -450,9 +449,9 @@ User.find_by(name: "foo")
 
 
 ---
-# 8日目
+## 8日目
 
-## users_controller定義
+### users_controller
 ```rb
 # app/controllers/uupdate.rb
 # updateアクション
@@ -484,13 +483,13 @@ def new
 end
 ```
 
-## indexページからのdestroyへのリンク作成
+### indexページからのdestroyへのリンク作成
 ```rb
 # app/views/users/index.html.erb
 <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 ```
 
-## newページ編集
+### newページ編集
 ```rb
 # app/views/users/new.html.erb
 <h1>New User</h1>
@@ -519,13 +518,13 @@ end
 <%= link_to 'Back', users_path %>
 ```
 
-## indexからnewへのリンク作成
+### indexからnewへのリンク作成
 ```rb
 # app/views/users/index.html.erb
 <%= link_to 'New User', new_user_path %>
 ```
 
-## createアクション定義
+### createアクション定義
 ```rb
 # app/controllers/users_controller.rb
 def create
@@ -542,11 +541,11 @@ def create
 end
 ```
 
-# リファクタリング
->[from wikipedia]
->>リファクタリング (refactoring) とは、コンピュータプログラミングにおいて、プログラムの外部から見た動作を変えずにソースコードの内部構造を整理することである。
+## リファクタリング
+> wikipedia
+>> リファクタリング (refactoring) とは、コンピュータプログラミングにおいて、プログラムの外部から見た動作を変えずにソースコードの内部構造を整理することである。
 
-## createアクションとupdateアクションの共通化
+### createアクションとupdateアクションの共通化
 2アクションに下の共通箇所がある
 
 ```rb
@@ -591,7 +590,7 @@ def user_params
 end
 ```
 
-## show. edit. updata, destroyの共通化
+### show. edit. updata, destroyの共通化
 ```rb
 # app/controllers/users_controller.rb
 # 共通している部分
@@ -609,7 +608,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 ```
 
-## アクションのリファクタリング後（全体）
+### アクションのリファクタリング後（全体）
 ```rb
 # app/controllers/users_controller.rb
 class UsersController < ApplicationController
@@ -663,7 +662,7 @@ private
 end
 ```
 
-# 完
+## 完
 
 <picture>
   <source srcSet="/assets/posts/201903/scaffold6.webp" type="image/webp" />

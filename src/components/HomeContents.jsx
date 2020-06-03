@@ -69,7 +69,7 @@ export function About() {
         </Grid>
       </section>
       <style jsx>{`
-        #about p{
+        #about p {
           margin: 0 auto .5rem;
         }
       `}</style>
@@ -171,7 +171,7 @@ export function Works() {
         </article>
       </section>
       <style jsx>{`
-        #works{
+        #works {
           margin-bottom: 3.5rem;
         }
       `}</style>

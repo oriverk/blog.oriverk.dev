@@ -28,10 +28,7 @@ export default function MyApp(props) {
         <link rel='icon' type='image/png' sizes='16x16' href='/favicon/favicon-16x16.png' />
         <link rel='manifest' crossOrigin="use-credentials" href='/manifest.json' />
       </Head>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <Component {...pageProps} />
       <style jsx global>{`
         ::-webkit-scrollbar {
           width: 0;
@@ -44,23 +41,84 @@ export default function MyApp(props) {
           border-radius: .3rem;
         }
 
+        html {
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          box-sizing: border-box;
+        }
+
         *{
           font-family: 'Hiragino Sans', 'Meiryo', sans-serif;
           --drawerWidth: 250px;
+        }
+
+        *, *::before, *::after{
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: 0;
+          color: #EEE;
+          font-weight: 400;
+          font-size: 0.874rem;
+          line-height: 1.43;
+          letter-spacing: 0.01071em;
+          background-color: #303030;
         }
 
         #__next{
           display: flex;
         }
 
+        h1 {
+          text-align: center;
+        }
+
         div, p, a, li, b{
-          color: #EEE;
           font-size: 1rem;
         }
 
         a{
           color: #50CAF9;
           text-decoration: none;
+        }
+
+        strong, b {
+          font-weight: 700;
+        }
+
+        code {
+          display: inline-block;
+          margin: 0 1rem;
+          padding: 0 .5rem;
+          background-color: #555;
+          color: #EEE;
+        }
+
+        pre {
+          border: .8px solid grey;
+          border-radius: 0.25rem;
+          display: block;
+          white-space: pre;
+          background-color: #1E1E1E;
+          width: 100%;
+          max-width: 1000px;
+          margin-bottom: 2rem;
+          overflow: auto;
+        }
+        
+        source, img {
+          display: block;
+          width: 95%;
+          margin: 2rem auto;
+          background-color: #424242;
+        }
+
+        blockquote {
+          color: #BBB;
+          border-left: 5px solid #BBB;
+          margin: 1rem 0;
+          padding: .5rem 0 .5rem .5rem;
         }
       `}</style>
     </React.Fragment>

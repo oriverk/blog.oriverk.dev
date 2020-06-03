@@ -11,26 +11,26 @@ slide: false
 from Qiita: 
 - [16日目：deviseだけで管理者を追加したい](https://qiita.com/OriverK/items/d7704d23cf74c51503b4)
 
-# 使用環境
+## Environment
 - 仮想環境: Ubuntu 18.04
 - Ruby：2.51
 - Rails: 5.2.2
     - gem: 'devise'（ログイン等の機能用), 'kaminari'( pagination )
 - DB: PostgreSQL
 
-# 実作業
-## テーブルにadminカラム追加
+## 実作業
+### テーブルにadminカラム追加
 ```sh
 # rails g migration Addカラム名Toテーブル名　カラム定義
 rails g migration AddAdminToStudent admin:boolean
 ```
 
-### boolean型
+#### boolean型
 真理値の「真 = true」と「偽 = false」という2値をとるデータ型のこと。
 Rubyでは偽はfalseとnilで、それ以外がtrueになる。
 言語やDBによっては、1と0だったり、違うので注意。
 
-## マイグレーションファイルを編集
+### マイグレーションファイルを編集
 boolean型と定義する際は、デフォルト値を設定しないといけない。
 adminのデフォルト値に引数falseを渡し、デフォルトではadmin権限がない、と指定する。
 
@@ -45,7 +45,7 @@ end
 
 `rails db:migrate`
 
-## admin権限を確認付与
+### admin権限を確認付与
 ```rb
 stu = Student.find(1)
 stu.admin?
@@ -58,7 +58,7 @@ stu.admin?
 
 admin属性が追加され、またadmin?メソッドを使用できるようになっている。
 
-## adminのみが全データを見れるようにする
+### adminのみが全データを見れるようにする
 admin以外は、自分のデータしか見れないようにしたい。
 
 ```rb

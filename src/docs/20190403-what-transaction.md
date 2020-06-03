@@ -15,20 +15,20 @@ from Qiita:
   - [「トランザクション」とは何か？を超わかりやすく語ってみた！](https://qiita.com/zd6ir7/items/6568b6c3efc5d6a13865)
     - 解説用の図が分かりやすかった。
 
-# トランザクションとは
+## What is Transaction like?
 コンピュータ内で実行される、分けることのできない一連の情報処理の一単位。
 
 トランザクション処理における永続性記憶資源の管理では、複数のデータ項目の更新操作列をすべて実行するか、まったく実行しないように制御する必要がある。
 
-## ACID 標準
+### ACID 標準
 また、トランザクション処理システムは4つの属性の機能をサポートしており、頭文字からACID標準という。
 - A : Atomic　不可分性
 - C : Consistency　一貫性
 - I : Isolation　独立性
 - D : Durability　永続性
 
-# 実際に動かしてみる
-## DB内で操作
+## 実際に動かしてみる
+### DB内で操作
 - 参照
   - [13.3.1 START TRANSACTION、COMMIT、および ROLLBACK 構文　-MySQLリファレンス](https://dev.mysql.com/doc/refman/5.6/ja/commit.html)
 
@@ -36,7 +36,7 @@ MySQLはデフォルトで、自動コミットモードが有効になった状
 
 自動コミットモードを暗黙的に無効にするには、START TRANSACTIONをし、その後、COMMITまたはROLLBACK で終了するまで、自動コミットは無効のままになります。そのあと、自動コミットモードはその以前の状態に戻ります。
 
-### 実作業
+#### 実作業
 今回はMySQLと、以前に作成した大学生徒データAppのデータを再利用する
 
 ```sh
@@ -71,7 +71,7 @@ SELECT name FROM students WHERE id = 3;
 | taro-2 |
 +--------+
 ```
-#### COMMITするパターン
+##### COMMITするパターン
 ```sql
 START TRANSACTION;
 
@@ -103,7 +103,7 @@ COMMIT;
 1 row in set (0.00 sec)
 ```
 
-#### ROLLBACKするパターン
+##### ROLLBACKするパターン
 ```sql
 START TRANSACTION;
 -- Query OK, 0 rows affected (0.00 sec)
@@ -136,7 +136,7 @@ SELECT name FROM students WHERE id = 3;
 1 row in set (0.00 sec)
 ```
 
-## RubyonRailsで動かしてみる
+### try on RubyonRails
 新しく、アプリを作成する。
 今回はDBの操作だけなので、rails g modelコマンドのみ使用
 テーブルはUserとReviewの２つ。
@@ -211,7 +211,7 @@ class Review < ApplicationRecord
 end
 ```
 
-### コンソールで、トランザクション処理の挙動を確認
+#### コンソールで、トランザクション処理の挙動を確認
 1. トランザクション処理に成功し、commitされるパターン
 
 ```rb
@@ -262,7 +262,7 @@ ActiveRecord::RecordInvalid (Validation failed: Approved can't be blank)
 
 トランザクション処理に失敗し、rollbackしたため、DBに変化はない。
 
-### modelファイルを編集して実装
+#### modelファイルを編集して実装
 ```rb
 # app/models/user.rb
 class User < ApplicationRecord
