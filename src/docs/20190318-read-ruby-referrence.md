@@ -8,17 +8,15 @@ image: ''
 slide: false
 ---
 
-from Qiita: 
-- [Rubyリファレンスを読んでの、メモ](https://qiita.com/OriverK/items/49148e7116b86e3f36a9)
+from [Qiita: Rubyリファレンスを読んでの、メモ](https://qiita.com/OriverK/items/49148e7116b86e3f36a9)
 
 - 参照
-  - [オブジェクト指向スクリプト言語 Ruby リファレンスマニュアル](https://docs.ruby-lang.org/ja/2.6.0/doc/index.html)
-  - [正規表現](https://docs.ruby-lang.org/ja/2.6.0/doc/spec=2fregexp.html)
-  - [組み込みライブラリ](https://docs.ruby-lang.org/ja/2.6.0/library/_builtin.html)
-      - ホントに長かったので、メモせず、読んで覚えることにしました
-  - [ヒアドキュメント (行指向文字列リテラル)](https://docs.ruby-lang.org/ja/2.6.0/doc/spec=2fliteral.html)
-  - [手続きオブジェクトの挙動の詳細](https://docs.ruby-lang.org/ja/2.6.0/doc/spec=2flambda_proc.html)
-  - [Ruby用語集](https://docs.ruby-lang.org/ja/2.6.0/doc/glossary.html)
+- [オブジェクト指向スクリプト言語 Ruby リファレンスマニュアル](https://docs.ruby-lang.org/ja/2.6.0/doc/index.html)
+- [正規表現](https://docs.ruby-lang.org/ja/2.6.0/doc/spec=2fregexp.html)
+- [組み込みライブラリ](https://docs.ruby-lang.org/ja/2.6.0/library/_builtin.html)
+- [ヒアドキュメント (行指向文字列リテラル)](https://docs.ruby-lang.org/ja/2.6.0/doc/spec=2fliteral.html)
+- [手続きオブジェクトの挙動の詳細](https://docs.ruby-lang.org/ja/2.6.0/doc/spec=2flambda_proc.html)
+- [Ruby用語集](https://docs.ruby-lang.org/ja/2.6.0/doc/glossary.html)
 
 ## 字句構造
 ### 予約語

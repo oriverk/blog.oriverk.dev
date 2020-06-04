@@ -100,8 +100,8 @@ rails generate scaffold ClubStudent student:references club:references name:stri
 
 ### テーブル同士の関連性を定義
 - 参照
-  - [Active Record Associations](https://guides.rubyonrails.org/association_basics.html)
-  - [Active Record の関連付け](https://railsguides.jp/association_basics.html#belongs-to%E9%96%A2%E9%80%A3%E4%BB%98%E3%81%91)
+- [Active Record Associations](https://guides.rubyonrails.org/association_basics.html)
+- [Active Record の関連付け](https://railsguides.jp/association_basics.html#belongs-to%E9%96%A2%E9%80%A3%E4%BB%98%E3%81%91)
 
 ```rb
 # それぞれのmodel.rb
@@ -315,7 +315,7 @@ GROUP BY subjects.id, subjects.name
 #### ページ上の出力
 ##### students_controllerのshowアクション編集
 - 参照
-  - [Active Record クエリインターフェイス](https://railsguides.jp/active_record_querying.html#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%8B%E3%82%89%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%99)
+- [Active Record クエリインターフェイス](https://railsguides.jp/active_record_querying.html#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%8B%E3%82%89%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%99)
 
 ```rb
 # app/controllers/studetns_controller.rb
@@ -393,8 +393,7 @@ end
 ```
 
 ### newページにセレクトボックス
-- 参照
-  - [Action View Form Helpers](https://guides.rubyonrails.org/form_helpers.html#select-boxes-for-dealing-with-models)
+- 参照: [Action View Form Helpers](https://guides.rubyonrails.org/form_helpers.html#select-boxes-for-dealing-with-models)
 
 ```rb
 # app/views/exam_results/_form.html.erb
@@ -435,7 +434,8 @@ end
 なので、studentとExamResultのindexページを、数ページに区切って表示させたい。
 
 今回はgemのkaminariを用いる。
-参照：[kaminari -github](https://github.com/kaminari/kaminari)
+
+- 参照：[kaminari -github](https://github.com/kaminari/kaminari)
 
 ### kaminariのインストール
 ```rb
@@ -629,8 +629,7 @@ ALTER TABLE ClubStudent MODIFY COLUMN student references
 つまり、原因の根本的な部分を修正できないので、駄目
 
 ## render partial: 部分テンプレ
-- 参照
-  - [render レンダリング(render) - railsドキュメント](http://railsdoc.com/references/render)
+- 参照: [render レンダリング(render) - railsドキュメント](http://railsdoc.com/references/render)
 
 全てのページのヘッダー(上部）に、ログアウトや他のstudentやclubs等のリンクを乗せる
 
@@ -657,8 +656,8 @@ ALTER TABLE ClubStudent MODIFY COLUMN student references
 ```
 
 ## validation
-参照：
-- [Active Record Validations](https://guides.rubyonrails.org/active_record_validations.html)
+- 参照: [Active Record Validations](https://guides.rubyonrails.org/active_record_validations.html)
+- 
 バリデーションは有効なデータだけをDBに保存するのを確実にするための最善策。
 
 ### validate条件

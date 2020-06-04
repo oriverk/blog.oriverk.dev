@@ -7,8 +7,7 @@ image: '/assets/posts/201903/http1.jpg'
 slide: false
 ---
 
-from Qiita: 
-- [3日目(2): HTTPメソッドとCRUDとSQL](https://qiita.com/OriverK/items/19b9e0113fe22afb3017)
+from [Qiita: HTTPメソッドとCRUDとSQL](https://qiita.com/OriverK/items/19b9e0113fe22afb3017)
 
 ## flow to display web page
 
@@ -55,8 +54,7 @@ from Qiita:
 - 分散ハイパーメディアシステムのためのソフトウェアアーキテクチャのスタイルのひとつ。
 - HTTP規格の主要著者のロイ・フィールディングが2000年に初めて提唱
 
-- 参照:
-    - [Architectural Styles and the Design of Network-based Software Architectures](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
+- 参照: [Architectural Styles and the Design of Network-based Software Architectures](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
 
 - [wikipedia「Representational State Transfer」より](https://ja.wikipedia.org/wiki/Representational_State_Transfer)
     - フィールディングのRESTアーキテクチャスタイルの原則に合わせたWebサービスシステム。

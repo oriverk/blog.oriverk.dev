@@ -107,7 +107,8 @@ updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 
 **但し、バッククォートは必須ではない**
 バッククォートよって、テーブル名やカラム名で使用できないように指定されている予約語（Reserved Words）を使えるようにできる。が、使わない方が良い。
-参照：[phpMyAdminのSQLに付加される「'」に似た記号「`」は何？](https://php1st.com/1184/)
+
+- 参照：[phpMyAdminのSQLに付加される「'」に似た記号「`」は何？](https://php1st.com/1184/)
 
 #### PRIMARY KEY、AUTO_INCREMENT
 - PRIMARY KEY
@@ -120,7 +121,7 @@ updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 - CHAR : 文字型（似たようなのには、VARCHARがある。）
 - TIMESTAMP : 日付時刻型（'YYYY-MM-DD HH:MM:SS'）
 - 入力するデータ量に従って、最適なデータ型を選んだ方が、色々と良いようだ。
-    - [参照：MySQL 5.6 リファレンスマニュアル  /  データ型](https://dev.mysql.com/doc/refman/5.6/ja/data-types.html)
+  - [参照：MySQL 5.6 リファレンスマニュアル  /  データ型](https://dev.mysql.com/doc/refman/5.6/ja/data-types.html)
 
 ### DESC :テーブル情報の確認(Describeの略
 ```sql

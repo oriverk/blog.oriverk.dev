@@ -22,43 +22,17 @@ export default function Home() {
         <About />
         <History />
         <Works />
+        <style jsx global>{`
+          .gridContainer:not(:last-child){
+            margin: 2rem auto;
+            border-bottom: 1px solid grey;
+          }
+
+          .gridItem{
+            margin-bottom: .5rem;
+          }  
+        `}</style>
       </Layout>
-      <style jsx global>{`
-        .content {
-          width: 100%;
-          max-width: 1000px;
-          margin: 0 auto 3rem;
-          padding: 0 5%;
-          flex-grow: 1;
-        }
-
-        article {
-          margin-bottom: 1rem;
-        }
-        
-        h2, h3 {
-          text-align: center;
-        }
-
-        .gridContainer:not(:last-child){
-          margin: 2rem auto;
-          border-bottom: 1px solid grey;
-        }
-
-        .gridItem{
-          margin-bottom: .5rem;
-        }
-
-        .contentImg {
-          width: 100%;
-        }
-        
-        ul {
-          margin-top: 7px;
-          margin-bottom: 0px;
-          padding-left: 20px;
-        }
-      `}</style>
     </>
   )
 }

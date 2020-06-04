@@ -94,8 +94,7 @@ end
 **Railsのcontrollerでrenderを省略すると、代わりにapp/views/コントローラ名/アクション名.html.erbを用いる**
 =>ということはcontroller作成コマンドは `rails g controller コントローラ名　アクション名`
 
-### 参考
-- [Ruby on Rails でページを作成する仕組み by @np_misaki氏](https://qiita.com/np_misaki/items/1c5ff951272a91f70e5f)
+- 参照: [Ruby on Rails でページを作成する仕組み by @np_misaki氏](https://qiita.com/np_misaki/items/1c5ff951272a91f70e5f)
 
 - config : アプリケーションの設定情報を格納する
 - /routes.rb : ルーティングの設定を行う

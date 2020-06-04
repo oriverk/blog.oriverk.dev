@@ -8,7 +8,7 @@ image: '/assets/posts/201908/jekyll1.jpg'
 slide: false
 ---
 
-Qiita: [GithubPagesでjekyllを使ってみよう](https://qiita.com/OriverK/items/ce48102c66c9fa97b33e)より
+from [Qiita: GithubPagesでjekyllを使ってみよう](https://qiita.com/OriverK/items/ce48102c66c9fa97b33e)より
 
 GithubPagesJekyllを利用し、静的ページを作成した。
 
@@ -64,8 +64,7 @@ jekyll new oriverk.github.io
 上記に従ったデフォルト状態では、[テーマminimaが適用され、こんなページになる。](https://jekyll.github.io/minima/)
 
 ## jekyllテーマを変更
-- 参照
-  - [jekyll-theme-hydeout 4.0.2](https://rubygems.org/gems/jekyll-theme-hydeout)
+- 参照：[jekyll-theme-hydeout 4.0.2](https://rubygems.org/gems/jekyll-theme-hydeout)
 
 ### テーマをhydeoutに変更してみる
 このテーマはgem版があるので、それを利用することにした。他のテーマは知らない。
@@ -106,8 +105,7 @@ bundle exec jekyll server
 これで、テーマがhydeoutに変更されているはず。
 
 ## エラー
-参照:
-- [GitHub Pages ビルドのトラブルシューティング](https://help.github.com/ja/articles/troubleshooting-github-pages-builds)
+- 参照：[GitHub Pages ビルドのトラブルシューティング](https://help.github.com/ja/articles/troubleshooting-github-pages-builds)
 
 ### Layoutが見つからないエラー
 記事投稿中にターミナルログを消してしまって、エラー文を覚えていないが、
@@ -115,8 +113,8 @@ bundle exec jekyll server
 
 ### Invalid theme folder: _sass
 - 参照
-  - [`Invalid theme folder: _sass` when using Github Pages with remote_theme #7630](https://github.com/jekyll/jekyll/issues/7630)
-  - [Page build failed: Invalid Sass or SCSS](https://help.github.com/en/articles/page-build-failed-invalid-sass-or-scss)
+- [`Invalid theme folder: _sass` when using Github Pages with remote_theme #7630](https://github.com/jekyll/jekyll/issues/7630)
+- [Page build failed: Invalid Sass or SCSS](https://help.github.com/en/articles/page-build-failed-invalid-sass-or-scss)
 
 参照先での議論を見る限り、問題ない・・・・？
 
@@ -163,8 +161,7 @@ bundle exec jekyll server
 ```
 
 ### Googleアナリティクス
-- 参照
-  - [Google Analytics for Jekyll](https://desiredpersona.com/google-analytics-jekyll/)
+- 参照: [Google Analytics for Jekyll](https://desiredpersona.com/google-analytics-jekyll/)
 
 1. まず、GoogleアナリティクスをトラッキングIDを取得する。
 2. `google-analytics.html`を作成
@@ -206,9 +203,9 @@ githubに上げて完了。
 
 ### Twitterカード追加
 - 参照
-  - [サルワカ：【2019年版】Twitterカードとは？使い方と設定方法まとめ](https://saruwakakun.com/html-css/reference/twitter-card)
-  - [Supporting Twitter Cards with Jekyll](http://davidensinger.com/2013/04/supporting-twitter-cards-with-jekyll/)
-  - [Twitter Cards on Jekyll](https://www.brianbunke.com/blog/2017/09/06/twitter-cards-on-jekyll/)
+- [サルワカ：【2019年版】Twitterカードとは？使い方と設定方法まとめ](https://saruwakakun.com/html-css/reference/twitter-card)
+- [Supporting Twitter Cards with Jekyll](http://davidensinger.com/2013/04/supporting-twitter-cards-with-jekyll/)
+- [Twitter Cards on Jekyll](https://www.brianbunke.com/blog/2017/09/06/twitter-cards-on-jekyll/)
 
 1. `_include/twitter-card.html`を作成
 

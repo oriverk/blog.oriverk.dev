@@ -1,21 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
-import PropTypes from 'prop-types'
-import { ThemeProvider } from '@material-ui/core/styles'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import theme from '../plugins/Theme'
 
-export default function MyApp(props) {
-  const { Component, pageProps } = props
-
-  React.useEffect(() => {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector('#jss-server-side')
-    if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles)
-    }
-  }, [])
-
+export default function MyApp({ Component, pageProps }) {
   return (
     <React.Fragment>
       <Head>
@@ -78,6 +64,15 @@ export default function MyApp(props) {
           font-size: 1rem;
         }
 
+        ul, ol {
+          margin: .5rem 0;
+          padding-left: 1.5rem;
+        }
+
+        li a {
+          padding: .75rem 0;
+        }
+
         a{
           color: #50CAF9;
           text-decoration: none;
@@ -89,8 +84,8 @@ export default function MyApp(props) {
 
         code {
           display: inline-block;
-          margin: 0 1rem;
-          padding: 0 .5rem;
+          margin: .1rem .3rem;
+          padding: 0 .4rem;
           background-color: #555;
           color: #EEE;
         }
@@ -103,14 +98,18 @@ export default function MyApp(props) {
           background-color: #1E1E1E;
           width: 100%;
           max-width: 1000px;
-          margin-bottom: 2rem;
+          margin: 1rem 0;
           overflow: auto;
+        }
+
+        picture, video {
+          width: 100%;
         }
         
         source, img {
           display: block;
-          width: 95%;
-          margin: 2rem auto;
+          width: 100%;
+          margin: 1rem 0;
           background-color: #424242;
         }
 
@@ -123,9 +122,4 @@ export default function MyApp(props) {
       `}</style>
     </React.Fragment>
   )
-}
-
-MyApp.propTypes = {
-  Component: PropTypes.elementType.isRequired,
-  pageProps: PropTypes.object.isRequired,
 }

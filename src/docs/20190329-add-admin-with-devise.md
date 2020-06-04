@@ -8,8 +8,7 @@ image: ''
 slide: false
 ---
 
-from Qiita: 
-- [16日目：deviseだけで管理者を追加したい](https://qiita.com/OriverK/items/d7704d23cf74c51503b4)
+from [Qiita: deviseだけで管理者を追加したい](https://qiita.com/OriverK/items/d7704d23cf74c51503b4)
 
 ## Environment
 - 仮想環境: Ubuntu 18.04

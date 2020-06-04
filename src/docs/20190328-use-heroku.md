@@ -8,21 +8,18 @@ image: ''
 slide: false
 ---
 
-from Qiita: 
-- [15日目：アプリをネットに公開したく、Herokuを使ってみた。](https://qiita.com/OriverK/items/03c39ffbccb13c653d92)
-
-Rails製アプリをネットにあげるため、Herokuを使ってみた。
-Herokuとは、PaaSお呼ばれるサービス。
+from [Qiita: アプリをネットに公開したく、Herokuを使ってみた。](https://qiita.com/OriverK/items/03c39ffbccb13c653d92)
 
 ## What is PaaS
-> [［用語］PaaS（Platform as a Service）@"富士通"より](http://jp.fujitsu.com/solutions/cloud/glossary/public-paas.html)
->> アプリケーションを開発・実行するために必要なハードウェア、OSなどの環境をネットワーク経由で利用する形態 。開発・実行環境が提供されるため、企業ごとに独自のサービスを構築できる。従来、企業が業務システムを導入するためには、プラットフォームと呼ばれる開発・運用のための基盤を用意し、システム構築・運用する必要があった。PaaSはクラウド上にあらかじめ用意されているシステム導入のための環境を組み合わせて利用でき、開発や運用にかかる費用・工数、を削減できる。
+> [PaaS - 富士通](http://jp.fujitsu.com/solutions/cloud/glossary/public-paas.html)
+>> アプリケーションを開発・実行するために必要なハードウェア、OSなどの環境をネットワーク経由で利用する形態 。開発・実行環境が提供されるため、企業ごとに独自のサービスを構築できる。
  
 ## Environment
 - 仮想環境: Ubuntu 18.04
 - Ruby：2.51
 - Rails: 5.2.2
-    - gem ：'devise'（ログイン等の機能用）、'kaminari' （ページネーション）
+    - `devise`: for authentication
+    - `kaminari`: for pagination
 - DB: PostgreSQL
 
 ## Content

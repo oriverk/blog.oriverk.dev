@@ -8,8 +8,7 @@ image: '/assets/posts/201903/bootstrap1.jpg'
 slide: false
 ---
 
-from Qiita
-- [5日目：Bootstrapを初めて触ってみた](https://qiita.com/OriverK/items/7cff4e36a2d19759cccb)
+from [Qiita：Bootstrapを初めて触ってみた](https://qiita.com/OriverK/items/7cff4e36a2d19759cccb)
 
 ## Environment
 仮想環境OS: Ubuntu 18.04
@@ -65,8 +64,7 @@ end
 
 ## Bootstrapで見栄え修正
 ### ButostrapのCSSの読み込み
-参照
-- [Bootstrap introduction](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
+- 参照: [Bootstrap introduction](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
 
 ```html
 <!-- app/views/layouts/application.html.erb -->
@@ -118,8 +116,7 @@ end
     - HTML解析前に実行されるべきjsファイルなどはheadタグ内に記述するべし
 
 ### ページ読み込み時間は、ユーザの直帰率等に影響を及ぼす
-- 参考
-  - [一次データ:Does Page Load Time Really Affect Bounce Rate? pingdom](https://royal.pingdom.com/page-load-time-really-affect-bounce-rate/)
+- 参照: [一次データ:Does Page Load Time Really Affect Bounce Rate? pingdom](https://royal.pingdom.com/page-load-time-really-affect-bounce-rate/)
 
 上の一次データによると、ページ読み込み時間3秒までは直帰率は10%弱だが、5秒で38%、7秒で50%を超える
 

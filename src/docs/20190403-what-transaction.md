@@ -8,12 +8,9 @@ image: ''
 slide: false
 ---
 
-from Qiita: 
-- [18日目: トランザクションって](https://qiita.com/OriverK/items/2359c9159b55c74f15d1)
+from [Qiita: トランザクションって](https://qiita.com/OriverK/items/2359c9159b55c74f15d1)
 
-- 参考
-  - [「トランザクション」とは何か？を超わかりやすく語ってみた！](https://qiita.com/zd6ir7/items/6568b6c3efc5d6a13865)
-    - 解説用の図が分かりやすかった。
+- 参照: [「トランザクション」とは何か？を超わかりやすく語ってみた！](https://qiita.com/zd6ir7/items/6568b6c3efc5d6a13865)
 
 ## What is Transaction like?
 コンピュータ内で実行される、分けることのできない一連の情報処理の一単位。
@@ -29,8 +26,7 @@ from Qiita:
 
 ## 実際に動かしてみる
 ### DB内で操作
-- 参照
-  - [13.3.1 START TRANSACTION、COMMIT、および ROLLBACK 構文　-MySQLリファレンス](https://dev.mysql.com/doc/refman/5.6/ja/commit.html)
+- 参照: [13.3.1 START TRANSACTION、COMMIT、および ROLLBACK 構文　-MySQLリファレンス](https://dev.mysql.com/doc/refman/5.6/ja/commit.html)
 
 MySQLはデフォルトで、自動コミットモードが有効になった状態で動作し、実行するとすぐに、ディスクに格納されて永続的になります。この変更はロールバックできない。
 

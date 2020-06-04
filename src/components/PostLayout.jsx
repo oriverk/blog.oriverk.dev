@@ -74,6 +74,14 @@ export function PostLayout({ children }) {
           background-color: #424242;
           outline: none;
         }
+
+        @media ( min-width: 1280px ){
+          /* for pc */
+          footer button {
+            left: 4rem;
+            bottom: 4rem;
+          }
+        }
       `}</style>
     </React.Fragment>
   )

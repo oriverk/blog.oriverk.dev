@@ -8,8 +8,7 @@ image: '/assets/codr700.jpg'
 slide: false
 ---
 
-from Qiita
-- [Twitterにコードを身えばよく投稿したい](https://qiita.com/OriverK/items/df41ec6b57b40a06a64d#comments)
+from [Qiita: Twitterにコードを身えばよく投稿したい](https://qiita.com/OriverK/items/df41ec6b57b40a06a64d#comments)
 
 ## はじめに
 ### きっかけ（こんな呟きを見かけた
@@ -90,8 +89,7 @@ gem 'meta-tags'
 gem 'aws-sdk-s3' # aws s3
 ```
 
-参照:
-- [kpumuk/meta-tags](https://github.com/kpumuk/meta-tags)
+- 参照: [kpumuk/meta-tags](https://github.com/kpumuk/meta-tags)
 
 ### rails.credentials.yml
 当初は.`gitignore`と`dotenv`等を使っていたが、作成途中でRails5.2からの`rails.credentials.yml`を利用した。復号化には`/config/master.key`を利用。
@@ -216,8 +214,7 @@ Herokuでは画像保持がされないので、作成画像をAWS S3に保存�
 4. Active Storageを通して、AWS S3に保存
 
 ### Active Storage
-参照
-- [Active Storage](https://railsguides.jp/active_storage_overview.html)
+- 参照: [Active Storage](https://railsguides.jp/active_storage_overview.html)
   - Rail5.2からの機能で、今までのcarrievaveやpaperclip等を使わずに、クラウドストレージ等へのアップロードが容易になる。今回はAWS S3を使った。
 
 ```sh
@@ -305,8 +302,8 @@ gem 'mini_magick'
 
 ### Base64デコード
 - 参照
-  - [python-twitter で BASE64 形式の画像をツイートする](https://qiita.com/maguro_tuna/items/184f63e37f3724f18e33)
-  - [base64でエンコードされた画像をActive Storageで保存する](https://qiita.com/ozin/items/5ec81a4b126b8ebf7a96)
+- [python-twitter で BASE64 形式の画像をツイートする](https://qiita.com/maguro_tuna/items/184f63e37f3724f18e33)
+- [base64でエンコードされた画像をActive Storageで保存する](https://qiita.com/ozin/items/5ec81a4b126b8ebf7a96)
 
 ```rb
 # app/models/post.rb
@@ -354,8 +351,8 @@ AWS上での登録、設定、バケット作成等は割愛。
 
 #### service_url()とurl_for()
 - 参照
-  - [service_url() from api.rubyonrails](https://api.rubyonrails.org/classes/ActiveStorage/Variant.html#method-i-service_url)
-  - [url_for() from rails guide](https://railsguides.jp/active_storage_overview.html#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%99%E3%82%8B)
+- [service_url() from api.rubyonrails](https://api.rubyonrails.org/classes/ActiveStorage/Variant.html#method-i-service_url)
+- [url_for() from rails guide](https://railsguides.jp/active_storage_overview.html#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%99%E3%82%8B)
 
 基本的にはどちらも、ActiveStorageに保存したデータのUrlを取得するメソッドの様だ。
 どちらもセキュリティの為にリンクの有効期限が短いみたいだが、違いが分からなかった。今回はTweetボタン押下し、Tweetした際にog:imageとして表示されればいい。
@@ -372,9 +369,9 @@ AWS上での登録、設定、バケット作成等は割愛。
 [TwitterDeveloperAccount](https://developer.twitter.com/content/developer-twitter/ja.html)が必要。割愛。
 
 - 参照
-  - [gem 'omniauth-twitter'　github](https://github.com/arunagw/omniauth-twitter)
-  - [[*Rails*] deviseの使い方（rails5版）](https://qiita.com/cigalecigales/items/f4274088f20832252374)
-  - [ominiauth脆弱性に対するクックパドによるパッチ]](https://github.com/cookpad/omniauth-rails_csrf_protection)
+- [gem 'omniauth-twitter'　github](https://github.com/arunagw/omniauth-twitter)
+- [deviseの使い方（rails5版）](https://qiita.com/cigalecigales/items/f4274088f20832252374)
+- [ominiauth脆弱性に対するクックパドによるパッチ]](https://github.com/cookpad/omniauth-rails_csrf_protection)
 
 ```rb
 # app/models/user.rb

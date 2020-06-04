@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { PostLayout } from '../../components/PostLayout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 import { HatenaIcon, TwitterIcon } from '../../utils/svgIcon'
+import { IconButton } from '../../utils/utils'
 
 const manifest = require('../../../public/manifest.json')
 
@@ -48,20 +49,18 @@ export default function Post({ postData }) {
           <h1>{postData.title}</h1>
           <div>
             <time dateTime={postData.date}>posted on: {postData.date}</time>
-            <wbr />
-            <span>{tags.map((tag) => (<code key={tag}><Link href={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
+            <br />
+            <span className='tags'>{tags.map((tag) => (<code key={tag}><Link href={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
           </div>
-          <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+          <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} className='markdonw' />
           {/* <div>`${postData.jsx}`</div> */}
           <div className='sns'>
-            <button className='twitter'>
-              <a href={`https://twitter.com/share?text=${postData.title}&hashtags=react,nextjs&url=https://next-portfolio-blue.now.sh/posts/${postData.id}&related=not_you_die`}
-                target='_blank' rel='noopener noreferrer'><TwitterIcon /></a>
-            </button>
-            <button className='hatena'>
-              <a href={`https://b.hatena.ne.jp/entry/https://next-portfolio-blue.now.sh/posts/${postData.id}`} className='hatena-bookmark-button' data-hatena-bookmark-layout='touch-counter'
-                title={postData.title} target='_blank' rel='noopener noreferrer'><HatenaIcon /></a>
-            </button>
+            <IconButton label='twitter share button' href={`https://twitter.com/share?text=${postData.title}&hashtags=react,nextjs&url=https://next-portfolio-blue.now.sh/posts/${postData.id}&related=not_you_die`}>
+              <TwitterIcon />
+            </IconButton>
+            <IconButton label='hatena share button' href={`https://b.hatena.ne.jp/entry/https://next-portfolio-blue.now.sh/posts/${postData.id}`}>
+              <HatenaIcon />
+            </IconButton>
           </div>
         </article>
       </PostLayout>
@@ -73,9 +72,15 @@ export default function Post({ postData }) {
           padding: 5%;
           flex-grow: 1;
         }
+
+        .content .tags {
+          display: block;
+          text-align: center;
+        }
         
         h1{
           font-size: 1.5rem;
+          text-decoration: underline #50CAF9;
         }
 
         .sns {
@@ -83,14 +88,6 @@ export default function Post({ postData }) {
           left: 50%;
           transform: translate(-50%, 0);
           margin: 1rem 0;
-        }
-        .twitter, .hatena {
-          float: left;
-          margin: 0 .5rem;
-          fill: #FFF;
-          background-color: transparent;
-          border: transparent;
-          border-radius: .5rem;
         }
       `}</style>
     </>

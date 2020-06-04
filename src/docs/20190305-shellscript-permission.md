@@ -91,8 +91,8 @@ ls -la test.sh
 #また、r＝read権限、w=write権限、ここでは見えないがx=execute権限(実行許可）を指す。
 ```
 
-### 権限編集方法
-`chmod=change mode`
+### chmod=change mode
+権限編集モード
 
 ```sh
 # すべてのユーザーに実行権限を与える／禁止する。

@@ -1,25 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
+import { IconButton, Divider } from '../utils/utils'
 import {
   GithubIcon, LinkedInIcon, QiitaIcon, TwitterIcon, WantedlyIcon,HomeIcon, AboutIcon, HistoryIcon, WorksIcon, BlogIcon
 } from '../utils/svgIcon'
-
-export const Divider = () => {
-  return (
-    <>
-      <hr />
-      <style jsx>{`
-        hr {
-          border: none;
-          height: 1px;
-          margin: 0;
-          flex-shrink: 0;
-          background-color: rgba(255, 255, 255, 0.12);
-        }  
-      `}</style>
-    </>
-  )
-}
 
 const ListItem = React.forwardRef((props, ref) => {
   return (
@@ -44,28 +28,6 @@ const ListItem = React.forwardRef((props, ref) => {
   )
 })
 
-const IconButton = (props) => {
-  return (
-    <>
-      <a href={props.href} aria-label={props.label} target='_blank' rel='noopener noreferrer'>
-        {props.children}
-      </a>
-      <style jsx>{`
-        a {
-          display: inline-block;
-          transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-          border-radius: 50%;
-          fill: #50CAF9;
-          float: left;
-        }
-        a:hover{
-          background-color: rgba(255,255,255,0.08);
-        }
-      `}</style>
-    </>
-  )
-}
-
 export const DrawerLists = (props) => {
   return (
     <React.Fragment>
@@ -85,19 +47,19 @@ export const DrawerLists = (props) => {
             </ListItem>
           </Link>
         )}
-        <Link href='#about' key='about' passHref>
+        <Link href='/#about' key='about' passHref>
           <ListItem>
             <div className='listItemIcon'><AboutIcon /></div>
             <span>About</span>
           </ListItem>
         </Link>
-        <Link href='#history' key='history' passHref>
+        <Link href='/#history' key='history' passHref>
           <ListItem>
             <div className='listItemIcon'><HistoryIcon /></div>
             <span>History</span>
           </ListItem>
         </Link>
-        <Link href='#works' key='works' passHref>
+        <Link href='/#works' key='works' passHref>
           <ListItem>
             <div className='listItemIcon'><WorksIcon /></div>
             <span>Works</span>
@@ -122,13 +84,13 @@ export const DrawerLists = (props) => {
       </div>
       <style jsx>{`
         .profileImgContainer {
-          text-align: center;
           margin: 1rem;
+          border-radius: 50%;
         }
 
         .profileImg {
+          margin: 0 auto;
           width: 80%;
-          border-radius: 50%;
         }
 
         .list {

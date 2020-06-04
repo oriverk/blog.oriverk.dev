@@ -16,7 +16,7 @@ from Qiita:
 - 仮想環境OS: Ubuntu 18.04
 - Ruby：2.51
 - Rails: 5.2.2
-    -主使用gem : devise([参照](https://github.com/plataformatec/devise))
+  - [devise](https://github.com/plataformatec/devise))
 - DB: PostgreSQL
 
 ## flow

@@ -8,8 +8,7 @@ image: '/assets/posts/201905/cebu1.jpg'
 slide: false
 ---
 
-from Qiita: 
-- [プログラミングを2か月間、日本人エンジニアの下でマンツーマンで学んできた](https://qiita.com/OriverK/items/30d8941c7799c9aa6dfd)
+from [Qiita: プログラミングを2か月間、日本人エンジニアの下でマンツーマンで学んできた](https://qiita.com/OriverK/items/30d8941c7799c9aa6dfd)
 
 Webエンジニアに転職するために、独りで勉強を進めていましたが、
 独学のデメリットを埋めるべく、[Value Space of Cebu](http://value-space.net/)に参加してきました。
@@ -52,7 +51,7 @@ Webエンジニアに転職するために、独りで勉強を進めていま�
 </picture>
 
 ##### Ruby認定試験を用いた勉強
-参照：[Ruby認定試験のアウトプット](https://qiita.com/search?utf8=%E2%9C%93&sort=&q=OriverK+Ruby%E8%AA%8D%E5%AE%9A%E8%A9%A6%E9%A8%93)
+- 参照：[Ruby認定試験のアウトプット](https://qiita.com/search?utf8=%E2%9C%93&sort=&q=OriverK+Ruby%E8%AA%8D%E5%AE%9A%E8%A9%A6%E9%A8%93)
 
 以下は例(以下省略)
 
@@ -78,9 +77,10 @@ BootstrapやDBを組み合わせ、生徒データ情報一覧になりました
   <img src="/assets/posts/201905/cebu3.png" alt="table">
 </picture>
 　
-<picture>
-  <img src="/assets/posts/201905/cebu4.gif" alt="student data app" />
-</picture>
+<video autoplay loop muted playsinline>  
+  <source src='/assets/posts/201905/cebu4.webm' type='video/webm'>  
+  <img src='/assets/posts/201905/cebu4.gif' alt='student data' />
+</video>  
 
 一部、Bootstrap等を適用してないページがあるが、気にしない。
 
@@ -106,9 +106,10 @@ BootstrapやDBを組み合わせ、生徒データ情報一覧になりました
   <img src="/assets/posts/201905/cebu5.png" alt="table" />
 </picture>
 
-<picture>
-  <img src="/assets/posts/201905/cebu6.gif" alt="ticket sale app" />
-</picture>
+<video autoplay loop muted playsinline>  
+  <source src='/assets/posts/201905/cebu6.webm' type='video/webm'>  
+  <img src='/assets/posts/201905/cebu6.gif' alt='ticket sale app' />
+</video>  
 
 JS等、追加で勉強しなければと感じています。
 
@@ -137,11 +138,10 @@ JS等、追加で勉強しなければと感じています。
 - 転職サイトなど（そういや転職について何も知らない）
 
 ## リンク物置
-- [Value Space of Cebu](http://value-space.net/)
-- 講師
-    - [＠monkey_d_george](https://twitter.com/monkey_d_george)
-    - 講師ポートフォリオサイト　[プログラミング道場](https://programming-dojo.com/%E7%A7%81%E3%81%AE%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA/)
-- 私のGithubアカウント
-    - [oriverk](https://github.com/oriverk)
+- 講師: [＠monkey_d_george](https://twitter.com/monkey_d_george)
+  - [Value Space of Cebu](http://value-space.net/)
+  - [プログラミング道場](https://programming-dojo.com/%E7%A7%81%E3%81%AE%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA/)
+- 私: https://oriverk.dev
+  - [Github Acount](https://github.com/oriverk)
 
 注）『転職』といった形で恩を返す？事が出来ないので、今回の投稿となりました。

@@ -26,8 +26,7 @@ IE環境下ではSVG周辺でデザインが崩れることが確認されたが
 ## Update Ruby-version to 2.7.0
 Ruby用に作成している仮想環境のアップデートの序にRubyのバージョンを最新版に上げた。
 
-- 参考
-  - [永久保存版！？伊藤さん式・Railsアプリのアップグレード手順](https://qiita.com/jnchito/items/0ee47108972a0e302caf)
+- 参照: [永久保存版！？伊藤さん式・Railsアプリのアップグレード手順](https://qiita.com/jnchito/items/0ee47108972a0e302caf)
 
 - エラー内容
   - 他のgemやミドルウェアとの依存関係に由来するもの
@@ -36,10 +35,10 @@ Ruby用に作成している仮想環境のアップデートの序にRubyのバ
 ## Dark theme
 前回までは、基本グレーで背景に青、差し色でオレンジを使用していた。
 
-- 参考
-  - [Material Design Dark theme](https://material.io/design/color/dark-theme.html)
-  - [Color Tool](https://material.io/resources/color/#!/?view.left=0&view.right=1&primary.color=121212&secondary.color=7bd0e7)
-  - [DarkModeのデザインを中心とした色彩設計の考え方](https://kudakurage.hatenadiary.com/entry/2019/07/29/083000)
+- 参照
+- [Material Design Dark theme](https://material.io/design/color/dark-theme.html)
+- [Color Tool](https://material.io/resources/color/#!/?view.left=0&view.right=1&primary.color=121212&secondary.color=7bd0e7)
+- [DarkModeのデザインを中心とした色彩設計の考え方](https://kudakurage.hatenadiary.com/entry/2019/07/29/083000)
 
 ## Add top-image and others
 トップ画面にプロフィール画像を追加し、またサイトリンクQRコードを表示されるように、javascriptを作成した。
