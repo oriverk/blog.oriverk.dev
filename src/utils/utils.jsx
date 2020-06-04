@@ -8,20 +8,19 @@ export function NoImage (){
       </div>
       <style jsx>{`
         .parent {
+          padding: 1rem auto;
           height: 100%;
-          background-color:#242657;
-          border: 1px solid grey;
+          width: 100%;
+          margin-bottom: 1rem;
         }
         .child {
+          border: 1px solid grey;
+          background-color: #242657;
           padding: .5rem;
+          color: #FFF;
           text-align: center;
-          position: relative;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%,-50%);
-          color:#FFF;
-          font-size:1.5rem;
-          font-weight:bold;
+          font-size: 1.5rem;
+          font-weight: bold;
         }
       `}</style>
     </>

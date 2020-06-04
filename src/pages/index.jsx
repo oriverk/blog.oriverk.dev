@@ -22,16 +22,6 @@ export default function Home() {
         <About />
         <History />
         <Works />
-        <style jsx global>{`
-          .gridContainer:not(:last-child){
-            margin: 2rem auto;
-            border-bottom: 1px solid grey;
-          }
-
-          .gridItem{
-            margin-bottom: .5rem;
-          }  
-        `}</style>
       </Layout>
     </>
   )

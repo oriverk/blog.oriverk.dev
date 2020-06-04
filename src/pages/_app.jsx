@@ -69,8 +69,8 @@ export default function MyApp({ Component, pageProps }) {
           padding-left: 1.5rem;
         }
 
-        li a {
-          padding: .75rem 0;
+        ul li{
+          padding-bottom: 1rem;
         }
 
         a{

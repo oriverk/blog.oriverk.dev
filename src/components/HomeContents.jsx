@@ -1,7 +1,41 @@
 import React from 'react'
 import Link from 'next/link'
-import Grid from '@material-ui/core/Grid'
 import { NoImage } from '../utils/utils'
+import css from 'styled-jsx/css'
+
+const containerStyle = css`
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: .5rem 0 2rem;
+    padding-bottom: 1rem;
+  }
+  .container:not(:last-child){
+    border-bottom: 1px solid grey;
+  }
+  .left, .right {
+    width: 100%;
+  }
+  @media( min-width: 1280px ){
+    .container {
+      flex-direction: row;
+    }
+    .container:not(:last-child){
+      padding-bottom: 2rem;
+    }
+    .left {
+      width: 40%;
+      margin-right: 5%;
+    }
+    .right {
+      width: 55%;
+    }
+    .contentImg {
+      margin: 0;
+    }
+  }
+`
 
 export function Top() {
   return (
@@ -52,23 +86,23 @@ export function About() {
     <>
       <section id='about' className='content'>
         <h2>About</h2>
-        <Grid container spacing={4}>
-          <Grid item md={12} lg={5}>
+        <div className='container'>
+          <div className='left'>
             <picture>
               <source srcSet='/assets/LongRidge500.webp' type='image/webp' className='contentImg' />
               <img src='/assets/LongRidge500.jpg' alt='the secenary from Long-Ridge-Lookout in Adelaide' className='contentImg' />
             </picture>
-            <p style={{ textAlign: 'center' }}><small>This is in Adelaide, Australia. My selfie is little</small></p>
-          </Grid>
-          <Grid item md={12} lg={7}>
+            <p style={{ textAlign: 'center' }}><small>My selfie is little...</small></p>
+          </div>
+          <div className='right'>
             <p>My name is Kawano Yudai.</p>
             <p>I graduated from Miyazaki Universiy as Bachelor of Agriculture.</p>
-            <p>I belonged to agricultural engineering lablatory and studied crop row detecting tech by image processing with C++ and OpenCV.</p>
-            <p>After I quited egg company, I stayed at Australia as working holiday. Then I studied Ruby and other tech like database, website system.</p>
+            <p>In agricultural engineering lablatory I studied crop row detecting tech by image processing with C++ and OpenCV.</p>
+            <p>After egg company, I stayed at Australia as working holiday. Then I studied Ruby and other tech like database, website system.</p>
             <p>So, I'm interested in both nature and machinery</p>
-            <p style={{ color: '#F48FB1' }}><em>Now, I'm seeking job as developer. Please contact me from left drawer.</em></p>
-          </Grid>
-        </Grid>
+            <p style={{ color: '#F48FB1' }}><em>Now, I'm seeking job as developer. Please contact me.</em></p>
+          </div>
+        </div>
       </section>
       <style jsx>{`
         .content {
@@ -86,6 +120,9 @@ export function About() {
           margin: 0 auto .5rem;
         }
       `}</style>
+      <style jsx>
+        {containerStyle}
+      </style>
     </>    
   );
 }
@@ -97,45 +134,45 @@ export function History() {
         <h2>History</h2>
         <article>
           <h3>Experience</h3>
-          <Grid container spacing={2} className='gridContainer'>
-            <Grid item xs={12} sm={5} >
+          <div className='container'>
+            <div className='left'>
               <NoImage />
-            </Grid>
-            <Grid item xs={12} sm={7}>
-              <small>2017/04 - 2018/08 : </small>
+            </div>
+            <div className='right'>
+              <span>2017/04 - 2018/08</span>
               <br /><b>Egg company in Miyazaki</b>
-              <br />Production Management
-            </Grid>
-          </Grid>
+              <br /><span>Production Management</span>
+            </div>
+          </div>
         </article>
         <article>
           <h3>Education</h3>
-          <Grid container spacing={2} className='gridContainer'>
-            <Grid item xs={12} sm={5} className='gridItem'>
+          <div className='container'>
+            <div className='left'>
               <picture>
                 <source srcSet='/assets/weeding500.webp' type='image/webp' className='contentImg' />
                 <img src='/assets/weeding500.jpg' alt='photograph of weeding robot' className='contentImg' />
               </picture>
-            </Grid>
-            <Grid item xs={12} sm={7} className='gridItem'>
-              <small>2015/04 - 2017/03 :</small>
+            </div>
+            <div className='right'>
+              <span>2015/04 - 2017/03</span>
               <br /><b>Agricultural Enginnering Lab.</b>
-              <br />Agricultural crop row detecting tech by image processing
-            </Grid>
-          </Grid>
-          <Grid container spacing={2} className='gridContainer'>
-            <Grid item xs={12} sm={5} className='gridItem'>
+              <br /><span>Agricultural crop row detecting tech by image processing</span>
+            </div>
+          </div>
+          <div className='container'>
+            <div className='left'>
               <picture>
                 <source srcSet='/assets/miyazakiUniv.webp' type='image/webp' className='contentImg' />
                 <img src='/assets/miyazakiUniv.jpg' alt='miyazaki university' className='contentImg' />
               </picture>
-            </Grid>
-            <Grid item xs={12} sm={7} className='gridItem'>
-              <small>2013/04 - 2017/03 :</small>
+            </div>
+            <div className='right'>
+              <span>2013/04 - 2017/03 :</span>
               <br /><b>Faculty of Agriculture <wbr />in Miyazaki Univ.</b>
-              <br />Majored Botanics and Agricultural Engineering
-            </Grid>
-          </Grid>
+              <br /><span>Majored Botanics and Agricultural Engineering</span>
+            </div>
+          </div>
         </article>
       </section>
       <style jsx>{`
@@ -158,6 +195,9 @@ export function History() {
           margin-bottom: 1rem;
         }
       `}</style>
+      <style jsx>
+        {containerStyle}
+      </style>
     </>
   )
 }
@@ -168,90 +208,90 @@ export function Works() {
       <section id='works' className='content'>
         <h2>Works</h2>
         <article>
-          <Grid container spacing={2} className='gridContainer'>
-            <Grid item xs={12} sm={5} className='gridItem'>
+          <div className='container'>
+            <div className='left'>
               <picture>
                 <source srcSet='/assets/prtsc-500.webp' type='image/webp' className='contentImg' />
                 <img src='/assets/prtsc-500.jpg' alt='screen-shot' className='contentImg' />
               </picture>
-            </Grid>
-            <Grid item xs={12} sm={7} className='gridItem'>
+            </div>
+            <div className='right'>
               <b>This portfolio site as resume and tech blog</b>
-              <br /> :to learn modern JS
-              <br />with React, Next.js
+              <br /><span> :to learn modern JS</span>
+              <br /><span>with React, Next.js</span>
               <ul>
                 <li><Link href='/posts/[id]' as='/posts/20200526-next-portfolio'><a>Post about this site</a></Link></li>
                 <li><a href='https://github.com/oriverk/next-portfolio' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
               </ul>
-            </Grid>
-          </Grid>
-          <Grid container spacing={2} className='gridContainer'>
-            <Grid item xs={12} sm={5} className='gridItem'>
+            </div>
+          </div>
+          <div className='container'>
+            <div className='left'>
               <picture>
                 <source srcSet='/assets/posts/202003/miyazaki-oss1.webp' type='image/webp' className='contentImg' />
                 <img src='/assets/posts/202003/miyazaki-oss1.jpg' alt='screen-shot' className='contentImg' />
               </picture>
-            </Grid>
-            <Grid item xs={12} sm={7} className='gridItem'>
+            </div>
+            <div className='right'>
               <b>Miyazaki COVID-19 Task Force site</b>
-              <br /> ( OSS website )
-              <br />with Vue.js, TypeScript
+              <br /><span>( OSS website )</span>
+              <br /><span>with Vue.js, TypeScript</span>
               <ul>
                 <li><Link href='/posts/[id]' as='/posts/20200329-joined-miyazaki-corona-oss'><a>Blog: Joined OSS group for COVID-19 in Miyazaki</a></Link></li>
                 <li><a href='https://github.com/oriverk/covid19' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
                 <li><a href='https://covid19-miyazaki.netlify.app/' target='_blank' rel='noopener noreferrer' >The site on Netlify</a></li>
               </ul>
-            </Grid>
-          </Grid>
-          <Grid container spacing={2} className='gridContainer'>
-            <Grid item xs={12} sm={5} className='gridItem'>
+            </div>
+          </div>
+          <div className='container'>
+            <div className='left'>
               <picture>
                 <source srcSet='/assets/codr500.webp' type='image/webp' className='contentImg' />
                 <img src='/assets/codr500.jpg' alt='screen-shot' className='contentImg' />
               </picture>
-            </Grid>
-            <Grid item xs={12} sm={7} className='gridItem'>
+            </div>
+            <div className='right'>
               <b>Coder0</b>
-              <br /> :to share code with syntax-highlight
-              <br />with RubyonRails, PostgreSQL, S3
+              <br /><span> :to share code with syntax-highlight</span>
+              <br /><span>with RubyonRails, PostgreSQL, AWS S3</span>
               <ul>
                 <li><Link href='posts/[id]' as='/posts/20191129-post-code2twitter'><a>Blog: Wanna Share code on Twitter</a></Link></li>
                 <li><a href='https://github.com/oriverk/Codr' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
               </ul>
-            </Grid>
-          </Grid>
-          <Grid container spacing={2} className='gridContainer'>
-            <Grid item xs={12} sm={5} className='gridItem'>
+            </div>
+          </div>
+          <div className='container'>
+            <div className='left'>
               <picture>
                 <source srcSet='/assets/githubPages1st500.webp' type='image/webp' className='contentImg' />
                 <img src='/assets/githubPages1st500.jpg' alt='screen-shot' className='contentImg' />
               </picture>
-            </Grid>
-            <Grid item xs={12} sm={7} className='gridItem'>
+            </div>
+            <div className='right'>
               <b>GithubPages</b>
-              <br /> :My 1st GithubPages.
-              <br />with Ruby, Jekyll
+              <br /><span>:My 1st GithubPages</span>
+              <br /><span>with Ruby, Jekyll</span>
               <ul>
                 <li><Link href='/posts/[id]' as='/posts/20190818-use-jekyll'><a>Blog: buid GithubPages with Ruby + Jekyll</a></Link></li>
                 <li><a href='https://github.com/oriverk/oriverk.github.io' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
               </ul>
-            </Grid>
-          </Grid>
-          <Grid container spacing={2} className='gridContainer'>
-            <Grid item xs={12} sm={5} className='gridItem'>
+            </div>
+          </div>
+          <div className='container'>
+            <div className='left'>
               <NoImage />
-            </Grid>
-            <Grid item xs={12} sm={7} className='gridItem'>
+            </div>
+            <div className='right'>
               <b>Ticket sales System</b>
-              <br /> :from the 2018 Autumn FE exam
-              <br />with RubyonRails, PostgreSQL, Heroku
+              <br /><span> :from the 2018 Autumn FE exam</span>
+              <br /><span>with RubyonRails, PostgreSQL, Heroku</span>
               <ul>
                 <li><Link href='/posts/[id]' as='/posts/20190829-fe-exam'><a>Post on Qiita</a></Link></li>
                 <li><a href='https://github.com/oriverk/ConcertTicket' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
-                <li><a href='https://www.jitec.ipa.go.jp/1_04hanni_sukiru/mondai_kaitou_2018h30_2/2018h30a_fe_pm_qs.pdf'>IPA FE exam</a></li>
+                <li><a href='https://www.jitec.ipa.go.jp/1_04hanni_sukiru/mondai_kaitou_2018h30_2/2018h30a_fe_pm_qs.pdf' target='_blank' rel='noopener noreferrer'>IPA FE exam</a></li>
               </ul>
-            </Grid>
-          </Grid>
+            </div>
+          </div>
         </article>
       </section>
       <style jsx>{`
@@ -270,6 +310,9 @@ export function Works() {
           margin-bottom: 1rem;
         }
       `}</style>
+      <style jsx>
+        {containerStyle}
+      </style>
     </>  
   );
 }
