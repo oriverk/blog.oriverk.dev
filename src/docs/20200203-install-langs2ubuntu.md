@@ -8,14 +8,14 @@ image: ''
 slide: false
 ---
 
-from Gist: [oriverk/InstallLanguage2Ubuntu.md](https://gist.github.com/oriverk/5d0352c7ca673883d9326e5ce0fb2ae1)
+from [Gist: oriverk/InstallLanguage2Ubuntu.md](https://gist.github.com/oriverk/5d0352c7ca673883d9326e5ce0fb2ae1)
 
-# Ruby on Rails
-## References
-1. [WSL+Ubuntuで、ruby on rails6.00の環境を整える](https://qiita.com/BlindSoup/items/8ed98b5ba15d1d6c6a7c)
-2. [How to Install Ruby 2.6 & Rails 6 on Ubuntu 19.04](https://www.techiediaries.com/install-ruby-and-ruby-on-rails-ubuntu/)
+## Ruby on Rails
+- Refference
+  - [WSL+Ubuntuで、ruby on rails6.00の環境を整える](https://qiita.com/BlindSoup/items/8ed98b5ba15d1d6c6a7c)
+  - [How to Install Ruby 2.6 & Rails 6 on Ubuntu 19.04](https://www.techiediaries.com/install-ruby-and-ruby-on-rails-ubuntu/)
 
-## Install latest version
+### Install latest version
 ```sh
 # install in one time
 sudo apt install autoconf bison build-essential libssl-dev libreadline-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev
@@ -48,7 +48,7 @@ gem install rails --no-document
 rails webpacker:install
 ```
 
-## Install RubyonRails by "apt install"
+### Install RubyonRails by "apt install"
 ```sh
 sudo apt install -y ruby ruby-dev build-essential
 sudo apt install yarn
@@ -61,7 +61,7 @@ sudo gem install rails
   - If do not build Debian, build~ is not needed
   - [Reference](https://packages.debian.org/ja/sid/build-essential)
 
-# Nodejs
+## Nodejs
 rails6 uses webpacker, which needs nodejs
 
 ```sh
@@ -82,7 +82,7 @@ exec $SHELL -l
 node -v
 ```
 
-# Rust
+## Rust
 I tried this installation and coded a little when discord changed golang to rust.
 
 ```sh
@@ -94,7 +94,8 @@ curl https://sh.rustup.rs -sSf | sh
 # add the pass
 source $HOME/.cargo/env
 ```
-# Java
+
+## Java
 ```sh
 sudo apt update
 sudo apt install git
@@ -103,6 +104,3 @@ sudo apt install openjdk-11-jdk
 # confirmation
 java --version
 ```
-
-# PHP
-# Python

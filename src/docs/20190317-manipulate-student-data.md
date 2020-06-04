@@ -14,13 +14,13 @@ from Qiita
 - [11日目(1)、12日目：マスターデータ。ページUIの編集、ページャ導入](https://qiita.com/OriverK/items/93e864c070425f9bc9cd)
 - [14日目：Scaffoldで作成したサイトにgem devise等を組み合わせていく](https://qiita.com/OriverK/items/a2830d992d8d75c53b38)
 
-# 9日目
-今回の授業は、やたらエラーや勘違いに悩まされた。
+## 9日目
 
 - rails newで動かない不具合
     - stop springで解消
 - ruby側で整数型をintと書き間違えることによるエラー
-    - **rubyの整数型はinteger**  , mysqlはint (C++経験上、intの方が馴染み深い
+    - **rubyの整数型はinteger**
+    - mysqlはint (C++経験上、intの方が馴染み深い
 - rails db:migrateコマでのエラー
     - 中間テーブルを先に作ってしまった為。
     - 中間テーブルは主テーブルのid等参照するので、作成は一番後。
@@ -35,12 +35,12 @@ config.vm.provider "virtualbox" do |vb
 end
 ```
 
-# 使用環境
-仮想環境OS: Ubuntu 18.04
-Ruby：2.51
-Rails:5.2.2
+## Environment
+- 仮想環境OS: Ubuntu 18.04
+- Ruby：2.51
+- Rails:5.2.2
 
-## 作成データ
+### 作成データ
 - テーブル
   - student (id, name,email, gender, age, opinion, updated_at, created_at)
   - ExamResult (id, student, subject, name, score, updated_at, created_at)
@@ -51,7 +51,7 @@ Rails:5.2.2
       - 中間テーブル
   - Club (id, name, updated_at, created_at)
 
-# テーブル同士の関連性
+## テーブル同士の関連性
 
 <picture>
   <source srcSet="/assets/posts/201905/cebu3.webp" type="image/webp">
@@ -59,8 +59,8 @@ Rails:5.2.2
 </picture>
 
 
-# 準備
-## rails new
+## 準備
+### rails new
 ```sh
 rails new self_univ -d mysql
 ```
@@ -79,14 +79,14 @@ password:
 
 `rails db:create`
 
-# scaffold(本段階
+## scaffold(本段階
 **scaffoldではcontrollerとmodelが同時に作成される)**
 **rubyの整数型はinteger**
 **中間テーブルは一番最後に作成**
 **中間テーブルのうち、主キーを参照するcolumnをreferenceで指定**
 => 自動で、bigintに設定される
 
-# rails g scaffoldで作成
+## rails g scaffold
 ```sh
 rails generate scaffold Student name:string email:string gender:integer age:integer opinion:text
 rails generate scaffold Subject name:string max_score:integer
@@ -98,10 +98,10 @@ rails generate scaffold ClubStudent student:references club:references name:stri
 
 `rails db:migrate`
 
-## テーブル同士の関連性を定義
+### テーブル同士の関連性を定義
 - 参照
-  - [Active Record Associations](https://guides.rubyonrails.org/association_basics.html)
-  - [Active Record の関連付け](https://railsguides.jp/association_basics.html#belongs-to%E9%96%A2%E9%80%A3%E4%BB%98%E3%81%91)
+- [Active Record Associations](https://guides.rubyonrails.org/association_basics.html)
+- [Active Record の関連付け](https://railsguides.jp/association_basics.html#belongs-to%E9%96%A2%E9%80%A3%E4%BB%98%E3%81%91)
 
 ```rb
 # それぞれのmodel.rb
@@ -138,7 +138,7 @@ class ClubStudent < ApplicationRecord
 end
 ```
 
-# マスターデータ作成
+## マスターデータ作成
 ```rb
 # student table
 (1..100).each do |num|
@@ -171,11 +171,11 @@ Subject.create(name: '英語', max_score: 200);
 # 割愛
 ```
 
-## (0..20).map{('あ'..'わ').to_a[rand(26)]}.join
-### 範囲オブジェクト
+### (0..20).map{('あ'..'わ').to_a[rand(26)]}.join
+#### 範囲オブジェクト
 文字も使える
 
-### mapメソッド
+#### map
 要素の数だけ繰り返しブロックを実行し、ブロックの戻り値を集めた配列を作成して返す。
 collectメソッドの別名です。
 
@@ -187,26 +187,26 @@ p numbers.map {|item| item.to_i(16) }
 #上では16進数を10進数に変換
 ```
 
-### to_a(Array)
+#### to_a(Array)
 Arrayオブジェクトを返す
 
-### rand(max)
+#### rand(max)
 max が 0 の場合は 0.0 以上 1.0 未満の実数を、正の整数の場合は 0 以上 max 未満の整数を返す
 
-### join(sep =)
+#### join(sep =)
 joinメソッドは、配列の各要素を文字列に変換し、引数sepを区切り文字として結合した文字列を返します。
 引数を省略すると区切り文字なしで要素を結合した文字列になる
 
 ---
 
-# 10日目
+## 10日目
 今回の流れ
 
 1. 中間テーブルにデータ入力
 2. 性別の0 or 1の表記を、male or femaleに変更
 3. Studentのshowページに、生徒ごとの試験結果等、データを出力
 
-# 実段階
+## 実段階
 Studentsのshowページの、前回までの状態
 
 <picture>
@@ -214,14 +214,14 @@ Studentsのshowページの、前回までの状態
   <img src="/assets/posts/201903/student2.jpg" alt="student show">
 </picture>
 
-## 生徒データと関連付けするときは
+### 生徒データと関連付けするときは
 ```rb
 student1 = Student.first
 student1.clubs << Club.first
 student1.save
 ```
 
-## データ入力
+### データ入力
 生徒の部活情報
 id1からid100までの生徒に、0から4個の部活(選択肢は13部)に入ってもらう。
 
@@ -254,7 +254,7 @@ id100までの生徒に、9科目の試験を受けてもらう。
 end
 ```
 
-## Studentsのindexページの表記を変更
+### Studentsのindexページの表記を変更
 ```rb
 # app/models/studetns.rb
 enum gender: { male: 0 ,female: 1}
@@ -275,13 +275,13 @@ enum age: {"teen": 0, "twenty": 1}
 </div>
 ```
 
-## 出力を考える
+### 出力を考える
 - 学生ごとのshowページで表示したいもの
     - 生徒のデータ(name, mail, gender, age, opinion)
     - 生徒の教科ごとの試験結果点数
     - 性と全体の試験結果の平均点、最大点、最小点
 
-### MySQL上の出力
+#### MySQL上の出力
 ```sql
 SELECT
     subjects.name,
@@ -312,10 +312,10 @@ GROUP BY subjects.id, subjects.name
 -- ...
 ```
 
-### ページ上の出力
-#### students_controllerのshowアクション編集
+#### ページ上の出力
+##### students_controllerのshowアクション編集
 - 参照
-  - [Active Record クエリインターフェイス](https://railsguides.jp/active_record_querying.html#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%8B%E3%82%89%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%99)
+- [Active Record クエリインターフェイス](https://railsguides.jp/active_record_querying.html#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%8B%E3%82%89%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%99)
 
 ```rb
 # app/controllers/studetns_controller.rb
@@ -346,7 +346,7 @@ def show
 end
 ```
 
-#### showページのviewを編集
+##### showページのviewを編集
 ```rb
 # app/views/students/show.html.erb
 <table border="1">
@@ -370,14 +370,15 @@ end
 ```
 
 ---
-# 11日目
+## 11日目
 今回の流れ
+
 1. ExamResultsのindexページのデータ出力を編集
 2. ExamRusultの新規作成ページのUIを変更
 3. gem kaminariでページャー追加(授業内では時間足らず）
 
-# 実段階
-## インデックスページの表示を編集
+## 実段階
+### modify index page
 ※app/views/exam_results/show.html.erbも同様にやる
 
 ```rb
@@ -391,9 +392,8 @@ end
 <td><%= exam_result.subject.name %></td>
 ```
 
-## newページにセレクトボックス
-参照：
-- [Action View Form Helpers](https://guides.rubyonrails.org/form_helpers.html#select-boxes-for-dealing-with-models)
+### newページにセレクトボックス
+- 参照: [Action View Form Helpers](https://guides.rubyonrails.org/form_helpers.html#select-boxes-for-dealing-with-models)
 
 ```rb
 # app/views/exam_results/_form.html.erb
@@ -417,7 +417,7 @@ def set_students_subjects
 end
 ```
 
-# 編集後
+## 編集後
 
 <picture>
   <source srcSet="/assets/posts/201903/student3.webp" type="image/webp">
@@ -429,14 +429,15 @@ end
   <img src="/assets/posts/201903/student4.jpg" alt="exam new">
 </picture>
 
-# ページャの導入(kaminari)
+## ページャの導入(kaminari)
 インデックス表示データが、studentページは100行、ExamResultページは900行と、見づらい.
 なので、studentとExamResultのindexページを、数ページに区切って表示させたい。
 
 今回はgemのkaminariを用いる。
-参照：[kaminari -github](https://github.com/kaminari/kaminari)
 
-## kaminariのインストール
+- 参照：[kaminari -github](https://github.com/kaminari/kaminari)
+
+### kaminariのインストール
 ```rb
 # Gemfile
 gem 'kaminari'
@@ -444,7 +445,7 @@ gem 'kaminari'
 
 `bundle install`
 
-## studentのindexページから変更
+### studentのindexページから変更
 indexアクションを編集
 
 ```rb
@@ -471,11 +472,11 @@ viewを編集
   <img src="/assets/posts/201903/student5.jpg" alt="pagination">
 </picture>
 
-## ExamResultのindexページ編集
+### ExamResultのindexページ編集
 app/controllers/exam_result_controller.rbのindexアクションと
 app/view/exam_results/index.html.erbを同様に編集
 
-## ページャの見た目を変える
+### ページャの見た目を変える
 ```sh
 rails g kaminari:views default
 
@@ -489,7 +490,7 @@ rails g kaminari:views default
   #     create  app/views/kaminari/_page.html.erb
 ```
 
-## ページャの設定を変える
+### ページャの設定を変える
 ```sh
 rails g kaminari:config
 
@@ -518,8 +519,8 @@ end
 ```
 
 ---
-# 12日目
-## kaminariの別のファイル設定
+## 12日目
+### kaminariの別のファイル設定
 - modelsにpaginates_per 30と記述
 - controllerのindexアクションの末尾にある、per()を削除
     - (ビューファイルは同じ)
@@ -545,7 +546,7 @@ paginates_per 30
 </div>
 ```
 
-## studentのindexページに、exam_resultのnewへのリンク作成
+### studentのindexページに、exam_resultのnewへのリンク作成
 リンクを作成
 
 ```rb
@@ -573,17 +574,17 @@ studentのindexから'New Exam Result'リンクを押すと、exam_resultのnew�
 フォームのセレクトボタンのうち、生徒が自動で選択されるようになった。
 
 ---
-# 14日目
+## 14日目
 今週からは、scaffoldで作成した大学データと、gemのdevise、Bootstrap等を組み合わせる。
 
-## やった事
+### What I did
 - Railsの命名規則(単数形と複数形)
 - DBのカラム定義を後から変更
 - render partial: 部分テンプレの参照
 - validation
 - **UNSIGNEDという型が存在しないPostgreSQL**
 
-## Railsの命名規則(単数形と複数形)
+### Railsの命名規則(単数形と複数形)
 rails gコマンドで、controller名やmodel名を指定する際に、混乱した。
 
 ```sh
@@ -598,7 +599,7 @@ rails gコマンドで、controller名やmodel名を指定する際に、混乱�
 - controller名は複数形で、頭文字を大文字にする。
     - 1つのcontrollerに複数のactionが含まれるため
 
-## DBのカラム定義を後から変更
+### DBのカラム定義を後から変更
 rails g scaffoldコマンド時に、ClubStudentの外部キーの定義をreferecesとミスタイプしていた。
 
 ```rb
@@ -621,15 +622,14 @@ end
 DB内のデータを書き換えるだけで、アプリ自体のファイル等は編集されない。
 
 ```sql
-ALTER TABLE テーブル名 MODIFY COLUMN カラム名 新しい定義
+-- ALTER TABLE テーブル名 MODIFY COLUMN カラム名 新しい定義
 ALTER TABLE ClubStudent MODIFY COLUMN student references
 ```
 
 つまり、原因の根本的な部分を修正できないので、駄目
 
-# render partial: 部分テンプレ
-参照：
-- [render レンダリング(render) - railsドキュメント](http://railsdoc.com/references/render)
+## render partial: 部分テンプレ
+- 参照: [render レンダリング(render) - railsドキュメント](http://railsdoc.com/references/render)
 
 全てのページのヘッダー(上部）に、ログアウトや他のstudentやclubs等のリンクを乗せる
 
@@ -655,12 +655,12 @@ ALTER TABLE ClubStudent MODIFY COLUMN student references
 <%= link_to 'Log Out', destroy_student_session_path, method: :delete %>
 ```
 
-# validation
-参照：
-- [Active Record Validations](https://guides.rubyonrails.org/active_record_validations.html)
+## validation
+- 参照: [Active Record Validations](https://guides.rubyonrails.org/active_record_validations.html)
+- 
 バリデーションは有効なデータだけをDBに保存するのを確実にするための最善策。
 
-## validate条件
+### validate条件
 ```rb
 # 空でないこと
 validates :name, presence: true
@@ -682,7 +682,7 @@ validates :name, exclusion: { in: %w(部 サークル) }
 
 空白や文字列長、『サークル』という語には、validatesが発動するが、『テニスサークル』だと発動しないので、正規表現等を使う必要がある。
 
-# type "unsigned" does not exist (※Postgresql)
+## type "unsigned" does not exist (※Postgresql)
 validatesの実装していく最中に、エラーに気づいた
 studentのeditページで更新すると、
 
@@ -719,15 +719,15 @@ def show
 因みに、このcontrollerは、以前の大学データのcontrollerからコピーしてきたものだ。
 つまり、MySQLで動くアプリのcontroller。
 
-## unsigned　(MySQL)
+### unsigned　(MySQL)
 - MySQLにおいては正と負の整数を扱うことができる。
 - unsignedを指定すると、正の数しか格納できなくなり、代わりに範囲が2倍になる。
 - **unsignedにした値が負になると、エラーを起こす**
     - UNSIGNEDは、マイナス値が入らないだけでなく、マイナスになる計算もできない。
     - CASTで一時的に型を変える事で回避は可能。
 
-## `Postgresqlにはunsined型は存在しない(最重要)`
-### 対応策
+### `Postgresqlにはunsined型は存在しない(最重要)`
+#### 対応策
 まだ、試験結果のデータを入れてないので、功を奏すか分からないけれども
 
 - unsignedをint等の型に置き換える
@@ -748,9 +748,10 @@ def show
 
 正常に、studentデータのedit、updateが機能した。
 
-# データ入力にはpassword情報が必要
+## データ入力にはpassword情報が必要
 deviseの関係上、パスワード情報入りのデータでないと、コンソールから入力できない。
-## passwordカラムの追加
+
+### passwordカラムの追加
 deviseのモデル等がある、Studentテーブルに、パスワードカラムを追加した。
 
 ```sh
@@ -771,7 +772,7 @@ end
 
 これで、パスワード情報入りの生徒データをDBに入力できる。
 
-## データ入力
+### input data
 未だデータの無い、生徒データと試験結果データをコンソールで入力した。
 
 ```rb
@@ -803,4 +804,3 @@ end
   end
 end
 ```
-

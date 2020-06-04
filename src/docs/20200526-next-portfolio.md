@@ -7,58 +7,61 @@ image: '/assets/prtsc-1000.jpg'
 slide: false
 ---
 
-※自分がやった事、経歴等を纏めたサイトという意味でのポートフォリオ
-
-# はじめに
+## はじめに
 [Ruby + JekyllによるGihubPagesは既にある](https://github.com/oriverk/oriverk.github.io)のですが、宮崎版コロナ対策サイトでVueに触れ、勉強がてら実際にJSによるサイト作成をする事にしました。
 
-- 作成に取り掛かる前に、JSの現状を知るために参照した主サイト
-  - [2020年 React軸で学ぶべき技術 from mizchi's blog](https://mizchi.hatenablog.com/entry/2020/01/04/172041)
-  - [ユーザー体験を向上させるサーバーサイドレンダリングJavaScript — 歴史と利点](https://medium.com/@sundaycrafts/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E4%BD%93%E9%A8%93%E3%82%92%E5%90%91%E4%B8%8A%E3%81%95%E3%81%9B%E3%82%8B%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%83%AC%E3%83%B3%E3%83%80%E3%83%AA%E3%83%B3%E3%82%B0javascript-%E6%AD%B4%E5%8F%B2%E3%81%A8%E5%88%A9%E7%82%B9-df68cd7cd991)
+- JSの現状を知るために参照した主サイト
+- [2020年 React軸で学ぶべき技術 from mizchi's blog](https://mizchi.hatenablog.com/entry/2020/01/04/172041)
+- [ユーザー体験を向上させるサーバーサイドレンダリングJavaScript — 歴史と利点](https://medium.com/@sundaycrafts/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E4%BD%93%E9%A8%93%E3%82%92%E5%90%91%E4%B8%8A%E3%81%95%E3%81%9B%E3%82%8B%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%83%AC%E3%83%B3%E3%83%80%E3%83%AA%E3%83%B3%E3%82%B0javascript-%E6%AD%B4%E5%8F%B2%E3%81%A8%E5%88%A9%E7%82%B9-df68cd7cd991)
 
-## 自分
+### 自分
 大学研究でcppを利用しただけの、農学部卒。
 ただいま無職、転職活動中（ここ2か月は自粛でstay home
 
-# 作成に当たって
+## 作成に当たって
 ReactとNext.jsのtutorialとdocsを一通りやりました。
 
 - [React チュートリアル](https://ja.reactjs.org/tutorial/tutorial.html)
 - [Next.js チュートリアル](https://nextjs.org/docs/getting-started)
-- 
-## サイト自体の目的
+
+### サイト自体の目的
 - 経歴や作成したもののリンクをまとめる
   - GithubPagesやQiita、Gistへの投稿物を一か所にまとめる
   - Markdonwによるページ作成
 
-
-## つくったもの
+### つくったもの
 - [Github リポジトリ](https://github.com/oriverk/next-portfolio)
-- [サイト：https://next-portfolio-blue.now.sh/](https://next-portfolio-blue.now.sh/)
-
+- [this site](https://oriverk.dev)
 
 <picture>
-  <img src='/assets/posts/202005/next-portfolio-prtsc.gif' alt='screen-shot of next.js portfolio' />
 </picture>
+
+<video autoplay loop muted playsinline>  
+  <source src='/assets/posts/202005/next-portfolio-prtsc.webm' type='video/webm'>  
+  <img src='/assets/posts/202005/next-portfolio-prtsc.gif' alt='screen-shot of next.js portfolio' />
+</video>  
 
 まだ、ドキュメントや人のコードを参照しながら色々試している最中なので、コードが汚いです。
 
-## 技術・要件など
+### 技術・要件など
 - React.js, Next.js
-    - マークダウン変換: [remarkjs/reamrk](https://remark.js.org/)
-        - あとで[mdx-js/mdx](https://mdxjs.com/)に変更するかも
-    - シンタックスハイライト: highlight.js
-    - UIコンポーネント：[Material-UI mui-org/material-ui](https://material-ui.com/)
-- 目に優しいダークテーマ
+  - マークダウン変換
+    - [remarkjs/reamrk](https://remark.js.org/)
+    - あとで[mdx-js/mdx](https://mdxjs.com/)に変更するかも
+  - シンタックスハイライト
+    - [highlight.js](https://github.com/highlightjs/highlight.js/)
+  - UIコンポーネント
+    - [Material-UI mui-org/material-ui](https://material-ui.com/)
+  - ダークテーマ
 
-## 環境
+### 環境
 - vm：virtualbox + vagrant
     - OS: Ubuntu18.04 bionic
 - node -v :v12.16.1
 - yarn -v :1.22.4
 
-# 実作業
-## `yarn create next-app`
+## 実作業
+### yarn create next-app
 
 ```sh
 yarn create next-app next-portfolio
@@ -68,19 +71,19 @@ yarn create next-app next-portfolio
 #    Example from the Next.js repo
 ```
 
-### Example from the Next.js repoを選択したら
+#### Example from the Next.js repo
 - amp類
-    - amp, amp-story, amp-first
-        - [参考: ビジュアルに訴える AMP ストーリーを作成する from AMP](https://amp.dev/ja/documentation/guides-and-tutorials/start/visual_story/?format=stories)
+  - amp, amp-story, amp-first
+    - 参照: [ビジュアルに訴える AMP ストーリーを作成する from AMP](https://amp.dev/ja/documentation/guides-and-tutorials/start/visual_story/?format=stories)
 - google analytics類
-    - with-google-analytics, with-google-analytics-amp
+  - with-google-analytics, with-google-analytics-amp
 - aws類 
-    - with-aws-amplify, with-aws-amplify-typescript
+  - with-aws-amplify, with-aws-amplify-typescript
 - その他: api類, custome server類, preact及び多数（多すぎるので割愛
-- [参照：Github: zeit/next.js/example](https://github.com/zeit/next.js/tree/master/examples)
+- 参照：[Github: zeit/next.js/example](https://github.com/zeit/next.js/tree/master/examples)
 
 
-### Default starter appの場合
+#### Default starter appの場合
 今回はReact Next.jsの勉強も兼ねているので、defaultの方を利用した。
 
 `yarn dev`すると
@@ -90,7 +93,6 @@ yarn create next-app next-portfolio
   <img src='/assets/posts/202005/next1.jpg' alt='Hello Next.js' />
 </picture>
 
-<details><summary>作成されるディレクトリ、<code>package.json</code></summary><div>
 
 ```sh
 # directory
@@ -106,7 +108,7 @@ yarn create next-app next-portfolio
 
 ```json
 // package.json
-{                                                                  
+{
   "name": "next-portfolio",
   "version": "0.1.0",
   "private": true,
@@ -123,27 +125,25 @@ yarn create next-app next-portfolio
 }
 ```
 
-</div></details>
+- 参照
+- [React.Component](https://ja.reactjs.org/docs/react-component.html#gatsby-focus-wrapper)
+- [React.Fragment](https://ja.reactjs.org/docs/fragments.html#keyed-fragments)
 
-- 参照：
-  - [React.Component](https://ja.reactjs.org/docs/react-component.html#gatsby-focus-wrapper)
-  - [React.Fragment](https://ja.reactjs.org/docs/fragments.html#keyed-fragments)
+### Material-UI 導入
+見た目重視でmaterial-uiを導入し、主にサイドバーのpermanent / swipeable drawerとGridに使用。
 
-## Material-UI 導入
-見た目重視でmaterial-uiを導入し、主にサイドバーのpermanent / swipeable drawerとGrid
-デザインの箇所に使用した。手軽に今風なものが作成できて良かったが、別のuiコンポーネントに変更した際のデザイン崩れが大きそうなので、あとで脱material-uiを図りたい。
-
-- 参照：[Material-UI top 日本語ページ](https://material-ui.com/ja/)
+- 参照
+- [Material-UI top 日本語ページ](https://material-ui.com/ja/)
   - [material-ui/examples/nextjs/](https://github.com/mui-org/material-ui/tree/master/examples/nextjs)
-  - ：[Icon from material-ui](https://material-ui.com/ja/components/icons/)
-    - ：[Icon一覧](https://material-ui.com/ja/components/material-icons/)
+    - [Icon from material-ui](https://material-ui.com/ja/components/icons/)
+    - [Icon一覧](https://material-ui.com/ja/components/material-icons/)
 
 ```sh
 yarn add @material-ui/core
 yarn add @material-ui/icons
 ```
 
-## サイトトップ: `src/pages/index.jsx` の作成
+### create src/pages/index.jsx
 
 1. `src`ディレクトリを作成し、下に`pages`を収める。
 2. `src/components/Layout.jsx`の作成
@@ -285,7 +285,7 @@ export default function Home() {
 }
 ```
 
-<details><summary><code>/src/components/HomeContetnts.jsx`</code></summary><div>
+<details><summary><code>/src/components/HomeContetnts.jsx</code></summary><div>
 
 ```jsx
 // src/components/HomeContetnts.jsx
@@ -305,7 +305,7 @@ export function About() {
       <Grid container spacing={4}>
         <Grid item md={12} lg={5}>
           <picture>
-            // ...
+            ...
           </picture>
         </Grid>
         <Grid item md={12} lg={7}>
@@ -330,25 +330,25 @@ export function History() {
 
 </div></details>
 
-## `_app.jsx`, `_document.jsx`, `404.jsx`の作成
-- 参照
-  - [Custom `App` from Next.js](https://nextjs.org/docs/advanced-features/custom-app)
-  - [Custom `Document` from Next.js](https://nextjs.org/docs/advanced-features/custom-document)
-  - [Custom Error Page from Next.js](https://nextjs.org/docs/advanced-features/custom-error-page)
+### _app.jsx, _document.jsx, 404.jsx
+参照
+- [Custom App from Next.js](https://nextjs.org/docs/advanced-features/custom-app)
+- [Custom Document from Next.js](https://nextjs.org/docs/advanced-features/custom-document)
+- [Custom Error Page from Next.js](https://nextjs.org/docs/advanced-features/custom-error-page)
 
 - `_app.jsx`
   - global cssを追加する場所
 - `_document.jsx`
   - SSRされる箇所なので、`onclick`などイベントハンドラは動かない
-  - `<Main />`の外側にあるコンポーネントはブラウザによる初期化がされないので、Appロジック等を追加したければ、`app.jsx`に書いて。
+  - `<Main />`の外側にあるコンポーネントはブラウザによる初期化がされないので、Appロジック等は`app.jsx`に記述
   - `<title>`や`<Head />`、`styled-jsx`を書いちゃ駄目。
 
-## Posts周辺の作成
-### ダイナミックルーティング
+### Posts周辺の作成
+#### ダイナミックルーティング
 - 参照
-  - [Next.js - Pages](https://nextjs.org/docs/basic-features/pages#pages-with-dynamic-routes)
-  - [Next.js - Dynamic routes](https://nextjs.org/docs/routing/dynamic-routes)
-  - [Docs - next/routes from Next.js](https://nextjs.org/docs/api-reference/next/router)
+- [Next.js - Pages](https://nextjs.org/docs/basic-features/pages#pages-with-dynamic-routes)
+- [Next.js - Dynamic routes](https://nextjs.org/docs/routing/dynamic-routes)
+- [Docs - next/routes from Next.js](https://nextjs.org/docs/api-reference/next/router)
 
 ディレクトリ構成
 
@@ -384,7 +384,7 @@ export default function Post(){
 
 `dynamic route`と`Link( next/link )`を併用する時は、`href`に合わせて`as`も使うなど注意点があるが、非常に便利な代物かと。
 
-### `getStaticProps`と`getStaticPaths`
+#### getStaticProps, getStaticPaths
 今回はmdファイルを`/src/pages/docs`に入れる。
 
 - `baseUrl/posts`へのアクセス時は、docs下のmdファイルを読込み、posts一覧の出力
@@ -397,8 +397,8 @@ export default function Post(){
 ページ出力が`src/pages/docs/xxx.md`という外部データに依存した静的ページ出力をしたいので、`getStaticProps`と`getStaticPaths`を使用した。
 
 - 参照
-  - [Data fetching - Next.js](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation)
-  - [Static Generation with Data - Next.js Pages](https://nextjs.org/docs/basic-features/pages#static-generation-with-data)
+- [Data fetching - Next.js](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation)
+- [Static Generation with Data - Next.js Pages](https://nextjs.org/docs/basic-features/pages#static-generation-with-data)
 
 - `getStaticProps`
   - 出力ページのコンテンツが外部データに依存している時に使用
@@ -418,20 +418,20 @@ tagsページのスタイルが未だ・・・
   <img src='/assets/posts/202005/next4.png' alt='tags index' />
 </picture>
 
-### マークダウン
+#### マークダウン
 
 - 実現したい事
     - QiitaやGist等での投稿を可能な限り手間なく集約したい
       - `mdxjs/mdx`なら、ファイル中に`import`や`export`等のjsを組み込める。
         - 汎用性を考えて、今回は`front-matter`を使用する。
 - 最終的に利用したもの。
-   - [jonschlinkert / gray-matter](https://github.com/jonschlinkert/gray-matter)
-   - processor: [remarkjs/remark] (https://remark.js.org/)
+   - [jonschlinkert/ gray-matter](https://github.com/jonschlinkert/gray-matter)
+   - processor: [remarkjs/ remark](https://remark.js.org/)
    - highlighter: [highlight.js](https://highlightjs.org/)
 
-- 参考：`mdxjs/mdx`らへん
-    - [MDXjs get started](https://mdxjs.com/getting-started/next)
-    - [Zeit - Next.config.js](https://nextjs.org/docs/api-reference/next.config.js/introduction)
+- 参照：`mdxjs/mdx`らへん
+- [MDXjs get started](https://mdxjs.com/getting-started/next)
+- [Zeit - Next.config.js](https://nextjs.org/docs/api-reference/next.config.js/introduction)
 
 構文木について、しっかり学ばねばと思いました。
 
@@ -469,7 +469,7 @@ export async function getPostData(id) {
 
 </div></details>
 
-### `<head><meta /></head>`
+#### meta
 
 <picture>
   <source srcSet='/assets/posts/202005/next5.webp' type='image/webp' />
@@ -479,10 +479,9 @@ export async function getPostData(id) {
 以前に[rubyとjekyllで作ったgithubpages](https://oriverk.github.io/blog/confirm-font-size)と比較して、syntax-highlightが粗いので改善が必要
 
 <picture>
-  <img src='/assets/posts/202005/next6.jpg' alt='githubpages syntax-highlight' />
+  <img src='/assets/posts/202005/next6.png' alt='githubpages syntax-highlight' />
 </picture>
 
-また、`front-matter`は下の様にQiitaと同じにしてあって、またpost情報は`gray-matter`を使ってpostコンテンツ取得と同時に取得し、`next/head`で`<head><meta /><head>`に格納してある。
 
 ```sh
 # front-matter
@@ -496,8 +495,7 @@ slide: false
 ---
 ```
 
-### SNSシェアボタン
-snsシェアボタンも上記の`<meta />`と同様にした。初めて、hatenaに垢登録しました。
+#### SNSシェアボタン
 
 ```jsx
 // ./src/pages/posts/[id].jsx
@@ -511,45 +509,43 @@ snsシェアボタンも上記の`<meta />`と同様にした。初めて、hate
 </button>
 ```
 
-# 更新
-## README.md充実化( 20200527 )
+## 更新
+### README.md 整備
+@ 2020/05/27
+
 - 参照
-  - [【GitHub】README.mdをカッコ可愛くデザインしてアプリの魅力を120%にする](https://qiita.com/aocattleya/items/5f836e9c65ba3eb3af03)
+- [【GitHub】README.mdをカッコ可愛くデザインしてアプリの魅力を120%にする](https://qiita.com/aocattleya/items/5f836e9c65ba3eb3af03)
 
-Qiita投稿の公開に当たり、[`README.md`の充実を図った。
-=> [`README.md`へのリンク](https://github.com/oriverk/next-portfolio/blob/master/README.md)
+Qiita投稿の公開に当たり、[`README.md`](https://github.com/oriverk/next-portfolio/blob/master/README.md)を充実させた
 
-## `npm install`禁止化( 20200527 )
+### npm install 禁止
+@ 2020/05/27
+
 - 参照
-  - [yarnを使うプロジェクトでnpm installを禁止する方法](https://qiita.com/suin/items/a7bf214f48eb9b2d9afc)
+- [yarnを使うプロジェクトでnpm installを禁止する方法](https://qiita.com/suin/items/a7bf214f48eb9b2d9afc)
 
-特に理由はないが、このサイトは`yarn`を用いて作成したので、`npm`の仕様を禁じることにした。方法は参照通り。
+特に理由はないが`npm`の仕様を禁じることにした。
 
-# 残る改善点、したい事など
-## サイト全体
+## 残る改善点、したい事など
+### サイト全体
 
 - Material-uiからの脱却
-  - swipeable-drawer以外は自分で実装出来そうなので 
+- swipeable-drawer以外は自分で実装出来そうなので 
 
 <picture>
   <img src='/assets/posts/202005/next7.png' alt='page score' />
 </picture>
 
 - CSSの統一(module.cssなのかstyled-jsxなのか等)
-  - 現在は色々試すために、混在中
 - TypeScript化（触ってみたいだけ
-- AMP一部対応( [参照: Next.js next/amp](https://nextjs.org/docs/api-reference/next/amp)
+- AMP一部対応( 参照：[Next.js next/amp](https://nextjs.org/docs/api-reference/next/amp)
 - google analytics, PWA対応
 - カスタムドメイン
+  - https://oriverk.dev
 - api routeを試す
 
-## posts, tags周辺
-
+### posts, tags周辺
 - `/tags`ページの整備
-- コードブロックの言語またはファイル名の表示
-  - Qiitaの様にしたい( 現状だとエラーになる )
+- コードブロックの言語またはファイル名の出力
 - syntax-highlightの改善
 - rssの対応
-
-## その他
-**働きたいでござる**

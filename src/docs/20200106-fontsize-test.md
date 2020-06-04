@@ -24,6 +24,7 @@ categories: [blog]
 * ul list3
 
 *italic あいうえお*
+
 #### ruby
 ```ruby
 require 'redcarpet'

@@ -12,32 +12,32 @@ from Qiita:
 - [13日目(1)：Deviseによるログイン機能付きサイトの作成](https://qiita.com/OriverK/items/5a867dbadbcef452c9fd)
 - [12日目：12日目：PostgreSQLを用いたログイン機能付きサイト](https://qiita.com/OriverK/items/ef1883408ea924376c1c)の続き
 
-# 環境
+## Environment
 - 仮想環境OS: Ubuntu 18.04
 - Ruby：2.51
 - Rails: 5.2.2
-    -主使用gem : devise([参照](https://github.com/plataformatec/devise))
+  - [devise](https://github.com/plataformatec/devise))
 - DB: PostgreSQL
 
-# 流れ
+## flow
 1. controllersとviewsを以前の大学データの方から流用
 2. migrationファイル作成
 3. rooting変更
 
-# 実作業
-## make migration file
+## Contents
+### make migration file
 ```sh
 rails g migration AddNameToStudents name:string gender:integer age:integer opinion:text
 #　実行
 #  create    db/migrate/20190324043018_add_name_to_students.rb
 ```
 
-### reflect change to DBに反映
+#### reflect change to DB
 ```sh
 rails db:migrate
 ```
 
-## modify routing
+### modify routing
 ```rb
 # app/confing/routes.rb
 # 追加
@@ -45,7 +45,7 @@ resources :students
 root to: 'students#index'
 ```
 
-## modify views
+### modify views
 ```rb
 # app/views/student.html.erb
 # 今回不要なExamResultNewのリンク削除
@@ -65,7 +65,7 @@ root to: 'students#index'
 <% end %>
 ```
 
-## コントローラ変更
+### modify controller
 ```rb
 # app/controllers/student_controller.rb
 class StudentsController < ApplicationController

@@ -1,21 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
-import PropTypes from 'prop-types'
-import { ThemeProvider } from '@material-ui/core/styles'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import theme from '../plugins/Theme'
 
-export default function MyApp(props) {
-  const { Component, pageProps } = props
-
-  React.useEffect(() => {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector('#jss-server-side')
-    if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles)
-    }
-  }, [])
-
+export default function MyApp({ Component, pageProps }) {
   return (
     <React.Fragment>
       <Head>
@@ -28,37 +14,112 @@ export default function MyApp(props) {
         <link rel='icon' type='image/png' sizes='16x16' href='/favicon/favicon-16x16.png' />
         <link rel='manifest' crossOrigin="use-credentials" href='/manifest.json' />
       </Head>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <Component {...pageProps} />
       <style jsx global>{`
         ::-webkit-scrollbar {
           width: 0;
           height: .5rem;
         }
+        
         /*スクロールバーの動く部分*/
         ::-webkit-scrollbar-thumb {
           background-color: rgb(128, 128, 128);
           border-radius: .3rem;
         }
+
+        html {
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          box-sizing: border-box;
+        }
+
         *{
           font-family: 'Hiragino Sans', 'Meiryo', sans-serif;
+          --drawerWidth: 250px;
         }
-        div, p, a, li, b{
+
+        *, *::before, *::after{
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: 0;
           color: #EEE;
+          font-weight: 400;
+          font-size: 0.874rem;
+          line-height: 1.43;
+          letter-spacing: 0.01071em;
+          background-color: #303030;
+        }
+
+        #__next{
+          display: flex;
+        }
+
+        h1 {
+          text-align: center;
+        }
+
+        div, p, a, li, b{
           font-size: 1rem;
         }
+
+        ul, ol {
+          margin: .5rem 0;
+          padding-left: 1.5rem;
+        }
+
+        li a {
+          padding: .75rem 0;
+        }
+
         a{
           color: #50CAF9;
           text-decoration: none;
         }
+
+        strong, b {
+          font-weight: 700;
+        }
+
+        code {
+          display: inline-block;
+          margin: .1rem .3rem;
+          padding: 0 .4rem;
+          background-color: #555;
+          color: #EEE;
+        }
+
+        pre {
+          border: .8px solid grey;
+          border-radius: 0.25rem;
+          display: block;
+          white-space: pre;
+          background-color: #1E1E1E;
+          width: 100%;
+          max-width: 1000px;
+          margin: 1rem 0;
+          overflow: auto;
+        }
+
+        picture, video {
+          width: 100%;
+        }
+        
+        source, img {
+          display: block;
+          width: 100%;
+          margin: 1rem 0;
+          background-color: #424242;
+        }
+
+        blockquote {
+          color: #BBB;
+          border-left: 5px solid #BBB;
+          margin: 1rem 0;
+          padding: .5rem 0 .5rem .5rem;
+        }
       `}</style>
     </React.Fragment>
   )
-}
-
-MyApp.propTypes = {
-  Component: PropTypes.elementType.isRequired,
-  pageProps: PropTypes.object.isRequired,
 }

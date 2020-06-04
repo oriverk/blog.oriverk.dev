@@ -18,6 +18,7 @@ function SvgIcon(props) {
           transition: 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
           border-radius: 50%;
         }
+        
         svg {
           width: 1em;
           height: 1em;

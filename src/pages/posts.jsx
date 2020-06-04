@@ -14,10 +14,10 @@ export async function getStaticProps() {
   }
 }
 
-export default function Posts({ allPostsData }) {
+export default function Posts({ allPostsData, posts }) {
   return (
     <>
-      <Layout>
+      <Layout posts>
         <Head>
           <title>Blog | {manifest.name}</title>
           <meta name='title' content={`Blog | ${manifest.name}`} />
@@ -43,35 +43,35 @@ export default function Posts({ allPostsData }) {
       <style jsx>{`
         .content {
           width: 100%;
-          max-width: 950px;
+          max-width: 1000px;
           margin: 0 auto 1rem;
           padding: 5%;
           flex-grow: 1;
         }
-        h1{
-          text-align: center;
-        }
+
         h2{
           margin: .5rem auto 1.5rem;
           font-weight: 600;
         }
-        ul{
-          padding-left: 1.25rem;
-        }
+
         a {
           color: #D9D9D9;
           text-decoration: underline;
         }
-        code{
-          /* color: #DDD; */
-          display: inline-block;
-          margin: 0 .5rem;
-          padding: 0 .3rem;
-          background-color: #555;
+
+        .tags {
+          display: block;
         }
+
         .tags a{
           font-size: .8rem;
           color: #50CAF9
+        }
+
+        @media( min-width: 1280px ){
+          .tags {
+            display: inline;
+          }
         }
       `}</style>
     </>

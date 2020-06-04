@@ -15,17 +15,14 @@ slide: false
 
 今日の授業は、Railsを使わず、MySQLのみでデータ入力、操作する内容でした。
 
-# はじめに(教訓）
-データ入力操作を、頭の中で考えてやるのは、今は無理。紙なり、エクセルなり使用。
-
-# テーブル同士の関係Association
-## belong_to : 1対1の関係
+## テーブル同士の関係Association
+### belong_to : 1対1の関係
 (例)　exam_result(試験点数) belong_to student
       とある教科の試験の点数は、特定の1人の生徒に帰属
-## has many : 1対多の関係
+### has many : 1対多の関係
 (例)　student has many exam_result
 　　　生徒は複数の試験を受けるので。
-## many to many :多対多の関係
+### many to many :多対多の関係
 (例)  学生と部活の関係。学生は複数の部活に所属し、1つの部活には複数の学生が所属。
 　　　当然、まったく所属していない学生も居る可能性がある
 
@@ -38,12 +35,12 @@ slide: false
 | Dさん |茶道部|軽音部|||
 ```
 
-### 多対多テーブルの問題
+#### 多対多テーブルの問題
 DB上では1つのカラムに複数のデータは入れることが出来ない。
 上の表では、同義のカラム（部活１、部活2．。。）を増やしているが、
 データベースでは、これを2次元で表現することができない
 
-### 解決法：中間テーブル(/関連テーブル)、
+#### 解決法：中間テーブル(/関連テーブル)、
 まず、生徒と部活にIDを持たせる
 
 ```sh
@@ -59,9 +56,7 @@ DB上では1つのカラムに複数のデータは入れることが出来な�
 | 自転車部  | 1  |
 | 茶道部  | 2  |
 | 水泳部  | 3  |
-| バスケ部  | 4  |
-| 軽音部  | 5  |
-|華道部| 6 |
+# ...
 
 中間テーブル
 
@@ -70,24 +65,24 @@ DB上では1つのカラムに複数のデータは入れることが出来な�
 | 1  | 1  |
 | 1  | 3  |
 | 1  | 4  |
-(割愛)
+# ...
 ```
 
 実際にDBで触るときは、生徒テーブルと中間テーブルをJOINし、さらに中間テーブルと部活テーブルをJOINする
 
-# 使うデータ
+## 使うデータ
 - データベース: univ
 - 生徒テーブル: students
     - name, grade, email, age, gender, others, created_at, updated_at
 - 試験結果テーブル: exam_results
     - name, student_id, score, max_score, created_at, updated_at
 
-# 本題：MySQL操作 CREATE DATABASE
-## データベース作成
+## 本題：MySQL操作 CREATE DATABASE
+### データベース作成
 ```sql
 CREATE DATABASE データベース名;
 CREATE DATABASE univ;
-CREATE TABLE :テーブル作成
+CREATE TABLE
 -- テーブル名は複数形で。
 ```
 
@@ -106,28 +101,29 @@ updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 
-### バッククォートとシングルクォート
+#### バッククォートとシングルクォート
 - バッククォート：テーブル名に使う
 - シングルクォート：データの文字列に使う
 
 **但し、バッククォートは必須ではない**
 バッククォートよって、テーブル名やカラム名で使用できないように指定されている予約語（Reserved Words）を使えるようにできる。が、使わない方が良い。
-参照：[phpMyAdminのSQLに付加される「'」に似た記号「`」は何？](https://php1st.com/1184/)
 
-### PRIMARY KEY、AUTO_INCREMENT
+- 参照：[phpMyAdminのSQLに付加される「'」に似た記号「`」は何？](https://php1st.com/1184/)
+
+#### PRIMARY KEY、AUTO_INCREMENT
 - PRIMARY KEY
   - 主キーの意。なお、外部キーはforeign key
 - AUTO_INCREMENT
   - 値が指定しないと、自動的にシーケンス番号を割り当てられる。整数型で、1ずつ増加し連番。
 
-### MySQLのデータ型
+#### MySQLのデータ型
 - INT : 整数型（他にも、TINYINT < SMALLINT < MEDIUMINT < INT < BIGINT
 - CHAR : 文字型（似たようなのには、VARCHARがある。）
 - TIMESTAMP : 日付時刻型（'YYYY-MM-DD HH:MM:SS'）
 - 入力するデータ量に従って、最適なデータ型を選んだ方が、色々と良いようだ。
-    - [参照：MySQL 5.6 リファレンスマニュアル  /  データ型](https://dev.mysql.com/doc/refman/5.6/ja/data-types.html)
+  - [参照：MySQL 5.6 リファレンスマニュアル  /  データ型](https://dev.mysql.com/doc/refman/5.6/ja/data-types.html)
 
-## DESC :テーブル情報の確認(Describeの略
+### DESC :テーブル情報の確認(Describeの略
 ```sql
 DESC students;
 -- 結果
@@ -177,7 +173,7 @@ DESC exam_results;
 +------------+--------------+------+-----+-------------------+----------------+
 ```
 
-### ALTER TABLE :カラム変更
+#### ALTER TABLE :カラム変更
 ```sql
 ALTER TABLE テーブル名 ADD COLUMN カラム名 カラム定義,
                       DROP COLUMN カラム名,
@@ -185,7 +181,7 @@ ALTER TABLE テーブル名 ADD COLUMN カラム名 カラム定義,
                       MODIFY COLUMN カラム名 新しいカラム定義;
 ```
 
-## INSERT INTO :データ追加
+### INSERT INTO :データ追加
 ```sql
 -- INSERT INTO テーブル名 (カラム1, カラム2, カラム3, ...) 
 VALUE (カラム1データ, カラム2データ, カラム3データ, ...),(カラム1データ, ........);
@@ -221,7 +217,7 @@ INSERT INTO exam_results (student_id,name, score, max_score, created_at, updated
 -- ...
 ```
 
-## UPDATE SET WHERE:テーブル情報の更新
+### UPDATE SET WHERE:テーブル情報の更新
 今の時点では、max_scoreが100点だが、200点満点に変更してみる
 
 ```sql
@@ -238,8 +234,8 @@ UPDATE exam_results SET max_score = 200;
 -- ...
 ```
 
-## JOIN :複数テーブル結合
-### 基本構文
+### JOIN :複数テーブル結合
+#### 基本構文
 ```sql
 SELECT table1.column1, table1.column2
        table2,column1
@@ -248,7 +244,7 @@ INNER JOIN table2
      ON table1.primary_key = table2.foreign_key
 ```
 
-### INNER JOIN と　OUTER JOIN
+#### INNER JOIN と　OUTER JOIN
 - INNER JOIN : 内部結合の意。
   - 主キー＝外部キーになるところだけ表示
   - 結合できなかったレコードは表示しない
@@ -258,7 +254,7 @@ INNER JOIN table2
     - LEFT JOIN :主キー側のテーブルに合わせて表示
     - RIGHT JOIN :外部キー側のテーブルに合わせて表示
 
-### INNER JOINで結合してみる
+#### INNER JOINで結合してみる
 students生徒テーブルとexam_results試験結果の、主キーと外部キーを使って結合
 
 ```sql
@@ -281,22 +277,22 @@ ON students.id = exam_results.student_id;
 -- ...
 ```
 
-## データ削除
-### テーブル情報の削除
+### データ削除
+#### テーブル情報の削除
 ```sql
 -- DELETE FROM テーブル名 WHERE 条件;
 DELETE FROM students;
 DELETE FROM exam_results;
 ```
 
-### テーブルの削除
+#### テーブルの削除
 ```sql
 -- DROP TABLE テーブル名;
 DROP TABLE students;
 DROP TABLE exam_results;
 ```
 
-### データベースの削除
+#### データベースの削除
 ```sql
 -- DROP DATABASE データベース名;
 DROP DATABASE univ;
@@ -304,15 +300,15 @@ DROP DATABASE univ;
 
 ---
 
-# 7日目
+## 7日目
 
-# データベースとテーブル作成、データ追加
-## データベース作成
+## データベースとテーブル作成、データ追加
+### データベース作成
 ```sql
 CREATE DATABASE univ1;
 ```
 
-## テーブル作成
+### テーブル作成
 ```sql
 USE univ1_development;
 -- 生徒テーブル作成
@@ -384,8 +380,8 @@ INSERT INTO club_students (student_id, club_id, created_at, updated_at) VALUE
 (15, 4, now(), now()),(15, 5, now(), now()),(15 ,6, now(), now()),(15, 4, now(), now());
 ```
 
-# 本題：MySQL操作
-## scoreの最高、最小、平均、(score / max_score)の最大値
+## 本題：MySQL操作
+### scoreの最高、最小、平均、(score / max_score)の最大値
 ```sql
 SELECT MAX(score),MIN(score),AVG(score),MAX(score/max_score)
 FROM exam_results;
@@ -397,7 +393,9 @@ FROM exam_results;
 +------------+------------+------------+----------------------+
 ```
 
-## GROUP BY : 科目毎の最大値、最小値、平均値を求め、名前を最大、最小、平均に変更
+### GROUP BY
+科目毎の最大値、最小値、平均値を求め、名前を最大、最小、平均に変更
+
 ```sql
 SELECT name, 
 MAX(score) as 最大 ,
@@ -415,7 +413,7 @@ GROUP BY name;
 +--------+--------+--------+---------+
 ```
 
-## INNER JOIN
+### INNER JOIN
 studentsとexam_resultsを結合し、生徒毎の、最高得点、最少得点、平均得点を出力
 
 ```sql
@@ -436,8 +434,8 @@ GROUP BY students.name;
 +-----------+------------+------------+------------+
 ```
 
-## CASE WHEN  条件分岐
-### NULLがあったら、出力上の表記を変える
+### CASE WHEN  条件分岐
+#### NULLがあったら、出力上の表記を変える
 ```sql
 SELECT
     students.name,
@@ -463,9 +461,7 @@ LEFT JOIN clubs
 -- INNER JOINの場合、masayaのレコード自体が表示されない。
 ```
 
-# 部活ごとに、男性と女性それぞれ何人所属しているか、出力せよ
-## 解答
-()の中に、CASE WHEN THENを入れられるとは
+## 部活ごとに、男性と女性それぞれ何人所属しているか、出力せよ
 
 ```sql
 SELECT

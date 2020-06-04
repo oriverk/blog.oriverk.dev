@@ -8,31 +8,26 @@ image: '/assets/posts/202003/miyazaki-oss1.jpg'
 slide: false
 ---
 
-from Qiita: 
-- [宮崎県COVID-19対策サイトを見つけ、出身者として何かしたいと思ったから、した。](https://qiita.com/OriverK/items/91429a32e6a8c191a1a6)
+from [Qita: 宮崎県COVID-19対策サイトを見つけ、出身者として何かしたいと思ったから、した。](https://qiita.com/OriverK/items/91429a32e6a8c191a1a6)
 
 出身の宮崎県用の対策サイトが出来、同時に感染者数が3人に増えていたことを知った。何かできる事は無いかと思ったので、Qiitaに記録しつつ、色々やってみた。
 
-# Introduction
-## Referrence
+## Introduction
+Referrence
 - [宮崎県 新型コロナウイルス 対策サイト](https://covid19-miyazaki.netlify.com/)
     - [Github covid19-miyazaki/covid19](https://github.com/covid19-miyazaki/covid19)
 - [東京都 新型コロナウイルス 対策サイト](https://stopcovid19.metro.tokyo.lg.jp/)
     - [tokyo-metropolitan-gov/covid19](https://github.com/tokyo-metropolitan-gov/covid19)
 - [Qiita: 東京都 新型コロナウイルス対策サイトへの貢献方法を解説](https://qiita.com/FPC_COMMUNITY/items/b9cc072813dc2231b2b2)
 
-## Who is 
-- OSS活動したことない
-- Vue, TypeScript何も分らん
-  - 今回をきっかけに、Reactを触り始めました。
-
-## Environment
+### Environment
 - Ubuntu 18.04 ( vm with Vagrant
     - Node.js: v12.16. (>= 10.19.0
     - yarn: 1.22.4
 
-# 環境構築
-[Github: リポジトリのREADME.md中の開発者向け情報->環境構築の手順](https://github.com/covid19-miyazaki/covid19#%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%81%AE%E6%89%8B%E9%A0%86)に従う
+## environment setup
+- Refferrence
+- [Github: リポジトリのREADME.md中の開発者向け情報->環境構築の手順](https://github.com/covid19-miyazaki/covid19#%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%81%AE%E6%89%8B%E9%A0%86)
 
 - Gitの設定（今回は新しくvm環境を用意したので。
     - git config --global user.name "usename"
@@ -65,13 +60,12 @@ yarn dev
   <img src="/assets/posts/202003/miyazaki-oss1.jpg" alt="miyazaki-oss" />
 </picture>
 
-# やったこと
-最初に書いた通り、Vue（と言うかJS）何もわからないので、表示される自然言語の修正をする事にした。因みにどのファイルがどこにあるかも判らなかったので、commit履歴から探しました(^^;
+## What I did
+最初に書いた通り、Vue（と言うかJS）何もわからないので、表示される自然言語の修正をする事にした。
 
 - 表示言語選択メニューバー: [covid19/nuxt-i18n.config.ts](https://github.com/covid19-miyazaki/covid19/blob/development/nuxt-i18n.config.ts)
 - 他言語表示用json: [covid19/assets/locales/](https://github.com/covid19-miyazaki/covid19/tree/development/assets/locales)
 
-## 内容
 1. `CODE_OF_CONDUCT.md`の修正
 
 <picture>
@@ -93,7 +87,7 @@ git commit -m "都庁を県庁に修正" --no-verify
 git push コピーしてきたURL development
 ```
 
-## はじめてのpull request
+### はじめてのpull request
 PRの機会は初めてだったので、下を参照しながら行った。
 
 - 参照: [東京都 新型コロナウイルス対策サイトへの貢献方法を解説](https://qiita.com/FPC_COMMUNITY/items/b9cc072813dc2231b2b2#%E3%83%97%E3%83%AB%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E9%80%81%E3%82%8B)
@@ -112,7 +106,7 @@ PRの機会は初めてだったので、下を参照しながら行った。
   <img src="/assets/posts/202003/miyazaki-oss4.jpg" alt="localhost" />
 </picture>
 
-# やりたいこと
+## What I wanna do 
 - 表示自然言語の部分を中心に修正改善
 - Warningと出ている部分の修正
   - 恐らくTypescriptの型由来の警告なので、ドキュメントと格闘しながら。

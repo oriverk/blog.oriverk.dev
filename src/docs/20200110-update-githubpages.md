@@ -9,14 +9,14 @@ permalink: blog/:title
 slide: false
 ---
 
-# 改修結果
+## 改修結果
 
 <picture>
   <source srcSet="/assets/posts/202001/githubpages2post.webp" type="image/webp" />
   <img src="/assets/posts/202001/githubpages2post.jpg" alt="jekyll" />
 </picture>
 
-## 改修内容
+### 改修内容
 - デザインの変更
   - dark theme
   - mobile first
@@ -25,7 +25,7 @@ slide: false
 - Post.showページの追加
   - Syntax-highlighter Rougeの導入
 
-## デザイン変更
+### デザイン変更
 [ページ表示速度](https://developers.google.com/speed/pagespeed/insights/?hl=JA&url=https%3A%2F%2Foriverk.github.io%2F&tab=mobile)を向上させるため、メニュータブにしか使っていないBootstrap由来のJSとCSSを排除し、自作のjsスクリプトを追加した。
 
 ```javascript
@@ -54,7 +54,7 @@ slide: false
 </script>
 ```
 
-## Syntax-highlighter Rougeの導入
+### Syntax-highlighter Rougeの導入
 Posts.indexとPost.showページはjekyll通りなので割愛。
 コードのハイライトを有効化する為、Rougeを導入した。
 
@@ -81,6 +81,6 @@ highlighter: rouge
 
 あとは`rougify style [<theme-name>]`でシンタックスハイライト用のcss、今回はmolokaiを生成し、一部修正、適用させた。
 
-## 改修予定
+### 改修予定
 - IE, Edge対応（IE対応は見送りました。)
 - AMPの導入。興味があるだけ

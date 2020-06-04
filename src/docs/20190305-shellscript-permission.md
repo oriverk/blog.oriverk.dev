@@ -11,8 +11,8 @@ slide: false
 from 
 - Qiita: [1日目 LinuxとShellscriptとPermission](https://qiita.com/OriverK/items/23509ae58fc0b4cbf462)
 
-# Linux
-## メイン課題
+## Linux
+### メイン課題
 1. ディレクトリ1を作成
 2. ディレクトリ1の中にファイル1を作成
 3. ディレクトリ2を作成
@@ -26,12 +26,12 @@ mkdir -p dir2/dir3
 mv dir1 dir2/dir3
 ```
 
-## コマンドのオプションが分からなくなった時
+### コマンドのオプションが分からなくなった時
 ```sh
 man コマンド名
 ```
 
-## 今回使用したオプション付きコマンド
+### 今回使用したオプション付きコマンド
 ```sh
 mkdir -p
  # -p, --parents　no error if existing, make parent directories as needed
@@ -55,7 +55,7 @@ ls -la
  # ファイルの詳細を表示する。
 ```
 
-# シェルスクリプト
+## シェルスクリプト
 OSのシェルまたはコマンドラインインタプリタ向けに書かれたスクリプト言語。拡張子は`.sh`
 
 ```sh
@@ -81,7 +81,7 @@ mv dir1 dir2/dir3
 ./test.sh
 ```
 
-# Permission
+## Permission
 
 ```sh
 ls -la test.sh
@@ -91,8 +91,8 @@ ls -la test.sh
 #また、r＝read権限、w=write権限、ここでは見えないがx=execute権限(実行許可）を指す。
 ```
 
-## 権限編集方法
-`chmod=change mode`
+### chmod=change mode
+権限編集モード
 
 ```sh
 # すべてのユーザーに実行権限を与える／禁止する。
@@ -100,7 +100,7 @@ chmod +x test.sh　/ chmod -x test.sh
 #グループに書き込み権限をその他のユーザーには実行権限を禁止する。
 chmod g+w,o-x test.sh
 ```
-## 別の表示方法(数字）
+### 別の表示方法(数字）
 
 ```sh
 # r、w、xにそれぞれ4，2，1を割り当て、表すことができる。
@@ -111,7 +111,9 @@ r-xr--r--    =>  544
 #すべてのユーザーに書き込み権限と読込権限を与える。
 chmod 666 test.sh
 ```
-## PermissionとPermitの違い（※プログラムはPermission
+### PermissionとPermitの違い
+**プログラムはPermission**
+
 どちらも名詞で『許可』を意味するが、ニュアンスが違う。
 日本語で説明するとズレるので、英英辞典で確認したい。
 あと、Permissionのスペル注意。

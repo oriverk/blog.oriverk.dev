@@ -8,18 +8,17 @@ image: '/assets/codr700.jpg'
 slide: false
 ---
 
-from Qiita
-- [Twitterにコードを身えばよく投稿したい](https://qiita.com/OriverK/items/df41ec6b57b40a06a64d#comments)
+from [Qiita: Twitterにコードを身えばよく投稿したい](https://qiita.com/OriverK/items/df41ec6b57b40a06a64d#comments)
 
-# はじめに
-## きっかけ（こんな呟きを見かけた
+## はじめに
+### きっかけ（こんな呟きを見かけた
 
 <blockquote class="twitter-tweet"> 
   <a href="https://twitter.com/ellnore_pad_267/status/1190693466793074689?ref_src=twsrc%5Etfw"></a>
 </blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
 
-## 出来たもの
+### 出来たもの
 - [Codr0：https://codr0.herokuapp.com/](https://codr0.herokuapp.com/)
 - [Github : oriverk/Codr](https://github.com/oriverk/Codr)
 - [GithubPage](https://oriverk.github.io/)
@@ -29,15 +28,15 @@ from Qiita
   <img src="/assets/codr700.jpg" alt="screen-shot from this webpage" />
 </picture>
 
-## 作成の過程で収穫物
+### 作成の過程で収穫物
 - Active Record Storage等のRails5.2
 - Twitter Login方法と仕組みなど
 - JSの基礎（getElementByIdやsetAttribute、文字カウントなど
 - AWS S3関連
 - XSS対策
 
-# 作成の前に
-## 作成要件
+## 作成の前に
+### 作成要件
 
 <picture>
   <img src="/assets/posts/201911/twitter2.png" alt="table" />
@@ -51,25 +50,25 @@ from Qiita
    - 参照：[JSでhtmlを画像化する方法(html2canvasの使い方) from 湧くべく](https://wakubeku.com/?p=175)
 - AWS S3にog:image用の画像を保存
 
-## 作成の流れ：予定
+### 作成の流れ：予定
 1. rails new codr, git init, heroku create、Active Storage
 2. AWS S3あれこれ 
 3. twitter登録、ログイン機能作成
 
-## 開発環境
+### 開発環境
 - vm : Linux Ubuntu (virtualbox + vagrant)
     - Ruby 2.5.1p57
     - Rails 5.2.3
     - Postgresql
   
-# 実作業
+## 実作業
 
 ```rb
 rails new codr -d postgresql
 ```
 DB設定等は割愛
 
-## Gem
+### Gem
 
 ```rb
 # Gemfile
@@ -90,10 +89,9 @@ gem 'meta-tags'
 gem 'aws-sdk-s3' # aws s3
 ```
 
-参照:
-- [kpumuk/meta-tags](https://github.com/kpumuk/meta-tags)
+- 参照: [kpumuk/meta-tags](https://github.com/kpumuk/meta-tags)
 
-## gitignore => rails.credentials.yml
+### rails.credentials.yml
 当初は.`gitignore`と`dotenv`等を使っていたが、作成途中でRails5.2からの`rails.credentials.yml`を利用した。復号化には`/config/master.key`を利用。
 
 ```sh
@@ -111,7 +109,7 @@ rails credentials.yml:show
 Rails.application.credentials.dig(:twitter, :API_Key)
 ```
 
-## rails gあれこれ
+### rails gあれこれ
 ```sh
 # devise
 rails g devise:install
@@ -137,7 +135,7 @@ config.i18n.default_locale = :ja
 rails g scaffold Post user:references name:string content:text date:datetime
 ```
 
-## Active Record Associations関連付け
+### Active Record Associations関連付け
 ```rb
 # /app/model/
 # user
@@ -147,8 +145,8 @@ has_many :posts
 belongs_to :user
 ```
 
-# 投稿関連
-## マークダウン投稿
+## 投稿関連
+### マークダウン投稿
 - 参照：[Redcarpet：Github](https://github.com/vmg/redcarpet)
 
 基本：`Redcarpet::Markdown.new(renderer, extensions = {}).render(@post.content)`
@@ -196,7 +194,7 @@ Module PostsHelper
 end
 ```
 
-## html_safe => sanitize
+### html_safe => sanitize
 [sanitizeヘルパーを使用した。ホワイトリスト方式](https://edgeapi.rubyonrails.org/classes/ActionView/Helpers/SanitizeHelper.html#method-i-sanitize)
 
 ```rb
@@ -207,7 +205,7 @@ end
 </div>
 ```
 
-## 投稿内容のデータ化、AWSへの画像保存
+### 投稿内容のデータ化、AWSへの画像保存
 Herokuでは画像保持がされないので、作成画像をAWS S3に保存し、og:imageに添付する形を取った。
 
 1. Webアプリ内で通常投稿
@@ -215,9 +213,8 @@ Herokuでは画像保持がされないので、作成画像をAWS S3に保存�
 3. Tweetボタン押す（Postされ、postモデル内でbase64をデコード
 4. Active Storageを通して、AWS S3に保存
 
-## Active Storage
-参照
-- [Active Storage](https://railsguides.jp/active_storage_overview.html)
+### Active Storage
+- 参照: [Active Storage](https://railsguides.jp/active_storage_overview.html)
   - Rail5.2からの機能で、今までのcarrievaveやpaperclip等を使わずに、クラウドストレージ等へのアップロードが容易になる。今回はAWS S3を使った。
 
 ```sh
@@ -278,7 +275,7 @@ gem 'aws-sdk-s3', require: false
 gem 'mini_magick'
 ```
 
-## html2canvas
+### html2canvas
 
 1. Tweetボタン押下時に画像をPostするためのフォーム`hidden_field`を用意
 2. `html2canvas.js`を`app/assets/javascripts`ディレクトリ配下に保存。
@@ -303,10 +300,10 @@ gem 'mini_magick'
 </script>
 ```
 
-## Base64デコード
+### Base64デコード
 - 参照
-  - [python-twitter で BASE64 形式の画像をツイートする](https://qiita.com/maguro_tuna/items/184f63e37f3724f18e33)
-  - [base64でエンコードされた画像をActive Storageで保存する](https://qiita.com/ozin/items/5ec81a4b126b8ebf7a96)
+- [python-twitter で BASE64 形式の画像をツイートする](https://qiita.com/maguro_tuna/items/184f63e37f3724f18e33)
+- [base64でエンコードされた画像をActive Storageで保存する](https://qiita.com/ozin/items/5ec81a4b126b8ebf7a96)
 
 ```rb
 # app/models/post.rb
@@ -327,10 +324,13 @@ end
 
 あとはposts_controllerで、paramsから受け取ったBase64データを上の`parse_base64(img)`で変換し、保存すれば完了。
 
-## [AWS S3](https://aws.amazon.com/jp/s3/)
+### AWS S3
+- refferrence
+  - [AWS S3](https://aws.amazon.com/jp/s3/)
+
 AWS上での登録、設定、バケット作成等は割愛。
 
-## Tweet Share Button
+### Tweet Share Button
 
 ```rb
 # app/views/layouts/application.html.erb
@@ -346,13 +346,13 @@ AWS上での登録、設定、バケット作成等は割愛。
 </script>
 ```
 
-## og:imageに画像添付
+### og:imageに画像添付
 なお、headのmeta情報セットには、`gem 'meta-tags'`を使用
 
-### service_url()とurl_for()
+#### service_url()とurl_for()
 - 参照
-  - [service_url() from api.rubyonrails](https://api.rubyonrails.org/classes/ActiveStorage/Variant.html#method-i-service_url)
-  - [url_for() from rails guide](https://railsguides.jp/active_storage_overview.html#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%99%E3%82%8B)
+- [service_url() from api.rubyonrails](https://api.rubyonrails.org/classes/ActiveStorage/Variant.html#method-i-service_url)
+- [url_for() from rails guide](https://railsguides.jp/active_storage_overview.html#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%99%E3%82%8B)
 
 基本的にはどちらも、ActiveStorageに保存したデータのUrlを取得するメソッドの様だ。
 どちらもセキュリティの為にリンクの有効期限が短いみたいだが、違いが分からなかった。今回はTweetボタン押下し、Tweetした際にog:imageとして表示されればいい。
@@ -365,13 +365,13 @@ AWS上での登録、設定、バケット作成等は割愛。
 <% end %>
 ```
 
-# Twitterログイン
+## Twitterログイン
 [TwitterDeveloperAccount](https://developer.twitter.com/content/developer-twitter/ja.html)が必要。割愛。
 
 - 参照
-  - [gem 'omniauth-twitter'　github](https://github.com/arunagw/omniauth-twitter)
-  - [[*Rails*] deviseの使い方（rails5版）](https://qiita.com/cigalecigales/items/f4274088f20832252374)
-  - [ominiauth脆弱性に対するクックパドによるパッチ]](https://github.com/cookpad/omniauth-rails_csrf_protection)
+- [gem 'omniauth-twitter'　github](https://github.com/arunagw/omniauth-twitter)
+- [deviseの使い方（rails5版）](https://qiita.com/cigalecigales/items/f4274088f20832252374)
+- [ominiauth脆弱性に対するクックパドによるパッチ]](https://github.com/cookpad/omniauth-rails_csrf_protection)
 
 ```rb
 # app/models/user.rb
@@ -411,8 +411,8 @@ end
 
 Twitterのニックネームが取得できるようになったので、元からあるUserのnameテーブルは削除した。
 
-# 改修(加筆
-## メディアクエリ
+## 改修(加筆
+### メディアクエリ
 想定ユーザは殆どスマホなのに、PCで作成し、CSSをPCの見た目でやってた。折角SCSSでやってるので、変数を利用した。
 
 ```scss
@@ -432,6 +432,5 @@ $tab: 680px;
 // }
 ```
 
-# 最後に
+## 最後に
 gist等がコードスクショをog:imageで表示してくれたら全て済むのでは
-

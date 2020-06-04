@@ -1,40 +1,15 @@
 import React from 'react'
-import Link from 'next/link'
 
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 
-import { HomeIcon,  BlogIcon, ArrowIcon } from '../utils/svgIcon'
-import { MyDrawerList, Divider } from '../components/MyDrawerList'
-
-const ListItem = React.forwardRef((props, ref) => {
-  return (
-    <>
-      <a href={props.href} onClick={props.onClick} ref={ref}>
-        <div role="button">{props.children}</div>
-      </a>
-      <style jsx>{`
-        div{
-          transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-          padding: .5rem 1rem;
-          width: 100%;
-          justify-content: flex-start;
-          user-select: none;
-        }
-        div:hover {
-          text-decoration: none;
-          background-color: rgba(255, 255, 255, 0.08);
-        }
-      `}</style>
-    </>
-  )
-})
+import { ArrowIcon } from '../utils/svgIcon'
+import { DrawerLists } from '../components/DrawerLists'
 
 export function PostLayout({ children }) {
   const [state, setState] = React.useState({
     left: false,
   })
 
-  // Do Not Touch
   const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return
@@ -42,57 +17,10 @@ export function PostLayout({ children }) {
     setState({ ...state, [anchor]: open })
   }
 
-  const PostDrawerList = () => {
-    return (
-      <>
-        <MyDrawerList>
-          <div className='list'>
-            <Link href='/' passHref>
-              <ListItem>
-                <div className='listItemIcon'>
-                  <HomeIcon />
-                </div>
-                Home
-              </ListItem>
-            </Link>
-            <Link href='/posts' passHref>
-              <ListItem>
-                <div className='listItemIcon'>
-                  <BlogIcon />
-                </div>
-                Blog
-              </ListItem>
-            </Link>
-          </div>
-          <Divider />
-          <div className='list'>
-            <div style={{textAlign: 'center'}}><p>underConstruction</p></div>
-          </div>
-        </MyDrawerList>
-        <style jsx>{`
-          .list{
-            margin: 0;
-            padding: 0;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-          }
-
-          .listItemIcon {
-            color: #fff;
-            display: inline-flex;
-            vertical-align: middle;
-            padding-right: 2rem;
-          }
-        `}</style>
-      </>
-    )
-  }
-
+   // drawer width is defined at _app.jsx
   return (
     <React.Fragment key='left'>
       <SwipeableDrawer
-        className='swipeableDrawer'
         anchor='left'
         open={state['left']}
         onClose={toggleDrawer('left', false)}
@@ -104,12 +32,9 @@ export function PostLayout({ children }) {
           onClick={toggleDrawer('left', false)}
           onKeyDown={toggleDrawer('left', false)}
         >
-          <PostDrawerList />
+          <DrawerLists />
         </div>
       </SwipeableDrawer>
-      <aside>
-        <div className='permanentDrawer'><PostDrawerList /></div>
-      </aside>
       <main>
         {children}
       </main>
@@ -118,19 +43,17 @@ export function PostLayout({ children }) {
           <ArrowIcon />
         </button>
       </footer>
-      <style jsx global>{`
-        #__next{
-          display: flex;
-        }
-      `}</style>
       <style jsx>{`
-        *{
-          --drawerWidth: 250px;
-        } 
-        
         /* general */
-        .swipeableList, .permanentDrawer {
+        .swipeableList {
           width: var(--drawerWidth);
+          background-color: #424242;
+          height: 100vh;
+        }
+
+        main{
+          flex: 1;
+          width: 100%;
         }
 
         footer{
@@ -140,49 +63,23 @@ export function PostLayout({ children }) {
           z-index: 100;
         }
 
-        main{
-          flex: 1;
+        footer button {
+          position: fixed;
+          left: .4rem;
+          bottom: .4rem;
+          height: 3.5rem;
+          width: 3.5rem;
+          border: 1px solid grey;
+          border-radius : 50%;
+          background-color: #424242;
+          outline: none;
         }
 
-        /* mobile and for swipe */
-          .permanentDrawer {
-            display: none;
-          }
-
-          footer button {
-            position: fixed;
-            left: .4rem;
-            bottom: .4rem;
-            height: 3.5rem;
-            width: 3.5rem;
-            border: 1px solid grey;
-            border-radius : 50%;
-            background-color: #424242;
-            outline: none;
-          }
-
-          main{
-            width: 100%;
-            margin-left: - var(--drawerWidth);
-          }
-
         @media ( min-width: 1280px ){
-          /* pc and for permanent */
-          .swipeableDrawer, footer button{
-            display: none;
-          }
-
-          .permanentDrawer{
-            display: block;
-            height: 100vh;
-            background-color: #424242;
-            position: fixed;
-            z-index: 100;
-          }
-
-          main{
-            width: calc(100% - var(--drawerWidth));
-            margin-left: var(--drawerWidth);
+          /* for pc */
+          footer button {
+            left: 4rem;
+            bottom: 4rem;
           }
         }
       `}</style>
