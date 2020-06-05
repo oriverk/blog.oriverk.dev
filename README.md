@@ -6,19 +6,19 @@
 
 <p align="center">
   <a href="https://ja.reactjs.org/">
-    <img src="https://user-images.githubusercontent.com/44029144/82920898-d84ad780-9fb2-11ea-951d-27a028d936d6.png" height="100px;" />
+    <img src="https://user-images.githubusercontent.com/44029144/83879483-a4bd3980-a778-11ea-94eb-8c04c8fb406e.jpg"
+          style="margin-right: .5%; max-width: 178px; max-height: 100px; width: 40%;" />
   <a href="https://nextjs.org/">
-    <img src="https://user-images.githubusercontent.com/44029144/82920947-e862b700-9fb2-11ea-97e8-7d0536fa9e5b.jpg" height="100px;" />
+    <img src="https://user-images.githubusercontent.com/44029144/83879519-b69edc80-a778-11ea-9094-8081f547f15d.jpg"
+          style="margin-left: .5%; max-width: 190px; max-height: 100px; width: 40%;" />
   </a>
 </p>
 
 ## Site URL
-### **https://oriverk.dev**
-
-Of course, this site adopt to mobile web page. You can swipe drawer.
+**https://oriverk.dev**
 
 ## Usage
-**First, please use `yarn` instead of `npm`.**
+**please use `yarn` instead of `npm`.**
 
 ```bash
 yarn install
@@ -33,15 +33,9 @@ You can give it try to use npm. Actually I prohibited the use of `npm` with `pac
 ## Learn More
 To lean what this site is like, the following post is good.
 
-- [Qiita: Next.jsでポートフォリオサイトを作成した](https://oriverk.dev/posts/20200526-next-portfolio) - learn about Next.js features and API.
+- [Qiita: Next.jsでポートフォリオサイトを作成した](https://oriverk.dev/posts/20200526-next-portfolio) 
 
-You can check out [the Next.js GitHub repository](https://github.com/oriverk/next-portfolio) - your feedback and contributions are welcome!
-
-## Deploy on ZEIT Now
-
-The easiest way to deploy Next.js app is to use the [ZEIT Now Platform](https://zeit.co/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+You can check out [the Next.js GitHub repository](https://github.com/oriverk/next-portfolio)
 
 ## Author
 - [Github](https://github.com/oriverk)
