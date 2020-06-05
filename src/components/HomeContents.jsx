@@ -156,7 +156,7 @@ export function History() {
             </div>
             <div className='right'>
               <span>2015/04 - 2017/03</span>
-              <br /><b>Agricultural Enginnering Lab.</b>
+              <br /><b>Agricultural Production System Enginnering Lab.</b>
               <br /><span>Agricultural crop row detecting tech by image processing</span>
             </div>
           </div>
@@ -170,7 +170,7 @@ export function History() {
             <div className='right'>
               <span>2013/04 - 2017/03 :</span>
               <br /><b>Faculty of Agriculture <wbr />in Miyazaki Univ.</b>
-              <br /><span>Majored Botanics and Agricultural Engineering</span>
+              <br /><span>Majored in Botanics and Agricultural Mechanics</span>
             </div>
           </div>
         </article>

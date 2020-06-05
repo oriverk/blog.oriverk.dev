@@ -13,7 +13,7 @@
 </p>
 
 ## Site URL
-### **https://next-portfolio-blue.now.sh/**
+### **https://oriverk.dev**
 
 Of course, this site adopt to mobile web page. You can swipe drawer.
 
@@ -33,7 +33,7 @@ You can give it try to use npm. Actually I prohibited the use of `npm` with `pac
 ## Learn More
 To lean what this site is like, the following post is good.
 
-- [Qiita: Next.jsでポートフォリオサイトを作成した](https://next-portfolio-blue.now.sh/posts/20200526-next-portfolio) - learn about Next.js features and API.
+- [Qiita: Next.jsでポートフォリオサイトを作成した](https://oriverk.dev/posts/20200526-next-portfolio) - learn about Next.js features and API.
 
 You can check out [the Next.js GitHub repository](https://github.com/oriverk/next-portfolio) - your feedback and contributions are welcome!
 
@@ -52,12 +52,12 @@ Now I'm unemployment and seeking job in Japan ...
 
 ## To do
 - [ ] implement `/tags/[tag]` page
-- [ ] display lang around code-block
+- [ ] render `lang` above the code-block
 - [ ] improve Syntax-Highlight
 - [ ] integrate CSS( module.css or styled-jsx ...)
 - [ ] implement RSS
 - [ ] implement Hybrid AMP : [next/amp](https://nextjs.org/docs/api-reference/next/amp)
 - [ ] TypeScript
-- [ ] PWA
+- [x] PWA
 - [x] Google Analytics
 - [x] Custom dmain

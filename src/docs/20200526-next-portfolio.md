@@ -1,5 +1,6 @@
 ---
 date: '2020-05-26'
+update: '2020-06-05'
 author: Kawano Yudai
 title: 'Qiita: Next.jsでポートフォリオサイトを作成した'
 tags: [Qiita, React, next.js, remark.js, Vercel]
@@ -33,15 +34,16 @@ ReactとNext.jsのtutorialとdocsを一通りやりました。
 - [Github リポジトリ](https://github.com/oriverk/next-portfolio)
 - [this site](https://oriverk.dev)
 
-<picture>
-</picture>
-
 <video autoplay loop muted playsinline>  
   <source src='/assets/posts/202005/next-portfolio-prtsc.webm' type='video/webm'>  
   <img src='/assets/posts/202005/next-portfolio-prtsc.gif' alt='screen-shot of next.js portfolio' />
-</video>  
+</video>
 
-まだ、ドキュメントや人のコードを参照しながら色々試している最中なので、コードが汚いです。
+lighthouse
+
+<picture>
+  <img src='/assets/posts/202005/next7.png' alt='page score' />
+</picture>
 
 ### 技術・要件など
 - React.js, Next.js
@@ -429,10 +431,6 @@ tagsページのスタイルが未だ・・・
    - processor: [remarkjs/ remark](https://remark.js.org/)
    - highlighter: [highlight.js](https://highlightjs.org/)
 
-- 参照：`mdxjs/mdx`らへん
-- [MDXjs get started](https://mdxjs.com/getting-started/next)
-- [Zeit - Next.config.js](https://nextjs.org/docs/api-reference/next.config.js/introduction)
-
 構文木について、しっかり学ばねばと思いました。
 
 <details><summary><code>/src/lib/posts.jsx</code></summary><div>
@@ -509,42 +507,51 @@ slide: false
 </button>
 ```
 
-## 更新
-### README.md 整備
-@ 2020/05/27
+## UPDATE
+### README.md
+@ 2020-05-27
 
-- 参照
-- [【GitHub】README.mdをカッコ可愛くデザインしてアプリの魅力を120%にする](https://qiita.com/aocattleya/items/5f836e9c65ba3eb3af03)
+- 参照: [README.mdをカッコ可愛くデザインしてアプリの魅力を120%にする](https://qiita.com/aocattleya/items/5f836e9c65ba3eb3af03)
 
 Qiita投稿の公開に当たり、[`README.md`](https://github.com/oriverk/next-portfolio/blob/master/README.md)を充実させた
 
 ### npm install 禁止
-@ 2020/05/27
+@ 2020-05-27
 
-- 参照
-- [yarnを使うプロジェクトでnpm installを禁止する方法](https://qiita.com/suin/items/a7bf214f48eb9b2d9afc)
+- 参照: [yarnを使うプロジェクトでnpm installを禁止する方法](https://qiita.com/suin/items/a7bf214f48eb9b2d9afc)
 
 特に理由はないが`npm`の仕様を禁じることにした。
 
-## 残る改善点、したい事など
-### サイト全体
+### Custom Domain
+@ 2020-06-01
 
-- Material-uiからの脱却
-- swipeable-drawer以外は自分で実装出来そうなので 
+1. [google domain](https://domains.google.com/m/registrar/oriverk.dev?_ga=2.153310781.441756797.1591349884-1076856418.1588824685#)で https://oriverk.dev を購入
+2. Vercel側でドメインを変更
+3. Google Domain側でdnsをvercel用に変更(↓)
 
-<picture>
-  <img src='/assets/posts/202005/next7.png' alt='page score' />
-</picture>
+- ns1.vercel-dns.com
+- ns2.vercel-dns.com
+
+### Google Analytics
+@ 2020-06-05
+
+- 参照: [vercel/next.js - examples/with-google-analytics](https://github.com/vercel/next.js/tree/canary/examples/with-google-analytics)
+
+GoogleAnalytics側でIDを取得し、`_app.jsx`と`_document.jsx`を上コードに従って修正する。
+
+### PWA implimentation
+@ 2020-06-05
+
+- 参照：[github - hanford/next-offline](https://github.com/hanford/next-offline)
+
+`next-offline`を利用した。上リポジトリでも記載してあるが、Vercel( Now )のv1とv2で動作が違う。但し、現在はv2オンリーなので、同レポジトリ内にある[packages/now2-example](https://github.com/hanford/next-offline/tree/master/packages/now2-example)の`now.json`と`next.config.json`に倣えばよい。
+
+## To do
 
 - CSSの統一(module.cssなのかstyled-jsxなのか等)
 - TypeScript化（触ってみたいだけ
 - AMP一部対応( 参照：[Next.js next/amp](https://nextjs.org/docs/api-reference/next/amp)
-- google analytics, PWA対応
-- カスタムドメイン
-  - https://oriverk.dev
 - api routeを試す
-
-### posts, tags周辺
 - `/tags`ページの整備
 - コードブロックの言語またはファイル名の出力
 - syntax-highlightの改善

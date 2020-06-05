@@ -16,12 +16,18 @@ const ListItem = React.forwardRef((props, ref) => {
           transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
           padding: .5rem 1rem;
           width: 100%;
+          height: 4rem;
           justify-content: flex-start;
           user-select: none;
         }
         div:hover {
           text-decoration: none;
           background-color: rgba(255, 255, 255, 0.08);
+        }
+        @media ( min-width: 1280px){
+          div {
+            height: 4.75rem;
+          }
         }
       `}</style>
     </>
@@ -107,7 +113,6 @@ export const DrawerLists = (props) => {
         }
 
         .listItemIcon {
-          color: #FFF;
           display: inline-flex;
           vertical-align: middle;
           padding-right: 2rem;
