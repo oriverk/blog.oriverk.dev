@@ -59,5 +59,5 @@ Now I'm unemployment and seeking job in Japan ...
 - [ ] implement Hybrid AMP : [next/amp](https://nextjs.org/docs/api-reference/next/amp)
 - [ ] TypeScript
 - [ ] PWA
-- [ ] Google Analytics
+- [x] Google Analytics
 - [x] Custom dmain

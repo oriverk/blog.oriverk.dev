@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import Router from 'next/router'
 import Head from 'next/head'
 import * as gtag from '../lib/gtag'
 
