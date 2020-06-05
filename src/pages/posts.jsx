@@ -59,6 +59,10 @@ export default function Posts({ allPostsData, posts }) {
           text-decoration: underline;
         }
 
+        time {
+          margin-right: 1rem;
+        }
+
         .tags {
           display: block;
         }

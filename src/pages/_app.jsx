@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import Router from 'next/router'
 import Head from 'next/head'
+import * as gtag from '../lib/gtag'
 
 export default function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      gtag.pageview(url)
+    }
+    Router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      Router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [])
+
   return (
     <React.Fragment>
       <Head>
@@ -69,8 +81,8 @@ export default function MyApp({ Component, pageProps }) {
           padding-left: 1.5rem;
         }
 
-        li a {
-          padding: .75rem 0;
+        ul li{
+          padding-bottom: 1rem;
         }
 
         a{
