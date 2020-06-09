@@ -37,6 +37,7 @@ const ListItem = React.forwardRef((props, ref) => {
 export const DrawerLists = (props) => {
   return (
     <React.Fragment>
+      <div className="drawerContents">
       <div className='profileImgContainer'>
         <picture>
           <source srcSet='/assets/human192x192.webp' type='image/webp' className='profileImg' />
@@ -87,6 +88,7 @@ export const DrawerLists = (props) => {
         <IconButton href='https://www.wantedly.com/users/40069986' label='Wantedly'><WantedlyIcon /></IconButton>
         <IconButton href='https://www.linkedin.com/in/yudai-k/' label='LinkedIn'><LinkedInIcon /></IconButton>
         <IconButton href='https://twitter.com/not_you_die' label='Twitter'><TwitterIcon /></IconButton>
+      </div>
       </div>
       <style jsx>{`
         .profileImgContainer {

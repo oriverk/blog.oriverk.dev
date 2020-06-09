@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { Layout } from '../components/Layout'
-import { getSortedPostsData } from '../lib/posts'
+import { Layout } from '../../components/Layout'
+import { getSortedPostsData } from '../../lib/posts'
 
-const manifest = require('../../public/manifest.json')
+const manifest = require('../../../public/manifest.json')
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
@@ -14,7 +14,7 @@ export async function getStaticProps() {
   }
 }
 
-export default function Posts({ allPostsData, posts }) {
+export default function ({ allPostsData, posts }) {
   return (
     <>
       <Layout posts>
@@ -69,7 +69,7 @@ export default function Posts({ allPostsData, posts }) {
 
         .tags a{
           font-size: .8rem;
-          color: #50CAF9
+          color: #50CAF9;
         }
 
         @media( min-width: 1280px ){
