@@ -376,7 +376,7 @@ export default function Post(){
 
 ファイル名に`[]`が付いてるので変に見えるが。例えば
 
-- `localhost:3000/posts/hoge/`にアクセスすると`pages/posts/hoge.jsx`が読み込まれる。(これは普通)
+- `localhost:3000/posts/hoge/`にアクセスすると`pages/posts/hoge.jsx`が読み込まれる
 - `localhost:3000/posts/foobar`だと、`pages/posts/foobar.jsx`が読み込まれ、
 
 <picture>
@@ -384,7 +384,7 @@ export default function Post(){
   <img src='/assets/posts/202005/next2.jpg' alt='dynamic route' />
 </picture>
 
-`dynamic route`と`Link( next/link )`を併用する時は、`href`に合わせて`as`も使うなど注意点があるが、非常に便利な代物かと。
+`dynamic route`と`Link( next/link )`を併用する時は、`href`に合わせて`as`も使う。
 
 #### getStaticProps, getStaticPaths
 今回はmdファイルを`/src/pages/docs`に入れる。
@@ -393,13 +393,11 @@ export default function Post(){
 - `baseUrl/posts/[id]`の場合は、同様にして、post単体の出力
 - `baseUrl/tags`の場合は、同様にpostsで使用されている投稿タグ一覧の出力
 - `baseUrl/tags/[tag]`なら、同タグを使用するposts一覧を出力
-  - 重複tagが出るので、tag全取得 => `toLowerCase()` => `sort()` => 重複削除
 - docs配下に無いmdファイル名にアクセスした場合は、`404`
 
 ページ出力が`src/pages/docs/xxx.md`という外部データに依存した静的ページ出力をしたいので、`getStaticProps`と`getStaticPaths`を使用した。
 
-- 参照
-- [Data fetching - Next.js](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation)
+- 参照: [Data fetching - Next.js](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation)
 - [Static Generation with Data - Next.js Pages](https://nextjs.org/docs/basic-features/pages#static-generation-with-data)
 
 - `getStaticProps`
@@ -425,7 +423,6 @@ tagsページのスタイルが未だ・・・
 - 実現したい事
     - QiitaやGist等での投稿を可能な限り手間なく集約したい
       - `mdxjs/mdx`なら、ファイル中に`import`や`export`等のjsを組み込める。
-        - 汎用性を考えて、今回は`front-matter`を使用する。
 - 最終的に利用したもの。
    - [jonschlinkert/ gray-matter](https://github.com/jonschlinkert/gray-matter)
    - processor: [remarkjs/ remark](https://remark.js.org/)
@@ -525,9 +522,9 @@ Qiita投稿の公開に当たり、[`README.md`](https://github.com/oriverk/next
 ### Custom Domain
 @ 2020-06-01
 
-1. [google domain](https://domains.google.com/m/registrar/oriverk.dev?_ga=2.153310781.441756797.1591349884-1076856418.1588824685#)で https://oriverk.dev を購入
+1. [google domain](https://domains.google.com/m/registrar/oriverk.dev?_ga=2.153310781.441756797.1591349884-1076856418.1588824685#)で購入
 2. Vercel側でドメインを変更
-3. Google Domain側でdnsをvercel用に変更(↓)
+3. Google Domain側でdnsをvercel用に変更
 
 - ns1.vercel-dns.com
 - ns2.vercel-dns.com

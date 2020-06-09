@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { Layout } from '../components/Layout'
-import { getPostsTags } from '../lib/posts'
+import { Layout } from '../../components/Layout'
+import { getPostsTags } from '../../lib/posts'
 
-const manifest = require('../../public/manifest.json')
+const manifest = require('../../../public/manifest.json')
 
 export async function getStaticProps() {
   const postsTags = getPostsTags()
@@ -14,7 +14,7 @@ export async function getStaticProps() {
   }
 }
 
-export default function Tags({ postsTags }) {
+export default function ({ postsTags }) {
   return (
     <>
       <Layout>
@@ -37,27 +37,14 @@ export default function Tags({ postsTags }) {
       <style jsx>{`
         .content {
           width: 100%;
-          max-width: 950px;
+          max-width: 1000px;
           margin: 0 auto 1rem;
           padding: 5%;
           flex-grow: 1;
         }
 
-        h1{
-          text-align: center;
-        }
-
-        code{
-          /* color: #DDD; */
-          display: inline-block;
-          margin: 0 .5rem;
-          padding: 0 .3rem;
-          background-color: #555;
-        }
-        
         .tags a{
           font-size: .8rem;
-          color: #50CAF9
         }
       `}</style>
     </>

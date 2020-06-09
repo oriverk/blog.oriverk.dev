@@ -32,7 +32,7 @@ export function Layout({children, home, posts}) {
           onClick={toggleDrawer('left', false)}
           onKeyDown={toggleDrawer('left', false)}
         >
-          <DrawerLists home={home} posts={posts} />
+          <DrawerLists home={home} posts={posts}/>
         </div>
       </SwipeableDrawer>
       <aside>
