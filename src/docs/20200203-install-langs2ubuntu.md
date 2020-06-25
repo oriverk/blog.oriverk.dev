@@ -61,19 +61,41 @@ sudo gem install rails
   - If do not build Debian, build~ is not needed
   - [Reference](https://packages.debian.org/ja/sid/build-essential)
 
+## Golang
+- use goenv to install Go
+  - goenv is package management tool which based on rbenv
+
+```sh
+git clone https://github.com/syndbg/goenv.git ~/.goenv
+# make path
+echo 'export GOENV_ROOT="$HOME/.goenv"' >> ~/.bashrc
+echo 'export PATH="$GOENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(goenv init -)"' >> ~/.bashrc
+# reload shell
+exec $SHELL
+# confirm goenv version
+goenv --version
+# check available Golang ver.
+goenv install --list
+# install Golang
+goenv install 〇.〇.〇
+# confirm available Golang ver.
+goenv versions
+# make the Golang ver. available to use as global
+goenv global 〇.〇.〇
+goenv rehash
+# confirm Golang ver. that is available to use
+go version
+```
 ## Nodejs
 rails6 uses webpacker, which needs nodejs
 
 ```sh
-# first, install nodejs and npm
 sudo apt install -y nodejs npm
-
 # install n-package
 sudo npm install n -g
-
 # by n-package, install node
 sudo n stable
-
 # uninstal old nodejs and npm, and re-login
 sudo apt purge -y nodejs npm
 exec $SHELL -l
@@ -83,14 +105,11 @@ node -v
 ```
 
 ## Rust
-I tried this installation and coded a little when discord changed golang to rust.
 
 ```sh
 sudo apt install build-essential
-
 # install rust
 curl https://sh.rustup.rs -sSf | sh
-
 # add the pass
 source $HOME/.cargo/env
 ```
@@ -98,9 +117,7 @@ source $HOME/.cargo/env
 ## Java
 ```sh
 sudo apt update
-sudo apt install git
 sudo apt install openjdk-11-jdk
-
 # confirmation
 java --version
 ```

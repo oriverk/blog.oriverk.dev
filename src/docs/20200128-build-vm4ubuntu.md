@@ -1,6 +1,6 @@
 ---
 date: '2020-01-28'
-update: '2020-05-13'
+update: '2020-06-25'
 author: Kawano Yudai
 title: 'Gist: how to build VM with linux Ubuntu'
 tags: [VM, Ubuntu]
@@ -19,7 +19,12 @@ cd hogehoge
 vagrant init
 ```
 
-### add or modify file "Vagrantfile"
+### modify "Vagrantfile"
+- specify vagrant-box
+- change vagrant name
+- specify ip
+- if build gui, uncomment `vb.gui = true'
+- modify available ram
 
 <details><summary><code>Vagrantfile</code></summary><div>
 
@@ -38,7 +43,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "bento/ubuntu-18.04"
+  config.vm.box = "bento/ubuntu-20.04"
   
   # vagrant name
   config.vm.define "hogehoge"
@@ -101,13 +106,13 @@ end
 
 </div></details>
 
-### lastly
+After Vagrantfile modification, do `vagrant up`
+
+### setup for remote-ssh
 ```sh
-vagrant up
-vagrant global-status
 # for WSL@ setting information
 vagrant ssh-config
-vagrant ssh
+# => paste info to `remote-ssh: open configuration file`
 ```
 
 ### Inner SSH
@@ -116,6 +121,26 @@ sudo apt update
 # If build Desktop ver
 sudo apt install ubuntu-desktop
 ```
+
+### setup default editor (vim)
+- reference: [Gitをインストールしたら真っ先にやっておくべき初期設定](https://qiita.com/wnoguchi/items/f7358a227dfe2640cce3)
+
+```sh
+# delete nano
+sudo dpkg -P nano
+# select vim
+sudo update-alternatives --config editor
+```
+
+### setup github
+```sh
+git config --global core.editor 'vim -c "set fenc=utf-8"'
+git config --global user.name "First-name Family-name"
+git config --global user.email "username@example.com"
+```
+
+### setup vim
+use my dotfile repo on github
 
 ### Change locale and timezone
 ```sh
@@ -140,14 +165,13 @@ GUI版を構築する際はVagrantfileの編集から少し異なる。
 
 ```rb
 # Vagrantfile
-# 編集後
 Vagrant.configure("2") do |config|
-  config.vm.box = "bento/ubuntu-18.04"
+  config.vm.box = "bento/ubuntu-20.04"
   config.vm.network "private_network", ip: "192.168.33.10"
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = true
-    vb.memory = "8192"　# RAMを使える量を変更
+    vb.memory = "8192"
     # cpu の数
     vb.cpus = 4
     vb.customize [
@@ -166,7 +190,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-仮想環境の立ち上げ
+### 仮想環境の立ち上げ
 
 ```sh
 vagrant up
