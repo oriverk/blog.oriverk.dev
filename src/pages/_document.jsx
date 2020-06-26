@@ -2,7 +2,7 @@ import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { GA_TRACKING_ID } from '../lib/gtag'
 
-const manifest = require('../../public/manifest.json')
+const blog = require('../../blog.json')
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -26,13 +26,13 @@ export default class MyDocument extends Document {
               });
             `,
           }}/>
-          <meta name='theme-color' content={manifest.theme_color} />
+          <meta name='theme-color' content={blog.theme_color} />
           <meta content='developer, ruby, react' name='keywords' />
           <meta property='og:type' content='website' />
-          <meta property='og:site_name' content={manifest.name} />
-          <meta property='og:locale' content={manifest.lang} />
+          <meta property='og:site_name' content={blog.name} />
+          <meta property='og:locale' content={blog.lang} />
           <meta content='summary_large_image' name='twitter:card' />
-          <meta content='@not_you_die' name='twitter:site' />
+          <meta content={blog.sns.twitter} name='twitter:site' />
           <link rel='manifest' crossOrigin="use-credentials" href='./manifest.json' />
         </Head>
         <body>

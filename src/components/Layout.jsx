@@ -3,7 +3,7 @@ import React from 'react'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 
 import { ArrowIcon } from '../utils/svgIcon'
-import { DrawerLists } from '../components/DrawerLists'
+import { DrawerLists } from './DrawerLists'
 
 export function Layout({children, home, posts}) {
   const [state, setState] = React.useState({

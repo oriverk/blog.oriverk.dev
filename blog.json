@@ -1,0 +1,16 @@
+{
+  "baseName": "Kawano Yudai's site",
+  "short_name": "Kawano Yudai",
+  "background_color": "#212121",
+  "theme_color": "#212121",
+  "baseDesc": "This site is for my portfolio and made with React, Next.js",
+  "baseUrl": "https://oriverk.dev",
+  "language": "en_US",
+  "sns": {
+    "tiwtter": "not_you_die",
+    "github": "oriverk",
+    "wantedly": 40069986,
+    "qiita": "Oriverk",
+    "linkedin:": "kawanoyudai"
+  }
+}
