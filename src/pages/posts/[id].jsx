@@ -6,7 +6,7 @@ import { getAllPostIds, getPostData } from '../../lib/posts'
 import { HatenaIcon, TwitterIcon } from '../../utils/svgIcon'
 import { IconButton } from '../../utils/utils'
 
-const manifest = require('../../../public/manifest.json')
+const blog = require('../../../blog.json')
 
 export async function getStaticPaths() {
   const paths = getAllPostIds()
@@ -27,22 +27,21 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Post({ postData }) {
-  const pageTitle = `${postData.title} | ${manifest.name}`
   const tags = postData.LowerCaseTags
   const pageTags = tags ? tags.join(' ') : 'React, Next.js'
-  const pageImageUrl = postData.image ? postData.image : '/assets/prtsc700.jpg'
+  const pageImage = postData.image ? postData.image : '/assets/prtsc700.jpg'
   
   return (
     <>
       <PostLayout>
         <Head>
-          <title>{pageTitle}</title>
-          <meta name='title' content={pageTitle} />
+          <title>{`${postData.title} | ${blog.short_name}`}</title>
+          <meta name='title' content={`${postData.title} | ${blog.short_name}`} />
           <meta name='description' content={pageTags} />
-          <meta property='og:title' content={pageTitle} />
+          <meta property='og:title' content={`${postData.title} | ${blog.baseName}`} />
           <meta property='og:description' content={pageTags} />
-          <meta property='og:image' content={`${manifest.vercel}${pageImageUrl}`} />
-          <meta property='og:url' content={`${manifest.vercel}/posts/${postData.id}`} />
+          <meta property='og:image' content={`${blog.baseUrl}/${pageImage}`} />
+          <meta property='og:url' content={`${blog.baseUrl}/posts/${postData.id}`} />
           <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
         </Head>
         <article className='content'>
@@ -55,10 +54,10 @@ export default function Post({ postData }) {
           <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} className='markdonw' />
           {/* <div>`${postData.jsx}`</div> */}
           <div className='sns'>
-            <IconButton label='twitter share button' href={`https://twitter.com/share?text=${postData.title}&hashtags=react,nextjs&url=https://next-portfolio-blue.now.sh/posts/${postData.id}&related=not_you_die`}>
+            <IconButton label='twitter share button' href={`https://twitter.com/share?text=${postData.title}&hashtags=react,nextjs&url=${blog.baseUrl}/posts/${postData.id}&related=${blog.sns.tiwtter}`}>
               <TwitterIcon />
             </IconButton>
-            <IconButton label='hatena share button' href={`https://b.hatena.ne.jp/entry/https://next-portfolio-blue.now.sh/posts/${postData.id}`}>
+            <IconButton label='hatena share button' href={`https://b.hatena.ne.jp/entry/${blog.baseUrl}/posts/${postData.id}`}>
               <HatenaIcon />
             </IconButton>
           </div>

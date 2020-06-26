@@ -7,7 +7,7 @@ import { Layout } from '../../components/Layout'
 // import { getPostsWithTag } from '../../lib/posts'
 // import { getAllPostIds, getPostData } from '../../lib/posts'
 
-const manifest = require('../../../public/manifest.json')
+const blog = require('../../../blog.json')
 
 // const tag = () => {
 //   const router = useRouter()
@@ -40,13 +40,13 @@ export default function Tag() {
     <>
       <Layout>
         <Head>
-          <title> Tag | {manifest.name}</title>
-          <meta name='title' content={` Tag | ${manifest.name}`} />
-          <meta name='description' content={manifest.description} />
-          <meta property='og:title' content={`Tag | ${manifest.name}`} />
-          <meta property='og:description' content={manifest.description} />
-          <meta property='og:image' content={`${manifest.vercel}/assets/prtsc700.jpg`} />
-          <meta property='og:url' content={`${manifest.vercel}/tags/hoge`} />
+          <title>{`${tag} | ${blog.baseName}`}</title>
+          <meta name='title' content={` Tag | ${blog.baseName}`} />
+          <meta name='description' content={blog.baseDesc} />
+          <meta property='og:title' content={`Tag | ${blog.baseName}`} />
+          <meta property='og:description' content={blog.baseDesc} />
+          <meta property='og:image' content={`${blog.baseUrl}/assets/prtsc700.jpg`} />
+          <meta property='og:url' content={`${blog.baseUrl}/tags/hoge`} />
         </Head>
         <article className='content'>
           <h1>Tag: {tag}</h1>
@@ -61,7 +61,7 @@ export default function Tag() {
           padding: 5%;
           flex-grow: 1;
         }
-         
+
         h2 {
           margin: .5rem auto 1.5rem;
           font-weight: 600;

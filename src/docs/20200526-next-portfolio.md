@@ -537,11 +537,30 @@ Qiita投稿の公開に当たり、[`README.md`](https://github.com/oriverk/next
 GoogleAnalytics側でIDを取得し、`_app.jsx`と`_document.jsx`を上コードに従って修正する。
 
 ### PWA implimentation
+#### next-offline
 @ 2020-06-05
 
 - 参照：[github - hanford/next-offline](https://github.com/hanford/next-offline)
 
 `next-offline`を利用した。上リポジトリでも記載してあるが、Vercel( Now )のv1とv2で動作が違う。但し、現在はv2オンリーなので、同レポジトリ内にある[packages/now2-example](https://github.com/hanford/next-offline/tree/master/packages/now2-example)の`now.json`と`next.config.json`に倣えばよい。
+
+#### next-pwa
+@2020-06-25
+
+- reference: [shadowwalker / next-pwa](https://github.com/shadowwalker/next-pwa)
+
+最初に使った `next-offline` は更新が遅く、またexperimentalな部分を利用していた等の理由から、`next-pwa`に移行した。example から分かるように、非常にシンプルになった。
+
+```js
+// next.config.js
+const withPWA = require('next-pwa')
+
+module.exports = withPWA({
+  pwa: {
+    dest: 'public'
+  }
+})
+```
 
 ## To do
 

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Layout } from '../../components/Layout'
 import { getSortedPostsData } from '../../lib/posts'
 
-const manifest = require('../../../public/manifest.json')
+const blog = require('../../../blog.json')
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
@@ -19,13 +19,13 @@ export default function ({ allPostsData, posts }) {
     <>
       <Layout posts>
         <Head>
-          <title>Blog | {manifest.name}</title>
-          <meta name='title' content={`Blog | ${manifest.name}`} />
-          <meta name='description' content={manifest.description} />
-          <meta property='og:title' content={`Blog | ${manifest.name}`} />
-          <meta property='og:description' content={manifest.description} />
-          <meta property='og:image' content={`${manifest.vercel}/assets/prtsc700.jpg`} />
-          <meta property='og:url' content={`${manifest.vercel}/posts`} />
+          <title>Blog | {blog.short_name}</title>
+          <meta name='title' content={`Blog | ${blog.name}`} />
+          <meta name='description' content={blog.baseDesc} />
+          <meta property='og:title' content={`Blog | ${blog.name}`} />
+          <meta property='og:description' content={blog.baseDesc} />
+          <meta property='og:image' content={`${blog.baseUrl}/assets/prtsc700.jpg`} />
+          <meta property='og:url' content={`${blog.baseUrl}/posts`} />
         </Head>
         <article className='content'>
           <h1>Blog Posts</h1>

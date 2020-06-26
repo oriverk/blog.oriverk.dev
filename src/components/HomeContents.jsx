@@ -4,6 +4,18 @@ import { NoImage } from '../utils/utils'
 import css from 'styled-jsx/css'
 
 const containerStyle = css`
+  section {
+    padding: 0 5%;
+    flex-grow: 1;
+    max-width: 1000px;
+    margin: 0 auto 2rem;
+  }
+  article {
+    margin-bottom: 1rem;
+  }
+  h2, h3 {
+    text-align: center;
+  }
   .container {
     width: 100%;
     display: flex;
@@ -40,14 +52,14 @@ const containerStyle = css`
 export function Top() {
   return (
     <>
-      <section id='top' className='content'>
-        <div className='topTitleContainer'>
-          <div className='topTitle'>Kawano <wbr />Yudai</div>
-          <div className='topSubtitle'>B.Agr. /<wbr />JobSeeker</div>
+      <section id='top'>
+        <div className='title'>
+          <div className='top'>Kawano <wbr />Yudai</div>
+          <div className='sub'>B.Agr. /<wbr />JobSeeker</div>
         </div>
       </section>
       <style jsx>{`
-        .content {
+        section {
           height: 100vh;
           width: 100%;
           margin-bottom: 2rem;
@@ -57,8 +69,7 @@ export function Top() {
           background-position: center;
           background-image: url('/assets/adelaide2.webp');
         }
-        .topTitleContainer {
-          color: white;
+        .title {
           padding: 5%;
           text-align: center;
           position: absolute;
@@ -69,11 +80,11 @@ export function Top() {
           border-bottom: 2px double rgb(255,255,255);
           border-radius: 2px;
         }
-        .topTitle {
+        .top {
           font-weight: 500;
           font-size: 4rem;
         }
-        .topSubtitle {
+        .sub {
           font-size: 2rem
         }
       `}</style>
@@ -84,7 +95,7 @@ export function Top() {
 export function About() {
   return (
     <>
-      <section id='about' className='content'>
+      <section id='about'>
         <h2>About</h2>
         <div className='container'>
           <div className='left'>
@@ -92,7 +103,7 @@ export function About() {
               <source srcSet='/assets/LongRidge500.webp' type='image/webp' className='contentImg' />
               <img src='/assets/LongRidge500.jpg' alt='the secenary from Long-Ridge-Lookout in Adelaide' className='contentImg' />
             </picture>
-            <p style={{ textAlign: 'center' }}><small>My selfie is little...</small></p>
+            <p><small>My selfie is little...</small></p>
           </div>
           <div className='right'>
             <p>My name is Kawano Yudai.</p>
@@ -100,23 +111,11 @@ export function About() {
             <p>In agricultural engineering lablatory I studied crop row detecting tech by image processing with C++ and OpenCV.</p>
             <p>After egg company, I stayed at Australia as working holiday. Then I studied Ruby and other tech like database, website system.</p>
             <p>So, I'm interested in both nature and machinery</p>
-            <p style={{ color: '#F48FB1' }}><em>Now, I'm seeking job as developer. Please contact me.</em></p>
           </div>
         </div>
       </section>
       <style jsx>{`
-        .content {
-          padding: 0 5%;
-          flex-grow: 1;
-          max-width: 1000px;
-          margin: 0 auto 2rem;
-        }
-
-        h2 {
-          text-align: center;
-        }
-
-        #about p {
+        p {
           margin: 0 auto .5rem;
         }
       `}</style>
@@ -130,7 +129,7 @@ export function About() {
 export function History() {
   return (
     <>
-      <section id='history' className='content'>
+      <section id='history'>
         <h2>History</h2>
         <article>
           <h3>Experience</h3>
@@ -175,26 +174,6 @@ export function History() {
           </div>
         </article>
       </section>
-      <style jsx>{`
-        .content {
-          padding: 0 5%;
-          flex-grow: 1;
-          max-width: 1000px;
-          margin: 0 auto 2rem;
-        }
-
-        h2 {
-          text-align: center;
-        }
-
-        h3 {
-          text-align: center;
-        }
-
-        article {
-          margin-bottom: 1rem;
-        }
-      `}</style>
       <style jsx>
         {containerStyle}
       </style>
@@ -205,7 +184,7 @@ export function History() {
 export function Works() {
   return (
     <>
-      <section id='works' className='content'>
+      <section id='works'>
         <h2>Works</h2>
         <article>
           <div className='container'>
@@ -294,22 +273,6 @@ export function Works() {
           </div>
         </article>
       </section>
-      <style jsx>{`
-        .content {
-          padding: 0 5%;
-          flex-grow: 1;
-          max-width: 1000px;
-          margin: 0 auto 3rem;
-        }
-
-        h2 {
-          text-align: center;
-        }
-
-        article {
-          margin-bottom: 1rem;
-        }
-      `}</style>
       <style jsx>
         {containerStyle}
       </style>

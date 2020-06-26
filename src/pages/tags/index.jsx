@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Layout } from '../../components/Layout'
 import { getPostsTags } from '../../lib/posts'
 
-const manifest = require('../../../public/manifest.json')
+const blog = require('../../../blog.json')
 
 export async function getStaticProps() {
   const postsTags = getPostsTags()
@@ -19,13 +19,13 @@ export default function ({ postsTags }) {
     <>
       <Layout>
         <Head>
-          <title>Tags | {manifest.name}</title>
-          <meta name='title' content={`Tags | ${manifest.name}`} />
-          <meta name='description' content={manifest.description} />
-          <meta property='og:title' content={`Tags | ${manifest.name}`} />
-          <meta property='og:description' content={manifest.description} />
-          <meta property='og:image' content={`${manifest.vercel}/assets/prtsc700.jpg`} />
-          <meta property='og:url' content={`${manifest.vercel}/tags`} />
+          <title>Tags | {blog.short_name}</title>
+          <meta name='title' content={`Tags | ${blog.baseName}`} />
+          <meta name='description' content={blog.baseDesc} />
+          <meta property='og:title' content={`Tags | ${blog.baseName}`} />
+          <meta property='og:description' content={blog.baseDesc} />
+          <meta property='og:image' content={`${blog.baseUrl}/assets/prtsc700.jpg`} />
+          <meta property='og:url' content={`${blog.baseUrl}/tags`} />
         </Head>
         <article className='content'>
           <h1>Blog Tags</h1>
