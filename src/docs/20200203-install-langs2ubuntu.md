@@ -1,11 +1,9 @@
 ---
-date: '2020-02-03'
+create: '2020-02-03'
 update: '2020-03-17'
 author: Kawano Yudai
 title: 'Gist: installl langs to ubuntu'
 tags: [Gist, Ubuntu, Ruby, Rails, Node.js, Rust, Java]
-image: ''
-slide: false
 ---
 
 from [Gist: oriverk/InstallLanguage2Ubuntu.md](https://gist.github.com/oriverk/5d0352c7ca673883d9326e5ce0fb2ae1)

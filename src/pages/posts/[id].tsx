@@ -33,7 +33,7 @@ export default function Post({ postData
     postData: {
       id: string
       title: string
-      date: string
+      create: string
       LowerCaseTags?: string[]
       image?: string
       contentHtml: string
@@ -59,7 +59,7 @@ export default function Post({ postData
         <article className='content'>
           <h1>{postData.title}</h1>
           <div>
-            <time dateTime={postData.date}>posted on: {postData.date}</time>
+            <time dateTime={postData.create}>posted on: {postData.create}</time>
             <br />
             <span className='tags'>{tags.map((tag) => (<code key={tag}><Link href={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
           </div>

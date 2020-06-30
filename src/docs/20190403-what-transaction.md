@@ -1,11 +1,9 @@
 ---
-date: '2019-04-03'
+create: '2019-04-03'
 update: '2019-12-04'
 author: Kawano Yudai
 title: 'Qiita: 18日目: トランザクションって'
 tags: [Qiita, トランザクション, Ruby, MySQL]
-image: ''
-slide: false
 ---
 
 from [Qiita: トランザクションって](https://qiita.com/OriverK/items/2359c9159b55c74f15d1)

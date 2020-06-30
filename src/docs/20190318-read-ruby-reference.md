@@ -1,11 +1,9 @@
 ---
-date: '2019-03-18'
+create: '2019-03-18'
 update: '2019-03-18'
 author: Kawano Yudai
 title: 'Qiita: Rubyリファレンスを読んだのでメモ'
 tags: [Qiita, Ruby]
-image: ''
-slide: false
 ---
 
 from [Qiita: Rubyリファレンスを読んでの、メモ](https://qiita.com/OriverK/items/49148e7116b86e3f36a9)

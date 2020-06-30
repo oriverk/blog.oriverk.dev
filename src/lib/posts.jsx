@@ -4,7 +4,7 @@ import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
 
-const postsDirectory = path.join(process.cwd(), './src/docs')
+const postsDirectory = path.join(process.cwd(), 'src/docs')
 
 export function getSortedPostsData() {
   // get files name under /posts
@@ -28,7 +28,7 @@ export function getSortedPostsData() {
   })
   // sort posts by date
   return allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
+    if (a.create < b.create) {
       return 1
     } else {
       return -1
@@ -46,7 +46,7 @@ export function getAllPostIds() {
     }
   })
 }
-      
+
 export async function getPostData(id) {
   // ↑async is for remark. if not use remark, remove async
   
@@ -124,7 +124,7 @@ export function getPostsWithTag(args) {
   })
   // sort posts by date
   return allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
+    if (a.create < b.create) {
       return 1
     } else {
       return -1

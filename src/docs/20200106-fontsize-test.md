@@ -1,10 +1,8 @@
 ---
-date: '2020-01-06'
+create: '2020-01-06'
 author: Kawano Yudai
 title: フォントサイズの確認
 tags: [test]
-image: ''
-categories: [blog]
 ---
 
 ## h2 tag あいうえお

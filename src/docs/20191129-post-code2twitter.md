@@ -1,11 +1,10 @@
 ---
-date: '2019-11-29'
+create: '2019-11-29'
 update: '2020-03-10'
 author: Kawano Yudai
 title: 'Qiita: Twitterに見栄え良くコード投稿したかった'
 tags: [Qiita, Ruby, Rails, AWS]
 image: '/assets/codr700.jpg'
-slide: false
 ---
 
 from [Qiita: Twitterにコードを身えばよく投稿したい](https://qiita.com/OriverK/items/df41ec6b57b40a06a64d#comments)

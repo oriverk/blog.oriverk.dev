@@ -1,11 +1,9 @@
 ---
-date: '2019-03-05'
+create: '2019-03-05'
 update: '2019-03-18'
 author: Kawano Yudai
 title: 'Qiita: 1日目  LinuxとShellscriptとPermission'
 tags: [Qiita, Linux, ShellScript]
-image: ''
-slide: false
 ---
 
 from 
