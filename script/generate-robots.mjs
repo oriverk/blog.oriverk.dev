@@ -7,16 +7,16 @@ const sitemap = '/sitemap.xml'
 const baseUrl = 'https://oriverk.dev'
 
 
-  const robots = `
-  User - agent: ${userAgent}
-  Allow: ${allow}
-  Sitemap: ${baseUrl}${sitemap}
-  Host: ${baseUrl}
-  `
+const robots = `
+User - agent: ${userAgent}
+Allow: ${allow}
+Sitemap: ${baseUrl}${sitemap}
+Host: ${baseUrl}
+`
 
-  fs.writeFileSync(
-    path.join(process.cwd(), 'public/robots.txt'),
-    robots
-  )
-  console.log('created robots.txt')
+fs.writeFileSync(
+  path.join(process.cwd(), 'public/robots.txt'),
+  robots
+)
+console.log('created robots.txt')
 
