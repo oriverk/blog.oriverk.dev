@@ -5,12 +5,11 @@
     "name": "next-portfolio",
     "version": "0.1.0",
     "private": true,
-    "type": "module",
     "scripts": {
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "hoge": "node script/generate-robots.js"
+        "robots": "node script/generate-robots.mjs",
     },
     "dependencies": {
         "-": "0.0.1",
