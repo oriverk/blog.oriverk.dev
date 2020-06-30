@@ -5,17 +5,23 @@
     "name": "next-portfolio",
     "version": "0.1.0",
     "private": true,
+    "type": "module",
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "start": "next start"
+        "start": "next start",
+        "hoge": "node script/generate-robots.js"
     },
     "dependencies": {
+        "-": "0.0.1",
         "@material-ui/core": "^4.9.11",
         "@mdx-js/loader": "^1.5.8",
         "@next/mdx": "^9.3.5",
         "date-fns": "^2.13.0",
+        "fs-extra": "^9.0.1",
+        "g": "^2.0.1",
         "gray-matter": "^4.0.2",
+        "n": "^6.5.1",
         "next": "9.3.5",
         "next-compose-plugins": "^2.2.0",
         "next-pwa": "^2.6.1",

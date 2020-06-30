@@ -1,0 +1,6 @@
+
+  User - agent: *
+  Allow: /
+  Sitemap: https://oriverk.dev/sitemap.xml
+  Host: https://oriverk.dev
+  
