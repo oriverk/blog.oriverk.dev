@@ -5,7 +5,15 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import { ArrowIcon } from '../utils/svgIcon'
 import { DrawerLists } from './DrawerLists'
 
-export function Layout({children, home, posts}) {
+export function Layout({
+  children,
+  home,
+  posts
+}: {
+  children: React.ReactNode
+  home?: boolean
+  posts?: boolean
+}) {
   const [state, setState] = React.useState({
     left: false,
   })
