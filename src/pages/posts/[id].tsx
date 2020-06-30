@@ -6,19 +6,21 @@ import { getAllPostIds, getPostData } from '../../lib/posts'
 import { HatenaIcon, TwitterIcon } from '../../utils/svgIcon'
 import { IconButton } from '../../utils/utils'
 
+import { GetStaticProps, GetStaticPaths } from 'next' 
+
 const blog = require('../../../blog.json')
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getAllPostIds()
   return {
     paths,
-    fallback: false,
+    fallback: false
   }
 }
 
-export async function getStaticProps({ params }) {
-  const postData = await getPostData(params.id)
-  // await is for reamrk. if not use remark, remove async
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const postData = await getPostData(params.id as string)
+  // await is only for remark
   return {
     props: {
       postData
@@ -26,7 +28,17 @@ export async function getStaticProps({ params }) {
   }
 }
 
-export default function Post({ postData }) {
+export default function Post({ postData
+}: {
+    postData: {
+      id: string
+      title: string
+      date: string
+      LowerCaseTags?: string[]
+      image?: string
+      contentHtml: string
+  }
+}) {
   const tags = postData.LowerCaseTags
   const pageTags = tags ? tags.join(' ') : 'React, Next.js'
   const pageImage = postData.image ? postData.image : '/assets/prtsc700.jpg'

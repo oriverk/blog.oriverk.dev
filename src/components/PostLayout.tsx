@@ -3,9 +3,13 @@ import React from 'react'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 
 import { ArrowIcon } from '../utils/svgIcon'
-import { DrawerLists } from '../components/DrawerLists'
+import { DrawerLists } from './DrawerLists'
 
-export function PostLayout({ children }) {
+export function PostLayout({
+  children
+}: {
+  children: React.ReactNode
+}) {
   const [state, setState] = React.useState({
     left: false,
   })

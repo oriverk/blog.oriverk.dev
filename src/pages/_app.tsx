@@ -3,7 +3,9 @@ import Router from 'next/router'
 import Head from 'next/head'
 import * as gtag from '../lib/gtag'
 
-export default function MyApp({ Component, pageProps }) {
+import { AppProps } from 'next/app'
+
+export default function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const handleRouteChange = (url) => {
       gtag.pageview(url)
