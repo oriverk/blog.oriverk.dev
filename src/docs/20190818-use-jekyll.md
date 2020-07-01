@@ -2,7 +2,7 @@
 create: '2019-08-18'
 update: '2019-12-1'
 author: Kawano Yudai
-title: 'Qiita: GithubPagesでjekyllを使ってみよう。'
+title: 'Qiita: GithubPages で jekyll を使ってみよう。'
 tags: [Git, githubpages, Jekyll, Ruby]
 image: '/assets/posts/201908/jekyll1.jpg'
 ---

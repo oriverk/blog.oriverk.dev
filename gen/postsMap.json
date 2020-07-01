@@ -1,7 +1,7 @@
 [
   {
     "id": "20200526-next-portfolio",
-    "title": "Qiita: Next.jsでポートフォリオサイトを作成した",
+    "title": "Qiita: Next.js でポートフォリオサイトを作成した",
     "create": "2020-05-26",
     "update": "2020-07-01",
     "tags": [
@@ -14,7 +14,7 @@
   },
   {
     "id": "20200329-joined-corona-oss",
-    "title": "Qiita: 宮崎県COVID-19対策サイトのOSS活動に参加した。",
+    "title": "Qiita: 宮崎県 COVID-19 対策サイトの OSS 活動に参加した。",
     "create": "2020-03-29",
     "update": "2020-04-7",
     "tags": [
@@ -28,7 +28,7 @@
   },
   {
     "id": "20200204-update-githubpages",
-    "title": "GithubPagesのメジャーアップデートをした。",
+    "title": "GithubPages のメジャーアップデートをした。",
     "create": "2020-02-04",
     "update": "",
     "tags": [
@@ -76,7 +76,7 @@
   },
   {
     "id": "20200110-update-githubpages",
-    "title": "Postページを中心に改修した（N度目",
+    "title": "Post ページを中心に改修した",
     "create": "2020-01-10",
     "update": "",
     "tags": [
@@ -96,7 +96,7 @@
   },
   {
     "id": "20191129-post-code2twitter",
-    "title": "Qiita: Twitterに見栄え良くコード投稿したかった",
+    "title": "Qiita: Twitter に見栄え良くコード投稿したかった",
     "create": "2019-11-29",
     "update": "2020-03-10",
     "tags": [
@@ -108,7 +108,7 @@
   },
   {
     "id": "20190829-fe-exam",
-    "title": "Qiita: H30秋基本情報技術者試験 問3システム",
+    "title": "Qiita: H30 秋基本情報技術者試験 問3システム",
     "create": "2019-08-29",
     "update": "",
     "tags": [
@@ -119,7 +119,7 @@
   },
   {
     "id": "20190818-use-jekyll",
-    "title": "Qiita: GithubPagesでjekyllを使ってみよう。",
+    "title": "Qiita: GithubPages で jekyll を使ってみよう。",
     "create": "2019-08-18",
     "update": "2019-12-1",
     "tags": [
@@ -154,7 +154,7 @@
   },
   {
     "id": "20190329-add-admin-with-devise",
-    "title": "Qiita: 16日目：deviseで管理者を追加する",
+    "title": "Qiita: 16日目：devise で管理者を追加する",
     "create": "2019-03-29",
     "update": "2019-12-04",
     "tags": [
@@ -166,7 +166,7 @@
   },
   {
     "id": "20190328-use-heroku",
-    "title": "Qiita: 15日目：Herokuでアプリを公開しよう",
+    "title": "Qiita: 15日目： Heroku でアプリを公開しよう",
     "create": "2019-03-28",
     "update": "2019-12-04",
     "tags": [
@@ -178,7 +178,7 @@
   },
   {
     "id": "20190324-app-with-devise",
-    "title": "Qiita: 13日目(1)：Deviseによるログイン機能付きサイトの作成",
+    "title": "Qiita: 13日目(1)： Devise によるログイン機能付きサイトの作成",
     "create": "2019-03-24",
     "update": "2019-12-04",
     "tags": [
@@ -189,7 +189,7 @@
   },
   {
     "id": "20190320-what-git",
-    "title": "Qiita: 10～12日目：Git",
+    "title": "Qiita: 10～12日目： Git",
     "create": "2019-03-20",
     "update": "",
     "tags": [
@@ -199,7 +199,7 @@
   },
   {
     "id": "20190320-input-data2db",
-    "title": "Qiita: 10日目(1)：マスターデータ（DBへ情報入力、ページに出力",
+    "title": "Qiita: 10日目(1)：マスターデータ（ DB へ情報入力、ページに出力",
     "create": "2019-03-20",
     "update": "2019-12-04",
     "tags": [
@@ -210,7 +210,7 @@
   },
   {
     "id": "20190318-read-ruby-reference",
-    "title": "Qiita: Rubyリファレンスを読んだのでメモ",
+    "title": "Qiita: Ruby リファレンスを読んだのでメモ",
     "create": "2019-03-18",
     "update": "2019-03-18",
     "tags": [
@@ -220,7 +220,7 @@
   },
   {
     "id": "20190317-manipulate-student-data",
-    "title": "Qiita: 9, 10, 11, 14日目：大学生データ操作App",
+    "title": "Qiita: 9, 10, 11, 14日目：大学生データ操作 App",
     "create": "2019-03-17",
     "update": "2019-12-04",
     "tags": [
@@ -232,7 +232,7 @@
   },
   {
     "id": "20190313-manipulate-mysql",
-    "title": "Qiita: 6,7日目：MySQL操作",
+    "title": "Qiita: 6,7日目： MySQL 操作",
     "create": "2019-03-13",
     "update": "2019-12-04",
     "tags": [
@@ -242,7 +242,7 @@
   },
   {
     "id": "20190311-what-bootstrap",
-    "title": "Qiita: 5日目：Bootstrapを初めて触ってみた",
+    "title": "Qiita: 5日目： Bootstrap を初めて触ってみた",
     "create": "2019-03-11",
     "update": "2019-12-04",
     "tags": [
@@ -254,7 +254,7 @@
   },
   {
     "id": "20190311-httpmethod-crud-sql",
-    "title": "Qiita: 3日目(2)：HTTPメソッドとCRUDとSQL",
+    "title": "Qiita: 3日目(2)：HTTP メソッドと CRUD と SQL",
     "create": "2019-03-11",
     "update": "",
     "tags": [
@@ -267,7 +267,7 @@
   },
   {
     "id": "20190316-ruby-exam",
-    "title": "Qiita: 2,4,7,8,13日目：Ruby認定試験による勉強",
+    "title": "Qiita: 2,4,7,8,13日目： Ruby 認定試験による勉強",
     "create": "2019-03-06",
     "update": "2019-03-24",
     "tags": [
@@ -277,7 +277,7 @@
   },
   {
     "id": "20190306-without-scaffold",
-    "title": "Qiita: 2日目(2)：Scaffoldなしでの掲示板作成",
+    "title": "Qiita: 2日目(2)：Scaffold なしでの掲示板作成",
     "create": "2019-03-06",
     "update": "2019-12-4",
     "tags": [
@@ -290,7 +290,7 @@
   },
   {
     "id": "20190305-shellscript-permission",
-    "title": "Qiita: 1日目  LinuxとShellscriptとPermission",
+    "title": "Qiita: 1日目  Linux と Shellscript と Permission",
     "create": "2019-03-05",
     "update": "2019-03-18",
     "tags": [

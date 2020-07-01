@@ -4,7 +4,8 @@
         xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-<url>
+
+  <url>
     <loc>https://oriverk.dev</loc>
     <lastmod>2020-06-26</lastmod>
     <changefreq>daily</changefreq>
@@ -22,8 +23,8 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  
-<url>
+
+  <url>
     <loc>https://oriverk.dev/posts/20200526-next-portfolio</loc>
     <lastmod>2020-07-01</lastmod>
     <changefreq>daily</changefreq>
@@ -179,5 +180,4 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  
 </urlset>

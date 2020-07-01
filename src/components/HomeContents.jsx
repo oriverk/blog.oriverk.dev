@@ -55,7 +55,7 @@ export function Top() {
       <section id='top'>
         <div className='title'>
           <div className='top'>Kawano <wbr />Yudai</div>
-          <div className='sub'>B.Agr. /<wbr />JobSeeker</div>
+          <div className='sub'>B.Agr. /<wbr /> JobSeeker</div>
         </div>
       </section>
       <style jsx>{`

@@ -2,22 +2,20 @@ import React from 'react'
 import Head from 'next/head'
 import { Layout } from '../components/Layout'
 import { Top, About, History, Works } from '../components/HomeContents'
-
-// const manifest = require('../../public/manifest.json')
-const blog = require('../../blog.json')
+import blogConfig from '../../blog.config'
 
 export default function Home() {
   return (
     <>
       <Layout home>
         <Head>
-          <title>{blog.baseName}</title>
-          <meta name='title' content={blog.baseName} />
-          <meta name='description' content={blog.baseDesc} />
-          <meta property='og:title' content={blog.baseName} />
-          <meta property='og:description' content={blog.baseDesc} />
-          <meta property='og:image' content={`${blog.baseUrl}/assets/prtsc700.jpg`} />
-          <meta property='og:url' content={blog.baseUrl} />
+          <title>{blogConfig.baseName}</title>
+          <meta name='title' content={blogConfig.baseName} />
+          <meta name='description' content={blogConfig.desc} />
+          <meta property='og:title' content={blogConfig.baseName} />
+          <meta property='og:description' content={blogConfig.desc} />
+          <meta property='og:image' content={`${blogConfig.baseUrl}/assets/prtsc700.jpg`} />
+          <meta property='og:url' content={blogConfig.baseUrl} />
         </Head>
         <Top />
         <About />

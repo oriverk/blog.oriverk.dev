@@ -1,7 +1,8 @@
 import path from 'path'
-import fs from 'fs-extra'
+import fs from 'fs'
+import blogConfig from '../blog.config.js'
 
-const base = 'https://oriverk.dev'
+const base = blogConfig.baseUrl
 
 const fixed = [
   {
@@ -9,11 +10,11 @@ const fixed = [
     update: '2020-06-26'
   },
   {
-    url: '/posts',
+    url: `${base}/posts`,
     update: '2020-06-30'
   },
   {
-    url: '/tags',
+    url: `${base}/tags`,
     update: '2020-06-26'
   }
 ]
@@ -29,20 +30,21 @@ const sitemap = `<?xml version="1.0"?>
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${fixed.map((f) => {
-  return `<url>
-    <loc>${base === f.url ? base : base + f.url}</loc>
+  return `
+  <url>
+    <loc>${f.url}</loc>
     <lastmod>${f.update}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-  </url>
-  `}).join("")}
-${posts.map((post) => { return `<url>
+  </url>`}).join('')}
+${posts.map((post) => {
+  return `
+  <url>
     <loc>${base}/posts/${post.id}</loc>
     <lastmod>${post.update || post.create}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-  </url>
-  `}).join("")}
+  </url>`}).join("")}
 </urlset>`
 
 fs.writeFileSync(path.join(process.cwd(), "public/sitemap.xml"), sitemap)
@@ -62,16 +64,12 @@ fs.writeFileSync(path.join(process.cwd(), "public/sitemap.xml"), sitemap)
 //   }
 // ]
 
-// <? xml version = "1.0" encoding = "UTF-8" ?>
-//   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+// <?xml version = "1.0" encoding = "UTF-8"?>
+// <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 //     <url>
 //       <loc>http://www.example.com/</loc>
 //       <lastmod>2005-01-01</lastmod>
 //       <changefreq>monthly</changefreq>
 //       <priority>0.8</priority>
 //     </url>
-//     <url>
-//       <loc>http://www.example.com/catalog?item=12&amp;desc=vacation_hawaii</loc>
-//       <changefreq>weekly</changefreq>
-//     </url>
-//   </urlset>
+// </urlset>

@@ -2,7 +2,7 @@
 create: '2020-05-26'
 update: '2020-07-01'
 author: Kawano Yudai
-title: 'Qiita: Next.jsでポートフォリオサイトを作成した'
+title: 'Qiita: Next.js でポートフォリオサイトを作成した'
 tags: [Qiita, React, next.js, remark.js, Vercel]
 image: '/assets/prtsc-1000.jpg'
 ---
@@ -19,7 +19,7 @@ image: '/assets/prtsc-1000.jpg'
 ただいま無職、転職活動中（ここ2か月は自粛でstay home
 
 ## 作成に当たって
-ReactとNext.jsのtutorialとdocsを一通りやりました。
+React とNext.js のtutorial と docs を一通りやりました。
 
 - [React チュートリアル](https://ja.reactjs.org/tutorial/tutorial.html)
 - [Next.js チュートリアル](https://nextjs.org/docs/getting-started)
@@ -562,6 +562,7 @@ module.exports = withPWA({
 ```
 
 #### TypeScirpt
+@2020-06-30
 Next.jsのTS化は非常に簡単で、最初のうちは[Next.js Learn Typescipt](https://nextjs.org/learn/excel/typescript)などに従えば良い。
 
 ```sh
@@ -586,7 +587,8 @@ yarn add --dev typescript @types/react @types/node
 # pagesMap.json + history.json => rss
 ```
 
-ただ、node v12 では ESModule は未だ experimental な機能で、package.json にも `node --experimental-modules test.mjs` とする必要がある。しかし、v13からはフラグが要らないので、nodejsをアップデートした
+ただ、node v12 では ESModule は未だ experimental な機能で、package.json にも `node --experimental-modules test.mjs` とする必要がある。しかし、v13からはフラグが要らないので、nodejsをアップデートした。
+
 
 ```sh
 n --stable
@@ -598,9 +600,21 @@ node -v
 => v14.4.0
 ```
 
+**vercel は nodejs の LTS しか対応しないので、package.json 中の npm-script は build 用 と generate script用で分ける必要があった。**
+
+```json
+"scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "local-build": "next build && node script/genRobots.mjs && node script/genPostsMap.mjs && node script/genSiteMap.mjs && node script/genRss.mjs && node script/genAtom.mjs",
+  "start": "next start",
+},
+```
+
 mjsについて未だ良く解らん事、作るのが自分用のファイルジェネレーターであることもあって、コードが汚いので・・・↓
 
 ##### pages.json
+@2020-06-30
 postの情報を集約した postPages.json を作成した。ファイル更新履歴等はそのうち github から取得できるようにしたい。
 
 - JSON.stringify が良く解らなかったので、読んだもの。
@@ -616,25 +630,17 @@ postの情報を集約した postPages.json を作成した。ファイル更新
 //   update: '2020-06-05',
 //   tags: ['qiita', 'react', 'next.js', 'remark.js', 'vercel'],
 // },
-// {
-//   id: '20200329-joined-corona-oss',
-//   title: 'Qiita: 宮崎県COVID-19対策サイトのOSS活動に参加した。',
-//   create: '2020-03-29',
-//   update: '2020-04-7',
-//   tags: ['qiita', 'covid-19', 'oss', 'github', 'vue.js', 'typescript'],
-// }
 ```
 
-<details><summary>mjsスクリプト</summary><div>
+<details><summary>postsMap generator script</summary><div>
 
 ```mjs
 // script/genPagesMap.mjs
 import path from 'path'
-import fs from 'fs-extra'
+import fs from 'fs'
 import matter from 'gray-matter'
 
 const postsDirectory = path.join(process.cwd(), 'src/docs')
-
 const fileNames = fs.readdirSync(postsDirectory)
 const allPostsData = fileNames.map((fileName) => {
   const id = fileName.replace(/\.md$/, '')
@@ -674,7 +680,8 @@ fs.writeFileSync(
 </div></details>
 
 ##### sitemap.xml
-react 系の sitemap generator としては、[kuflash / react-router-sitemap](https://github.com/kuflash/react-router-sitemap) や [IlusionDev / nextjs-sitemap-generator](https://github.com/IlusionDev/nextjs-sitemap-generator)等があるが、next.js なので、react-router を使ってないし、また sitemap.xml 自体の中身は簡単なので、自分で作った。
+@2020-07-01
+[kuflash / react-router-sitemap](https://github.com/kuflash/react-router-sitemap) や [IlusionDev / nextjs-sitemap-generator](https://github.com/IlusionDev/nextjs-sitemap-generator)等があるが、next.js なので、react-router を使ってないし、xml の構造は簡単そうだったので自作した。
 
 - sitemap.xml を知るために読んだもの
   - [sitemaps.org - サイトマップの XML 形式](https://www.sitemaps.org/ja/protocol.html)
@@ -695,12 +702,14 @@ sitemap.xml の基本構成　
 </urlset> 
 ```
 
+**xmlはファイル頭に空白行が入ると、`<?xml ?>`の宣言が無いと言ってエラーを吐く**
+
 <details><summary>sitemap.xml generator script</summary><div>
 
 ```mjs
 // script/genSiteMap.mjs
 import path from 'path'
-import fs from 'fs-extra'
+import fs from 'fs'
 
 const base = 'https://oriverk.dev'
 const fixed = [
@@ -713,41 +722,36 @@ const posts = JSON.parse(fs.readFileSync(
   path.join(process.cwd(), 'gen/postPages.json'), 'utf8'
 ))
 
-const sitemap = `
-<? xml version = "1.0" encoding = "UTF-8" ?>
+const sitemap = `<?xml version="1.0"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${fixed.map((f) => {
-  return `
-  <url>
+  return `<url>
     <loc>${base === f.url ? base : base + f.url}</loc>
     <lastmod>${f.update}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  `
-}).join("")}
-${posts.map((post) => { return `
-  <url>
+  `}).join("")}
+${posts.map((post) => { return `<url>
     <loc>${base}/posts/${post.id}</loc>
     <lastmod>${post.update || post.create}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  `
-}).join("")}
-</urlset>
-`
+  `}).join("")}
+</urlset>`
 
 fs.writeFileSync(path.join(process.cwd(), "public/sitemap.xml"), sitemap)
 ```
 
-</div></summary>
+</div></details>
 
 ##### RSS & Atom
+@2020-07-01
 RSS 2.0 と Atom 1.0 に対応する。
 
 - 読んだもの
@@ -755,7 +759,7 @@ RSS 2.0 と Atom 1.0 に対応する。
   - [Google Margant Center ヘルプ - Atom 1.0 仕様](https://support.google.com/merchants/answer/160593?hl=ja)
   - [PHP & JavaScript Room - RSS 2.0 のフォーマット](https://phpjavascriptroom.com/?t=topic&p=rss_format)
 
-<details><summary>- RSS 2.0 の基本フォーマット</summary><div>
+<details><summary>- RSS 2.0 フォーマット</summary><div>
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
@@ -776,7 +780,7 @@ RSS 2.0 と Atom 1.0 に対応する。
 
 </div></details>
 
-<details><summary>- Atom 1.0 の基本フォーマット</summary><div>
+<details><summary>- Atom 1.0 フォーマット</summary><div>
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
@@ -786,13 +790,6 @@ RSS 2.0 と Atom 1.0 に対応する。
 	<updated>2020-06-11T15:30:59Z</updated>
 	<link rel='alternate' type='text/html' href='http://example.com/feed/' />
 	<link rel='self' type='application/atom+xml' href='http://example.com/feed/atom10.xml' />
-	<entry>
-		<id>http://example.com/post2.html#200810153059</id>
-		<title>hogehoge</title>
-		<link rel='alternate' type='text/html' href='http://example.com/post2.html' />
-		<updated>2020-06-10T15:30:59Z</updated>
-		<summary>hoge</summary>
-	</entry>
 	<entry>
 		<id>http://example.com/post1.html#20080609205030</id>
 		<title>foobar</title>
@@ -812,7 +809,7 @@ RSS と Atom のジェネレーターコードは、基本的に sitemap.xml と
 ```mjs
 // script/genRss.mjs
 import path from 'path'
-import fs from 'fs-extra'
+import fs from 'fs'
 
 const base = {
   url: 'https://oriverk.dev',
@@ -823,27 +820,24 @@ const posts = JSON.parse(fs.readFileSync(
   path.join(process.cwd(), 'gen/postPages.json'), 'utf8'
 ))
 
-const rss = `
-<? xml version = '1.0' encoding = 'UTF-8' ?>
+const rss = `<?xml version='1.0'?>
 <rss version='2.0'>
   <channel>
     <title>${base.title}</title>
     <link>${base.url}</link>
     <description>${base.desc}</description>
+    <language>ja</language>
+    <lastBuildDate>${new Date()}</lastBuildDate>/
 ${posts.map((post) => {
-  return `
-    <item>
+  return `<item>
       <title>${post.title}</title>
       <link>${base.url}/posts/${post.id}</link>
       <description>${post.tags.join(', ')}</description>
-      <pubData>${post.create}</pubData>
+      <pubDate>${post.create}</pubDate>
     </item>
-  `
-}).join('')}
+  `}).join('')}
   </channel>
-</rss>
-`
-
+</rss>`
 fs.writeFileSync(path.join(process.cwd(),'public/rss.xml'), rss)
 ```
 
@@ -867,28 +861,22 @@ const posts = JSON.parse(fs.readFileSync(
   path.join(process.cwd(), 'gen/postPages.json'), 'utf8'
 ))
 
-const atom = `
-<? xml version='1.0' encoding='UTF-8' ?>
+const atom = `<?xml version='1.0'?>
 <feed xmlns='http://www.w3.org/2005/Atom' xml:lang='ja'>
   <id>${base.url}</id>
   <title>${base.title}</title>
   <updated>${new Date()}</updated>
-  <link rel='alternate' type='text/html' href=${base.url} />
-  <link rel='self' type='application/atom+xml' href=${base.url + '/atom.xml'} />
+  <link rel='alternate' type='text/html' href='${base.url}' />
+  <link rel='self' type='application/atom+xml' href='${base.url + '/atom.xml'}' />
   ${posts.map((post) => {
-    return `
-    <entry>
+    return `<entry>
       <id>${post.id}</id>
       <title>${post.title}</title>
-      <link rel='alternate' type='text/html' href=${base.url + '/posts/' + post.id} />
+      <link rel='alternate' type='text/html' href='${base.url + '/posts/' + post.id}' />
       <updated>${post.update || post.create}</updated>
       <summary>${post.tags.join(', ')}</summary>
-    </entry>
-    `
-  }).join('')}
-</feed>
-`
-
+    </entry>`}).join('')}
+</feed>`
 fs.writeFileSync(path.join(process.cwd(), 'public/atom.xml'), atom)
 
 ```
@@ -896,10 +884,12 @@ fs.writeFileSync(path.join(process.cwd(), 'public/atom.xml'), atom)
 
 ## To do
 
-- CSSの統一(module.cssなのかstyled-jsxなのか等)
-- AMP一部対応( 参照：[Next.js next/amp](https://nextjs.org/docs/api-reference/next/amp)
-- api routeを試す
+- CSSの統一
+- AMP対応( 参照：[Next.js next/amp](https://nextjs.org/docs/api-reference/next/amp)
 - `/tags`ページの整備
 - コードブロックの言語またはファイル名の出力
 - syntax-highlightの改善
-- rssの対応
+- 検索機能
+- postページの目次機能
+- モバイル用 bottom navigation の設置
+- og:image 動的生成コード

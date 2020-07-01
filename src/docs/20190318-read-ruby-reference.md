@@ -2,7 +2,7 @@
 create: '2019-03-18'
 update: '2019-03-18'
 author: Kawano Yudai
-title: 'Qiita: Rubyリファレンスを読んだのでメモ'
+title: 'Qiita: Ruby リファレンスを読んだのでメモ'
 tags: [Qiita, Ruby]
 ---
 

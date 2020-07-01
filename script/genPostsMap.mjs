@@ -1,7 +1,5 @@
-// generate pages.json
-
 import path from 'path'
-import fs from 'fs-extra'
+import fs from 'fs'
 import matter from 'gray-matter'
 
 const postsDirectory = path.join(process.cwd(), 'src/docs')
@@ -41,7 +39,7 @@ fs.writeFileSync(
   'utf-8'
 )
 
-// idle postPages.json
+// postPages.json
 // {
 //   id: '20200526-next-portfolio',
 //   title: 'Qiita: Next.jsでポートフォリオサイトを作成した',
@@ -49,10 +47,3 @@ fs.writeFileSync(
 //   update: '2020-06-05',
 //   tags: ['qiita', 'react', 'next.js', 'remark.js', 'vercel'],
 // },
-// {
-//   id: '20200329-joined-corona-oss',
-//   title: 'Qiita: 宮崎県COVID-19対策サイトのOSS活動に参加した。',
-//   create: '2020-03-29',
-//   update: '2020-04-7',
-//   tags: ['qiita', 'covid-19', 'oss', 'github', 'vue.js', 'typescript'],
-// }

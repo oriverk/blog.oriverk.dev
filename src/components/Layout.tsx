@@ -1,7 +1,5 @@
 import React from 'react'
-
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
-
 import { ArrowIcon } from '../utils/svgIcon'
 import { DrawerLists } from './DrawerLists'
 

@@ -92,8 +92,12 @@ rails6 uses webpacker, which needs nodejs
 sudo apt install -y nodejs npm
 # install n-package
 sudo npm install n -g
+# confirm stable nodejs ver
+n --stable
+# confirm latest nodejs ver
+n --latest
 # by n-package, install node
-sudo n stable
+sudo n stable( or latest )
 # uninstal old nodejs and npm, and re-login
 sudo apt purge -y nodejs npm
 exec $SHELL -l

@@ -1,11 +1,6 @@
 import path from 'path'
-import fs from 'fs-extra'
-
-const base = {
-  url: 'https://oriverk.dev',
-  title: "Kawano Yudai's site",
-  desc: "This site is for my portfolio and made with React, Next.js"
-}
+import fs from 'fs'
+import blogConfig from '../blog.config.js'
 
 const posts = JSON.parse(fs.readFileSync(
   path.join(process.cwd(), 'gen/postsMap.json'), 'utf8'
@@ -15,21 +10,21 @@ const posts = JSON.parse(fs.readFileSync(
 const rss = `<?xml version='1.0'?>
 <rss version='2.0'>
   <channel>
-    <title>${base.title}</title>
-    <link>${base.url}</link>
-    <description>${base.desc}</description>
+    <title>${blogConfig.baseName}</title>
+    <link>${blogConfig.baseUrl}</link>
+    <description>${blogConfig.desc}</description>
     <language>ja</language>
     <lastBuildDate>${new Date()}</lastBuildDate>/
 ${posts.map((post) => {
-  return `<item>
+  return `
+    <item>
       <title>${post.title}</title>
-      <link>${base.url}/posts/${post.id}</link>
+      <link>${blogConfig.baseUrl}/posts/${post.id}</link>
       <description>${post.tags.join(', ')}</description>
       <pubDate>${post.create}</pubDate>
-    </item>
-  `}).join('')}
+    </item>`}).join('')}
   </channel>
-</rss>`;
+</rss>`
 
 fs.writeFileSync(path.join(process.cwd(),'public/rss.xml'), rss)
 

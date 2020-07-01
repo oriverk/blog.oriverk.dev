@@ -2,7 +2,7 @@
 create: '2019-03-13'
 update: '2019-12-04'
 author: Kawano Yudai
-title: 'Qiita: 6,7日目：MySQL操作'
+title: 'Qiita: 6,7日目： MySQL 操作'
 tags: [Qiita, MySQL]
 ---
 

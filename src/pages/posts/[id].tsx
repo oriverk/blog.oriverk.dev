@@ -1,14 +1,12 @@
 import Head from 'next/head'
 import Link from 'next/link'
-
 import { PostLayout } from '../../components/PostLayout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 import { HatenaIcon, TwitterIcon } from '../../utils/svgIcon'
 import { IconButton } from '../../utils/utils'
+import blogConfig from '../../../blog.config'
 
-import { GetStaticProps, GetStaticPaths } from 'next' 
-
-const blog = require('../../../blog.json')
+import { GetStaticProps, GetStaticPaths } from 'next'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getAllPostIds()
@@ -47,13 +45,13 @@ export default function Post({ postData
     <>
       <PostLayout>
         <Head>
-          <title>{`${postData.title} | ${blog.short_name}`}</title>
-          <meta name='title' content={`${postData.title} | ${blog.short_name}`} />
+          <title>{`${postData.title} | ${blogConfig.shortName}`}</title>
+          <meta name='title' content={`${postData.title} | ${blogConfig.baseName}`} />
           <meta name='description' content={pageTags} />
-          <meta property='og:title' content={`${postData.title} | ${blog.baseName}`} />
+          <meta property='og:title' content={`${postData.title} | ${blogConfig.baseName}`} />
           <meta property='og:description' content={pageTags} />
-          <meta property='og:image' content={`${blog.baseUrl}/${pageImage}`} />
-          <meta property='og:url' content={`${blog.baseUrl}/posts/${postData.id}`} />
+          <meta property='og:image' content={`${blogConfig.baseUrl}/${pageImage}`} />
+          <meta property='og:url' content={`${blogConfig.baseUrl}/posts/${postData.id}`} />
           <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
         </Head>
         <article className='content'>
@@ -66,10 +64,10 @@ export default function Post({ postData
           <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} className='markdonw' />
           {/* <div>`${postData.jsx}`</div> */}
           <div className='sns'>
-            <IconButton label='twitter share button' href={`https://twitter.com/share?text=${postData.title}&hashtags=react,nextjs&url=${blog.baseUrl}/posts/${postData.id}&related=${blog.sns.tiwtter}`}>
+            <IconButton label='twitter share button' href={`https://twitter.com/share?text=${postData.title}&hashtags=react,nextjs&url=${blogConfig.baseUrl}/posts/${postData.id}&related=${blogConfig.sns.tiwtter}`}>
               <TwitterIcon />
             </IconButton>
-            <IconButton label='hatena share button' href={`https://b.hatena.ne.jp/entry/${blog.baseUrl}/posts/${postData.id}`}>
+            <IconButton label='hatena share button' href={`https://b.hatena.ne.jp/entry/${blogConfig.baseUrl}/posts/${postData.id}`}>
               <HatenaIcon />
             </IconButton>
           </div>

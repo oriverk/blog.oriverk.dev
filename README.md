@@ -19,7 +19,7 @@
 
 ## Usage
 **please use `yarn` instead of `npm`.**
-**Attention, this site uses mjs to generate some file, so you need nodejs v13 at least !**
+**Attention. This repo uses mjs to generate some file, so you need nodejs v13 at least! (But Vercel support only LTS ver. So be carefull)**
 
 ```bash
 yarn install
@@ -43,7 +43,6 @@ You can check out [the Next.js GitHub repository](https://github.com/oriverk/nex
 - [Twitter](https://twitter.com/not_you_die)
 - [Qiita](https://qiita.com/OriverK)
 
-Now I'm unemployment and seeking job in Japan ...
 
 ## To do
 - [ ] implement `/tags/[tag]` page
@@ -51,9 +50,13 @@ Now I'm unemployment and seeking job in Japan ...
 - [ ] improve Syntax-Highlight
 - [ ] integrate CSS( module.css or styled-jsx ...)
 - [x] implement sitemap.xml
-- [x] implement RSS
-- [ ] implement Hybrid AMP : [next/amp](https://nextjs.org/docs/api-reference/next/amp)
+- [x] implement RSS, Atom, Sitemap
+- [ ] implement AMP : [next/amp](https://nextjs.org/docs/api-reference/next/amp)
 - [x] TypeScript
-- [x] PWA
+- [x] implement PWA
 - [x] Google Analytics
 - [x] Custom dmain
+- [ ] implement Search function
+- [ ] implement toc for post page
+- [ ] implement dynamic og:image generation for post
+- [ ] implement i18n
