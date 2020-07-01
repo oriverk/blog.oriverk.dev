@@ -12,26 +12,24 @@ const posts = JSON.parse(fs.readFileSync(
 ))
 
 // RSS 2.0
-const rss = `
-<? xml version = '1.0' encoding = 'UTF-8' ?>
+const rss = `"<?xml version='1.0'?>"
 <rss version='2.0'>
   <channel>
     <title>${base.title}</title>
     <link>${base.url}</link>
     <description>${base.desc}</description>
+    <language>ja</language>
+    <lastBuildDate>${new Date()}</lastBuildDate>/
 ${posts.map((post) => {
-  return `
-    <item>
+  return `<item>
       <title>${post.title}</title>
       <link>${base.url}/posts/${post.id}</link>
       <description>${post.tags.join(', ')}</description>
-      <pubData>${post.create}</pubData>
+      <pubDate>${post.create}</pubDate>
     </item>
-  `
-}).join('')}
+  `}).join('')}
   </channel>
-</rss>
-`
+</rss>`;
 
 fs.writeFileSync(path.join(process.cwd(),'public/rss.xml'), rss)
 

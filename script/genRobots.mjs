@@ -7,8 +7,7 @@ const sitemap = '/sitemap.xml'
 const baseUrl = 'https://oriverk.dev'
 
 
-const robots = `
-User - agent: ${userAgent}
+const robots = `User - agent: ${userAgent}
 Allow: ${allow}
 Sitemap: ${baseUrl}${sitemap}
 Host: ${baseUrl}

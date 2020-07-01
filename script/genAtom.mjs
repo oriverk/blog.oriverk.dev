@@ -11,8 +11,7 @@ const posts = JSON.parse(fs.readFileSync(
   path.join(process.cwd(), 'gen/postsMap.json'), 'utf8'
 ))
 
-const atom = `
-<? xml version='1.0' encoding='UTF-8' ?>
+const atom = `<?xml version='1.0'?>
 <feed xmlns='http://www.w3.org/2005/Atom' xml:lang='ja'>
   <id>${base.url}</id>
   <title>${base.title}</title>
@@ -20,18 +19,14 @@ const atom = `
   <link rel='alternate' type='text/html' href=${base.url} />
   <link rel='self' type='application/atom+xml' href=${base.url + '/atom.xml'} />
   ${posts.map((post) => {
-    return `
-    <entry>
+    return `<entry>
       <id>${post.id}</id>
       <title>${post.title}</title>
       <link rel='alternate' type='text/html' href=${base.url + '/posts/' + post.id} />
       <updated>${post.update || post.create}</updated>
       <summary>${post.tags.join(', ')}</summary>
-    </entry>
-    `
-  }).join('')}
-</feed>
-`
+    </entry>`}).join('')}
+</feed>`
 
 fs.writeFileSync(path.join(process.cwd(), 'public/atom.xml'), atom)
 
