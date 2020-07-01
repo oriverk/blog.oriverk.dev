@@ -19,6 +19,7 @@
 
 ## Usage
 **please use `yarn` instead of `npm`.**
+**Attention, this site uses mjs to generate some file, so you need nodejs v13 at least !**
 
 ```bash
 yarn install
@@ -49,9 +50,10 @@ Now I'm unemployment and seeking job in Japan ...
 - [ ] render `lang` above the code-block
 - [ ] improve Syntax-Highlight
 - [ ] integrate CSS( module.css or styled-jsx ...)
-- [ ] implement RSS
+- [x] implement sitemap.xml
+- [x] implement RSS
 - [ ] implement Hybrid AMP : [next/amp](https://nextjs.org/docs/api-reference/next/amp)
-- [ ] TypeScript
+- [x] TypeScript
 - [x] PWA
 - [x] Google Analytics
 - [x] Custom dmain
