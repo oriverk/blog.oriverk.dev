@@ -35,4 +35,7 @@ yarn-error.log*
 
 # generated
 /gen/
+**/robots/txt
 **/public/sitemap.xml
+**/public/rss.xml
+**/public/atom.xml

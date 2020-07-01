@@ -19,7 +19,7 @@ const fixed = [
 ]
 
 const posts = JSON.parse(fs.readFileSync(
-  path.join(process.cwd(), 'gen/postPages.json'), 'utf8'
+  path.join(process.cwd(), 'gen/postsMap.json'), 'utf8'
 ))
 
 const sitemap = `

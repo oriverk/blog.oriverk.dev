@@ -7,11 +7,13 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
-        "build": "next build",
+        "build": "next build &&node script/genPostsMap.mjs && node script/genSiteMap.mjs && node script/genRss.mjs && node script/genAtom.mjs",
         "start": "next start",
-        "robots": "node script/generate-robots.mjs",
-        "pages": "node script/generate-pages.mjs",
-        "site": "node script/generate-sitemap.mjs"
+        "robots": "node script/genRobots.mjs",
+        "pages": "node script/genPostsMap.mjs",
+        "site": "node script/genSiteMap.mjs",
+        "rss": "node script/genRss.mjs",
+        "atom": "node script/genAtom.mjs"
     },
     "dependencies": {
         "-": "0.0.1",

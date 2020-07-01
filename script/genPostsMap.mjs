@@ -36,7 +36,7 @@ const sortedPostsData = allPostsData.sort((a, b) => {
 })
 
 fs.writeFileSync(
-  path.join(process.cwd(), 'gen/postPages.json'),
+  path.join(process.cwd(), 'gen/postsMap.json'),
   JSON.stringify(sortedPostsData, undefined, 2),
   'utf-8'
 )
