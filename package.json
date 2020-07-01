@@ -10,7 +10,8 @@
         "build": "next build",
         "start": "next start",
         "robots": "node script/generate-robots.mjs",
-        "pages": "node script/generate-pages.mjs"
+        "pages": "node script/generate-pages.mjs",
+        "site": "node script/generate-sitemap.mjs"
     },
     "dependencies": {
         "-": "0.0.1",
