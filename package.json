@@ -7,7 +7,7 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
-        "build": "next build && node --experimental-modules script/genPostsMap.mjs && node --experimental-modules script/genSiteMap.mjs && node --experimental-modules script/genRss.mjs && node --experimental-modules script/genAtom.mjs",
+        "build": "next build && node --experimental-modules script/genRobots.mjs && node --experimental-modules script/genPostsMap.mjs && node --experimental-modules script/genSiteMap.mjs && node --experimental-modules script/genRss.mjs && node --experimental-modules script/genAtom.mjs",
         "start": "next start",
         "robots": "node script/genRobots.mjs",
         "pages": "node script/genPostsMap.mjs",

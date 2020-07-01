@@ -34,8 +34,7 @@ yarn-error.log*
 **/public/sw.js*
 
 # generated
-/gen/
-**/robots/txt
-**/public/sitemap.xml
-**/public/rss.xml
-**/public/atom.xml
+# **/public/robots.txt
+# **/public/sitemap.xml
+# **/public/rss.xml
+# **/public/atom.xml

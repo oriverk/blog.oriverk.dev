@@ -18,5 +18,4 @@ fs.writeFileSync(
   path.join(process.cwd(), 'public/robots.txt'),
   robots
 )
-console.log('created robots.txt')
 
