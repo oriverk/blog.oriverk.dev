@@ -12,7 +12,7 @@ const posts = JSON.parse(fs.readFileSync(
 ))
 
 // RSS 2.0
-const rss = `"<?xml version='1.0'?>"
+const rss = `<?xml version='1.0'?>
 <rss version='2.0'>
   <channel>
     <title>${base.title}</title>
