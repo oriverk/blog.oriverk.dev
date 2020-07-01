@@ -2,164 +2,164 @@
 <feed xmlns='http://www.w3.org/2005/Atom' xml:lang='ja'>
   <id>https://oriverk.dev</id>
   <title>Kawano Yudai's site</title>
-  <updated>Wed Jul 01 2020 10:07:25 GMT+0000 (Coordinated Universal Time)</updated>
-  <link rel='alternate' type='text/html' href=https://oriverk.dev />
-  <link rel='self' type='application/atom+xml' href=https://oriverk.dev/atom.xml />
+  <updated>Wed Jul 01 2020 11:09:08 GMT+0000 (Coordinated Universal Time)</updated>
+  <link rel='alternate' type='text/html' href='https://oriverk.dev' />
+  <link rel='self' type='application/atom+xml' href='https://oriverk.dev/atom.xml' />
   <entry>
       <id>20200526-next-portfolio</id>
       <title>Qiita: Next.jsでポートフォリオサイトを作成した</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20200526-next-portfolio />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20200526-next-portfolio' />
       <updated>2020-07-01</updated>
-      <summary>qiita, react, next.js, remark.js, vercel</summary>
+      <summary>next.js, qiita, react, remark.js, vercel</summary>
     </entry><entry>
       <id>20200329-joined-corona-oss</id>
       <title>Qiita: 宮崎県COVID-19対策サイトのOSS活動に参加した。</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20200329-joined-corona-oss />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20200329-joined-corona-oss' />
       <updated>2020-04-7</updated>
-      <summary>qiita, covid-19, oss, github, vue.js, typescript</summary>
+      <summary>covid-19, github, oss, qiita, typescript, vue.js</summary>
     </entry><entry>
       <id>20200204-update-githubpages</id>
       <title>GithubPagesのメジャーアップデートをした。</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20200204-update-githubpages />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20200204-update-githubpages' />
       <updated>2020-02-04</updated>
-      <summary>githubpages, ruby, jekyll</summary>
+      <summary>githubpages, jekyll, ruby</summary>
     </entry><entry>
       <id>20200203-install-langs2ubuntu</id>
       <title>Gist: installl langs to ubuntu</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20200203-install-langs2ubuntu />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20200203-install-langs2ubuntu' />
       <updated>2020-03-17</updated>
-      <summary>gist, ubuntu, ruby, rails, node.js, rust, java</summary>
+      <summary>gist, java, node.js, rails, ruby, rust, ubuntu</summary>
     </entry><entry>
       <id>20200128-install-database2ubuntu</id>
       <title>Gist: how to install db to ubuntu</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20200128-install-database2ubuntu />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20200128-install-database2ubuntu' />
       <updated>2020-03-17</updated>
-      <summary>gist, db, postgresql, mysql</summary>
+      <summary>db, gist, mysql, postgresql</summary>
     </entry><entry>
       <id>20200128-build-vm4ubuntu</id>
       <title>Gist: how to build VM with linux Ubuntu</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20200128-build-vm4ubuntu />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20200128-build-vm4ubuntu' />
       <updated>2020-06-25</updated>
-      <summary>vm, ubuntu</summary>
+      <summary>ubuntu, vm</summary>
     </entry><entry>
       <id>20200110-update-githubpages</id>
       <title>Postページを中心に改修した（N度目</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20200110-update-githubpages />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20200110-update-githubpages' />
       <updated>2020-01-10</updated>
-      <summary>githubpages, ruby, jekyll</summary>
+      <summary>githubpages, jekyll, ruby</summary>
     </entry><entry>
       <id>20200106-fontsize-test</id>
       <title>フォントサイズの確認</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20200106-fontsize-test />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20200106-fontsize-test' />
       <updated>2020-01-06</updated>
       <summary>test</summary>
     </entry><entry>
       <id>20191129-post-code2twitter</id>
       <title>Qiita: Twitterに見栄え良くコード投稿したかった</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20191129-post-code2twitter />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20191129-post-code2twitter' />
       <updated>2020-03-10</updated>
-      <summary>qiita, ruby, rails, aws</summary>
+      <summary>aws, qiita, rails, ruby</summary>
     </entry><entry>
       <id>20190829-fe-exam</id>
       <title>Qiita: H30秋基本情報技術者試験 問3システム</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20190829-fe-exam />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190829-fe-exam' />
       <updated>2019-08-29</updated>
       <summary>qiita, rails, ruby</summary>
     </entry><entry>
       <id>20190818-use-jekyll</id>
       <title>Qiita: GithubPagesでjekyllを使ってみよう。</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20190818-use-jekyll />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190818-use-jekyll' />
       <updated>2019-12-1</updated>
       <summary>git, githubpages, jekyll, ruby</summary>
     </entry><entry>
       <id>20190513-learned-programming</id>
       <title>Qiita: プログラミングを2か月間、日本人エンジニアの下で学んできた</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20190513-learned-programming />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190513-learned-programming' />
       <updated>2019-12-12</updated>
-      <summary>qiita, ruby, programming</summary>
+      <summary>programming, qiita, ruby</summary>
     </entry><entry>
       <id>20190403-what-transaction</id>
       <title>Qiita: 18日目: トランザクションって</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20190403-what-transaction />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190403-what-transaction' />
       <updated>2019-12-04</updated>
-      <summary>qiita, トランザクション, ruby, mysql</summary>
+      <summary>mysql, qiita, ruby, トランザクション</summary>
     </entry><entry>
       <id>20190329-add-admin-with-devise</id>
       <title>Qiita: 16日目：deviseで管理者を追加する</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20190329-add-admin-with-devise />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190329-add-admin-with-devise' />
       <updated>2019-12-04</updated>
-      <summary>qiita, ruby, rails, devise</summary>
+      <summary>devise, qiita, rails, ruby</summary>
     </entry><entry>
       <id>20190328-use-heroku</id>
       <title>Qiita: 15日目：Herokuでアプリを公開しよう</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20190328-use-heroku />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190328-use-heroku' />
       <updated>2019-12-04</updated>
-      <summary>qiita, ruby, rails, heroku</summary>
+      <summary>heroku, qiita, rails, ruby</summary>
     </entry><entry>
       <id>20190324-app-with-devise</id>
       <title>Qiita: 13日目(1)：Deviseによるログイン機能付きサイトの作成</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20190324-app-with-devise />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190324-app-with-devise' />
       <updated>2019-12-04</updated>
-      <summary>qiita, ruby, rails</summary>
+      <summary>qiita, rails, ruby</summary>
     </entry><entry>
       <id>20190320-what-git</id>
       <title>Qiita: 10～12日目：Git</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20190320-what-git />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190320-what-git' />
       <updated>2019-03-20</updated>
-      <summary>qiita, git</summary>
+      <summary>git, qiita</summary>
     </entry><entry>
       <id>20190320-input-data2db</id>
       <title>Qiita: 10日目(1)：マスターデータ（DBへ情報入力、ページに出力</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20190320-input-data2db />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190320-input-data2db' />
       <updated>2019-12-04</updated>
-      <summary>ruby, rails, mysql</summary>
+      <summary>mysql, rails, ruby</summary>
     </entry><entry>
       <id>20190318-read-ruby-reference</id>
       <title>Qiita: Rubyリファレンスを読んだのでメモ</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20190318-read-ruby-reference />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190318-read-ruby-reference' />
       <updated>2019-03-18</updated>
       <summary>qiita, ruby</summary>
     </entry><entry>
       <id>20190317-manipulate-student-data</id>
       <title>Qiita: 9, 10, 11, 14日目：大学生データ操作App</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20190317-manipulate-student-data />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190317-manipulate-student-data' />
       <updated>2019-12-04</updated>
-      <summary>qiita, ruby, rails, mysql</summary>
+      <summary>mysql, qiita, rails, ruby</summary>
     </entry><entry>
       <id>20190313-manipulate-mysql</id>
       <title>Qiita: 6,7日目：MySQL操作</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20190313-manipulate-mysql />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190313-manipulate-mysql' />
       <updated>2019-12-04</updated>
-      <summary>qiita, mysql</summary>
+      <summary>mysql, qiita</summary>
     </entry><entry>
       <id>20190311-what-bootstrap</id>
       <title>Qiita: 5日目：Bootstrapを初めて触ってみた</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20190311-what-bootstrap />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190311-what-bootstrap' />
       <updated>2019-12-04</updated>
-      <summary>qiita, ruby, rails, bootstrap</summary>
+      <summary>bootstrap, qiita, rails, ruby</summary>
     </entry><entry>
       <id>20190311-httpmethod-crud-sql</id>
       <title>Qiita: 3日目(2)：HTTPメソッドとCRUDとSQL</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20190311-httpmethod-crud-sql />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190311-httpmethod-crud-sql' />
       <updated>2019-03-11</updated>
-      <summary>qiita, http, crud, sql, restful</summary>
+      <summary>crud, http, qiita, restful, sql</summary>
     </entry><entry>
       <id>20190316-ruby-exam</id>
       <title>Qiita: 2,4,7,8,13日目：Ruby認定試験による勉強</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20190316-ruby-exam />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190316-ruby-exam' />
       <updated>2019-03-24</updated>
       <summary>qiita, ruby</summary>
     </entry><entry>
       <id>20190306-without-scaffold</id>
       <title>Qiita: 2日目(2)：Scaffoldなしでの掲示板作成</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20190306-without-scaffold />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190306-without-scaffold' />
       <updated>2019-12-4</updated>
-      <summary>qiita, ubuntu, ruby, rails, scaffold</summary>
+      <summary>qiita, rails, ruby, scaffold, ubuntu</summary>
     </entry><entry>
       <id>20190305-shellscript-permission</id>
       <title>Qiita: 1日目  LinuxとShellscriptとPermission</title>
-      <link rel='alternate' type='text/html' href=https://oriverk.dev/posts/20190305-shellscript-permission />
+      <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190305-shellscript-permission' />
       <updated>2019-03-18</updated>
-      <summary>qiita, linux, shellscript</summary>
+      <summary>linux, qiita, shellscript</summary>
     </entry>
 </feed>

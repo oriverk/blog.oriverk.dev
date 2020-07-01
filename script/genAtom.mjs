@@ -16,13 +16,13 @@ const atom = `<?xml version='1.0'?>
   <id>${base.url}</id>
   <title>${base.title}</title>
   <updated>${new Date()}</updated>
-  <link rel='alternate' type='text/html' href=${base.url} />
-  <link rel='self' type='application/atom+xml' href=${base.url + '/atom.xml'} />
+  <link rel='alternate' type='text/html' href='${base.url}' />
+  <link rel='self' type='application/atom+xml' href='${base.url + '/atom.xml'}' />
   ${posts.map((post) => {
     return `<entry>
       <id>${post.id}</id>
       <title>${post.title}</title>
-      <link rel='alternate' type='text/html' href=${base.url + '/posts/' + post.id} />
+      <link rel='alternate' type='text/html' href='${base.url + '/posts/' + post.id}' />
       <updated>${post.update || post.create}</updated>
       <summary>${post.tags.join(', ')}</summary>
     </entry>`}).join('')}

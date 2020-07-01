@@ -17,7 +17,7 @@ export function getSortedPostsData() {
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     // use gray-matter to analyze meta data from post
     const matterResult = matter(fileContents)
-    const LowerCaseTags = matterResult.data.tags.map((tag) => (tag.toLowerCase()))
+    const LowerCaseTags = matterResult.data.tags.map((tag) => (tag.toLowerCase())).sort()
     
     // bring data together with id
     return {
@@ -55,7 +55,7 @@ export async function getPostData(id) {
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   // use gray-matter to analyze post meta data
   const matterResult = matter(fileContents)
-  const LowerCaseTags = matterResult.data.tags.map((tag) => (tag.toLowerCase()))
+  const LowerCaseTags = matterResult.data.tags.map((tag) => (tag.toLowerCase())).sort()
   // const mdx = require('@mdx-js/mdx')
   const highlight = require('remark-highlight.js')
   
@@ -81,7 +81,7 @@ export function getPostsTags() {
     const fullPath = path.join(postsDirectory, fileName)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const matterTags = matter(fileContents).data.tags
-    const matterTagsLower = matterTags.map((tag) => tag.toLowerCase())
+    const matterTagsLower = matterTags.map((tag) => tag.toLowerCase()).sort()
     return matterTagsLower
   })
 
@@ -113,7 +113,7 @@ export function getPostsWithTag(args) {
     const fullPath = path.join(postsDirectory, fileName)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const matterResult = matter(fileContents)
-    const lowerTags = matterResult.data.tags.map((elm) => elm.toLowerCase())
+    const lowerTags = matterResult.data.tags.map((elm) => elm.toLowerCase()).sort()
     if (lowerTags.includes(args.toLowerCase())) {
       // delete matterResult.data.tags
       return {

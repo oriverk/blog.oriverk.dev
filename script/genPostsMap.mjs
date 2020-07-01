@@ -12,7 +12,7 @@ const allPostsData = fileNames.map((fileName) => {
   const fullPath = path.join(postsDirectory, fileName)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const matterResult = matter(fileContents)
-  const LowerCaseTags = matterResult.data.tags.map((tag) => (tag.toLowerCase()))
+  const LowerCaseTags = matterResult.data.tags.map((tag) => (tag.toLowerCase())).sort()
   
   const title = matterResult.data.title
   const create = matterResult.data.create
