@@ -16,7 +16,7 @@
     "id": "20200329-joined-corona-oss",
     "title": "Qiita: 宮崎県 COVID-19 対策サイトの OSS 活動に参加した。",
     "create": "2020-03-29",
-    "update": "2020-04-7",
+    "update": "2020-04-07",
     "tags": [
       "covid-19",
       "github",
@@ -121,7 +121,7 @@
     "id": "20190818-use-jekyll",
     "title": "Qiita: GithubPages で jekyll を使ってみよう。",
     "create": "2019-08-18",
-    "update": "2019-12-1",
+    "update": "2019-12-01",
     "tags": [
       "git",
       "githubpages",
@@ -279,7 +279,7 @@
     "id": "20190306-without-scaffold",
     "title": "Qiita: 2日目(2)：Scaffold なしでの掲示板作成",
     "create": "2019-03-06",
-    "update": "2019-12-4",
+    "update": "2019-12-04",
     "tags": [
       "qiita",
       "rails",
