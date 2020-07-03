@@ -14,7 +14,7 @@ const rss = `<?xml version='1.0'?>
     <link>${blogConfig.baseUrl}</link>
     <description>${blogConfig.desc}</description>
     <language>ja</language>
-    <lastBuildDate>${new Date()}</lastBuildDate>/
+    <lastBuildDate>${new Date()}</lastBuildDate>
 ${posts.map((post) => {
   return `
     <item>
