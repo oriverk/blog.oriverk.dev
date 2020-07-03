@@ -1,11 +1,10 @@
 ---
-date: '2019-03-11'
+create: '2019-03-11'
 update: '2019-12-04'
 author: Kawano Yudai
-title: 'Qiita: 5日目：Bootstrapを初めて触ってみた'
+title: 'Qiita: 5日目： Bootstrap を初めて触ってみた'
 tags: [Qiita, Ruby, Rails, Bootstrap]
 image: '/assets/posts/201903/bootstrap1.jpg'
-slide: false
 ---
 
 from [Qiita：Bootstrapを初めて触ってみた](https://qiita.com/OriverK/items/7cff4e36a2d19759cccb)

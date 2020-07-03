@@ -1,10 +1,9 @@
 ---
-date: '2019-03-11'
+create: '2019-03-11'
 author: Kawano Yudai
-title: 'Qiita: 3日目(2)：HTTPメソッドとCRUDとSQL'
+title: 'Qiita: 3日目(2)：HTTP メソッドと CRUD と SQL'
 tags: [Qiita, HTTP, CRUD, SQL, RESTful]
 image: '/assets/posts/201903/http1.jpg'
-slide: false
 ---
 
 from [Qiita: HTTPメソッドとCRUDとSQL](https://qiita.com/OriverK/items/19b9e0113fe22afb3017)

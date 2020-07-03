@@ -1,11 +1,10 @@
 ---
-date: '2020-05-26'
-update: '2020-06-05'
+create: '2020-05-26'
+update: '2020-07-01'
 author: Kawano Yudai
-title: 'Qiita: Next.jsでポートフォリオサイトを作成した'
+title: 'Qiita: Next.js でポートフォリオサイトを作成した'
 tags: [Qiita, React, next.js, remark.js, Vercel]
 image: '/assets/prtsc-1000.jpg'
-slide: false
 ---
 
 ## はじめに
@@ -20,7 +19,7 @@ slide: false
 ただいま無職、転職活動中（ここ2か月は自粛でstay home
 
 ## 作成に当たって
-ReactとNext.jsのtutorialとdocsを一通りやりました。
+React とNext.js のtutorial と docs を一通りやりました。
 
 - [React チュートリアル](https://ja.reactjs.org/tutorial/tutorial.html)
 - [Next.js チュートリアル](https://nextjs.org/docs/getting-started)
@@ -544,7 +543,7 @@ GoogleAnalytics側でIDを取得し、`_app.jsx`と`_document.jsx`を上コー�
 
 `next-offline`を利用した。上リポジトリでも記載してあるが、Vercel( Now )のv1とv2で動作が違う。但し、現在はv2オンリーなので、同レポジトリ内にある[packages/now2-example](https://github.com/hanford/next-offline/tree/master/packages/now2-example)の`now.json`と`next.config.json`に倣えばよい。
 
-#### next-pwa
+#### PWA
 @2020-06-25
 
 - reference: [shadowwalker / next-pwa](https://github.com/shadowwalker/next-pwa)
@@ -562,13 +561,335 @@ module.exports = withPWA({
 })
 ```
 
+#### TypeScirpt
+@2020-06-30
+Next.jsのTS化は非常に簡単で、最初のうちは[Next.js Learn Typescipt](https://nextjs.org/learn/excel/typescript)などに従えば良い。
+
+```sh
+touch tsconfig.json
+# If you’re using Yarn
+yarn add --dev typescript @types/react @types/node
+```
+
+あとは、Learn 等に従って、ts化していけば、何となく理解できる。また、`tsconfig.json`で`allowJs:true`にしておけば、もし仮に型が解らんものを含むjsファイルはそのままにしておいて、理解が進んでから完全にts化すればいいのでは。
+
+- TSの理解を深める為に、読んだもの
+  - [Qiita: tsconfig.jsonの全オプションを理解する（随時追加中）by @ryokkkke](https://qiita.com/ryokkkke/items/390647a7c26933940470)
+  - [Qiita: TypeScriptの型入門 by @uhyo ](https://qiita.com/uhyo/items/e2fdef2d3236b9bfe74a)
+  - [Qiita: TypeScriptの型推論詳説 by @uhyo](https://qiita.com/uhyo/items/6acb7f4ee73287d5dac0)
+  - [私的TypeScriptとの関わり方ガイドライン from 角待ちは対空](https://blog.yux3.net/entry/2017/02/05/000805)
+
+#### npm-script
+[mizchi氏のブログ](https://mizchi.dev/202006211925-support-ogp)等を見てて、npm-script や EsModule 等を知った。ちょうど、`sitemap.mxl`を造る必要があったので、利用することにした。
+
+```sh
+# pagesMap.json => sitmap.mxl
+# pagesMap.json + history.json => rss
+```
+
+ただ、node v12 では ESModule は未だ experimental な機能で、package.json にも `node --experimental-modules test.mjs` とする必要がある。しかし、v13からはフラグが要らないので、nodejsをアップデートした。
+
+
+```sh
+n --stable
+# => 12.18.2
+n --latest
+# => 14.5.0
+n latest
+node -v
+=> v14.4.0
+```
+
+**vercel は nodejs の LTS しか対応しないので、package.json 中の npm-script は build 用 と generate script用で分ける必要があった。**
+
+```json
+"scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "local-build": "next build && node script/genRobots.mjs && node script/genPostsMap.mjs && node script/genSiteMap.mjs && node script/genRss.mjs && node script/genAtom.mjs",
+  "start": "next start",
+},
+```
+
+mjsについて未だ良く解らん事、作るのが自分用のファイルジェネレーターであることもあって、コードが汚いので・・・↓
+
+##### pages.json
+@2020-06-30
+postの情報を集約した postPages.json を作成した。ファイル更新履歴等はそのうち github から取得できるようにしたい。
+
+- JSON.stringify が良く解らなかったので、読んだもの。
+  - [JSON.stringifyを改めて調べる。 @qoAop](https://qiita.com/qoAop/items/57d35a41ef9629351c3c)
+
+作りたいファイル構成
+
+```json
+// {
+//   id: '20200526-next-portfolio',
+//   title: 'Qiita: Next.jsでポートフォリオサイトを作成した',
+//   create: '2020-05-26',
+//   update: '2020-06-05',
+//   tags: ['qiita', 'react', 'next.js', 'remark.js', 'vercel'],
+// },
+```
+
+<details><summary>postsMap generator script</summary><div>
+
+```mjs
+// script/genPagesMap.mjs
+import path from 'path'
+import fs from 'fs'
+import matter from 'gray-matter'
+
+const postsDirectory = path.join(process.cwd(), 'src/docs')
+const fileNames = fs.readdirSync(postsDirectory)
+const allPostsData = fileNames.map((fileName) => {
+  const id = fileName.replace(/\.md$/, '')
+  const fullPath = path.join(postsDirectory, fileName)
+  const fileContents = fs.readFileSync(fullPath, 'utf8')
+  const matterResult = matter(fileContents)
+  const LowerCaseTags = matterResult.data.tags.map((tag) => (tag.toLowerCase()))
+  
+  const title = matterResult.data.title
+  const create = matterResult.data.create
+  const update = matterResult.data.update || ''
+  const tags = LowerCaseTags || ''
+  return {
+    id,
+    title,
+    create,
+    update,
+    tags
+  }
+})
+
+const sortedPostsData = allPostsData.sort((a, b) => {
+    if (a.create < b.create) {
+      return 1
+    } else {
+      return -1
+    }
+})
+
+fs.writeFileSync(
+  path.join(process.cwd(), 'gen/postPages.json'),
+  JSON.stringify(sortedPostsData, undefined, 2),
+  'utf-8'
+)
+```
+
+</div></details>
+
+##### sitemap.xml
+@2020-07-01
+[kuflash / react-router-sitemap](https://github.com/kuflash/react-router-sitemap) や [IlusionDev / nextjs-sitemap-generator](https://github.com/IlusionDev/nextjs-sitemap-generator)等があるが、next.js なので、react-router を使ってないし、xml の構造は簡単そうだったので自作した。
+
+- sitemap.xml を知るために読んだもの
+  - [sitemaps.org - サイトマップの XML 形式](https://www.sitemaps.org/ja/protocol.html)
+  - [Google Search Home - Products > Search for Developers > Guides > Separate URLs](https://developers.google.com/search/mobile-sites/mobile-seo/separate-urls)
+  - [Search Console help サイトマップについて](https://support.google.com/webmasters/answer/156184?hl=ja&ref_topic=4581190)
+
+sitemap.xml の基本構成　
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://www.example.com/</loc>
+    <lastmod>2005-01-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset> 
+```
+
+**xmlはファイル頭に空白行が入ると、`<?xml ?>`の宣言が無いと言ってエラーを吐く**
+
+<details><summary>sitemap.xml generator script</summary><div>
+
+```mjs
+// script/genSiteMap.mjs
+import path from 'path'
+import fs from 'fs'
+
+const base = 'https://oriverk.dev'
+const fixed = [
+  { url: base, update: '2020-06-26' },
+  { url: '/posts', update: '2020-06-30' },
+  { url: '/tags', update: '2020-06-26' }
+]
+
+const posts = JSON.parse(fs.readFileSync(
+  path.join(process.cwd(), 'gen/postPages.json'), 'utf8'
+))
+
+const sitemap = `<?xml version="1.0"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${fixed.map((f) => {
+  return `<url>
+    <loc>${base === f.url ? base : base + f.url}</loc>
+    <lastmod>${f.update}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  `}).join("")}
+${posts.map((post) => { return `<url>
+    <loc>${base}/posts/${post.id}</loc>
+    <lastmod>${post.update || post.create}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  `}).join("")}
+</urlset>`
+
+fs.writeFileSync(path.join(process.cwd(), "public/sitemap.xml"), sitemap)
+```
+
+</div></details>
+
+##### RSS & Atom
+@2020-07-01
+RSS 2.0 と Atom 1.0 に対応する。
+
+- 読んだもの
+  - [Google Margant Center ヘルプ - RSS 2.0 仕様](https://support.google.com/merchants/answer/160589?hl=ja&ref_topic=2473799)
+  - [Google Margant Center ヘルプ - Atom 1.0 仕様](https://support.google.com/merchants/answer/160593?hl=ja)
+  - [PHP & JavaScript Room - RSS 2.0 のフォーマット](https://phpjavascriptroom.com/?t=topic&p=rss_format)
+
+<details><summary>- RSS 2.0 フォーマット</summary><div>
+
+```xml
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version='2.0'>
+	<channel>
+		<title>hogehoge foobar</title>
+		<link>http://example.com/</link>
+		<description>aaaaaaaaaaaaaaaa</description>
+		<item>
+			<title>tegetege mikan</title>
+			<link>http://example.com/post3.html</link>
+			<description> this is description</description>
+			<pubDate>Wed, 11 Jun 2008 15:30:59 +0900</pubDate>
+		</item>
+	</channel>
+</rss>
+```
+
+</div></details>
+
+<details><summary>- Atom 1.0 フォーマット</summary><div>
+
+```xml
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns='http://www.w3.org/2005/Atom' xml:lang='ja'>
+	<id>tag:example.comfeed/</id>
+	<title>example.com update info</title>
+	<updated>2020-06-11T15:30:59Z</updated>
+	<link rel='alternate' type='text/html' href='http://example.com/feed/' />
+	<link rel='self' type='application/atom+xml' href='http://example.com/feed/atom10.xml' />
+	<entry>
+		<id>http://example.com/post1.html#20080609205030</id>
+		<title>foobar</title>
+		<link rel='alternate' type='text/html' href='http://example.com/post1.html' />
+		<updated>2020-06-09T20:50:30Z</updated>
+		<summary>foofoooofooo</summary>
+	</entry>
+</feed>
+```
+
+</div></details>
+
+RSS と Atom のジェネレーターコードは、基本的に sitemap.xml と同じなので。
+
+<details><summary>RSS 2.0 ジェネレーター</summary><div>
+
+```mjs
+// script/genRss.mjs
+import path from 'path'
+import fs from 'fs'
+
+const base = {
+  url: 'https://oriverk.dev',
+  title: "Kawano Yudai's site",
+  desc: "This site is for my portfolio and made with React, Next.js"
+}
+const posts = JSON.parse(fs.readFileSync(
+  path.join(process.cwd(), 'gen/postPages.json'), 'utf8'
+))
+
+const rss = `<?xml version='1.0'?>
+<rss version='2.0'>
+  <channel>
+    <title>${base.title}</title>
+    <link>${base.url}</link>
+    <description>${base.desc}</description>
+    <language>ja</language>
+    <lastBuildDate>${new Date()}</lastBuildDate>/
+${posts.map((post) => {
+  return `<item>
+      <title>${post.title}</title>
+      <link>${base.url}/posts/${post.id}</link>
+      <description>${post.tags.join(', ')}</description>
+      <pubDate>${post.create}</pubDate>
+    </item>
+  `}).join('')}
+  </channel>
+</rss>`
+fs.writeFileSync(path.join(process.cwd(),'public/rss.xml'), rss)
+```
+
+</div></details>
+
+<details><summary>Atom 1.0 ジェネレーター</summary><div>
+
+Atom の ユニークid をどうしようかと考えましたが、適当に。
+
+```mjs
+// script/genRss.mjs
+import path from 'path'
+import fs from 'fs-extra'
+
+const base = {
+  url: 'https://oriverk.dev',
+  title: "Kawano Yudai's site",
+  desc: "This site is for my portfolio and made with React, Next.js"
+}
+const posts = JSON.parse(fs.readFileSync(
+  path.join(process.cwd(), 'gen/postPages.json'), 'utf8'
+))
+
+const atom = `<?xml version='1.0'?>
+<feed xmlns='http://www.w3.org/2005/Atom' xml:lang='ja'>
+  <id>${base.url}</id>
+  <title>${base.title}</title>
+  <updated>${new Date()}</updated>
+  <link rel='alternate' type='text/html' href='${base.url}' />
+  <link rel='self' type='application/atom+xml' href='${base.url + '/atom.xml'}' />
+  ${posts.map((post) => {
+    return `<entry>
+      <id>${post.id}</id>
+      <title>${post.title}</title>
+      <link rel='alternate' type='text/html' href='${base.url + '/posts/' + post.id}' />
+      <updated>${post.update || post.create}</updated>
+      <summary>${post.tags.join(', ')}</summary>
+    </entry>`}).join('')}
+</feed>`
+fs.writeFileSync(path.join(process.cwd(), 'public/atom.xml'), atom)
+
+```
+</div></details>
+
 ## To do
 
-- CSSの統一(module.cssなのかstyled-jsxなのか等)
-- TypeScript化（触ってみたいだけ
-- AMP一部対応( 参照：[Next.js next/amp](https://nextjs.org/docs/api-reference/next/amp)
-- api routeを試す
+- CSSの統一
+- AMP対応( 参照：[Next.js next/amp](https://nextjs.org/docs/api-reference/next/amp)
 - `/tags`ページの整備
 - コードブロックの言語またはファイル名の出力
 - syntax-highlightの改善
-- rssの対応
+- 検索機能
+- postページの目次機能
+- モバイル用 bottom navigation の設置
+- og:image 動的生成コード

@@ -2,8 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { Layout } from '../../components/Layout'
 import { getPostsTags } from '../../lib/posts'
-
-const blog = require('../../../blog.json')
+import blogConfig from '../../../blog.config'
 
 export async function getStaticProps() {
   const postsTags = getPostsTags()
@@ -19,13 +18,13 @@ export default function ({ postsTags }) {
     <>
       <Layout>
         <Head>
-          <title>Tags | {blog.short_name}</title>
-          <meta name='title' content={`Tags | ${blog.baseName}`} />
-          <meta name='description' content={blog.baseDesc} />
-          <meta property='og:title' content={`Tags | ${blog.baseName}`} />
-          <meta property='og:description' content={blog.baseDesc} />
-          <meta property='og:image' content={`${blog.baseUrl}/assets/prtsc700.jpg`} />
-          <meta property='og:url' content={`${blog.baseUrl}/tags`} />
+          <title>Tags | {blogConfig.shortName}</title>
+          <meta name='title' content={`Tags | ${blogConfig.baseName}`} />
+          <meta name='description' content={blogConfig.desc} />
+          <meta property='og:title' content={`Tags | ${blogConfig.baseName}`} />
+          <meta property='og:description' content={blogConfig.desc} />
+          <meta property='og:image' content={`${blogConfig.baseUrl}/assets/prtsc700.jpg`} />
+          <meta property='og:url' content={`${blogConfig.baseUrl}/tags`} />
         </Head>
         <article className='content'>
           <h1>Blog Tags</h1>

@@ -2,10 +2,9 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { Layout } from '../../components/Layout'
 import { getSortedPostsData } from '../../lib/posts'
+import blogConfig from '../../../blog.config'
 
 import { GetStaticProps } from 'next'
-
-const blog = require('../../../blog.json')
 
 export const getStaticProps: GetStaticProps = async () => {
   const allPostsData = getSortedPostsData()
@@ -22,7 +21,7 @@ export default function ({
     allPostsData: {
       id: string
       title: string
-      date: string
+      create: string
       LowerCaseTags: string[]
   }[],
   posts?: boolean
@@ -31,20 +30,20 @@ export default function ({
     <>
       <Layout posts>
         <Head>
-          <title>Blog | {blog.short_name}</title>
-          <meta name='title' content={`Blog | ${blog.name}`} />
-          <meta name='description' content={blog.baseDesc} />
-          <meta property='og:title' content={`Blog | ${blog.name}`} />
-          <meta property='og:description' content={blog.baseDesc} />
-          <meta property='og:image' content={`${blog.baseUrl}/assets/prtsc700.jpg`} />
-          <meta property='og:url' content={`${blog.baseUrl}/posts`} />
+          <title>Blog | {blogConfig.shortName}</title>
+          <meta name='title' content={`Blog | ${blogConfig.baseName}`} />
+          <meta name='description' content={blogConfig.desc} />
+          <meta property='og:title' content={`Blog | ${blogConfig.baseName}`} />
+          <meta property='og:description' content={blogConfig.desc} />
+          <meta property='og:image' content={`${blogConfig.baseUrl}/assets/prtsc700.jpg`} />
+          <meta property='og:url' content={`${blogConfig.baseUrl}/posts`} />
         </Head>
         <article className='content'>
           <h1>Blog Posts</h1>
           <ul>
-            {allPostsData.map(({ id, date, title, LowerCaseTags }) => (
+            {allPostsData.map(({ id, create, title, LowerCaseTags }) => (
               <li key={id}>
-                <time dateTime={date}>{date}</time>
+                <time dateTime={create}>{create}</time>
                 <span className='tags'>{LowerCaseTags.map((tag) => (<code key={tag}><Link href='/tags/[tag]' as={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
                 <Link href='/posts/[id]' as={`/posts/${id}`}><a><h2>{title}</h2></a></Link>
               </li>

@@ -30,5 +30,11 @@ yarn-error.log*
 .env.production.local
 
 # next-pwa
-**/public/workbox-*.js
-**/public/sw.js
+**/public/workbox-*.js*
+**/public/sw.js*
+
+# generated
+# **/public/robots.txt
+# **/public/sitemap.xml
+# **/public/rss.xml
+# **/public/atom.xml

@@ -1,11 +1,10 @@
 ---
-date: '2019-05-13'
+create: '2019-05-13'
 update: '2019-12-12'
 author: Kawano Yudai
 title: 'Qiita: プログラミングを2か月間、日本人エンジニアの下で学んできた'
 tags: [Qiita, Ruby, programming]
 image: '/assets/posts/201905/cebu1.jpg'
-slide: false
 ---
 
 from [Qiita: プログラミングを2か月間、日本人エンジニアの下でマンツーマンで学んできた](https://qiita.com/OriverK/items/30d8941c7799c9aa6dfd)

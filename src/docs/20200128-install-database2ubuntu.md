@@ -1,11 +1,9 @@
 ---
-date: '2020-01-28'
+create: '2020-01-28'
 update: '2020-03-17'
 author: Kawano Yudai
 title: 'Gist: how to install db to ubuntu'
 tags: [Gist, DB, PostgreSQL, MySQL]
-image: ''
-slide: false
 ---
 
 from [Gist: oriverk/InstallDB2Ubuntu.md ](https://gist.github.com/oriverk/aa5ded308dfb5e143e388a74915e2093)

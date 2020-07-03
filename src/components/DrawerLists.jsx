@@ -4,8 +4,7 @@ import { IconButton, Divider } from '../utils/utils'
 import {
   GithubIcon, LinkedInIcon, QiitaIcon, TwitterIcon, WantedlyIcon,HomeIcon, AboutIcon, HistoryIcon, WorksIcon, BlogIcon
 } from '../utils/svgIcon'
-
-const blog = require('../../blog.json')
+import blogConfig from '../../blog.config'
 
 const ListItem = React.forwardRef((props, ref) => {
   return (
@@ -85,11 +84,11 @@ export const DrawerLists = (props) => {
       </div>
       <Divider />
       <div>
-        <IconButton href={`https://github.com/${blog.sns.github}`} label='Github' ><GithubIcon /></IconButton>
-        <IconButton href={`https://qiita.com/${blog.sns.qiita}`} label='Qiita'><QiitaIcon /></IconButton>
-        <IconButton href={`https://www.wantedly.com/users/${blog.sns.wantedly}`} label='Wantedly'><WantedlyIcon /></IconButton>
-        <IconButton href={`https://www.linkedin.com/in/${blog.sns.linkedin}`} label='LinkedIn'><LinkedInIcon /></IconButton>
-        <IconButton href={`https://twitter.com/${blog.sns.twitter}`} label='Twitter'><TwitterIcon /></IconButton>
+        <IconButton href={`https://github.com/${blogConfig.sns.github}`} label='Github' ><GithubIcon /></IconButton>
+        <IconButton href={`https://qiita.com/${blogConfig.sns.qiita}`} label='Qiita'><QiitaIcon /></IconButton>
+        <IconButton href={`https://www.wantedly.com/users/${blogConfig.sns.wantedly}`} label='Wantedly'><WantedlyIcon /></IconButton>
+        <IconButton href={`https://www.linkedin.com/in/${blogConfig.sns.linkedin}`} label='LinkedIn'><LinkedInIcon /></IconButton>
+        <IconButton href={`https://twitter.com/${blogConfig.sns.twitter}`} label='Twitter'><TwitterIcon /></IconButton>
       </div>
       </div>
       <style jsx>{`
