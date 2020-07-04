@@ -1,11 +1,14 @@
+import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Layout } from '../../components/Layout'
 import blogConfig from '../../../blog.config'
 import { getAllTags, getTagPosts } from '../../lib/posts'
 
-export function getStaticPaths() {
-  const paths = getAllTags().map((tag) => {
+import { GetStaticProps, GetStaticPaths } from 'next'
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths: string[] = getAllTags().map((tag) => {
     return `/tags/${tag}`
   })
   return {
@@ -14,9 +17,9 @@ export function getStaticPaths() {
   }
 }
 
-export function getStaticProps({ params }) {
-  const tag = params.tag
-  const tagPosts = getTagPosts(tag)
+export const getStaticProps: GetStaticProps = async (props) => {
+  const tag = props.params.tag
+  const tagPosts = getTagPosts(tag as string)
   return {
     props: {
       tag,
@@ -25,10 +28,13 @@ export function getStaticProps({ params }) {
   }
 }
 
-export default function Tag({ tag, tagPosts }) {
-  const sp = tag.split('')
+export default function Tag({ tag, tagPosts }: {
+  tag: string, tagPosts: any[]
+})
+{
+  const sp: string[] = tag.split('')
   sp[0] = sp[0].toUpperCase()
-  const nwTag = sp.join('')
+  const nwTag: string = sp.join('')
   return (
     <React.Fragment>
       <Layout>

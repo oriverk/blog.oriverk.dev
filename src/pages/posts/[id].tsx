@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { PostLayout } from '../../components/PostLayout'
@@ -42,7 +43,7 @@ export default function Post({ postData
   const pageImage = postData.image ? postData.image : '/assets/prtsc700.jpg'
 
   return (
-    <>
+    <React.Fragment>
       <PostLayout>
         <Head>
           <title>{`${postData.title} | ${blogConfig.shortName}`}</title>
@@ -99,6 +100,6 @@ export default function Post({ postData
           margin: 1rem 0;
         }
       `}</style>
-    </>
+    </React.Fragment>
   )
 }

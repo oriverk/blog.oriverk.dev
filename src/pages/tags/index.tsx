@@ -1,11 +1,14 @@
+import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Layout } from '../../components/Layout'
 import { getAllTags } from '../../lib/posts'
 import blogConfig from '../../../blog.config'
 
-export async function getStaticProps() {
-  const tags = getAllTags()
+import {GetStaticProps } from 'next'
+
+export const getStaticProps: GetStaticProps = async () => {
+  const tags: string[] = getAllTags()
   return {
     props: {
       tags
@@ -13,9 +16,9 @@ export async function getStaticProps() {
   }
 }
 
-export default function ({ tags }) {
+export default function ({ tags }: { tags: string[] }) {
   return (
-    <>
+    <React.Fragment>
       <Layout>
         <Head>
           <title>Tags | {blogConfig.shortName}</title>
@@ -46,6 +49,6 @@ export default function ({ tags }) {
           font-size: .8rem;
         }
       `}</style>
-    </>
+    </React.Fragment>
   )
 }

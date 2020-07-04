@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Layout } from '../../components/Layout'
@@ -27,7 +28,7 @@ export default function ({
   posts?: boolean
   }) {
   return (
-    <>
+    <React.Fragment>
       <Layout posts>
         <Head>
           <title>Blog | {blogConfig.shortName}</title>
@@ -93,6 +94,6 @@ export default function ({
           }
         }
       `}</style>
-    </>
+    </React.Fragment>
   )
 }
