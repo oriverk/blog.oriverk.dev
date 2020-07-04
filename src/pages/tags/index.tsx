@@ -1,21 +1,24 @@
+import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Layout } from '../../components/Layout'
-import { getPostsTags } from '../../lib/posts'
+import { getAllTags } from '../../lib/posts'
 import blogConfig from '../../../blog.config'
 
-export async function getStaticProps() {
-  const postsTags = getPostsTags()
+import {GetStaticProps } from 'next'
+
+export const getStaticProps: GetStaticProps = async () => {
+  const tags: string[] = getAllTags()
   return {
     props: {
-      postsTags
+      tags
     }
   }
 }
 
-export default function ({ postsTags }) {
+export default function ({ tags }: { tags: string[] }) {
   return (
-    <>
+    <React.Fragment>
       <Layout>
         <Head>
           <title>Tags | {blogConfig.shortName}</title>
@@ -29,7 +32,7 @@ export default function ({ postsTags }) {
         <article className='content'>
           <h1>Blog Tags</h1>
           <div className='tags'>
-            {postsTags.map((tag) => (<span key={tag} className={tag}><code><Link href='/tags/[tag]' as={`/tags/${tag}`}><a>{tag}</a></Link></code></span>))}
+            {tags.map((tag) => (<span key={tag} className={tag}><code><Link href='/tags/[tag]' as={`/tags/${tag}`}><a>{tag}</a></Link></code></span>))}
           </div>
         </article>
       </Layout>
@@ -46,6 +49,6 @@ export default function ({ postsTags }) {
           font-size: .8rem;
         }
       `}</style>
-    </>
+    </React.Fragment>
   )
 }

@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { PostLayout } from '../../components/PostLayout'
@@ -32,17 +33,17 @@ export default function Post({ postData
       id: string
       title: string
       create: string
-      LowerCaseTags?: string[]
+      tags?: string[]
       image?: string
       contentHtml: string
   }
 }) {
-  const tags = postData.LowerCaseTags
+  const tags = postData.tags
   const pageTags = tags ? tags.join(' ') : 'React, Next.js'
   const pageImage = postData.image ? postData.image : '/assets/prtsc700.jpg'
-  
+
   return (
-    <>
+    <React.Fragment>
       <PostLayout>
         <Head>
           <title>{`${postData.title} | ${blogConfig.shortName}`}</title>
@@ -61,7 +62,7 @@ export default function Post({ postData
             <br />
             <span className='tags'>{tags.map((tag) => (<code key={tag}><Link href={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
           </div>
-          <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} className='markdonw' />
+          <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} className='markdown' />
           {/* <div>`${postData.jsx}`</div> */}
           <div className='sns'>
             <IconButton label='twitter share button' href={`https://twitter.com/share?text=${postData.title}&hashtags=react,nextjs&url=${blogConfig.baseUrl}/posts/${postData.id}&related=${blogConfig.sns.tiwtter}`}>
@@ -99,6 +100,6 @@ export default function Post({ postData
           margin: 1rem 0;
         }
       `}</style>
-    </>
+    </React.Fragment>
   )
 }

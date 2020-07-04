@@ -2,53 +2,60 @@ import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Layout } from '../../components/Layout'
-import { getSortedPostsData } from '../../lib/posts'
 import blogConfig from '../../../blog.config'
+import { getAllTags, getTagPosts } from '../../lib/posts'
 
-import { GetStaticProps } from 'next'
+import { GetStaticProps, GetStaticPaths } from 'next'
 
-export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = getSortedPostsData()
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths: string[] = getAllTags().map((tag) => {
+    return `/tags/${tag}`
+  })
+  return {
+    paths,
+    fallback: false
+  }
+}
+
+export const getStaticProps: GetStaticProps = async (props) => {
+  const tag = props.params.tag
+  const tagPosts = getTagPosts(tag as string)
   return {
     props: {
-      allPostsData
+      tag,
+      tagPosts
     }
   }
 }
 
-export default function ({
-  allPostsData, posts
-}: {
-    allPostsData: {
-      id: string
-      title: string
-      create: string
-      tags: string[]
-  }[],
-  posts?: boolean
-  }) {
+export default function Tag({ tag, tagPosts }: {
+  tag: string, tagPosts: any[]
+})
+{
+  const sp: string[] = tag.split('')
+  sp[0] = sp[0].toUpperCase()
+  const nwTag: string = sp.join('')
   return (
     <React.Fragment>
-      <Layout posts>
+      <Layout>
         <Head>
-          <title>Blog | {blogConfig.shortName}</title>
-          <meta name='title' content={`Blog | ${blogConfig.baseName}`} />
+          <title>{`${nwTag} | ${blogConfig.baseName}`}</title>
+          <meta name='title' content={`${nwTag} | ${blogConfig.baseName}`} />
           <meta name='description' content={blogConfig.desc} />
-          <meta property='og:title' content={`Blog | ${blogConfig.baseName}`} />
-          <meta property='og:description' content={blogConfig.desc} />
+          <meta property='og:title' content={`${nwTag} | ${blogConfig.baseName}`} />
+          <meta property='og:description' content={blogConfig.baseDesc} />
           <meta property='og:image' content={`${blogConfig.baseUrl}/assets/prtsc700.jpg`} />
-          <meta property='og:url' content={`${blogConfig.baseUrl}/posts`} />
+          <meta property='og:url' content={`${blogConfig.baseUrl}/tags/hoge`} />
         </Head>
         <article className='content'>
-          <h1>Blog Posts</h1>
+          <h1>{`${nwTag} tag Posts`}</h1>
           <ul>
-            {allPostsData.map(({ id, create, title, tags }) => (
+            {tagPosts.map(({ id, create, title, tags }) => (
               <li key={id}>
                 <time dateTime={create}>{create}</time>
-                <span className='tags'>{tags.map((tag) =>
-                  (<code key={tag}>
-                    <Link href='/tags/[tag]' as={`/tags/${tag}`}><a>{tag}</a></Link>
-                  </code>))}
+                <span className='tags'>{tags.map((t) =>
+                  (<code key={t}>
+                    <Link href='/tags/[tag]' as={`/tags/${t}`}><a>{t}</a></Link></code>))}
                 </span>
                 <Link href='/posts/[id]' as={`/posts/${id}`}><a><h2>{title}</h2></a></Link>
               </li>
