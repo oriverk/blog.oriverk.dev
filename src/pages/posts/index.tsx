@@ -8,7 +8,6 @@ import { GetStaticProps } from 'next'
 
 export const getStaticProps: GetStaticProps = async () => {
   const allPostsData = getSortedPostsData()
-  // console.log(allPostsData)
   return {
     props: {
       allPostsData
@@ -45,7 +44,11 @@ export default function ({
             {allPostsData.map(({ id, create, title, tags }) => (
               <li key={id}>
                 <time dateTime={create}>{create}</time>
-                <span className='tags'>{tags.map((tag) => (<code key={tag}><Link href='/tags/[tag]' as={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
+                <span className='tags'>{tags.map((tag) =>
+                  (<code key={tag}>
+                    <Link href='/tags/[tag]' as={`/tags/${tag}`}><a>{tag}</a></Link>
+                  </code>))}
+                </span>
                 <Link href='/posts/[id]' as={`/posts/${id}`}><a><h2>{title}</h2></a></Link>
               </li>
             ))}

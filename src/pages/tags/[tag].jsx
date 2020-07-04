@@ -15,35 +15,42 @@ export function getStaticPaths() {
 }
 
 export function getStaticProps({ params }) {
-  const tagPosts = getTagPosts(params.tag)
+  const tag = params.tag
+  const tagPosts = getTagPosts(tag)
   return {
     props: {
+      tag,
       tagPosts
     }
   }
 }
 
-export default function Tag({tagPosts}) {
-  
+export default function Tag({ tag, tagPosts }) {
+  const sp = tag.split('')
+  sp[0] = sp[0].toUpperCase()
+  const nwTag = sp.join('')
   return (
     <React.Fragment>
       <Layout>
         <Head>
-          {/* <title>{`${tag} | ${blogConfig.baseName}`}</title> */}
-          <meta name='title' content={` Tag | ${blogConfig.baseName}`} />
+          <title>{`${nwTag} | ${blogConfig.baseName}`}</title>
+          <meta name='title' content={`${nwTag} | ${blogConfig.baseName}`} />
           <meta name='description' content={blogConfig.desc} />
-          <meta property='og:title' content={`Tag | ${blogConfig.baseName}`} />
+          <meta property='og:title' content={`${nwTag} | ${blogConfig.baseName}`} />
           <meta property='og:description' content={blogConfig.baseDesc} />
           <meta property='og:image' content={`${blogConfig.baseUrl}/assets/prtsc700.jpg`} />
           <meta property='og:url' content={`${blogConfig.baseUrl}/tags/hoge`} />
         </Head>
         <article className='content'>
-          <h1>Tag</h1>
+          <h1>{`${nwTag} tag Posts`}</h1>
           <ul>
             {tagPosts.map(({ id, create, title, tags }) => (
-              <li>
+              <li key={id}>
                 <time dateTime={create}>{create}</time>
-                <span className='tags'>{tags.map((tag) => (<code key={tag}><Link href='/tags/[tag]' as={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
+                <span className='tags'>{tags.map((t) =>
+                  (<code key={t}>
+                    <Link href='/tags/[tag]' as={`/tags/${t}`}><a>{t}</a></Link></code>))}
+                </span>
                 <Link href='/posts/[id]' as={`/posts/${id}`}><a><h2>{title}</h2></a></Link>
               </li>
             ))}
@@ -53,20 +60,15 @@ export default function Tag({tagPosts}) {
       <style jsx>{`
         .content {
           width: 100%;
-          max-width: 950px;
+          max-width: 1000px;
           margin: 0 auto 1rem;
           padding: 5%;
           flex-grow: 1;
         }
 
-        h2 {
+        h2{
           margin: .5rem auto 1.5rem;
           font-weight: 600;
-          text-align: center;
-        }
-
-        ul {
-          padding-left: 1.25rem;
         }
 
         a {
@@ -74,17 +76,23 @@ export default function Tag({tagPosts}) {
           text-decoration: underline;
         }
 
-        code {
-          /* color: #DDD; */
-          display: inline-block;
-          margin: 0 .5rem;
-          padding: 0 .3rem;
-          background-color: #555;
+        time {
+          margin-right: 1rem;
         }
 
-        .tags a {
+        .tags {
+          display: block;
+        }
+
+        .tags a{
           font-size: .8rem;
-          color: #50CAF9
+          color: #50CAF9;
+        }
+
+        @media( min-width: 1280px ){
+          .tags {
+            display: inline;
+          }
         }
       `}</style>
     </React.Fragment>
