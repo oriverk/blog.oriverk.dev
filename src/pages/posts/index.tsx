@@ -8,6 +8,7 @@ import { GetStaticProps } from 'next'
 
 export const getStaticProps: GetStaticProps = async () => {
   const allPostsData = getSortedPostsData()
+  // console.log(allPostsData)
   return {
     props: {
       allPostsData
@@ -25,7 +26,7 @@ export default function ({
       tags: string[]
   }[],
   posts?: boolean
-}) {
+  }) {
   return (
     <>
       <Layout posts>

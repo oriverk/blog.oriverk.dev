@@ -11,25 +11,23 @@ import katex from 'remark-html-katex'
 import toc from 'remark-toc'
 import breaks from 'remark-breaks'
 
-const postsDirectory = path.join(process.cwd(), 'src/docs')
+const docsDirectory = path.join(process.cwd(), 'src/docs')
 
+// posts/index.tsx
 export function getSortedPostsData() {
-  const fileNames = fs.readdirSync(postsDirectory)
+  const fileNames = fs.readdirSync(docsDirectory)
   const allPostsData = fileNames.map(fileName => {
     const id = fileName.replace(/\.md$/, '')
-    const fullPath = path.join(postsDirectory, fileName)
+    const fullPath = path.join(docsDirectory, fileName)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const matterResult = matter(fileContents)
     const tags = matterResult.data.tags.map((tag) => (tag.toLowerCase())).sort()
-    
-    // bring data together with id
     return {
       id,
-      tags,
       ...matterResult.data,
+      tags,
     }
   })
-  // sort posts by date
   return allPostsData.sort((a, b) => {
     if (a.create < b.create) {
       return 1
@@ -39,8 +37,9 @@ export function getSortedPostsData() {
   })
 }
 
+// posts/[id].tsx
 export function getAllPostIds() {
-  const fileNames = fs.readdirSync(postsDirectory)
+  const fileNames = fs.readdirSync(docsDirectory)
   return fileNames.map(fileName => {
     return {
       params: {
@@ -50,9 +49,10 @@ export function getAllPostIds() {
   })
 }
 
+// posts/[id].tsx
 export async function getPostData(id) {
   // ↑async is for remark.
-  const fullPath = path.join(postsDirectory, `${id}.md`)
+  const fullPath = path.join(docsDirectory, `${id}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const matterResult = matter(fileContents)
   const tags = matterResult.data.tags.map((tag) => (tag.toLowerCase())).sort()
@@ -71,58 +71,54 @@ export async function getPostData(id) {
   return {
     id,
     contentHtml,
-    tags,
     ...matterResult.data,
+    tags,
   }
 }
-      
-export function getPostsTags() {
-  const fileNames = fs.readdirSync(postsDirectory)
+
+// tags/index.tsx
+export function getAllTags() {
+  const fileNames = fs.readdirSync(docsDirectory)
   const matterTags = fileNames.map(fileName => {
-    const fullPath = path.join(postsDirectory, fileName)
+    const fullPath = path.join(docsDirectory, fileName)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
-    return matter(fileContents).data.tags.map((tag) => tag.toLowerCase()).sort()
+    return matter(fileContents).data.tags.map((tag) => tag.toLowerCase())
   })
 
-  // [['qiita', 'ruby', 'hoge'],
-  //  ['qiita','ruby', 'python']]
+  // [['qiita', 'ruby', 'hoge'], ['qiita', 'ruby', 'python']]
   
   // convert Two dimentional array to One that
   const allMatterTags = []
   for (var m = 0; m < matterTags.length; m++){
     for (var n = 0; n < matterTags[m].length; n++){
       allMatterTags.push(matterTags[m][n])
-    };
+    }
   }
-
-  // ['qiita','ruby','hoge','qiita','ruby','python']
-
   // sort and unique allMatterTags
   const set = new Set(allMatterTags.sort());
-  let tags = Array.from(set)
-  // 上2行は下1行と同じ
-  // const setToArr = [...new Set(allMatterTags.sort())]
+  const tags = Array.from(set)
   return tags
 }
 
-export function getPostsWithTag(args) {
-  const fileNames = fs.readdirSync(postsDirectory)
-  const allPostsData = fileNames.map(fileName => {
+export function getTagPosts(arg) {
+  const fileNames = fs.readdirSync(docsDirectory)
+  const allPostsData = fileNames.map((fileName) => {
     const id = fileName.replace(/\.md$/, '')
-    const fullPath = path.join(postsDirectory, fileName)
+    const fullPath = path.join(docsDirectory, fileName)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const matterResult = matter(fileContents)
-    const lowerTags = matterResult.data.tags.map((elm) => elm.toLowerCase()).sort()
-    if (lowerTags.includes(args.toLowerCase())) {
-      // delete matterResult.data.tags
+    const tags = matterResult.data.tags.map((tag) => tag.toLowerCase()).sort()
+    if (tags.includes(arg.toLowerCase())) {
       return {
         id,
-        ...matterResult.data
+        ...matterResult.data,
+        tags
       }
+    } else {
+      return ''
     }
   })
-  // sort posts by date
-  return allPostsData.sort((a, b) => {
+  return allPostsData.filter(Boolean).sort((a, b) => {
     if (a.create < b.create) {
       return 1
     } else {
@@ -130,3 +126,4 @@ export function getPostsWithTag(args) {
     }
   })
 }
+

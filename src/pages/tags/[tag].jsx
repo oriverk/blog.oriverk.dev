@@ -1,46 +1,35 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { Layout } from '../../components/Layout'
 import blogConfig from '../../../blog.config'
+import { getAllTags, getTagPosts } from '../../lib/posts'
 
-// import { getPostsWithTag } from '../../lib/posts'
-// import { getAllPostIds, getPostData } from '../../lib/posts'
+export function getStaticPaths() {
+  const paths = getAllTags().map((tag) => {
+    return `/tags/${tag}`
+  })
+  return {
+    paths,
+    fallback: false
+  }
+}
 
+export function getStaticProps({ params }) {
+  const tagPosts = getTagPosts(params.tag)
+  return {
+    props: {
+      tagPosts
+    }
+  }
+}
 
-
-// const tag = () => {
-//   const router = useRouter()
-//   return router.query
-// }
-
-// export async function getStaticPaths({tag}) {
-//   const allPostsWithTag = getPostsWithTag({tag})
-//   const paths = allPostsWithTag.map((id) => (allPostsWithTag.id))
-//   return {
-//     paths,
-//     fallback: false,
-//   }
-// }
-
-// export async function getStaticProps({ tag }) {
-//   const allPostsWithTag = getPostsWithTag(tag)
-//   return {
-//     props: {
-//       allPostsWithTag
-//     }
-//   }
-// }
-
-export default function Tag() {
-  // console.log(allPostsWithTag)
-  const router = useRouter()
-  const { tag } = router.query
+export default function Tag({tagPosts}) {
+  
   return (
-    <>
+    <React.Fragment>
       <Layout>
         <Head>
-          <title>{`${tag} | ${blogConfig.baseName}`}</title>
+          {/* <title>{`${tag} | ${blogConfig.baseName}`}</title> */}
           <meta name='title' content={` Tag | ${blogConfig.baseName}`} />
           <meta name='description' content={blogConfig.desc} />
           <meta property='og:title' content={`Tag | ${blogConfig.baseName}`} />
@@ -49,8 +38,16 @@ export default function Tag() {
           <meta property='og:url' content={`${blogConfig.baseUrl}/tags/hoge`} />
         </Head>
         <article className='content'>
-          <h1>Tag: {tag}</h1>
-          <h2>Sorry, this page is under construction ...</h2>
+          <h1>Tag</h1>
+          <ul>
+            {tagPosts.map(({ id, create, title, tags }) => (
+              <li>
+                <time dateTime={create}>{create}</time>
+                <span className='tags'>{tags.map((tag) => (<code key={tag}><Link href='/tags/[tag]' as={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
+                <Link href='/posts/[id]' as={`/posts/${id}`}><a><h2>{title}</h2></a></Link>
+              </li>
+            ))}
+          </ul>
         </article>
       </Layout>
       <style jsx>{`
@@ -90,6 +87,6 @@ export default function Tag() {
           color: #50CAF9
         }
       `}</style>
-    </>
+    </React.Fragment>
   )
 }

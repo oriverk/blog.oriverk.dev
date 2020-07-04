@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { Layout } from '../../components/Layout'
-import { getPostsTags } from '../../lib/posts'
+import { getAllTags } from '../../lib/posts'
 import blogConfig from '../../../blog.config'
 
 export async function getStaticProps() {
-  const tags = getPostsTags()
+  const tags = getAllTags()
   return {
     props: {
       tags
