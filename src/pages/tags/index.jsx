@@ -5,15 +5,15 @@ import { getPostsTags } from '../../lib/posts'
 import blogConfig from '../../../blog.config'
 
 export async function getStaticProps() {
-  const postsTags = getPostsTags()
+  const tags = getPostsTags()
   return {
     props: {
-      postsTags
+      tags
     }
   }
 }
 
-export default function ({ postsTags }) {
+export default function ({ tags }) {
   return (
     <>
       <Layout>
@@ -29,7 +29,7 @@ export default function ({ postsTags }) {
         <article className='content'>
           <h1>Blog Tags</h1>
           <div className='tags'>
-            {postsTags.map((tag) => (<span key={tag} className={tag}><code><Link href='/tags/[tag]' as={`/tags/${tag}`}><a>{tag}</a></Link></code></span>))}
+            {tags.map((tag) => (<span key={tag} className={tag}><code><Link href='/tags/[tag]' as={`/tags/${tag}`}><a>{tag}</a></Link></code></span>))}
           </div>
         </article>
       </Layout>

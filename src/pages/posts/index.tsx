@@ -22,7 +22,7 @@ export default function ({
       id: string
       title: string
       create: string
-      LowerCaseTags: string[]
+      tags: string[]
   }[],
   posts?: boolean
 }) {
@@ -41,10 +41,10 @@ export default function ({
         <article className='content'>
           <h1>Blog Posts</h1>
           <ul>
-            {allPostsData.map(({ id, create, title, LowerCaseTags }) => (
+            {allPostsData.map(({ id, create, title, tags }) => (
               <li key={id}>
                 <time dateTime={create}>{create}</time>
-                <span className='tags'>{LowerCaseTags.map((tag) => (<code key={tag}><Link href='/tags/[tag]' as={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
+                <span className='tags'>{tags.map((tag) => (<code key={tag}><Link href='/tags/[tag]' as={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
                 <Link href='/posts/[id]' as={`/posts/${id}`}><a><h2>{title}</h2></a></Link>
               </li>
             ))}
