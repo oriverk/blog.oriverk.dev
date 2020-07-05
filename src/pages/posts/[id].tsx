@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { PostLayout } from '../../components/PostLayout'
+import { Layout } from '../../components/Layout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 import { HatenaIcon, TwitterIcon } from '../../utils/svgIcon'
 import { IconButton } from '../../utils/utils'
@@ -44,7 +44,7 @@ export default function Post({ postData
 
   return (
     <React.Fragment>
-      <PostLayout>
+      <Layout>
         <Head>
           <title>{`${postData.title} | ${blogConfig.shortName}`}</title>
           <meta name='title' content={`${postData.title} | ${blogConfig.baseName}`} />
@@ -73,7 +73,7 @@ export default function Post({ postData
             </IconButton>
           </div>
         </article>
-      </PostLayout>
+      </Layout>
       <style jsx>{`
         .content {
           width: 100%;

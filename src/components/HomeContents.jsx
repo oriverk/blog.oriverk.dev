@@ -103,7 +103,6 @@ export function About() {
               <source srcSet='/assets/LongRidge500.webp' type='image/webp' className='contentImg' />
               <img src='/assets/LongRidge500.jpg' alt='the secenary from Long-Ridge-Lookout in Adelaide' className='contentImg' />
             </picture>
-            <p><small>My selfie is little...</small></p>
           </div>
           <div className='right'>
             <p>My name is Kawano Yudai.</p>
