@@ -1,7 +1,7 @@
 import React from 'react'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import { ArrowIcon } from '../utils/svgIcon'
-import { DrawerLists } from './DrawerLists'
+import { SwipeDrawerLists } from './DrawerLists'
 
 export function PostLayout({
   children
@@ -34,7 +34,7 @@ export function PostLayout({
           onClick={toggleDrawer('left', false)}
           onKeyDown={toggleDrawer('left', false)}
         >
-          <DrawerLists />
+          <SwipeDrawerLists />
         </div>
       </SwipeableDrawer>
       <main>

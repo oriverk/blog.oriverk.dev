@@ -24,6 +24,6 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx", "src/components/DrawerLists.jsx", "src/lib/posts.jsx", "src/components/HomeContents.jsx"
+    "**/*.tsx", "src/components/DrawerLists.jsx", "src/lib/posts.jsx", "src/components/HomeContents.jsx", "src/components/FooLayout.jsx", "src/components/Layout.jsx"
   ]
 }

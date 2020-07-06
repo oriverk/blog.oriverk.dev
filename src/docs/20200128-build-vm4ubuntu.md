@@ -3,7 +3,7 @@ create: '2020-01-28'
 update: '2020-06-25'
 author: Kawano Yudai
 title: 'Gist: how to build VM with linux Ubuntu'
-tags: [VM, Ubuntu]
+tags: [vm, ubuntu]
 ---
 
 from Gist: 

@@ -5,17 +5,17 @@
     <link>https://oriverk.dev</link>
     <description>This site is for my portfolio and made with React, Next.js</description>
     <language>ja</language>
-    <lastBuildDate>Fri Jul 03 2020 00:35:06 GMT+0000 (Coordinated Universal Time)</lastBuildDate>
+    <lastBuildDate>Mon Jul 06 2020 06:21:48 GMT+0000 (Coordinated Universal Time)</lastBuildDate>
     <item>
       <title>Qiita: Next.js でポートフォリオサイトを作成した</title>
       <link>https://oriverk.dev/posts/20200526-next-portfolio</link>
-      <description>next.js, qiita, react, remark.js, vercel</description>
+      <description>next, react, remark</description>
       <pubDate>2020-05-26</pubDate>
     </item>
     <item>
       <title>Qiita: 宮崎県 COVID-19 対策サイトの OSS 活動に参加した。</title>
       <link>https://oriverk.dev/posts/20200329-joined-corona-oss</link>
-      <description>covid-19, github, oss, qiita, typescript, vue.js</description>
+      <description>oss, vue</description>
       <pubDate>2020-03-29</pubDate>
     </item>
     <item>
@@ -27,13 +27,13 @@
     <item>
       <title>Gist: installl langs to ubuntu</title>
       <link>https://oriverk.dev/posts/20200203-install-langs2ubuntu</link>
-      <description>gist, java, node.js, rails, ruby, rust, ubuntu</description>
+      <description>java, node, rails, ruby, rust, ubuntu</description>
       <pubDate>2020-02-03</pubDate>
     </item>
     <item>
       <title>Gist: how to install db to ubuntu</title>
       <link>https://oriverk.dev/posts/20200128-install-database2ubuntu</link>
-      <description>db, gist, mysql, postgresql</description>
+      <description>db, mysql, postgresql</description>
       <pubDate>2020-01-28</pubDate>
     </item>
     <item>
@@ -57,55 +57,55 @@
     <item>
       <title>Qiita: Twitter に見栄え良くコード投稿したかった</title>
       <link>https://oriverk.dev/posts/20191129-post-code2twitter</link>
-      <description>aws, qiita, rails, ruby</description>
+      <description>aws, rails, ruby</description>
       <pubDate>2019-11-29</pubDate>
     </item>
     <item>
       <title>Qiita: H30 秋基本情報技術者試験 問3システム</title>
       <link>https://oriverk.dev/posts/20190829-fe-exam</link>
-      <description>qiita, rails, ruby</description>
+      <description>rails, ruby</description>
       <pubDate>2019-08-29</pubDate>
     </item>
     <item>
       <title>Qiita: GithubPages で jekyll を使ってみよう。</title>
       <link>https://oriverk.dev/posts/20190818-use-jekyll</link>
-      <description>git, githubpages, jekyll, ruby</description>
+      <description>githubpages, jekyll, ruby</description>
       <pubDate>2019-08-18</pubDate>
     </item>
     <item>
       <title>Qiita: プログラミングを2か月間、日本人エンジニアの下で学んできた</title>
       <link>https://oriverk.dev/posts/20190513-learned-programming</link>
-      <description>programming, qiita, ruby</description>
+      <description>ruby</description>
       <pubDate>2019-05-13</pubDate>
     </item>
     <item>
       <title>Qiita: 18日目: トランザクションって</title>
       <link>https://oriverk.dev/posts/20190403-what-transaction</link>
-      <description>mysql, qiita, ruby, トランザクション</description>
+      <description>mysql, ruby</description>
       <pubDate>2019-04-03</pubDate>
     </item>
     <item>
       <title>Qiita: 16日目：devise で管理者を追加する</title>
       <link>https://oriverk.dev/posts/20190329-add-admin-with-devise</link>
-      <description>devise, qiita, rails, ruby</description>
+      <description>rails, ruby</description>
       <pubDate>2019-03-29</pubDate>
     </item>
     <item>
       <title>Qiita: 15日目： Heroku でアプリを公開しよう</title>
       <link>https://oriverk.dev/posts/20190328-use-heroku</link>
-      <description>heroku, qiita, rails, ruby</description>
+      <description>heroku, rails, ruby</description>
       <pubDate>2019-03-28</pubDate>
     </item>
     <item>
       <title>Qiita: 13日目(1)： Devise によるログイン機能付きサイトの作成</title>
       <link>https://oriverk.dev/posts/20190324-app-with-devise</link>
-      <description>qiita, rails, ruby</description>
+      <description>rails, ruby</description>
       <pubDate>2019-03-24</pubDate>
     </item>
     <item>
       <title>Qiita: 10～12日目： Git</title>
       <link>https://oriverk.dev/posts/20190320-what-git</link>
-      <description>git, qiita</description>
+      <description>git</description>
       <pubDate>2019-03-20</pubDate>
     </item>
     <item>
@@ -117,49 +117,49 @@
     <item>
       <title>Qiita: Ruby リファレンスを読んだのでメモ</title>
       <link>https://oriverk.dev/posts/20190318-read-ruby-reference</link>
-      <description>qiita, ruby</description>
+      <description>ruby</description>
       <pubDate>2019-03-18</pubDate>
     </item>
     <item>
       <title>Qiita: 9, 10, 11, 14日目：大学生データ操作 App</title>
       <link>https://oriverk.dev/posts/20190317-manipulate-student-data</link>
-      <description>mysql, qiita, rails, ruby</description>
+      <description>mysql, rails, ruby</description>
       <pubDate>2019-03-17</pubDate>
     </item>
     <item>
       <title>Qiita: 6,7日目： MySQL 操作</title>
       <link>https://oriverk.dev/posts/20190313-manipulate-mysql</link>
-      <description>mysql, qiita</description>
+      <description>mysql</description>
       <pubDate>2019-03-13</pubDate>
     </item>
     <item>
       <title>Qiita: 5日目： Bootstrap を初めて触ってみた</title>
       <link>https://oriverk.dev/posts/20190311-what-bootstrap</link>
-      <description>bootstrap, qiita, rails, ruby</description>
+      <description>bootstrap, rails, ruby</description>
       <pubDate>2019-03-11</pubDate>
     </item>
     <item>
       <title>Qiita: 3日目(2)：HTTP メソッドと CRUD と SQL</title>
       <link>https://oriverk.dev/posts/20190311-httpmethod-crud-sql</link>
-      <description>crud, http, qiita, restful, sql</description>
+      <description>crud, http, restful, sql</description>
       <pubDate>2019-03-11</pubDate>
     </item>
     <item>
       <title>Qiita: 2,4,7,8,13日目： Ruby 認定試験による勉強</title>
       <link>https://oriverk.dev/posts/20190316-ruby-exam</link>
-      <description>qiita, ruby</description>
+      <description>ruby</description>
       <pubDate>2019-03-06</pubDate>
     </item>
     <item>
       <title>Qiita: 2日目(2)：Scaffold なしでの掲示板作成</title>
       <link>https://oriverk.dev/posts/20190306-without-scaffold</link>
-      <description>qiita, rails, ruby, scaffold, ubuntu</description>
+      <description>rails, ruby, ubuntu</description>
       <pubDate>2019-03-06</pubDate>
     </item>
     <item>
       <title>Qiita: 1日目  Linux と Shellscript と Permission</title>
       <link>https://oriverk.dev/posts/20190305-shellscript-permission</link>
-      <description>linux, qiita, shellscript</description>
+      <description>linux, shellscript</description>
       <pubDate>2019-03-05</pubDate>
     </item>
   </channel>

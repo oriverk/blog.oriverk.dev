@@ -60,7 +60,7 @@ export function Top() {
       </section>
       <style jsx>{`
         section {
-          height: 100vh;
+          height: calc(100vh - var(--bottomNavHeight));
           width: 100%;
           margin-bottom: 2rem;
           position: relative;
@@ -87,6 +87,11 @@ export function Top() {
         .sub {
           font-size: 2rem
         }
+        @media (min-width: 960px){
+          section{
+            height: 100vh;
+          }
+        }
       `}</style>
     </>
   )
@@ -103,7 +108,6 @@ export function About() {
               <source srcSet='/assets/LongRidge500.webp' type='image/webp' className='contentImg' />
               <img src='/assets/LongRidge500.jpg' alt='the secenary from Long-Ridge-Lookout in Adelaide' className='contentImg' />
             </picture>
-            <p><small>My selfie is little...</small></p>
           </div>
           <div className='right'>
             <p>My name is Kawano Yudai.</p>

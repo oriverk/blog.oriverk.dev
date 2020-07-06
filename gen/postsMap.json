@@ -5,11 +5,9 @@
     "create": "2020-05-26",
     "update": "2020-07-01",
     "tags": [
-      "next.js",
-      "qiita",
+      "next",
       "react",
-      "remark.js",
-      "vercel"
+      "remark"
     ]
   },
   {
@@ -18,12 +16,8 @@
     "create": "2020-03-29",
     "update": "2020-04-07",
     "tags": [
-      "covid-19",
-      "github",
       "oss",
-      "qiita",
-      "typescript",
-      "vue.js"
+      "vue"
     ]
   },
   {
@@ -43,9 +37,8 @@
     "create": "2020-02-03",
     "update": "2020-03-17",
     "tags": [
-      "gist",
       "java",
-      "node.js",
+      "node",
       "rails",
       "ruby",
       "rust",
@@ -59,7 +52,6 @@
     "update": "2020-03-17",
     "tags": [
       "db",
-      "gist",
       "mysql",
       "postgresql"
     ]
@@ -101,7 +93,6 @@
     "update": "2020-03-10",
     "tags": [
       "aws",
-      "qiita",
       "rails",
       "ruby"
     ]
@@ -112,7 +103,6 @@
     "create": "2019-08-29",
     "update": "",
     "tags": [
-      "qiita",
       "rails",
       "ruby"
     ]
@@ -123,7 +113,6 @@
     "create": "2019-08-18",
     "update": "2019-12-01",
     "tags": [
-      "git",
       "githubpages",
       "jekyll",
       "ruby"
@@ -135,8 +124,6 @@
     "create": "2019-05-13",
     "update": "2019-12-12",
     "tags": [
-      "programming",
-      "qiita",
       "ruby"
     ]
   },
@@ -147,9 +134,7 @@
     "update": "2019-12-04",
     "tags": [
       "mysql",
-      "qiita",
-      "ruby",
-      "トランザクション"
+      "ruby"
     ]
   },
   {
@@ -158,8 +143,6 @@
     "create": "2019-03-29",
     "update": "2019-12-04",
     "tags": [
-      "devise",
-      "qiita",
       "rails",
       "ruby"
     ]
@@ -171,7 +154,6 @@
     "update": "2019-12-04",
     "tags": [
       "heroku",
-      "qiita",
       "rails",
       "ruby"
     ]
@@ -182,7 +164,6 @@
     "create": "2019-03-24",
     "update": "2019-12-04",
     "tags": [
-      "qiita",
       "rails",
       "ruby"
     ]
@@ -193,8 +174,7 @@
     "create": "2019-03-20",
     "update": "",
     "tags": [
-      "git",
-      "qiita"
+      "git"
     ]
   },
   {
@@ -214,7 +194,6 @@
     "create": "2019-03-18",
     "update": "2019-03-18",
     "tags": [
-      "qiita",
       "ruby"
     ]
   },
@@ -225,7 +204,6 @@
     "update": "2019-12-04",
     "tags": [
       "mysql",
-      "qiita",
       "rails",
       "ruby"
     ]
@@ -236,8 +214,7 @@
     "create": "2019-03-13",
     "update": "2019-12-04",
     "tags": [
-      "mysql",
-      "qiita"
+      "mysql"
     ]
   },
   {
@@ -247,7 +224,6 @@
     "update": "2019-12-04",
     "tags": [
       "bootstrap",
-      "qiita",
       "rails",
       "ruby"
     ]
@@ -260,7 +236,6 @@
     "tags": [
       "crud",
       "http",
-      "qiita",
       "restful",
       "sql"
     ]
@@ -271,7 +246,6 @@
     "create": "2019-03-06",
     "update": "2019-03-24",
     "tags": [
-      "qiita",
       "ruby"
     ]
   },
@@ -281,10 +255,8 @@
     "create": "2019-03-06",
     "update": "2019-12-04",
     "tags": [
-      "qiita",
       "rails",
       "ruby",
-      "scaffold",
       "ubuntu"
     ]
   },
@@ -295,7 +267,6 @@
     "update": "2019-03-18",
     "tags": [
       "linux",
-      "qiita",
       "shellscript"
     ]
   }
