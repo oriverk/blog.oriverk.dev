@@ -3,8 +3,6 @@ import { SwipeableDrawer } from '@material-ui/core';
 import { ArrowIcon } from '../utils/svgIcon'
 import { DrawerLists } from './DrawerLists'
 
-
-
 export function SwipeDrawer() {
   // const [state, setState] = React.useState({ left: false, })
   //   const toggleDrawer = (anchor, open) => (event) => {
