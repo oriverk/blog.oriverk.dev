@@ -3,7 +3,7 @@ create: '2020-05-26'
 update: '2020-07-01'
 author: Kawano Yudai
 title: 'Qiita: Next.js でポートフォリオサイトを作成した'
-tags: [Qiita, React, next.js, remark.js, Vercel]
+tags: [React, next, remark]
 image: '/assets/prtsc-1000.jpg'
 ---
 

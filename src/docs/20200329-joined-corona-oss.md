@@ -3,7 +3,7 @@ create: '2020-03-29'
 update: '2020-04-07'
 author: Kawano Yudai
 title: 'Qiita: 宮崎県 COVID-19 対策サイトの OSS 活動に参加した。'
-tags: [Qiita, COVID-19, OSS, GitHub, Vue.js, TypeScript]
+tags: [oss, vue]
 image: '/assets/posts/202003/miyazaki-oss1.jpg'
 ---
 
