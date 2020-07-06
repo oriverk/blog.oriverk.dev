@@ -60,7 +60,7 @@ export function Top() {
       </section>
       <style jsx>{`
         section {
-          height: 100vh;
+          height: calc(100vh - var(--bottomNavHeight));
           width: 100%;
           margin-bottom: 2rem;
           position: relative;
@@ -86,6 +86,11 @@ export function Top() {
         }
         .sub {
           font-size: 2rem
+        }
+        @media (min-width: 960px){
+          section{
+            height: 100vh;
+          }
         }
       `}</style>
     </>

@@ -76,7 +76,7 @@ export function Layout(props) {
           position: fixed;
           bottom: 0;
           width: 100%;
-          height: 55px;
+          height: var(--bottomNavHeight);
           box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
           background-color: #424242;
           display: flex;
