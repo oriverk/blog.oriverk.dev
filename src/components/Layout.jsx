@@ -2,9 +2,9 @@ import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { SwipeableDrawer } from '@material-ui/core'
-import { DrawerLists } from './DrawerLists'
+import { PermanentDrawerLists, SwipeDrawerLists } from './DrawerLists'
 
-export function FooLayout(props) {
+export function Layout(props) {
   const [state, setState] = React.useState({
     left: false
   })
@@ -13,7 +13,7 @@ export function FooLayout(props) {
     if (event && event.type === 'keydonw' && (event.key === 'Tag' || event.key === 'Shift')) {
       return
     }
-    setState({...state, [anchor]: open})
+    setState({ ...state, [anchor]: open })
   }
 
   // drawer width is defined at _app.jsx
@@ -28,11 +28,11 @@ export function FooLayout(props) {
         <div className='swipeableList' role='presentation'
           onClick={toggleDrawer('left', false)} onKeyDown={toggleDrawer('left', false)}
         >
-          <DrawerLists home={props.home} posts={props.posts} />
+          <SwipeDrawerLists />
         </div>
       </SwipeableDrawer>
       <aside>
-        <div className='permanentDrawer'><DrawerLists home={props.home} posts={props.posts} /></div>
+        <div className='permanentDrawer'><PermanentDrawerLists home={props.home} posts={props.posts} /></div>
       </aside>
       <main>
         {props.children}
@@ -40,9 +40,9 @@ export function FooLayout(props) {
       <nav className="nav">
         <a href="#" className="nav__link" aria-label='Open Drawer' onClick={toggleDrawer('left', true)}>
           <i className="material-icons nav__icon">dashboard</i>
-          <span className="nav__text">dashboard</span>
+          <span className="nav__text">Tool</span>
         </a>
-        <Link href='/hoge' passHref>
+        <Link href='/' passHref>
           <MaterialButton href='/hoge' icon='person' text='Home' key='home' />
         </Link>
         <Link href='/posts' passHref>
@@ -138,10 +138,10 @@ export function FooLayout(props) {
   )
 }
 
-const MaterialButton = React.forwardRef((props) => {
+const MaterialButton = React.forwardRef((props, ref) => {
   return (
     <React.Fragment>
-      <a href={props.href} key={props.key} ref={props.ref} className='nav__link'>
+      <a href={props.href} key={props.key} ref={ref} className='nav__link'>
         <i className="material-icons nav__icon">{props.icon}</i>
         <span className="nav__text">{props.text}</span>
       </a>
