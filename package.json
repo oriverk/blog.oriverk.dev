@@ -8,13 +8,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "local-build": "next build && node script/genRobots.mjs && node script/genPostsMap.mjs && node script/genSiteMap.mjs && node script/genRss.mjs && node script/genAtom.mjs",
     "start": "next start",
-    "robots": "node script/genRobots.mjs",
-    "pages": "node script/genPostsMap.mjs",
-    "site": "node script/genSiteMap.mjs",
-    "rss": "node script/genRss.mjs",
-    "atom": "node script/genAtom.mjs"
+    "feeds": "node script/genPostsMap.js && node script/genFeeds.js"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.11",

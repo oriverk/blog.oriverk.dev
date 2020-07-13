@@ -1,6 +1,7 @@
-import path from 'path'
-import fs from 'fs'
-import matter from 'gray-matter'
+
+const fs = require('fs')
+const path = require('path')
+const matter = require('gray-matter')
 
 const postsDirectory = path.join(process.cwd(), 'src/docs')
 
@@ -11,7 +12,7 @@ const allPostsData = fileNames.map((fileName) => {
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const matterResult = matter(fileContents)
   const LowerCaseTags = matterResult.data.tags.map((tag) => (tag.toLowerCase())).sort()
-  
+
   const title = matterResult.data.title
   const create = matterResult.data.create
   const update = matterResult.data.update || ''
@@ -26,18 +27,23 @@ const allPostsData = fileNames.map((fileName) => {
 })
 
 const sortedPostsData = allPostsData.sort((a, b) => {
-    if (a.create < b.create) {
-      return 1
-    } else {
-      return -1
-    }
+  if (a.create < b.create) {
+    return 1
+  } else {
+    return -1
+  }
 })
 
-fs.writeFileSync(
-  path.join(process.cwd(), 'gen/postsMap.json'),
-  JSON.stringify(sortedPostsData, undefined, 2),
-  'utf-8'
-)
+try {
+  fs.writeFileSync(
+    path.join(process.cwd(), 'gen/postsMaphoge.json'),
+    JSON.stringify(sortedPostsData, undefined, 2),
+    'utf-8'
+  )
+  console.log('success')
+}catch (err) {
+  console.error(err)
+}
 
 // postPages.json
 // {
