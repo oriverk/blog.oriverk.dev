@@ -13,30 +13,6 @@ import breaks from 'remark-breaks'
 
 const docsDirectory = path.join(process.cwd(), 'src/docs')
 
-// posts/index.tsx
-export function getSortedPostsData() {
-  const fileNames = fs.readdirSync(docsDirectory)
-  const allPostsData = fileNames.map(fileName => {
-    const id = fileName.replace(/\.md$/, '')
-    const fullPath = path.join(docsDirectory, fileName)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
-    const matterResult = matter(fileContents)
-    const tags = matterResult.data.tags.map((tag) => (tag.toLowerCase())).sort()
-    return {
-      id,
-      ...matterResult.data,
-      tags,
-    }
-  })
-  return allPostsData.sort((a, b) => {
-    if (a.create < b.create) {
-      return 1
-    } else {
-      return -1
-    }
-  })
-}
-
 // posts/[id].tsx
 export function getAllPostIds() {
   const fileNames = fs.readdirSync(docsDirectory)

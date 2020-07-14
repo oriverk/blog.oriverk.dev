@@ -2,24 +2,28 @@ import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Layout } from '../../components/Layout'
-import { getSortedPostsData } from '../../lib/posts'
 import blogConfig from '../../../blog.config'
+import fs from 'fs'
+import path from 'path'
 
 import { GetStaticProps } from 'next'
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = getSortedPostsData()
+  const postsData = JSON.parse(fs.readFileSync(
+    path.join(process.cwd(), 'gen/postsMap.json'), 'utf8'
+  ))
+
   return {
     props: {
-      allPostsData
+      postsData
     }
   }
 }
 
 export default function ({
-  allPostsData, posts
+  postsData, posts
 }: {
-    allPostsData: {
+    postsData: {
       id: string
       title: string
       create: string
@@ -42,7 +46,7 @@ export default function ({
         <article className='content'>
           <h1>Blog Posts</h1>
           <ul>
-            {allPostsData.map(({ id, create, title, tags }) => (
+            {postsData.map(({ id, create, title, tags }) => (
               <li key={id}>
                 <time dateTime={create}>{create}</time>
                 <span className='tags'>{tags.map((tag) =>
