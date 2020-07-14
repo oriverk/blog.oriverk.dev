@@ -3,7 +3,7 @@ const path = require('path')
 const fetch = require('node-fetch')
 
 const blogConfig = require(
-  path.join(process.cwd(),'blog.config.js')
+  path.join(process.cwd(), 'blog.config.js')
 )
 const posts = JSON.parse(fs.readFileSync(
   path.join(process.cwd(), 'gen/postsMap.json'), 'utf8'
@@ -11,7 +11,7 @@ const posts = JSON.parse(fs.readFileSync(
 
 const svgFiles = fs.readdirSync(path.join(process.cwd(), 'public/svg'))
 const svgs = svgFiles.map((svgFile) => {
-  return svgFile.replace(/\.svg/,'')
+  return svgFile.replace(/\.svg/, '')
 })
 svgs.push('vercel', 'hyper', 'nextjs', 'typescirpt', 'go')
 
@@ -55,10 +55,10 @@ function genFetchPath(title, extension, theme, md, font, tags) {
     }
   })
   const encodedLinks = links.map((link) => {
-    return encodeURI(link)
+    return encodeURIComponent(link)
   })
-  console.log(`===============encodedLinks is ${encodedLinks}`)
-  return `${options.target}/${encodeURI(title)}.${extension}?theme=${theme}&md=${md}&fontSize=${font}&images=${encodedLinks.join('&images=')}`
+  const joined = encodedLinks.length ? '&images=' + encodedLinks.join('&images=') : false;
+  return `${options.target}/${encodeURIComponent(title)}.${extension}?theme=${theme}&md=${md}&fontSize=${font}${joined ? joined : ''}`
 }
 // https://og-image.now.sh/**Hello**%20World.png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fvercel-triangle-white.svg
 
@@ -66,7 +66,7 @@ function genFetchPath(title, extension, theme, md, font, tags) {
 posts.map((post) => {
   const fetchPath = genFetchPath(post.title, options.extension, options.theme, options.md, options.font, post.tags)
   fetch(fetchPath, { method: 'get', })
-    .then(response => { console.log(response.status) })
+    .then(response => { console.log(response.url) })
     .catch(error => console.error(error))
 })
 
