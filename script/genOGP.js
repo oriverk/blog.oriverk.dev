@@ -13,7 +13,7 @@ const svgFiles = fs.readdirSync(path.join(process.cwd(), 'public/svg'))
 const svgs = svgFiles.map((svgFile) => {
   return svgFile.replace(/\.svg/, '')
 })
-svgs.push('vercel', 'hyper', 'nextjs', 'typescirpt', 'go')
+svgs.push('vercel', 'next', 'go')
 
 // console.log(svgs)
 
@@ -21,7 +21,7 @@ const vercel = 'https://assets.vercel.com/image/upload/front/assets/design'
 // https://og-image.now.sh/**Hello**%20World.png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fvercel-triangle-white.svg
 
 const options = {
-  target: 'https://og-image.now.sh',
+  target: 'https://ogp.oriverk.dev',
   extension: 'png',
   theme: 'dark',
   md: '0',
@@ -37,14 +37,11 @@ function genFetchPath(title, extension, theme, md, font, tags) {
         case 'vercel':
           theme === 'light' ? links.push(`${vercel}/vercel-triangle-black.svg`) : links.push(`${vercel}/vercel-triangle-white.svg`)
           break
-        case 'hyper':
-          links.push(`${vercel}/hyper-color-logo.svg`)
+        case 'next':
+          theme === 'light' ? links.push(`${blogConfig.baseUrl}/svg/nextjs-black-logo.svg`) : links.push(`${blogConfig.baseUrl}/svg/nextjs-white-logo.svg`)
           break
-        case 'nextjs':
-          theme === 'light' ? links.push(`${vercel}/nextjs-black-logo.svg`) : links.push(`${vercel}/nextjs-white-logo.svg`)
-          break
-        case 'typescript':
-          links.push('https://cdn.jsdelivr.net/gh/remojansen/logo.ts@master/ts.svg')
+        case 'rust':
+          theme === 'light' ? links.push(`${blogConfig.baseUrl}/svg/rust.svg`) : links.push(`${blogConfig.baseUrl}/svg/rust-white.svg`)
           break
         case 'go':
           links.push(`${blogConfig.baseUrl}/svg/go-blue.svg`)
@@ -60,7 +57,6 @@ function genFetchPath(title, extension, theme, md, font, tags) {
   const joined = encodedLinks.length ? '&images=' + encodedLinks.join('&images=') : false;
   return `${options.target}/${encodeURIComponent(title)}.${extension}?theme=${theme}&md=${md}&fontSize=${font}${joined ? joined : ''}`
 }
-// https://og-image.now.sh/**Hello**%20World.png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fvercel-triangle-white.svg
 
 
 posts.map((post) => {
@@ -69,6 +65,3 @@ posts.map((post) => {
     .then(response => { console.log(response.url) })
     .catch(error => console.error(error))
 })
-
-// https://og-image.now.sh/Hello.png?theme=dark&md=0&fontSize=100px&images=https%3A%2F%2Foriverk.dev%2Fsvg%2Fruby.svg
-// https://og-image.now.sh/Qiita.png?theme=dark&md=0&fontSize=100px&images=https://oriverk.dev/svg/ruby.svg
