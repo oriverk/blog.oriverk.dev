@@ -3,11 +3,12 @@
     "id": "20200526-next-portfolio",
     "title": "Qiita: Next.js でポートフォリオサイトを作成した",
     "create": "2020-05-26",
-    "update": "2020-07-01",
+    "update": "2020-07-14",
     "tags": [
       "next",
       "react",
-      "remark"
+      "remark",
+      "typescript"
     ]
   },
   {
