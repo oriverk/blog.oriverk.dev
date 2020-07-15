@@ -53,27 +53,17 @@ export async function getPostData(id) {
 }
 
 // tags/index.tsx
-export function getAllTags() {
-  const fileNames = fs.readdirSync(docsDirectory)
-  const matterTags = fileNames.map(fileName => {
-    const fullPath = path.join(docsDirectory, fileName)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
-    return matter(fileContents).data.tags.map((tag) => tag.toLowerCase())
+export function getTags() {
+  const postsMap = JSON.parse(fs.readFileSync(
+    path.join(process.cwd(), 'gen/postsMap.json'), 'utf8'
+  ))
+  const tags = []
+  postsMap.map((post) => {
+    post.tags.map((t) => tags.push(t))
   })
-
-  // [['qiita', 'ruby', 'hoge'], ['qiita', 'ruby', 'python']]
   
-  // convert Two dimentional array to One that
-  const allMatterTags = []
-  for (var m = 0; m < matterTags.length; m++){
-    for (var n = 0; n < matterTags[m].length; n++){
-      allMatterTags.push(matterTags[m][n])
-    }
-  }
-  // sort and unique allMatterTags
-  const set = new Set(allMatterTags.sort());
-  const tags = Array.from(set)
-  return tags
+  const setTags = [...new Set(tags)]
+  return setTags.sort()
 }
 
 export function getTagPosts(arg) {
