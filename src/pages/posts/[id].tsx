@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Layout } from '../../components/Layout'
-import { getAllPostIds, getPostData } from '../../lib/posts'
+import { getPostIds, getPostData } from '../../lib/posts'
 import { HatenaIcon, TwitterIcon } from '../../utils/svgIcon'
 import { IconButton } from '../../utils/utils'
 import blogConfig from '../../../blog.config'
@@ -10,7 +10,7 @@ import blogConfig from '../../../blog.config'
 import { GetStaticProps, GetStaticPaths } from 'next'
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getAllPostIds()
+  const paths = getPostIds()
   return {
     paths,
     fallback: false

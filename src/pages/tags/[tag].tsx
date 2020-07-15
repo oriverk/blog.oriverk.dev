@@ -18,7 +18,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async (props) => {
-  const tag = props.params.tag
+  const tag = props.params.tag as string
   const tagPosts = getTagPosts(tag as string)
   return {
     props: {

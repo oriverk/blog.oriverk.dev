@@ -12,14 +12,16 @@ import toc from 'remark-toc'
 import breaks from 'remark-breaks'
 
 const docsDirectory = path.join(process.cwd(), 'src/docs')
+const postsMap = JSON.parse(fs.readFileSync(
+  path.join(process.cwd(), 'gen/postsMap.json'), 'utf8'
+))
 
 // posts/[id].tsx
-export function getAllPostIds() {
-  const fileNames = fs.readdirSync(docsDirectory)
-  return fileNames.map(fileName => {
+export function getPostIds() {
+  return postsMap.map((post) => {
     return {
       params: {
-        id: fileName.replace(/\.md$/, '')
+        id: post.id
       }
     }
   })
@@ -54,9 +56,6 @@ export async function getPostData(id) {
 
 // tags/index.tsx
 export function getTags() {
-  const postsMap = JSON.parse(fs.readFileSync(
-    path.join(process.cwd(), 'gen/postsMap.json'), 'utf8'
-  ))
   const tags = []
   postsMap.map((post) => {
     post.tags.map((t) => tags.push(t))
@@ -66,29 +65,7 @@ export function getTags() {
   return setTags.sort()
 }
 
-export function getTagPosts(arg) {
-  const fileNames = fs.readdirSync(docsDirectory)
-  const allPostsData = fileNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, '')
-    const fullPath = path.join(docsDirectory, fileName)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
-    const matterResult = matter(fileContents)
-    const tags = matterResult.data.tags.map((tag) => tag.toLowerCase()).sort()
-    if (tags.includes(arg.toLowerCase())) {
-      return {
-        id,
-        ...matterResult.data,
-        tags
-      }
-    } else {
-      return ''
-    }
-  })
-  return allPostsData.filter(Boolean).sort((a, b) => {
-    if (a.create < b.create) {
-      return 1
-    } else {
-      return -1
-    }
-  })
+// tags/[tag].tsx
+export function getTagPosts(tag) {
+  return postsMap.filter((post) => post.tags.includes(tag))
 }
