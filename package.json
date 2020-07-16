@@ -30,7 +30,8 @@
     "remark-html": "^11.0.1",
     "remark-html-katex": "^2.0.1",
     "remark-math": "^2.0.1",
-    "remark-toc": "^7.0.0"
+    "remark-toc": "^7.0.0",
+    "remove-markdown": "^0.3.0"
   },
   "devDependencies": {
     "@types/node": "^14.0.14",
