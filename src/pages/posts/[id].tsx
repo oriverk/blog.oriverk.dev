@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { Layout } from '../../components/Layout'
 import { getPostIds, getPostData } from '../../lib/posts'
+// import { getFetchPath } from '../../components/HeaderImg'
 import { HatenaIcon, TwitterIcon } from '../../utils/svgIcon'
 import { IconButton } from '../../utils/utils'
 import blogConfig from '../../../blog.config'
@@ -40,8 +41,8 @@ export default function Post({ postData
 }) {
   const tags = postData.tags
   const pageTags = tags ? tags.join(' ') : 'React, Next.js'
-  const pageImage = postData.image ? postData.image : '/assets/prtsc700.jpg'
-
+  // const pageImage = postData.image ? postData.image : '/assets/prtsc700.jpg'
+  // const ogImage:string = getFetchPath(postData.title, 'dark', 0, tags)
   return (
     <React.Fragment>
       <Layout>
@@ -51,7 +52,8 @@ export default function Post({ postData
           <meta name='description' content={pageTags} />
           <meta property='og:title' content={`${postData.title} | ${blogConfig.baseName}`} />
           <meta property='og:description' content={pageTags} />
-          <meta property='og:image' content={`${blogConfig.baseUrl}/${pageImage}`} />
+          {/* <meta property='og:image' content={`${blogConfig.baseUrl}/${pageImage}`} /> */}
+          {/* <meta property='og:image' content={ogImage} /> */}
           <meta property='og:url' content={`${blogConfig.baseUrl}/posts/${postData.id}`} />
           <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
         </Head>

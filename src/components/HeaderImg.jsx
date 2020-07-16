@@ -1,23 +1,14 @@
-const fs = require('fs')
-const path = require('path')
-const fetch = require('node-fetch')
+import fs from 'fs'
+import path from 'path'
 
-const blogConfig = require(
-  path.join(process.cwd(), 'blog.config.js')
-)
-const posts = JSON.parse(fs.readFileSync(
-  path.join(process.cwd(), 'gen/postsMap.json'), 'utf8'
-))
-
-const svgFiles = fs.readdirSync(path.join(process.cwd(), 'public/svg'))
+const svgFiles = fs.readdirSync(path.join(process.cwd(), '/public/svg'))
+console.log(path.join(process.cwd(), 'public/svg'))
+console.log(svgFiles)
 const svgs = svgFiles.map((svgFile) => {
   return svgFile.replace(/\.svg/, '')
 })
 svgs.push('vercel', 'next', 'go')
-
-// console.log(svgs)
-
-// https://og-image.now.sh/**Hello**%20World.png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fvercel-triangle-white.svg
+console.log(svgs)
 
 const options = {
   target: 'https://ogp.oriverk.dev',
@@ -51,20 +42,39 @@ function convertTag2Link(tags) {
   })
 }
 
-
-function genFetchPath(title, extension, theme, md, font) {
-  const links = convertTag2Link()
+export function getFetchPath(title, theme, md, tags) {
+  const links = convertTag2Link(tags)
   const encodedLinks = links.map((link) => {
     return encodeURIComponent(link)
   })
-  const joined = encodedLinks.length ? `&fontSize=${font}&images=` + encodedLinks.join('&images=') : false
-  return `${options.target}/${encodeURIComponent(title)}.${extension}?theme=${theme}&md=${md}${joined ? joined : ''}`
+  const joined = encodedLinks.length ? `&fontSize=${options.fontSize}&images=` + encodedLinks.join('&images=') : false;
+  return `${options.target}/${encodeURIComponent(title)}.${options.extension}?theme=${theme}&md=${md}${joined ? joined : ''}`
 }
 
+// function getImage(src, width = 'auto', height = '225') {
+//   return `<img
+//         class='logo'
+//         alt='Generated Image'
+//         src='${src}'
+//         width='${sanitizeHtml(width)}'
+//         height='${sanitizeHtml(height)}'
+//     />`
+// }
 
-posts.map((post) => {
-  const fetchPath = genFetchPath(post.title, options.extension, options.theme, options.md, options.font, post.tags)
-  fetch(fetchPath, { method: 'get', })
-    .then(response => { console.log(response.url) })
-    .catch(error => console.error(error))
-})
+// export function HeaderImg() {
+//   return (
+//     <div>
+//       <div className='spacer'>
+//         <div className='logo-wrapper'>
+//           post.tags.svg
+//         </div>
+//       </div>
+//       <div className='spacer'>
+//         <div className='heading'>
+//           post.title
+//         </div>
+
+//       </div>
+//     </div>
+//   )
+// }
