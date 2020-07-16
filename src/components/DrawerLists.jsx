@@ -138,7 +138,7 @@ export const PermanentDrawerLists = (props) => {
   )
 }
 
-export const SwipeDrawerLists = (props) => {
+export const LeftSwipeDrawerLists = (props) => {
   return (
     <React.Fragment>
       <DrawerLists>
@@ -158,6 +158,29 @@ export const SwipeDrawerLists = (props) => {
           text-align: center;
         }
       `}</style>
+    </React.Fragment>
+  )
+}
+
+export const RightSwipeDrawerLists = ({ children }) => {
+  return (
+    <React.Fragment>
+      <React.Fragment>
+        <div className="drawerContents">
+          hoge
+        </div>
+        <style jsx>{`
+        .profileImgContainer {
+          margin: 1rem;
+          border-radius: 50%;
+        }
+
+        .profileImg {
+          margin: 0 auto;
+          width: 80%;
+        }
+      `}</style>
+      </React.Fragment>
     </React.Fragment>
   )
 }
