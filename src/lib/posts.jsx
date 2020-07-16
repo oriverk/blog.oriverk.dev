@@ -12,38 +12,16 @@ import toc from 'remark-toc'
 import breaks from 'remark-breaks'
 
 const docsDirectory = path.join(process.cwd(), 'src/docs')
-
-// posts/index.tsx
-export function getSortedPostsData() {
-  const fileNames = fs.readdirSync(docsDirectory)
-  const allPostsData = fileNames.map(fileName => {
-    const id = fileName.replace(/\.md$/, '')
-    const fullPath = path.join(docsDirectory, fileName)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
-    const matterResult = matter(fileContents)
-    const tags = matterResult.data.tags.map((tag) => (tag.toLowerCase())).sort()
-    return {
-      id,
-      ...matterResult.data,
-      tags,
-    }
-  })
-  return allPostsData.sort((a, b) => {
-    if (a.create < b.create) {
-      return 1
-    } else {
-      return -1
-    }
-  })
-}
+const postsMap = JSON.parse(fs.readFileSync(
+  path.join(process.cwd(), 'gen/postsMap.json'), 'utf8'
+))
 
 // posts/[id].tsx
-export function getAllPostIds() {
-  const fileNames = fs.readdirSync(docsDirectory)
-  return fileNames.map(fileName => {
+export function getPostIds() {
+  return postsMap.map((post) => {
     return {
       params: {
-        id: fileName.replace(/\.md$/, '')
+        id: post.id
       }
     }
   })
@@ -77,52 +55,17 @@ export async function getPostData(id) {
 }
 
 // tags/index.tsx
-export function getAllTags() {
-  const fileNames = fs.readdirSync(docsDirectory)
-  const matterTags = fileNames.map(fileName => {
-    const fullPath = path.join(docsDirectory, fileName)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
-    return matter(fileContents).data.tags.map((tag) => tag.toLowerCase())
+export function getTags() {
+  const tags = []
+  postsMap.map((post) => {
+    post.tags.map((t) => tags.push(t))
   })
-
-  // [['qiita', 'ruby', 'hoge'], ['qiita', 'ruby', 'python']]
   
-  // convert Two dimentional array to One that
-  const allMatterTags = []
-  for (var m = 0; m < matterTags.length; m++){
-    for (var n = 0; n < matterTags[m].length; n++){
-      allMatterTags.push(matterTags[m][n])
-    }
-  }
-  // sort and unique allMatterTags
-  const set = new Set(allMatterTags.sort());
-  const tags = Array.from(set)
-  return tags
+  const setTags = [...new Set(tags)]
+  return setTags.sort()
 }
 
-export function getTagPosts(arg) {
-  const fileNames = fs.readdirSync(docsDirectory)
-  const allPostsData = fileNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, '')
-    const fullPath = path.join(docsDirectory, fileName)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
-    const matterResult = matter(fileContents)
-    const tags = matterResult.data.tags.map((tag) => tag.toLowerCase()).sort()
-    if (tags.includes(arg.toLowerCase())) {
-      return {
-        id,
-        ...matterResult.data,
-        tags
-      }
-    } else {
-      return ''
-    }
-  })
-  return allPostsData.filter(Boolean).sort((a, b) => {
-    if (a.create < b.create) {
-      return 1
-    } else {
-      return -1
-    }
-  })
+// tags/[tag].tsx
+export function getTagPosts(tag) {
+  return postsMap.filter((post) => post.tags.includes(tag))
 }

@@ -3,12 +3,12 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { Layout } from '../../components/Layout'
 import blogConfig from '../../../blog.config'
-import { getAllTags, getTagPosts } from '../../lib/posts'
+import { getTags, getTagPosts } from '../../lib/posts'
 
 import { GetStaticProps, GetStaticPaths } from 'next'
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths: string[] = getAllTags().map((tag) => {
+  const paths: string[] = getTags().map((tag) => {
     return `/tags/${tag}`
   })
   return {
@@ -18,7 +18,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async (props) => {
-  const tag = props.params.tag
+  const tag = props.params.tag as string
   const tagPosts = getTagPosts(tag as string)
   return {
     props: {

@@ -2,13 +2,13 @@ import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Layout } from '../../components/Layout'
-import { getAllTags } from '../../lib/posts'
+import { getTags } from '../../lib/posts'
 import blogConfig from '../../../blog.config'
 
-import {GetStaticProps } from 'next'
+import { GetStaticProps } from 'next'
 
 export const getStaticProps: GetStaticProps = async () => {
-  const tags: string[] = getAllTags()
+  const tags: string[] = getTags()
   return {
     props: {
       tags
