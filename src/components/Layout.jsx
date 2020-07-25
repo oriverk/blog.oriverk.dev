@@ -2,7 +2,8 @@ import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { SwipeableDrawer } from '@material-ui/core'
-import { PermanentDrawerLists, LeftSwipeDrawerLists, RightSwipeDrawerLists } from './DrawerLists'
+import { PermanentDrawerLists, LeftSwipeDrawerLists } from './DrawerLists'
+import { AlgoliaSearch } from './search/AlgoliaSearch'
 
 export function Layout(props) {
   const [state, setState] = React.useState({
@@ -19,14 +20,14 @@ export function Layout(props) {
 
   // drawer width is defined at _app.jsx
   return (
-    <React.Fragment key='left'>
+    <React.Fragment>
       <Head>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
       </Head>
       <SwipeableDrawer anchor='left' open={state['left']}
         onClose={toggleDrawer('left', false)} onOpen={toggleDrawer('left', true)}
       >
-        <div className='swipeableList right-tool' role='presentation'
+        <div className='swipeableList' role='presentation'
           onClick={toggleDrawer('left', false)} onKeyDown={toggleDrawer('left', false)}
         >
           <LeftSwipeDrawerLists />
@@ -35,10 +36,8 @@ export function Layout(props) {
       <SwipeableDrawer anchor='right' open={state['right']}
         onClose={toggleDrawer('right', false)} onOpen={toggleDrawer('right', true)}
       >
-        <div className='swipeableList right-search' role='presentation'
-          onClick={toggleDrawer('right', false)} onKeyDown={toggleDrawer('right', false)}
-        >
-          <RightSwipeDrawerLists />
+        <div className='swipeableList' role='presentation'>
+          <AlgoliaSearch />
         </div>
       </SwipeableDrawer>
       <aside>
@@ -74,9 +73,11 @@ export function Layout(props) {
         }
 
         .swipeableList {
-          width: var(--drawerWidth);
-          background-color: #424242;
+          width: var(--SwipeDrawerWidth);
           height: 100vh;
+          padding: 1.5rem;
+          overflow: scroll;
+          background-color: #303030;
         }
 
         main{

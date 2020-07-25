@@ -66,6 +66,7 @@ const DrawerLists = ({children}) => {
         .profileImg {
           margin: 0 auto;
           width: 80%;
+          background-color: #303030;
         }
       `}</style>
       </React.Fragment>
@@ -154,33 +155,10 @@ export const LeftSwipeDrawerLists = (props) => {
       </DrawerLists>
       <style jsx>{`
         .desc {
-          color: #eee;
+          color: #EEE;
           text-align: center;
         }
       `}</style>
-    </React.Fragment>
-  )
-}
-
-export const RightSwipeDrawerLists = ({ children }) => {
-  return (
-    <React.Fragment>
-      <React.Fragment>
-        <div className="drawerContents">
-          hoge
-        </div>
-        <style jsx>{`
-        .profileImgContainer {
-          margin: 1rem;
-          border-radius: 50%;
-        }
-
-        .profileImg {
-          margin: 0 auto;
-          width: 80%;
-        }
-      `}</style>
-      </React.Fragment>
     </React.Fragment>
   )
 }

@@ -12,5 +12,10 @@ module.exports = {
     wantedly: 40069986,
     qiita: "Oriverk",
     linkedin: "kawanoyudai"
+  },
+  algolia: {
+    indexName: 'prod_blogOriverkdev',
+    appId: 'WOHC62BVSP',
+    searchOnlyApiKey: 'c858d2926cafc635503658417e963722'
   }
 }
