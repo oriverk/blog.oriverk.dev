@@ -18,7 +18,7 @@ const Hit = (props) => {
   const date = hit.update || hit.create
   return (
     <React.Fragment>
-      <div className='resultLinks'>
+      <div key={hit.id} className='resultLink'>
         <Link href='/posts/[id]' as={`/posts/${hit.id}`} passHref>
           <a key={hit.id}>
             <div className='title'>{hit.title}</div>
@@ -28,10 +28,10 @@ const Hit = (props) => {
         </Link>
       </div>
       <style jsx>{`
-        .resultLinks{
+        .resultLink{
           padding: .5rem;
         }
-        .resultLinks:hover{
+        .resultLink:hover, .resultLink:visited{
           background-color: #424242;
           border-radius: .5rem;
         }
@@ -41,27 +41,31 @@ const Hit = (props) => {
 }
 
 export const SearchResults = (props) => {
+  const { error } = props
   return (
-    <Panel footer={<CustomPoweredBy />} >
-      <Hits hitComponent={Hit} />
-      <CustomStateResults />
-    </Panel>
+    <React.Fragment>
+      <Panel>
+        <CustomPoweredBy />
+        <div className='hits'>
+          <Hits hitComponent={Hit} />
+        </div>
+        <CustomStateResults />
+        {error ? <div>{error.message}</div> : null}
+      </Panel>
+      <style jsx global>{`
+        .ais-Hits-list{
+          list-style: none;
+          padding: 0;
+        }
+        .ais-Hits-item{
+          padding: .5rem;
+        }
+      `}</style>
+      <style jsx>{`
+        .hits{
+          overflow: hidden scroll;
+        }
+      `}</style>
+    </React.Fragment>
   )
 }
-
-// export const SearchResult = (props) => {
-//   const { searchState, searchResults, error } = props
-//   if (searchState && !searchState.query) {
-//     return null
-//   }
-//   return (
-//     <Panel footer={<CustomPoweredBy />}>
-//       {error ? <div>{error.message}</div> : null}
-//       {searchResults && searchResults.nbHits > 0 ? (
-//         <Hits hitComponent={Hit} />
-//       ) : (
-//           <div>No Results Found.</div>
-//       )}
-//     </Panel>
-//   )
-// }

@@ -66,7 +66,7 @@ const DrawerLists = ({children}) => {
         .profileImg {
           margin: 0 auto;
           width: 80%;
-          background-color: #303030;
+          background-color: #424242;
         }
       `}</style>
       </React.Fragment>
