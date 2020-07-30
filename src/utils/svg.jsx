@@ -45,6 +45,27 @@ export const Pen = () => {
   return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" ><rect width="48" height="48" fill="none" /><circle cx="20" cy="28" r="4" fill="none" stroke="#FFF" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" /><path d="M38.42,23.72l-5,12.79C26.13,36.51,4,44,4,44s7.49-23.21,7.49-29.46l12.79-5" fill="none" stroke="#FFF" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" /><line x1="4" y1="44" x2="16.28" y2="31.72" fill="none" stroke="#FFF" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" /><rect x="30.41" y="1.33" width="7.76" height="24.34" transform="translate(0.5 28.2) rotate(-45)" strokeWidth="3" stroke="#FFF" strokeLinecap="round" strokeLinejoin="round" fill="none" /></svg>
 }
 
+// svgs from material design
+export const EditSvg = (props) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={props.fill} width={props.size} height={props.size}><path d="M0 0h24v24H0z" fill="none" /><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" /></svg>
+}
+
+export const DashboardSvg = (props) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={props.fill} width={props.size} height={props.size}><path d="M0 0h24v24H0z" fill="none" /><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" /></svg>
+}
+
+export const TagSvg = (props) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={props.fill} width={props.size} height={props.size}><path d="M0 0h24v24H0z" fill="none" /><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z" /></svg>
+}
+
+export const SearchSvg = (props) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={props.fill} width={props.size} height={props.size}><path d="M0 0h24v24H0z" fill="none" /><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" /></svg>
+}
+
+export const PersonSvg = (props) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={props.fill} width={props.size} height={props.sieze}><path d="M0 0h24v24H0z" fill="none" /><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" /></svg>
+}
+
 // Symbol Icon
 export const Arrow = () => {
   return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><rect width="48" height="48" fill="none" /><polyline points="14.54 41.46 12 44 22 44 42 24 22 4 12 4 32 24 19.26 36.74" fill="#50CAF9" stroke="#50CAF9" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" /></svg>
