@@ -45,8 +45,8 @@ You can check out [the Next.js GitHub repository](https://github.com/oriverk/nex
 
 
 ## To do
-- [ ] implement `/tags/[tag]` page
-- [ ] render `lang` above the code-block
+- [x] implement `/tags/[tag]` page
+- [ ] render fine name above the code-block
 - [ ] improve Syntax-Highlight
 - [ ] integrate CSS( module.css or styled-jsx ...)
 - [x] implement sitemap.xml
@@ -56,7 +56,7 @@ You can check out [the Next.js GitHub repository](https://github.com/oriverk/nex
 - [x] implement PWA
 - [x] Google Analytics
 - [x] Custom dmain
-- [ ] implement Search function
+- [x] implement Search function
 - [ ] implement toc for post page
 - [ ] implement dynamic og:image generation for post
 - [ ] implement i18n

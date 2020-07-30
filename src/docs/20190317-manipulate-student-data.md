@@ -2,7 +2,7 @@
 create: '2019-03-17'
 update: '2019-12-04'
 author: Kawano Yudai
-title: 'Qiita: 9, 10, 11, 14日目：大学生データ操作 App'
+title: 'Day 9 ~ 14：大学生データ操作 App'
 tags: [ruby, rails, mysql]
 image: 'assets/posts/201905/cebu3.webp'
 ---

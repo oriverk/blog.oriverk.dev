@@ -66,6 +66,7 @@ const DrawerLists = ({children}) => {
         .profileImg {
           margin: 0 auto;
           width: 80%;
+          background-color: #424242;
         }
       `}</style>
       </React.Fragment>
@@ -138,23 +139,23 @@ export const PermanentDrawerLists = (props) => {
   )
 }
 
-export const SwipeDrawerLists = (props) => {
+export const LeftSwipeDrawerLists = (props) => {
   return (
     <React.Fragment>
       <DrawerLists>
         <div className='desc'>
-          <p>author: Kawano Yudai</p>
-          <p>built with: Next.js.</p>
+          <p>Kawano Yudai</p>
+          <p>with React, TypeScript</p>
           <p>This uses Google Analytics</p>
         </div>
         <Divider />
         <div className='desc'>
-          <p>Some pages are still under construction...</p>
+          <p>some are under construction...</p>
         </div>
       </DrawerLists>
       <style jsx>{`
         .desc {
-          color: #eee;
+          color: #EEE;
           text-align: center;
         }
       `}</style>

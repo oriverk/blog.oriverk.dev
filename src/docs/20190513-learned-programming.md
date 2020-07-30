@@ -2,7 +2,7 @@
 create: '2019-05-13'
 update: '2019-12-12'
 author: Kawano Yudai
-title: 'Qiita: プログラミングを2か月間、日本人エンジニアの下で学んできた'
+title: 'プログラミングを2か月間、日本人エンジニアの下で学んできた'
 tags: [ruby]
 image: '/assets/posts/201905/cebu1.jpg'
 ---

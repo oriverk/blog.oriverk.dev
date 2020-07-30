@@ -2,20 +2,20 @@
 <feed xmlns='http://www.w3.org/2005/Atom' xml:lang='ja'>
   <id>https://oriverk.dev</id>
   <title>Kawano Yudai's site</title>
-  <updated>Tue Jul 14 2020 07:18:36 GMT+0000 (Coordinated Universal Time)</updated>
+  <updated>Thu Jul 30 2020 06:44:18 GMT+0000 (Coordinated Universal Time)</updated>
   <link rel='alternate' type='text/html' href='https://oriverk.dev' />
   <link rel='self' type='application/atom+xml' href='https://oriverk.dev/atom.xml' />
   
   <entry>
     <id>20200526-next-portfolio</id>
-    <title>Qiita: Next.js でポートフォリオサイトを作成した</title>
+    <title>Next.js でポートフォリオサイトを作成した</title>
     <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20200526-next-portfolio' />
     <updated>2020-07-14</updated>
     <summary>next, react, remark, typescript</summary>
   </entry>
   <entry>
     <id>20200329-joined-corona-oss</id>
-    <title>Qiita: 宮崎県 COVID-19 対策サイトの OSS 活動に参加した。</title>
+    <title>宮崎県 COVID-19 対策サイトの OSS 活動に参加した。</title>
     <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20200329-joined-corona-oss' />
     <updated>2020-04-07</updated>
     <summary>oss, vue</summary>
@@ -28,25 +28,53 @@
     <summary>githubpages, jekyll, ruby</summary>
   </entry>
   <entry>
-    <id>20200203-install-langs2ubuntu</id>
-    <title>Gist: installl langs to ubuntu</title>
-    <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20200203-install-langs2ubuntu' />
-    <updated>2020-03-17</updated>
-    <summary>java, node, rails, ruby, rust, ubuntu</summary>
+    <id>20200203-setup-rust-ubuntu</id>
+    <title>Build Rust environment on Ubuntu</title>
+    <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20200203-setup-rust-ubuntu' />
+    <updated>2020-07-30</updated>
+    <summary>rust, ubuntu</summary>
   </entry>
   <entry>
-    <id>20200128-install-database2ubuntu</id>
-    <title>Gist: how to install db to ubuntu</title>
-    <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20200128-install-database2ubuntu' />
-    <updated>2020-03-17</updated>
-    <summary>db, mysql, postgresql</summary>
+    <id>20200203-setup-ruby-ubuntu</id>
+    <title>Build Ruby environment on Ubuntu</title>
+    <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20200203-setup-ruby-ubuntu' />
+    <updated>2020-07-30</updated>
+    <summary>rails, ruby, ubuntu</summary>
   </entry>
   <entry>
-    <id>20200128-build-vm4ubuntu</id>
-    <title>Gist: how to build VM with linux Ubuntu</title>
-    <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20200128-build-vm4ubuntu' />
+    <id>20200203-setup-node-ubuntu</id>
+    <title>Build FrontEnd environment on Ubuntu</title>
+    <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20200203-setup-node-ubuntu' />
+    <updated>2020-07-30</updated>
+    <summary>node, ubuntu</summary>
+  </entry>
+  <entry>
+    <id>20200203-setup-java-ubuntu</id>
+    <title>Build Java environment on ubuntu</title>
+    <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20200203-setup-java-ubuntu' />
+    <updated>2020-07-30</updated>
+    <summary>java, ubuntu</summary>
+  </entry>
+  <entry>
+    <id>20200203-setup-go-ubuntu</id>
+    <title>Build Go environment on ubuntu</title>
+    <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20200203-setup-go-ubuntu' />
+    <updated>2020-07-30</updated>
+    <summary>go, ubuntu</summary>
+  </entry>
+  <entry>
+    <id>20200128-setup-ubuntu-vm</id>
+    <title>Build Ubuntu environment with VM and Vagrant</title>
+    <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20200128-setup-ubuntu-vm' />
     <updated>2020-06-25</updated>
-    <summary>ubuntu, vm</summary>
+    <summary>ubuntu, vagrant, vm</summary>
+  </entry>
+  <entry>
+    <id>20200128-setup-database-ubuntu</id>
+    <title>Build Database environment on Ubuntu</title>
+    <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20200128-setup-database-ubuntu' />
+    <updated>2020-03-17</updated>
+    <summary>mysql, postgresql</summary>
   </entry>
   <entry>
     <id>20200110-update-githubpages</id>
@@ -64,126 +92,126 @@
   </entry>
   <entry>
     <id>20191129-post-code2twitter</id>
-    <title>Qiita: Twitter に見栄え良くコード投稿したかった</title>
+    <title>Twitter に見栄え良くコード投稿したかった</title>
     <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20191129-post-code2twitter' />
     <updated>2020-03-10</updated>
     <summary>aws, rails, ruby</summary>
   </entry>
   <entry>
     <id>20190829-fe-exam</id>
-    <title>Qiita: H30 秋基本情報技術者試験 問3システム</title>
+    <title>H30秋基本情報技術者試験 問3 を RubyonRails で作ってみる</title>
     <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190829-fe-exam' />
     <updated>2019-08-29</updated>
     <summary>rails, ruby</summary>
   </entry>
   <entry>
     <id>20190818-use-jekyll</id>
-    <title>Qiita: GithubPages で jekyll を使ってみよう。</title>
+    <title>GithubPages で Jekyll を使ってみよう</title>
     <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190818-use-jekyll' />
     <updated>2019-12-01</updated>
     <summary>githubpages, jekyll, ruby</summary>
   </entry>
   <entry>
     <id>20190513-learned-programming</id>
-    <title>Qiita: プログラミングを2か月間、日本人エンジニアの下で学んできた</title>
+    <title>プログラミングを2か月間、日本人エンジニアの下で学んできた</title>
     <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190513-learned-programming' />
     <updated>2019-12-12</updated>
     <summary>ruby</summary>
   </entry>
   <entry>
     <id>20190403-what-transaction</id>
-    <title>Qiita: 18日目: トランザクションって</title>
+    <title>Day 18: What is Transaction like?</title>
     <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190403-what-transaction' />
     <updated>2019-12-04</updated>
     <summary>mysql, ruby</summary>
   </entry>
   <entry>
-    <id>20190329-add-admin-with-devise</id>
-    <title>Qiita: 16日目：devise で管理者を追加する</title>
-    <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190329-add-admin-with-devise' />
+    <id>20190329-add-devise-admin</id>
+    <title>Day 16：devise で管理者を追加する</title>
+    <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190329-add-devise-admin' />
     <updated>2019-12-04</updated>
-    <summary>rails, ruby</summary>
+    <summary>devise, rails, ruby</summary>
   </entry>
   <entry>
     <id>20190328-use-heroku</id>
-    <title>Qiita: 15日目： Heroku でアプリを公開しよう</title>
+    <title>Day 15： Heroku でアプリを公開しよう</title>
     <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190328-use-heroku' />
     <updated>2019-12-04</updated>
     <summary>heroku, rails, ruby</summary>
   </entry>
   <entry>
     <id>20190324-app-with-devise</id>
-    <title>Qiita: 13日目(1)： Devise によるログイン機能付きサイトの作成</title>
+    <title>Day 13： Devise によるログイン機能付きサイトの作成</title>
     <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190324-app-with-devise' />
     <updated>2019-12-04</updated>
-    <summary>rails, ruby</summary>
+    <summary>devise, rails, ruby</summary>
   </entry>
   <entry>
     <id>20190320-what-git</id>
-    <title>Qiita: 10～12日目： Git</title>
+    <title>Day 10 ~ 12：first time to use Git</title>
     <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190320-what-git' />
     <updated>2019-03-20</updated>
     <summary>git</summary>
   </entry>
   <entry>
     <id>20190320-input-data2db</id>
-    <title>Qiita: 10日目(1)：マスターデータ（ DB へ情報入力、ページに出力</title>
+    <title>Day 10: DB へ情報入力、ページに出力</title>
     <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190320-input-data2db' />
     <updated>2019-12-04</updated>
     <summary>mysql, rails, ruby</summary>
   </entry>
   <entry>
     <id>20190318-read-ruby-reference</id>
-    <title>Qiita: Ruby リファレンスを読んだのでメモ</title>
+    <title>Ruby リファレンスを読んだのでメモ</title>
     <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190318-read-ruby-reference' />
     <updated>2019-03-18</updated>
     <summary>ruby</summary>
   </entry>
   <entry>
     <id>20190317-manipulate-student-data</id>
-    <title>Qiita: 9, 10, 11, 14日目：大学生データ操作 App</title>
+    <title>Day 9 ~ 14：大学生データ操作 App</title>
     <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190317-manipulate-student-data' />
     <updated>2019-12-04</updated>
     <summary>mysql, rails, ruby</summary>
   </entry>
   <entry>
     <id>20190313-manipulate-mysql</id>
-    <title>Qiita: 6,7日目： MySQL 操作</title>
+    <title>Day 6, 7： MySQL 操作</title>
     <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190313-manipulate-mysql' />
     <updated>2019-12-04</updated>
     <summary>mysql</summary>
   </entry>
   <entry>
     <id>20190311-what-bootstrap</id>
-    <title>Qiita: 5日目： Bootstrap を初めて触ってみた</title>
+    <title>Day 5： first time to use Bootstrap</title>
     <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190311-what-bootstrap' />
     <updated>2019-12-04</updated>
     <summary>bootstrap, rails, ruby</summary>
   </entry>
   <entry>
     <id>20190311-httpmethod-crud-sql</id>
-    <title>Qiita: 3日目(2)：HTTP メソッドと CRUD と SQL</title>
+    <title>Day 3：HTTP method, CRUD and SQL</title>
     <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190311-httpmethod-crud-sql' />
     <updated>2019-03-11</updated>
     <summary>crud, http, restful, sql</summary>
   </entry>
   <entry>
     <id>20190316-ruby-exam</id>
-    <title>Qiita: 2,4,7,8,13日目： Ruby 認定試験による勉強</title>
+    <title>Day 2 ~ 13： Ruby 認定試験による勉強</title>
     <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190316-ruby-exam' />
     <updated>2019-03-24</updated>
     <summary>ruby</summary>
   </entry>
   <entry>
     <id>20190306-without-scaffold</id>
-    <title>Qiita: 2日目(2)：Scaffold なしでの掲示板作成</title>
+    <title>Day 2 ~ 8：Scaffold なしでの掲示板作成</title>
     <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190306-without-scaffold' />
     <updated>2019-12-04</updated>
     <summary>rails, ruby, ubuntu</summary>
   </entry>
   <entry>
     <id>20190305-shellscript-permission</id>
-    <title>Qiita: 1日目  Linux と Shellscript と Permission</title>
+    <title>Day 1: Linux, Shellscript and Permission</title>
     <link rel='alternate' type='text/html' href='https://oriverk.dev/posts/20190305-shellscript-permission' />
     <updated>2019-03-18</updated>
     <summary>linux, shellscript</summary>

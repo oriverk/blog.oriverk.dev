@@ -2,7 +2,7 @@
 create: '2019-04-03'
 update: '2019-12-04'
 author: Kawano Yudai
-title: 'Qiita: 18日目: トランザクションって'
+title: 'Day 18: What is Transaction like?'
 tags: [ruby, mysql]
 ---
 

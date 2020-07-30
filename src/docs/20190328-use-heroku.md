@@ -2,7 +2,7 @@
 create: '2019-03-28'
 update: '2019-12-04'
 author: Kawano Yudai
-title: 'Qiita: 15日目： Heroku でアプリを公開しよう'
+title: 'Day 15： Heroku でアプリを公開しよう'
 tags: [ruby, rails, heroku]
 ---
 

@@ -48,7 +48,7 @@ ${posts.map((post) => {
 </urlset>`
 
 try {
-  fs.writeFileSync(path.join(process.cwd(), 'public/siteMap.xml'), sitemap)
+  fs.writeFileSync(path.join(process.cwd(), 'public/sitemap.xml'), sitemap)
   console.log('genSiteMap success')
 } catch (e) {
   console.error(e)

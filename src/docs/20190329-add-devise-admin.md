@@ -2,18 +2,18 @@
 create: '2019-03-29'
 update: '2019-12-04'
 author: Kawano Yudai
-title: 'Qiita: 16日目：devise で管理者を追加する'
-tags: [ruby, rails]
+title: 'Day 16：devise で管理者を追加する'
+tags: [ruby, rails, devise]
 ---
 
 from [Qiita: deviseだけで管理者を追加したい](https://qiita.com/OriverK/items/d7704d23cf74c51503b4)
 
 ## Environment
-- 仮想環境: Ubuntu 18.04
-- Ruby：2.51
-- Rails: 5.2.2
+- Ubuntu 18.04
+  - Ruby：2.51
+  - Rails: 5.2.2
     - gem: 'devise'（ログイン等の機能用), 'kaminari'( pagination )
-- DB: PostgreSQL
+  - DB: PostgreSQL
 
 ## 実作業
 ### テーブルにadminカラム追加

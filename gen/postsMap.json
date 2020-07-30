@@ -1,7 +1,7 @@
 [
   {
     "id": "20200526-next-portfolio",
-    "title": "Qiita: Next.js でポートフォリオサイトを作成した",
+    "title": "Next.js でポートフォリオサイトを作成した",
     "create": "2020-05-26",
     "update": "2020-07-14",
     "tags": [
@@ -9,17 +9,19 @@
       "react",
       "remark",
       "typescript"
-    ]
+    ],
+    "content": " はじめに Ruby + JekyllによるGihubPagesは既にあるのですが、宮崎版コロナ対策サイトでVueに触れ、勉強がてら実際にJSによるサイト作成をする事にしました。 JSの現状を知るために参照した主サイト 2020年 React軸で学ぶべき技術 from mizchi's blog ユーザー体験を向上させるサーバーサイドレンダリングJavaScript — 歴史と利点 自分 大学研究でcppを利用しただけの、農学部卒。 ただいま無職、転職活動中（ここ2か月は自粛でstay home 作成に当たって React とNext.js のtutorial と docs を一通りやりました。 React チュートリアル Next.js チュートリアル サイト自体の目的 経歴や作成したもののリンクをまとめる GithubPagesやQiita、Gistへの投稿物を一か所にまとめる Markdonwによるページ作成 つくったもの Github リポジトリ this site lighthouse 技術・要件など React.js, Next.js マークダウン変換 remarkjs/reamrk あとでmdx-js/mdxに変更するかも シンタックスハイライト highlight.js UIコンポーネント Material-UI mui-org/material-ui ダークテーマ 環境 vm：virtualbox + vagrant OS: Ubuntu18.04 bionic node -v :v12.16.1 yarn -v :1.22.4 実作業 yarn create next-app Example from the Next.js repo amp類 amp, amp-story, amp-first 参照: ビジュアルに訴える AMP ストーリーを作成する from AMP google analytics類 with-google-analytics, with-google-analytics-amp aws類 with-aws-amplify, with-aws-amplify-typescript その他: api類, custome server類, preact及び多数（多すぎるので割愛 参照：Github: zeit/next.js/example Default starter appの場合 今回はReact Next.jsの勉強も兼ねているので、defaultの方を利用した。 yarn devすると 参照 React.Component React.Fragment Material-UI 導入 見た目重視でmaterial-uiを導入し、主にサイドバーのpermanent / swipeable drawerとGridに使用。 参照 Material-UI top 日本語ページ material-ui/examples/nextjs/ Icon from material-ui Icon一覧 create src/pages/index.jsx srcディレクトリを作成し、下にpagesを収める。 src/components/Layout.jsxの作成 複数ページで共通デザインとなるLayout.jsxを作成する。ここでは省略したが、`の中には、material-ui`を利用したpermanent-drawerとモバイル用のswipeable-drawerを実装した。 /src/components/Layout.jsx pages/index.jsxの作成 まだReact等に不慣れなので、pages/index.jsにサイト1ページ目を作りこんで、後からcomponentに分割する方式をとった。 色々試した結果、サイトトップにあたる pages/index.jsxは下の様になった。また、`用のデータは/public/manifest.json`から持ってくる事にした。 /src/components/HomeContetnts.jsx app.jsx, document.jsx, 404.jsx 参照 Custom App from Next.js Custom Document from Next.js Custom Error Page from Next.js _app.jsx global cssを追加する場所 _document.jsx SSRされる箇所なので、onclickなどイベントハンドラは動かない `の外側にあるコンポーネントはブラウザによる初期化がされないので、Appロジック等はapp.jsx`に記述 `や、styled-jsx`を書いちゃ駄目。 Posts周辺の作成 ダイナミックルーティング 参照 Next.js - Pages Next.js - Dynamic routes Docs - next/routes from Next.js ディレクトリ構成 また、/pages/posts/[id].jsxは ファイル名に[]が付いてるので変に見えるが。例えば localhost:3000/posts/hoge/にアクセスするとpages/posts/hoge.jsxが読み込まれる localhost:3000/posts/foobarだと、pages/posts/foobar.jsxが読み込まれ、 dynamic routeとLink( next/link )を併用する時は、hrefに合わせてasも使う。 getStaticProps, getStaticPaths 今回はmdファイルを/src/pages/docsに入れる。 baseUrl/postsへのアクセス時は、docs下のmdファイルを読込み、posts一覧の出力 baseUrl/posts/[id]の場合は、同様にして、post単体の出力 baseUrl/tagsの場合は、同様にpostsで使用されている投稿タグ一覧の出力 baseUrl/tags/[tag]なら、同タグを使用するposts一覧を出力 docs配下に無いmdファイル名にアクセスした場合は、404 ページ出力がsrc/pages/docs/xxx.mdという外部データに依存した静的ページ出力をしたいので、getStaticPropsとgetStaticPathsを使用した。 参照: Data fetching - Next.js Static Generation with Data - Next.js Pages getStaticProps 出力ページのコンテンツが外部データに依存している時に使用 getStaticPaths 出力ページ中のリンクが外部データに依存している時に使用 実装は下を参照しながらしました。タグの方は自分で用意しましたが。 Next.jsのチュートリアルのこのページ tagsページのスタイルが未だ・・・ マークダウン 実現したい事 QiitaやGist等での投稿を可能な限り手間なく集約したい mdxjs/mdxなら、ファイル中にimportやexport等のjsを組み込める。 最終的に利用したもの。 jonschlinkert/ gray-matter processor: remarkjs/ remark highlighter: highlight.js 構文木について、しっかり学ばねばと思いました。 /src/lib/posts.jsx meta 以前にrubyとjekyllで作ったgithubpagesと比較して、syntax-highlightが粗いので改善が必要 SNSシェアボタン UPDATE README.md @ 2020-05-27 参照: README.mdをカッコ可愛くデザインしてアプリの魅力を120%にする Qiita投稿の公開に当たり、README.mdを充実させた npm install 禁止 @ 2020-05-27 参照: yarnを使うプロジェクトでnpm installを禁止する方法 特に理由はないがnpmの仕様を禁じることにした。 Custom Domain @ 2020-06-01 google domainで購入 Vercel側でドメインを変更 Google Domain側でdnsをvercel用に変更 ns1.vercel-dns.com ns2.vercel-dns.com Google Analytics @ 2020-06-05 参照: vercel/next.js - examples/with-google-analytics GoogleAnalytics側でIDを取得し、app.jsxとdocument.jsxを上コードに従って修正する。 PWA implimentation next-offline @ 2020-06-05 参照：github - hanford/next-offline next-offlineを利用した。上リポジトリでも記載してあるが、Vercel( Now )のv1とv2で動作が違う。但し、現在はv2オンリーなので、同レポジトリ内にあるpackages/now2-exampleのnow.jsonとnext.config.jsonに倣えばよい。 PWA @2020-06-25 reference: shadowwalker / next-pwa 最初に使った next-offline は更新が遅く、またexperimentalな部分を利用していた等の理由から、next-pwaに移行した。example から分かるように、非常にシンプルになった。 TypeScirpt @2020-06-30 Next.jsのTS化は非常に簡単で、最初のうちはNext.js Learn Typesciptなどに従えば良い。 あとは、Learn 等に従って、ts化していけば、何となく理解できる。また、tsconfig.jsonでallowJs:trueにしておけば、もし仮に型が解らんものを含むjsファイルはそのままにしておいて、理解が進んでから完全にts化すればいいのでは。 TSの理解を深める為に、読んだもの Qiita: tsconfig.jsonの全オプションを理解する（随時追加中）by @ryokkkke Qiita: TypeScriptの型入門 by @uhyo Qiita: TypeScriptの型推論詳説 by @uhyo 私的TypeScriptとの関わり方ガイドライン from 角待ちは対空 npm-script mizchi氏のブログ等を見てて、npm-script や EsModule 等を知った。ちょうど、sitemap.mxlを造る必要があったので、利用することにした。 ただ、node v12 では ESModule は未だ experimental な機能で、package.json にも node --experimental-modules test.mjs とする必要がある。しかし、v13からはフラグが要らないので、nodejsをアップデートした。 vercel は nodejs の LTS しか対応しないので、package.json 中の npm-script は build 用 と generate script用で分ける必要があった。 mjsについて未だ良く解らん事、作るのが自分用のファイルジェネレーターであることもあって、コードが汚いので・・・↓ pages.json @2020-06-30 postの情報を集約した postPages.json を作成した。ファイル更新履歴等はそのうち github から取得できるようにしたい。 JSON.stringify が良く解らなかったので、読んだもの。 JSON.stringifyを改めて調べる。 @qoAop 作りたいファイル構成 postsMap generator script sitemap.xml @2020-07-01 kuflash / react-router-sitemap や IlusionDev / nextjs-sitemap-generator等があるが、next.js なので、react-router を使ってないし、xml の構造は簡単そうだったので自作した。 sitemap.xml を知るために読んだもの sitemaps.org - サイトマップの XML 形式 Google Search Home - Products > Search for Developers > Guides > Separate URLs Search Console help サイトマップについて sitemap.xml の基本構成 xmlはファイル頭に空白行が入ると、``の宣言が無いと言ってエラーを吐く sitemap.xml generator script RSS & Atom @2020-07-01 RSS 2.0 と Atom 1.0 に対応する。 読んだもの Google Margant Center ヘルプ - RSS 2.0 仕様 Google Margant Center ヘルプ - Atom 1.0 仕様 PHP & JavaScript Room - RSS 2.0 のフォーマット - RSS 2.0 フォーマット - Atom 1.0 フォーマット RSS と Atom のジェネレーターコードは、基本的に sitemap.xml と同じなので。 RSS 2.0 ジェネレーター Atom 1.0 ジェネレーター Atom の ユニークid をどうしようかと考えましたが、適当に。 Algolia search 投稿記事の検索に Algolia を利用した。postsMap.json　をデータとして投入した。 現在のデータ投入は手動で行っているが、後で postsMap.json生成時に差分があればapiで投入できるようにしたい。 参照 algolia algolia community algolia Conditional Requests To do CSSの統一 AMP対応( 参照：Next.js next/amp コードブロックの言語またはファイル名の出力 syntax-highlightの改善 postページの目次機能 og:image 動的生成コード"
   },
   {
     "id": "20200329-joined-corona-oss",
-    "title": "Qiita: 宮崎県 COVID-19 対策サイトの OSS 活動に参加した。",
+    "title": "宮崎県 COVID-19 対策サイトの OSS 活動に参加した。",
     "create": "2020-03-29",
     "update": "2020-04-07",
     "tags": [
       "oss",
       "vue"
-    ]
+    ],
+    "content": " from Qita: 宮崎県COVID-19対策サイトを見つけ、出身者として何かしたいと思ったから、した。 出身の宮崎県用の対策サイトが出来、何かできる事は無いかと思ったので、Qiitaに記録しつつ、色々やってみた。 Introduction Referrence 宮崎県 新型コロナウイルス 対策サイト Github covid19-miyazaki/covid19 東京都 新型コロナウイルス 対策サイト tokyo-metropolitan-gov/covid19 Qiita: 東京都 新型コロナウイルス対策サイトへの貢献方法を解説 Environment Ubuntu 18.04 ( vm with Vagrant Node.js: v12.16. (>= 10.19.0 yarn: 1.22.4 environment setup Refferrence Github: リポジトリのREADME.md中の開発者向け情報->環境構築の手順 Gitの設定（今回は新しくvm環境を用意したので。 git config --global user.name \"usename\" git config --global user.email \"email\" Vimの設定 oriverk/dotfiles/.vimrcからコピペ 環境のデフォルトエディタを変更し、vimを選択 sudo update-alternatives --config editor Vue用の仮想環境を用意した。（割愛 仮想環境をUbuntu 18.04 （CUI/GUI）で構築する Node.js >= v10.19.0の用意（割愛 Ubuntuで使う言語のインストール方法とか環境構築とか fork, clone, yarn install What I did 最初に書いた通り、Vue（と言うかJS）何もわからないので、表示される自然言語の修正をする事にした。 表示言語選択メニューバー: covid19/nuxt-i18n.config.ts 他言語表示用json: covid19/assets/locales/ CODEOFCONDUCT.mdの修正 東京都verから宮崎県verにした際の地域表記変更の漏れであり、1文字の修正だった。 はじめてのpull request PRの機会は初めてだったので、下を参照しながら行った。 参照: 東京都 新型コロナウイルス対策サイトへの貢献方法を解説 やってることは同じなので割愛。こんな感じで書いた。 無事にpull requestがmergeされ、OSS活動(?)の実績解除となりました。 What I wanna do 表示自然言語の部分を中心に修正改善 Warningと出ている部分の修正 恐らくTypescriptの型由来の警告なので、ドキュメントと格闘しながら。"
   },
   {
     "id": "20200204-update-githubpages",
@@ -30,42 +32,87 @@
       "githubpages",
       "jekyll",
       "ruby"
-    ]
+    ],
+    "content": " What I did Introduce IE Buster Update Ruby version from 2.5.1 Make Dark-theme better Add top-image and githubpage-svg IE Buster リンク: IE Buster IE環境下ではSVG周辺でデザインが崩れることが確認されたが、Chrome使用を促すJSを追加した。 Update Ruby-version to 2.7.0 Ruby用に作成している仮想環境のアップデートの序にRubyのバージョンを最新版に上げた。 参照: 永久保存版！？伊藤さん式・Railsアプリのアップグレード手順 エラー内容 他のgemやミドルウェアとの依存関係に由来するもの rubyのキーワード因数に関する非推奨警告 Dark theme 前回までは、基本グレーで背景に青、差し色でオレンジを使用していた。 参照 Material Design Dark theme Color Tool DarkModeのデザインを中心とした色彩設計の考え方 Add top-image and others トップ画面にプロフィール画像を追加し、またサイトリンクQRコードを表示されるように、javascriptを作成した。 残す改修予定 add Tags AMPの導入。"
   },
   {
-    "id": "20200203-install-langs2ubuntu",
-    "title": "Gist: installl langs to ubuntu",
+    "id": "20200203-setup-rust-ubuntu",
+    "title": "Build Rust environment on Ubuntu",
     "create": "2020-02-03",
-    "update": "2020-03-17",
+    "update": "2020-07-30",
     "tags": [
-      "java",
-      "node",
-      "rails",
-      "ruby",
       "rust",
       "ubuntu"
-    ]
+    ],
+    "content": " from Gist: oriverk/InstallLanguage2Ubuntu.md Setup Reference rust-lang.org (en) Rustの日本語ドキュメント/Japanese Docs for Rust easy rust document (en) Others An inside look at the Rust programming language Qiita: なぜRustを学ぶべきなのか 〜 5年経った今改めてまとめてみる Why Discord is switching from Go to Rust 実装言語を「Go」から「Rust」に変更、ゲーマー向けチャットアプリ「Discord」の課題とは "
   },
   {
-    "id": "20200128-install-database2ubuntu",
-    "title": "Gist: how to install db to ubuntu",
-    "create": "2020-01-28",
-    "update": "2020-03-17",
+    "id": "20200203-setup-ruby-ubuntu",
+    "title": "Build Ruby environment on Ubuntu",
+    "create": "2020-02-03",
+    "update": "2020-07-30",
     "tags": [
-      "db",
-      "mysql",
-      "postgresql"
-    ]
+      "rails",
+      "ruby",
+      "ubuntu"
+    ],
+    "content": " from Gist: oriverk/InstallLanguage2Ubuntu.md Setup Install latest ver. Install by \"apt install\" \"-y\" means \"All Yes\" build-essential contain information about package to build Debian pack. If do not build Debian, build~ is not needed Reference Reference Ruby - official site Ruby 2.7.0 リファレンスマニュアル (ja) Ruby on Rails ガイド Setup Reference WSL+Ubuntuで、ruby on rails6.00の環境を整える How to Install Ruby 2.6 & Rails 6 on Ubuntu 19.04 Exam Qiita: Ruby技術者認定試験 Silver Rex Ruby Examination sean2121 / silver_j.md Qiita: Ruby 技術者認定試験 Silver/Gold 対策の個人的なハマり問題集 Others Rails Application Build Guides (ja) everyday rails Qiita: Rails deviseの使い方（rails5版） Qiita: railsで複数ワードでの検索機能(and)とマイナス検索機能(-)を実装してみる"
   },
   {
-    "id": "20200128-build-vm4ubuntu",
-    "title": "Gist: how to build VM with linux Ubuntu",
+    "id": "20200203-setup-node-ubuntu",
+    "title": "Build FrontEnd environment on Ubuntu",
+    "create": "2020-02-03",
+    "update": "2020-07-30",
+    "tags": [
+      "node",
+      "ubuntu"
+    ],
+    "content": " from Gist: oriverk/InstallLanguage2Ubuntu.md Setup *rails6 uses webpacker, which needs nodejs Reference rust-lang.org (en) Rustの日本語ドキュメント/Japanese Docs for Rust easy rust document (en) Others An inside look at the Rust programming language Qiita: なぜRustを学ぶべきなのか 〜 5年経った今改めてまとめてみる Why Discord is switching from Go to Rust 実装言語を「Go」から「Rust」に変更、ゲーマー向けチャットアプリ「Discord」の課題とは "
+  },
+  {
+    "id": "20200203-setup-java-ubuntu",
+    "title": "Build Java environment on ubuntu",
+    "create": "2020-02-03",
+    "update": "2020-07-30",
+    "tags": [
+      "java",
+      "ubuntu"
+    ],
+    "content": " from Gist: oriverk/InstallLanguage2Ubuntu.md Setup "
+  },
+  {
+    "id": "20200203-setup-go-ubuntu",
+    "title": "Build Go environment on ubuntu",
+    "create": "2020-02-03",
+    "update": "2020-07-30",
+    "tags": [
+      "go",
+      "ubuntu"
+    ],
+    "content": " from Gist: oriverk/InstallLanguage2Ubuntu.md Setup Use goenv to install Go. goenv is package management tool which based on rbenv Reference golang.org Others A Tour of Go Learn Web Programming in Go by Examples 今改めて読み直したい Go基礎情報 その1 #golangtokyo"
+  },
+  {
+    "id": "20200128-setup-ubuntu-vm",
+    "title": "Build Ubuntu environment with VM and Vagrant",
     "create": "2020-01-28",
     "update": "2020-06-25",
     "tags": [
       "ubuntu",
+      "vagrant",
       "vm"
-    ]
+    ],
+    "content": " from Gist: oriverk/buildVMwithUbuntu.md how to build CUI vagrant init modify \"Vagrantfile\" specify vagrant-box change vagrant name specify ip if build gui, uncomment `vb.gui = true' modify available ram Vagrantfile After Vagrantfile modification, do vagrant up setup for remote-ssh Inner SSH setup default editor (vim) reference: Gitをインストールしたら真っ先にやっておくべき初期設定 setup github setup vim use my dotfile repo on github Change locale and timezone GUI版の構築 GUI版を構築する際はVagrantfileの編集から少し異なる。 仮想環境の立ち上げ Ubuntuデスクトップ版(GUI)をインストールする ここで、非常に時間が掛かるので注意 "
+  },
+  {
+    "id": "20200128-setup-database-ubuntu",
+    "title": "Build Database environment on Ubuntu",
+    "create": "2020-01-28",
+    "update": "2020-03-17",
+    "tags": [
+      "mysql",
+      "postgresql"
+    ],
+    "content": " from Gist: oriverk/InstallDB2Ubuntu.md PostgreSQL update psql upto 12.0 for ubuntu18.04 MySQL Heroku "
   },
   {
     "id": "20200110-update-githubpages",
@@ -76,7 +123,8 @@
       "githubpages",
       "jekyll",
       "ruby"
-    ]
+    ],
+    "content": " 改修結果 改修内容 デザインの変更 dark theme mobile first Bootstrapの排除 Posts.indexページの追加 Post.showページの追加 Syntax-highlighter Rougeの導入 デザイン変更 ページ表示速度を向上させるため、メニュータブにしか使っていないBootstrap由来のJSとCSSを排除し、自作のjsスクリプトを追加した。 Syntax-highlighter Rougeの導入 Posts.indexとPost.showページはjekyll通りなので割愛。 コードのハイライトを有効化する為、Rougeを導入した。 この場合だと通常通りのhighlightとendhighlightを用いるが、Qiitaの様なコードブロックの記法にしたかったので、kramdownのオプション等を指定した。(下) あとはrougify style []でシンタックスハイライト用のcss、今回はmolokaiを生成し、一部修正、適用させた。 改修予定 IE, Edge対応（IE対応は見送りました。) AMPの導入。興味があるだけ"
   },
   {
     "id": "20200106-fontsize-test",
@@ -85,153 +133,170 @@
     "update": "",
     "tags": [
       "test"
-    ]
+    ],
+    "content": " h2 tag あいうえお つれづれなるまゝに、日くらし、硯にむかひて、心に移りゆくよしなし事を、そこはかとなく書きつくれば、あやしうこそものぐるほしけれ・・・ h3 tag あいうえお あいうえお祇園精舎の鐘の声、諸行無常の響きあり。 沙羅双樹の花の色、盛者必衰の理をあらはす。 奢れる人も久からず、ただ春の夜の夢のごとし。 strong tag あいうえお ol list1 ol list2 ol list3 ul list1 ul list2 ul list3 italic あいうえお ruby scss C++ > quote あいうえお >> かくありし時過ぎて、世の中にいとものはかなく、とにもかくにもつかで、世に経ふ人ありけり。かたちとても人に似ず、心魂もあるにもあらで、かうものの要にもあらであるも、ことはりと思ひつつ、ただ臥し起き明かし暮らすままに、世の中に多かる古物語のはしなどを見れば、世に多かるそらごとだにあり、人にもあらぬ身の上まで書き日記して、めづらしきさまにもありなむ、天下の人の品高きやと問はむためしにもせよかし、とおぼゆるも、過ぎにし年月ごろのこともおぼつかなかりければ、さてありぬべきことなむ多かりける。 a tag link あいうえお katex $$ y = x^3 + 2ax^2 + b $$"
   },
   {
     "id": "20191129-post-code2twitter",
-    "title": "Qiita: Twitter に見栄え良くコード投稿したかった",
+    "title": "Twitter に見栄え良くコード投稿したかった",
     "create": "2019-11-29",
     "update": "2020-03-10",
     "tags": [
       "aws",
       "rails",
       "ruby"
-    ]
+    ],
+    "content": " from Qiita: Twitterにコードを身えばよく投稿したい はじめに きっかけ（こんな呟きを見かけた 出来たもの Codr0：https://codr0.herokuapp.com/ Github : oriverk/Codr GithubPage 作成の過程で収穫物 Active Record Storage等のRails5.2 Twitter Login方法と仕組みなど JSの基礎（getElementByIdやsetAttribute、文字カウントなど AWS S3関連 XSS対策 作成の前に 作成要件 マークダウン投稿、シンタックスハイライト gem: redcarpet, rouge 投稿から画像生成 html2canvas 参照：html2canvas 参照：JSでhtmlを画像化する方法(html2canvasの使い方) from 湧くべく AWS S3にog:image用の画像を保存 作成の流れ：予定 rails new codr, git init, heroku create、Active Storage AWS S3あれこれ twitter登録、ログイン機能作成 開発環境 vm : Linux Ubuntu (virtualbox + vagrant) Ruby 2.5.1p57 Rails 5.2.3 Postgresql 実作業 DB設定等は割愛 Gem 参照: kpumuk/meta-tags rails.credentials.yml 当初は.gitignoreとdotenv等を使っていたが、作成途中でRails5.2からのrails.credentials.ymlを利用した。復号化には/config/master.keyを利用。 rails gあれこれ Active Record Associations関連付け 投稿関連 マークダウン投稿 参照：Redcarpet：Github 基本：Redcarpet::Markdown.new(renderer, extensions = {}).render(@post.content) オプションやXSS対策等を追加したく、helperメソッドを作成した。 html_safe => sanitize sanitizeヘルパーを使用した。ホワイトリスト方式 投稿内容のデータ化、AWSへの画像保存 Herokuでは画像保持がされないので、作成画像をAWS S3に保存し、og:imageに添付する形を取った。 Webアプリ内で通常投稿 showページ表示（同時にhtml2canvasでBase64としてデータ取得、hidden_fieldに格納 Tweetボタン押す（Postされ、postモデル内でbase64をデコード Active Storageを通して、AWS S3に保存 Active Storage 参照: Active Storage Rail5.2からの機能で、今までのcarrievaveやpaperclip等を使わずに、クラウドストレージ等へのアップロードが容易になる。今回はAWS S3を使った。 rails credentials:editでAWSアクセスキーとシークレットキーを追加。 html2canvas Tweetボタン押下時に画像をPostするためのフォームhidden_fieldを用意 html2canvas.jsをapp/assets/javascriptsディレクトリ配下に保存。 html上に置くscriptコードを改修 Base64デコード 参照 python-twitter で BASE64 形式の画像をツイートする base64でエンコードされた画像をActive Storageで保存する あとはpostscontrollerで、paramsから受け取ったBase64データを上のparsebase64(img)で変換し、保存すれば完了。 AWS S3 refferrence AWS S3 AWS上での登録、設定、バケット作成等は割愛。 Tweet Share Button og:imageに画像添付 なお、headのmeta情報セットには、gem 'meta-tags'を使用 serviceurl()とurlfor() 参照 service_url() from api.rubyonrails url_for() from rails guide 基本的にはどちらも、ActiveStorageに保存したデータのUrlを取得するメソッドの様だ。 どちらもセキュリティの為にリンクの有効期限が短いみたいだが、違いが分からなかった。今回はTweetボタン押下し、Tweetした際にog:imageとして表示されればいい。 Twitterログイン TwitterDeveloperAccountが必要。割愛。 参照 gem 'omniauth-twitter'　github deviseの使い方（rails5版） ominiauth脆弱性に対するクックパドによるパッチ] Twitterのニックネームが取得できるようになったので、元からあるUserのnameテーブルは削除した。 改修(加筆 メディアクエリ 想定ユーザは殆どスマホなのに、PCで作成し、CSSをPCの見た目でやってた。折角SCSSでやってるので、変数を利用した。 最後に gist等がコードスクショをog:imageで表示してくれたら全て済むのでは"
   },
   {
     "id": "20190829-fe-exam",
-    "title": "Qiita: H30 秋基本情報技術者試験 問3システム",
+    "title": "H30秋基本情報技術者試験 問3 を RubyonRails で作ってみる",
     "create": "2019-08-29",
     "update": "",
     "tags": [
       "rails",
       "ruby"
-    ]
+    ],
+    "content": " from Qiita: H30基本情報技術者試験問題3 DB問題 H30秋基本情報技術者試験問3のコンサートに則したサイトを実際に作っていた。 Refferrence コンサート問題のGithubレポジトリ 21日目：H30秋基本情報技術者試験の問3データベース プログラミングを2か月間、セブで学んできた Transaction for Payment controller コンサートチケットの支払い時の、ポイント使用・追加あたりの、Paymentコントローラ内に実装。 ※※※なお、Userテーブルに所持金カラムを追加してないので Transaction flow ユーザはポイントUser.pointを持っている。 購入時にUser.pointの一部／全部を支払額Sale.amountに充てることができる。 使用ポイントSale.used_pointが更新される 支払額から使用したUser.pointを引いたものが、決済額Payment.amountとなる。 決済額Payment.amountのうち、既定の割合が付与ポイントPayment.added_pointとなる。 ユーザのポイント残高は、(支払前の）User.point - Sale.usedpoint + Payment.addedpointで更新される。 支払い完了の条件 User.point、Sale.usedpoint、Payment.addedpointは全て0以上(>=0) モデル側のバリデーションvalidates :point, numericality: { greaterthanorequalto: 0 }利用 User.point >= Sale.used_point Falseとなる操作は悪意しかないので、トランザクション外のif文で Implement User.point、Sale.usedpoint、Payment.addedpointは全て0以上(>=0) まあ、駄目な部分もあると思う。が、まあ、"
   },
   {
     "id": "20190818-use-jekyll",
-    "title": "Qiita: GithubPages で jekyll を使ってみよう。",
+    "title": "GithubPages で Jekyll を使ってみよう",
     "create": "2019-08-18",
     "update": "2019-12-01",
     "tags": [
       "githubpages",
       "jekyll",
       "ruby"
-    ]
+    ],
+    "content": " from Qiita: GithubPagesでjekyllを使ってみようより GithubPagesJekyllを利用し、静的ページを作成した。 major update history 20190825：GithubPages with jekyll 作成 目的：自分の情報等を纏めるサイト作成の為 remote theme：fongandrew / hydeout 20191206：デザイン等変更 目的：アクセシビリティ改善、デバイスによる見た目差を小さく 作り替えた結果 デザインを大幅修正した件 Environment Windows vm OS: Linux Ubuntu Bento/Bionic Ruby ruby 2.5.1p57 Refferrence GithubPages：https://pages.github.com/ Jekyll：https://jekyllrb.com/ Jekyll Themes :hydeout 幣GithubPagesリポジトリ：https://github.com/oriverk/oriverk.github.io デフォルトのGithubPages作成 jekyllの準備、作成 gitリモートレポジトリ作成、git push リポジトリ名を username.github.ioにすること Github Pages HPより引用 If the first part of the repository doesn’t exactly match your username, it won’t work, so make sure to get it right. デフォルト状態完成 上記に従ったデフォルト状態では、テーマminimaが適用され、こんなページになる。 jekyllテーマを変更 参照：jekyll-theme-hydeout 4.0.2 テーマをhydeoutに変更してみる このテーマはgem版があるので、それを利用することにした。他のテーマは知らない。 上記のjekyll new username.github.ipで作成したディレクトリに手を加えていく。 まず、Gemfileを編集。 デフォルトでは`gem \"github-pages\"がコメントアウトされてるので、アンコメント。 また、今回使用するテーマhydeoutのgemを書き加える。 次に、_config.ymlを編集。 今回はリモートテーマを使用するので、themeをremote_themeに変更する。 更に、プラグインも追加しておく。 これで、テーマがhydeoutに変更されているはず。 エラー 参照：GitHub Pages ビルドのトラブルシューティング Layoutが見つからないエラー 記事投稿中にターミナルログを消してしまって、エラー文を覚えていないが、 該当の.mdファイル中のLayoutを、Layout:pageに変えたら、エラーが解消された。 Invalid theme folder: _sass 参照 Invalid theme folder: sass when using Github Pages with remotetheme #7630 Page build failed: Invalid Sass or SCSS 参照先での議論を見る限り、問題ない・・・・？ カスタマイズ ※使用テーマやテーマの追加方法によって、ディレクトリ構造が違うので、他テーマは知らない ディレクトリに_includeフォルダを作成。 headタグ内の情報を書き込む _includeフォルダ内に、head.htmlファイルを作成する ページネーション機能 jekyll関連gemにページネーションがあり、プラグインなので_config.ymlに書き加える。 Googleアナリティクス 参照: Google Analytics for Jekyll まず、GoogleアナリティクスをトラッキングIDを取得する。 google-analytics.htmlを作成 _include/head.htmlに書き加える。 _config.ymlにトラッキングIDを書き加える トラッキングIDは、UA-　から始まるID。 githubに上げて完了。 Twitterカード追加 参照 サルワカ：【2019年版】Twitterカードとは？使い方と設定方法まとめ Supporting Twitter Cards with Jekyll Twitter Cards on Jekyll _include/twitter-card.htmlを作成 _include/head.html内に書き加える gitにpushし、Twitter Card Validator で確認 sidebar-nav-link こんな感じで、サイドバーにnav-link付け足したい。 デザインを大幅修正した件 改修方針 モバイルファースト ページ数を少なく。 サイズ指定にpxを極力使わず、remや％を使う 実作業 Gemfileと_config.ymlから不要なものを削除 最低限必要なディレクトリ構造を考える 自分でデザインを構成するには、jekyllとliquidで出来る事を理解する必要があった。 _include配下のファイルは{% include footer.html %}の形で変数展開の様に扱う。 但し、画像はこの方法では利用できない。svgはok。 _site中身はbundle exec jekyll serveで自動で生成されるので中身は触らない 自分の結果 スクロール関連の変更 "
   },
   {
     "id": "20190513-learned-programming",
-    "title": "Qiita: プログラミングを2か月間、日本人エンジニアの下で学んできた",
+    "title": "プログラミングを2か月間、日本人エンジニアの下で学んできた",
     "create": "2019-05-13",
     "update": "2019-12-12",
     "tags": [
       "ruby"
-    ]
+    ],
+    "content": " from Qiita: プログラミングを2か月間、日本人エンジニアの下でマンツーマンで学んできた Webエンジニアに転職するために、独りで勉強を進めていましたが、 独学のデメリットを埋めるべく、Value Space of Cebuに参加してきました。 尚、この投稿は、参加経緯や2か月間の感想等になります。 私について 2017年3月　農学学士　卒業 2018年8月　新卒入社企業　退職 2018年12月~2019年9月　オーストラリアでのワーキングホリデー 2019年3~4月　セブでのプログラミング勉強 専門は農学部植物系学科ですが、農業生産システム工学研究室に所属し、卒論は自動除草ロボット用の『雑草中の作物列検出する方法』の研究でした。使用言語はC++、ライブラリとしてOpenCVを使用。 参加講座について プログラミングについて調べている中で『プログラミング道場』というブログを知り、そのブログ主のジョージさんさんが2か月間の講師でした。3月からセブでプログラミング講座をするというtweetを見、参加しました。 参加目的 独学によるデメリットを少しでも埋める（独学だと、どうしても知識にムラや抜けが出てしまう。 Rubyを学ぶ ProgateレベルのHTML、Git、ComandLineから、さらに理解を深める Webエンジニアに会ったことがないので。 場所 フィリピンのセブ島のすぐ下のマクタン島 講座開始前にしたこと。 仮想環境（CUI）の構築、RubyonRailsの環境準備 Ruby、Html、GitをProgateで一通りやること。 講座内容 毎日したことをアウトプットとして、Qiitaに投稿していました。 1か月目 時間割に沿って行われました。 Ruby認定試験を用いた勉強 参照：Ruby認定試験のアウトプット 以下は例(以下省略) Scaffoldなしの掲示板 BootstrapやDBを組み合わせ、生徒データ情報一覧になりました。 一部、Bootstrap等を適用してないページがあるが、気にしない。 MySQL 参照 6日目：MySQL操作 12日目：PostgreSQLを用いたログイン機能付きサイト 15日目：アプリをネットに公開したく、Herokuを使ってみた。 RailsTutorial RailsTutorialの、テストの最初段以降を除いて、時折技術サポート受けながら、最初から最終章までしました。1か月目後半頃だったので、『既にやったぞ』という箇所が多かったです。 2か月目 主に基本情報技術者試験のセキュリティとDBの設問に費やしました。 参照 H30秋午後設問3 アウトプット 18日目：トランザクションって 21日目：H30秋基本情報技術者試験の問3データベース JS等、追加で勉強しなければと感じています。 2か月を終えて 私が良かったなと思える点 触ったことのなかったRubyを、上のサイト程度までには触れるようになった。 SQLやGit、ComandLineのProgateレベルを脱することができた。 この2か月間で、ああしとけば、今思う事。 遠慮なく質問すればよかった。マンツーマンで、精神的に萎縮してしまった感じもする。 最終的には自己解決が必要なのですが、勉強する場なのだから、遠慮せずに、と。 私の今後 ワーホリビザは11月末期限ですが、それを待たずにWebエンジニアとして転職したいと考えています。 農学部出身、他業種出身からの未経験採用となので、厳しいと思いますが。 今回関連で、すること コンサートチケット申込購入サイトを完成させ、Heroku等にあげる。 ツイッター登録やトランザクション実装、Topページ追加、デザイン修正、メール、バッチ処理の追加等々。。。 RubyとGit等の理解をさらに深めるべく、勉強の継続。 オリジナルのWebアプリを作成するなりして。 転職に向け、すること ポートフォリオ作成 他言語や、AWSやDocker、コンピュータサイエンス等の勉強 転職サイトなど（そういや転職について何も知らない） リンク物置 講師: ＠monkeydgeorge Value Space of Cebu プログラミング道場 私: https://oriverk.dev Github Acount 注）『転職』といった形で恩を返す？事が出来ないので、今回の投稿となりました。 "
   },
   {
     "id": "20190403-what-transaction",
-    "title": "Qiita: 18日目: トランザクションって",
+    "title": "Day 18: What is Transaction like?",
     "create": "2019-04-03",
     "update": "2019-12-04",
     "tags": [
       "mysql",
       "ruby"
-    ]
+    ],
+    "content": " from Qiita: トランザクションって 参照: 「トランザクション」とは何か？を超わかりやすく語ってみた！ What is Transaction like? コンピュータ内で実行される、分けることのできない一連の情報処理の一単位。 トランザクション処理における永続性記憶資源の管理では、複数のデータ項目の更新操作列をすべて実行するか、まったく実行しないように制御する必要がある。 ACID 標準 また、トランザクション処理システムは4つの属性の機能をサポートしており、頭文字からACID標準という。 A : Atomic　不可分性 C : Consistency　一貫性 I : Isolation　独立性 D : Durability　永続性 実際に動かしてみる DB内で操作 参照: 13.3.1 START TRANSACTION、COMMIT、および ROLLBACK 構文　-MySQLリファレンス MySQLはデフォルトで、自動コミットモードが有効になった状態で動作し、実行するとすぐに、ディスクに格納されて永続的になります。この変更はロールバックできない。 自動コミットモードを暗黙的に無効にするには、START TRANSACTIONをし、その後、COMMITまたはROLLBACK で終了するまで、自動コミットは無効のままになります。そのあと、自動コミットモードはその以前の状態に戻ります。 実作業 今回はMySQLと、以前に作成した大学生徒データAppのデータを再利用する COMMITするパターン ROLLBACKするパターン try on RubyonRails 新しく、アプリを作成する。 今回はDBの操作だけなので、rails g modelコマンドのみ使用 テーブルはUserとReviewの２つ。 DB内で確認 userとreviewとの、関連付け reviewモデルにvalidation追加 approvedカラムを空欄不可にしておく。 コンソールで、トランザクション処理の挙動を確認 トランザクション処理に成功し、commitされるパターン userテーブルのid1のtaro-1が、更新されてる トランザクション処理に失敗し、rollbackされるパターン トランザクション処理に失敗し、rollbackしたため、DBに変化はない。 modelファイルを編集して実装 "
   },
   {
-    "id": "20190329-add-admin-with-devise",
-    "title": "Qiita: 16日目：devise で管理者を追加する",
+    "id": "20190329-add-devise-admin",
+    "title": "Day 16：devise で管理者を追加する",
     "create": "2019-03-29",
     "update": "2019-12-04",
     "tags": [
+      "devise",
       "rails",
       "ruby"
-    ]
+    ],
+    "content": " from Qiita: deviseだけで管理者を追加したい Environment Ubuntu 18.04 Ruby：2.51 Rails: 5.2.2 gem: 'devise'（ログイン等の機能用), 'kaminari'( pagination ) DB: PostgreSQL 実作業 テーブルにadminカラム追加 boolean型 真理値の「真 = true」と「偽 = false」という2値をとるデータ型のこと。 Rubyでは偽はfalseとnilで、それ以外がtrueになる。 言語やDBによっては、1と0だったり、違うので注意。 マイグレーションファイルを編集 boolean型と定義する際は、デフォルト値を設定しないといけない。 adminのデフォルト値に引数falseを渡し、デフォルトではadmin権限がない、と指定する。 rails db:migrate admin権限を確認付与 admin属性が追加され、またadmin?メソッドを使用できるようになっている。 adminのみが全データを見れるようにする admin以外は、自分のデータしか見れないようにしたい。 "
   },
   {
     "id": "20190328-use-heroku",
-    "title": "Qiita: 15日目： Heroku でアプリを公開しよう",
+    "title": "Day 15： Heroku でアプリを公開しよう",
     "create": "2019-03-28",
     "update": "2019-12-04",
     "tags": [
       "heroku",
       "rails",
       "ruby"
-    ]
+    ],
+    "content": " from Qiita: アプリをネットに公開したく、Herokuを使ってみた。 What is PaaS > PaaS - 富士通 >> アプリケーションを開発・実行するために必要なハードウェア、OSなどの環境をネットワーク経由で利用する形態 。開発・実行環境が提供されるため、企業ごとに独自のサービスを構築できる。 Environment 仮想環境: Ubuntu 18.04 Ruby：2.51 Rails: 5.2.2 devise: for authentication kaminari: for pagination DB: PostgreSQL Content Heroku setup Refferrence Getting Started on Heroku with Ruby deploy app to heroku アプリのソースコードを受け取るHerokuを準備する other heroku command "
   },
   {
     "id": "20190324-app-with-devise",
-    "title": "Qiita: 13日目(1)： Devise によるログイン機能付きサイトの作成",
+    "title": "Day 13： Devise によるログイン機能付きサイトの作成",
     "create": "2019-03-24",
     "update": "2019-12-04",
     "tags": [
+      "devise",
       "rails",
       "ruby"
-    ]
+    ],
+    "content": " from Qiita: 13日目(1)：Deviseによるログイン機能付きサイトの作成 12日目：12日目：PostgreSQLを用いたログイン機能付きサイトの続き Environment 仮想環境OS: Ubuntu 18.04 Ruby：2.51 Rails: 5.2.2 devise) DB: PostgreSQL flow controllersとviewsを以前の大学データの方から流用 migrationファイル作成 rooting変更 Contents make migration file reflect change to DB modify routing modify views modify controller "
   },
   {
     "id": "20190320-what-git",
-    "title": "Qiita: 10～12日目： Git",
+    "title": "Day 10 ~ 12：first time to use Git",
     "create": "2019-03-20",
     "update": "",
     "tags": [
       "git"
-    ]
+    ],
+    "content": " from Qiita: 10日目(2)：Git 11日目(2)と12日目：Git 10日目 First what is Git プログラムのソースコードなどの変更履歴を記録・追跡するための分散型バージョン管理システム Git command flow prepare to use Git 共同開発の流れ コード変更 共有準備 共有 コマンド 共有する準備 コミット 選択したファイルを記録する 共有 リモートを登録 リモートとは、Git共有ファイルの置き場所 また、originはリモート名のこと push: リモートにファイルアップロード pull: リモート上のファイルをDL その他コマンド 11日目 Github上でリポジトリ作成 ローカルリポジトリ作成 gitリモートの確認 git log 自分でpushしてみる 確かに反映されている interactive mode 対話モードの呼び出し 2つのファイルをトラッキングし、tes2.txtのステージを取り消し、状態を確認 更新分をステージ ファイルを戻す ブランチの確認、作成 現在のブランチを確認 新規のブランチ作成 ファイル編集し、other-branにpush pull request other-branブランチからmasterブランチにプルリクエスト リモートの変更をローカルに反映 認証情報の追加 push時に毎回パスワ等聞かれるので、作成する sshのkeyを作成 既に授業で作成したので、実行はパス リポジトリのSetting内のDeployKeysに上のcatの結果をコピペ これで、pushを、パスワ等を聞かれずに実行できる。 12日目 ブランチの確認 git fetch リモートブランチの最新の履歴だけを取得 これをした状態でgit mergeをすると、git pullと同じ履歴になる git pull = git fetch + git pull "
   },
   {
     "id": "20190320-input-data2db",
-    "title": "Qiita: 10日目(1)：マスターデータ（ DB へ情報入力、ページに出力",
+    "title": "Day 10: DB へ情報入力、ページに出力",
     "create": "2019-03-20",
     "update": "2019-12-04",
     "tags": [
       "mysql",
       "rails",
       "ruby"
-    ]
+    ],
+    "content": " from Qiita: マスターデータ（DBへ情報入力、ページに出力 Environment 仮想環境OS: Ubuntu 18.04 Ruby：2.51 Rails:5.2.2 テーブル同士の関連図 流れ 中間テーブルにデータ入力 性別の0 or 1の表記を、male or femaleに変更 Studentのshowページに、生徒ごとの試験結果等、データを出力 実段階 生徒データと関連付けするときは データ入力 id1からid100までの生徒に、0から4個の部活(選択肢は13部)に入ってもらう。 生徒の試験結果情報 id100までの生徒に、9科目の試験を受けてもらう。 Studentsのindexページの表記を変更 出力を考える 学生ごとのshowページで表示したいもの 生徒のデータ(name, mail, gender, age, opinion) 生徒の教科ごとの試験結果点数 性と全体の試験結果の平均点、最大点、最小点 MySQL上の出力 ページ上の出力 students_controllerのshowアクション編集 参照: Active Record クエリインターフェイス showページのviewを編集 "
   },
   {
     "id": "20190318-read-ruby-reference",
-    "title": "Qiita: Ruby リファレンスを読んだのでメモ",
+    "title": "Ruby リファレンスを読んだのでメモ",
     "create": "2019-03-18",
     "update": "2019-03-18",
     "tags": [
       "ruby"
-    ]
+    ],
+    "content": " from Qiita: Rubyリファレンスを読んでの、メモ 参照 オブジェクト指向スクリプト言語 Ruby リファレンスマニュアル 正規表現 組み込みライブラリ ヒアドキュメント (行指向文字列リテラル) 手続きオブジェクトの挙動の詳細 Ruby用語集 字句構造 予約語 エスケープ方法はあるが、使わない方が身のため。 変数と定数 クラス変数@@ @@で始まる変数はクラス変数 親クラスに、子クラスで既に定義されている同名のクラス変数を追加したら、 子クラスのクラス変数が上書きされる。 定数 アルファベット大文字で始まる 定義されている定数に代入を行おうとすると、警告を出すが、代入される クラス定義の外(トッ プレベル)で定義された定数は Object に所属する あるクラスまたはモジュールで定義された定数を外部から参照する ためには::演算子を用いる。 Objectクラスで定義の定数(トップレベルの定数と言う)を確実に参照するには左辺無し。 リテラル バックスラッシュ記法 文字列中でバックスラッシュの後に記述する文字によって、意味を持たせる事ができます。 \\t　タブ(0x09) \\v　垂直タブ(0x0b) \\n　改行(0x0a) \\e　エスケープ (0x1b) \\s　空白 (0x20) \\nnn　8 進数表記 (n は 0-7) \\xnn　16 進数表記 (n は 0-9,a-f) %記法 バックスラッシュの数をコードから減らす効果 配列式では、文字列の配列やシンボルの配列を簡単に表現できる %!STRING! または　%Q!STRING!: ダブルクォート文字列 %q!STRING! : シングルクォート文字列 %w!STRING! : 要素が文字列の配列(空白区切り) %W!STRING! : 要素が文字列の配列(空白区切り)。式展開、バックスラッシュ記法が有効 %s!STRING! : シンボル。式展開、バックスラッシュ記法は無効 %i!STRING! : 要素がシンボルの配列(空白区切り) %I!STRING! : 要素がシンボルの配列(空白区切り)。式展開、バックスラッシュ記法が有効 演算子 優先順位 && > || > and or 再定義できない演算子 多重代入 &&と|| && 左辺を評価し、結果が偽なら、その値(つまり nil か false) を返す。左辺の評価結果が真なら、右辺を評価しその結果を返す || 左辺を評価し、結果が真なら、その値を返す。左辺の評価結果が偽なら、右辺を評価し その評価結果を返す。 条件演算子 制御構造 unless unlessはifと反対で、条件式が偽の時にthen以下の式を評価。elsifを指定できない。 制御構造(ifなど)の修飾子 式 if 式の様に、一行で書くやつ。 右辺の条件が真/偽の時にに、左辺の式を評価してその結果を返す。 retry rescue 節で begin式からもう一度実行するのに使用。 処理が成功するまで処理を繰り返すようなループを作れる。 クラス/メソッドの定義 呼び出し制限 public : 制限なし private : 関数形式でしか呼び出せない protected : ソッドを持つオブジェクトが selfであるコンテキストでのみ呼び出し可能。 nitializeは定義する場所に関係なく常に private alias メソッドあるいはグローバル変数に別名をつけます。 メソッド名には識別子そのものかリテラル/シンボル を指定 undef メソッド名 メソッドの定義を取り消す defined? 式 式が定義されていなければ、偽を返す。定義されていれば式の種別を表す文字列を返す"
   },
   {
     "id": "20190317-manipulate-student-data",
-    "title": "Qiita: 9, 10, 11, 14日目：大学生データ操作 App",
+    "title": "Day 9 ~ 14：大学生データ操作 App",
     "create": "2019-03-17",
     "update": "2019-12-04",
     "tags": [
       "mysql",
       "rails",
       "ruby"
-    ]
+    ],
+    "content": " from Qiita 9日目：大学生データ（マスターデータ 10日目(1)：マスターデータ（DBへ情報入力、ページに出力 11日目(1)、12日目：マスターデータ。ページUIの編集、ページャ導入 14日目：Scaffoldで作成したサイトにgem devise等を組み合わせていく 9日目 rails newで動かない不具合 stop springで解消 ruby側で整数型をintと書き間違えることによるエラー rubyの整数型はinteger mysqlはint (C++経験上、intの方が馴染み深い rails db:migrateコマでのエラー 中間テーブルを先に作ってしまった為。 中間テーブルは主テーブルのid等参照するので、作成は一番後。 最適なデータ型を選択できなかった 不具合改善の中で、Vagrantfileで、使用できるRAMのサイズを8GBに変更 Environment 仮想環境OS: Ubuntu 18.04 Ruby：2.51 Rails:5.2.2 作成データ テーブル student (id, name,email, gender, age, opinion, updatedat, createdat) ExamResult (id, student, subject, name, score, updatedat, createdat) 中間テーブル Subject (id, name, maxscore, updatedat, created_at) ※教科の意 ClubStudent (id, student, club, name, updatedat, createdat) 中間テーブル Club (id, name, updatedat, createdat) テーブル同士の関連性 準備 rails new bundle install rails db:create scaffold(本段階 scaffoldではcontrollerとmodelが同時に作成される) rubyの整数型はinteger 中間テーブルは一番最後に作成 中間テーブルのうち、主キーを参照するcolumnをreferenceで指定 => 自動で、bigintに設定される rails g scaffold rails db:migrate テーブル同士の関連性を定義 参照 Active Record Associations Active Record の関連付け マスターデータ作成 (0..20).map{('あ'..'わ').to_a[rand(26)]}.join 範囲オブジェクト 文字も使える map 要素の数だけ繰り返しブロックを実行し、ブロックの戻り値を集めた配列を作成して返す。 collectメソッドの別名です。 to_a(Array) Arrayオブジェクトを返す rand(max) max が 0 の場合は 0.0 以上 1.0 未満の実数を、正の整数の場合は 0 以上 max 未満の整数を返す join(sep =) joinメソッドは、配列の各要素を文字列に変換し、引数sepを区切り文字として結合した文字列を返します。 引数を省略すると区切り文字なしで要素を結合した文字列になる 10日目 今回の流れ 中間テーブルにデータ入力 性別の0 or 1の表記を、male or femaleに変更 Studentのshowページに、生徒ごとの試験結果等、データを出力 実段階 Studentsのshowページの、前回までの状態 生徒データと関連付けするときは データ入力 生徒の部活情報 id1からid100までの生徒に、0から4個の部活(選択肢は13部)に入ってもらう。 生徒の試験結果情報 id100までの生徒に、9科目の試験を受けてもらう。 なお、点数は0点から各教科ごとに設定の最大点までのランダム Studentsのindexページの表記を変更 出力を考える 学生ごとのshowページで表示したいもの 生徒のデータ(name, mail, gender, age, opinion) 生徒の教科ごとの試験結果点数 性と全体の試験結果の平均点、最大点、最小点 MySQL上の出力 ページ上の出力 students_controllerのshowアクション編集 参照 Active Record クエリインターフェイス showページのviewを編集 11日目 今回の流れ ExamResultsのindexページのデータ出力を編集 ExamRusultの新規作成ページのUIを変更 gem kaminariでページャー追加(授業内では時間足らず） 実段階 modify index page ※app/views/exam_results/show.html.erbも同様にやる newページにセレクトボックス 参照: Action View Form Helpers 編集後 ページャの導入(kaminari) インデックス表示データが、studentページは100行、ExamResultページは900行と、見づらい. なので、studentとExamResultのindexページを、数ページに区切って表示させたい。 今回はgemのkaminariを用いる。 参照：kaminari -github kaminariのインストール bundle install studentのindexページから変更 indexアクションを編集 viewを編集 ExamResultのindexページ編集 app/controllers/examresultcontroller.rbのindexアクションと app/view/exam_results/index.html.erbを同様に編集 ページャの見た目を変える ページャの設定を変える Bootstrap対応のページャテーマもある. amatsuda/kaminari_themes 12日目 kaminariの別のファイル設定 modelsにpaginates_per 30と記述 controllerのindexアクションの末尾にある、per()を削除 (ビューファイルは同じ) exam_resultも編集は同じ。 studentのindexページに、exam_resultのnewへのリンク作成 リンクを作成 studentのindexから'New Exam Result'リンクを押すと、exam_resultのnewページに飛び、 フォームのセレクトボタンのうち、生徒が自動で選択されるようになった。 14日目 今週からは、scaffoldで作成した大学データと、gemのdevise、Bootstrap等を組み合わせる。 What I did Railsの命名規則(単数形と複数形) DBのカラム定義を後から変更 render partial: 部分テンプレの参照 validation UNSIGNEDという型が存在しないPostgreSQL Railsの命名規則(単数形と複数形) rails gコマンドで、controller名やmodel名を指定する際に、混乱した。 model名は単数形で、頭文字を大文字にする scaffoldの場合、modelが基準 modelは設計書であり、（テーブル1つに付き）1つなため controller名は複数形で、頭文字を大文字にする。 1つのcontrollerに複数のactionが含まれるため DBのカラム定義を後から変更 rails g scaffoldコマンド時に、ClubStudentの外部キーの定義をreferecesとミスタイプしていた。 なお、ALTTER TABLEコマンドを使って、あとから修正する方法は DB内のデータを書き換えるだけで、アプリ自体のファイル等は編集されない。 つまり、原因の根本的な部分を修正できないので、駄目 render partial: 部分テンプレ 参照: render レンダリング(render) - railsドキュメント 全てのページのヘッダー(上部）に、ログアウトや他のstudentやclubs等のリンクを乗せる 共通して表示させるので、/app/views/layouts/application.html.erb　を編集する。 なお、部分テンプレファイル名は『_』アンダーバー始まり 表示させたいリンクを書きこむ。 validation 参照: Active Record Validations バリデーションは有効なデータだけをDBに保存するのを確実にするための最善策。 validate条件 空白や文字列長、『サークル』という語には、validatesが発動するが、『テニスサークル』だと発動しないので、正規表現等を使う必要がある。 type \"unsigned\" does not exist (※Postgresql) validatesの実装していく最中に、エラーに気づいた studentのeditページで更新すると、 と、エラーを吐き、因みに、ブラウザの戻るボタンで戻ると、更新されている。 また、エラー原因であると思わる、StudentController#showは 因みに、このcontrollerは、以前の大学データのcontrollerからコピーしてきたものだ。 つまり、MySQLで動くアプリのcontroller。 unsigned　(MySQL) MySQLにおいては正と負の整数を扱うことができる。 unsignedを指定すると、正の数しか格納できなくなり、代わりに範囲が2倍になる。 unsignedにした値が負になると、エラーを起こす UNSIGNEDは、マイナス値が入らないだけでなく、マイナスになる計算もできない。 CASTで一時的に型を変える事で回避は可能。 Postgresqlにはunsined型は存在しない(最重要) 対応策 まだ、試験結果のデータを入れてないので、功を奏すか分からないけれども unsignedをint等の型に置き換える 今回は試験点数を扱っていて、intで事足りると思われる。 ただ、MySQLでint unsignedだと、範囲が正の方向に2倍になっている。 扱う数によっては、intより1つ上ののbigintに変える必要がある CAST as unsignedの部分を消す MySQLでCAST as unsingedは、一時的に型を指定している 前回の大学データに倣って、今回はcast as intに変更した 正常に、studentデータのedit、updateが機能した。 データ入力にはpassword情報が必要 deviseの関係上、パスワード情報入りのデータでないと、コンソールから入力できない。 passwordカラムの追加 deviseのモデル等がある、Studentテーブルに、パスワードカラムを追加した。 db/migrate下にファイルが生成される これで、パスワード情報入りの生徒データをDBに入力できる。 input data 未だデータの無い、生徒データと試験結果データをコンソールで入力した。 "
   },
   {
     "id": "20190313-manipulate-mysql",
-    "title": "Qiita: 6,7日目： MySQL 操作",
+    "title": "Day 6, 7： MySQL 操作",
     "create": "2019-03-13",
     "update": "2019-12-04",
     "tags": [
       "mysql"
-    ]
+    ],
+    "content": " from Qiita: 6日目：MySQL操作 7日目(1)：MySQLの操作 今日の授業は、Railsを使わず、MySQLのみでデータ入力、操作する内容でした。 テーブル同士の関係Association belong_to : 1対1の関係 (例)　examresult(試験点数) belongto student とある教科の試験の点数は、特定の1人の生徒に帰属 has many : 1対多の関係 (例)　student has many exam_result 生徒は複数の試験を受けるので。 many to many :多対多の関係 (例) 学生と部活の関係。学生は複数の部活に所属し、1つの部活には複数の学生が所属。 当然、まったく所属していない学生も居る可能性がある 多対多テーブルの問題 DB上では1つのカラムに複数のデータは入れることが出来ない。 上の表では、同義のカラム（部活１、部活2．。。）を増やしているが、 データベースでは、これを2次元で表現することができない 解決法：中間テーブル(/関連テーブル)、 まず、生徒と部活にIDを持たせる 実際にDBで触るときは、生徒テーブルと中間テーブルをJOINし、さらに中間テーブルと部活テーブルをJOINする 使うデータ データベース: univ 生徒テーブル: students name, grade, email, age, gender, others, createdat, updatedat 試験結果テーブル: exam_results name, studentid, score, maxscore, createdat, updatedat 本題：MySQL操作 CREATE DATABASE データベース作成 バッククォートとシングルクォート バッククォート：テーブル名に使う シングルクォート：データの文字列に使う 但し、バッククォートは必須ではない バッククォートよって、テーブル名やカラム名で使用できないように指定されている予約語（Reserved Words）を使えるようにできる。が、使わない方が良い。 参照：phpMyAdminのSQLに付加される「'」に似た記号「`」は何？ PRIMARY KEY、AUTO_INCREMENT PRIMARY KEY 主キーの意。なお、外部キーはforeign key AUTO_INCREMENT 値が指定しないと、自動的にシーケンス番号を割り当てられる。整数型で、1ずつ増加し連番。 MySQLのデータ型 INT : 整数型（他にも、TINYINT < SMALLINT < MEDIUMINT < INT < BIGINT CHAR : 文字型（似たようなのには、VARCHARがある。） TIMESTAMP : 日付時刻型（'YYYY-MM-DD HH:MM:SS'） 入力するデータ量に従って、最適なデータ型を選んだ方が、色々と良いようだ。 参照：MySQL 5.6 リファレンスマニュアル / データ型 DESC :テーブル情報の確認(Describeの略 同様に、exam_resultsテーブルも作成 ALTER TABLE :カラム変更 INSERT INTO :データ追加 UPDATE SET WHERE:テーブル情報の更新 今の時点では、max_scoreが100点だが、200点満点に変更してみる JOIN :複数テーブル結合 基本構文 INNER JOIN と　OUTER JOIN INNER JOIN : 内部結合の意。 主キー＝外部キーになるところだけ表示 結合できなかったレコードは表示しない outer join :外部結合 結合できなかったレコードは、NULLで表示 LEFT JOIN :主キー側のテーブルに合わせて表示 RIGHT JOIN :外部キー側のテーブルに合わせて表示 INNER JOINで結合してみる students生徒テーブルとexam_results試験結果の、主キーと外部キーを使って結合 データ削除 テーブル情報の削除 テーブルの削除 データベースの削除 7日目 データベースとテーブル作成、データ追加 データベース作成 テーブル作成 本題：MySQL操作 scoreの最高、最小、平均、(score / max_score)の最大値 GROUP BY 科目毎の最大値、最小値、平均値を求め、名前を最大、最小、平均に変更 INNER JOIN studentsとexam_resultsを結合し、生徒毎の、最高得点、最少得点、平均得点を出力 CASE WHEN 条件分岐 NULLがあったら、出力上の表記を変える 部活ごとに、男性と女性それぞれ何人所属しているか、出力せよ "
   },
   {
     "id": "20190311-what-bootstrap",
-    "title": "Qiita: 5日目： Bootstrap を初めて触ってみた",
+    "title": "Day 5： first time to use Bootstrap",
     "create": "2019-03-11",
     "update": "2019-12-04",
     "tags": [
       "bootstrap",
       "rails",
       "ruby"
-    ]
+    ],
+    "content": " from Qiita：Bootstrapを初めて触ってみた Environment 仮想環境OS: Ubuntu 18.04 ruby 2.5.1p57 Rails 5.2.2 MySQL What is Bootstrap > Bootstrapホームページトップより >>Build responsive, mobile-first projects on the web with the world’s most popular front-end component library.Bootstrap is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with our Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery. preparation till rails s Scaffoldでテーブル作成 rails db:migrate consoleでデータ追加 Bootstrapで見栄え修正 ButostrapのCSSの読み込み 参照: Bootstrap introduction リンクが青くなった。 indexページのNewUserボタンの変更 同様にshow、edit、destroyボタンも変更 tableの見栄えも変更 参照 bootstrap table jsファイルの挿入部分を考える 授業の中で言われたこと headかbodyどうかが、ユーザビリティに影響を与える head内：jsファイルが重い場合は、jsファイルが読み込まれるまで、ページが表示されない。 body内：先にページが表示されて、その後にjsファイルが読み込まれます。 HTML解析前に実行されるべきjsファイルなどはheadタグ内に記述するべし ページ読み込み時間は、ユーザの直帰率等に影響を及ぼす 参照: 一次データ:Does Page Load Time Really Affect Bounce Rate? pingdom 上の一次データによると、ページ読み込み時間3秒までは直帰率は10%弱だが、5秒で38%、7秒で50%を超える サイトページをいかに軽し、見せたいものの読み込み速度を上げることは重要"
   },
   {
     "id": "20190311-httpmethod-crud-sql",
-    "title": "Qiita: 3日目(2)：HTTP メソッドと CRUD と SQL",
+    "title": "Day 3：HTTP method, CRUD and SQL",
     "create": "2019-03-11",
     "update": "",
     "tags": [
@@ -239,36 +304,40 @@
       "http",
       "restful",
       "sql"
-    ]
+    ],
+    "content": " from Qiita: HTTPメソッドとCRUDとSQL flow to display web page ブラウザでURLにアクセスして、DNSサーバーにIPを問い合わせ、DNSサーバーがIPを返す htmlなどの情報をやり取りするためのProtocol Cliantがサーバー上のquery(何を)とHttpメソッド(行いたい処理）をサーバーにHttpリクエストする。 サーバーがレスポンス HTTP Hypertext Transfer Protocolの略 HTMLとXMLによるHypertextの送信を主に、その他様々なデータのやり取りができる。 リクエスト-レスポンス型のプロトコルで、 webブラウザ「あれが欲しい。これをしてくれ」 (※あれ＝query、これをして＝http method) webサーバ「OK、はいよ」 HTTPメソッドの内訳とSQLの関係、CRUDとRESTful CRUD CREATE, READ, UPDATE, DELETEの4つの単語のイニシャルを並べたもの 上４つは、殆ど全てのコンピュータソフトが持つ永続性の基本機能 （情報の参照。検索。更新。削除） ここでいう永続性とは専門的な意味合いなので、wikiだけでも読むと面白い REST 分散ハイパーメディアシステムのためのソフトウェアアーキテクチャのスタイルのひとつ。 HTTP規格の主要著者のロイ・フィールディングが2000年に初めて提唱 参照: Architectural Styles and the Design of Network-based Software Architectures wikipedia「Representational State Transfer」より フィールディングのRESTアーキテクチャスタイルの原則に合わせたWebサービスシステム。 遠隔手続き呼出し(RPC)スタイルに合わせた簡易なXML + HTTPインタフェースを採用したシステム"
   },
   {
     "id": "20190316-ruby-exam",
-    "title": "Qiita: 2,4,7,8,13日目： Ruby 認定試験による勉強",
+    "title": "Day 2 ~ 13： Ruby 認定試験による勉強",
     "create": "2019-03-06",
     "update": "2019-03-24",
     "tags": [
       "ruby"
-    ]
+    ],
+    "content": " from Qiita: 2日目(1)：Ruby認定試験による確認 4日目(2)：Ruby認定試験による勉強 7日目(2)：Ruby認定試験による勉強 8日目(2)：Ruby認定試験 13日目(2)：Ruby認定試験 ソースコードの文字コードをUS-ASCIIに設定のマジックコメント 1，2，4は同義で、正解。3はPython。 例外処理（begin rescue ensure end Wikipediaによると >プログラムの上位の処理から呼び出されている下位の処理で継続不能、または継続すれば支障をきたす異常事態に陥ったとき、制御を呼び出し元の上位の処理に返し安全な状態になるよう回復処理をすること。 1で例外が起きなかったら、表示結果は1且つ3の表示結果、起きた場合は2且つ3の表示結果となる。 例外処理コードとして、ensureが用いられないパターンもある。 その他、rescueの中でretryを用い、beginが成功するまで繰り返す処理がる。(無限ループ注意） 定数と変数 下コードの実行結果は『10と表示された後、警告が表示され100と表示される。』 Rubyにおいて、アルファベット大文字から始まる識別子(ABCやAbc)は定数である。 他言語では定数を再定義しようとすると、警告が出て、結果、再定義できない。 Rubyにおいては、警告が出たのち、そのままデータがオーバーライトされる 可変長引数 *を1個付けると、引数を複数指定でき、引数は配列として受け取られる。 *を2個付けると、オプション引数となり、Hashとして受け取られる。 範囲オブジェクトとeach .to_i 文字列を10進数の表現と見なして整数に変換します。 範囲オブジェクト まず『数A...数B』に関して、これはAからBまで繰り返すの意。ただし、Bは含まれない。 そのため、『1...5』は、1から4までの4回分繰り返す。 一方で、『1..5』は5を含み、1から5までの5回分繰り返す。 因みに、『1..5』『101..105』『2001..2005』だろうと5回分。 upto uptoメソッドは、変数に「対象オブジェクトが持つ数値」から「max」までを順に代入しながら、処理実行。 1回繰り返す毎に1ずつ数値は増加します。（ここでは１から３までの3回。『1..3』と同義。 また、downtoメソッドもあり、これは1回繰り返すごとに1ずつ数値が減少する。 timesメソッドも参照すべし step はじめに、stemnoを『数値間隔』とするとわかりやすい。 対象オブジェクトを持つ数字から順に代入しながら、処理を実行。 1回繰り返すごとに、stepnoで指定した数値間隔ごとに、数値が増加する。 範囲オブジェクト、uptoメソッドまとめ これは、下とも書ける 4日目 変数、定数いろいろ ローカル変数 アルファベット小文字または`_'で始まる識別子 グローバル変数 $で始まり、宣言が必要なく、プログラムのどこからでも参照できる。 初期化されていないグローバル変数を参照した場合、値はnil。 インスタンス変数 @で始まり、特定の オブジェクトに属する。 そのクラスま たはサブクラスのメソッドから参照できます。 初期化されていないインスタンス変数を参照した場合、値はnil。 クラス変数 @@で始まり、クラス定義 の中で定義される クラスの特異メソッド、インスタンスメソッドなどから参照／代入ができる。 定数 アルファベット大文字で始まる。 他の言語では『定数』なので、再定義しようとしても、警告が出て、再定義できない。 Rubyでは、再定義しようとすると、警告が出るが、再定義できてしまう。 super 親クラスのメソッドを呼び出す attraccerssor(attrreaderとattr_writer) attr_accerssorはゲッターとセッターの機能があるアクセスメソッド インスタンス変数の値はクラス内からしか取得出来ない。 クラス外からインスタンス変数を取得更新するには、ゲッター、セッターが必要 ProgateのPHPの方なら説明がちゃんとあった。 include (モジュール名, モジュール名, ...) クラスやモジュールに、他のモジュールをインクルードする。 引数にはモジュールを指定し、上の様に複数指定することができる Math module 浮動小数点演算をサポートするモジュール. これは便利。 7日目 演算子のオーバーライド 参照: Ruby 2.6.0 リファレンスマニュアル > 演算子式 Ruby の場合、演算子の多くがただのメソッドとして定義。 再定義できる演算子 再定義不可の演算子 演算子の組合せである自己代入演算子は再定義できない。 演算子の定義方法 参照: Ruby 2.6.0 リファレンスマニュアル > クラス／メソッドの定義；演算子式の定義 メソッドのオーバーライドと比較演算子 比較演算子 | 1 | 2 | |:-:|:-:| | a b | 1 | | 比較不可 | nil | instance method Array#zip >> zipメソッドは、配列の要素を引数の配列other_arrayの要素と組み合わせ、配列の配列を作成して返します。行と列を入れ替えるが、足りない要素はnilで埋められ、余分な要素は捨てられます。 slice() 実行結果をかけ slice() 要参照 sliceメソッドは、[]メソッドの別名です。配列から引数で指定した位置の要素を取り出して返す。 equal 実行結果を書け eql? ハッシュの内部で「同じキーかどうか」を調べるために使われるメソッド. 今回は、レシーバabcが引数abcと同じかどうか調べている ##eqal?(object) レシーバobjと引数other_objが同じオブジェクトならtrue、別のオブジェクトならfalseを返す。 objent絡みなので、変数名が違うと、falseを返すのだろう。。。？ 型の取り扱い：エラーにならないものを選べ integerとstring 勘違いしていた 例えば、puts hoge + \"ほげ\"であっても、hogeが整数型の変数なら、hogeほげと返す concatとchopとchomp：実行結果を書け concat 破壊的メソッド。 EOFとは End of Fileの略 ##ioクラスメソッド、SEEK_SET > instance method IO#seek >> ファイルポインタを whence の位置から offset だけ移動させます。 offset 位置への移動が成功すれば 0 を返します ファイル上の文字にポインタなる住所のようで住所じゃないものがある。らしい 今回は、io.seek(0,IO::SEEK_SET)でオフセットを0に指定しているため、 文字の読み込みが最初のaからすすまない（ずっとaが読み込まれる）らしい strgtime 実行結果にあう、選択肢を選べ strgtimeメソッド instance method Time#strftime strgtimeで代表的なもの | 1 | 2 | 3 | 4 | 5 | 6 | 7 | |:-:|:-:|:-:|:-:|:-:|:-:|:-:| | 4桁の西暦 | 2桁の西暦 | 月 | 日 | 時刻 | 分 | 秒 | | %Y | %y| %m | %d | %H | %M | %S | 正規表現 Newまたはnewのみで構成される行にマッチする正規表現を選びなさい。（二つ選択 Rubyの予約語 予約語を選べ 予約語: 既にruby側で定義されている言葉。自分で使おうとしても使えない。 to_s 実行結果をかけ to_s　：整数型データを文字型に変換する 検証コード Rubyの偽の値 例外処理: 適切な選択肢を &&演算子 &&演算子は左辺の評価結果がfalseの場合は、右辺を評価せずに次の処理に進む || 演算子は、左辺の評価結果がtrue の場合は、右辺を評価せずに次の処理に進む |演算子と&演算子は、左辺の評価結果に関係なく、右辺を評価する raise 例外 raiseは例外を投げるので、それ以降の処理を飛ばす それを捕捉したい場合は、begin rescue endを使う 今回の場合、raiseが実行されるとputs(\"succeeded!\")が実行されないのを、考慮 範囲オブジェクト 1から10まで表示sるコードを選べ 範囲オブジェクト 定義されているのは、点２つと点3つ。 ２つは２から10以下　、3つは２から10未満 gsub! 実行するとどうなる gsub! :破壊的メソッド アルファベット大文字で始まる識別子は定数は定数なので、新たに代入を行う際には警告が発生します。 しかし、gsub!は破壊的メソッドを呼び出しているだけなので、警告は発生せず、文字列は「piyo」に書き換わります。 例外 正しい記述を選べ 問題 beginによって例外を捕捉する際は、例外の可能性がある処理をbeginからrescueの間に記述する。 ひとつの処理に対して複数のrescueは、指定できない。 例外オブジェクトのメソッドstacktraceにより、例外スタックを取得できる。 ensureは、必ず記述する必要がある A. １ stacktraceとは > stack trace - 「分かりそう」で「分からない」でも「分かった」気になれるIT用語辞典 >> エラーが発生したときに表示される内容で、そのエラーが発生するまでの過程（どんな処理がどの順番で呼び出されたかの流れ）を、ざっくりと表示したもの エラーコード 以下のコードの##AAA##にZeroDivisionError が発生した時の処理を記述したい。適切なコードを選択 試してみて 参照: Ruby 例外について ?A コード実行どうなる 解説 65とは unicode上のAの番号的な 参照: Ruby にて文字と Unicode コードポイントの相互変換を行う 13日目 クラスの継承 クラスの継承は` 要素2」の結果が-1なら要素1が先、0なら同じ、1なら要素2が先となります。 ルート 以下のコードは、ファイル test . txt を読み、文字を逆順に書き込む処理です。「##AAA##」に入る適切な記述を選びなさい。 組み込み関数openの第2引数には、ファイルのオープン モードを指定します。 r、w、a に + を付けると、読み書き 両用でオープンします。 w+ を指定すると元ファイルの内 容を空にします。 a+ を指定すると、追記モードとなり、 元のファイルを書き換えることができません。 chr と ord は対義語的 コードポイントの話。 n.chrは,nで登録されている文字を返す string.ordはstringのコードポイントを返す メソッドの意味は覚えてるけど、もう『65を見たらA』と覚えるしか。 securerandom Module 安全な乱数発生器のためのインターフェースを提供するモジュール urlsafe_base64 ランダムで URL-safe な base64 文字列を生成して返します。"
   },
   {
     "id": "20190306-without-scaffold",
-    "title": "Qiita: 2日目(2)：Scaffold なしでの掲示板作成",
+    "title": "Day 2 ~ 8：Scaffold なしでの掲示板作成",
     "create": "2019-03-06",
     "update": "2019-12-04",
     "tags": [
       "rails",
       "ruby",
       "ubuntu"
-    ]
+    ],
+    "content": " from Qiita: 2日目(2)：Scaffoldを用いた掲示板作成 3日目：ScaffoldなしでのApp作成 4日目：Scaffold無しでフォーム作成：ModelとView 8日目(1)：Scaffoldなしの掲示板作成：まとめ 使用環境 仮想環境OS: Ubuntu 18.04 Ruby：2.51 Rails:5.2.2 rails db:migrate Railsドキュメントより(http://railsdoc.com/references/rake%20db:migrate) rails db:migrateを実行 schema_migrationsテーブルを調べ、存在しなければ作成 db/migrateディレクトリ内のすべてのマイグレーションファイルを調べる データベースの現在のバージョンと異なるバージョンがあった場合、データベースに適応 schema_migrationsテーブルの更新 3日目 scaffoldを利用せずにApp作成をし、Scaffoldの有難みを知る 前準備 rails s new qiita_routes -d mysql Gemfileのminiracerコメントインして、bundle install config/database.ymlのpassword情報編集 rails db:create 前提：知識 ページ作成に必要なもの view(@ /app/views/コントローラ名/ 今日はしなかったので、今投稿には未記載 viewの中身がブラウザに表示される内容 controller(コントローラ ページ表示の際、controllerを経由して、viewをブラウザに返す。 controllerで設定したactionは、controllerと同じ名前のviewフォルダの中から、actionと同じ名前のhtmlファイルを探してブラウザに返します（まだ理解しきれていない気がする。 routing(ルーティング ブラウザとcontrollerを繋ぐ。 ページ表示の流れ Routing => Controller => Model => View modelはデータベース情報が必要な時だけ使用.今回は必要ではないので、とばす。 本段階 controllerを作成 routingの設定：ブラウザとコントローラをつなぐ controller：modelとviewをつなぐ 無事に、ブラウザ上でHelloが表示された。 renderメソッド 上controller編集時に用いた、renderメソッドは実際に画面に表示される内容を生成する。今回のrenderのplainオプションを指定すると、文字列を直接表示できる。 Railsのcontrollerでrenderを省略すると、代わりにapp/views/コントローラ名/アクション名.html.erbを用いる =>ということはcontroller作成コマンドは rails g controller コントローラ名　アクション名 参照: Ruby on Rails でページを作成する仕組み by @np_misaki氏 config : アプリケーションの設定情報を格納する /routes.rb : ルーティングの設定を行う /locales : 辞書ファイル(グローバル対応等) /app : アプリケーション開発中にメインで使用するディレクトリ /controllers..Controller クラスを格納する /models :　Modelクラスを格納する /views :View クラスを格納する 4日目 モデルを作成 modelとは データベースを操作する。 app/models下に配置される データベースに含まれるテーブル毎に用意され、データの登録・取得・更新・削除などを行う model作成コマンド DBの操作 テーブルの作成をする。 出来たテーブルをMySQL側で確認してみる。 rails g modelsで設定したカラム名が作成されているのが分かる。 データベースにfooさんのレコードを追加してみる MySQLの中から、追加されているレコードを確認してみる。 rails console から新たにレコードを追加する。 Rails Console上でレコード取得 controllerのアクションの整備 viewの整備 ルーティングを変更 rails routes実行 次に上にある、「users GET /users(.:format) users#index 」を実装 UserControllerの中にshowアクションを作成 この時点でrails sで立ち上げると showアクション users_pathはusers#indexへのリンク newuserpathはusers#newへのリンク edituserpathはusers#editへのリンク user_pathはusers#showへのリンク show, edit アクションの定義 追加：2日目を参考にし、表示を触ってみる。 性別の値 0 or 1 を男性or女性で表示させる。 男性、女性で表示されるようになった。だが、editページは、テキスト入力のままだ。 ラジオボタンに変更 同様に、年齢、住所、参加不参加もラジオボタンにしておく。 年齢に、10代、20代、30代のラジオボタンを追加 8日目 users_controller indexページからのdestroyへのリンク作成 newページ編集 indexからnewへのリンク作成 createアクション定義 リファクタリング > wikipedia >> リファクタリング (refactoring) とは、コンピュータプログラミングにおいて、プログラムの外部から見た動作を変えずにソースコードの内部構造を整理することである。 createアクションとupdateアクションの共通化 2アクションに下の共通箇所がある リファクタリング後 show. edit. updata, destroyの共通化 アクションのリファクタリング後（全体） 完 "
   },
   {
     "id": "20190305-shellscript-permission",
-    "title": "Qiita: 1日目  Linux と Shellscript と Permission",
+    "title": "Day 1: Linux, Shellscript and Permission",
     "create": "2019-03-05",
     "update": "2019-03-18",
     "tags": [
       "linux",
       "shellscript"
-    ]
+    ],
+    "content": " from Qiita: 1日目 LinuxとShellscriptとPermission Linux メイン課題 ディレクトリ1を作成 ディレクトリ1の中にファイル1を作成 ディレクトリ2を作成 ディレクトリ2の中にディレクトリ3を作成 ディレクトリ1をディレクトリ3の中に移動 コマンドのオプションが分からなくなった時 今回使用したオプション付きコマンド シェルスクリプト OSのシェルまたはコマンドラインインタプリタ向けに書かれたスクリプト言語。拡張子は.sh 1行目は『シバン』と呼ばれ、UNIXのスクリプトの#! から始まる1行目を指す。起動してスクリプトを読み込むインタプリタを指定する。 インタプリタ（interpreter）とは、プログラミング言語で書かれたソースコードないし中間表現を逐次解釈しながら実行（英語版）するプログラムのこと。 このtest.shを活用することで、先の課題を自動的に行うことができる。 Permission chmod=change mode 権限編集モード 別の表示方法(数字） PermissionとPermitの違い プログラムはPermission どちらも名詞で『許可』を意味するが、ニュアンスが違う。 日本語で説明するとズレるので、英英辞典で確認したい。 あと、Permissionのスペル注意。 "
   }
 ]

@@ -2,11 +2,14 @@ import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { SwipeableDrawer } from '@material-ui/core'
-import { PermanentDrawerLists, SwipeDrawerLists } from './DrawerLists'
+import { PermanentDrawerLists, LeftSwipeDrawerLists } from './DrawerLists'
+import { AlgoliaSearch } from './search/AlgoliaSearch'
+
 
 export function Layout(props) {
   const [state, setState] = React.useState({
-    left: false
+    left: false,
+    right: false
   })
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -18,27 +21,39 @@ export function Layout(props) {
 
   // drawer width is defined at _app.jsx
   return (
-    <React.Fragment key='left'>
-      <Head>
+    <React.Fragment>
+      {/* <Head>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
-      </Head>
+      </Head> */}
       <SwipeableDrawer anchor='left' open={state['left']}
         onClose={toggleDrawer('left', false)} onOpen={toggleDrawer('left', true)}
       >
         <div className='swipeableList' role='presentation'
           onClick={toggleDrawer('left', false)} onKeyDown={toggleDrawer('left', false)}
         >
-          <SwipeDrawerLists />
+          <LeftSwipeDrawerLists />
+        </div>
+      </SwipeableDrawer>
+      <SwipeableDrawer anchor='right' open={state['right']}
+        onClose={toggleDrawer('right', false)} onOpen={toggleDrawer('right', true)}
+      >
+        <div className='swipeableList' role='presentation'>
+          <AlgoliaSearch />
         </div>
       </SwipeableDrawer>
       <aside>
-        <div className='permanentDrawer'><PermanentDrawerLists home={props.home} posts={props.posts} /></div>
+        <div className='permanentDrawer'>
+          <PermanentDrawerLists home={props.home} posts={props.posts} />
+          <div className='searchButtonContainer'>
+            <button className='searchButton' type='button' onClick={toggleDrawer('right',true)}>search post</button>
+          </div>
+        </div>
       </aside>
       <main>
         {props.children}
       </main>
       <nav className="nav">
-        <a href="#" className="nav__link" aria-label='Open Drawer' onClick={toggleDrawer('left', true)}>
+        <a className="nav__link" aria-label='Open Left Drawer for tool' onClick={toggleDrawer('left', true)}>
           <i className="material-icons nav__icon">dashboard</i>
           <span className="nav__text">Tool</span>
         </a>
@@ -51,6 +66,10 @@ export function Layout(props) {
         <Link href='/tags' passHref>
           <MaterialButton href='/tags' icon='local_offer' text='Tags' key='tags' />
         </Link>
+        <a className="nav__link" aria-label='Open Right Drawer for search' onClick={toggleDrawer('right', true)}>
+          <i className="material-icons nav__icon">search</i>
+          <span className="nav__text">search</span>
+        </a>
       </nav>
       <style jsx>{`
         /* general */
@@ -58,11 +77,34 @@ export function Layout(props) {
         /* mobile and for swipe */
           display: none;
         }
+        
+        .searchButtonContainer{
+          text-align:center;
+        }
+
+        .searchButton {
+          color: #EEE;
+          font-size: 1rem;
+          width: 80%;
+          height: 3rem;
+          background-color: #424242;
+          border-radius: .5rem;
+          border: 1px solid #50CAF9;
+        }
+
+        .searchButton:hover, .searchButton:active{
+          background-color: #50CAF9;
+          color: #424242;
+          border:none;
+        }
 
         .swipeableList {
-          width: var(--drawerWidth);
-          background-color: #424242;
+          width: var(--swipeDrawerWidth);
+          max-width: 450px;
           height: 100vh;
+          padding: 1.5rem;
+          overflow: scroll;
+          background-color: #424242;
         }
 
         main{
@@ -82,6 +124,29 @@ export function Layout(props) {
           display: flex;
           overflow-x: auto;
           z-index: 100;
+        }
+
+        @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: url(https://fonts.gstatic.com/s/materialicons/v54/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');
+        }
+
+        .material-icons {
+          font-family: 'Material Icons';
+          font-weight: normal;
+          font-style: normal;
+          font-size: 24px;
+          line-height: 1;
+          letter-spacing: normal;
+          text-transform: none;
+          display: inline-block;
+          white-space: nowrap;
+          word-wrap: normal;
+          direction: ltr;
+          -webkit-font-feature-settings: 'liga';
+          -webkit-font-smoothing: antialiased;
         }
 
         .nav__link {
@@ -114,8 +179,11 @@ export function Layout(props) {
         }
 
         @media ( min-width: 960px ){
-          .swipeableList, .nav{
+          /* .swipeableList, .nav{
             display: none;
+          } */
+          .nav{
+            display:none;
           }
 
           /* pc and for permanent */
@@ -148,6 +216,28 @@ const MaterialButton = React.forwardRef((props, ref) => {
       <style jsx>{`
         /* google fonts */
         /* nav */
+        @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: url(https://fonts.gstatic.com/s/materialicons/v54/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');
+        }
+
+        .material-icons {
+          font-family: 'Material Icons';
+          font-weight: normal;
+          font-style: normal;
+          font-size: 24px;
+          line-height: 1;
+          letter-spacing: normal;
+          text-transform: none;
+          display: inline-block;
+          white-space: nowrap;
+          word-wrap: normal;
+          direction: ltr;
+          -webkit-font-feature-settings: 'liga';
+          -webkit-font-smoothing: antialiased;
+        }
         .nav__link {
           display: flex;
           flex-direction: column;
