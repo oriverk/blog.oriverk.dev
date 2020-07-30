@@ -26,7 +26,7 @@
 
   <url>
     <loc>https://oriverk.dev/posts/20200526-next-portfolio</loc>
-    <lastmod>2020-07-01</lastmod>
+    <lastmod>2020-07-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -43,20 +43,44 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://oriverk.dev/posts/20200203-install-langs2ubuntu</loc>
-    <lastmod>2020-03-17</lastmod>
+    <loc>https://oriverk.dev/posts/20200203-setup-rust-ubuntu</loc>
+    <lastmod>2020-07-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://oriverk.dev/posts/20200128-install-database2ubuntu</loc>
-    <lastmod>2020-03-17</lastmod>
+    <loc>https://oriverk.dev/posts/20200203-setup-ruby-ubuntu</loc>
+    <lastmod>2020-07-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://oriverk.dev/posts/20200128-build-vm4ubuntu</loc>
+    <loc>https://oriverk.dev/posts/20200203-setup-node-ubuntu</loc>
+    <lastmod>2020-07-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://oriverk.dev/posts/20200203-setup-java-ubuntu</loc>
+    <lastmod>2020-07-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://oriverk.dev/posts/20200203-setup-go-ubuntu</loc>
+    <lastmod>2020-07-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://oriverk.dev/posts/20200128-setup-ubuntu-vm</loc>
     <lastmod>2020-06-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://oriverk.dev/posts/20200128-setup-database-ubuntu</loc>
+    <lastmod>2020-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -103,7 +127,7 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://oriverk.dev/posts/20190329-add-admin-with-devise</loc>
+    <loc>https://oriverk.dev/posts/20190329-add-devise-admin</loc>
     <lastmod>2019-12-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>

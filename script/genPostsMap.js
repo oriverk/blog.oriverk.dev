@@ -19,7 +19,9 @@ const allPostsData = fileNames.map((fileName) => {
   const create = matterResult.data.create
   const update = matterResult.data.update || ''
   const tags = LowerCaseTags || ''
-  const content = removeMd(matterResult.content).replace(/\n/gim, '').replace(/\s{2,}/gim , '')
+  const codeBlock = /```[a-z]*\n[\s\S]*?\n```/gim
+  const codeRemoved = matterResult.content.replace(codeBlock, ' ')
+  const content = removeMd(codeRemoved).replace(/\n/gim, ' ').replace(/\s{2,}/gim , ' ')
   return {
     id,
     title,
