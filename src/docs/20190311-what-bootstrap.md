@@ -2,7 +2,7 @@
 create: '2019-03-11'
 update: '2019-12-04'
 author: Kawano Yudai
-title: 'Qiita: 5日目： Bootstrap を初めて触ってみた'
+title: 'Day 5： first time to use Bootstrap'
 tags: [ruby, rails, bootstrap]
 image: '/assets/posts/201903/bootstrap1.jpg'
 ---

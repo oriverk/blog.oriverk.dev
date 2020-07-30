@@ -2,7 +2,7 @@
 create: '2019-03-20'
 update: '2019-12-04'
 author: Kawano Yudai
-title: 'Qiita: 10日目(1)：マスターデータ（ DB へ情報入力、ページに出力'
+title: 'Day 10: DB へ情報入力、ページに出力'
 tags: [ruby, rails, mysql]
 image: '/assets/posts/201905/cebu3.png'
 ---

@@ -2,14 +2,14 @@
 create: '2020-03-29'
 update: '2020-04-07'
 author: Kawano Yudai
-title: 'Qiita: 宮崎県 COVID-19 対策サイトの OSS 活動に参加した。'
+title: '宮崎県 COVID-19 対策サイトの OSS 活動に参加した。'
 tags: [oss, vue]
 image: '/assets/posts/202003/miyazaki-oss1.jpg'
 ---
 
 from [Qita: 宮崎県COVID-19対策サイトを見つけ、出身者として何かしたいと思ったから、した。](https://qiita.com/OriverK/items/91429a32e6a8c191a1a6)
 
-出身の宮崎県用の対策サイトが出来、同時に感染者数が3人に増えていたことを知った。何かできる事は無いかと思ったので、Qiitaに記録しつつ、色々やってみた。
+出身の宮崎県用の対策サイトが出来、何かできる事は無いかと思ったので、Qiitaに記録しつつ、色々やってみた。
 
 ## Introduction
 Referrence

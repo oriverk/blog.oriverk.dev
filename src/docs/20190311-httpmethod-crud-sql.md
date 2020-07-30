@@ -1,7 +1,7 @@
 ---
 create: '2019-03-11'
 author: Kawano Yudai
-title: 'Qiita: 3日目(2)：HTTP メソッドと CRUD と SQL'
+title: 'Day 3：HTTP method, CRUD and SQL'
 tags: [http, crud, sql, restful]
 image: '/assets/posts/201903/http1.jpg'
 ---

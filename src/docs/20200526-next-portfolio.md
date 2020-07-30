@@ -2,7 +2,7 @@
 create: '2020-05-26'
 update: '2020-07-14'
 author: Kawano Yudai
-title: 'Qiita: Next.js でポートフォリオサイトを作成した'
+title: 'Next.js でポートフォリオサイトを作成した'
 tags: [typescript, React, next, remark]
 image: '/assets/prtsc-1000.jpg'
 ---
@@ -882,14 +882,20 @@ fs.writeFileSync(path.join(process.cwd(), 'public/atom.xml'), atom)
 ```
 </div></details>
 
+##### Algolia search
+投稿記事の検索に Algolia を利用した。`postsMap.json`　をデータとして投入した。
+現在のデータ投入は手動で行っているが、後で `postsMap.json`生成時に差分があれば`api`で投入できるようにしたい。
+
+- 参照
+  - [algolia](https://www.algolia.com)
+  - [algolia community](https://community.algolia.com/)
+  - [algolia Conditional Requests](https://www.algolia.com/doc/guides/building-search-ui/going-further/conditional-requests/react/)
+
 ## To do
 
 - CSSの統一
 - AMP対応( 参照：[Next.js next/amp](https://nextjs.org/docs/api-reference/next/amp)
-- `/tags`ページの整備
 - コードブロックの言語またはファイル名の出力
 - syntax-highlightの改善
-- 検索機能
 - postページの目次機能
-- モバイル用 bottom navigation の設置
 - og:image 動的生成コード

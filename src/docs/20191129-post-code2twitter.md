@@ -2,7 +2,7 @@
 create: '2019-11-29'
 update: '2020-03-10'
 author: Kawano Yudai
-title: 'Qiita: Twitter に見栄え良くコード投稿したかった'
+title: 'Twitter に見栄え良くコード投稿したかった'
 tags: [ruby, rails, aws]
 image: '/assets/codr700.jpg'
 ---
