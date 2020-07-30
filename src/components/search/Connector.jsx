@@ -38,8 +38,7 @@ const PoweredBy = () => {
         img{
           height: 1.2rem;
           width: auto;
-          margin: 0;
-          background-color: #303030;
+          margin: 0 auto;
         }
       `}</style>
     </React.Fragment>
@@ -56,7 +55,7 @@ const SearchBox = ({ currentRefinement, refine }) => (
           type='search'
           value={currentRefinement}
           onChange={event => refine(event.currentTarget.value)}
-          autofocus
+          autoFocus
         />
       </form>
     </div>
@@ -71,6 +70,9 @@ const SearchBox = ({ currentRefinement, refine }) => (
         width: 100%;
         padding: .5rem;
         border: none;
+        border-radius: .5rem;
+      }
+      input:active, input:focus{
         border-radius: .5rem;
       }
     `}</style>

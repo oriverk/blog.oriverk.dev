@@ -42,7 +42,12 @@ export function Layout(props) {
         </div>
       </SwipeableDrawer>
       <aside>
-        <div className='permanentDrawer'><PermanentDrawerLists home={props.home} posts={props.posts} /></div>
+        <div className='permanentDrawer'>
+          <PermanentDrawerLists home={props.home} posts={props.posts} />
+          <div className='searchButtonContainer'>
+            <button className='searchButton' type='button' onClick={toggleDrawer('right',true)}>search post</button>
+          </div>
+        </div>
       </aside>
       <main>
         {props.children}
@@ -72,13 +77,34 @@ export function Layout(props) {
         /* mobile and for swipe */
           display: none;
         }
+        
+        .searchButtonContainer{
+          text-align:center;
+        }
+
+        .searchButton {
+          color: #EEE;
+          font-size: 1rem;
+          width: 80%;
+          height: 3rem;
+          background-color: #424242;
+          border-radius: .5rem;
+          border: 1px solid #50CAF9;
+        }
+
+        .searchButton:hover, .searchButton:active{
+          background-color: #50CAF9;
+          color: #424242;
+          border:none;
+        }
 
         .swipeableList {
           width: var(--swipeDrawerWidth);
+          max-width: 450px;
           height: 100vh;
           padding: 1.5rem;
           overflow: scroll;
-          background-color: #303030;
+          background-color: #424242;
         }
 
         main{
@@ -130,8 +156,11 @@ export function Layout(props) {
         }
 
         @media ( min-width: 960px ){
-          .swipeableList, .nav{
+          /* .swipeableList, .nav{
             display: none;
+          } */
+          .nav{
+            display:none;
           }
 
           /* pc and for permanent */
