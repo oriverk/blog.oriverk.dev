@@ -1,9 +1,9 @@
 import React from 'react'
-import Head from 'next/head'
 import Link from 'next/link'
 import { SwipeableDrawer } from '@material-ui/core'
-import { PermanentDrawerLists, LeftSwipeDrawerLists } from './DrawerLists'
+import { LeftSwipeDrawerLists } from './DrawerLists'
 import { AlgoliaSearch } from './search/AlgoliaSearch'
+
 
 
 export function Layout(props) {
@@ -11,20 +11,17 @@ export function Layout(props) {
     left: false,
     right: false
   })
-
+  
   const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === 'keydonw' && (event.key === 'Tag' || event.key === 'Shift')) {
       return
     }
     setState({ ...state, [anchor]: open })
   }
-
+  
   // drawer width is defined at _app.jsx
   return (
     <React.Fragment>
-      {/* <Head>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
-      </Head> */}
       <SwipeableDrawer anchor='left' open={state['left']}
         onClose={toggleDrawer('left', false)} onOpen={toggleDrawer('left', true)}
       >
@@ -41,14 +38,6 @@ export function Layout(props) {
           <AlgoliaSearch />
         </div>
       </SwipeableDrawer>
-      <aside>
-        <div className='permanentDrawer'>
-          <PermanentDrawerLists home={props.home} posts={props.posts} />
-          <div className='searchButtonContainer'>
-            <button className='searchButton' type='button' onClick={toggleDrawer('right',true)}>search post</button>
-          </div>
-        </div>
-      </aside>
       <main>
         {props.children}
       </main>
@@ -73,11 +62,6 @@ export function Layout(props) {
       </nav>
       <style jsx>{`
         /* general */
-        .permanentDrawer {
-        /* mobile and for swipe */
-          display: none;
-        }
-        
         .searchButtonContainer{
           text-align:center;
         }
@@ -184,21 +168,6 @@ export function Layout(props) {
           } */
           .nav{
             display:none;
-          }
-
-          /* pc and for permanent */
-          .permanentDrawer{
-            width: var(--drawerWidth);
-            display: block;
-            height: 100vh;
-            background-color: #424242;
-            position: fixed;
-            z-index: 100;
-          }
-
-          main{
-            width: calc(100% - var(--drawerWidth));
-            margin-left: var(--drawerWidth);
           }
         }
       `}</style>

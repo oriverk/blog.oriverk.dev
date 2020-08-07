@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { NoImage } from '../utils/utils'
 import css from 'styled-jsx/css'
 
+import { HomeIcons } from './HomeIcons'
+
 const containerStyle = css`
   section {
     padding: 0 5%;
@@ -49,7 +51,65 @@ const containerStyle = css`
   }
 `
 
-export function Top() {
+export const NewTop = (props) => {
+  return (
+    <>
+      <section id='top'>
+        <div className='topWrapper'>
+          <div className='title'>
+            <h1 className='topTitle'>Kawano Yudai</h1>
+            <h2 className='sub'>B.Agr.</h2>
+            <HomeIcons />
+          </div>
+        </div>
+      </section>
+      <style jsx>{`
+        section {
+          height: calc(100vh - var(--bottomNavHeight));
+          width: 100%;
+          margin-bottom: 2rem;
+          position: relative;
+          background-color: #212121;
+          background-size: cover;
+          background-position: center;
+          background-image: url('/assets/adelaide2.webp');
+        }
+
+        .topWrapper{
+          position: relative;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .title {
+          width: 100%;
+          padding: 5%;
+          text-align: center;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        .topTitle {
+          font-weight: 500;
+          font-size: 3.5rem;
+          margin: 0 auto;
+        }
+        .sub {
+          font-size: 1.5rem
+        }
+        @media (min-width: 960px){
+          section{
+            height: 100vh;
+          }
+        }
+      `}</style>
+    </>
+  )
+}
+
+export const Top = () => {
   return (
     <>
       <section id='top'>
@@ -96,6 +156,7 @@ export function Top() {
     </>
   )
 }
+
 
 export function About() {
   return (

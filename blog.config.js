@@ -7,7 +7,7 @@ module.exports = {
   baseUrl: "https://oriverk.dev",
   lang: "en_US",
   sns: {
-    tiwtter: "not_you_die",
+    twitter: "not_you_die",
     github: "oriverk",
     wantedly: 40069986,
     qiita: "Oriverk",
