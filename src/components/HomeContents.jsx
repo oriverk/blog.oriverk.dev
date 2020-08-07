@@ -51,7 +51,7 @@ const containerStyle = css`
   }
 `
 
-export const NewTop = (props) => {
+export const Top = (props) => {
   return (
     <>
       <section id='top'>
@@ -65,7 +65,7 @@ export const NewTop = (props) => {
       </section>
       <style jsx>{`
         section {
-          height: calc(100vh - var(--bottomNavHeight));
+          height: 100vh;
           width: 100%;
           margin-bottom: 2rem;
           position: relative;
@@ -108,55 +108,6 @@ export const NewTop = (props) => {
     </>
   )
 }
-
-export const Top = () => {
-  return (
-    <>
-      <section id='top'>
-        <div className='title'>
-          <div className='top'>Kawano <wbr />Yudai</div>
-          <div className='sub'>B.Agr. /<wbr /> JobSeeker</div>
-        </div>
-      </section>
-      <style jsx>{`
-        section {
-          height: calc(100vh - var(--bottomNavHeight));
-          width: 100%;
-          margin-bottom: 2rem;
-          position: relative;
-          background-color: #212121;
-          background-size: cover;
-          background-position: center;
-          background-image: url('/assets/adelaide2.webp');
-        }
-        .title {
-          padding: 5%;
-          text-align: center;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          background-color: rgba(0,0,0,0.3);
-          border-bottom: 2px double rgb(255,255,255);
-          border-radius: 2px;
-        }
-        .top {
-          font-weight: 500;
-          font-size: 4rem;
-        }
-        .sub {
-          font-size: 2rem
-        }
-        @media (min-width: 960px){
-          section{
-            height: 100vh;
-          }
-        }
-      `}</style>
-    </>
-  )
-}
-
 
 export function About() {
   return (
