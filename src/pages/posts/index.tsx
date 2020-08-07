@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { Layout } from '../../components/Layout'
+import { BlogLayout } from '../../components/BlogLayout'
 import blogConfig from '../../../blog.config'
 import fs from 'fs'
 import path from 'path'
@@ -33,7 +33,7 @@ export default function ({
   }) {
   return (
     <React.Fragment>
-      <Layout posts>
+      <BlogLayout posts>
         <Head>
           <title>Blog | {blogConfig.shortName}</title>
           <meta name='title' content={`Blog | ${blogConfig.baseName}`} />
@@ -59,7 +59,7 @@ export default function ({
             ))}
           </ul>
         </article>
-      </Layout>
+      </BlogLayout>
       <style jsx>{`
         .content {
           width: 100%;

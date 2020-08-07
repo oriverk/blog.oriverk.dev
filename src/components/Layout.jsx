@@ -53,7 +53,6 @@ export function Layout(props) {
         main{
           flex: 1;
           width: 100%;
-          margin-left: - var(--drawerWidth);
         }
 
         {/* @media ( min-width: 960px ){

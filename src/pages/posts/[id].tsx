@@ -1,11 +1,9 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { Layout } from '../../components/Layout'
+import { BlogLayout } from '../../components/BlogLayout'
 import { getPostIds, getPostData } from '../../lib/posts'
 // import { getFetchPath } from '../../components/HeaderImg'
-import { HatenaIcon, TwitterIcon } from '../../utils/svgIcon'
-import { IconButton } from '../../utils/utils'
 import blogConfig from '../../../blog.config'
 
 import { GetStaticProps, GetStaticPaths } from 'next'
@@ -45,7 +43,7 @@ export default function Post({ postData
   // const ogImage:string = getFetchPath(postData.title, 'dark', 0, tags)
   return (
     <React.Fragment>
-      <Layout>
+      <BlogLayout>
         <Head>
           <title>{`${postData.title} | ${blogConfig.shortName}`}</title>
           <meta name='title' content={`${postData.title} | ${blogConfig.baseName}`} />
@@ -65,17 +63,8 @@ export default function Post({ postData
             <span className='tags'>{tags.map((tag) => (<code key={tag}><Link href={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
           </div>
           <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} className='markdown' />
-          {/* <div>`${postData.jsx}`</div> */}
-          <div className='sns'>
-            <IconButton label='twitter share button' href={`https://twitter.com/share?text=${postData.title}&hashtags=react,nextjs&url=${blogConfig.baseUrl}/posts/${postData.id}&related=${blogConfig.sns.tiwtter}`}>
-              <TwitterIcon />
-            </IconButton>
-            <IconButton label='hatena share button' href={`https://b.hatena.ne.jp/entry/${blogConfig.baseUrl}/posts/${postData.id}`}>
-              <HatenaIcon />
-            </IconButton>
-          </div>
         </article>
-      </Layout>
+      </BlogLayout>
       <style jsx>{`
         .content {
           width: 100%;
@@ -95,12 +84,12 @@ export default function Post({ postData
           text-decoration: underline #50CAF9;
         }
 
-        .sns {
+        {/* .sns {
           position: absolute;
           left: 50%;
           transform: translate(-50%, 0);
           margin: 1rem 0;
-        }
+        } */}
       `}</style>
     </React.Fragment>
   )
