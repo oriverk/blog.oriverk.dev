@@ -52,6 +52,7 @@ const containerStyle = css`
 `
 
 export const Top = (props) => {
+  const openSearch = props.openSearch
   return (
     <>
       <section id='top'>
@@ -59,7 +60,7 @@ export const Top = (props) => {
           <div className='title'>
             <h1 className='topTitle'>Kawano Yudai</h1>
             <h2 className='sub'>B.Agr.</h2>
-            <HomeIcons />
+            <HomeIcons openSearch={openSearch} />
           </div>
         </div>
       </section>

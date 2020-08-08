@@ -4,6 +4,8 @@ import { SwipeableDrawer } from '@material-ui/core'
 import { LeftSwipeDrawerLists } from './DrawerLists'
 import { AlgoliaSearch } from './search/AlgoliaSearch'
 
+import { Top } from './HomeContents'
+
 export function Layout(props) {
   const [state, setState] = React.useState({
     left: false,
@@ -37,6 +39,7 @@ export function Layout(props) {
         </div>
       </SwipeableDrawer>
       <main>
+        <Top openSearch={toggleDrawer('right', true)} />
         {props.children}
       </main>
       <style jsx>{`

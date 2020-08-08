@@ -2,14 +2,15 @@ import Link from 'next/link'
 import { IconContext } from "react-icons";
 import { FaTwitter, FaGithub, FaLinkedin } from "react-icons/fa"
 import { MdCreate, MdSearch } from "react-icons/md";
-import { QiitaSvg, WantedlySvg } from '../utils/NewSvg'
+import { WantedlySvg } from '../utils/NewSvg'
 import blogConfig from '../../blog.config'
 
 export const HomeIcons = (props) => {
+  const openSearch = props.openSearch
   return (
     <React.Fragment>
       <div className='iconsWrapper'>
-        <a className='icon next' key='search'>
+        <a className='icon next' key='search' onClick={openSearch}>
           <IconContext.Provider value={{ className: 'react-icons nextBlog' }}><MdSearch /></IconContext.Provider>
         </a>
         <Link href='/posts'>
