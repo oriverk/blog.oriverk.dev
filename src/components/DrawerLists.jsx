@@ -1,5 +1,5 @@
 import React from 'react'
-import { Divider } from '../utils/utils'
+import { Divider } from '../utils'
 
 const DrawerLists = ({children}) => {
   return (

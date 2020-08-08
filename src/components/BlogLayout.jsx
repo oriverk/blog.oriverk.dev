@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 import { SwipeableDrawer } from '@material-ui/core'
 import { LeftSwipeDrawerLists } from './DrawerLists'
 import { AlgoliaSearch } from './search/AlgoliaSearch'

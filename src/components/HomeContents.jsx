@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { NoImage } from '../utils/utils'
+import { NoImage } from '../utils'
 import css from 'styled-jsx/css'
 
 import { HomeIcons } from './HomeIcons'

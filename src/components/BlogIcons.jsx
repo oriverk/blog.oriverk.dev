@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import { IconContext } from "react-icons";
+import { IconContext } from "react-icons"
 import { FaTwitter } from "react-icons/fa"
 import { MdCreate, MdSearch, MdHome, MdLocalOffer } from "react-icons/md"
-import { HatenaSvg } from '../utils/NewSvg'
+import { HatenaSvg } from '../utils'
 import blogConfig from '../../blog.config'
 
 export const BlogIcons = (props) => {
