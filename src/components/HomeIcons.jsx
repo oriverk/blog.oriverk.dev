@@ -10,28 +10,28 @@ export const HomeIcons = (props) => {
   return (
     <React.Fragment>
       <div className='iconsWrapper'>
-        <a className='icon next' key='search' onClick={openSearch}>
-          <IconContext.Provider value={{ className: 'react-icons nextBlog' }}><MdSearch /></IconContext.Provider>
+        <a className='icon' key='search' onClick={openSearch}>
+          <IconContext.Provider value={{ className: 'react-icons' }}><MdSearch /></IconContext.Provider>
         </a>
         <Link href='/posts'>
-          <a className='icon next' key='posts'>
-            <IconContext.Provider value={{ className: 'react-icons nextBlog' }}><MdCreate /></IconContext.Provider>
+          <a className='icon' key='posts'>
+            <IconContext.Provider value={{ className: 'react-icons' }}><MdCreate /></IconContext.Provider>
           </a>
         </Link>
-        <a className='icon' key='github' href={`https://github.com/${blogConfig.sns.github}`} target='_blank' rel='noopener noreferrer'>
-          <IconContext.Provider value={{ className: 'react-icons github' }}><FaGithub /></IconContext.Provider>
+        <a className='icon github' key='github' href={`https://github.com/${blogConfig.sns.github}`} target='_blank' rel='noopener noreferrer'>
+          <IconContext.Provider value={{ className: 'react-icons' }}><FaGithub /></IconContext.Provider>
         </a>
-        {/* <a className='icon' key='twitter' href={`https://qiita.com/${blogConfig.sns.qiita}`} target='_blank' rel='noopener noreferrer'>
-          <QiitaSvg class='homeIconSvg twitter' />
+        {/* <a className='icon qiita' key='qiita' href={`https://qiita.com/${blogConfig.sns.qiita}`} target='_blank' rel='noopener noreferrer'>
+          <QiitaSvg class='homeIconSvg qiita' />
         </a> */}
-        <a className='icon' key='linkedin' href={`https://www.linkedin.com/in/${blogConfig.sns.linkedin}`} target='_blank' rel='noopener noreferrer'>
-          <IconContext.Provider value={{ className: 'react-icons linkedin' }}><FaLinkedin /></IconContext.Provider>
+        <a className='icon linkedin' key='linkedin' href={`https://www.linkedin.com/in/${blogConfig.sns.linkedin}`} target='_blank' rel='noopener noreferrer'>
+          <IconContext.Provider value={{ className: 'react-icons' }}><FaLinkedin /></IconContext.Provider>
         </a>
-        <a className='icon' key='wantedly' href={`https://www.wantedly.com/users/${blogConfig.sns.wantedly}`} target='_blank' rel='noopener noreferrer'>
-          <WantedlySvg class='homeIconSvg wantedly' />
+        <a className='icon wantedly' key='wantedly' href={`https://www.wantedly.com/users/${blogConfig.sns.wantedly}`} target='_blank' rel='noopener noreferrer'>
+          <WantedlySvg class='homeIconSvg' />
         </a>
-        <a className='icon' key='twitter' href={`https://twitter.com/${blogConfig.sns.twitter}`} target='_blank' rel='noopener noreferrer'>
-          <IconContext.Provider value={{ className: 'react-icons twitter' }}><FaTwitter /></IconContext.Provider>
+        <a className='icon twitter' key='twitter' href={`https://twitter.com/${blogConfig.sns.twitter}`} target='_blank' rel='noopener noreferrer'>
+          <IconContext.Provider value={{ className: 'react-icons' }}><FaTwitter /></IconContext.Provider>
         </a>
       </div>
       <style jsx global>{`
@@ -40,27 +40,34 @@ export const HomeIcons = (props) => {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          fill: #EEE;
-          width: 1.75rem;
-          height: 1.75rem;
+          fill: #424242;
+          width: 1rem;
+          height: 1rem;
         }
-        .icon:hover > .react-icons.nextBlog {
+        .icon:hover > .react-icons {
           fill: #50CAF9;
         }
-        .icon:hover > .react-icons.github{
+        .icon.github:hover > .react-icons{
           fill: #24292e;
         }
-        .icon:hover > .react-icons.linkedin{
+        .icon.linkedin:hover > .react-icons{
           fill: #0077B5;
         }
-        .icon:hover > .react-icons.twitter{
+        .icon.twitter:hover > .react-icons{
           fill: #00ACEE;
         }
-        .icon:hover > .homeIconSvg.qiita{
+        .icon.qiita:hover > .homeIconSvg{
           fill: #55C500;
         }
-        .icon:hover > .homeIconSvg.wantedly{
+        .icon.wantedly:hover > .homeIconSvg{
           fill: #00A4BB;
+        }
+
+        @media ( min-width: 960px ){
+          .react-icons, .homeIconSvg{
+            width: 1.75rem;
+            height: 1.75rem;
+          }
         }
       `}</style>
       <style jsx>{`
@@ -73,11 +80,19 @@ export const HomeIcons = (props) => {
           display: inline-block;
           text-decoration: none;
           border-radius: 50%;
-          width: 2.25rem;
-          height: 2.25rem;
+          width: 1.75rem;
+          height: 1.75rem;
           margin: .5rem;
+          background-color: #EEE;
+          border-radius: 50%;
         }
         
+        @media( min-width: 960px ){
+          .icon{
+            width: 2.25rem;
+            height: 2.25rem;
+          }
+        }
       `}</style>
     </React.Fragment>
   )

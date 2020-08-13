@@ -2,6 +2,7 @@ import React from 'react'
 import { SwipeableDrawer } from '@material-ui/core'
 import { LeftSwipeDrawerLists } from './DrawerLists'
 import { AlgoliaSearch } from './search/AlgoliaSearch'
+import { BlogIcons } from './IconsWrapper'
 
 export function BlogLayout(props) {
   const [state, setState] = React.useState({
@@ -85,14 +86,14 @@ export function BlogLayout(props) {
           z-index: 100;
         }
 
-        @media ( min-width: 960px ){
-          /* .swipeableList, .nav{
+        {/* @media ( min-width: 960px ){
+          .swipeableList, .nav{
             display: none;
-          } */
+          }
           .nav{
             display:none;
           }
-        }
+        } */}
       `}</style>
     </React.Fragment>
   )

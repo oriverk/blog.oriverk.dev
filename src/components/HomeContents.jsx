@@ -3,7 +3,8 @@ import Link from 'next/link'
 import { NoImage } from '../utils'
 import css from 'styled-jsx/css'
 
-import { HomeIcons } from './HomeIcons'
+import { HomeIcons } from './IconsWrapper'
+
 
 const containerStyle = css`
   section {
