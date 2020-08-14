@@ -215,9 +215,9 @@ export function Works() {
             <div className='right'>
               <b>This portfolio site as resume and tech blog</b>
               <br /><span> :to learn modern JS</span>
-              <br /><span>with React, Next.js</span>
+              <br /><span>with Reactand Typescript</span>
               <ul>
-                <li><Link href='/posts/[id]' as='/posts/20200526-next-portfolio'><a>Post about this site</a></Link></li>
+                <li><Link href='/posts/[id]' as='/posts/20200526-next-portfolio'><a>Blog: Created portfolio site with Next.js</a></Link></li>
                 <li><a href='https://github.com/oriverk/next-portfolio' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
               </ul>
             </div>
@@ -234,7 +234,7 @@ export function Works() {
               <br /><span>( OSS website )</span>
               <br /><span>with Vue.js, TypeScript</span>
               <ul>
-                <li><Link href='/posts/[id]' as='/posts/20200329-joined-miyazaki-corona-oss'><a>Blog: Joined OSS group for COVID-19 in Miyazaki</a></Link></li>
+                <li><Link href='/posts/[id]' as='/posts/20200329-joined-corona-oss'><a>Blog: Joined OSS for COVID-19 site of Miyazaki</a></Link></li>
                 <li><a href='https://github.com/oriverk/covid19' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
                 <li><a href='https://covid19-miyazaki.netlify.app/' target='_blank' rel='noopener noreferrer' >The site on Netlify</a></li>
               </ul>
@@ -269,7 +269,7 @@ export function Works() {
               <br /><span>:My 1st GithubPages</span>
               <br /><span>with Ruby, Jekyll</span>
               <ul>
-                <li><Link href='/posts/[id]' as='/posts/20190818-use-jekyll'><a>Blog: buid GithubPages with Ruby + Jekyll</a></Link></li>
+                <li><Link href='/posts/[id]' as='/posts/20190818-use-jekyll'><a>Blog: Build GithubPages with Jekyll</a></Link></li>
                 <li><a href='https://github.com/oriverk/oriverk.github.io' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
               </ul>
             </div>
@@ -283,7 +283,7 @@ export function Works() {
               <br /><span> :from the 2018 Autumn FE exam</span>
               <br /><span>with RubyonRails, PostgreSQL, Heroku</span>
               <ul>
-                <li><Link href='/posts/[id]' as='/posts/20190829-fe-exam'><a>Post on Qiita</a></Link></li>
+                <li><Link href='/posts/[id]' as='/posts/20190829-fe-exam'><a>Blog: Reproduce ticket sales system in FE exam</a></Link></li>
                 <li><a href='https://github.com/oriverk/ConcertTicket' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
                 <li><a href='https://www.jitec.ipa.go.jp/1_04hanni_sukiru/mondai_kaitou_2018h30_2/2018h30a_fe_pm_qs.pdf' target='_blank' rel='noopener noreferrer'>IPA FE exam</a></li>
               </ul>
