@@ -7,9 +7,14 @@ import { AppProps } from 'next/app'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
+    if (!gtag.existsGaId) {
+      return
+    }
+
     const handleRouteChange = (url) => {
       gtag.pageview(url)
     }
+    
     Router.events.on('routeChangeComplete', handleRouteChange)
     return () => {
       Router.events.off('routeChangeComplete', handleRouteChange)
