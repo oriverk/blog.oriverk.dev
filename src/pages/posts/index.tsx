@@ -5,6 +5,7 @@ import { BlogLayout } from '../../components/BlogLayout'
 import blogConfig from '../../../blog.config'
 import fs from 'fs'
 import path from 'path'
+import { PostsIcons } from '../../components/IconsWrapper'
 
 import { GetStaticProps } from 'next'
 
@@ -43,6 +44,7 @@ export default function ({
           <meta property='og:image' content={`${blogConfig.baseUrl}/assets/prtsc700.jpg`} />
           <meta property='og:url' content={`${blogConfig.baseUrl}/posts`} />
         </Head>
+        <PostsIcons />
         <article className='content'>
           <h1>Blog Posts</h1>
           <ul>

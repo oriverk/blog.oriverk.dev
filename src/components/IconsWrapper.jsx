@@ -89,29 +89,73 @@ export const PostsIcons = (props) => {
   return (
     <React.Fragment>
       <div className='iconsWrapper'>
-        <a className='icon more' key='more' aria-expanded={!more}
-          onClick={() => setMore(true)} aria-label='expand link icons'>
-          <IconContext.Provider value={{ className: 'react-icons' }}><MdMoreHoriz /></IconContext.Provider>
-        </a>
-        <a className='icon close' key='close' aria-expanded={more}
-          onClick={() => setMore(false)} aria-label='close link icons'>
-          <IconContext.Provider value={{ className: 'react-icons' }}><MdClose /></IconContext.Provider>
-        </a>
-        <a className='icon search' key='search' aria-label='search post'>
+        {/* <a className='icon search' key='search' aria-label='search post'>
           <IconContext.Provider value={{ className: 'react-icons' }}><MdSearch /></IconContext.Provider>
-        </a>
-        <Link href='/'>
-          <a className='icon home' key='home' aria-expanded={more} aria-label='home link'>
-            <IconContext.Provider value={{ className: 'react-icons' }}><MdHome /></IconContext.Provider>
-          </a>
-        </Link>
+        </a> */}
         <Link href='/tags'>
           <a className='icon tags' key='tags' aria-label='tags page link'>
             <IconContext.Provider value={{ className: 'react-icons' }}><MdLocalOffer /></IconContext.Provider>
           </a>
         </Link>
+        <Link href='/'>
+          <a className='icon home' key='home' aria-expanded={more} aria-label='home link'>
+            <IconContext.Provider value={{ className: 'react-icons' }}><MdHome /></IconContext.Provider>
+          </a>
+        </Link>
+        <a className='icon close' key='close' aria-expanded={more}
+          onClick={() => setMore(false)} aria-label='close link icons'>
+          <IconContext.Provider value={{ className: 'react-icons' }}><MdClose /></IconContext.Provider>
+        </a>
+        <a className='icon more' key='more' aria-expanded={!more}
+          onClick={() => setMore(true)} aria-label='expand link icons'>
+          <IconContext.Provider value={{ className: 'react-icons' }}><MdMoreHoriz /></IconContext.Provider>
+        </a>
       </div>
-      <style jsx>{iconsStyle}</style>
+      <style jsx>{`
+        .iconsWrapper{
+          display: flex;
+          flex-direction: row;
+          position: fixed;
+          bottom: .5rem;
+          right: .5rem;
+          z-index: 100;
+        }
+
+        .icon{
+          position: relative;
+          text-decoration: none;
+          border-radius: 50%;
+          width: 1.75rem;
+          height: 1.75rem;
+          margin: .5rem;
+          background-color: #EEE;
+          border-radius: 50%;
+        }
+
+        .icon:hover, .icon:active{
+          border: .5rem solid #424242;
+        }
+        
+        .icon[aria-expanded='false']{
+          display: none;
+        }
+
+        @media( min-width: 960px ){
+          .iconsWrapper{
+            display: flex;
+            flex-direction: column;
+            left: calc(50% + 500px );
+            bottom: 3rem;
+          }
+          .icon{
+            width: 2.25rem;
+            height: 2.25rem;
+          }
+          .icon:hover, .icon:active{
+            border: .1rem solid #424242;
+          }
+        }  
+      `}</style>
     </React.Fragment>    
   )
 }  
