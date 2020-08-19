@@ -9,8 +9,18 @@
   "description": "This site is for my portfolio and made with React, Next.js",
   "lang": "en-US",
   "icons":[
-    {"src":"./assets/human192x192.png","sizes":"192x192","type":"image/png"},
-    {"src":"./assets/human512x512.png","sizes":"512x512","type":"image/png"}
+    {
+      "src":"./assets/human192x192.png",
+      "sizes":"192x192",
+      "type":"image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src":"./assets/human512x512.png",
+      "sizes":"512x512",
+      "type":"image/png",
+      "purpose": "any maskable"
+    }
   ],
   "screenshots": [
     {
