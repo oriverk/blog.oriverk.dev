@@ -2,7 +2,9 @@ import React from 'react'
 import { SwipeableDrawer } from '@material-ui/core'
 import { LeftSwipeDrawerLists } from './DrawerLists'
 import { AlgoliaSearch } from './search/AlgoliaSearch'
-import { BlogIcons } from './IconsWrapper'
+import { PostIcons } from './IconsWrapper'
+
+
 
 export function BlogLayout(props) {
   const [state, setState] = React.useState({
@@ -16,7 +18,6 @@ export function BlogLayout(props) {
     }
     setState({ ...state, [anchor]: open })
   }
-  
   // drawer width is defined at _app.jsx
   return (
     <React.Fragment>
@@ -37,6 +38,7 @@ export function BlogLayout(props) {
         </div>
       </SwipeableDrawer>
       <main>
+        {/* {props.post && <PostIcons onClick={toggleDrawer('right', true)} postId={props.postId} title={props.title} />} */}
         {props.children}
       </main>
       <nav className="nav"></nav>
@@ -72,7 +74,7 @@ export function BlogLayout(props) {
         }
 
         main{
-          flex: 1;
+          /* flex: 1; */
           width: 100%;
         }
 

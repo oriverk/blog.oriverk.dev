@@ -5,6 +5,7 @@ import { BlogLayout } from '../../components/BlogLayout'
 import { getPostIds, getPostData } from '../../lib/posts'
 // import { getFetchPath } from '../../components/HeaderImg'
 import blogConfig from '../../../blog.config'
+import { PostIcons } from '../../components/IconsWrapper'
 
 import { GetStaticProps, GetStaticPaths } from 'next'
 
@@ -36,14 +37,12 @@ export default function Post({ postData
       image?: string
       contentHtml: string
   }
-}) {
+  }) {
   const tags = postData.tags
   const pageTags = tags ? tags.join(' ') : 'React, Next.js'
-  // const pageImage = postData.image ? postData.image : '/assets/prtsc700.jpg'
-  // const ogImage:string = getFetchPath(postData.title, 'dark', 0, tags)
   return (
     <React.Fragment>
-      <BlogLayout>
+      <BlogLayout post title postId>
         <Head>
           <title>{`${postData.title} | ${blogConfig.shortName}`}</title>
           <meta name='title' content={`${postData.title} | ${blogConfig.baseName}`} />
@@ -55,6 +54,7 @@ export default function Post({ postData
           <meta property='og:url' content={`${blogConfig.baseUrl}/posts/${postData.id}`} />
           <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
         </Head>
+        <PostIcons postTitle={postData.title} postId={postData.id} postTags={tags}/>
         <article className='content'>
           <h1>{postData.title}</h1>
           <div>
@@ -83,13 +83,6 @@ export default function Post({ postData
           font-size: 1.5rem;
           text-decoration: underline #50CAF9;
         }
-
-        {/* .sns {
-          position: absolute;
-          left: 50%;
-          transform: translate(-50%, 0);
-          margin: 1rem 0;
-        } */}
       `}</style>
     </React.Fragment>
   )
