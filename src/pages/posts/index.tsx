@@ -6,7 +6,7 @@ import blogConfig from '../../../blog.config'
 import fs from 'fs'
 import path from 'path'
 import { PostsIcons } from '../../components/IconsWrapper'
-import Date from '../../components/date'
+import { Date } from '../../utils'
 
 import { GetStaticProps } from 'next'
 

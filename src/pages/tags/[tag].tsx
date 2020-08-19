@@ -5,7 +5,7 @@ import { BlogLayout } from '../../components/BlogLayout'
 import blogConfig from '../../../blog.config'
 import { getTags, getTagPosts } from '../../lib/posts'
 import { TagIcons } from '../../components/IconsWrapper'
-import Date from '../../components/date'
+import { Date } from '../../utils'
 
 import { GetStaticProps, GetStaticPaths } from 'next'
 

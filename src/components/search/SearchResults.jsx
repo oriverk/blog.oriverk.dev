@@ -3,7 +3,7 @@ import { Hits, Panel } from 'react-instantsearch-dom'
 // import { Hit as HitType, SearchState, AllSearchResults, AlgoliaError, }
   // from "react-instantsearch-core"
 import { CustomPoweredBy, CustomStateResults } from './Connector'
-import Date from '../date'
+import { Date } from '../../utils'
 
 // interface IProps {
 //   hit: HitType
@@ -18,22 +18,37 @@ const Hit = (props) => {
   const date = hit.update || hit.create
   return (
     <React.Fragment>
-      <div key={hit.id} className='resultLink'>
-        <Link href='/posts/[id]' as={`/posts/${hit.id}`} passHref>
-          <a key={hit.id}>
-            <div className='title'>{hit.title}</div>
-            <div className='tags'>{tags.map((tag) => <span key={tag}>{tag}&nbsp;</span>)}</div>
-            <Date dateString={date} />
-          </a>
-        </Link>
-      </div>
+      <Link href='/posts/[id]' as={`/posts/${hit.id}`} passHref>
+        <a key={hit.id} className='result'>
+          <Date dateString={date} />
+          <div className='tags'>
+            {tags.map((tag) => <span key={tag} className='tag'>{tag}</span>)}
+          </div>
+          <div className='title'>{hit.title}</div>
+        </a>
+      </Link>
       <style jsx>{`
-        .resultLink{
+        .result{
+          display: block;
           padding: .5rem;
-        }
-        .resultLink:hover, .resultLink:visited{
-          background-color: #424242;
+          text-decoration: none;
+          color: #D9D9D9;
           border-radius: .5rem;
+          border: 1px solid #EEE;
+        }
+        .result:hover, .result:active, .result:visited{
+          background-color: #333;
+          border: 1px solid #50CAF9;
+        }
+        .tag{
+          text-decoration: none;
+          display: inline-block;
+          font-size: .8rem;
+          border-radius: 2rem;
+          border: 1px solid #50CAF9;
+          padding: 0.1rem .5rem;
+          margin: .5rem .3rem;
+          color: #EEE;
         }
       `}</style>
     </React.Fragment>

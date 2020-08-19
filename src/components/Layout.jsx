@@ -2,7 +2,6 @@ import React from 'react'
 import { SwipeableDrawer } from '@material-ui/core'
 import { LeftSwipeDrawerLists } from './DrawerLists'
 import { AlgoliaSearch } from './search/AlgoliaSearch'
-
 import { Top } from './HomeContents'
 
 export function Layout(props) {
@@ -56,12 +55,6 @@ export function Layout(props) {
           flex: 1;
           width: 100%;
         }
-
-        {/* @media ( min-width: 960px ){
-          .swipeableList, .nav{
-            display: none;
-          }
-        } */}
       `}</style>
     </React.Fragment>
   )
