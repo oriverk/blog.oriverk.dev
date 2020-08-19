@@ -1,9 +1,10 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { Layout } from '../../components/Layout'
+import { BlogLayout } from '../../components/BlogLayout'
 import blogConfig from '../../../blog.config'
 import { getTags, getTagPosts } from '../../lib/posts'
+import { TagIcons } from '../../components/IconsWrapper'
 
 import { GetStaticProps, GetStaticPaths } from 'next'
 
@@ -32,23 +33,21 @@ export default function Tag({ tag, tagPosts }: {
   tag: string, tagPosts: any[]
 })
 {
-  const sp: string[] = tag.split('')
-  sp[0] = sp[0].toUpperCase()
-  const nwTag: string = sp.join('')
   return (
     <React.Fragment>
-      <Layout>
+      <BlogLayout>
         <Head>
-          <title>{`${nwTag} | ${blogConfig.baseName}`}</title>
-          <meta name='title' content={`${nwTag} | ${blogConfig.baseName}`} />
+          <title>{`${tag} | ${blogConfig.baseName}`}</title>
+          <meta name='title' content={`${tag} | ${blogConfig.baseName}`} />
           <meta name='description' content={blogConfig.desc} />
-          <meta property='og:title' content={`${nwTag} | ${blogConfig.baseName}`} />
+          <meta property='og:title' content={`${tag} | ${blogConfig.baseName}`} />
           <meta property='og:description' content={blogConfig.baseDesc} />
           <meta property='og:image' content={`${blogConfig.baseUrl}/assets/prtsc700.jpg`} />
           <meta property='og:url' content={`${blogConfig.baseUrl}/tags/hoge`} />
         </Head>
+        <TagIcons />
         <article className='content'>
-          <h1>{`${nwTag} tag Posts`}</h1>
+          <h1>{`${tag} tag Posts`}</h1>
           <ul>
             {tagPosts.map(({ id, create, title, tags }) => (
               <li key={id}>
@@ -62,7 +61,7 @@ export default function Tag({ tag, tagPosts }: {
             ))}
           </ul>
         </article>
-      </Layout>
+      </BlogLayout>
       <style jsx>{`
         .content {
           width: 100%;
