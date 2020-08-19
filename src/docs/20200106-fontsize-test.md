@@ -2,7 +2,7 @@
 create: '2020-01-06'
 author: Kawano Yudai
 title: フォントサイズの確認
-tags: [test]
+tags: []
 ---
 
 ## h2 tag あいうえお

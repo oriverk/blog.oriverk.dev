@@ -33,15 +33,18 @@ React とNext.js のtutorial と docs を一通りやりました。
 - [Github リポジトリ](https://github.com/oriverk/next-portfolio)
 - [this site](https://oriverk.dev)
 
-<video autoplay loop muted playsinline>  
-  <source src='/assets/posts/202005/next-portfolio-prtsc.webm' type='video/webm'>  
-  <img src='/assets/posts/202005/next-portfolio-prtsc.gif' alt='screen-shot of next.js portfolio' />
-</video>
+first design
+
+<picture>
+  <source srcSet='/assets/prtsc-1000.webp' type='image/webp' />
+  <img src='/assets/prtsc-1000.jpg' alt='nextjs first design' />
+</picture>
+
 
 lighthouse
 
 <picture>
-  <img src='/assets/posts/202005/next7.png' alt='page score' />
+  <img src='/assets/posts/202005/next7.png' alt='lighthouse score' />
 </picture>
 
 ### 技術・要件など

@@ -35,8 +35,8 @@ export default function ({ tags }: { tags: string[] }) {
           <h1>Blog Tags</h1>
           <div className='tags'>
             {tags.map((tag) => (
-              <Link href='/tags/[tag]' as={`/tags/${tag}`}>
-                <a key={tag} className='tag'>{tag}</a>
+              <Link href='/tags/[tag]' as={`/tags/${tag}`} key={tag}>
+                <a className='tag'>{tag}</a>
               </Link>
             ))}
           </div>

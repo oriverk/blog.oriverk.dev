@@ -31,15 +31,15 @@ const BlogIconsStyle = css`
     position: relative;
     text-decoration: none;
     border-radius: 50%;
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 2rem;
+    height: 2rem;
     margin: .5rem;
     background-color: #EEE;
     border-radius: 50%;
   }
 
   .icon:hover, .icon:active{
-    border: .5rem solid #424242;
+    border: 2px solid #424242;
   }
   
   .icon[aria-expanded='false']{
@@ -57,17 +57,23 @@ const BlogIconsStyle = css`
       width: 2.25rem;
       height: 2.25rem;
     }
-    .icon:hover, .icon:active{
-      border: .1rem solid #424242;
-    }
   }  
 `
 
 export const HomeIcons = (props) => {
+  const [more, setMore] = React.useState(false)
   const openSearch = props.openSearch
   return (
     <React.Fragment>
       <div className='iconsWrapper'>
+        <a className='icon more' key='more' aria-expanded={!more}
+          onClick={() => setMore(true)} aria-label='expand link icons'>
+          <IconContext.Provider value={{ className: 'react-icons' }}><MdMoreHoriz /></IconContext.Provider>
+        </a>
+        <a className='icon close' key='close' aria-expanded={more}
+          onClick={() => setMore(false)} aria-label='close link icons'>
+          <IconContext.Provider value={{ className: 'react-icons' }}><MdClose /></IconContext.Provider>
+        </a>
         <a className='icon' key='search' onClick={openSearch} aria-label='search post'>
           <IconContext.Provider value={{ className: 'react-icons' }}><MdSearch /></IconContext.Provider>
         </a>
@@ -84,11 +90,11 @@ export const HomeIcons = (props) => {
           aria-label='linkedin accountlink' target='_blank' rel='noopener noreferrer'>
           <IconContext.Provider value={{ className: 'react-icons' }}><FaLinkedin /></IconContext.Provider>
         </a>
-        <a className='icon wantedly' key='wantedly' href={`https://www.wantedly.com/users/${blogConfig.sns.wantedly}`}
+        <a className='icon wantedly' key='wantedly' aria-expanded={more} href={`https://www.wantedly.com/users/${blogConfig.sns.wantedly}`}
           aria-label='wantedly account link' target='_blank' rel='noopener noreferrer'>
           <WantedlySvg class='homeIconSvg' />
         </a>
-        <a className='icon twitter' key='twitter' href={`https://twitter.com/${blogConfig.sns.twitter}`}  
+        <a className='icon twitter' key='twitter' aria-expanded={more} href={`https://twitter.com/${blogConfig.sns.twitter}`}  
           aria-label='twitter account link' target='_blank' rel='noopener noreferrer'>
           <IconContext.Provider value={{ className: 'react-icons' }}><FaTwitter /></IconContext.Provider>
         </a>
@@ -103,8 +109,8 @@ export const HomeIcons = (props) => {
           display: inline-block;
           text-decoration: none;
           border-radius: 50%;
-          width: 1.75rem;
-          height: 1.75rem;
+          width: 2rem;
+          height: 2rem;
           margin: .5rem;
           background-color: #EEE;
           border-radius: 50%;
@@ -124,7 +130,7 @@ export const HomeIcons = (props) => {
           }
         }
       `}</style>
-    </React.Fragment>    
+    </React.Fragment>
   )
 }  
 

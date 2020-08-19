@@ -3,7 +3,7 @@ create: '2019-03-06'
 update: '2019-12-04'
 author: Kawano Yudai
 title: 'Day 2 ~ 8：Scaffold なしでの掲示板作成'
-tags: [Ubuntu, Ruby, Rails]
+tags: [ruby, rails]
 image: '/assets/posts/201903/scaffold6.jpg'
 ---
 

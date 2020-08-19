@@ -2,7 +2,7 @@
 create: '2020-01-10'
 author: Kawano Yudai
 title: Post ページを中心に改修した
-tags: [githubpages, ruby, jekyll]
+tags: [githubpages, jekyll]
 image: '/assets/posts/202001/githubpages2post.jpg'
 permalink: blog/:title
 ---

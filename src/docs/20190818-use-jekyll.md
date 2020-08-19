@@ -3,7 +3,7 @@ create: '2019-08-18'
 update: '2019-12-01'
 author: Kawano Yudai
 title: 'GithubPages で Jekyll を使ってみよう'
-tags: [githubpages, Ruby, jekyll]
+tags: [githubpages, jekyll]
 image: '/assets/posts/201908/jekyll1.jpg'
 ---
 

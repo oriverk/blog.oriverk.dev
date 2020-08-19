@@ -142,8 +142,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           left: 50%;
           transform: translate(-50%, -50%);
           fill: #424242;
-          width: 1rem;
-          height: 1rem;
+          width: 1.25rem;
+          height: 1.25rem;
         }
 
         @media ( min-width: 960px ){
