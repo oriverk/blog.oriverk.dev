@@ -51,12 +51,16 @@ export default function ({
             {postsData.map(({ id, create, title, tags }) => (
               <li key={id}>
                 <time dateTime={create}>{create}</time>
-                <span className='tags'>{tags.map((tag) =>
-                  (<code key={tag}>
-                    <Link href='/tags/[tag]' as={`/tags/${tag}`}><a>{tag}</a></Link>
-                  </code>))}
+                <span className='tags'>
+                  {tags.map((tag) => (
+                    <Link href='/tags/[tag]' as={`/tags/${tag}`}>
+                      <a key={tag} className='tag'>{tag}</a>
+                    </Link>
+                  ))}
                 </span>
-                <Link href='/posts/[id]' as={`/posts/${id}`}><a><h2>{title}</h2></a></Link>
+                <Link href='/posts/[id]' as={`/posts/${id}`}>
+                  <a className='title'><h2>{title}</h2></a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -71,33 +75,33 @@ export default function ({
           flex-grow: 1;
         }
 
-        h2{
-          margin: .5rem auto 1.5rem;
-          font-weight: 600;
-        }
-
-        a {
-          color: #D9D9D9;
-          text-decoration: underline;
-        }
-
         time {
           margin-right: 1rem;
         }
 
-        .tags {
-          display: block;
-        }
-
-        .tags a{
+        .tag{
+          text-decoration: none;
+          display: inline-block;
           font-size: .8rem;
-          color: #50CAF9;
+          border-radius: 2rem;
+          border: 1px solid #50CAF9;
+          padding: 0.1rem 1rem;
+          margin: .5rem;
+          margin-bottom: 0;
+          color: #EEE;
+        }
+        .tag:hover, .tag:active{
+          background-color: #424242;
         }
 
-        @media( min-width: 1280px ){
-          .tags {
-            display: inline;
-          }
+        .title {
+          color: #D9D9D9;
+          text-decoration: underline;
+        }
+
+        h2{
+          margin: .5rem auto 1.5rem;
+          font-weight: 600;
         }
       `}</style>
     </React.Fragment>

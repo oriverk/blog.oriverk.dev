@@ -35,9 +35,9 @@ export default function ({ tags }: { tags: string[] }) {
           <h1>Blog Tags</h1>
           <div className='tags'>
             {tags.map((tag) => (
-              <span key={tag} className={tag}><code>
-                <Link href='/tags/[tag]' as={`/tags/${tag}`}><a>{tag}</a></Link>
-              </code></span>
+              <Link href='/tags/[tag]' as={`/tags/${tag}`}>
+                <a key={tag} className='tag'>{tag}</a>
+              </Link>
             ))}
           </div>
         </article>
@@ -51,8 +51,18 @@ export default function ({ tags }: { tags: string[] }) {
           flex-grow: 1;
         }
 
-        .tags a{
+        .tag{
+          text-decoration: none;
+          display: inline-block;
           font-size: .8rem;
+          border-radius: 2rem;
+          border: 1px solid #50CAF9;
+          padding: 0.1rem 1rem;
+          margin: .5rem;
+          color: #EEE;
+        }
+        .tag:hover, .tag:active{
+          background-color: #424242;
         }
       `}</style>
     </React.Fragment>

@@ -60,7 +60,12 @@ export default function Post({ postData
           <div>
             <time dateTime={postData.create}>posted on: {postData.create}</time>
             <br />
-            <span className='tags'>{tags.map((tag) => (<code key={tag}><Link href={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
+            <div className='tags'>
+              {tags.map((tag) => (
+                <Link href={`/tags/${tag}`}>
+                  <a key={tag} className='tag'>{tag}</a>
+                </Link>
+              ))}</div>
           </div>
           <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} className='markdown' />
         </article>
@@ -73,15 +78,26 @@ export default function Post({ postData
           padding: 5%;
           flex-grow: 1;
         }
-
-        .content .tags {
-          display: block;
-          text-align: center;
-        }
         
         h1{
           font-size: 1.5rem;
           text-decoration: underline #50CAF9;
+          color: #D9D9D9;
+        }
+
+        .tag{
+          text-decoration: none;
+          display: inline-block;
+          font-size: .8rem;
+          border-radius: 2rem;
+          border: 1px solid #50CAF9;
+          padding: 0.1rem 1rem;
+          margin: .5rem;
+          margin-bottom: 0;
+          color: #EEE;
+        }
+        .tag:hover, .tag:active{
+          background-color: #424242;
         }
       `}</style>
     </React.Fragment>
