@@ -1,10 +1,12 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { Layout } from '../../components/Layout'
+import { BlogLayout } from '../../components/BlogLayout'
 import blogConfig from '../../../blog.config'
 import fs from 'fs'
 import path from 'path'
+import { PostsIcons } from '../../components/IconsWrapper'
+import { Date } from '../../utils'
 
 import { GetStaticProps } from 'next'
 
@@ -33,7 +35,7 @@ export default function ({
   }) {
   return (
     <React.Fragment>
-      <Layout posts>
+      <BlogLayout posts>
         <Head>
           <title>Blog | {blogConfig.shortName}</title>
           <meta name='title' content={`Blog | ${blogConfig.baseName}`} />
@@ -43,23 +45,28 @@ export default function ({
           <meta property='og:image' content={`${blogConfig.baseUrl}/assets/prtsc700.jpg`} />
           <meta property='og:url' content={`${blogConfig.baseUrl}/posts`} />
         </Head>
+        <PostsIcons />
         <article className='content'>
           <h1>Blog Posts</h1>
           <ul>
             {postsData.map(({ id, create, title, tags }) => (
               <li key={id}>
-                <time dateTime={create}>{create}</time>
-                <span className='tags'>{tags.map((tag) =>
-                  (<code key={tag}>
-                    <Link href='/tags/[tag]' as={`/tags/${tag}`}><a>{tag}</a></Link>
-                  </code>))}
+                <div>post on <Date dateString={create} /></div>
+                <span className='tags'>
+                  {tags.map((tag) => (
+                    <Link href='/tags/[tag]' as={`/tags/${tag}`}>
+                      <a key={tag} className='tag'>{tag}</a>
+                    </Link>
+                  ))}
                 </span>
-                <Link href='/posts/[id]' as={`/posts/${id}`}><a><h2>{title}</h2></a></Link>
+                <Link href='/posts/[id]' as={`/posts/${id}`}>
+                  <a className='title'><h2>{title}</h2></a>
+                </Link>
               </li>
             ))}
           </ul>
         </article>
-      </Layout>
+      </BlogLayout>
       <style jsx>{`
         .content {
           width: 100%;
@@ -69,33 +76,29 @@ export default function ({
           flex-grow: 1;
         }
 
-        h2{
-          margin: .5rem auto 1.5rem;
-          font-weight: 600;
+        .tag{
+          text-decoration: none;
+          display: inline-block;
+          font-size: .8rem;
+          border-radius: 2rem;
+          border: 1px solid #50CAF9;
+          padding: 0.1rem 1rem;
+          margin: .5rem;
+          margin-bottom: 0;
+          color: #EEE;
+        }
+        .tag:hover, .tag:active{
+          background-color: #424242;
         }
 
-        a {
+        .title {
           color: #D9D9D9;
           text-decoration: underline;
         }
 
-        time {
-          margin-right: 1rem;
-        }
-
-        .tags {
-          display: block;
-        }
-
-        .tags a{
-          font-size: .8rem;
-          color: #50CAF9;
-        }
-
-        @media( min-width: 1280px ){
-          .tags {
-            display: inline;
-          }
+        h2{
+          margin: .5rem auto 1.5rem;
+          font-weight: 600;
         }
       `}</style>
     </React.Fragment>

@@ -1,9 +1,10 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { Layout } from '../../components/Layout'
+import { BlogLayout } from '../../components/BlogLayout'
 import { getTags } from '../../lib/posts'
 import blogConfig from '../../../blog.config'
+import { TagsIcons } from '../../components/IconsWrapper'
 
 import { GetStaticProps } from 'next'
 
@@ -19,7 +20,7 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function ({ tags }: { tags: string[] }) {
   return (
     <React.Fragment>
-      <Layout>
+      <BlogLayout>
         <Head>
           <title>Tags | {blogConfig.shortName}</title>
           <meta name='title' content={`Tags | ${blogConfig.baseName}`} />
@@ -29,13 +30,18 @@ export default function ({ tags }: { tags: string[] }) {
           <meta property='og:image' content={`${blogConfig.baseUrl}/assets/prtsc700.jpg`} />
           <meta property='og:url' content={`${blogConfig.baseUrl}/tags`} />
         </Head>
+        <TagsIcons />
         <article className='content'>
           <h1>Blog Tags</h1>
           <div className='tags'>
-            {tags.map((tag) => (<span key={tag} className={tag}><code><Link href='/tags/[tag]' as={`/tags/${tag}`}><a>{tag}</a></Link></code></span>))}
+            {tags.map((tag) => (
+              <Link href='/tags/[tag]' as={`/tags/${tag}`}>
+                <a key={tag} className='tag'>{tag}</a>
+              </Link>
+            ))}
           </div>
         </article>
-      </Layout>
+      </BlogLayout>
       <style jsx>{`
         .content {
           width: 100%;
@@ -45,8 +51,18 @@ export default function ({ tags }: { tags: string[] }) {
           flex-grow: 1;
         }
 
-        .tags a{
+        .tag{
+          text-decoration: none;
+          display: inline-block;
           font-size: .8rem;
+          border-radius: 2rem;
+          border: 1px solid #50CAF9;
+          padding: 0.1rem 1rem;
+          margin: .5rem;
+          color: #EEE;
+        }
+        .tag:hover, .tag:active{
+          background-color: #424242;
         }
       `}</style>
     </React.Fragment>

@@ -2,9 +2,11 @@ import React from 'react'
 import { SwipeableDrawer } from '@material-ui/core'
 import { LeftSwipeDrawerLists } from './DrawerLists'
 import { AlgoliaSearch } from './search/AlgoliaSearch'
-import { Top } from './HomeContents'
+import { PostIcons } from './IconsWrapper'
 
-export function Layout(props) {
+
+
+export function BlogLayout(props) {
   const [state, setState] = React.useState({
     left: false,
     right: false
@@ -16,7 +18,6 @@ export function Layout(props) {
     }
     setState({ ...state, [anchor]: open })
   }
-
   // drawer width is defined at _app.jsx
   return (
     <React.Fragment>
@@ -37,11 +38,32 @@ export function Layout(props) {
         </div>
       </SwipeableDrawer>
       <main>
-        <Top openSearch={toggleDrawer('right', true)} />
+        {/* {props.post && <PostIcons onClick={toggleDrawer('right', true)} postId={props.postId} title={props.title} />} */}
         {props.children}
       </main>
+      <nav className="nav"></nav>
       <style jsx>{`
         /* general */
+        .searchButtonContainer{
+          text-align:center;
+        }
+
+        .searchButton {
+          color: #EEE;
+          font-size: 1rem;
+          width: 80%;
+          height: 3rem;
+          background-color: #424242;
+          border-radius: .5rem;
+          border: 1px solid #50CAF9;
+        }
+
+        .searchButton:hover, .searchButton:active{
+          background-color: #50CAF9;
+          color: #424242;
+          border:none;
+        }
+
         .swipeableList {
           width: var(--swipeDrawerWidth);
           max-width: 450px;
@@ -52,9 +74,28 @@ export function Layout(props) {
         }
 
         main{
-          flex: 1;
+          /* flex: 1; */
           width: 100%;
         }
+
+        /* nav */
+        .nav {
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+          display: flex;
+          overflow-x: auto;
+          z-index: 100;
+        }
+
+        {/* @media ( min-width: 960px ){
+          .swipeableList, .nav{
+            display: none;
+          }
+          .nav{
+            display:none;
+          }
+        } */}
       `}</style>
     </React.Fragment>
   )

@@ -1,12 +1,12 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { Layout } from '../../components/Layout'
+import { BlogLayout } from '../../components/BlogLayout'
 import { getPostIds, getPostData } from '../../lib/posts'
 // import { getFetchPath } from '../../components/HeaderImg'
-import { HatenaIcon, TwitterIcon } from '../../utils/svgIcon'
-import { IconButton } from '../../utils/utils'
 import blogConfig from '../../../blog.config'
+import { PostIcons } from '../../components/IconsWrapper'
+import { Date } from '../../utils'
 
 import { GetStaticProps, GetStaticPaths } from 'next'
 
@@ -38,14 +38,12 @@ export default function Post({ postData
       image?: string
       contentHtml: string
   }
-}) {
+  }) {
   const tags = postData.tags
   const pageTags = tags ? tags.join(' ') : 'React, Next.js'
-  // const pageImage = postData.image ? postData.image : '/assets/prtsc700.jpg'
-  // const ogImage:string = getFetchPath(postData.title, 'dark', 0, tags)
   return (
     <React.Fragment>
-      <Layout>
+      <BlogLayout post title postId>
         <Head>
           <title>{`${postData.title} | ${blogConfig.shortName}`}</title>
           <meta name='title' content={`${postData.title} | ${blogConfig.baseName}`} />
@@ -57,25 +55,22 @@ export default function Post({ postData
           <meta property='og:url' content={`${blogConfig.baseUrl}/posts/${postData.id}`} />
           <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
         </Head>
+        <PostIcons postTitle={postData.title} postId={postData.id} postTags={tags}/>
         <article className='content'>
           <h1>{postData.title}</h1>
           <div>
-            <time dateTime={postData.create}>posted on: {postData.create}</time>
-            <br />
-            <span className='tags'>{tags.map((tag) => (<code key={tag}><Link href={`/tags/${tag}`}><a>{tag}</a></Link></code>))}</span>
+            {/* <time dateTime={postData.create}>posted on: {postData.create}</time> */}
+            <div>post on <Date dateString={postData.create} /></div>
+            <div className='tags'>
+              {tags.map((tag) => (
+                <Link href={`/tags/${tag}`}>
+                  <a key={tag} className='tag'>{tag}</a>
+                </Link>
+              ))}</div>
           </div>
           <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} className='markdown' />
-          {/* <div>`${postData.jsx}`</div> */}
-          <div className='sns'>
-            <IconButton label='twitter share button' href={`https://twitter.com/share?text=${postData.title}&hashtags=react,nextjs&url=${blogConfig.baseUrl}/posts/${postData.id}&related=${blogConfig.sns.tiwtter}`}>
-              <TwitterIcon />
-            </IconButton>
-            <IconButton label='hatena share button' href={`https://b.hatena.ne.jp/entry/${blogConfig.baseUrl}/posts/${postData.id}`}>
-              <HatenaIcon />
-            </IconButton>
-          </div>
         </article>
-      </Layout>
+      </BlogLayout>
       <style jsx>{`
         .content {
           width: 100%;
@@ -84,22 +79,26 @@ export default function Post({ postData
           padding: 5%;
           flex-grow: 1;
         }
-
-        .content .tags {
-          display: block;
-          text-align: center;
-        }
         
         h1{
           font-size: 1.5rem;
           text-decoration: underline #50CAF9;
+          color: #D9D9D9;
         }
 
-        .sns {
-          position: absolute;
-          left: 50%;
-          transform: translate(-50%, 0);
-          margin: 1rem 0;
+        .tag{
+          text-decoration: none;
+          display: inline-block;
+          font-size: .8rem;
+          border-radius: 2rem;
+          border: 1px solid #50CAF9;
+          padding: 0.1rem 1rem;
+          margin: .5rem;
+          margin-bottom: 0;
+          color: #EEE;
+        }
+        .tag:hover, .tag:active{
+          background-color: #424242;
         }
       `}</style>
     </React.Fragment>

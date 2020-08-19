@@ -51,7 +51,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           font-family: 'Hiragino Sans', 'Meiryo', sans-serif;
           --drawerWidth: 250px;
           --swipeDrawerWidth: 85vw;
-          --bottomNavHeight: 55px
+          --bottomNavHeight: 55px;
         }
 
         *, *::before, *::after{
@@ -134,6 +134,23 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           border-left: 5px solid #BBB;
           margin: 1rem 0;
           padding: .5rem 0 .5rem .5rem;
+        }
+
+        .react-icons, .homeIconSvg{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          fill: #424242;
+          width: 1rem;
+          height: 1rem;
+        }
+
+        @media ( min-width: 960px ){
+          .react-icons, .homeIconSvg{
+            width: 1.5rem;
+            height: 1.5rem;
+          }
         }
       `}</style>
     </React.Fragment>
