@@ -3,7 +3,7 @@ create: '2020-03-29'
 update: '2020-04-07'
 author: Kawano Yudai
 title: '宮崎県 COVID-19 対策サイトの OSS 活動に参加した。'
-tags: [oss, vue]
+tags: [vue, typescript]
 image: '/assets/posts/202003/miyazaki-oss1.jpg'
 ---
 

@@ -4,7 +4,7 @@ import { Layout } from '../components/Layout'
 import { About, History, Works } from '../components/HomeContents'
 import blogConfig from '../../blog.config'
 
-export default function (props) {
+export default function () {
   return (
     <>
       <Layout home>

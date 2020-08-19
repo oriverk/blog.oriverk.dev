@@ -2,7 +2,7 @@
 create: '2020-02-04'
 author: Kawano Yudai
 title: GithubPages のメジャーアップデートをした。
-tags: [githubpages, ruby, jekyll]
+tags: [githubpages, jekyll]
 image: 'assets/posts/202002/githubpages2home.jpg'
 ---
 

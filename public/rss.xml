@@ -5,7 +5,7 @@
     <link>https://oriverk.dev</link>
     <description>This site is for my portfolio and made with React, Next.js</description>
     <language>ja</language>
-    <lastBuildDate>Thu Jul 30 2020 06:44:18 GMT+0000 (Coordinated Universal Time)</lastBuildDate>
+    <lastBuildDate>Wed Aug 19 2020 17:00:12 GMT+0000 (Coordinated Universal Time)</lastBuildDate>
 
     <item>
       <title>Next.js でポートフォリオサイトを作成した</title>
@@ -16,13 +16,13 @@
     <item>
       <title>宮崎県 COVID-19 対策サイトの OSS 活動に参加した。</title>
       <link>https://oriverk.dev/posts/20200329-joined-corona-oss</link>
-      <description>oss, vue</description>
+      <description>typescript, vue</description>
       <pubDate>2020-03-29</pubDate>
     </item>
     <item>
       <title>GithubPages のメジャーアップデートをした。</title>
       <link>https://oriverk.dev/posts/20200204-update-githubpages</link>
-      <description>githubpages, jekyll, ruby</description>
+      <description>githubpages, jekyll</description>
       <pubDate>2020-02-04</pubDate>
     </item>
     <item>
@@ -58,7 +58,7 @@
     <item>
       <title>Build Ubuntu environment with VM and Vagrant</title>
       <link>https://oriverk.dev/posts/20200128-setup-ubuntu-vm</link>
-      <description>ubuntu, vagrant, vm</description>
+      <description>ubuntu, vm</description>
       <pubDate>2020-01-28</pubDate>
     </item>
     <item>
@@ -70,13 +70,13 @@
     <item>
       <title>Post ページを中心に改修した</title>
       <link>https://oriverk.dev/posts/20200110-update-githubpages</link>
-      <description>githubpages, jekyll, ruby</description>
+      <description>githubpages, jekyll</description>
       <pubDate>2020-01-10</pubDate>
     </item>
     <item>
       <title>フォントサイズの確認</title>
       <link>https://oriverk.dev/posts/20200106-fontsize-test</link>
-      <description>test</description>
+      <description></description>
       <pubDate>2020-01-06</pubDate>
     </item>
     <item>
@@ -94,7 +94,7 @@
     <item>
       <title>GithubPages で Jekyll を使ってみよう</title>
       <link>https://oriverk.dev/posts/20190818-use-jekyll</link>
-      <description>githubpages, jekyll, ruby</description>
+      <description>githubpages, jekyll</description>
       <pubDate>2019-08-18</pubDate>
     </item>
     <item>
@@ -166,7 +166,7 @@
     <item>
       <title>Day 3：HTTP method, CRUD and SQL</title>
       <link>https://oriverk.dev/posts/20190311-httpmethod-crud-sql</link>
-      <description>crud, http, restful, sql</description>
+      <description>crud, restful</description>
       <pubDate>2019-03-11</pubDate>
     </item>
     <item>
@@ -178,7 +178,7 @@
     <item>
       <title>Day 2 ~ 8：Scaffold なしでの掲示板作成</title>
       <link>https://oriverk.dev/posts/20190306-without-scaffold</link>
-      <description>rails, ruby, ubuntu</description>
+      <description>rails, ruby</description>
       <pubDate>2019-03-06</pubDate>
     </item>
     <item>

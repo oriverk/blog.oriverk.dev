@@ -55,8 +55,8 @@ export default function Tag({ tag, tagPosts }: {
                 <div>post on <Date dateString={create} /></div>
                 <div className='tags'>
                   {tags.map((tag) => (
-                    <Link href='/tags/[tag]' as={`/tags/${tag}`}>
-                      <a key={tag} className='tag'>{tag}</a>
+                    <Link href='/tags/[tag]' as={`/tags/${tag}`} key={tag}>
+                      <a className='tag'>{tag}</a>
                     </Link>
                   ))}
                 </div>
