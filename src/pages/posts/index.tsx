@@ -6,6 +6,7 @@ import blogConfig from '../../../blog.config'
 import fs from 'fs'
 import path from 'path'
 import { PostsIcons } from '../../components/IconsWrapper'
+import Date from '../../components/date'
 
 import { GetStaticProps } from 'next'
 
@@ -50,7 +51,7 @@ export default function ({
           <ul>
             {postsData.map(({ id, create, title, tags }) => (
               <li key={id}>
-                <time dateTime={create}>{create}</time>
+                <div>post on <Date dateString={create} /></div>
                 <span className='tags'>
                   {tags.map((tag) => (
                     <Link href='/tags/[tag]' as={`/tags/${tag}`}>
@@ -73,10 +74,6 @@ export default function ({
           margin: 0 auto 1rem;
           padding: 5%;
           flex-grow: 1;
-        }
-
-        time {
-          margin-right: 1rem;
         }
 
         .tag{

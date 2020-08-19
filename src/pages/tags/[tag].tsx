@@ -5,6 +5,7 @@ import { BlogLayout } from '../../components/BlogLayout'
 import blogConfig from '../../../blog.config'
 import { getTags, getTagPosts } from '../../lib/posts'
 import { TagIcons } from '../../components/IconsWrapper'
+import Date from '../../components/date'
 
 import { GetStaticProps, GetStaticPaths } from 'next'
 
@@ -51,7 +52,7 @@ export default function Tag({ tag, tagPosts }: {
           <ul>
             {tagPosts.map(({ id, create, title, tags }) => (
               <li key={id}>
-                <time dateTime={create}>{create}</time>
+                <div>post on <Date dateString={create} /></div>
                 <div className='tags'>
                   {tags.map((tag) => (
                     <Link href='/tags/[tag]' as={`/tags/${tag}`}>
@@ -74,10 +75,6 @@ export default function Tag({ tag, tagPosts }: {
           margin: 0 auto 1rem;
           padding: 5%;
           flex-grow: 1;
-        }
-
-        time {
-          margin-right: 1rem;
         }
 
         .tag{

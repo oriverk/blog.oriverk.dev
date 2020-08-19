@@ -6,6 +6,7 @@ import { getPostIds, getPostData } from '../../lib/posts'
 // import { getFetchPath } from '../../components/HeaderImg'
 import blogConfig from '../../../blog.config'
 import { PostIcons } from '../../components/IconsWrapper'
+import Date from '../../components/date'
 
 import { GetStaticProps, GetStaticPaths } from 'next'
 
@@ -58,8 +59,8 @@ export default function Post({ postData
         <article className='content'>
           <h1>{postData.title}</h1>
           <div>
-            <time dateTime={postData.create}>posted on: {postData.create}</time>
-            <br />
+            {/* <time dateTime={postData.create}>posted on: {postData.create}</time> */}
+            <div>post on <Date dateString={postData.create} /></div>
             <div className='tags'>
               {tags.map((tag) => (
                 <Link href={`/tags/${tag}`}>
