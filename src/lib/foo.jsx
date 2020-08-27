@@ -9,8 +9,8 @@ import highlight from 'remark-highlight.js' // plugin to highlight code blocks w
 import toc from 'remark-toc' // plugin to generate a table of contents.
 import breaks from 'remark-breaks' // plugin to add break support, without needing spaces.
 import slug from 'remark-slug' // plugin to add anchors headings using GitHub’s algorithm.
-import squeeze from 'remark-squeeze-paragraphs' // plugin to remove empty (or whitespace only) paragraphs.
 import link2heading from 'remark-autolink-headings' // plugin to automatically add links to headings. this must be included after `remark-slug`
+import squeeze from 'remark-squeeze-paragraphs' // plugin to remove empty (or whitespace only) paragraphs.
 // import vfile from 'vfile'
 // import unified from 'unified'
 // import inspect from 'unist-util-inspect' // utility to inspect nodes
@@ -94,17 +94,12 @@ export async function getPostData(id) {
   const contentHtml = processor.toString()
 
   
-  // const processor1 = unified()
-  //   .use(toMdast)
-  //   .use(frontmatter)
-  //   .use(alignHeading)
-  //   .use(link2heading)   
+  // const processor1 = unified().use(toMdast).use(frontmatter).use(alignHeading).use(link2heading)   
   
-  // console.log('-------------------parsed ------------------------')
+  // console.log('-parsed---------------------- ')
   // const parsed = processor1.parse(fullPath);
   // console.log(inspect(parsed));
-
-  // console.log('=============transformed================')
+  // console.log('=transformed================')
   // const transformed = processor1.runSync(parsed);
   // console.log(inspect(transformed));
   

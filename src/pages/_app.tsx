@@ -151,11 +151,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           height: 1.25rem;
         }
 
-        .post.content .heading-link{
+        .heading-link{
           color: #EEE;
           border-bottom: .1rem solid #50CAF9;
         }
-        .post.content .heading-link:hover{
+        .heading-link:hover{
           color: #50CAF9;
         }
         .heading-link:hover::before{
