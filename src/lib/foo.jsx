@@ -6,7 +6,6 @@ import html from 'remark-html' // plugin to serialize Markdown as HTML.
 import katex from 'remark-html-katex' // plugin to transform inlineMath and math nodes with KaTeX for remark-html.
 import math from 'remark-math' //plugins to support math! use $$ \n\n $$
 import highlight from 'remark-highlight.js' // plugin to highlight code blocks with highlight.js (via lowlight)
-import toc from 'remark-toc' // plugin to generate a table of contents.
 import breaks from 'remark-breaks' // plugin to add break support, without needing spaces.
 import slug from 'remark-slug' // plugin to add anchors headings using GitHub’s algorithm.
 import link2heading from 'remark-autolink-headings' // plugin to automatically add links to headings. this must be included after `remark-slug`
@@ -17,6 +16,7 @@ import squeeze from 'remark-squeeze-paragraphs' // plugin to remove empty (or wh
 // import remarkMdx from 'remark-mdx'
 // import toMdast from 'remark-parse' // parses markdown ton mdast
 // import toHast from 'mdast-util-to-hast'
+// import toc from 'remark-toc' // plugin to generate a table of contents.
 
 const docsDirectory = path.join(process.cwd(), 'src/docs')
 
