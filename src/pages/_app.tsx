@@ -151,6 +151,36 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           height: 1.25rem;
         }
 
+        .post.content .heading-link{
+          color: #EEE;
+          border-bottom: .1rem solid #50CAF9;
+        }
+        .post.content .heading-link:hover{
+          color: #50CAF9;
+        }
+        .heading-link:hover::before{
+          color: #50CAF9;
+        }
+
+        h2 > .heading-link{
+          font-size: 1.5rem;
+        }
+        h2 > .heading-link::before{
+          content: '## ';
+        }
+        h3 > .heading-link{
+          font-size: 1.17rem;
+        }
+        h3 > .heading-link::before{
+          content: '### ';
+        }
+        h4 > .heading-link{
+          font-size: 1rem;
+        }
+        h4 > .heading-link::before{
+          content: '#### ';
+        }
+
         @media ( min-width: 960px ){
           .react-icons, .homeIconSvg{
             width: 1.5rem;
