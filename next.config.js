@@ -37,12 +37,12 @@ module.exports = withPlugins(
       inlineImageLimit: 8192,
       imagesFolder: 'images',
       imagesName: '[name]-[hash].[ext]',
-      handleImages: ['jpeg', 'png', 'svg', 'webp', 'gif'],
+      handleImages: ['jpeg', 'png', 'webp'],
       removeOriginalExtension: true,
       optimizeImages: true,
       optimizeImagesInDev: false,
       mozjpeg: {
-        quality: 80,
+        quality: 85,
       },
       optipng: {
         optimizationLevel: 3,
@@ -52,7 +52,7 @@ module.exports = withPlugins(
       },
       webp: {
         preset: 'default',
-        quality: 75,
+        quality: 85,
       },
     }],
   ],
