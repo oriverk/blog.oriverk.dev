@@ -22,11 +22,6 @@ from [Qiita: Twitterにコードを身えばよく投稿したい](https://qiita
 - [Github : oriverk/Codr](https://github.com/oriverk/Codr)
 - [GithubPage](https://oriverk.github.io/)
 
-<picture>
-  <source srcSet="/assets/codr700.webp" type="image/webp" />
-  <img src="/assets/codr700.jpg" alt="screen-shot from this webpage" />
-</picture>
-
 ### 作成の過程で収穫物
 - Active Record Storage等のRails5.2
 - Twitter Login方法と仕組みなど

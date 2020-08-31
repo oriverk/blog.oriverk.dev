@@ -10,11 +10,6 @@ from [Qiita: HTTPメソッドとCRUDとSQL](https://qiita.com/OriverK/items/19b9
 
 ## flow to display web page
 
-<picture>
-  <source srcSet="/assets/posts/201903/http1.webp" type="image/webp" />
-  <img src="/assets/posts/201903/http1.jpg" alt="https method" />
-</picture>
-
 1. ブラウザでURLにアクセスして、DNSサーバーにIPを問い合わせ、DNSサーバーがIPを返す
 2. htmlなどの情報をやり取りするためのProtocol Cliantがサーバー上のquery(何を)とHttpメソッド(行いたい処理）をサーバーにHttpリクエストする。
 3. サーバーがレスポンス

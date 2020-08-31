@@ -16,12 +16,6 @@ GithubPagesJekyllを利用し、静的ページを作成した。
 - 20190825：GithubPages with jekyll 作成
     - 目的：自分の情報等を纏めるサイト作成の為
     - remote theme：[fongandrew / hydeout](https://github.com/fongandrew/hydeout)
-
-<picture>
-  <source srcSet="/assets/posts/201908/jekyll1.webp" type="image/webp" />
-  <img src="/assets/posts/201908/jekyll1.jpg" alt="jekyll" />
-</picture>
-
 - 20191206：デザイン等変更
   - 目的：アクセシビリティ改善、デバイスによる見た目差を小さく
 

@@ -4,7 +4,7 @@ update: '2019-12-04'
 author: Kawano Yudai
 title: 'Day 9 ~ 14：大学生データ操作 App'
 tags: [ruby, rails, mysql]
-image: 'assets/posts/201905/cebu3.webp'
+image: 'assets/posts/201905/cebu3.png'
 ---
 
 from Qiita
@@ -39,7 +39,7 @@ end
 - Ruby：2.51
 - Rails:5.2.2
 
-### 作成データ
+## 作成データ
 - テーブル
   - student (id, name,email, gender, age, opinion, updated_at, created_at)
   - ExamResult (id, student, subject, name, score, updated_at, created_at)
@@ -49,14 +49,6 @@ end
   - ClubStudent (id, student, club, name, updated_at, created_at)
       - 中間テーブル
   - Club (id, name, updated_at, created_at)
-
-## テーブル同士の関連性
-
-<picture>
-  <source srcSet="/assets/posts/201905/cebu3.webp" type="image/webp">
-  <img src="/assets/posts/201905/cebu3.png" alt="table realtion">
-</picture>
-
 
 ## 準備
 ### rails new
