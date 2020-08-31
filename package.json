@@ -9,8 +9,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "feeds": "node script/genPostsMap.js && node script/genFeeds.js",
-    "ogp": "node script/genOGP.js"
+    "feeds": "node script/genPostsMap.js && node script/genFeeds.js"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.11",
