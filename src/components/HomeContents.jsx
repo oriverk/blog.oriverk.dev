@@ -72,7 +72,7 @@ export const Top = (props) => {
           background-color: #212121;
           background-size: cover;
           background-position: center;
-          background-image: url('/assets/adelaide2.webp');
+          background-image: url('/assets/home/sunrisePortrait700x875.webp');
         }
 
         .topWrapper{
@@ -99,9 +99,26 @@ export const Top = (props) => {
         .sub {
           font-size: 1.5rem
         }
+
+        @media( min-width: 600px){
+          section{
+            background-image: url('/assets/home/sunrisePortrait1000x1250.webp')
+          }
+        }
         @media (min-width: 960px){
           section{
             height: 100vh;
+            background-image: url('/assets/home/sunrisePortrait1300x1625.webp')
+          }
+        }
+        @media(min-width: 1280px){
+          section{
+            background-image: url('/assets/home/sunrise2000x1333.webp')
+          }
+        }
+        @media(min-width: 1980px){
+          section{
+            background-image: url('/assets/home/sunrise3500x2333.webp')
           }
         }
       `}</style>
