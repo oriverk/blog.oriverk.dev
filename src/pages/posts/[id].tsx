@@ -7,6 +7,8 @@ import { getPostIds, getPostData } from '../../lib/posts'
 import blogConfig from '../../../blog.config'
 import { PostIcons } from '../../components/IconsWrapper'
 import { Date } from '../../utils'
+import { OptimizedImages } from '../../utils/optimizedImages'
+
 
 import { GetStaticProps, GetStaticPaths } from 'next'
 
@@ -59,7 +61,6 @@ export default function Post({ postData
         <article className='content'>
           <h1>{postData.title}</h1>
           <div>
-            {/* <time dateTime={postData.create}>posted on: {postData.create}</time> */}
             <div>post on <Date dateString={postData.create} /></div>
             <div className='tags'>
               {tags.map((tag) => (
@@ -68,6 +69,9 @@ export default function Post({ postData
                 </Link>
               ))}</div>
           </div>
+          {postData.image && (
+            <OptimizedImages src={postData.image} alt='post cover image' style />
+          )}
           <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} className='markdown' />
         </article>
       </BlogLayout>

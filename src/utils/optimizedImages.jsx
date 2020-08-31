@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-export function OptimizedImages({ alt, src }) {
+export function OptimizedImages({ alt, src, style }) {
   // https://dev.to/joserfelix/how-to-make-a-static-blog-with-next-js-2bd6
   // const [imageLoaded, setImageLoaded] = useState(false)
   // const styles = {
@@ -19,6 +19,9 @@ export function OptimizedImages({ alt, src }) {
   //   style.lqip.opacity = 0
   // }
 
+  const slicedSrc = src.slice(0, 1) === '/' ? src.slice(1) : src
+  const optimizedAlt = alt === null ? 'image' : alt
+
   return (
     <React.Fragment>
       <div className='optimized relative'>
@@ -26,14 +29,14 @@ export function OptimizedImages({ alt, src }) {
           <source
             className='webp w-full'
             // srcSet={responsiveImageWebp.srcSet}
-            srcSet={require(`@public/${src}?{sizes:[300,600,1024,2048], format: 'webp'}`).srcSet}
+            srcSet={require(`@public/${slicedSrc}?{sizes:[300,600,1024,2048], format: 'webp'}`).srcSet}
             type='image/webp'
           />
           <img
             className='jpeg w-full'
-            src={require(`@public/${src}?{sizes:[300,600,1024,2048]}`).src}
-            srcSet={require(`@public/${src}?{sizes:[300,600,1024,2048]}`).srcSet}
-            alt={alt}
+            src={require(`@public/${slicedSrc}?{sizes:[300,600,1024,2048]}`).src}
+            srcSet={require(`@public/${slicedSrc}?{sizes:[300,600,1024,2048]}`).srcSet}
+            alt={optimizedAlt}
           />
         </picture>
       </div>
@@ -45,6 +48,8 @@ export function OptimizedImages({ alt, src }) {
         img.webp, img.jpeg{
           width: 100%;
         }
+
+        ${style}
       `}</style>
     </React.Fragment>
   )
