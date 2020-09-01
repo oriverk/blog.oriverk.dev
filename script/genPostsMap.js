@@ -5,23 +5,29 @@ const matter = require('gray-matter')
 const removeMd = require('remove-markdown')
 const assert = require('assert').strict
 
-const postsDirectory = path.join(process.cwd(), 'src/docs')
+const docsDirectory = path.join(process.cwd(), 'src/docs')
 
-const fileNames = fs.readdirSync(postsDirectory)
-const allPostsData = fileNames.map((fileName) => {
-  const id = fileName.replace(/\.md$/, '')
-  const fullPath = path.join(postsDirectory, fileName)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-  const matterResult = matter(fileContents)
-  const LowerCaseTags = matterResult.data.tags.map((tag) => (tag.toLowerCase())).sort()
+const fileNames = fs.readdirSync(docsDirectory)
+const allPostsData = fileNames.map((name) => {
+  const id = name.replace(/\.mdx?$/, '')
+  const fullPath = path.join(docsDirectory, name)
+  const contents = fs.readFileSync(fullPath, 'utf8')
+  const matterResult = matter(contents)
 
   const title = matterResult.data.title
-  const create = matterResult.data.create
+  const create = matterResult.data.create || ''
   const update = matterResult.data.update || ''
-  const tags = LowerCaseTags || ''
-  const codeBlock = /```[a-z]*\n[\s\S]*?\n```/gim
+  const tags = matterResult.data.tags.map(t => t.toLowerCase()).sort() || ''
+
+  const notAscii = /[^\x00 -\x7F]/gim   // = 全角
+  const symbols = /[\d\.\,\?\|\&\:\(\)\*\+\$\{\}\[\]\/\<\>\=%~'";@]/gim
+  const codeBlock = /```[a-z]*\n?[\s\S]*?\n?```/gim
   const codeRemoved = matterResult.content.replace(codeBlock, ' ')
-  const content = removeMd(codeRemoved).replace(/\n/gim, ' ').replace(/\s{2,}/gim , ' ')
+  const content = removeMd(codeRemoved)
+    .replace(notAscii, ' ')
+    .replace(symbols, ' ')
+    .replace(/\n/gim, ' ')
+    .replace(/\s{2,}/gim, ' ')
   return {
     id,
     title,

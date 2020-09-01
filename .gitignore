@@ -38,6 +38,7 @@ yarn-error.log*
 # **/public/sitemap.xml
 # **/public/rss.xml
 # **/public/atom.xml
+**/gen/postsMap.json
 
 # github
 /.vscode/setting.json
