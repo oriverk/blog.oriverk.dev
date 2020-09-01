@@ -18,41 +18,82 @@ import squeeze from 'remark-squeeze-paragraphs' // plugin to remove empty (or wh
 // import toMdast from 'remark-parse' // parses markdown ton mdast
 // import toHast from 'mdast-util-to-hast'
 
-const docsDirectory = path.join(process.cwd(), 'src/docs')
-const postsMap = JSON.parse(fs.readFileSync(
-  path.join(process.cwd(), 'gen/postsMap.json'), 'utf8'
-))
+import { alignHeading } from './mdParser'
 
-// posts/[id].tsx
-export function getPostIds() {
-  return postsMap.map((post) => {
+const docsDirectory = path.join(process.cwd(), 'src/docs')
+
+function getAllPostsAllData() {
+  const fileNames = fs.readdirSync(docsDirectory)
+  const allPostsAllData = fileNames.map(name => {
+    const id = name.replace(/\.mdx?$/, '')
+    const fullPath = path.join(docsDirectory, name)
+    const fileContents = fs.readFileSync(fullPath, 'utf8')
+    const matterResult = matter(fileContents)
+
+    const title = matterResult.data.title
+    const tags = matterResult.data.tags.map(t => t.toLowerCase()).sort() || ''
+    const create = matterResult.data.create
+    const update = matterResult.data.update || ''
+    const content = matterResult.content
+    return {
+      id,
+      title,
+      create,
+      update,
+      tags,
+      content
+    }
+  })
+  return allPostsAllData.sort((a, b) => {
+    if (a.create < b.create) {
+      return 1
+    } else {
+      return -1
+    }
+  })
+}
+
+// posts/index
+export function getSortedPostsData() {
+  const allPostsAllData = getAllPostsAllData()
+  const sortedPostsData = allPostsAllData.map(postData => {
+    const id = postData.id
+    const title = postData.title
+    const create = postData.create
+    const update = postData.update
+    const tags = postData.tags
+    return {
+      id,
+      title,
+      create,
+      update,
+      tags
+    }
+  })
+  return sortedPostsData
+}
+
+// posts/[id].tsx getStaticPaths
+export function getAllPostIds() {
+  const allPostsAllData = getAllPostsAllData()
+  return allPostsAllData.map(postData => {
     return {
       params: {
-        id: post.id
+        id: postData.id
       }
     }
   })
 }
 
-const alignHeading = () => {
-  return tree => {
-    const heading = tree.children.filter(child => child.type === 'heading')
-    const min = Math.min(...heading.map(h => h.depth))
-    if (min === 1) {
-      heading.forEach(node => {
-        node.depth = node.depth + 1
-      })
-    }
-  }
-}
-
-// posts/[id].tsx
+// posts/[id].tsx getStaticProps
 export async function getPostData(id) {
   // ↑async is for remark.
-  const fullPath = path.join(docsDirectory, `${id}.md`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-  const matterResult = matter(fileContents)
-  const tags = matterResult.data.tags.map((tag) => (tag.toLowerCase())).sort()
+  const allPostsAllData = getAllPostsAllData()
+  const postData = allPostsAllData.find( post => post.id === id )
+  const title = postData.title
+  const create = postData.create
+  const update = postData.update
+  const tags = postData.tags
   
   const processor = await remark()
     .use(squeeze)
@@ -67,7 +108,7 @@ export async function getPostData(id) {
     .use(katex)
     .use(highlight)
     .use(html, { sanitize: false })
-    .process(matterResult.content)
+    .process(postData.content)
   
   // const processor1 = unified().use(toMdast).use(frontmatter).use(alignHeading).use(link2heading)   
 
@@ -78,28 +119,40 @@ export async function getPostData(id) {
   // const transformed = processor1.runSync(parsed);
   // console.log(inspect(transformed));
   
-  const contentHtml = processor.toString()
+  const content = processor.toString()
   
   return {
     id,
-    contentHtml,
-    ...matterResult.data,
+    title,
+    create,
+    update,
     tags,
+    content
   }
 }
 
+// function countDuplicateTags (arr) {
+//   return arr.reduce(function (counts, key) {
+//     counts[key] = (counts[key]) ? counts[key] + 1 : 1
+//     return counts
+//   }, {})
+// }
+// const hoge = countDuplicateTags(tags)
+// {'ruby':5, 'js': 2, ...}
+
 // tags/index.tsx
 export function getTags() {
-  const tags = []
-  postsMap.map((post) => {
-    post.tags.map((t) => tags.push(t))
+  const allPostsAllData = getAllPostsAllData()
+  let tags = []
+  allPostsAllData.forEach((post) => {
+    tags = tags.concat(post.tags)
   })
-  
   const setTags = [...new Set(tags)]
   return setTags.sort()
 }
 
 // tags/[tag].tsx
 export function getTagPosts(tag) {
-  return postsMap.filter((post) => post.tags.includes(tag))
+  const allPostsAllData = getAllPostsAllData()
+  return allPostsAllData.filter((post) => post.tags.includes(tag))
 }

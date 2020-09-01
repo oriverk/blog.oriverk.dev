@@ -111,6 +111,7 @@ export async function getPostData(id) {
   }
 }
 
+
 // tags/index.tsx
 export function getAllTags() {
   const fileNames = fs.readdirSync(docsDirectory)
