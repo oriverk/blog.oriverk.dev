@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { BlogLayout } from '../../components/BlogLayout'
-import { getPostIds, getPostData } from '../../lib/posts'
+import { getAllPostIds, getPostData } from '../../lib/posts'
 // import { getFetchPath } from '../../components/HeaderImg'
 import blogConfig from '../../../blog.config'
 import { PostIcons } from '../../components/IconsWrapper'
@@ -13,7 +13,7 @@ import { OptimizedImages } from '../../utils/optimizedImages'
 import { GetStaticProps, GetStaticPaths } from 'next'
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getPostIds()
+  const paths = getAllPostIds()
   return {
     paths,
     fallback: false
@@ -38,7 +38,7 @@ export default function Post({ postData
       create: string
       tags?: string[]
       image?: string
-      contentHtml: string
+      content: string
   }
   }) {
   const tags = postData.tags
@@ -72,7 +72,7 @@ export default function Post({ postData
           {postData.image && (
             <OptimizedImages src={postData.image} alt='post cover image' style />
           )}
-          <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} className='markdown' />
+          <div dangerouslySetInnerHTML={{ __html: postData.content }} className='markdown' />
         </article>
       </BlogLayout>
       <style jsx>{`
