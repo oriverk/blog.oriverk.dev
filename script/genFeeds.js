@@ -9,18 +9,9 @@ const posts = JSON.parse(fs.readFileSync(
 
 // SiteMap
 const fixed = [
-  {
-    url: blogConfig.baseUrl,
-    update: '2020-06-26'
-  },
-  {
-    url: `${blogConfig.baseUrl}/posts`,
-    update: '2020-06-30'
-  },
-  {
-    url: `${blogConfig.baseUrl}/tags`,
-    update: '2020-06-26'
-  }
+  { url: blogConfig.baseUrl, update: '2020-06-26' },
+  { url: `${blogConfig.baseUrl}/posts`, update: '2020-06-30' },
+  { url: `${blogConfig.baseUrl}/tags`, update: '2020-06-26' }
 ]
 
 const sitemap = `<?xml version="1.0"?>

@@ -54,11 +54,6 @@ yarn dev
   <img src="/assets/posts/202003/miyazaki-oss.jpg" alt="localhost" />
 </picture>
 
-<picture>
-  <source srcSet="/assets/posts/202003/miyazaki-oss1.webp" type="image/webp" />
-  <img src="/assets/posts/202003/miyazaki-oss1.jpg" alt="miyazaki-oss" />
-</picture>
-
 ## What I did
 最初に書いた通り、Vue（と言うかJS）何もわからないので、表示される自然言語の修正をする事にした。
 

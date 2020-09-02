@@ -101,12 +101,6 @@ end
 <table class="table table-hover table-dark">
 ```
 
-<picture>
-  <source srcSet="/assets/posts/201903/bootstrap1.webp" type="image/webp" />
-  <img src="/assets/posts/201903/bootstrap1.jpg" alt="bootstrap table" />
-</picture>
-
-
 ## jsファイルの挿入部分を考える
 ### 授業の中で言われたこと
 - headかbodyどうかが、ユーザビリティに影響を与える

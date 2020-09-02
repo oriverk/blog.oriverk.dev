@@ -4,17 +4,10 @@ author: Kawano Yudai
 title: Post ページを中心に改修した
 tags: [githubpages, jekyll]
 image: '/assets/posts/202001/githubpages2post.jpg'
-permalink: blog/:title
 ---
 
-## 改修結果
-
-<picture>
-  <source srcSet="/assets/posts/202001/githubpages2post.webp" type="image/webp" />
-  <img src="/assets/posts/202001/githubpages2post.jpg" alt="jekyll" />
-</picture>
-
-### 改修内容
+## 改修
+### 内容
 - デザインの変更
   - dark theme
   - mobile first

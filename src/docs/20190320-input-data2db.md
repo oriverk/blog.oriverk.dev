@@ -14,13 +14,6 @@ from [Qiita: マスターデータ（DBへ情報入力、ページに出力](htt
 Ruby：2.51
 Rails:5.2.2
 
-##  テーブル同士の関連図
-
-<picture>
-  <source srcSet="/assets/posts/201905/cebu3.webp" type="image/webp" />
-  <img src="/assets/posts/201905/cebu3.jpg" alt="data table" />
-</picture>
-
 ## 流れ
 1. 中間テーブルにデータ入力
 2. 性別の0 or 1の表記を、male or femaleに変更

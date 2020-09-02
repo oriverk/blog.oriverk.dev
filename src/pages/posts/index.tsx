@@ -3,18 +3,14 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { BlogLayout } from '../../components/BlogLayout'
 import blogConfig from '../../../blog.config'
-import fs from 'fs'
-import path from 'path'
+import { getSortedPostsData } from '../../lib/posts'
 import { PostsIcons } from '../../components/IconsWrapper'
 import { Date } from '../../utils'
 
 import { GetStaticProps } from 'next'
 
 export const getStaticProps: GetStaticProps = async () => {
-  const postsData = JSON.parse(fs.readFileSync(
-    path.join(process.cwd(), 'gen/postsMap.json'), 'utf8'
-  ))
-
+  const postsData = getSortedPostsData()
   return {
     props: {
       postsData

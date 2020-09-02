@@ -6,11 +6,6 @@ tags: [githubpages, jekyll]
 image: 'assets/posts/202002/githubpages2home.jpg'
 ---
 
-<picture>
-  <source srcSet="/assets/posts/202002/githubpages2home.webp" type="image/webp" />
-  <img src="/assets/posts/202002/githubpages2home.jpg" alt="jekyll" />
-</picture>
-
 ## What I did
 - Introduce IE Buster
 - Update Ruby version from 2.5.1

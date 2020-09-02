@@ -44,11 +44,6 @@ Webエンジニアに転職するために、独りで勉強を進めていま�
 #### 1か月目
 時間割に沿って行われました。
 
-<picture>
-  <source srcSet="/assets/posts/201905/cebu1.webp" type="image/webp" />
-  <img src="/assets/posts/201905/cebu1.jpg" alt="class time schedule" />
-</picture>
-
 ##### Ruby認定試験を用いた勉強
 - 参照：[Ruby認定試験のアウトプット](https://qiita.com/search?utf8=%E2%9C%93&sort=&q=OriverK+Ruby%E8%AA%8D%E5%AE%9A%E8%A9%A6%E9%A8%93)
 

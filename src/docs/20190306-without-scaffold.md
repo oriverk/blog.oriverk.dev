@@ -660,9 +660,4 @@ private
 end
 ```
 
-## 完
-
-<picture>
-  <source srcSet="/assets/posts/201903/scaffold6.webp" type="image/webp" />
-  <img src="/assets/posts/201903/scaffold6.jpg" alt="change result" />
-</picture>
+ 完

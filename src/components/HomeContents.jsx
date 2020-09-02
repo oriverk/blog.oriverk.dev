@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { NoImage } from '../utils'
+import { OptimizedImages } from '../utils/optimizedImages'
 import css from 'styled-jsx/css'
 
 import { HomeIcons } from './IconsWrapper'
@@ -46,9 +47,6 @@ const containerStyle = css`
     .right {
       width: 55%;
     }
-    .contentImg {
-      margin: 0;
-    }
   }
 `
 
@@ -74,7 +72,7 @@ export const Top = (props) => {
           background-color: #212121;
           background-size: cover;
           background-position: center;
-          background-image: url('/assets/adelaide2.webp');
+          background-image: url('/assets/home/sunrisePortrait700x875.webp');
         }
 
         .topWrapper{
@@ -101,9 +99,26 @@ export const Top = (props) => {
         .sub {
           font-size: 1.5rem
         }
+
+        @media( min-width: 600px){
+          section{
+            background-image: url('/assets/home/sunrisePortrait1000x1250.webp')
+          }
+        }
         @media (min-width: 960px){
           section{
             height: 100vh;
+            background-image: url('/assets/home/sunrisePortrait1300x1625.webp')
+          }
+        }
+        @media(min-width: 1280px){
+          section{
+            background-image: url('/assets/home/sunrise2000x1333.webp')
+          }
+        }
+        @media(min-width: 1980px){
+          section{
+            background-image: url('/assets/home/sunrise3500x2333.webp')
           }
         }
       `}</style>
@@ -118,10 +133,10 @@ export function About() {
         <h2>About</h2>
         <div className='container'>
           <div className='left'>
-            <picture>
-              <source srcSet='/assets/LongRidge500.webp' type='image/webp' className='contentImg' />
-              <img src='/assets/LongRidge500.jpg' alt='the secenary from Long-Ridge-Lookout in Adelaide' className='contentImg' />
-            </picture>
+            <OptimizedImages
+              src='assets/LongRidge500.jpg'
+              alt='the scenary from Long-Ridge-Lookout in Adelaide'
+            />
           </div>
           <div className='right'>
             <p>My name is Kawano Yudai.</p>
@@ -166,10 +181,10 @@ export function History() {
           <h3>Education</h3>
           <div className='container'>
             <div className='left'>
-              <picture>
-                <source srcSet='/assets/weeding500.webp' type='image/webp' className='contentImg' />
-                <img src='/assets/weeding500.jpg' alt='photograph of weeding robot' className='contentImg' />
-              </picture>
+              <OptimizedImages
+                src='assets/weeding500.jpg'
+                alt='weeding robot motion picture'
+              />
             </div>
             <div className='right'>
               <span>2015/04 - 2017/03</span>
@@ -179,10 +194,10 @@ export function History() {
           </div>
           <div className='container'>
             <div className='left'>
-              <picture>
-                <source srcSet='/assets/miyazakiUniv.webp' type='image/webp' className='contentImg' />
-                <img src='/assets/miyazakiUniv.jpg' alt='miyazaki university' className='contentImg' />
-              </picture>
+              <OptimizedImages
+                src='assets/miyazakiUniv.jpg'
+                alt='logo of Miyazaki University'
+              />
             </div>
             <div className='right'>
               <span>2013/04 - 2017/03 :</span>
@@ -224,10 +239,10 @@ export function Works() {
           </div>
           <div className='container'>
             <div className='left'>
-              <picture>
-                <source srcSet='/assets/posts/202003/miyazaki-oss1.webp' type='image/webp' className='contentImg' />
-                <img src='/assets/posts/202003/miyazaki-oss1.jpg' alt='screen-shot' className='contentImg' />
-              </picture>
+              <OptimizedImages
+                src='assets/posts/202003/miyazaki-oss1.jpg'
+                alt='screenshot of miyazaki corona oss site'
+              />
             </div>
             <div className='right'>
               <b>Miyazaki COVID-19 Task Force site</b>
@@ -259,10 +274,10 @@ export function Works() {
           </div>
           <div className='container'>
             <div className='left'>
-              <picture>
-                <source srcSet='/assets/githubPages1st500.webp' type='image/webp' className='contentImg' />
-                <img src='/assets/githubPages1st500.jpg' alt='screen-shot' className='contentImg' />
-              </picture>
+              <OptimizedImages
+                src='assets/githubPages1st500.jpg'
+                alt='screenshot of my 1st githubpages'
+              />
             </div>
             <div className='right'>
               <b>GithubPages</b>
