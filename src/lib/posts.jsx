@@ -34,6 +34,7 @@ function getAllPostsAllData() {
     const tags = matterResult.data.tags.map(t => t.toLowerCase()).sort() || ''
     const create = matterResult.data.create
     const update = matterResult.data.update || ''
+    const image = matterResult.data.image || ''
     const content = matterResult.content
     return {
       id,
@@ -41,6 +42,7 @@ function getAllPostsAllData() {
       create,
       update,
       tags,
+      image,
       content
     }
   })
@@ -62,12 +64,14 @@ export function getSortedPostsData() {
     const create = postData.create
     const update = postData.update
     const tags = postData.tags
+    const image = postData.image
     return {
       id,
       title,
       create,
       update,
-      tags
+      tags,
+      image
     }
   })
   return sortedPostsData
@@ -94,6 +98,7 @@ export async function getPostData(id) {
   const create = postData.create
   const update = postData.update
   const tags = postData.tags
+  const image = postData.image
   
   const processor = await remark()
     .use(squeeze)
@@ -127,6 +132,7 @@ export async function getPostData(id) {
     create,
     update,
     tags,
+    image,
     content
   }
 }

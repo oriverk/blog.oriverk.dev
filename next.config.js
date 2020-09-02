@@ -49,6 +49,7 @@ module.exports = withPlugins(
       },
       responsive: {
         adapter: require('responsive-loader/sharp'),
+        sizes: [640, 960, 1200, 1800],
       },
       webp: {
         preset: 'default',

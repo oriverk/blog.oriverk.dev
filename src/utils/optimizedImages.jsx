@@ -29,13 +29,13 @@ export function OptimizedImages({ alt, src, style }) {
           <source
             className='webp w-full'
             // srcSet={responsiveImageWebp.srcSet}
-            srcSet={require(`@public/${slicedSrc}?{sizes:[300,600,1024,2048], format: 'webp'}`).srcSet}
+            srcSet={require(`@public/${slicedSrc}?{sizes:[640, 960, 1200, 1800], format: 'webp' }`).srcSet}
             type='image/webp'
           />
           <img
             className='jpeg w-full'
-            src={require(`@public/${slicedSrc}?{sizes:[300,600,1024,2048]}`).src}
-            srcSet={require(`@public/${slicedSrc}?{sizes:[300,600,1024,2048]}`).srcSet}
+            src={require(`@public/${slicedSrc}?resize`).src}
+            srcSet={require(`@public/${slicedSrc}?resize`).srcSet}
             alt={optimizedAlt}
           />
         </picture>
