@@ -16,7 +16,7 @@ const { resolve } = require('path')
 const nextConfig = {
   webpack: (config) => {
     // next-optimized-images
-    config.resolve.alias['@public'] = resolve(__dirname, 'public')
+    config.resolve.alias['@public/assets'] = resolve(__dirname, 'public/assets')
     return config
   },
 }
@@ -45,7 +45,7 @@ const nextOptimizedImagesConfig = {
   responsive: {
     adapter: require('responsive-loader/sharp'),
     sizes: [640, 960, 1200, 1800],
-    disable: process.env.MODE_ENV === 'development'
+    disable: false
   },
   webp: {
     preset: 'default',
