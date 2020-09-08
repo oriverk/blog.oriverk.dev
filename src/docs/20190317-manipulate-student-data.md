@@ -4,7 +4,7 @@ update: '2019-12-04'
 author: Kawano Yudai
 title: 'Day 9 ~ 14：大学生データ操作 App'
 tags: [ruby, rails, mysql]
-image: 'assets/posts/201905/cebu3.png'
+image: '/assets/posts/201905/cebu3.png'
 ---
 
 from Qiita

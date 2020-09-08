@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { NoImage } from '../utils'
-import { OptimizedImages } from '../utils/optimizedImages'
+import { OptimizedImages } from '../utils'
 import css from 'styled-jsx/css'
 
 import { HomeIcons } from './IconsWrapper'
@@ -134,7 +134,7 @@ export function About() {
         <div className='container'>
           <div className='left'>
             <OptimizedImages
-              src='assets/LongRidge500.jpg'
+              src='/assets/LongRidge500.jpg'
               alt='the scenary from Long-Ridge-Lookout in Adelaide'
             />
           </div>
@@ -182,7 +182,7 @@ export function History() {
           <div className='container'>
             <div className='left'>
               <OptimizedImages
-                src='assets/weeding500.jpg'
+                src='/assets/weeding500.jpg'
                 alt='weeding robot motion picture'
               />
             </div>
@@ -195,7 +195,7 @@ export function History() {
           <div className='container'>
             <div className='left'>
               <OptimizedImages
-                src='assets/miyazakiUniv.jpg'
+                src='/assets/miyazakiUniv.jpg'
                 alt='logo of Miyazaki University'
               />
             </div>
@@ -240,7 +240,7 @@ export function Works() {
           <div className='container'>
             <div className='left'>
               <OptimizedImages
-                src='assets/posts/202003/miyazaki-oss1.jpg'
+                src='/assets/posts/202003/miyazaki-oss1.jpg'
                 alt='screenshot of miyazaki corona oss site'
               />
             </div>
@@ -275,7 +275,7 @@ export function Works() {
           <div className='container'>
             <div className='left'>
               <OptimizedImages
-                src='assets/githubPages1st500.jpg'
+                src='/assets/githubPages1st500.jpg'
                 alt='screenshot of my 1st githubpages'
               />
             </div>
