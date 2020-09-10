@@ -123,17 +123,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           overflow: auto;
         }
 
-        picture, video {
-          width: 100%;
-        }
-        
-        source, img {
-          display: block;
-          width: 100%;
-          margin: 1rem 0;
-          background-color: #424242;
-        }
-
         blockquote {
           color: #BBB;
           border-left: 5px solid #BBB;
