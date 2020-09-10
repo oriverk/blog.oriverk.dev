@@ -123,6 +123,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           overflow: auto;
         }
 
+        source, img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
+
         blockquote {
           color: #BBB;
           border-left: 5px solid #BBB;

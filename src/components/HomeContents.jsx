@@ -1,11 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
-import { NoImage } from '../utils'
-import { OptimizedImages } from '../utils'
+import { NoImage, OptimizedImages } from '../utils'
 import css from 'styled-jsx/css'
 
 import { HomeIcons } from './IconsWrapper'
-
 
 const containerStyle = css`
   section {
