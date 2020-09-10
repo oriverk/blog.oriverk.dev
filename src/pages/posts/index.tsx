@@ -47,14 +47,14 @@ export default function ({
           <ul>
             {postsData.map(({ id, create, title, tags }) => (
               <li key={id}>
-                <div>post on <Date dateString={create} /></div>
-                <span className='tags'>
+                <div>posted on <Date dateString={create} /></div>
+                <div>
                   {tags.map((tag) => (
                     <Link href='/tags/[tag]' as={`/tags/${tag}`} key={tag}>
                       <a className='tag'>{tag}</a>
                     </Link>
                   ))}
-                </span>
+                </div>
                 <Link href='/posts/[id]' as={`/posts/${id}`}>
                   <a className='title'><h2>{title}</h2></a>
                 </Link>
