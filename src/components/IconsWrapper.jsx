@@ -50,14 +50,14 @@ const BlogIconsStyle = css`
     .iconsWrapper{
       display: flex;
       flex-direction: column;
-      left: calc(50% + 500px );
+      left: 91%;
       bottom: 3rem;
     }
     .icon{
       width: 2.25rem;
       height: 2.25rem;
     }
-  }  
+  }
 `
 
 export const HomeIcons = (props) => {

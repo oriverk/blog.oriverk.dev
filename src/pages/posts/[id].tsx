@@ -57,8 +57,8 @@ export default function Post({ postData
           <meta property='og:url' content={`${blogConfig.baseUrl}/posts/${postData.id}`} />
           <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
         </Head>
-        <PostIcons postTitle={postData.title} postId={postData.id} postTags={tags}/>
         <article className='content'>
+        <PostIcons postTitle={postData.title} postId={postData.id} postTags={tags}/>
           <h1>{postData.title}</h1>
           <div>
             <div>post on <Date dateString={postData.create} /></div>
