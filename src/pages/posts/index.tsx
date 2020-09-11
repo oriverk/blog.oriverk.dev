@@ -79,9 +79,9 @@ export default function ({
       </BlogLayout>
       <style jsx>{`
         .content {
-          width: 95%;
+          width: 97%;
           margin: 0 auto 1rem;
-          padding: 5%;
+          padding: 3%;
         }
 
         .posts {
@@ -90,7 +90,7 @@ export default function ({
         }
 
         .postCard{
-          padding-bottom: 1rem;
+          padding-bottom: .7rem;
           background-color: #424242;
           border-radius: .5rem;
           max-width: 35rem;
@@ -121,27 +121,24 @@ export default function ({
         }
 
         h2{
-          margin-top: .5rem;
-          font-size: 1.25rem;
+          margin: .5rem auto 0;
+          font-size: 1.15rem;
         }
 
         .tag{
           text-decoration: none;
           display: inline-block;
-          font-size: .8rem;
+          font-size: .9rem;
           border-radius: 2rem;
           border: 1px solid #50CAF9;
           padding: 0.1rem .8rem;
-          margin: 0 .5rem;
+          margin: 0.5rem .5rem 0;
           color: #EEE;
         }
         .tag:hover, .tag:active{
           background-color: #424242;
         }
 
-        h2{
-          margin-bottom: 0;
-        }
         @media( min-width: 760px ){
           .content{
             width: 90%;
@@ -150,6 +147,12 @@ export default function ({
             display: grid;
             gap: 1.5rem;
             grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+          }
+          .postCard{
+            padding-bottom: 1rem;
+          }
+          h2{
+            font-size: 1.25rem;
           }
         }
       `}</style>

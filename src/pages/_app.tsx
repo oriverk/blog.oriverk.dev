@@ -54,7 +54,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         *{
           font-family: 'Hiragino Sans', 'Meiryo', sans-serif;
           --drawerWidth: 250px;
-          --swipeDrawerWidth: 85vw;
+          --swipeDrawerWidth: 90vw;
           --bottomNavHeight: 55px;
         }
 

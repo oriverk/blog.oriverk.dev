@@ -52,14 +52,16 @@ export default function ({ tags }: { tags: string[] }) {
         }
 
         .tag{
-          text-decoration: none;
           display: inline-block;
-          font-size: .8rem;
+          min-width: 4rem;
+          text-align: center;
+          color: #EEE;
+          font-size: 1rem;
+          text-decoration: none;
+          margin: .5rem;
+          padding: .1rem .8rem;
           border-radius: 2rem;
           border: 1px solid #50CAF9;
-          padding: .1rem .8rem;
-          margin: .5rem;
-          color: #EEE;
         }
         .tag:hover, .tag:active{
           background-color: #424242;

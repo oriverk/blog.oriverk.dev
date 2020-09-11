@@ -42,9 +42,8 @@ const Hit = (props) => {
           border: 1px solid #50CAF9;
         }
         .tag{
-          text-decoration: none;
           display: inline-block;
-          font-size: .8rem;
+          font-size: .9rem;
           border-radius: 2rem;
           border: 1px solid #50CAF9;
           padding: 0.1rem .5rem;
