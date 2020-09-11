@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
-import { NoImage, OptimizedImages } from '../utils'
 import css from 'styled-jsx/css'
+import { OptimizedImages } from './general/OptimizedImages'
 
 import { HomeIcons } from './IconsWrapper'
 
@@ -166,7 +166,7 @@ export function History() {
           <h3>Experience</h3>
           <div className='container'>
             <div className='left'>
-              <NoImage />
+              <OptimizedImages src='/assets/home/sunrise.jpg' alt='no image'/>
             </div>
             <div className='right'>
               <span>2017/04 - 2018/08</span>
@@ -289,7 +289,7 @@ export function Works() {
           </div>
           <div className='container'>
             <div className='left'>
-              <NoImage />
+              <OptimizedImages src='/assets/home/sunrise.jpg' alt='no image' />
             </div>
             <div className='right'>
               <b>Ticket sales System</b>

@@ -1,11 +1,12 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { BlogLayout } from '../../components/BlogLayout'
-import blogConfig from '../../../blog.config'
 import { getTags, getTagPosts } from '../../lib/posts'
+import { BlogLayout } from '../../components/BlogLayout'
+import { OptimizedImages } from '../../components/general/OptimizedImages'
+import { Date } from '../../components/general/Date'
 import { TagIcons } from '../../components/IconsWrapper'
-import { Date, OptimizedImages } from '../../utils'
+import blogConfig from '../../../blog.config'
 
 import { GetStaticProps, GetStaticPaths } from 'next'
 
@@ -32,9 +33,15 @@ export const getStaticProps: GetStaticProps = async (props) => {
 
 export default function Tag({ tag, postsData }: {
   tag: string,
-  postsData: any[]
-})
-{
+  postsData: {
+    id: string,
+    title: string,
+    create: string,
+    update?: string,
+    tags?: string[],
+    image?: string
+  }[],
+}){
   return (
     <React.Fragment>
       <BlogLayout>
@@ -72,7 +79,7 @@ export default function Tag({ tag, postsData }: {
                 <div className='tags'>
                   {tags.map((tag) => (
                     <Link href='/tags/[tag]' as={`/tags/${tag}`} key={tag}>
-                      <a className='tag'>{tag}</a>
+                      <a className='tag' key={tag}>{tag}</a>
                     </Link>
                   ))}
                 </div>

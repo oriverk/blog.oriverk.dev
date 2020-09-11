@@ -6,7 +6,7 @@ import html from 'remark-html' // plugin to serialize Markdown as HTML.
 import katex from 'remark-html-katex' // plugin to transform inlineMath and math nodes with KaTeX for remark-html.
 import math from 'remark-math' //plugins to support math! use $$ \n\n $$
 import highlight from 'remark-highlight.js' // plugin to highlight code blocks with highlight.js (via lowlight)
-import toc from 'remark-toc' // plugin to generate a table of contents.
+// import toc from 'remark-toc' // plugin to generate a table of contents.
 import breaks from 'remark-breaks' // plugin to add break support, without needing spaces.
 import slug from 'remark-slug' // plugin to add anchors headings using GitHub’s algorithm.
 import link2heading from 'remark-autolink-headings' // plugin to automatically add links to headings. this must be included after `remark-slug`
@@ -31,7 +31,7 @@ function getAllPostsAllData() {
     const matterResult = matter(fileContents)
 
     const title = matterResult.data.title
-    const tags = matterResult.data.tags.map(t => t.toLowerCase()).sort() || ''
+    const tags = matterResult.data.tags.map((t) => t.toLowerCase()).sort() || ''
     const create = matterResult.data.create
     const update = matterResult.data.update || ''
     const image = matterResult.data.image || ''
@@ -160,5 +160,15 @@ export function getTags() {
 // tags/[tag].tsx
 export function getTagPosts(tag) {
   const allPostsAllData = getAllPostsAllData()
-  return allPostsAllData.filter((post) => post.tags.includes(tag))
+  const filteredPostsData = allPostsAllData.filter((post) => post.tags.includes(tag))
+  const postsData = filteredPostsData.map((post) => {
+    const id = post.id
+    const title = post.title
+    const create = post.create
+    const update = post.update
+    const tags = post.tags
+    const image = post.image
+    return { id, title, create, update, tags, image}
+  })
+  return postsData
 }

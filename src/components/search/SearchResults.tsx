@@ -1,9 +1,10 @@
+import React from 'react'
 import Link from 'next/link'
 import { Hits, Panel } from 'react-instantsearch-dom'
 // import { Hit as HitType, SearchState, AllSearchResults, AlgoliaError, }
   // from "react-instantsearch-core"
 import { CustomPoweredBy, CustomStateResults } from './Connector'
-import { Date } from '../../utils'
+import { Date } from '../general/Date'
 
 // interface IProps {
 //   hit: HitType

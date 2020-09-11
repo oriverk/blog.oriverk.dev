@@ -6,8 +6,8 @@ import { getAllPostIds, getPostData } from '../../lib/posts'
 // import { getFetchPath } from '../../components/HeaderImg'
 import blogConfig from '../../../blog.config'
 import { PostIcons } from '../../components/IconsWrapper'
-import { Date } from '../../utils'
-import { OptimizedImages } from '../../utils'
+import { Date } from '../../components/general/Date'
+import { OptimizedImages } from '../../components/general/OptimizedImages'
 
 import { GetStaticProps, GetStaticPaths } from 'next'
 

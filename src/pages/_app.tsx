@@ -49,7 +49,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         html {
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
-          box-sizing: border-box;
         }
 
         *{

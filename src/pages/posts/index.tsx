@@ -2,10 +2,11 @@ import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { BlogLayout } from '../../components/BlogLayout'
+import { OptimizedImages } from '../../components/general/OptimizedImages'
 import blogConfig from '../../../blog.config'
 import { getSortedPostsData } from '../../lib/posts'
 import { PostsIcons } from '../../components/IconsWrapper'
-import { Date, OptimizedImages } from '../../utils'
+import { Date } from '../../components/general/Date'
 
 import { GetStaticProps } from 'next'
 
@@ -19,7 +20,7 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export default function ({
-  postsData, posts
+  postsData
 }: {
     postsData: {
       id: string
@@ -29,11 +30,10 @@ export default function ({
       tags?: string[]
       image?: string
   }[],
-  posts?: boolean
   }) {
   return (
     <React.Fragment>
-      <BlogLayout posts>
+      <BlogLayout>
         <Head>
           <title>Blog | {blogConfig.shortName}</title>
           <meta name='title' content={`Blog | ${blogConfig.baseName}`} />
@@ -68,7 +68,7 @@ export default function ({
                 <div className='tags'>
                   {tags.map((tag) => (
                     <Link href='/tags/[tag]' as={`/tags/${tag}`} key={tag}>
-                      <a className='tag'>{tag}</a>
+                      <a className='tag' key={tag}>{tag}</a>
                     </Link>
                   ))}
                 </div>
@@ -94,6 +94,7 @@ export default function ({
           background-color: #424242;
           border-radius: .5rem;
           max-width: 35rem;
+          border: 1px solid rgba(0,0,0,0);
         }
         .postCard:hover{
           border: 1px solid #50CAF9;

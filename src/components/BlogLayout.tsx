@@ -1,6 +1,6 @@
 import React from 'react'
 import { SwipeableDrawer } from '@material-ui/core'
-import { LeftSwipeDrawerLists } from './DrawerLists'
+import { LeftSwipeDrawer } from './DrawerLists'
 import { AlgoliaSearch } from './search/AlgoliaSearch'
 
 export function BlogLayout(props) {
@@ -34,7 +34,7 @@ export function BlogLayout(props) {
         <div className='swipeableList' role='presentation'
           onClick={toggleDrawer('left', false)} onKeyDown={toggleDrawer('left', false)}
         >
-          <LeftSwipeDrawerLists />
+          <LeftSwipeDrawer />
         </div>
       </SwipeableDrawer>
       <SwipeableDrawer anchor='right' open={state['right']}
@@ -45,7 +45,6 @@ export function BlogLayout(props) {
         </div>
       </SwipeableDrawer>
       <main>
-        {/* {props.post && <PostIcons onClick={toggleDrawer('right', true)} postId={props.postId} title={props.title} />} */}
         {props.children}
       </main>
       <nav className="nav"></nav>
