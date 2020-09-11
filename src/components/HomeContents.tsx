@@ -1,11 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
-import { NoImage } from '../utils'
-import { OptimizedImages } from '../utils/optimizedImages'
 import css from 'styled-jsx/css'
+import { OptimizedImages } from './general/OptimizedImages'
 
 import { HomeIcons } from './IconsWrapper'
-
 
 const containerStyle = css`
   section {
@@ -72,7 +70,7 @@ export const Top = (props) => {
           background-color: #212121;
           background-size: cover;
           background-position: center;
-          background-image: url('/assets/home/sunrisePortrait700x875.webp');
+          background-image: url('/assets/home/sunrisePortrait650x867.webp');
         }
 
         .topWrapper{
@@ -102,13 +100,13 @@ export const Top = (props) => {
 
         @media( min-width: 600px){
           section{
-            background-image: url('/assets/home/sunrisePortrait1000x1250.webp')
+            background-image: url('/assets/home/sunrisePortrait960x1280.webp')
           }
         }
         @media (min-width: 960px){
           section{
             height: 100vh;
-            background-image: url('/assets/home/sunrisePortrait1300x1625.webp')
+            background-image: url('/assets/home/sunrisePortrait1280x1707.webp')
           }
         }
         @media(min-width: 1280px){
@@ -134,7 +132,7 @@ export function About() {
         <div className='container'>
           <div className='left'>
             <OptimizedImages
-              src='assets/LongRidge500.jpg'
+              src='/assets/LongRidge500.jpg'
               alt='the scenary from Long-Ridge-Lookout in Adelaide'
             />
           </div>
@@ -168,7 +166,7 @@ export function History() {
           <h3>Experience</h3>
           <div className='container'>
             <div className='left'>
-              <NoImage />
+              <OptimizedImages src='/assets/home/sunrise.jpg' alt='no image'/>
             </div>
             <div className='right'>
               <span>2017/04 - 2018/08</span>
@@ -182,7 +180,7 @@ export function History() {
           <div className='container'>
             <div className='left'>
               <OptimizedImages
-                src='assets/weeding500.jpg'
+                src='/assets/weeding500.jpg'
                 alt='weeding robot motion picture'
               />
             </div>
@@ -195,7 +193,7 @@ export function History() {
           <div className='container'>
             <div className='left'>
               <OptimizedImages
-                src='assets/miyazakiUniv.jpg'
+                src='/assets/miyazakiUniv.jpg'
                 alt='logo of Miyazaki University'
               />
             </div>
@@ -240,7 +238,7 @@ export function Works() {
           <div className='container'>
             <div className='left'>
               <OptimizedImages
-                src='assets/posts/202003/miyazaki-oss1.jpg'
+                src='/assets/posts/202003/miyazaki-oss1.jpg'
                 alt='screenshot of miyazaki corona oss site'
               />
             </div>
@@ -275,7 +273,7 @@ export function Works() {
           <div className='container'>
             <div className='left'>
               <OptimizedImages
-                src='assets/githubPages1st500.jpg'
+                src='/assets/githubPages1st500.jpg'
                 alt='screenshot of my 1st githubpages'
               />
             </div>
@@ -291,7 +289,7 @@ export function Works() {
           </div>
           <div className='container'>
             <div className='left'>
-              <NoImage />
+              <OptimizedImages src='/assets/home/sunrise.jpg' alt='no image' />
             </div>
             <div className='right'>
               <b>Ticket sales System</b>

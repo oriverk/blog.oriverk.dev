@@ -2,10 +2,11 @@ import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { BlogLayout } from '../../components/BlogLayout'
+import { OptimizedImages } from '../../components/general/OptimizedImages'
 import blogConfig from '../../../blog.config'
 import { getSortedPostsData } from '../../lib/posts'
 import { PostsIcons } from '../../components/IconsWrapper'
-import { Date } from '../../utils'
+import { Date } from '../../components/general/Date'
 
 import { GetStaticProps } from 'next'
 
@@ -19,19 +20,20 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export default function ({
-  postsData, posts
+  postsData
 }: {
     postsData: {
       id: string
       title: string
       create: string
-      tags: string[]
+      update?: string
+      tags?: string[]
+      image?: string
   }[],
-  posts?: boolean
   }) {
   return (
     <React.Fragment>
-      <BlogLayout posts>
+      <BlogLayout>
         <Head>
           <title>Blog | {blogConfig.shortName}</title>
           <meta name='title' content={`Blog | ${blogConfig.baseName}`} />
@@ -41,35 +43,86 @@ export default function ({
           <meta property='og:image' content={`${blogConfig.baseUrl}/assets/prtsc700.jpg`} />
           <meta property='og:url' content={`${blogConfig.baseUrl}/posts`} />
         </Head>
-        <PostsIcons />
         <article className='content'>
+        <PostsIcons />
           <h1>Blog Posts</h1>
-          <ul>
-            {postsData.map(({ id, create, title, tags }) => (
-              <li key={id}>
-                <div>post on <Date dateString={create} /></div>
-                <span className='tags'>
+          <div className='posts'>
+            {postsData.map(({ id, title, create, update, tags, image }) => (
+              <div className='postCard' key={id}>
+                <Link href='/posts/[id]' as={`/posts/${id}`} key={id}>
+                  <a className='postLink'>
+                    <div className='imgOuter'>
+                      <OptimizedImages src={image || '/assets/home/sunrise.jpg'} alt={`post: ${title}`}
+                        imgStyle={{ borderRadius: '.5rem .5rem 0 0', position: 'absolute', top: 0, height: '100%'}} />
+                    </div>
+                    <div className='postDesc'>
+                      {update ? (
+                        <div>updated on <Date dateString={update} /></div>
+                      ) : (
+                          <div>posted on <Date dateString={create} /></div>
+                        )}
+                      <h2>{title}</h2>
+                    </div>
+                  </a>
+                </Link>
+                <div className='tags'>
                   {tags.map((tag) => (
                     <Link href='/tags/[tag]' as={`/tags/${tag}`} key={tag}>
-                      <a className='tag'>{tag}</a>
+                      <a className='tag' key={tag}>{tag}</a>
                     </Link>
                   ))}
-                </span>
-                <Link href='/posts/[id]' as={`/posts/${id}`}>
-                  <a className='title'><h2>{title}</h2></a>
-                </Link>
-              </li>
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         </article>
       </BlogLayout>
       <style jsx>{`
         .content {
-          width: 100%;
-          max-width: 1000px;
+          width: 95%;
           margin: 0 auto 1rem;
           padding: 5%;
-          flex-grow: 1;
+        }
+
+        .posts {
+          display: grid;
+          gap: 1rem;
+        }
+
+        .postCard{
+          padding-bottom: 1rem;
+          background-color: #424242;
+          border-radius: .5rem;
+          max-width: 35rem;
+          border: 1px solid rgba(0,0,0,0);
+        }
+        .postCard:hover{
+          border: 1px solid #50CAF9;
+        }
+
+        .postLink{
+          display: block;
+          color: #EEE;
+          text-decoration: none;
+        }
+
+        .imgOuter{
+          position: relative;
+          width: 100%;
+        }
+        .imgOuter:before{
+          content: '';
+          display: block;
+          padding-top: 66%;
+        }
+
+        .postDesc{
+          padding: .5rem;
+        }
+
+        h2{
+          margin-top: .5rem;
+          font-size: 1.25rem;
         }
 
         .tag{
@@ -78,23 +131,26 @@ export default function ({
           font-size: .8rem;
           border-radius: 2rem;
           border: 1px solid #50CAF9;
-          padding: 0.1rem 1rem;
-          margin: .5rem;
-          margin-bottom: 0;
+          padding: 0.1rem .8rem;
+          margin: 0 .5rem;
           color: #EEE;
         }
         .tag:hover, .tag:active{
           background-color: #424242;
         }
 
-        .title {
-          color: #D9D9D9;
-          text-decoration: underline;
-        }
-
         h2{
-          margin: .5rem auto 1.5rem;
-          font-weight: 600;
+          margin-bottom: 0;
+        }
+        @media( min-width: 760px ){
+          .content{
+            width: 90%;
+          }
+          .posts {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+          }
         }
       `}</style>
     </React.Fragment>

@@ -6,9 +6,8 @@ import { getAllPostIds, getPostData } from '../../lib/posts'
 // import { getFetchPath } from '../../components/HeaderImg'
 import blogConfig from '../../../blog.config'
 import { PostIcons } from '../../components/IconsWrapper'
-import { Date } from '../../utils'
-import { OptimizedImages } from '../../utils/optimizedImages'
-
+import { Date } from '../../components/general/Date'
+import { OptimizedImages } from '../../components/general/OptimizedImages'
 
 import { GetStaticProps, GetStaticPaths } from 'next'
 
@@ -57,8 +56,8 @@ export default function Post({ postData
           <meta property='og:url' content={`${blogConfig.baseUrl}/posts/${postData.id}`} />
           <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
         </Head>
-        <PostIcons postTitle={postData.title} postId={postData.id} postTags={tags}/>
         <article className='content'>
+        <PostIcons postTitle={postData.title} postId={postData.id} postTags={tags}/>
           <h1>{postData.title}</h1>
           <div>
             <div>post on <Date dateString={postData.create} /></div>
@@ -70,7 +69,7 @@ export default function Post({ postData
               ))}</div>
           </div>
           {postData.image && (
-            <OptimizedImages src={postData.image} alt='post cover image' style />
+            <OptimizedImages src={postData.image} alt='post cover image' />
           )}
           <div dangerouslySetInnerHTML={{ __html: postData.content }} className='markdown' />
         </article>
@@ -88,6 +87,10 @@ export default function Post({ postData
           font-size: 1.5rem;
           text-decoration: underline #50CAF9;
           color: #D9D9D9;
+        }
+
+        .tags{
+          margin-bottom: 1rem;
         }
 
         .tag{

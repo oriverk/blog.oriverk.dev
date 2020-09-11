@@ -1,6 +1,6 @@
 import React from 'react'
 import { SwipeableDrawer } from '@material-ui/core'
-import { LeftSwipeDrawerLists } from './DrawerLists'
+import { LeftSwipeDrawer } from './DrawerLists'
 import { AlgoliaSearch } from './search/AlgoliaSearch'
 import { Top } from './HomeContents'
 
@@ -35,7 +35,7 @@ export function Layout(props) {
         <div className='swipeableList' role='presentation'
           onClick={toggleDrawer('left', false)} onKeyDown={toggleDrawer('left', false)}
         >
-          <LeftSwipeDrawerLists />
+          <LeftSwipeDrawer />
         </div>
       </SwipeableDrawer>
       <SwipeableDrawer anchor='right' open={state['right']}

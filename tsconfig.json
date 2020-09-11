@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": [
       "dom",
       "dom.iterable",
@@ -16,6 +16,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "downlevelIteration": true,
     "jsx": "preserve"
   },
   "exclude": [
@@ -24,8 +25,9 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx", 
-    "src/components/DrawerLists.jsx", "src/components/HomeContents.jsx", "src/components/Layout.tsx", "src/components/PostLayout.jsx", 
-    "src/lib/posts.jsx", "src/utils/optimizedImages.jsx"
+    "**/*.tsx",
+    "src/components/Layout.tsx", "src/components/BlogLayout.tsx",
+    "src/components/DrawerLists.tsx", "src/components/HomeContents.tsx",  
+    "src/lib/posts.js",
   ]
 }

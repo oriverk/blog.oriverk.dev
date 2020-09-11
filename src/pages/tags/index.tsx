@@ -57,7 +57,7 @@ export default function ({ tags }: { tags: string[] }) {
           font-size: .8rem;
           border-radius: 2rem;
           border: 1px solid #50CAF9;
-          padding: 0.1rem 1rem;
+          padding: .1rem .8rem;
           margin: .5rem;
           color: #EEE;
         }

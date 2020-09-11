@@ -3,7 +3,7 @@ create: '2020-02-04'
 author: Kawano Yudai
 title: GithubPages のメジャーアップデートをした。
 tags: [githubpages, jekyll]
-image: 'assets/posts/202002/githubpages2home.jpg'
+image: '/assets/posts/202002/githubpages2home.jpg'
 ---
 
 ## What I did

@@ -1,3 +1,4 @@
+import React from 'react'
 // import Link from 'next/link'
 import { connectPoweredBy, connectSearchBox, connectStateResults } from 'react-instantsearch-dom'
 

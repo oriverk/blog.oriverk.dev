@@ -49,7 +49,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         html {
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
-          box-sizing: border-box;
         }
 
         *{
@@ -123,15 +122,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           overflow: auto;
         }
 
-        picture, video {
-          width: 100%;
-        }
-        
         source, img {
-          display: block;
           width: 100%;
-          margin: 1rem 0;
-          background-color: #424242;
+          height: auto;
+          object-fit: cover;
         }
 
         blockquote {
