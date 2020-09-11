@@ -79,21 +79,19 @@ export function OptimizedImages({ src, alt, imgStyle }: {
 
   return (
     <React.Fragment>
-      <div>
-        <picture>
-          <source
-            srcSet={require(`@public/assets/${split}?{sizes:[640, 960, 1200, 1800], format: 'webp' }`).srcSet}
-            type='image/webp'
-            style={imgStyle}
-          />
-          <img
-            src={require(`@public/assets/${split}?resize`).src}
-            srcSet={require(`@public/assets/${split}?resize`).srcSet}
-            alt={optimizedAlt}
-            style={imgStyle}
-          />
-        </picture>
-      </div>
+      <picture>
+        <source
+          srcSet={require(`@public/assets/${split}?{sizes:[640, 960, 1200, 1800], format: 'webp' }`).srcSet}
+          type='image/webp'
+          style={imgStyle}
+        />
+        <img
+          src={require(`@public/assets/${split}?resize`).src}
+          srcSet={require(`@public/assets/${split}?resize`).srcSet}
+          alt={optimizedAlt}
+          style={imgStyle}
+        />
+      </picture>
     </React.Fragment>
   )
 }

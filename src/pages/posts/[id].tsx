@@ -9,7 +9,6 @@ import { PostIcons } from '../../components/IconsWrapper'
 import { Date } from '../../utils'
 import { OptimizedImages } from '../../utils'
 
-
 import { GetStaticProps, GetStaticPaths } from 'next'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -88,6 +87,10 @@ export default function Post({ postData
           font-size: 1.5rem;
           text-decoration: underline #50CAF9;
           color: #D9D9D9;
+        }
+
+        .tags{
+          margin-bottom: 1rem;
         }
 
         .tag{
