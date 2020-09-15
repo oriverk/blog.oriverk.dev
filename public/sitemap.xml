@@ -61,12 +61,6 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://oriverk.dev/posts/20200203-setup-node-ubuntu</loc>
-    <lastmod>2020-07-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
     <loc>https://oriverk.dev/posts/20200203-setup-java-ubuntu</loc>
     <lastmod>2020-07-30</lastmod>
     <changefreq>daily</changefreq>
@@ -75,6 +69,12 @@
   <url>
     <loc>https://oriverk.dev/posts/20200203-setup-go-ubuntu</loc>
     <lastmod>2020-07-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://oriverk.dev/posts/20200203-setup-frontend-ubuntu</loc>
+    <lastmod>2020-09-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

@@ -7,7 +7,7 @@
     "tags": [
       "test"
     ],
-    "content": " hoge code hoge code hoge code hoge"
+    "content": " toc hoge code hoge code hoge code hoge"
   },
   {
     "id": "20200526-next-portfolio",
@@ -68,17 +68,6 @@
     "content": " from Gist oriverk InstallLanguage Ubuntu md Setup Install latest ver Install by apt install -y means All Yes build-essential contain information about package to build Debian pack If do not build Debian build is not needed Reference Reference Ruby - official site Ruby ja Ruby on Rails Setup Reference WSL Ubuntu ruby on rails How to Install Ruby Rails on Ubuntu Exam Qiita Ruby Silver Rex Ruby Examination sean silver_j md Qiita Ruby Silver Gold Others Rails Application Build Guides ja everyday rails Qiita Rails devise rails Qiita rails and - "
   },
   {
-    "id": "20200203-setup-node-ubuntu",
-    "title": "Build FrontEnd environment on Ubuntu",
-    "create": "2020-02-03",
-    "update": "2020-07-30",
-    "tags": [
-      "node",
-      "ubuntu"
-    ],
-    "content": " from Gist oriverk InstallLanguage Ubuntu md Setup rails uses webpacker which needs nodejs Reference rust-lang org en Rust Japanese Docs for Rust easy rust document en Others An inside look at the Rust programming language Qiita Rust Why Discord is switching from Go to Rust Go Rust Discord "
-  },
-  {
     "id": "20200203-setup-java-ubuntu",
     "title": "Build Java environment on ubuntu",
     "create": "2020-02-03",
@@ -98,7 +87,18 @@
       "go",
       "ubuntu"
     ],
-    "content": " from Gist oriverk InstallLanguage Ubuntu md Setup Use goenv to install Go goenv is package management tool which based on rbenv Reference golang org Others A Tour of Go Learn Web Programming in Go by Examples Go #golangtokyo"
+    "content": " from Gist oriverk InstallLanguage Ubuntu md Setup Use goenv to install Go goenv is package management tool which based on rbenv Reference golang org Others A Tour of Go Learn Web Programming in Go by Examples Go #golangtokyo Go by mercari"
+  },
+  {
+    "id": "20200203-setup-frontend-ubuntu",
+    "title": "Build FrontEnd environment on Ubuntu",
+    "create": "2020-02-03",
+    "update": "2020-09-15",
+    "tags": [
+      "node",
+      "ubuntu"
+    ],
+    "content": " from Gist oriverk InstallLanguage Ubuntu md Setup Nodejs rails uses webpacker which needs nodejs yarn create-react-app create react-apps create next-app not to use npm or yarn Reference npmjs com nodejs org yarn - how to install yarn on ubuntu debian Others create react app - getting start -nextjs getting started package json engines Node js yarn npm install "
   },
   {
     "id": "20200128-setup-ubuntu-vm",
@@ -183,7 +183,7 @@
     "tags": [
       "ruby"
     ],
-    "content": " from Qiita Web Value Space of Cebu C OpenCV tweet Ruby Progate HTML Git ComandLine Web CUI RubyonRails Ruby Html Git Progate Qiita Ruby Ruby Scaffold Bootstrap DB Bootstrap MySQL MySQL PostgreSQL Heroku RailsTutorial RailsTutorial DB H H JS Ruby SQL Git ComandLine Progate Web Heroku Top Ruby Git Web AWS Docker monkeydgeorge Value Space of Cebu https oriverk dev Github Acount "
+    "content": " from Qiita Web Value Space of Cebu C OpenCV tweet Ruby Progate HTML Git ComandLine Web CUI RubyonRails Ruby Html Git Progate Qiita Ruby Ruby Scaffold Bootstrap DB MySQL MySQL PostgreSQL Heroku RailsTutorial RailsTutorial DB H H JS Ruby SQL Git ComandLine Progate Web Heroku Top Ruby Git Web AWS Docker monkeydgeorge Value Space of Cebu https oriverk dev Github Acount "
   },
   {
     "id": "20190403-what-transaction",
