@@ -71,7 +71,7 @@ export default function Post({ postData
               ))}</div>
           </div>
           {postData.image && (
-            <OptimizedImages src={postData.image} alt='post cover image' />
+            <OptimizedImages src={postData.image || '/assets/home/sunrise.jpg'} alt='post cover image' />
           )}
           <div dangerouslySetInnerHTML={{ __html: postData.content }} className='markdown' />
         </article>

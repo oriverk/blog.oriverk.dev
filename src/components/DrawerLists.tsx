@@ -7,7 +7,7 @@ export const LeftSwipeDrawer = () => {
       <div>
         <div className='imgContainer'>
           <OptimizedImages
-            src='/assets/human192x192.png' alt='avatar' imgStyle={{ margin: '0 auto', width: '80%', backgroundColor: '#424242' }} />
+            src='/assets/human512x512.png' alt='avatar' imgStyle={{ margin: '0 auto', width: '80%', backgroundColor: '#424242' }} />
         </div>
         <div className='desc'>
           <p>Kawano Yudai</p>

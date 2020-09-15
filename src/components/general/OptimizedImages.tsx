@@ -6,13 +6,10 @@ export function OptimizedImages({ src, alt, imgStyle }: {
   imgStyle?: React.CSSProperties
 }) {
   // https://dev.to/joserfelix/how-to-make-a-static-blog-with-next-js-2bd6
-  // src = 'assets/posts/hoge.jpg' OR src = '/assets/posts/hoge.jpg'
-  // src = 'posts/hoge.jpg'        OR src = '/posts/hoge.jpg'
-  const sliced = src.slice(0, 1) === '/' ? src.slice(1) : src
-  const split = sliced.split('/')[0] === 'assets' ? sliced.replace('assets/', '') : sliced
-  // => posts/hoge.jpg
-  const responsiveImage = require(`@public/assets/${split}?resize`)
-  const responsiveImageWebp = require(`@public/assets/${split}?{sizes:[640, 960, 1200, 1800], format: 'webp' }`)
+  const replaced = src.replace(/^.?\/assets\/?/, '') || 'imageIsMissing.png'
+  // => processed = '/home/example.jpg'
+  const responsiveImage = require(`@public/assets/${replaced}?resize`)
+  const responsiveImageWebp = require(`@public/assets/${replaced}?{sizes:[640,960,1200,1800], format: 'webp'}`)
 
   return (
     <React.Fragment>
@@ -25,7 +22,7 @@ export function OptimizedImages({ src, alt, imgStyle }: {
         <img
           src={responsiveImage.src}
           srcSet={responsiveImage.srcSet}
-          alt={alt}
+          alt={alt || 'no image'}
           style={imgStyle}
           width={responsiveImage.width}
           height={responsiveImage.height}

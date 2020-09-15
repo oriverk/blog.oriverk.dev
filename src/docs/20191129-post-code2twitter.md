@@ -4,7 +4,7 @@ update: '2020-03-10'
 author: Kawano Yudai
 title: 'Twitter に見栄え良くコード投稿したかった'
 tags: [ruby, rails, aws]
-image: '/assets/codr700.jpg'
+image: '/assets/posts/201911/codr700.jpg'
 ---
 
 from [Qiita: Twitterにコードを身えばよく投稿したい](https://qiita.com/OriverK/items/df41ec6b57b40a06a64d#comments)

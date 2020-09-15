@@ -67,15 +67,8 @@ end
 BootstrapやDBを組み合わせ、生徒データ情報一覧になりました。
 
 <picture>
-  <source srcSet="/assets/posts/201905/cebu3.webp" type="image/webp" />
   <img src="/assets/posts/201905/cebu3.png" alt="table">
 </picture>
-　
-<video autoplay loop muted playsinline>  
-  <source src='/assets/posts/201905/cebu4.webm' type='video/webm'>  
-</video>  
-
-一部、Bootstrap等を適用してないページがあるが、気にしない。
 
 ##### MySQL
 - 参照
@@ -98,10 +91,6 @@ BootstrapやDBを組み合わせ、生徒データ情報一覧になりました
 <picture>
   <img src="/assets/posts/201905/cebu5.png" alt="table" />
 </picture>
-
-<video autoplay loop muted playsinline>  
-  <source src='/assets/posts/201905/cebu6.webm' type='video/webm'>
-</video>
 
 JS等、追加で勉強しなければと感じています。
 
