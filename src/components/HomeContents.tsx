@@ -48,7 +48,7 @@ const containerStyle = css`
   }
 `
 
-export const Top = (props) => {
+export function Top(props){
   const openSearch = props.openSearch
   return (
     <>
@@ -132,7 +132,7 @@ export function About() {
         <div className='container'>
           <div className='left'>
             <OptimizedImages
-              src='/assets/LongRidge500.jpg'
+              src='/assets/home/LongRidge700.jpg'
               alt='the scenary from Long-Ridge-Lookout in Adelaide'
             />
           </div>
@@ -180,7 +180,7 @@ export function History() {
           <div className='container'>
             <div className='left'>
               <OptimizedImages
-                src='/assets/weeding500.jpg'
+                src='/assets/home/weeding700.jpg'
                 alt='weeding robot motion picture'
               />
             </div>
@@ -193,7 +193,7 @@ export function History() {
           <div className='container'>
             <div className='left'>
               <OptimizedImages
-                src='/assets/miyazakiUniv.jpg'
+                src='/assets/home/miyazakiUniv.jpg'
                 alt='logo of Miyazaki University'
               />
             </div>
@@ -220,10 +220,10 @@ export function Works() {
         <article>
           <div className='container'>
             <div className='left'>
-              <picture>
-                <source srcSet='/assets/prtsc-500.webp' type='image/webp' className='contentImg' />
-                <img src='/assets/prtsc-500.jpg' alt='screen-shot' className='contentImg' />
-              </picture>
+              <OptimizedImages
+                src='/assets/home/20200915prtsc1000.jpg'
+                alt='screen shot of this site'
+              />
             </div>
             <div className='right'>
               <b>This portfolio site as resume and tech blog</b>
@@ -255,10 +255,10 @@ export function Works() {
           </div>
           <div className='container'>
             <div className='left'>
-              <picture>
-                <source srcSet='/assets/codr500.webp' type='image/webp' className='contentImg' />
-                <img src='/assets/codr500.jpg' alt='screen-shot' className='contentImg' />
-              </picture>
+              <OptimizedImages
+                src='/assets/home/codr700.jpg'
+                alt='scrren shot of code share on twitter app'
+              />
             </div>
             <div className='right'>
               <b>Coder0</b>
@@ -273,7 +273,7 @@ export function Works() {
           <div className='container'>
             <div className='left'>
               <OptimizedImages
-                src='/assets/githubPages1st500.jpg'
+                src='/assets/home/githubPages1st700.jpg'
                 alt='screenshot of my 1st githubpages'
               />
             </div>

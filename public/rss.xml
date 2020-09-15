@@ -5,7 +5,7 @@
     <link>https://oriverk.dev</link>
     <description>This site is for my portfolio and made with React, Next.js</description>
     <language>ja</language>
-    <lastBuildDate>Tue Sep 01 2020 17:21:33 GMT+0000 (Coordinated Universal Time)</lastBuildDate>
+    <lastBuildDate>Tue Sep 15 2020 15:49:20 GMT+0000 (Coordinated Universal Time)</lastBuildDate>
 
     <item>
       <title>only for test</title>
@@ -44,12 +44,6 @@
       <pubDate>2020-02-03</pubDate>
     </item>
     <item>
-      <title>Build FrontEnd environment on Ubuntu</title>
-      <link>https://oriverk.dev/posts/20200203-setup-node-ubuntu</link>
-      <description>node, ubuntu</description>
-      <pubDate>2020-02-03</pubDate>
-    </item>
-    <item>
       <title>Build Java environment on ubuntu</title>
       <link>https://oriverk.dev/posts/20200203-setup-java-ubuntu</link>
       <description>java, ubuntu</description>
@@ -59,6 +53,12 @@
       <title>Build Go environment on ubuntu</title>
       <link>https://oriverk.dev/posts/20200203-setup-go-ubuntu</link>
       <description>go, ubuntu</description>
+      <pubDate>2020-02-03</pubDate>
+    </item>
+    <item>
+      <title>Build FrontEnd environment on Ubuntu</title>
+      <link>https://oriverk.dev/posts/20200203-setup-frontend-ubuntu</link>
+      <description>node, ubuntu</description>
       <pubDate>2020-02-03</pubDate>
     </item>
     <item>

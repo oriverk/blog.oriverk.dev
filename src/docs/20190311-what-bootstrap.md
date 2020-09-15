@@ -109,7 +109,7 @@ end
     - HTML解析前に実行されるべきjsファイルなどはheadタグ内に記述するべし
 
 ### ページ読み込み時間は、ユーザの直帰率等に影響を及ぼす
-- 参照: [一次データ:Does Page Load Time Really Affect Bounce Rate? pingdom](https://royal.pingdom.com/page-load-time-really-affect-bounce-rate/)
+[一次データ:Does Page Load Time Really Affect Bounce Rate? pingdom](https://royal.pingdom.com/page-load-time-really-affect-bounce-rate/)
 
 上の一次データによると、ページ読み込み時間3秒までは直帰率は10%弱だが、5秒で38%、7秒で50%を超える
 

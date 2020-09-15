@@ -94,7 +94,7 @@ const StateResults = ({ searchResults }) => {
         <div>No Results Found.</div>
         <style jsx>{`
           div{
-            align-self:center;
+            align-self: center;
             text-align: center;
             color: #EEE;
             height: 100%;

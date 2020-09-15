@@ -29,7 +29,6 @@ Ruby用に作成している仮想環境のアップデートの序にRubyのバ
 ## Dark theme
 前回までは、基本グレーで背景に青、差し色でオレンジを使用していた。
 
-- 参照
 - [Material Design Dark theme](https://material.io/design/color/dark-theme.html)
 - [Color Tool](https://material.io/resources/color/#!/?view.left=0&view.right=1&primary.color=121212&secondary.color=7bd0e7)
 - [DarkModeのデザインを中心とした色彩設計の考え方](https://kudakurage.hatenadiary.com/entry/2019/07/29/083000)
@@ -37,7 +36,7 @@ Ruby用に作成している仮想環境のアップデートの序にRubyのバ
 ## Add top-image and others
 トップ画面にプロフィール画像を追加し、またサイトリンクQRコードを表示されるように、javascriptを作成した。
 
-```javascript
+```js
 <script>
   'use script';
   {

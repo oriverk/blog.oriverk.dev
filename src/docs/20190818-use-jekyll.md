@@ -14,12 +14,10 @@ GithubPagesJekyllを利用し、静的ページを作成した。
 ## major update history
 
 - 20190825：GithubPages with jekyll 作成
-    - 目的：自分の情報等を纏めるサイト作成の為
-    - remote theme：[fongandrew / hydeout](https://github.com/fongandrew/hydeout)
+  - 目的：自分の情報等を纏めるサイト作成の為
+  - remote theme：[fongandrew / hydeout](https://github.com/fongandrew/hydeout)
 - 20191206：デザイン等変更
-  - 目的：アクセシビリティ改善、デバイスによる見た目差を小さく
-
-作り替えた結果
+- 目的：アクセシビリティ改善、デバイスによる見た目差を小さく
 
 <blockquote class="twitter-tweet">
 <a href="https://twitter.com/not_you_die/status/1204474648223576064?ref_src=twsrc%5Etfw"></a>
@@ -31,7 +29,7 @@ GithubPagesJekyllを利用し、静的ページを作成した。
 ## Environment
 - Windows
 - vm OS: Linux Ubuntu Bento/Bionic
-    - Ruby ruby 2.5.1p57
+  - Ruby ruby 2.5.1p57
 
 ## Refferrence
 - [GithubPages：https://pages.github.com/](https://pages.github.com/)
@@ -60,24 +58,19 @@ jekyll new oriverk.github.io
 - 参照：[jekyll-theme-hydeout 4.0.2](https://rubygems.org/gems/jekyll-theme-hydeout)
 
 ### テーマをhydeoutに変更してみる
-このテーマはgem版があるので、それを利用することにした。他のテーマは知らない。
-上記の`jekyll new username.github.ip`で作成したディレクトリに手を加えていく。
+上記の`jekyll new username.github.io`で作成したディレクトリに手を加えていく。
 
-まず、Gemfileを編集。
-デフォルトでは`gem "github-pages"がコメントアウトされてるので、アンコメント。
-また、今回使用するテーマhydeoutのgemを書き加える。
+まず、Gemfileを編集し、 `gem "github-pages"` をアンコメント。また、今回使用するテーマ hydeout の gem を書き加える。
 
 ```rb
 # Gemfile
 # uncomment
 gem "github-pages", group: :jekyll_plugins
-# add gem
+# add
 gem "jekyll-theme-hydeout"
 ```
 
-次に、_config.ymlを編集。
-今回はリモートテーマを使用するので、`theme`を`remote_theme`に変更する。
-更に、プラグインも追加しておく。
+次に `_config.yml` を編集する。今回はリモートテーマを使用するので、 theme を`remote_theme`に変更する。更にプラグインも追加しておく。
 
 ```yml
 # _config.yml
@@ -85,7 +78,7 @@ gem "jekyll-theme-hydeout"
 remote_theme: fongandrew/hydeout
 
 plugins:
-  - jekyll-feed # 元から入っている
+  - jekyll-feed # pre writen
   - jekyll-remote-theme　# added
   - github-pages # added
 ```
@@ -95,8 +88,6 @@ bundle install
 bundle exec jekyll server
 ```
 
-これで、テーマがhydeoutに変更されているはず。
-
 ## エラー
 - 参照：[GitHub Pages ビルドのトラブルシューティング](https://help.github.com/ja/articles/troubleshooting-github-pages-builds)
 
@@ -105,7 +96,8 @@ bundle exec jekyll server
 該当の.mdファイル中の`Layout`を、`Layout:page`に変えたら、エラーが解消された。
 
 ### Invalid theme folder: _sass
-- 参照
+参照
+
 - [`Invalid theme folder: _sass` when using Github Pages with remote_theme #7630](https://github.com/jekyll/jekyll/issues/7630)
 - [Page build failed: Invalid Sass or SCSS](https://help.github.com/en/articles/page-build-failed-invalid-sass-or-scss)
 
@@ -114,10 +106,10 @@ bundle exec jekyll server
 ## カスタマイズ
 ※使用テーマやテーマの追加方法によって、ディレクトリ構造が違うので、他テーマは知らない
 
-ディレクトリに`_include`フォルダを作成。
+ディレクトリに `_include` フォルダを作成。
 
 ### headタグ内の情報を書き込む
-`_include`フォルダ内に、`head.html`ファイルを作成する
+`_include` フォルダ内に、 `head.html` ファイルを作成する
 
 ```html
 <head>
@@ -135,8 +127,7 @@ bundle exec jekyll server
 </head>
 ```
 
-### ページネーション機能
-jekyll関連gemにページネーションがあり、プラグインなので`_config.yml`に書き加える。
+### ページネーション
 
 ```yml
 # _config.yml
@@ -156,11 +147,11 @@ bundle exec jekyll server
 ### Googleアナリティクス
 - 参照: [Google Analytics for Jekyll](https://desiredpersona.com/google-analytics-jekyll/)
 
-1. まず、GoogleアナリティクスをトラッキングIDを取得する。
-2. `google-analytics.html`を作成
+1. get google analytics tracking
+2. touch google-analytics.html
 
 ```html
-# google-analytics.html
+<!-- google-analytics.html -->
 {% if jekyll.environment == 'production' and site.google_analytics %}
 <script>
   (function (i, s, o, g, r, a, m) {
@@ -180,7 +171,7 @@ bundle exec jekyll server
 ```html
 <!-- _include/head.html -->
 <head>
-    {% include google-analytics.html %}
+  {% include google-analytics.html %}
 </head>
 ```
 
@@ -189,7 +180,6 @@ bundle exec jekyll server
 
 ```yml
 # _config.yml
-# Google Analytics
 google_analytics: UA-〇〇〇〇〇
 ```
 githubに上げて完了。

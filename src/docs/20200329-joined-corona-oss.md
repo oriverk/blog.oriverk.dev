@@ -25,23 +25,20 @@ Referrence
     - yarn: 1.22.4
 
 ## environment setup
-- Refferrence
 - [Github: リポジトリのREADME.md中の開発者向け情報->環境構築の手順](https://github.com/covid19-miyazaki/covid19#%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%81%AE%E6%89%8B%E9%A0%86)
-
-- Gitの設定（今回は新しくvm環境を用意したので。
-    - git config --global user.name "usename"
-    - git config --global user.email "email"
-- Vimの設定
-    - [oriverk/dotfiles/.vimrc](https://github.com/oriverk/dotfiles/blob/master/init.vim)からコピペ
-    - 環境のデフォルトエディタを変更し、vimを選択
-        - sudo update-alternatives --config editor
-- Vue用の仮想環境を用意した。（割愛
-    - [仮想環境をUbuntu 18.04 （CUI/GUI）で構築する](https://qiita.com/OriverK/items/115c0c4d3c25c89327bc)
-- Node.js >= v10.19.0の用意（割愛
-    - [Ubuntuで使う言語のインストール方法とか環境構築とか](https://qiita.com/OriverK/items/9da9facc9d8007146e73#nodejs)
-- fork, clone, yarn install
+- [oriverk.dev: Build FrontEnd environment on Ubuntu](https://oriverk.dev/posts/202003-setup-frontend-ubuntu)
 
 ```sh
+# set up git
+git config --global user.name "usename"
+git config --global user.email "email"
+
+# set up vim
+# copy and paste from [oriverk/dotfiles/.vimrc](https://github.com/oriverk/dotfiles/blob/master/init.vim)
+# select vim as default editor
+sudo update-alternatives --config editor
+
+# fork, clone, yarn install
 git clone https://github.com/oriverk/covid19.git
 cd covid19
 
@@ -55,7 +52,7 @@ yarn dev
 </picture>
 
 ## What I did
-最初に書いた通り、Vue（と言うかJS）何もわからないので、表示される自然言語の修正をする事にした。
+Vue 何もわからないので、まず自然言語の表示の修正をする事にした。
 
 - 表示言語選択メニューバー: [covid19/nuxt-i18n.config.ts](https://github.com/covid19-miyazaki/covid19/blob/development/nuxt-i18n.config.ts)
 - 他言語表示用json: [covid19/assets/locales/](https://github.com/covid19-miyazaki/covid19/tree/development/assets/locales)

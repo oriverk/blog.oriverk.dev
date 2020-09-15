@@ -4,7 +4,7 @@ update: '2020-07-14'
 author: Kawano Yudai
 title: 'Next.js でポートフォリオサイトを作成した'
 tags: [typescript, React, next, remark]
-image: '/assets/prtsc-1000.jpg'
+image: '/assets/home/20200915prtsc1000.jpg'
 ---
 
 ## はじめに

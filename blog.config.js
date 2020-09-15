@@ -6,6 +6,7 @@ module.exports = {
   desc: "This site is for my portfolio and made with React, Next.js",
   baseUrl: "https://oriverk.dev",
   lang: "en_US",
+  ogImage: '/assets/home/sunrise1800x945og.webp',
   sns: {
     twitter: "not_you_die",
     github: "oriverk",

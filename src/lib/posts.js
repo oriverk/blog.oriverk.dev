@@ -63,7 +63,10 @@ export function getSortedPostsData() {
     const title = postData.title
     const create = postData.create
     const update = postData.update
-    const tags = postData.tags
+    var tags = postData.tags
+    if (tags.includes('ruby') && tags.includes('rails')) {
+      tags = tags.filter(t => t !== 'ruby')
+    }
     const image = postData.image
     return {
       id,
@@ -159,14 +162,17 @@ export function getTags() {
 
 // tags/[tag].tsx
 export function getTagPosts(tag) {
-  const allPostsAllData = getAllPostsAllData()
-  const filteredPostsData = allPostsAllData.filter((post) => post.tags.includes(tag))
-  const postsData = filteredPostsData.map((post) => {
+  const sortedAllPostsData = getAllPostsAllData()
+  const tagPostsData = sortedAllPostsData.filter((post) => post.tags.includes(tag))
+  const postsData = tagPostsData.map((post) => {
     const id = post.id
     const title = post.title
     const create = post.create
     const update = post.update
-    const tags = post.tags
+    var tags = post.tags
+    if (tags.includes('ruby') && tags.includes('rails')) {
+      tags = tags.filter(t => t !== 'ruby')
+    }
     const image = post.image
     return { id, title, create, update, tags, image}
   })

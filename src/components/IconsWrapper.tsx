@@ -19,17 +19,8 @@ const HatenaSvg = (props) => {
   return <svg className={props.class} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M20.47 0C22.42 0 24 1.58 24 3.53v16.94c0 1.95-1.58 3.53-3.53 3.53H3.53C1.58 24 0 22.42 0 20.47V3.53C0 1.58 1.58 0 3.53 0h16.94zm-3.705 14.47c-.78 0-1.41.63-1.41 1.41s.63 1.414 1.41 1.414 1.41-.645 1.41-1.425-.63-1.41-1.41-1.41zM8.61 17.247c1.2 0 2.056-.042 2.58-.12.526-.084.976-.222 1.32-.412.45-.232.78-.564 1.02-.99s.36-.915.36-1.48c0-.78-.21-1.403-.63-1.87-.42-.48-.99-.734-1.74-.794.66-.18 1.156-.45 1.456-.81.315-.344.465-.824.465-1.424 0-.48-.103-.885-.3-1.26-.21-.36-.493-.645-.883-.87-.345-.195-.735-.315-1.215-.405-.464-.074-1.29-.12-2.474-.12H5.654v10.486H8.61zm.736-4.185c.705 0 1.185.088 1.44.262.27.18.39.495.39.93 0 .405-.135.69-.42.855-.27.18-.765.254-1.44.254H8.31v-2.297h1.05zm8.656.706v-7.06h-2.46v7.06H18zM8.925 9.08c.71 0 1.185.08 1.432.24.245.16.367.435.367.83 0 .38-.13.646-.39.804-.265.154-.747.232-1.452.232h-.57V9.08h.615z' /></svg>
 }
 
-// blog #50CAF9
-// facebook #3C5A99
-// line #00B900
-// Hatena #00A4DE
-// twitter #00ACEE
-// qiita #55C500
-// wantedly #00A4BB
-// github #24292e
-
 const BlogIconsStyle = css`
-  .iconsWrapper{
+  .icons{
     display: flex;
     flex-direction: row;
     position: fixed;
@@ -58,7 +49,7 @@ const BlogIconsStyle = css`
   }
 
   @media( min-width: 960px ){
-    .iconsWrapper{
+    .icons{
       display: flex;
       flex-direction: column;
       left: 91%;
@@ -71,20 +62,10 @@ const BlogIconsStyle = css`
   }
 `
 
-export const HomeIcons = (props) => {
-  const [more, setMore] = React.useState(false)
-  const openSearch = props.openSearch
+export const HomeIcons = ({openSearch}) => {
   return (
     <React.Fragment>
-      <div className='iconsWrapper'>
-        <a className='icon more' key='more' aria-expanded={!more}
-          onClick={() => setMore(true)} aria-label='expand link icons'>
-          <IconContext.Provider value={{ className: 'react-icons' }}><MdMoreHoriz /></IconContext.Provider>
-        </a>
-        <a className='icon close' key='close' aria-expanded={more}
-          onClick={() => setMore(false)} aria-label='close link icons'>
-          <IconContext.Provider value={{ className: 'react-icons' }}><MdClose /></IconContext.Provider>
-        </a>
+      <div>
         <a className='icon' key='search' onClick={openSearch} aria-label='search post'>
           <IconContext.Provider value={{ className: 'react-icons' }}><MdSearch /></IconContext.Provider>
         </a>
@@ -101,25 +82,20 @@ export const HomeIcons = (props) => {
           aria-label='linkedin accountlink' target='_blank' rel='noopener noreferrer'>
           <IconContext.Provider value={{ className: 'react-icons' }}><FaLinkedin /></IconContext.Provider>
         </a>
-        <a className='icon wantedly' key='wantedly' aria-expanded={more} href={`https://www.wantedly.com/users/${blogConfig.sns.wantedly}`}
+        <a className='icon wantedly' key='wantedly' href={`https://www.wantedly.com/users/${blogConfig.sns.wantedly}`}
           aria-label='wantedly account link' target='_blank' rel='noopener noreferrer'>
           <WantedlySvg class='homeIconSvg' />
         </a>
-        <a className='icon twitter' key='twitter' aria-expanded={more} href={`https://twitter.com/${blogConfig.sns.twitter}`}  
+        <a className='icon twitter' key='twitter' href={`https://twitter.com/${blogConfig.sns.twitter}`}  
           aria-label='twitter account link' target='_blank' rel='noopener noreferrer'>
           <IconContext.Provider value={{ className: 'react-icons' }}><FaTwitter /></IconContext.Provider>
         </a>
       </div>
       <style jsx>{`
-        .iconsWrapper{
-          width: 100%;
-        }
-
         .icon{
           position: relative;
           display: inline-block;
           text-decoration: none;
-          border-radius: 50%;
           width: 2rem;
           height: 2rem;
           margin: .5rem;
@@ -128,65 +104,57 @@ export const HomeIcons = (props) => {
         }
 
         .icon:active{
-          border: 1px solid #424242;
+          width: 1.9rem;
+          height: 1.9rem;
         }
         
-        .icon[aria-expanded='false']{
-          display: none;
-        }
         @media( min-width: 960px ){
           .icon{
             width: 2.25rem;
             height: 2.25rem;
           }
+          .icon:active{
+            width: 2.15rem;
+            height: 2.15rem;
+          }
         }
       `}</style>
     </React.Fragment>
   )
-}  
+}
 
-export const PostsIcons = (props) => {
-  const [more, setMore] = React.useState(false)
+export const PostsIcons = () => {
   return (
     <React.Fragment>
-      <div className='iconsWrapper'>
-        {/* <a className='icon search' key='search' aria-label='search post'>
-          <IconContext.Provider value={{ className: 'react-icons' }}><MdSearch /></IconContext.Provider>
-        </a> */}
+      <div className='icons'>
         <Link href='/tags'>
           <a className='icon tags' key='tags' aria-label='tags page link'>
             <IconContext.Provider value={{ className: 'react-icons' }}><MdLocalOffer /></IconContext.Provider>
           </a>
         </Link>
         <Link href='/'>
-          <a className='icon home' key='home' aria-expanded={more} aria-label='home link'>
+          <a className='icon home' key='home' aria-label='home link'>
             <IconContext.Provider value={{ className: 'react-icons' }}><MdHome /></IconContext.Provider>
           </a>
         </Link>
-        <a className='icon close' key='close' aria-expanded={more}
-          onClick={() => setMore(false)} aria-label='close link icons'>
-          <IconContext.Provider value={{ className: 'react-icons' }}><MdClose /></IconContext.Provider>
-        </a>
-        <a className='icon more' key='more' aria-expanded={!more}
-          onClick={() => setMore(true)} aria-label='expand link icons'>
-          <IconContext.Provider value={{ className: 'react-icons' }}><MdMoreHoriz /></IconContext.Provider>
-        </a>
       </div>
       <style jsx>{BlogIconsStyle}</style>
     </React.Fragment>
   )
 }  
 
-export const PostIcons = (props) => {
+export const PostIcons = ({ postTitle, postId, postTags }: {
+  postTitle: string,
+  postId: string,
+  postTags?: string[]
+}) => {
   const [more, setMore] = React.useState(false)
-  const postTitle = props.postTitle
-  const postId = props.postId
-  const postTags = props.postTags ? props.postTags.join(',') : 'React, Next.js'
-  const twitterShare = `https://twitter.com/share?text=${postTitle}&hashtags=${postTags}&url=${blogConfig.baseUrl}/posts/${postId}&related=${blogConfig.sns.tiwtter}`
+  const tags = postTags ? postTags.join(',') : 'React, Next.js'
+  const twitterShare = `https://twitter.com/share?text=${postTitle}&hashtags=${tags}&url=${blogConfig.baseUrl}/posts/${postId}&related=${blogConfig.sns.tiwtter}`
   const hatenaShare = `https://b.hatena.ne.jp/entry/${blogConfig.baseUrl}/posts/${postId}`
   return (
     <React.Fragment>
-      <div className='iconsWrapper'>
+      <div className='icons'>
         <Link href='/tags'>
           <a className='icon tags' key='tags' aria-expanded={more} aria-label='tags page link'>
             <IconContext.Provider value={{ className: 'react-icons' }}><MdLocalOffer /></IconContext.Provider>
@@ -202,10 +170,6 @@ export const PostIcons = (props) => {
             <IconContext.Provider value={{ className: 'react-icons' }}><MdHome /></IconContext.Provider>
           </a>
         </Link>
-        {/* <a className='icon search' key='search' aria-label='search post'
-          onClick={()=>onSearchDrawer} aria-expanded={more} >
-          <IconContext.Provider value={{ className: 'react-icons' }}><MdSearch /></IconContext.Provider>
-        </a> */}
         <a className='icon Hatena' key='hatena' aria-expanded={more} href={hatenaShare}  
           aria-label='hatena share link' target='_blank' rel='noopener noreferrer'>
           <HatenaSvg class='homeIconSvg' />
@@ -228,46 +192,31 @@ export const PostIcons = (props) => {
   )
 }  
 
-export const TagsIcons = (props) => {
-  const [more, setMore] = React.useState(false)
+export const TagsIcons = () => {
   return (
     <React.Fragment>
-      <div className='iconsWrapper'>
-        {/* <a className='icon search' key='search' aria-label='search post'>
-          <IconContext.Provider value={{ className: 'react-icons' }}><MdSearch /></IconContext.Provider>
-        </a> */}
+      <div className='icons'>
         <Link href='/posts'>
           <a className='icon posts' key='posts' aria-label='posts page link'>
             <IconContext.Provider value={{ className: 'react-icons' }}><MdCreate /></IconContext.Provider>
           </a>
         </Link>
         <Link href='/'>
-          <a className='icon home' key='home' aria-expanded={more} aria-label='home link'>
+          <a className='icon home' key='home' aria-label='home link'>
             <IconContext.Provider value={{ className: 'react-icons' }}><MdHome /></IconContext.Provider>
           </a>
         </Link>
-        <a className='icon close' key='close'  
-          aria-expanded={more} onClick={() => setMore(false)} aria-label='close link icons'>
-          <IconContext.Provider value={{ className: 'react-icons' }}><MdClose /></IconContext.Provider>
-        </a>
-        <a className='icon more' key='more'
-          aria-expanded={!more} onClick={() => setMore(true)} aria-label='expand link icons'>
-          <IconContext.Provider value={{ className: 'react-icons' }}><MdMoreHoriz /></IconContext.Provider>
-        </a>
       </div>
       <style jsx>{BlogIconsStyle}</style>
     </React.Fragment>    
   )
 }  
 
-export const TagIcons = (props) => {
+export const TagIcons = () => {
   const [more, setMore] = React.useState(false)
   return (
     <React.Fragment>
-      <div className='iconsWrapper'>
-        {/* <a className='icon search' key='search' aria-label='search post'>
-          <IconContext.Provider value={{ className: 'react-icons' }}><MdSearch /></IconContext.Provider>
-        </a> */}
+      <div className='icons'>
         <Link href='/posts'>
           <a className='icon posts' key='posts' aria-label='posts page link'>
             <IconContext.Provider value={{ className: 'react-icons' }}><MdCreate /></IconContext.Provider>
