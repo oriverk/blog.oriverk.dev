@@ -19,7 +19,7 @@ image: '/assets/posts/202001/githubpages2post.jpg'
 ### デザイン変更
 [ページ表示速度](https://developers.google.com/speed/pagespeed/insights/?hl=JA&url=https%3A%2F%2Foriverk.github.io%2F&tab=mobile)を向上させるため、メニュータブにしか使っていないBootstrap由来のJSとCSSを排除し、自作のjsスクリプトを追加した。
 
-```javascript
+```js
 <script>
   'use strict';
   {
@@ -54,15 +54,13 @@ gem 'rouge'
 ```
 
 ```yml
-_config.yml
+# _config.yml
+# this is defualt setting to use hightlight and endhighlight
 markdown: kramdown
 highlighter: rouge
-```
 
-この場合だと通常通りの`highlight`と`endhighlight`を用いるが、Qiitaの様なコードブロックの記法にしたかったので、kramdownのオプション等を指定した。(下)
-
-```yml
-_config.yml
+# modify setting to use code block like Qiita
+# =>
 markdown: kramdown
 kramdown:
    input: GFM

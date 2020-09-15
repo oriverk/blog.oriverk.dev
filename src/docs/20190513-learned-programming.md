@@ -71,7 +71,6 @@ BootstrapやDBを組み合わせ、生徒データ情報一覧になりました
 </picture>
 
 ##### MySQL
-- 参照
 - [6日目：MySQL操作](https://qiita.com/OriverK/items/8c35aae3cbe05a1a28ce)
 - [12日目：PostgreSQLを用いたログイン機能付きサイト](https://qiita.com/OriverK/items/ef1883408ea924376c1c)
 - [15日目：アプリをネットに公開したく、Herokuを使ってみた。](https://qiita.com/OriverK/items/03c39ffbccb13c653d92)
@@ -82,11 +81,9 @@ BootstrapやDBを組み合わせ、生徒データ情報一覧になりました
 #### 2か月目
 主に基本情報技術者試験のセキュリティとDBの設問に費やしました。
 
-- 参照
-    - [H30秋午後設問3](https://www.jitec.ipa.go.jp/1_04hanni_sukiru/mondai_kaitou_2018h30_2/2018h30a_fe_pm_qs.pdf)
-- アウトプット
-    - [18日目：トランザクションって](https://qiita.com/OriverK/items/2359c9159b55c74f15d1)
-    - [21日目：H30秋基本情報技術者試験の問3データベース](https://qiita.com/OriverK/items/6efe454be2d6be84ceb5)
+- 例： [H30秋午後設問3](https://www.jitec.ipa.go.jp/1_04hanni_sukiru/mondai_kaitou_2018h30_2/2018h30a_fe_pm_qs.pdf)
+- [18日目：トランザクションって](https://qiita.com/OriverK/items/2359c9159b55c74f15d1)
+- [21日目：H30秋基本情報技術者試験の問3データベース](https://qiita.com/OriverK/items/6efe454be2d6be84ceb5)
 
 <picture>
   <img src="/assets/posts/201905/cebu5.png" alt="table" />
@@ -95,30 +92,30 @@ BootstrapやDBを組み合わせ、生徒データ情報一覧になりました
 JS等、追加で勉強しなければと感じています。
 
 ### 2か月を終えて
-#### 私が良かったなと思える点
+#### 良かった点
 - 触ったことのなかったRubyを、上のサイト程度までには触れるようになった。
 - SQLやGit、ComandLineのProgateレベルを脱することができた。
 
-#### この2か月間で、ああしとけば、今思う事。
+#### ああしとけばと思う点
 - 遠慮なく質問すればよかった。マンツーマンで、精神的に萎縮してしまった感じもする。
-    - 最終的には自己解決が必要なのですが、勉強する場なのだから、遠慮せずに、と。
+  - 最終的には自己解決が必要なのですが、勉強する場なのだから、遠慮せずに、と。
 
 ## 私の今後
 ワーホリビザは11月末期限ですが、それを待たずにWebエンジニアとして転職したいと考えています。
 農学部出身、他業種出身からの未経験採用となので、厳しいと思いますが。
 
-### 今回関連で、すること
+### 今後したい事
 - コンサートチケット申込購入サイトを完成させ、Heroku等にあげる。
-    - ツイッター登録やトランザクション実装、Topページ追加、デザイン修正、メール、バッチ処理の追加等々。。。
+  - ツイッター登録やトランザクション実装、Topページ追加、デザイン修正、メール、バッチ処理の追加等々。。。
 - RubyとGit等の理解をさらに深めるべく、勉強の継続。
-    - オリジナルのWebアプリを作成するなりして。
+  - オリジナルのWebアプリを作成するなりして。
 
 ### 転職に向け、すること
 - ポートフォリオ作成
 - 他言語や、AWSやDocker、コンピュータサイエンス等の勉強
 - 転職サイトなど（そういや転職について何も知らない）
 
-## リンク物置
+## 参照
 - 講師: [＠monkey_d_george](https://twitter.com/monkey_d_george)
   - [Value Space of Cebu](http://value-space.net/)
   - [プログラミング道場](https://programming-dojo.com/%E7%A7%81%E3%81%AE%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA/)

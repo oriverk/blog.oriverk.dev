@@ -90,10 +90,10 @@ end
 
 #### renderメソッド
 上controller編集時に用いた、renderメソッドは実際に画面に表示される内容を生成する。今回のrenderのplainオプションを指定すると、文字列を直接表示できる。
-**Railsのcontrollerでrenderを省略すると、代わりにapp/views/コントローラ名/アクション名.html.erbを用いる**
-=>ということはcontroller作成コマンドは `rails g controller コントローラ名　アクション名`
+Railsのcontrollerでrenderを省略すると、代わりにapp/views/コントローラ名/アクション名.html.erbを用いる
+=>　ということはcontroller作成コマンドは `rails g controller コントローラ名　アクション名`
 
-- 参照: [Ruby on Rails でページを作成する仕組み by @np_misaki氏](https://qiita.com/np_misaki/items/1c5ff951272a91f70e5f)
+参照: [Ruby on Rails でページを作成する仕組み by @np_misaki氏](https://qiita.com/np_misaki/items/1c5ff951272a91f70e5f)
 
 - config : アプリケーションの設定情報を格納する
 - /routes.rb : ルーティングの設定を行う
@@ -150,19 +150,19 @@ USE scanashi0307_development;
 ```sql
 SHOW CREATE TABLE users;
 
-| users | CREATE TABLE `users` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `sex` int(11) DEFAULT NULL,
-  `age` int(11) DEFAULT NULL,
-  `address` int(11) DEFAULT NULL,
-  `attendance` int(11) DEFAULT NULL,
-  `opinion` text,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 |
+-- | users | CREATE TABLE `users` (
+--   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+--   `name` varchar(255) DEFAULT NULL,
+--   `email` varchar(255) DEFAULT NULL,
+--   `sex` int(11) DEFAULT NULL,
+--   `age` int(11) DEFAULT NULL,
+--   `address` int(11) DEFAULT NULL,
+--   `attendance` int(11) DEFAULT NULL,
+--   `opinion` text,
+--   `created_at` datetime NOT NULL,
+--   `updated_at` datetime NOT NULL,
+--   PRIMARY KEY (`id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 |
 ```
 
 `rails g models`で設定したカラム名が作成されているのが分かる。
@@ -194,25 +194,21 @@ user.save
 
 ### Rails Console上でレコード取得
 ```rb
-# レコードの全てのユーザ情報を取得
-User.all
-# レコードの全てののユーザ情報のうち、最後に追加したものを取得
-User.all.last
-# 最初に追加したユーザを取得して、データを削除
-first_user = User.all.first
-first_user.destroy
-# ユーザ情報を変更
-user = User.all.first       #最初に追加したユーザ情報を取得
-user.name = "ichitaro"　    #取得した最初のユーザ情報のうち、nameを"ichitaro"にオーバーライド
-user.save　　　　　　　　　　 #ユーザ情報を保存
-# 追加されているユーザ数をカウント
-User.all.count
-# カラムの値がXという条件に合致するユーザ情報を取得
-# User.find_by(カラム:値)
-(.ex) User.find_by(id:2)
+User.all # get all users from record
+User.all.last # get last added user from record
+
+first_user = User.all.first # get all users and then get the first user
+first_user.destroy # delete the first user
+
+user = User.all.first
+user.name = "ichitaro" # overwrite the name with 'ichitaro
+user.save # save the data
+
+User.all.count # count the number of all users
+User.find_by(id:2) # get a user with id:2
 ```
 
-### controllerのアクションの整備
+### controller
 ```rb
 # app/controllers/users_controller.rb
 class UsersController < ApplicationController
@@ -222,7 +218,7 @@ class UsersController < ApplicationController
 end
 ```
 
-### viewの整備
+### view
 ```rb
 # app/view/index.html.erb
  <body>
@@ -281,16 +277,17 @@ resources :users
 `rails routes`実行
 
 ```rb
- Prefix Verb   URI Pattern Controller#Action
+# =>
+#  Prefix Verb   URI Pattern Controller#Action
 
-    users GET    /users(.:format)            users#index
-          POST   /users(.:format)            users#create
-  new_user GET    /users/new(.:format)        users#new
-edit_user GET    /users/:id/edit(.:format)   users#edit
-      user GET    /users/:id(.:format)        users#show
-          PATCH  /users/:id(.:format)        users#update
-          PUT    /users/:id(.:format)        users#update
-          DELETE /users/:id(.:format)        users#destroy
+#     users GET    /users(.:format)            users#index
+#           POST   /users(.:format)            users#create
+#   new_user GET    /users/new(.:format)        users#new
+# edit_user GET    /users/:id/edit(.:format)   users#edit
+#       user GET    /users/:id(.:format)        users#show
+#           PATCH  /users/:id(.:format)        users#update
+#           PUT    /users/:id(.:format)        users#update
+#           DELETE /users/:id(.:format)        users#destroy
 # ...
 ```
 
@@ -425,26 +422,20 @@ end
 
 
 ```rb
-# レコードの中から、nameがfooであるユーザ情報を取得
-user = User.find_by(name:"foo")
-# 取得したユーザ情報のうち、ageを0にオーバーライド
-user.age = 0
-# ユーザ情報をDBに保存する
+user = User.find_by(name:"foo") # get a user named 'foo'
+user.age = 0 # rewrite the user's data about age with 0
 user.save
-# fooさんの年齢が確認されたか、確認してみる。
-User.find_by(name: "foo")
-# 結果
-<User id: 1, name: "foo", email: "foo@gmail.com", sex: "女性", age: 0, address: "日本以外", attendance: "参加", opinion: "foooo", created_at: "2017-04-04 04:44:44", updated_at: "2019-03-08 00:07:47"
-# DB上に格納される性別や住所、参加有無も自然言語で保存されるように編集したのか。
+User.find_by(name: "foo") # confirm
+# =>
+# <User id: 1, name: "foo", email: "foo@gmail.com", sex: "女性", age: 0, address: "日本以外", attendance: "参加", opinion: "foooo", created_at: "2017-04-04 04:44:44", updated_at: "2019-03-08 00:07:47"
 ```
 
-### 年齢に、10代、20代、30代のラジオボタンを追加
+### 年齢のラジオボタンを追加
 
 <picture>
   <source srcSet="/assets/posts/201903/scaffold5.webp" type="image/webp" />
   <img src="/assets/posts/201903/scaffold5.jpg" alt="changed to radiobutton" />
 </picture>
-
 
 ---
 ## 8日目
@@ -452,7 +443,6 @@ User.find_by(name: "foo")
 ### users_controller
 ```rb
 # app/controllers/uupdate.rb
-# updateアクション
 def update
     @user = User.find params[:id]
     if @user.update(params.require(:user).permit(:name, :email, :sex, :age, :address, :attendance, :opinion))
@@ -466,7 +456,6 @@ def update
     end
 end
 
-# destroyアクション定義
 def destroy
   @user = User.find params[:id]
   @user.destroy
@@ -475,7 +464,6 @@ def destroy
   end
 end
 
-# newアクション定義
 def new
   @user = User.new
 end

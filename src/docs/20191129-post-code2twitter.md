@@ -189,7 +189,7 @@ end
 ```
 
 ### html_safe => sanitize
-[sanitizeヘルパーを使用した。ホワイトリスト方式](https://edgeapi.rubyonrails.org/classes/ActionView/Helpers/SanitizeHelper.html#method-i-sanitize)
+ホワイトリスト方式の [sanitizeヘルパー](https://edgeapi.rubyonrails.org/classes/ActionView/Helpers/SanitizeHelper.html#method-i-sanitize)　を使用した。
 
 ```rb
 # app/views/posts/index.html.erb
@@ -208,8 +208,9 @@ Herokuでは画像保持がされないので、作成画像をAWS S3に保存�
 4. Active Storageを通して、AWS S3に保存
 
 ### Active Storage
+Rail5.2からの機能で、今までのcarrievaveやpaperclip等を使わずに、クラウドストレージ等へのアップロードが容易になる。今回はAWS S3を使った。
+
 - 参照: [Active Storage](https://railsguides.jp/active_storage_overview.html)
-  - Rail5.2からの機能で、今までのcarrievaveやpaperclip等を使わずに、クラウドストレージ等へのアップロードが容易になる。今回はAWS S3を使った。
 
 ```sh
 # set up
@@ -236,7 +237,7 @@ config.active_storage.service = :local
 config.active_storage.service = :amazon
 ```
 
-`rails credentials:edit`でAWSアクセスキーとシークレットキーを追加。
+`rails credentials:edit` でAWSアクセスキーとシークレットキーを追加。
 
 ```yaml
 # config/credentials.yml.enc
@@ -295,6 +296,7 @@ gem 'mini_magick'
 ```
 
 ### Base64デコード
+
 - 参照
 - [python-twitter で BASE64 形式の画像をツイートする](https://qiita.com/maguro_tuna/items/184f63e37f3724f18e33)
 - [base64でエンコードされた画像をActive Storageで保存する](https://qiita.com/ozin/items/5ec81a4b126b8ebf7a96)

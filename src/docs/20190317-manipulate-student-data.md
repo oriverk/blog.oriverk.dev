@@ -71,31 +71,29 @@ password:
 `rails db:create`
 
 ## scaffold(本段階
-**scaffoldではcontrollerとmodelが同時に作成される)**
-**rubyの整数型はinteger**
-**中間テーブルは一番最後に作成**
-**中間テーブルのうち、主キーを参照するcolumnをreferenceで指定**
-=> 自動で、bigintに設定される
+- scaffoldでは controller と model が作成される
+- rubyの整数型はinteger（他言語の知識とごっちゃになった
+- 中間テーブルは一番最後に作成
+- 主キーを参照するcolumnをreferenceで指定
+  - 自動でbigintに設定される
 
 ## rails g scaffold
 ```sh
-rails generate scaffold Student name:string email:string gender:integer age:integer opinion:text
-rails generate scaffold Subject name:string max_score:integer
-rails generate scaffold Club name:string
-rails generate scaffold ExamResult student:references subject:references name:string score:integer
+rails g scaffold Student name:string email:string gender:integer age:integer opinion:text
+rails g scaffold Subject name:string max_score:integer
+rails g scaffold Club name:string
+rails g scaffold ExamResult student:references subject:references name:string score:integer
 # ClubStudentテーブル（中間テーブルなので最後
-rails generate scaffold ClubStudent student:references club:references name:string
+rails g scaffold ClubStudent student:references club:references name:string
 ```
 
 `rails db:migrate`
 
-### テーブル同士の関連性を定義
-- 参照
+### テーブル同士の relation 定義
 - [Active Record Associations](https://guides.rubyonrails.org/association_basics.html)
 - [Active Record の関連付け](https://railsguides.jp/association_basics.html#belongs-to%E9%96%A2%E9%80%A3%E4%BB%98%E3%81%91)
 
 ```rb
-# それぞれのmodel.rb
 # Studentモデル
 class Student < ApplicationRecord
   has_many :exam_results
@@ -151,15 +149,13 @@ end
 Club.create(name: '自転車')
 Club.create(name: 'サッカー')
 Club.create(name: 'バスケットボール')
-Club.create(name: 'バレーボール')
-Club.create(name: '空手')
-# 割愛
+# ...
 
 # subject table
 Subject.create(name: '数学', max_score: 200);
 Subject.create(name: '国語', max_score: 200);
 Subject.create(name: '英語', max_score: 200);
-# 割愛
+# ...
 ```
 
 ### (0..20).map{('あ'..'わ').to_a[rand(26)]}.join
@@ -296,10 +292,6 @@ GROUP BY subjects.id, subjects.name
 | taro-1 | 一次試験     | 数学      |   181 |    91 |
 | taro-1 | 試験1        | 数学      |    61 |    31 |
 | taro-1 | 一次試験     | 国語      |   146 |    73 |
-| taro-1 | 試験2        | 国語      |   200 |   100 |
-| taro-1 | 一次試験     | 英語      |   199 |   100 |
-| taro-1 | 試験3        | 英語      |   108 |    54 |
-| taro-1 | 一次試験     | 化学      |    99 |    99 |
 -- ...
 ```
 
@@ -374,17 +366,17 @@ end
 
 ```rb
 # app/views/exam_results/index.html.erb
-#　編集前
-#  <td><%= exam_result.student %></td>
-#  <td><%= exam_result.subject %></td>
+# before edit
+# <td><%= exam_result.student %></td>
+# <td><%= exam_result.subject %></td>
 
-#  編集後
+# after
 <td><%= exam_result.student.name %></td>
 <td><%= exam_result.subject.name %></td>
 ```
 
 ### newページにセレクトボックス
-- 参照: [Action View Form Helpers](https://guides.rubyonrails.org/form_helpers.html#select-boxes-for-dealing-with-models)
+[Action View Form Helpers](https://guides.rubyonrails.org/form_helpers.html#select-boxes-for-dealing-with-models)
 
 ```rb
 # app/views/exam_results/_form.html.erb
@@ -420,15 +412,11 @@ end
   <img src="/assets/posts/201903/student4.jpg" alt="exam new">
 </picture>
 
-## ページャの導入(kaminari)
-インデックス表示データが、studentページは100行、ExamResultページは900行と、見づらい.
-なので、studentとExamResultのindexページを、数ページに区切って表示させたい。
+## pagination by kaminari
+studentとExamResultのindexページを、数ページに区切って表示させたい。
+今回はgemの [kaminari](https://github.com/kaminari/kaminari) を用いる。
 
-今回はgemのkaminariを用いる。
-
-- 参照：[kaminari -github](https://github.com/kaminari/kaminari)
-
-### kaminariのインストール
+### インストール
 ```rb
 # Gemfile
 gem 'kaminari'
@@ -565,6 +553,7 @@ studentのindexから'New Exam Result'リンクを押すと、exam_resultのnew�
 フォームのセレクトボタンのうち、生徒が自動で選択されるようになった。
 
 ---
+
 ## 14日目
 今週からは、scaffoldで作成した大学データと、gemのdevise、Bootstrap等を組み合わせる。
 
@@ -584,23 +573,22 @@ rails gコマンドで、controller名やmodel名を指定する際に、混乱�
 # カラムの追加
 # rails generate migration AddカラムToモデル名の複数形 フィールド名と並び
 ```
-- model名は単数形で、頭文字を大文字にする
-    - scaffoldの場合、modelが基準
-    - modelは設計書であり、（テーブル1つに付き）1つなため
-- controller名は複数形で、頭文字を大文字にする。
-    - 1つのcontrollerに複数のactionが含まれるため
+
+- model は単数形で、頭文字を大文字
+  - scaffoldの場合、modelが基準
+- controller名は複数形、頭文字を大文字
+  - 1つのcontrollerに複数のactionが含まれるため
 
 ### DBのカラム定義を後から変更
-rails g scaffoldコマンド時に、ClubStudentの外部キーの定義をreferecesとミスタイプしていた。
+`rails g scaffold` 時に "refereces" とミスタイプしていた。
 
 ```rb
 # db/migrate/20190326030303_create_club_students.rb
 class CreateClubStudents < ActiveRecord::Migration[5.2]
   def change
     create_table :club_students do |t|
-     #スペリングミス
-     #t.refereces :student
-     #訂正分
+     # t.refereces :student
+     # =>
       t.references :student
       t.references :club, foreign_key: true
       t.timestamps
@@ -620,7 +608,7 @@ ALTER TABLE ClubStudent MODIFY COLUMN student references
 つまり、原因の根本的な部分を修正できないので、駄目
 
 ## render partial: 部分テンプレ
-- 参照: [render レンダリング(render) - railsドキュメント](http://railsdoc.com/references/render)
+- 参照: [render - rails docs](http://railsdoc.com/references/render)
 
 全てのページのヘッダー(上部）に、ログアウトや他のstudentやclubs等のリンクを乗せる
 
@@ -714,12 +702,11 @@ def show
 - MySQLにおいては正と負の整数を扱うことができる。
 - unsignedを指定すると、正の数しか格納できなくなり、代わりに範囲が2倍になる。
 - **unsignedにした値が負になると、エラーを起こす**
-    - UNSIGNEDは、マイナス値が入らないだけでなく、マイナスになる計算もできない。
-    - CASTで一時的に型を変える事で回避は可能。
+  - UNSIGNEDは、マイナス値が入らないだけでなく、マイナスになる計算もできない。
+  - CASTで一時的に型を変える事で回避は可能。
 
 ### `Postgresqlにはunsined型は存在しない(最重要)`
-#### 対応策
-まだ、試験結果のデータを入れてないので、功を奏すか分からないけれども
+対応するには
 
 - unsignedをint等の型に置き換える
     - 今回は試験点数を扱っていて、intで事足りると思われる。

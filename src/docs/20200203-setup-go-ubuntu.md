@@ -8,7 +8,7 @@ tags: [ubuntu, go]
 
 from [Gist: oriverk/InstallLanguage2Ubuntu.md](https://gist.github.com/oriverk/5d0352c7ca673883d9326e5ce0fb2ae1)
 
-## Setup
+## Setup Golang
 
 Use goenv to install Go.
 goenv is package management tool which based on rbenv

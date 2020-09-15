@@ -23,13 +23,10 @@ rails g migration AddAdminToStudent admin:boolean
 ```
 
 #### boolean型
-真理値の「真 = true」と「偽 = false」という2値をとるデータ型のこと。
-Rubyでは偽はfalseとnilで、それ以外がtrueになる。
-言語やDBによっては、1と0だったり、違うので注意。
+真理値の「真 = true」と「偽 = false」という2値をとるデータ型のこと。Rubyでは偽はfalseとnilで、それ以外がtrueになる。言語やDBによっては、1と0だったり、違うので注意。
 
 ### マイグレーションファイルを編集
-boolean型と定義する際は、デフォルト値を設定しないといけない。
-adminのデフォルト値に引数falseを渡し、デフォルトではadmin権限がない、と指定する。
+boolean型と定義する際は、デフォルト値を設定しないといけない。adminのデフォルト値に引数falseを渡し、デフォルトではadmin権限がない、と指定する。
 
 ```rb
 # /db/migrate/20190328011407_add_admin_to_student.rb

@@ -60,7 +60,8 @@ npx create-next-app
 ```
 
 #### not to use npm (or yarn)
-```.npmrc
+```txt
+<!-- .npmrc -->
 engine-strict=true
 ```
 
