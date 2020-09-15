@@ -40,8 +40,11 @@ export default function Post({ postData
       content: string
   }
   }) {
-  const tags = postData.tags
-  const pageTags = tags ? tags.join(' ') : 'React, Next.js'
+  const pageTags = postData.tags.join(' ') || 'react nextjs'
+  const ogImage = !postData.image ? blogConfig.baseUrl + blogConfig.ogImage :
+    postData.image.split('')[0] === '/' ?
+      blogConfig.baseUrl + postData.image : blogConfig.baseUrl + '/' + postData.image
+  
   return (
     <React.Fragment>
       <BlogLayout post title postId>
@@ -51,18 +54,17 @@ export default function Post({ postData
           <meta name='description' content={pageTags} />
           <meta property='og:title' content={`${postData.title} | ${blogConfig.baseName}`} />
           <meta property='og:description' content={pageTags} />
-          {/* <meta property='og:image' content={`${blogConfig.baseUrl}/${pageImage}`} /> */}
-          {/* <meta property='og:image' content={ogImage} /> */}
+          <meta property='og:image' content={ogImage} />
           <meta property='og:url' content={`${blogConfig.baseUrl}/posts/${postData.id}`} />
           <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
         </Head>
         <article className='content'>
-        <PostIcons postTitle={postData.title} postId={postData.id} postTags={tags}/>
+        <PostIcons postTitle={postData.title} postId={postData.id} postTags={postData.tags}/>
           <h1>{postData.title}</h1>
           <div>
             <div>post on <Date dateString={postData.create} /></div>
             <div className='tags'>
-              {tags.map((tag) => (
+              {postData.tags.map((tag) => (
                 <Link href='/tags[tag]' as={`/tags/${tag}`} key={tag}>
                   <a className='tag'>{tag}</a>
                 </Link>

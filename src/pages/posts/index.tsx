@@ -31,6 +31,7 @@ export default function ({
       image?: string
   }[],
   }) {
+  const ogImage = blogConfig.baseUrl + blogConfig.ogImage
   return (
     <React.Fragment>
       <BlogLayout>
@@ -40,7 +41,7 @@ export default function ({
           <meta name='description' content={blogConfig.desc} />
           <meta property='og:title' content={`Blog | ${blogConfig.baseName}`} />
           <meta property='og:description' content={blogConfig.desc} />
-          <meta property='og:image' content={`${blogConfig.baseUrl}/assets/prtsc700.jpg`} />
+          <meta property='og:image' content={ogImage} />
           <meta property='og:url' content={`${blogConfig.baseUrl}/posts`} />
         </Head>
         <article className='content'>
@@ -94,6 +95,7 @@ export default function ({
           background-color: #424242;
           border-radius: .5rem;
           max-width: 35rem;
+          height: 100%;
           border: 1px solid rgba(0,0,0,0);
         }
         .postCard:hover{
@@ -113,6 +115,7 @@ export default function ({
         .imgOuter:before{
           content: '';
           display: block;
+          /* 3:2 */
           padding-top: 66%;
         }
 

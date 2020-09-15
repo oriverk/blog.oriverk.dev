@@ -41,7 +41,8 @@ export default function Tag({ tag, postsData }: {
     tags?: string[],
     image?: string
   }[],
-}){
+}) {
+  const ogImage = blogConfig.baseUrl + blogConfig.ogImage
   return (
     <React.Fragment>
       <BlogLayout>
@@ -51,12 +52,12 @@ export default function Tag({ tag, postsData }: {
           <meta name='description' content={blogConfig.desc} />
           <meta property='og:title' content={`${tag} | ${blogConfig.baseName}`} />
           <meta property='og:description' content={blogConfig.baseDesc} />
-          <meta property='og:image' content={`${blogConfig.baseUrl}/assets/prtsc700.jpg`} />
+          <meta property='og:image' content={ogImage} />
           <meta property='og:url' content={`${blogConfig.baseUrl}/tags/hoge`} />
         </Head>
         <TagIcons />
         <article className='content'>
-          <h1>{`${tag} tag Posts`}</h1>
+          <h1>{`${tag} Posts`}</h1>
           <div className='posts'>
             {postsData.map(({ id, title, create, update, tags, image }) => (
               <div className='postCard' key={id}>
