@@ -43,3 +43,4 @@ go version
 - [A Tour of Go](https://tour.golang.org/welcome/1)
 - [Learn Web Programming in Go by Examples](https://gowebexamples.com/)
 - [今改めて読み直したい Go基礎情報 その1 #golangtokyo](https://budougumi0617.github.io/2019/06/20/golangtokyo25-read-again-awesome-go-article/)
+- [プログラミング言語Go完全入門 by mercari](https://engineering.mercari.com/blog/entry/goforbeginners/)
