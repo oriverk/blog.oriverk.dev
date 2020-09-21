@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { getTags, getTagPosts } from '../../lib/posts'
 import { BlogLayout } from '../../components/BlogLayout'
-import { OptimizedImages } from '../../components/general/OptimizedImages'
+import { Image } from '../../components/general/Image'
 import { Date } from '../../components/general/Date'
 import { TagIcons } from '../../components/IconsWrapper'
 import blogConfig from '../../../blog.config'
@@ -64,7 +64,7 @@ export default function Tag({ tag, postsData }: {
                 <Link href='/posts/[id]' as={`/posts/${id}`} key={id}>
                   <a className='postLink'>
                     <div className='imgOuter'>
-                      <OptimizedImages src={image || '/assets/home/sunrise.jpg'} alt={`post: ${title}`}
+                      <Image src={image || '/assets/home/sunrise.jpg'} alt={`post: ${title}`}
                         imgStyle={{ borderRadius: '.5rem .5rem 0 0', position: 'absolute', top: 0, height: '100%' }} />
                     </div>
                     <div className='postDesc'>

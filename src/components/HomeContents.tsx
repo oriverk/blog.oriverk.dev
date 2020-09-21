@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
-import { OptimizedImages } from './general/OptimizedImages'
+import { Image } from './general/Image'
 
 import { HomeIcons } from './IconsWrapper'
 
@@ -131,7 +131,7 @@ export function About() {
         <h2>About</h2>
         <div className='container'>
           <div className='left'>
-            <OptimizedImages
+            <Image
               src='/assets/home/LongRidge700.jpg'
               alt='the scenary from Long-Ridge-Lookout in Adelaide'
             />
@@ -166,7 +166,7 @@ export function History() {
           <h3>Experience</h3>
           <div className='container'>
             <div className='left'>
-              <OptimizedImages src='/assets/home/sunrise.jpg' alt='no image'/>
+              <Image src='/assets/home/sunrise.jpg' alt='no image'/>
             </div>
             <div className='right'>
               <span>2017/04 - 2018/08</span>
@@ -179,7 +179,7 @@ export function History() {
           <h3>Education</h3>
           <div className='container'>
             <div className='left'>
-              <OptimizedImages
+              <Image
                 src='/assets/home/weeding700.jpg'
                 alt='weeding robot motion picture'
               />
@@ -192,7 +192,7 @@ export function History() {
           </div>
           <div className='container'>
             <div className='left'>
-              <OptimizedImages
+              <Image
                 src='/assets/home/miyazakiUniv.jpg'
                 alt='logo of Miyazaki University'
               />
@@ -220,7 +220,7 @@ export function Works() {
         <article>
           <div className='container'>
             <div className='left'>
-              <OptimizedImages
+              <Image
                 src='/assets/home/20200915prtsc1000.jpg'
                 alt='screen shot of this site'
               />
@@ -237,7 +237,7 @@ export function Works() {
           </div>
           <div className='container'>
             <div className='left'>
-              <OptimizedImages
+              <Image
                 src='/assets/posts/202003/miyazaki-oss1.jpg'
                 alt='screenshot of miyazaki corona oss site'
               />
@@ -255,7 +255,7 @@ export function Works() {
           </div>
           <div className='container'>
             <div className='left'>
-              <OptimizedImages
+              <Image
                 src='/assets/home/codr700.jpg'
                 alt='scrren shot of code share on twitter app'
               />
@@ -272,7 +272,7 @@ export function Works() {
           </div>
           <div className='container'>
             <div className='left'>
-              <OptimizedImages
+              <Image
                 src='/assets/home/githubPages1st700.jpg'
                 alt='screenshot of my 1st githubpages'
               />
@@ -289,7 +289,7 @@ export function Works() {
           </div>
           <div className='container'>
             <div className='left'>
-              <OptimizedImages src='/assets/home/sunrise.jpg' alt='no image' />
+              <Image src='/assets/home/sunrise.jpg' alt='no image' />
             </div>
             <div className='right'>
               <b>Ticket sales System</b>
