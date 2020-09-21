@@ -26,8 +26,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/Layout.tsx", "src/components/BlogLayout.tsx",
-    "src/components/DrawerLists.tsx", "src/components/HomeContents.tsx",  
-    "src/lib/posts.js",
+    "src/components/*.tsx",
+    "src/components/**/*.tsx",
   ]
 }
