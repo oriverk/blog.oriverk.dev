@@ -36,13 +36,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
       <style jsx global>{`
         ::-webkit-scrollbar {
-          width: 0;
-          height: .5rem;
+          width: .3rem;
         }
         
         /*スクロールバーの動く部分*/
         ::-webkit-scrollbar-thumb {
-          background-color: rgb(128, 128, 128);
+          background-color: #999;
           border-radius: .3rem;
         }
 

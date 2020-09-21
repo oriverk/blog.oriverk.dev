@@ -1,5 +1,27 @@
 [
   {
+    "id": "20200922-algolia-search",
+    "title": "Algoliaでサイト内検索を実装する",
+    "create": "2020-09-22",
+    "update": "",
+    "tags": [
+      "algolia",
+      "nextjs",
+      "react"
+    ],
+    "content": " First Algolia Algolia API sitemap mxl postsMap json postsMap json content page algolia algolia community algolia Conditional Requests"
+  },
+  {
+    "id": "20200921-optimized-images",
+    "title": "Next.js内のnext-optimized-imagesによる画像自動最適化",
+    "create": "2020-09-21",
+    "update": "",
+    "tags": [
+      "nextjs"
+    ],
+    "content": " first ios Windows Android Chrome ios safari Webp jpg png webp Low Quality Image Placeholder next-optimized-images next-optimized-images next-opti cyrilwanner next-optimized-images environment node v react next next-optimized-images ^ canary v setup MozJPEG OptiPNG config next config js next-compose-plugins next config js usage href image path ` md next js config` public public webm icon xml warning compiled with warning webpack references issue # Module parse failed Unexpected character issue # Performance issues npm run dev hot-reloading convert to webp imagemin-mozjpeg imagemin-optipng href require example jpg query params responsive image resize responsive-loarder jimp sharp jimp README md sharp Requires the optional package responsive-loader npm install responsive-loader and either jimp node implementation slower or sharp binary faster require images my-image jpg resize sizes sizes sizes responsive sized global resize property require sizes html of responsive image webp-loader responsive-loader next-opti issue webp webp-loader responsive-loader query parmas example jpg webp resize next-opti v both responsive-loader and webp-loader are working next config js responsive sizes https oriver dev component Low Qualy Image Placeholder low quality image placeholder of ice breaker ship Shirase lqip x px b filter blur px lqip-loader progressive image loading medium useState lazy load load lqpi opacity background last next-optimized-images href lqip https oriverk dev references cyrilwanner next-optimized-images Mozilla - Progressive loading Medium - Progressively Loading Images In React TOC "
+  },
+  {
     "id": "test",
     "title": "only for test",
     "create": "2020-09-01",
@@ -15,7 +37,7 @@
     "create": "2020-05-26",
     "update": "2020-07-14",
     "tags": [
-      "next",
+      "nextjs",
       "react",
       "remark",
       "typescript"

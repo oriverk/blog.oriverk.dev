@@ -1,12 +1,12 @@
 import React from 'react'
-import { OptimizedImages } from './general/OptimizedImages'
+import { Image } from './general/Image'
 
 export const LeftSwipeDrawer = () => {
   return (
     <React.Fragment>
       <div>
         <div className='imgContainer'>
-          <OptimizedImages
+          <Image
             src='/assets/human512x512.png' alt='avatar' imgStyle={{ margin: '0 auto', width: '80%', backgroundColor: '#424242' }} />
         </div>
         <div className='desc'>

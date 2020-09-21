@@ -1,6 +1,18 @@
 import React from 'react'
 
-export function OptimizedImages({ src, alt, imgStyle }: {
+export function Image({ src, alt, imgStyle }: {
+  src?: string,
+  alt: string,
+  imgStyle?: React.CSSProperties
+}) {
+  return (
+    <React.Fragment>
+      <OptimizedImages src={src} alt={alt} imgStyle={imgStyle}/>
+    </React.Fragment>
+  )
+}
+
+function OptimizedImages({ src, alt, imgStyle }: {
   src?: string,
   alt: string,
   imgStyle?: React.CSSProperties
@@ -8,8 +20,9 @@ export function OptimizedImages({ src, alt, imgStyle }: {
   // https://dev.to/joserfelix/how-to-make-a-static-blog-with-next-js-2bd6
   const replaced = src.replace(/^.?\/assets\/?/, '') || 'imageIsMissing.png'
   // => processed = '/home/example.jpg'
+
   const responsiveImage = require(`@public/assets/${replaced}?resize`)
-  const responsiveImageWebp = require(`@public/assets/${replaced}?{sizes:[640,960,1200,1800], format: 'webp'}`)
+  const responsiveImageWebp = require(`@public/assets/${replaced}?resize&format=webp`)
 
   return (
     <React.Fragment>
@@ -26,6 +39,7 @@ export function OptimizedImages({ src, alt, imgStyle }: {
           style={imgStyle}
           width={responsiveImage.width}
           height={responsiveImage.height}
+          loading='lazy'
         />
       </picture>
     </React.Fragment>

@@ -7,7 +7,7 @@ import { getAllPostIds, getPostData } from '../../lib/posts'
 import blogConfig from '../../../blog.config'
 import { PostIcons } from '../../components/IconsWrapper'
 import { Date } from '../../components/general/Date'
-import { OptimizedImages } from '../../components/general/OptimizedImages'
+import { Image } from '../../components/general/Image'
 
 import { GetStaticProps, GetStaticPaths } from 'next'
 
@@ -71,7 +71,7 @@ export default function Post({ postData
               ))}</div>
           </div>
           {postData.image && (
-            <OptimizedImages src={postData.image || '/assets/home/sunrise.jpg'} alt='post cover image' />
+            <Image src={postData.image || '/assets/home/sunrise.jpg'} alt='post cover image' />
           )}
           <div dangerouslySetInnerHTML={{ __html: postData.content }} className='markdown' />
         </article>
