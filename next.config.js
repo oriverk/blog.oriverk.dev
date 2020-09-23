@@ -23,7 +23,7 @@ const nextConfig = {
 
 const nextPwaConfig = {
   pwa: {
-    disable: process.env.MODE_ENV === 'development',
+    disable: process.env.NODE_ENV === 'development',
     dest: 'public'
   }
 }
@@ -34,7 +34,7 @@ const nextOptimizedImagesConfig = {
   imagesName: '[name]-[hash].[ext]',
   handleImages: ['jpeg', 'png', 'webp'],
   removeOriginalExtension: true,
-  optimizeImages: process.env.MODE_ENV !== 'development',
+  optimizeImages: process.env.NODE_ENV !== 'development',
   optimizeImagesInDev: false,
   mozjpeg: {
     quality: 85,
@@ -45,7 +45,7 @@ const nextOptimizedImagesConfig = {
   responsive: {
     adapter: require('responsive-loader/sharp'),
     sizes: [640, 960, 1200, 1800],
-    disable: process.env.MODE_ENV === 'development'
+    disable: process.env.NODE_ENV === 'development'
   },
   webp: {
     preset: 'default',
