@@ -131,7 +131,7 @@ export function About() {
         <h2>About</h2>
         <div className='container'>
           <div className='left'>
-            <Image
+            <Image anchor
               src='/assets/home/LongRidge700.jpg'
               alt='the scenary from Long-Ridge-Lookout in Adelaide'
             />
@@ -179,7 +179,7 @@ export function History() {
           <h3>Education</h3>
           <div className='container'>
             <div className='left'>
-              <Image
+              <Image anchor
                 src='/assets/home/weeding700.jpg'
                 alt='weeding robot motion picture'
               />
@@ -220,7 +220,7 @@ export function Works() {
         <article>
           <div className='container'>
             <div className='left'>
-              <Image
+              <Image anchor
                 src='/assets/home/20200915prtsc1000.jpg'
                 alt='screen shot of this site'
               />
@@ -237,7 +237,7 @@ export function Works() {
           </div>
           <div className='container'>
             <div className='left'>
-              <Image
+              <Image anchor
                 src='/assets/posts/202003/miyazaki-oss1.jpg'
                 alt='screenshot of miyazaki corona oss site'
               />
@@ -255,7 +255,7 @@ export function Works() {
           </div>
           <div className='container'>
             <div className='left'>
-              <Image
+              <Image anchor
                 src='/assets/home/codr700.jpg'
                 alt='scrren shot of code share on twitter app'
               />
@@ -272,7 +272,7 @@ export function Works() {
           </div>
           <div className='container'>
             <div className='left'>
-              <Image
+              <Image anchor
                 src='/assets/home/githubPages1st700.jpg'
                 alt='screenshot of my 1st githubpages'
               />
