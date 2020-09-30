@@ -8,7 +8,7 @@ export default function () {
   const ogImage = blogConfig.baseUrl + blogConfig.ogImage
   return (
     <>
-      <Layout home>
+      <Layout>
         <Head>
           <title>{blogConfig.baseName}</title>
           <meta name='title' content={blogConfig.baseName} />

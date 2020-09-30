@@ -48,8 +48,11 @@ const containerStyle = css`
   }
 `
 
-export function Top(props){
-  const openSearch = props.openSearch
+type TopProps = {
+  openSearch: React.ReactNode
+}
+
+export function Top({openSearch}: TopProps){
   return (
     <>
       <section id='top'>

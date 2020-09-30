@@ -4,7 +4,11 @@ import { LeftSwipeDrawer } from './DrawerLists'
 import { AlgoliaSearch } from './search/AlgoliaSearch'
 import { Top } from './HomeContents'
 
-export function Layout(props) {
+type Props = {
+  children: React.ReactNode
+}
+
+export function Layout({children}: Props) {
   const [state, setState] = React.useState({
     left: false,
     right: false
@@ -47,7 +51,7 @@ export function Layout(props) {
       </SwipeableDrawer>
       <main>
         <Top openSearch={toggleDrawer('right', true)} />
-        {props.children}
+        {children}
       </main>
       <style jsx>{`
         /* general */

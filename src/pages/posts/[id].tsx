@@ -29,17 +29,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 }
 
-export default function Post({ postData
-}: {
-    postData: {
-      id: string
-      title: string
-      create: string
-      tags?: string[]
-      image?: string
-      content: string
-  }
-  }) {
+type PostProps = {
+  id: string,
+  title: string,
+  create: string,
+  tags?: string[],
+  image?: string,
+  content: string
+}
+
+export default function Post({ postData }: { postData: PostProps }) {
   const pageTags = postData.tags.join(' ') || 'react nextjs'
   const ogImage = !postData.image ? blogConfig.baseUrl + blogConfig.ogImage :
     postData.image.split('')[0] === '/' ?
@@ -47,7 +46,7 @@ export default function Post({ postData
   
   return (
     <React.Fragment>
-      <BlogLayout post title postId>
+      <BlogLayout>
         <Head>
           <title>{`${postData.title} | ${blogConfig.shortName}`}</title>
           <meta name='title' content={`${postData.title} | ${blogConfig.baseName}`} />

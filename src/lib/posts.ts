@@ -31,7 +31,7 @@ function getAllPostsAllData() {
     const matterResult = matter(fileContents)
 
     const title = matterResult.data.title
-    const tags = matterResult.data.tags.map((t) => t.toLowerCase()).sort() || ''
+    const tags = matterResult.data.tags.map((t: string) => t.toLowerCase()).sort() || ''
     const create = matterResult.data.create
     const update = matterResult.data.update || ''
     const image = matterResult.data.image || ''
@@ -63,7 +63,7 @@ export function getSortedPostsData() {
     const title = postData.title
     const create = postData.create
     const update = postData.update
-    var tags = postData.tags
+    var tags: string[] = postData.tags
     if (tags.includes('ruby') && tags.includes('rails')) {
       tags = tags.filter(t => t !== 'ruby')
     }
@@ -109,7 +109,7 @@ export async function getPostData(id) {
     .use(slug)
     .use(link2heading, {
       behavior: 'wrap',
-      linkProperties: { ariaHidden: true, tabIndex: -1, class: "heading-link" },
+      linkProperties: { class: "heading-link" },
     }) // Note that this module must be included after `remark-slug`.
     .use(breaks)
     .use(math)
@@ -152,7 +152,7 @@ export async function getPostData(id) {
 // tags/index.tsx
 export function getTags() {
   const allPostsAllData = getAllPostsAllData()
-  let tags = []
+  let tags: string[] = []
   allPostsAllData.forEach((post) => {
     tags = tags.concat(post.tags)
   })
@@ -169,7 +169,7 @@ export function getTagPosts(tag) {
     const title = post.title
     const create = post.create
     const update = post.update
-    var tags = post.tags
+    var tags: string[] = post.tags
     if (tags.includes('ruby') && tags.includes('rails')) {
       tags = tags.filter(t => t !== 'ruby')
     }

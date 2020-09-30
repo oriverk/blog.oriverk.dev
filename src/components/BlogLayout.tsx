@@ -3,7 +3,11 @@ import { SwipeableDrawer } from '@material-ui/core'
 import { LeftSwipeDrawer } from './DrawerLists'
 import { AlgoliaSearch } from './search/AlgoliaSearch'
 
-export function BlogLayout(props) {
+type Props = {
+  children: React.ReactNode
+}
+
+export function BlogLayout({children}: Props) {
   const [state, setState] = React.useState({
     left: false,
     right: false
@@ -45,7 +49,7 @@ export function BlogLayout(props) {
         </div>
       </SwipeableDrawer>
       <main>
-        {props.children}
+        {children}
       </main>
       <nav className="nav"></nav>
       <style jsx>{`
