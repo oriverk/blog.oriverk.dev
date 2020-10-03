@@ -3,13 +3,19 @@ import Head from 'next/head'
 import { Layout } from '../components/Layout'
 import { About, History, Works } from '../components/HomeContents'
 import blogConfig from '../../blog.config'
+import { useAmp } from 'next/amp'
+
+export const config = {
+  amp: 'hybrid'
+}
 
 export default function () {
+  const isAmp = useAmp()
   const ogImage = blogConfig.baseUrl + blogConfig.ogImage
   return (
     <>
-      <Layout>
-        <Head>
+      <Layout isAmp={isAmp}>
+        <Head >
           <title>{blogConfig.baseName}</title>
           <meta name='title' content={blogConfig.baseName} />
           <meta name='description' content={blogConfig.desc} />

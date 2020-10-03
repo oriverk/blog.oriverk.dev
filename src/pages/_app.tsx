@@ -1,37 +1,22 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Router from 'next/router'
 import Head from 'next/head'
+import { AppProps } from 'next/app'
 import * as gtag from '../lib/gtag'
 
-import { AppProps } from 'next/app'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  useEffect(() => {
-    if (!gtag.existsGaId) {
-      return
-    }
-
-    const handleRouteChange = (url) => {
-      gtag.pageview(url)
-    }
-    
-    Router.events.on('routeChangeComplete', handleRouteChange)
-    return () => {
-      Router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [])
+  Router.events.on('routeChangeComplete', (url: string) => gtag.pageview(url))
 
   return (
     <React.Fragment>
       <Head>
-        <meta charSet='utf-8' />
-        <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
-        <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width' />
+        {/* <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width' /> */}
         <meta name='format-detection' content='email=no,telephone=no,address=no' />
         <link rel='apple-touch-icon' sizes='180x180' href='/assets/human512x512.png' />
         <link rel='icon' type='image/png' sizes='32x32' href='/favicon/favicon-32x32.png' />
         <link rel='icon' type='image/png' sizes='16x16' href='/favicon/favicon-16x16.png' />
-        <link rel='manifest' crossOrigin="use-credentials" href='/manifest.json' />
+        <link rel='manifest' crossOrigin='use-credentials' href='/manifest.json' />
       </Head>
       <Component {...pageProps} />
       <style jsx global>{`
