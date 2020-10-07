@@ -5,9 +5,10 @@ import { AlgoliaSearch } from './search/AlgoliaSearch'
 
 type Props = {
   children: React.ReactNode
+  isAmp?: boolean
 }
 
-export function BlogLayout({children}: Props) {
+export function BlogLayout({ children, isAmp }: Props) {
   const [state, setState] = React.useState({
     left: false,
     right: false
@@ -30,6 +31,23 @@ export function BlogLayout({children}: Props) {
   }
   
   // drawer width is defined at _app.jsx
+  if (isAmp) {
+    return (
+      <React.Fragment>
+        <main>
+          {/* <Top isAmp /> */}
+          {children}
+        </main>
+        <style jsx>{`
+          main{
+            flex: 1;
+            width: 100%;
+          }
+        `}</style>
+      </React.Fragment>
+    )
+  }
+
   return (
     <React.Fragment>
       <SwipeableDrawer anchor='left' open={state['left']}
@@ -51,14 +69,14 @@ export function BlogLayout({children}: Props) {
       <main>
         {children}
       </main>
-      <nav className="nav"></nav>
+      {/* <nav className="nav"></nav> */}
       <style jsx>{`
         /* general */
-        .searchButtonContainer{
+        {/* .searchButtonContainer{
           text-align:center;
-        }
+        } */}
 
-        .searchButton {
+        {/* .searchButton {
           color: #EEE;
           font-size: 1rem;
           width: 80%;
@@ -66,13 +84,13 @@ export function BlogLayout({children}: Props) {
           background-color: #424242;
           border-radius: .5rem;
           border: 1px solid #50CAF9;
-        }
+        } */}
 
-        .searchButton:hover, .searchButton:active{
+        {/* .searchButton:hover, .searchButton:active{
           background-color: #50CAF9;
           color: #424242;
           border:none;
-        }
+        } */}
 
         .swipeableList {
           width: var(--swipeDrawerWidth);
@@ -89,14 +107,14 @@ export function BlogLayout({children}: Props) {
         }
 
         /* nav */
-        .nav {
+        {/* .nav {
           position: fixed;
           bottom: 0;
           width: 100%;
           display: flex;
           overflow-x: auto;
           z-index: 100;
-        }
+        } */}
       `}</style>
     </React.Fragment>
   )
