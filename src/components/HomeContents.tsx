@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
-import { Image } from './general/Image'
+import { CustomImg, CustomAmpImg } from './general/Image'
 
 import { HomeIcons } from './IconsWrapper'
 
@@ -49,18 +49,46 @@ const containerStyle = css`
 `
 
 type TopProps = {
-  openSearch: React.ReactNode
+  openSearch?: React.ReactNode
+  isAmp: boolean
 }
 
-export function Top({openSearch}: TopProps){
+type IsAmp = {
+  isAmp?: boolean
+}
+
+type CustomLinkImg = {
+  src?: string
+  alt?: string
+  isAmp?: boolean
+}
+
+function CustomLinkImg({ src, alt, isAmp }: CustomLinkImg) {
   return (
-    <>
+    <React.Fragment>
+      <a href={src} target='_blank' rel='noopener noreferrer'>
+        {isAmp ? (
+          <CustomAmpImg src={src} alt={alt} />
+        ) : (
+          <CustomImg src={src} alt={alt} />
+        )}
+      </a>
+    </React.Fragment>
+  )
+  
+}
+
+export function Top({ openSearch, isAmp }: TopProps) {
+  return (
+    <React.Fragment>
       <section id='top'>
         <div className='topWrapper'>
           <div className='title'>
             <h1 className='topTitle'>Kawano Yudai</h1>
             <h2 className='sub'>B.Agr.</h2>
-            <HomeIcons openSearch={openSearch} />
+            {!isAmp && (
+              <HomeIcons openSearch={openSearch} />
+            )}
           </div>
         </div>
       </section>
@@ -123,21 +151,19 @@ export function Top({openSearch}: TopProps){
           }
         }
       `}</style>
-    </>
+    </React.Fragment>
   )
 }
 
-export function About() {
+export function About({ isAmp }: IsAmp) {
   return (
     <>
       <section id='about'>
         <h2>About</h2>
         <div className='container'>
           <div className='left'>
-            <Image anchor
-              src='/assets/home/LongRidge700.jpg'
-              alt='the scenary from Long-Ridge-Lookout in Adelaide'
-            />
+            <CustomLinkImg isAmp={isAmp}
+              src='/assets/home/LongRidge700.jpg' alt='scenary from Long Ridge Lookout in Adelaide' />
           </div>
           <div className='right'>
             <p>My name is Kawano Yudai.</p>
@@ -160,7 +186,7 @@ export function About() {
   );
 }
 
-export function History() {
+export function History({ isAmp }: IsAmp) {
   return (
     <>
       <section id='history'>
@@ -169,7 +195,8 @@ export function History() {
           <h3>Experience</h3>
           <div className='container'>
             <div className='left'>
-              <Image src='/assets/home/sunrise.jpg' alt='no image'/>
+              <CustomLinkImg isAmp={isAmp}
+                src='/assets/home/sunrise.jpg' alt='no image' />
             </div>
             <div className='right'>
               <span>2017/04 - 2018/08</span>
@@ -182,10 +209,8 @@ export function History() {
           <h3>Education</h3>
           <div className='container'>
             <div className='left'>
-              <Image anchor
-                src='/assets/home/weeding700.jpg'
-                alt='weeding robot motion picture'
-              />
+              <CustomLinkImg isAmp={isAmp}
+                src='/assets/home/weeding700.jpg' alt='weeding robot motion picture' />
             </div>
             <div className='right'>
               <span>2015/04 - 2017/03</span>
@@ -195,10 +220,8 @@ export function History() {
           </div>
           <div className='container'>
             <div className='left'>
-              <Image
-                src='/assets/home/miyazakiUniv.jpg'
-                alt='logo of Miyazaki University'
-              />
+              <CustomLinkImg isAmp={isAmp}
+                src='/assets/home/miyazakiUniv.jpg' alt='logo of Miyazaki University' />
             </div>
             <div className='right'>
               <span>2013/04 - 2017/03 :</span>
@@ -215,7 +238,7 @@ export function History() {
   )
 }
 
-export function Works() {
+export function Works({ isAmp }: IsAmp) {
   return (
     <>
       <section id='works'>
@@ -223,10 +246,8 @@ export function Works() {
         <article>
           <div className='container'>
             <div className='left'>
-              <Image anchor
-                src='/assets/home/20200915prtsc1000.jpg'
-                alt='screen shot of this site'
-              />
+              <CustomLinkImg isAmp={isAmp}
+                src='/assets/home/20200915prtsc1000.jpg' alt='screenshot of this site' />
             </div>
             <div className='right'>
               <b>This portfolio site as resume and tech blog</b>
@@ -240,10 +261,8 @@ export function Works() {
           </div>
           <div className='container'>
             <div className='left'>
-              <Image anchor
-                src='/assets/posts/202003/miyazaki-oss1.jpg'
-                alt='screenshot of miyazaki corona oss site'
-              />
+              <CustomLinkImg isAmp={isAmp}
+                src='/assets/posts/202003/miyazaki-oss1.jpg' alt='screenshot of miyazaki corona taskforce site' />
             </div>
             <div className='right'>
               <b>Miyazaki COVID-19 Task Force site</b>
@@ -258,10 +277,8 @@ export function Works() {
           </div>
           <div className='container'>
             <div className='left'>
-              <Image anchor
-                src='/assets/home/codr700.jpg'
-                alt='scrren shot of code share on twitter app'
-              />
+              <CustomLinkImg isAmp={isAmp}
+                src='/assets/home/codr700.jpg' alt='screenshot of code share web app' />
             </div>
             <div className='right'>
               <b>Coder0</b>
@@ -275,10 +292,8 @@ export function Works() {
           </div>
           <div className='container'>
             <div className='left'>
-              <Image anchor
-                src='/assets/home/githubPages1st700.jpg'
-                alt='screenshot of my 1st githubpages'
-              />
+              <CustomLinkImg isAmp={isAmp}
+                src='/assets/home/githubPages1st700.jpg' alt='screenshot of my 1st githubpages' />
             </div>
             <div className='right'>
               <b>GithubPages</b>
@@ -292,7 +307,8 @@ export function Works() {
           </div>
           <div className='container'>
             <div className='left'>
-              <Image src='/assets/home/sunrise.jpg' alt='no image' />
+              <CustomLinkImg isAmp={isAmp}
+                src='/assets/home/sunrise.jpg' alt='no image' />
             </div>
             <div className='right'>
               <b>Ticket sales System</b>

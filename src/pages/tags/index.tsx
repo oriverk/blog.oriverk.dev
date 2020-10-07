@@ -1,13 +1,16 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useAmp } from 'next/amp'
 import { getTags } from '../../lib/posts'
 import { BlogLayout } from '../../components/BlogLayout'
 import { TagsIcons } from '../../components/IconsWrapper'
 import blogConfig from '../../../blog.config'
-
-
 import { GetStaticProps } from 'next'
+
+export const config = {
+  amp: 'hybrid'
+}
 
 export const getStaticProps: GetStaticProps = async () => {
   const tags: string[] = getTags()
@@ -19,10 +22,11 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export default function ({ tags }: { tags: string[] }) {
+  const isAmp = useAmp()
   const ogImage = blogConfig.baseUrl + blogConfig.ogImage
   return (
     <React.Fragment>
-      <BlogLayout>
+      <BlogLayout isAmp={isAmp}>
         <Head>
           <title>Tags | {blogConfig.shortName}</title>
           <meta name='title' content={`Tags | ${blogConfig.baseName}`} />

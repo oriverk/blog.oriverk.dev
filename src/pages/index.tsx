@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import { Layout } from '../components/Layout'
-import { About, History, Works } from '../components/HomeContents'
+import { Top, About, History, Works } from '../components/HomeContents'
 import blogConfig from '../../blog.config'
 import { useAmp } from 'next/amp'
 
@@ -24,10 +24,10 @@ export default function () {
           <meta property='og:image' content={ogImage} />
           <meta property='og:url' content={blogConfig.baseUrl} />
         </Head>
-        {/* <Top /> */}
-        <About />
-        <History />
-        <Works />
+        <Top isAmp={isAmp} />
+        <About isAmp={isAmp} />
+        <History isAmp={isAmp} />
+        <Works isAmp={isAmp} />
       </Layout>
     </>
   )

@@ -1,13 +1,19 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useAmp } from 'next/amp'
 import { Layout } from '../components/Layout'
 import blogConfig from '../../blog.config'
 
+export const config = {
+  amp: 'hybrid'
+}
+
 export default function Custom404() {
+  const isAmp = useAmp()
   const ogImage = blogConfig.baseUrl + blogConfig.ogImage
   return (
-    <Layout>
+    <Layout isAmp={isAmp}>
       <Head>
         <title>{`404 | ${blogConfig.shortName}`}</title>
         <meta name='title' content={`404 | ${blogConfig.baseName}`} />
