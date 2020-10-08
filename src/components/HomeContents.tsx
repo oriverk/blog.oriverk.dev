@@ -75,7 +75,6 @@ function CustomLinkImg({ src, alt, isAmp }: CustomLinkImg) {
       </a>
     </React.Fragment>
   )
-  
 }
 
 export function Top({ openSearch, isAmp }: TopProps) {
@@ -86,9 +85,9 @@ export function Top({ openSearch, isAmp }: TopProps) {
           <div className='title'>
             <h1 className='topTitle'>Kawano Yudai</h1>
             <h2 className='sub'>B.Agr.</h2>
-            {!isAmp && (
+            {/* {!isAmp && ( */}
               <HomeIcons openSearch={openSearch} />
-            )}
+            {/* )} */}
           </div>
         </div>
       </section>

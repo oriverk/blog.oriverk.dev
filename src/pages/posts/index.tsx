@@ -1,14 +1,18 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useAmp } from 'next/amp'
 import { BlogLayout } from '../../components/BlogLayout'
-import { Image } from '../../components/general/Image'
+import { CustomImg, CustomAmpImg } from '../../components/general/Image'
 import blogConfig from '../../../blog.config'
 import { getSortedPostsData } from '../../lib/posts'
 import { PostsIcons } from '../../components/IconsWrapper'
 import { Date } from '../../components/general/Date'
-
 import { GetStaticProps } from 'next'
+
+export const config = {
+  amp: 'hybrid'
+}
 
 export const getStaticProps: GetStaticProps = async () => {
   const postsData = getSortedPostsData()
@@ -22,15 +26,16 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function ({
   postsData
 }: {
-    postsData: {
-      id: string
-      title: string
-      create: string
-      update?: string
-      tags?: string[]
-      image?: string
+  postsData: {
+    id: string
+    title: string
+    create: string
+    update?: string
+    tags?: string[]
+    image?: string
   }[],
-  }) {
+}) {
+  const isAmp = useAmp()
   const ogImage = blogConfig.baseUrl + blogConfig.ogImage
   return (
     <React.Fragment>
@@ -53,8 +58,12 @@ export default function ({
                 <Link href='/posts/[id]' as={`/posts/${id}`} key={id}>
                   <a className='postLink'>
                     <div className='imgOuter'>
-                      <Image src={image || '/assets/home/sunrise.jpg'} alt={`post: ${title}`}
-                        imgStyle={{ borderRadius: '.5rem .5rem 0 0', position: 'absolute', top: 0, height: '100%'}} />
+                      {isAmp ? (
+                        <CustomAmpImg src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' /> 
+                      ) :
+                        (
+                        <CustomImg src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' /> 
+                      )}
                     </div>
                     <div className='postDesc'>
                       {update ? (
