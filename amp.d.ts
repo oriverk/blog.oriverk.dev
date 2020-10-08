@@ -21,10 +21,11 @@ declare namespace JSX {
 
   interface AmpImg extends ReactAmp {
     children?: React.ReactNode
+    className?: string
+
     alt?: string
-    attribution?: string
     src?: string
-    srcset?: string
+    srcSet?: string
     width?: string
     height?: string
     sizes?: string

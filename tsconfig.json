@@ -27,6 +27,6 @@
     "**/*.ts",
     "**/*.tsx",
     "src/components/*.tsx",
-    "src/components/**/*.tsx", "src/components/amp/AmpIncludeCutomElement.js", "src/components/amp/AmpIncludeCutomElement.js",
+    "src/components/**/*.tsx",
   ]
 }

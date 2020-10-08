@@ -1,15 +1,19 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useAmp } from 'next/amp'
+import { GetStaticProps, GetStaticPaths } from 'next'
 import { BlogLayout } from '../../components/BlogLayout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 // import { getFetchPath } from '../../components/HeaderImg'
 import blogConfig from '../../../blog.config'
 import { PostIcons } from '../../components/IconsWrapper'
 import { Date } from '../../components/general/Date'
-import { Image } from '../../components/general/Image'
+// import { Image } from '../../components/general/Image'
 
-import { GetStaticProps, GetStaticPaths } from 'next'
+export const config = {
+  amp: 'hybrid'
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getAllPostIds()
@@ -58,7 +62,7 @@ export default function Post({ postData }: { postData: PostProps }) {
           <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
         </Head>
         <article className='content'>
-        <PostIcons postTitle={postData.title} postId={postData.id} postTags={postData.tags}/>
+        {/* <PostIcons postTitle={postData.title} postId={postData.id} postTags={postData.tags}/>
           <h1>{postData.title}</h1>
           <div>
             <div>post on <Date dateString={postData.create} /></div>
@@ -72,7 +76,7 @@ export default function Post({ postData }: { postData: PostProps }) {
           {postData.image && (
             <Image src={postData.image} alt='post cover image' anchor />
           )}
-          <div dangerouslySetInnerHTML={{ __html: postData.content }} className='markdown' />
+          <div dangerouslySetInnerHTML={{ __html: postData.content }} className='markdown' /> */}
         </article>
       </BlogLayout>
       <style jsx>{`
