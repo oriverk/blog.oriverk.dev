@@ -9,10 +9,10 @@ import { getAllPostIds, getPostData } from '../../lib/posts'
 import blogConfig from '../../../blog.config'
 import { PostIcons } from '../../components/IconsWrapper'
 import { Date } from '../../components/general/Date'
-// import { Image } from '../../components/general/Image'
+import { CustomImg } from '../../components/general/Image'
 
 export const config = {
-  amp: 'hybrid'
+  amp: false
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -43,6 +43,7 @@ type PostProps = {
 }
 
 export default function Post({ postData }: { postData: PostProps }) {
+  const isAmp = useAmp()
   const pageTags = postData.tags.join(' ') || 'react nextjs'
   const ogImage = !postData.image ? blogConfig.baseUrl + blogConfig.ogImage :
     postData.image.split('')[0] === '/' ?
@@ -59,10 +60,12 @@ export default function Post({ postData }: { postData: PostProps }) {
           <meta property='og:description' content={pageTags} />
           <meta property='og:image' content={ogImage} />
           <meta property='og:url' content={`${blogConfig.baseUrl}/posts/${postData.id}`} />
-          <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
+          {isAmp || (
+            <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
+          ) }
         </Head>
         <article className='content'>
-        {/* <PostIcons postTitle={postData.title} postId={postData.id} postTags={postData.tags}/>
+        <PostIcons postTitle={postData.title} postId={postData.id} postTags={postData.tags}/>
           <h1>{postData.title}</h1>
           <div>
             <div>post on <Date dateString={postData.create} /></div>
@@ -73,10 +76,14 @@ export default function Post({ postData }: { postData: PostProps }) {
                 </Link>
               ))}</div>
           </div>
-          {postData.image && (
-            <Image src={postData.image} alt='post cover image' anchor />
+          {isAmp || (
+            <div dangerouslySetInnerHTML={{ __html: postData.content }} className='markdown' />
           )}
-          <div dangerouslySetInnerHTML={{ __html: postData.content }} className='markdown' /> */}
+          {/* {postData.image && (
+            <a href={postData.image} target='_blank' rel='noopener noreferrer'>
+              <CustomImg src={postData.image} alt='post cover image' />
+            </a>
+          )} */}
         </article>
       </BlogLayout>
       <style jsx>{`

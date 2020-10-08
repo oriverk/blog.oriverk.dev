@@ -1,14 +1,18 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useAmp } from 'next/amp'
+import { GetStaticProps, GetStaticPaths } from 'next'
 import { getTags, getTagPosts } from '../../lib/posts'
 import { BlogLayout } from '../../components/BlogLayout'
-import { Image } from '../../components/general/Image'
+import { CustomImg, CustomAmpImg } from '../../components/general/Image'
 import { Date } from '../../components/general/Date'
 import { TagIcons } from '../../components/IconsWrapper'
 import blogConfig from '../../../blog.config'
 
-import { GetStaticProps, GetStaticPaths } from 'next'
+export const config = {
+  amp: false
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths: string[] = getTags().map((tag) => {
@@ -42,6 +46,7 @@ export default function Tag({ tag, postsData }: {
     image?: string
   }[],
 }) {
+  const isAmp = useAmp()
   const ogImage = blogConfig.baseUrl + blogConfig.ogImage
   return (
     <React.Fragment>
@@ -64,8 +69,12 @@ export default function Tag({ tag, postsData }: {
                 <Link href='/posts/[id]' as={`/posts/${id}`} key={id}>
                   <a className='postLink'>
                     <div className='imgOuter'>
-                      <Image src={image || '/assets/home/sunrise.jpg'} alt={`post: ${title}`}
-                        imgStyle={{ borderRadius: '.5rem .5rem 0 0', position: 'absolute', top: 0, height: '100%' }} />
+                      {isAmp ? (
+                        <CustomAmpImg src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
+                      ) :
+                        (
+                        <CustomImg src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
+                      )}
                     </div>
                     <div className='postDesc'>
                       {update ? (
