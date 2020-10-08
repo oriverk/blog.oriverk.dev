@@ -9,9 +9,10 @@ export const config = {
   amp: 'hybrid'
 }
 
-export default function () {
+export default function Home () {
   const isAmp = useAmp()
   const ogImage = blogConfig.baseUrl + blogConfig.ogImage
+  const url = `${blogConfig.baseUrl}/`
   return (
     <>
       <Layout isAmp={isAmp}>
@@ -22,7 +23,7 @@ export default function () {
           <meta property='og:title' content={blogConfig.baseName} />
           <meta property='og:description' content={blogConfig.desc} />
           <meta property='og:image' content={ogImage} />
-          <meta property='og:url' content={blogConfig.baseUrl} />
+          <meta property='og:url' content={ isAmp ? url + '?amp=1' : url } />
         </Head>
         <Top isAmp={isAmp} />
         <About isAmp={isAmp} />

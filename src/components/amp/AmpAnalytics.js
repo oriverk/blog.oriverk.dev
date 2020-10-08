@@ -1,9 +1,9 @@
-import AmpIncludeCustomElement from './AmpIncludeCustomElement'
+// import AmpIncludeCustomElement from './AmpIncludeCustomElement'
 
 export default function AmpAnalytics(props) {
   return (
     <>
-      <AmpIncludeCustomElement name='amp-analytics' version='0.1' />
+      {/* <AmpIncludeCustomElement name='amp-analytics' version='0.1' /> */}
       <amp-analytics type={props.type}>
         {props.script && (
           <script

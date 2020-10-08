@@ -11,7 +11,7 @@ import { TagIcons } from '../../components/IconsWrapper'
 import blogConfig from '../../../blog.config'
 
 export const config = {
-  amp: false
+  amp: 'hybrid'
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -48,6 +48,7 @@ export default function Tag({ tag, postsData }: {
 }) {
   const isAmp = useAmp()
   const ogImage = blogConfig.baseUrl + blogConfig.ogImage
+  const url = `${blogConfig.baseUrl}/tags/${tag}/`
   return (
     <React.Fragment>
       <BlogLayout>
@@ -58,15 +59,15 @@ export default function Tag({ tag, postsData }: {
           <meta property='og:title' content={`${tag} | ${blogConfig.baseName}`} />
           <meta property='og:description' content={blogConfig.baseDesc} />
           <meta property='og:image' content={ogImage} />
-          <meta property='og:url' content={`${blogConfig.baseUrl}/tags/hoge`} />
+          <meta property='og:url' content={ isAmp ? url + '?amp=1' : url } />
         </Head>
-        <TagIcons />
+        <TagIcons isAmp={isAmp} />
         <article className='content'>
           <h1>{`${tag} Posts`}</h1>
           <div className='posts'>
             {postsData.map(({ id, title, create, update, tags, image }) => (
               <div className='postCard' key={id}>
-                <Link href='/posts/[id]' as={`/posts/${id}`} key={id}>
+                <Link href={ isAmp ? `/posts/${id}/?amp=1` : `/posts/${id}/`}>
                   <a className='postLink'>
                     <div className='imgOuter'>
                       {isAmp ? (
@@ -88,7 +89,7 @@ export default function Tag({ tag, postsData }: {
                 </Link>
                 <div className='tags'>
                   {tags.map((tag) => (
-                    <Link href='/tags/[tag]' as={`/tags/${tag}`} key={tag}>
+                    <Link href={ isAmp ? `/tags/${tag}/?amp=1` : `/tags/${tag}/`} key={tag}>
                       <a className='tag' key={tag}>{tag}</a>
                     </Link>
                   ))}

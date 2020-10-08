@@ -12,7 +12,6 @@ const withPWA = require('next-pwa')
 const optimizedImages = require('next-optimized-images')
 const { resolve } = require('path')
 
-
 const nextConfig = {
   webpack: (config) => {
     // next-optimized-images
@@ -22,6 +21,8 @@ const nextConfig = {
 }
 
 const nextPwaConfig = {
+  // Force a trailing slash, the default value is no trailing slash (false)
+  trailingSlash: true,
   pwa: {
     disable: process.env.NODE_ENV === 'development',
     dest: 'public'

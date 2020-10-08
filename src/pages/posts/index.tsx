@@ -23,7 +23,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-export default function ({
+export default function Posts ({
   postsData
 }: {
   postsData: {
@@ -47,15 +47,16 @@ export default function ({
           <meta property='og:title' content={`Blog | ${blogConfig.baseName}`} />
           <meta property='og:description' content={blogConfig.desc} />
           <meta property='og:image' content={ogImage} />
-          <meta property='og:url' content={`${blogConfig.baseUrl}/posts`} />
+          <meta property='og:url' content={ isAmp ? `${blogConfig.baseUrl}/posts/?amp=1` : `${blogConfig.baseUrl}/posts/`} />
         </Head>
         <article className='content'>
-        <PostsIcons />
+        <PostsIcons isAmp={isAmp} />
           <h1>Blog Posts</h1>
           <div className='posts'>
             {postsData.map(({ id, title, create, update, tags, image }) => (
               <div className='postCard' key={id}>
-                <Link href='/posts/[id]' as={`/posts/${id}`} key={id}>
+                {/* <Link href='/posts/[id]' as={`/posts/${id}`} key={id}> */}
+                <Link key={id} href={isAmp ? `/posts/${id}/?amp=1` : `/posts/${id}/`}>
                   <a className='postLink'>
                     <div className='imgOuter'>
                       {isAmp ? (
@@ -77,7 +78,7 @@ export default function ({
                 </Link>
                 <div className='tags'>
                   {tags.map((tag) => (
-                    <Link href='/tags/[tag]' as={`/tags/${tag}`} key={tag}>
+                    <Link key={tag} href={ isAmp? `/tags/${tag}/?amp=1` : `/tags/${tag}/`}>
                       <a className='tag' key={tag}>{tag}</a>
                     </Link>
                   ))}

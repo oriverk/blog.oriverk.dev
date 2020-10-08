@@ -21,9 +21,10 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-export default function ({ tags }: { tags: string[] }) {
+export default function Tag ({ tags }: { tags: string[] }) {
   const isAmp = useAmp()
   const ogImage = blogConfig.baseUrl + blogConfig.ogImage
+  const url = blogConfig.baseUrl + '/tags/'
   return (
     <React.Fragment>
       <BlogLayout isAmp={isAmp}>
@@ -34,14 +35,14 @@ export default function ({ tags }: { tags: string[] }) {
           <meta property='og:title' content={`Tags | ${blogConfig.baseName}`} />
           <meta property='og:description' content={blogConfig.desc} />
           <meta property='og:image' content={ogImage} />
-          <meta property='og:url' content={`${blogConfig.baseUrl}/tags`} />
+          <meta property='og:url' content={ isAmp ? url + '?amp=1' : url } />
         </Head>
-        <TagsIcons />
+        <TagsIcons isAmp={isAmp} />
         <article className='content'>
           <h1>Blog Tags</h1>
           <div className='tags'>
             {tags.map((tag) => (
-              <Link href='/tags/[tag]' as={`/tags/${tag}`} key={tag}>
+              <Link href={ isAmp ? `/tags/${tag}/?amp=1` : `/tags/${tag}/` } key={tag}>
                 <a className='tag'>{tag}</a>
               </Link>
             ))}

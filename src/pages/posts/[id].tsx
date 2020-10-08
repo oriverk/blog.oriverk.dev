@@ -12,7 +12,7 @@ import { Date } from '../../components/general/Date'
 import { CustomImg } from '../../components/general/Image'
 
 export const config = {
-  amp: false
+  amp: 'hybrid'
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -44,11 +44,9 @@ type PostProps = {
 
 export default function Post({ postData }: { postData: PostProps }) {
   const isAmp = useAmp()
+  const url = `${blogConfig.baseUrl}/posts/${postData.id}/`
   const pageTags = postData.tags.join(' ') || 'react nextjs'
-  const ogImage = !postData.image ? blogConfig.baseUrl + blogConfig.ogImage :
-    postData.image.split('')[0] === '/' ?
-      blogConfig.baseUrl + postData.image : blogConfig.baseUrl + '/' + postData.image
-  
+  const ogImage = postData.image ? blogConfig.baseUrl + postData.image : blogConfig.baseUrl + blogConfig.ogImage
   return (
     <React.Fragment>
       <BlogLayout>
@@ -59,26 +57,26 @@ export default function Post({ postData }: { postData: PostProps }) {
           <meta property='og:title' content={`${postData.title} | ${blogConfig.baseName}`} />
           <meta property='og:description' content={pageTags} />
           <meta property='og:image' content={ogImage} />
-          <meta property='og:url' content={`${blogConfig.baseUrl}/posts/${postData.id}`} />
+          <meta property='og:url' content={ isAmp ? url + '?amp=1' : url } />
           {isAmp || (
             <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
           ) }
         </Head>
         <article className='content'>
-        <PostIcons postTitle={postData.title} postId={postData.id} postTags={postData.tags}/>
+        <PostIcons title={postData.title} id={postData.id} tags={postData.tags} isAmp={isAmp} />
           <h1>{postData.title}</h1>
           <div>
             <div>post on <Date dateString={postData.create} /></div>
             <div className='tags'>
               {postData.tags.map((tag) => (
-                <Link href='/tags[tag]' as={`/tags/${tag}`} key={tag}>
+                <Link key={tag} href='/tags[tag]' as={ isAmp ? `/tags/${tag}/?amp=1` : `/tags/${tag}/`}>
                   <a className='tag'>{tag}</a>
                 </Link>
               ))}</div>
           </div>
-          {isAmp || (
+          {/* {isAmp || (
             <div dangerouslySetInnerHTML={{ __html: postData.content }} className='markdown' />
-          )}
+          )} */}
           {/* {postData.image && (
             <a href={postData.image} target='_blank' rel='noopener noreferrer'>
               <CustomImg src={postData.image} alt='post cover image' />
