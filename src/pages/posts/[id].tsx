@@ -28,8 +28,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // await is only for remark
   return {
     props: {
-      postData
-    }
+      postData,
+    },
+    revalidate: 30,
   }
 }
 

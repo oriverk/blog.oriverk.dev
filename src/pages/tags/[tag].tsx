@@ -30,25 +30,29 @@ export const getStaticProps: GetStaticProps = async (props) => {
   return {
     props: {
       tag,
-      postsData
-    }
+      postsData,
+    },
+    revalidate: 30,
   }
 }
 
-export default function Tag({ tag, postsData }: {
+type Props = {
   tag: string,
   postsData: {
     id: string,
     title: string,
     create: string,
-    update?: string,
+    update: string,
     tags?: string[],
     image?: string
-  }[],
-}) {
+  }[]
+}
+
+export default function Tag({ tag, postsData }: Props) {
   const isAmp = useAmp()
   const ogImage = blogConfig.baseUrl + blogConfig.ogImage
   const url = `${blogConfig.baseUrl}/tags/${tag}/`
+
   return (
     <React.Fragment>
       <BlogLayout>

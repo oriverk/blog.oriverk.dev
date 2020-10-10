@@ -18,8 +18,9 @@ export const getStaticProps: GetStaticProps = async () => {
   const postsData = getSortedPostsData()
   return {
     props: {
-      postsData
-    }
+      postsData,
+    },
+    revalidate: 30
   }
 }
 
