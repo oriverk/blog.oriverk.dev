@@ -30,12 +30,12 @@ function getAllPostsAllData() {
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const matterResult = matter(fileContents)
 
-    const title = matterResult.data.title
-    const tags = matterResult.data.tags.map((t: string) => t.toLowerCase()).sort() || ''
-    const create = matterResult.data.create
-    const update = matterResult.data.update || ''
-    const image = matterResult.data.image || ''
-    const content = matterResult.content
+    const title: string = matterResult.data.title || ''
+    const tags: string[] = matterResult.data.tags.map((t: string) => t.toLowerCase()).sort() || ''
+    const create: string = matterResult.data.create || ''
+    const update: string = matterResult.data.update || ''
+    const image: string = matterResult.data.image || ''
+    const content: string = matterResult.content || ''
     return {
       id,
       title,
@@ -93,7 +93,7 @@ export function getAllPostIds() {
 }
 
 // posts/[id].tsx getStaticProps
-export async function getPostData(id) {
+export async function getPostData(id: string) {
   // ↑async is for remark.
   const allPostsAllData = getAllPostsAllData()
   const postData = allPostsAllData.find( post => post.id === id )
@@ -161,7 +161,7 @@ export function getTags() {
 }
 
 // tags/[tag].tsx
-export function getTagPosts(tag) {
+export function getTagPosts(tag: string) {
   const sortedAllPostsData = getAllPostsAllData()
   const tagPostsData = sortedAllPostsData.filter((post) => post.tags.includes(tag))
   const postsData = tagPostsData.map((post) => {
