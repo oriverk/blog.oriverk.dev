@@ -11,12 +11,12 @@ import { TagIcons } from '../../components/IconsWrapper'
 import blogConfig from '../../../blog.config'
 
 export const config = {
-  amp: 'hybrid'
+  amp: false
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths: string[] = getTags().map((tag) => {
-    return `/tags/${tag}`
+    return `/tags/${tag}/`
   })
   return {
     paths,
@@ -24,15 +24,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async (props) => {
-  const tag = props.params.tag as string
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const tag = params.tag as string
   const postsData = getTagPosts(tag as string)
   return {
     props: {
       tag,
       postsData,
     },
-    revalidate: 30,
   }
 }
 

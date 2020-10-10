@@ -12,7 +12,7 @@ import { Date } from '../../components/general/Date'
 import { CustomImg } from '../../components/general/Image'
 
 export const config = {
-  amp: 'hybrid'
+  amp: false
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -30,7 +30,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       postData,
     },
-    revalidate: 30,
   }
 }
 
@@ -70,19 +69,19 @@ export default function Post({ postData }: { postData: PostProps }) {
             <div>post on <Date dateString={postData.create} /></div>
             <div className='tags'>
               {postData.tags.map((tag) => (
-                <Link key={tag} href='/tags[tag]' as={ isAmp ? `/tags/${tag}/?amp=1` : `/tags/${tag}/`}>
+                <Link key={tag} href={ isAmp ? `/tags/${tag}/?amp=1` : `/tags/${tag}/`}>
                   <a className='tag'>{tag}</a>
                 </Link>
               ))}</div>
           </div>
-          {/* {isAmp || (
-            <div dangerouslySetInnerHTML={{ __html: postData.content }} className='markdown' />
-          )} */}
           {/* {postData.image && (
             <a href={postData.image} target='_blank' rel='noopener noreferrer'>
               <CustomImg src={postData.image} alt='post cover image' />
             </a>
           )} */}
+          {isAmp || (
+            <div dangerouslySetInnerHTML={{ __html: postData.content }} className='markdown' />
+          )}
         </article>
       </BlogLayout>
       <style jsx>{`
