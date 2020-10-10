@@ -11,7 +11,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <React.Fragment>
       <Head>
-        {/* <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width' /> */}
         <meta name='format-detection' content='email=no,telephone=no,address=no' />
         <link rel='apple-touch-icon' sizes='180x180' href='/assets/human512x512.png' />
         <link rel='icon' type='image/png' sizes='32x32' href='/favicon/favicon-32x32.png' />

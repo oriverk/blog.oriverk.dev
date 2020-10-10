@@ -33,15 +33,14 @@ export default class MyDocument extends Document {
           <meta property='og:locale' content={blogConfig.lang} />
           <meta content='summary_large_image' name='twitter:card' />
           <meta content={blogConfig.sns.twitter} name='twitter:site' />
-          <link rel='manifest' crossOrigin='use-credentials' href='./manifest.json' />
-          <link rel='alternate' type='application/rss+xml' title={blogConfig.baseName} href='./rss.xml' />
-          <link rel='alternate' type='application/atom+xml' title={blogConfig.baseName} href='./atom.xml' />
-          <link rel='alternate' type='application/rss+xml' title={blogConfig.baseName} href='./sitemap.xml' />
+          <link rel='manifest' crossOrigin='use-credentials' href='/manifest.json' />
+          <link rel='alternate' type='application/rss+xml' title={blogConfig.baseName} href='/rss.xml' />
+          <link rel='alternate' type='application/atom+xml' title={blogConfig.baseName} href='/atom.xml' />
+          <link rel='alternate' type='application/rss+xml' title={blogConfig.baseName} href='/sitemap.xml' />
         </Head>
         <body>
           <Main />
           <NextScript />
-          {/* AMP - Google Analytics */}
           <AmpWrap
             ampOnly={
               <AmpAnalytics
