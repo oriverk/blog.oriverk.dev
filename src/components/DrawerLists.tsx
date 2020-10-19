@@ -1,3 +1,18 @@
+import css from 'styled-jsx/css'
+
+const style = css`
+.imgContainer {
+  margin: 1rem;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.desc {
+  color: #EEE;
+  text-align: center;
+}
+`
+
 export const LeftSwipeDrawer: React.FC = () => {
   return (
     <>
@@ -8,18 +23,7 @@ export const LeftSwipeDrawer: React.FC = () => {
           <p>This uses Google Analytics</p>
         </div>
       </div>
-      <style jsx>{`
-        .imgContainer {
-          margin: 1rem;
-          border-radius: 50%;
-          text-align: center;
-        }
-
-        .desc {
-          color: #EEE;
-          text-align: center;
-        }
-      `}</style>
+      <style jsx>{style}</style>
     </>
   )
 }

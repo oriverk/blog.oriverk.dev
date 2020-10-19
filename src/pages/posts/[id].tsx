@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import css from 'styled-jsx/css'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { BlogLayout } from '../../components/BlogLayout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
@@ -32,6 +33,41 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
   }
 }
+
+const style = css`
+.content {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto 1rem;
+  padding: 5%;
+  flex-grow: 1;
+}
+
+h1{
+  font-size: 1.5rem;
+  text-decoration: underline #50CAF9;
+  color: #D9D9D9;
+}
+
+.tags{
+  margin-bottom: 1rem;
+}
+
+.tag{
+  text-decoration: none;
+  display: inline-block;
+  font-size: .9rem;
+  border-radius: 2rem;
+  border: 1px solid #50CAF9;
+  padding: 0.1rem 1rem;
+  margin: .5rem;
+  margin-bottom: 0;
+  color: #EEE;
+}
+.tag:hover, .tag:active{
+  background-color: #424242;
+}
+`
 
 type Props = {
   id: string,
@@ -78,40 +114,7 @@ const Component: React.FC<Props> = ({ id, title, create, tags, image, content })
           <div dangerouslySetInnerHTML={{ __html: content }} className='markdown' />
         </article>
       </BlogLayout>
-      <style jsx>{`
-        .content {
-          width: 100%;
-          max-width: 1000px;
-          margin: 0 auto 1rem;
-          padding: 5%;
-          flex-grow: 1;
-        }
-        
-        h1{
-          font-size: 1.5rem;
-          text-decoration: underline #50CAF9;
-          color: #D9D9D9;
-        }
-
-        .tags{
-          margin-bottom: 1rem;
-        }
-
-        .tag{
-          text-decoration: none;
-          display: inline-block;
-          font-size: .9rem;
-          border-radius: 2rem;
-          border: 1px solid #50CAF9;
-          padding: 0.1rem 1rem;
-          margin: .5rem;
-          margin-bottom: 0;
-          color: #EEE;
-        }
-        .tag:hover, .tag:active{
-          background-color: #424242;
-        }
-      `}</style>
+      <style jsx>{style}</style>
     </>
   )
 }

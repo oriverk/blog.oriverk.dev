@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import css from 'styled-jsx/css'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { getTags, getTagPosts } from '../../lib/posts'
 import { BlogLayout } from '../../components/BlogLayout'
@@ -28,6 +29,82 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
   }
 }
+
+const style = css`
+.content {
+  width: 95%;
+  margin: 0 auto 1rem;
+  padding: 5%;
+}
+
+.posts {
+  display: grid;
+  gap: 1rem;
+}
+
+.postCard{
+  padding-bottom: 1rem;
+  background-color: #424242;
+  border-radius: .5rem;
+  max-width: 35rem;
+}
+.postCard:hover{
+  border: 1px solid #50CAF9;
+}
+
+.postLink{
+  display: block;
+  color: #EEE;
+  text-decoration: none;
+}
+
+.imgOuter{
+  position: relative;
+  width: 100%;
+}
+.imgOuter:before{
+  content: '';
+  display: block;
+  padding-top: 66%;
+}
+
+.postDesc{
+  padding: .5rem;
+}
+
+h2{
+  margin-top: .5rem;
+  font-size: 1.25rem;
+}
+
+.tag{
+  text-decoration: none;
+  display: inline-block;
+  font-size: .8rem;
+  border-radius: 2rem;
+  border: 1px solid #50CAF9;
+  padding: 0.1rem .8rem;
+  margin: 0 .5rem;
+  color: #EEE;
+}
+.tag:hover, .tag:active{
+  background-color: #424242;
+}
+
+h2{
+  margin-bottom: 0;
+}
+@media( min-width: 760px ){
+  .content{
+    width: 90%;
+  }
+  .posts {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  }
+}
+`
 
 type Props = {
   tag: string,
@@ -87,81 +164,7 @@ const Component: React.FC<Props> = ({ tag, postsData }) => {
           </div>
         </article>
       </BlogLayout>
-      <style jsx>{`
-        .content {
-          width: 95%;
-          margin: 0 auto 1rem;
-          padding: 5%;
-        }
-
-        .posts {
-          display: grid;
-          gap: 1rem;
-        }
-
-        .postCard{
-          padding-bottom: 1rem;
-          background-color: #424242;
-          border-radius: .5rem;
-          max-width: 35rem;
-        }
-        .postCard:hover{
-          border: 1px solid #50CAF9;
-        }
-
-        .postLink{
-          display: block;
-          color: #EEE;
-          text-decoration: none;
-        }
-
-        .imgOuter{
-          position: relative;
-          width: 100%;
-        }
-        .imgOuter:before{
-          content: '';
-          display: block;
-          padding-top: 66%;
-        }
-
-        .postDesc{
-          padding: .5rem;
-        }
-
-        h2{
-          margin-top: .5rem;
-          font-size: 1.25rem;
-        }
-
-        .tag{
-          text-decoration: none;
-          display: inline-block;
-          font-size: .8rem;
-          border-radius: 2rem;
-          border: 1px solid #50CAF9;
-          padding: 0.1rem .8rem;
-          margin: 0 .5rem;
-          color: #EEE;
-        }
-        .tag:hover, .tag:active{
-          background-color: #424242;
-        }
-
-        h2{
-          margin-bottom: 0;
-        }
-        @media( min-width: 760px ){
-          .content{
-            width: 90%;
-          }
-          .posts {
-            display: grid;
-            gap: 1.5rem;
-            grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
-          }
-        }
-      `}</style>
+      <style jsx>{style}</style>
     </>
   )
 }

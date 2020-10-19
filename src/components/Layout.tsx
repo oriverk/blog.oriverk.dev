@@ -1,8 +1,26 @@
 import { useState } from 'react'
+import css from 'styled-jsx/css'
 import { SwipeableDrawer } from '@material-ui/core'
 import { LeftSwipeDrawer } from './DrawerLists'
 import { AlgoliaSearch } from './search/AlgoliaSearch'
 // import { Top } from './HomeContents'
+
+const style = css`
+/* general */
+.swipeableList {
+  width: var(--swipeDrawerWidth);
+  max-width: 450px;
+  height: 100vh;
+  padding: 1.5rem;
+  overflow: scroll;
+  background-color: #424242;
+}
+
+main{
+  flex: 1;
+  width: 100%;
+}
+`
 
 export const Layout: React.FC = ({ children }) => {
   const [state, setState] = useState({
@@ -49,22 +67,7 @@ export const Layout: React.FC = ({ children }) => {
         {/* <Top isAmp={false} openSearch={toggleDrawer('right', true)} /> */}
         {children}
       </main>
-      <style jsx>{`
-        /* general */
-        .swipeableList {
-          width: var(--swipeDrawerWidth);
-          max-width: 450px;
-          height: 100vh;
-          padding: 1.5rem;
-          overflow: scroll;
-          background-color: #424242;
-        }
-
-        main{
-          flex: 1;
-          width: 100%;
-        }
-      `}</style>
+      <style jsx>{style}</style>
     </>
   )
 }

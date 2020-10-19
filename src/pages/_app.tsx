@@ -1,15 +1,13 @@
-import React from 'react'
 import Router from 'next/router'
 import Head from 'next/head'
 import { AppProps } from 'next/app'
 import * as gtag from '../lib/gtag'
 
-
 export default function MyApp({ Component, pageProps }: AppProps) {
   Router.events.on('routeChangeComplete', (url: string) => gtag.pageview(url))
 
   return (
-    <React.Fragment>
+    <>
       <Head>
         <meta name='format-detection' content='email=no,telephone=no,address=no' />
         <link rel='apple-touch-icon' sizes='180x180' href='/assets/human512x512.png' />
@@ -165,6 +163,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           }
         }
       `}</style>
-    </React.Fragment>
+    </>
   )
 }

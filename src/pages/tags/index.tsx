@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import css from 'styled-jsx/css'
 import { getTags } from '../../lib/posts'
 import { BlogLayout } from '../../components/BlogLayout'
 import { TagsIcons } from '../../components/IconsWrapper'
@@ -14,6 +15,32 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   }
 }
+
+const style = css`
+  .content {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 1rem;
+    padding: 5%;
+    flex-grow: 1;
+  }
+
+  .tag{
+    display: inline-block;
+    min-width: 4rem;
+    text-align: center;
+    color: #EEE;
+    font-size: 1rem;
+    text-decoration: none;
+    margin: .5rem;
+    padding: .1rem .8rem;
+    border-radius: 2rem;
+    border: 1px solid #50CAF9;
+  }
+  .tag:hover, .tag:active{
+    background-color: #424242;
+  }
+`
 
 type Props = {
   tags: string[]
@@ -44,31 +71,7 @@ const Component: React.FC<Props> = ({tags}) => {
           </div>
         </article>
       </BlogLayout>
-      <style jsx>{`
-        .content {
-          width: 100%;
-          max-width: 1000px;
-          margin: 0 auto 1rem;
-          padding: 5%;
-          flex-grow: 1;
-        }
-
-        .tag{
-          display: inline-block;
-          min-width: 4rem;
-          text-align: center;
-          color: #EEE;
-          font-size: 1rem;
-          text-decoration: none;
-          margin: .5rem;
-          padding: .1rem .8rem;
-          border-radius: 2rem;
-          border: 1px solid #50CAF9;
-        }
-        .tag:hover, .tag:active{
-          background-color: #424242;
-        }
-      `}</style>
+      <style jsx>{style}</style>
     </>
   )
 }

@@ -3,7 +3,101 @@ import css from 'styled-jsx/css'
 import { CustomImg } from './general/Image'
 import { HomeIcons } from './IconsWrapper'
 
+type Props = {
+  openSearch?: React.ReactNode
+}
+
+type LinkImg = {
+  src?: string
+  alt?: string
+}
+
+const CustomLinkImg: React.FC<LinkImg> = ({ src, alt }) => {
+  return (
+    <a href={src} target='_blank' rel='noopener noreferrer'>
+      <CustomImg src={src} alt={alt} />
+    </a>
+  )
+}
+
 const style = css`
+section {
+  height: 100vh;
+  width: 100%;
+  margin-bottom: 2rem;
+  position: relative;
+  background-color: #212121;
+  background-size: cover;
+  background-position: center;
+  background-image: url('/assets/home/sunrisePortrait650x867.webp');
+}
+
+.topWrapper{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.title {
+  width: 100%;
+  padding: 5%;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.topTitle {
+  font-weight: 500;
+  font-size: 3.5rem;
+  margin: 0 auto;
+}
+.sub {
+  font-size: 1.5rem
+}
+
+@media( min-width: 600px){
+  section{
+    background-image: url('/assets/home/sunrisePortrait960x1280.webp')
+  }
+}
+@media (min-width: 960px){
+  section{
+    height: 100vh;
+    background-image: url('/assets/home/sunrisePortrait1280x1707.webp')
+  }
+}
+@media(min-width: 1280px){
+  section{
+    background-image: url('/assets/home/sunrise2000x1333.webp')
+  }
+}
+@media(min-width: 1980px){
+  section{
+    background-image: url('/assets/home/sunrise3500x2333.webp')
+  }
+}
+`
+
+export const Top: React.FC<Props> = ({ openSearch }) => {
+  return (
+    <>
+      <section id='top'>
+        <div className='topWrapper'>
+          <div className='title'>
+            <h1 className='topTitle'>Kawano Yudai</h1>
+            <h2 className='sub'>B.Agr.</h2>
+              <HomeIcons openSearch={openSearch} />
+          </div>
+        </div>
+      </section>
+      <style jsx>{style}</style>
+    </>
+  )
+}
+
+const commonStyle = css`
   section {
     padding: 0 5%;
     flex-grow: 1;
@@ -46,98 +140,6 @@ const style = css`
   }
 `
 
-type Props = {
-  openSearch?: React.ReactNode
-}
-
-type LinkImg = {
-  src?: string
-  alt?: string
-}
-
-const CustomLinkImg: React.FC<LinkImg> = ({ src, alt }) => {
-  return (
-    <a href={src} target='_blank' rel='noopener noreferrer'>
-      <CustomImg src={src} alt={alt} />
-    </a>
-  )
-}
-
-export const Top: React.FC<Props> = ({ openSearch }) => {
-  return (
-    <>
-      <section id='top'>
-        <div className='topWrapper'>
-          <div className='title'>
-            <h1 className='topTitle'>Kawano Yudai</h1>
-            <h2 className='sub'>B.Agr.</h2>
-              <HomeIcons openSearch={openSearch} />
-          </div>
-        </div>
-      </section>
-      <style jsx>{`
-        section {
-          height: 100vh;
-          width: 100%;
-          margin-bottom: 2rem;
-          position: relative;
-          background-color: #212121;
-          background-size: cover;
-          background-position: center;
-          background-image: url('/assets/home/sunrisePortrait650x867.webp');
-        }
-
-        .topWrapper{
-          position: relative;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .title {
-          width: 100%;
-          padding: 5%;
-          text-align: center;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-        .topTitle {
-          font-weight: 500;
-          font-size: 3.5rem;
-          margin: 0 auto;
-        }
-        .sub {
-          font-size: 1.5rem
-        }
-
-        @media( min-width: 600px){
-          section{
-            background-image: url('/assets/home/sunrisePortrait960x1280.webp')
-          }
-        }
-        @media (min-width: 960px){
-          section{
-            height: 100vh;
-            background-image: url('/assets/home/sunrisePortrait1280x1707.webp')
-          }
-        }
-        @media(min-width: 1280px){
-          section{
-            background-image: url('/assets/home/sunrise2000x1333.webp')
-          }
-        }
-        @media(min-width: 1980px){
-          section{
-            background-image: url('/assets/home/sunrise3500x2333.webp')
-          }
-        }
-      `}</style>
-    </>
-  )
-}
-
 export const About: React.FC = () => {
   return (
     <>
@@ -162,7 +164,7 @@ export const About: React.FC = () => {
           margin: 0 auto .5rem;
         }
       `}</style>
-      <style jsx>{style}</style>
+      <style jsx>{commonStyle}</style>
     </>    
   );
 }
@@ -209,7 +211,7 @@ export const History: React.FC = () => {
           </div>
         </article>
       </section>
-      <style jsx>{style}</style>
+      <style jsx>{commonStyle}</style>
     </>
   )
 }
@@ -312,7 +314,7 @@ export const Works: React.FC = () => {
           </div>
         </article>
       </section>
-      <style jsx>{style}</style>
+      <style jsx>{commonStyle}</style>
     </>  
   );
 }
