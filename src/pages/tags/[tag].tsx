@@ -1,18 +1,17 @@
-import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import css from 'styled-jsx/css'
+import { GetStaticProps, GetStaticPaths } from 'next'
 import { getTags, getTagPosts } from '../../lib/posts'
 import { BlogLayout } from '../../components/BlogLayout'
-import { Image } from '../../components/general/Image'
+import { CustomImg } from '../../components/general/Image'
 import { Date } from '../../components/general/Date'
 import { TagIcons } from '../../components/IconsWrapper'
 import blogConfig from '../../../blog.config'
 
-import { GetStaticProps, GetStaticPaths } from 'next'
-
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths: string[] = getTags().map((tag) => {
-    return `/tags/${tag}`
+    return `/tags/${tag}/`
   })
   return {
     paths,
@@ -20,31 +19,108 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async (props) => {
-  const tag = props.params.tag as string
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const tag = params.tag as string
   const postsData = getTagPosts(tag as string)
   return {
     props: {
       tag,
-      postsData
-    }
+      postsData,
+    },
   }
 }
 
-export default function Tag({ tag, postsData }: {
+const style = css`
+.content {
+  width: 95%;
+  margin: 0 auto 1rem;
+  padding: 5%;
+}
+
+.posts {
+  display: grid;
+  gap: 1rem;
+}
+
+.postCard{
+  padding-bottom: 1rem;
+  background-color: #424242;
+  border-radius: .5rem;
+  max-width: 35rem;
+}
+.postCard:hover{
+  border: 1px solid #50CAF9;
+}
+
+.postLink{
+  display: block;
+  color: #EEE;
+  text-decoration: none;
+}
+
+.imgOuter{
+  position: relative;
+  width: 100%;
+}
+.imgOuter:before{
+  content: '';
+  display: block;
+  padding-top: 66%;
+}
+
+.postDesc{
+  padding: .5rem;
+}
+
+h2{
+  margin-top: .5rem;
+  font-size: 1.25rem;
+}
+
+.tag{
+  text-decoration: none;
+  display: inline-block;
+  font-size: .8rem;
+  border-radius: 2rem;
+  border: 1px solid #50CAF9;
+  padding: 0.1rem .8rem;
+  margin: 0 .5rem;
+  color: #EEE;
+}
+.tag:hover, .tag:active{
+  background-color: #424242;
+}
+
+h2{
+  margin-bottom: 0;
+}
+@media( min-width: 760px ){
+  .content{
+    width: 90%;
+  }
+  .posts {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  }
+}
+`
+
+type Props = {
   tag: string,
   postsData: {
     id: string,
     title: string,
     create: string,
-    update?: string,
+    update: string,
     tags?: string[],
     image?: string
-  }[],
-}) {
-  const ogImage = blogConfig.baseUrl + blogConfig.ogImage
+  }[]
+}
+
+const Component: React.FC<Props> = ({ tag, postsData }) => {
   return (
-    <React.Fragment>
+    <>
       <BlogLayout>
         <Head>
           <title>{`${tag} | ${blogConfig.baseName}`}</title>
@@ -52,8 +128,8 @@ export default function Tag({ tag, postsData }: {
           <meta name='description' content={blogConfig.desc} />
           <meta property='og:title' content={`${tag} | ${blogConfig.baseName}`} />
           <meta property='og:description' content={blogConfig.baseDesc} />
-          <meta property='og:image' content={ogImage} />
-          <meta property='og:url' content={`${blogConfig.baseUrl}/tags/hoge`} />
+          <meta property='og:image' content={blogConfig.baseUrl + blogConfig.ogImage} />
+          <meta property='og:url' content={`${blogConfig.baseUrl}/tags/${tag}/` } />
         </Head>
         <TagIcons />
         <article className='content'>
@@ -61,11 +137,10 @@ export default function Tag({ tag, postsData }: {
           <div className='posts'>
             {postsData.map(({ id, title, create, update, tags, image }) => (
               <div className='postCard' key={id}>
-                <Link href='/posts/[id]' as={`/posts/${id}`} key={id}>
+                <Link href={ `/posts/${id}/`}>
                   <a className='postLink'>
                     <div className='imgOuter'>
-                      <Image src={image || '/assets/home/sunrise.jpg'} alt={`post: ${title}`}
-                        imgStyle={{ borderRadius: '.5rem .5rem 0 0', position: 'absolute', top: 0, height: '100%' }} />
+                      <CustomImg src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
                     </div>
                     <div className='postDesc'>
                       {update ? (
@@ -79,7 +154,7 @@ export default function Tag({ tag, postsData }: {
                 </Link>
                 <div className='tags'>
                   {tags.map((tag) => (
-                    <Link href='/tags/[tag]' as={`/tags/${tag}`} key={tag}>
+                    <Link href={ `/tags/${tag}/`} key={tag}>
                       <a className='tag' key={tag}>{tag}</a>
                     </Link>
                   ))}
@@ -89,81 +164,9 @@ export default function Tag({ tag, postsData }: {
           </div>
         </article>
       </BlogLayout>
-      <style jsx>{`
-        .content {
-          width: 95%;
-          margin: 0 auto 1rem;
-          padding: 5%;
-        }
-
-        .posts {
-          display: grid;
-          gap: 1rem;
-        }
-
-        .postCard{
-          padding-bottom: 1rem;
-          background-color: #424242;
-          border-radius: .5rem;
-          max-width: 35rem;
-        }
-        .postCard:hover{
-          border: 1px solid #50CAF9;
-        }
-
-        .postLink{
-          display: block;
-          color: #EEE;
-          text-decoration: none;
-        }
-
-        .imgOuter{
-          position: relative;
-          width: 100%;
-        }
-        .imgOuter:before{
-          content: '';
-          display: block;
-          padding-top: 66%;
-        }
-
-        .postDesc{
-          padding: .5rem;
-        }
-
-        h2{
-          margin-top: .5rem;
-          font-size: 1.25rem;
-        }
-
-        .tag{
-          text-decoration: none;
-          display: inline-block;
-          font-size: .8rem;
-          border-radius: 2rem;
-          border: 1px solid #50CAF9;
-          padding: 0.1rem .8rem;
-          margin: 0 .5rem;
-          color: #EEE;
-        }
-        .tag:hover, .tag:active{
-          background-color: #424242;
-        }
-
-        h2{
-          margin-bottom: 0;
-        }
-        @media( min-width: 760px ){
-          .content{
-            width: 90%;
-          }
-          .posts {
-            display: grid;
-            gap: 1.5rem;
-            grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
-          }
-        }
-      `}</style>
-    </React.Fragment>
+      <style jsx>{style}</style>
+    </>
   )
 }
+
+export default Component

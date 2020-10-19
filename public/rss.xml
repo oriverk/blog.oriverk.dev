@@ -5,13 +5,13 @@
     <link>https://oriverk.dev</link>
     <description>This site is for my portfolio and made with React, Next.js</description>
     <language>ja</language>
-    <lastBuildDate>Mon Sep 21 2020 09:33:48 GMT+0000 (Coordinated Universal Time)</lastBuildDate>
+    <lastBuildDate>Mon Oct 19 2020 16:22:44 GMT+0000 (Coordinated Universal Time)</lastBuildDate>
 
     <item>
-      <title>Algoliaでサイト内検索を実装する</title>
-      <link>https://oriverk.dev/posts/20200922-algolia-search</link>
-      <description>algolia, nextjs, react</description>
-      <pubDate>2020-09-22</pubDate>
+      <title>Next.js製のサイトを途中からAMP化する</title>
+      <link>https://oriverk.dev/posts/20201019-nextjs-amp</link>
+      <description>amp, nextjs, typescript</description>
+      <pubDate>2020-10-19</pubDate>
     </item>
     <item>
       <title>Next.js内のnext-optimized-imagesによる画像自動最適化</title>

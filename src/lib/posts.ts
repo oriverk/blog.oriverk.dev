@@ -30,12 +30,12 @@ function getAllPostsAllData() {
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const matterResult = matter(fileContents)
 
-    const title = matterResult.data.title
-    const tags = matterResult.data.tags.map((t) => t.toLowerCase()).sort() || ''
-    const create = matterResult.data.create
-    const update = matterResult.data.update || ''
-    const image = matterResult.data.image || ''
-    const content = matterResult.content
+    const title: string = matterResult.data.title || ''
+    const tags: string[] = matterResult.data.tags.map((t: string) => t.toLowerCase()).sort() || ''
+    const create: string = matterResult.data.create || ''
+    const update: string = matterResult.data.update || ''
+    const image: string = matterResult.data.image || ''
+    const content: string = matterResult.content || ''
     return {
       id,
       title,
@@ -63,7 +63,7 @@ export function getSortedPostsData() {
     const title = postData.title
     const create = postData.create
     const update = postData.update
-    var tags = postData.tags
+    var tags: string[] = postData.tags
     if (tags.includes('ruby') && tags.includes('rails')) {
       tags = tags.filter(t => t !== 'ruby')
     }
@@ -93,7 +93,7 @@ export function getAllPostIds() {
 }
 
 // posts/[id].tsx getStaticProps
-export async function getPostData(id) {
+export async function getPostData(id: string) {
   // ↑async is for remark.
   const allPostsAllData = getAllPostsAllData()
   const postData = allPostsAllData.find( post => post.id === id )
@@ -109,7 +109,7 @@ export async function getPostData(id) {
     .use(slug)
     .use(link2heading, {
       behavior: 'wrap',
-      linkProperties: { ariaHidden: true, tabIndex: -1, class: "heading-link" },
+      linkProperties: { class: "heading-link" },
     }) // Note that this module must be included after `remark-slug`.
     .use(breaks)
     .use(math)
@@ -152,7 +152,7 @@ export async function getPostData(id) {
 // tags/index.tsx
 export function getTags() {
   const allPostsAllData = getAllPostsAllData()
-  let tags = []
+  let tags: string[] = []
   allPostsAllData.forEach((post) => {
     tags = tags.concat(post.tags)
   })
@@ -161,7 +161,7 @@ export function getTags() {
 }
 
 // tags/[tag].tsx
-export function getTagPosts(tag) {
+export function getTagPosts(tag: string) {
   const sortedAllPostsData = getAllPostsAllData()
   const tagPostsData = sortedAllPostsData.filter((post) => post.tags.includes(tag))
   const postsData = tagPostsData.map((post) => {
@@ -169,7 +169,7 @@ export function getTagPosts(tag) {
     const title = post.title
     const create = post.create
     const update = post.update
-    var tags = post.tags
+    var tags: string[] = post.tags
     if (tags.includes('ruby') && tags.includes('rails')) {
       tags = tags.filter(t => t !== 'ruby')
     }

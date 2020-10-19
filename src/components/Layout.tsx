@@ -1,11 +1,29 @@
-import React from 'react'
+import { useState } from 'react'
+import css from 'styled-jsx/css'
 import { SwipeableDrawer } from '@material-ui/core'
 import { LeftSwipeDrawer } from './DrawerLists'
 import { AlgoliaSearch } from './search/AlgoliaSearch'
-import { Top } from './HomeContents'
+// import { Top } from './HomeContents'
 
-export function Layout(props) {
-  const [state, setState] = React.useState({
+const style = css`
+/* general */
+.swipeableList {
+  width: var(--swipeDrawerWidth);
+  max-width: 450px;
+  height: 100vh;
+  padding: 1.5rem;
+  overflow: scroll;
+  background-color: #424242;
+}
+
+main{
+  flex: 1;
+  width: 100%;
+}
+`
+
+export const Layout: React.FC = ({ children }) => {
+  const [state, setState] = useState({
     left: false,
     right: false
   })
@@ -28,7 +46,7 @@ export function Layout(props) {
 
   // drawer width is defined at _app.jsx
   return (
-    <React.Fragment>
+    <>
       <SwipeableDrawer anchor='left' open={state['left']}
         onClose={toggleDrawer('left', false)} onOpen={toggleDrawer('left', true)}
       >
@@ -46,25 +64,10 @@ export function Layout(props) {
         </div>
       </SwipeableDrawer>
       <main>
-        <Top openSearch={toggleDrawer('right', true)} />
-        {props.children}
+        {/* <Top isAmp={false} openSearch={toggleDrawer('right', true)} /> */}
+        {children}
       </main>
-      <style jsx>{`
-        /* general */
-        .swipeableList {
-          width: var(--swipeDrawerWidth);
-          max-width: 450px;
-          height: 100vh;
-          padding: 1.5rem;
-          overflow: scroll;
-          background-color: #424242;
-        }
-
-        main{
-          flex: 1;
-          width: 100%;
-        }
-      `}</style>
-    </React.Fragment>
+      <style jsx>{style}</style>
+    </>
   )
 }

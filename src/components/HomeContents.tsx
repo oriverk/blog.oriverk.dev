@@ -1,11 +1,103 @@
-import React from 'react'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
-import { Image } from './general/Image'
-
+import { CustomImg } from './general/Image'
 import { HomeIcons } from './IconsWrapper'
 
-const containerStyle = css`
+type Props = {
+  openSearch?: React.ReactNode
+}
+
+type LinkImg = {
+  src?: string
+  alt?: string
+}
+
+const CustomLinkImg: React.FC<LinkImg> = ({ src, alt }) => {
+  return (
+    <a href={src} target='_blank' rel='noopener noreferrer'>
+      <CustomImg src={src} alt={alt} />
+    </a>
+  )
+}
+
+const style = css`
+section {
+  height: 100vh;
+  width: 100%;
+  margin-bottom: 2rem;
+  position: relative;
+  background-color: #212121;
+  background-size: cover;
+  background-position: center;
+  background-image: url('/assets/home/sunrisePortrait650x867.webp');
+}
+
+.topWrapper{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.title {
+  width: 100%;
+  padding: 5%;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.topTitle {
+  font-weight: 500;
+  font-size: 3.5rem;
+  margin: 0 auto;
+}
+.sub {
+  font-size: 1.5rem
+}
+
+@media( min-width: 600px){
+  section{
+    background-image: url('/assets/home/sunrisePortrait960x1280.webp')
+  }
+}
+@media (min-width: 960px){
+  section{
+    height: 100vh;
+    background-image: url('/assets/home/sunrisePortrait1280x1707.webp')
+  }
+}
+@media(min-width: 1280px){
+  section{
+    background-image: url('/assets/home/sunrise2000x1333.webp')
+  }
+}
+@media(min-width: 1980px){
+  section{
+    background-image: url('/assets/home/sunrise3500x2333.webp')
+  }
+}
+`
+
+export const Top: React.FC<Props> = ({ openSearch }) => {
+  return (
+    <>
+      <section id='top'>
+        <div className='topWrapper'>
+          <div className='title'>
+            <h1 className='topTitle'>Kawano Yudai</h1>
+            <h2 className='sub'>B.Agr.</h2>
+              <HomeIcons openSearch={openSearch} />
+          </div>
+        </div>
+      </section>
+      <style jsx>{style}</style>
+    </>
+  )
+}
+
+const commonStyle = css`
   section {
     padding: 0 5%;
     flex-grow: 1;
@@ -48,93 +140,15 @@ const containerStyle = css`
   }
 `
 
-export function Top(props){
-  const openSearch = props.openSearch
-  return (
-    <>
-      <section id='top'>
-        <div className='topWrapper'>
-          <div className='title'>
-            <h1 className='topTitle'>Kawano Yudai</h1>
-            <h2 className='sub'>B.Agr.</h2>
-            <HomeIcons openSearch={openSearch} />
-          </div>
-        </div>
-      </section>
-      <style jsx>{`
-        section {
-          height: 100vh;
-          width: 100%;
-          margin-bottom: 2rem;
-          position: relative;
-          background-color: #212121;
-          background-size: cover;
-          background-position: center;
-          background-image: url('/assets/home/sunrisePortrait650x867.webp');
-        }
-
-        .topWrapper{
-          position: relative;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .title {
-          width: 100%;
-          padding: 5%;
-          text-align: center;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-        .topTitle {
-          font-weight: 500;
-          font-size: 3.5rem;
-          margin: 0 auto;
-        }
-        .sub {
-          font-size: 1.5rem
-        }
-
-        @media( min-width: 600px){
-          section{
-            background-image: url('/assets/home/sunrisePortrait960x1280.webp')
-          }
-        }
-        @media (min-width: 960px){
-          section{
-            height: 100vh;
-            background-image: url('/assets/home/sunrisePortrait1280x1707.webp')
-          }
-        }
-        @media(min-width: 1280px){
-          section{
-            background-image: url('/assets/home/sunrise2000x1333.webp')
-          }
-        }
-        @media(min-width: 1980px){
-          section{
-            background-image: url('/assets/home/sunrise3500x2333.webp')
-          }
-        }
-      `}</style>
-    </>
-  )
-}
-
-export function About() {
+export const About: React.FC = () => {
   return (
     <>
       <section id='about'>
         <h2>About</h2>
         <div className='container'>
           <div className='left'>
-            <Image
-              src='/assets/home/LongRidge700.jpg'
-              alt='the scenary from Long-Ridge-Lookout in Adelaide'
-            />
+            <CustomLinkImg
+              src='/assets/home/LongRidge700.jpg' alt='scenary from Long Ridge Lookout in Adelaide' />
           </div>
           <div className='right'>
             <p>My name is Kawano Yudai.</p>
@@ -150,14 +164,12 @@ export function About() {
           margin: 0 auto .5rem;
         }
       `}</style>
-      <style jsx>
-        {containerStyle}
-      </style>
+      <style jsx>{commonStyle}</style>
     </>    
   );
 }
 
-export function History() {
+export const History: React.FC = () => {
   return (
     <>
       <section id='history'>
@@ -166,7 +178,7 @@ export function History() {
           <h3>Experience</h3>
           <div className='container'>
             <div className='left'>
-              <Image src='/assets/home/sunrise.jpg' alt='no image'/>
+              <CustomLinkImg src='/assets/home/sunrise.jpg' alt='no image' />
             </div>
             <div className='right'>
               <span>2017/04 - 2018/08</span>
@@ -179,10 +191,7 @@ export function History() {
           <h3>Education</h3>
           <div className='container'>
             <div className='left'>
-              <Image
-                src='/assets/home/weeding700.jpg'
-                alt='weeding robot motion picture'
-              />
+              <CustomLinkImg src='/assets/home/weeding700.jpg' alt='weeding robot motion picture' />
             </div>
             <div className='right'>
               <span>2015/04 - 2017/03</span>
@@ -192,10 +201,7 @@ export function History() {
           </div>
           <div className='container'>
             <div className='left'>
-              <Image
-                src='/assets/home/miyazakiUniv.jpg'
-                alt='logo of Miyazaki University'
-              />
+              <CustomLinkImg src='/assets/home/miyazakiUniv.jpg' alt='logo of Miyazaki University' />
             </div>
             <div className='right'>
               <span>2013/04 - 2017/03 :</span>
@@ -205,14 +211,12 @@ export function History() {
           </div>
         </article>
       </section>
-      <style jsx>
-        {containerStyle}
-      </style>
+      <style jsx>{commonStyle}</style>
     </>
   )
 }
 
-export function Works() {
+export const Works: React.FC = () => {
   return (
     <>
       <section id='works'>
@@ -220,34 +224,36 @@ export function Works() {
         <article>
           <div className='container'>
             <div className='left'>
-              <Image
-                src='/assets/home/20200915prtsc1000.jpg'
-                alt='screen shot of this site'
-              />
+              <CustomLinkImg src='/assets/home/20200915prtsc1000.jpg' alt='screenshot of this site' />
             </div>
             <div className='right'>
               <b>This portfolio site as resume and tech blog</b>
               <br /><span> :to learn modern JS</span>
               <br /><span>with Reactand Typescript</span>
               <ul>
-                <li><Link href='/posts/[id]' as='/posts/20200526-next-portfolio'><a>Blog: Created portfolio site with Next.js</a></Link></li>
+                <li>
+                  <Link href='/posts/20200526-next-portfolio/' >
+                    <a>Blog: Created portfolio site with Next.js</a>
+                  </Link>
+                </li>
                 <li><a href='https://github.com/oriverk/next-portfolio' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
               </ul>
             </div>
           </div>
           <div className='container'>
             <div className='left'>
-              <Image
-                src='/assets/posts/202003/miyazaki-oss1.jpg'
-                alt='screenshot of miyazaki corona oss site'
-              />
+              <CustomLinkImg src='/assets/posts/202003/miyazaki-oss1.jpg' alt='screenshot of miyazaki corona taskforce site' />
             </div>
             <div className='right'>
               <b>Miyazaki COVID-19 Task Force site</b>
               <br /><span>( OSS website )</span>
               <br /><span>with Vue.js, TypeScript</span>
               <ul>
-                <li><Link href='/posts/[id]' as='/posts/20200329-joined-corona-oss'><a>Blog: Joined OSS for COVID-19 site of Miyazaki</a></Link></li>
+                <li>
+                  <Link href='/posts/20200329-joined-corona-oss/'>
+                    <a>Blog: Joined OSS for COVID-19 site of Miyazaki</a>
+                  </Link>
+                </li>
                 <li><a href='https://github.com/oriverk/covid19' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
                 <li><a href='https://covid19-miyazaki.netlify.app/' target='_blank' rel='noopener noreferrer' >The site on Netlify</a></li>
               </ul>
@@ -255,58 +261,60 @@ export function Works() {
           </div>
           <div className='container'>
             <div className='left'>
-              <Image
-                src='/assets/home/codr700.jpg'
-                alt='scrren shot of code share on twitter app'
-              />
+              <CustomLinkImg src='/assets/home/codr700.jpg' alt='screenshot of code share web app' />
             </div>
             <div className='right'>
               <b>Coder0</b>
               <br /><span> :to share code with syntax-highlight</span>
               <br /><span>with RubyonRails, PostgreSQL, AWS S3</span>
               <ul>
-                <li><Link href='posts/[id]' as='/posts/20191129-post-code2twitter'><a>Blog: Wanna Share code on Twitter</a></Link></li>
+                <li>
+                  <Link href='/posts/20191129-post-code2twitter/'>
+                    <a>Blog: Wanna Share code on Twitter</a>
+                  </Link>
+                </li>
                 <li><a href='https://github.com/oriverk/Codr' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
               </ul>
             </div>
           </div>
           <div className='container'>
             <div className='left'>
-              <Image
-                src='/assets/home/githubPages1st700.jpg'
-                alt='screenshot of my 1st githubpages'
-              />
+              <CustomLinkImg src='/assets/home/githubPages1st700.jpg' alt='screenshot of my 1st githubpages' />
             </div>
             <div className='right'>
               <b>GithubPages</b>
               <br /><span>:My 1st GithubPages</span>
               <br /><span>with Ruby, Jekyll</span>
               <ul>
-                <li><Link href='/posts/[id]' as='/posts/20190818-use-jekyll'><a>Blog: Build GithubPages with Jekyll</a></Link></li>
+                <li><Link href='/posts/20190818-use-jekyll'><a>Blog: Build GithubPages with Jekyll</a></Link></li>
                 <li><a href='https://github.com/oriverk/oriverk.github.io' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
               </ul>
             </div>
           </div>
           <div className='container'>
             <div className='left'>
-              <Image src='/assets/home/sunrise.jpg' alt='no image' />
+              <CustomLinkImg src='/assets/home/sunrise.jpg' alt='no image' />
             </div>
             <div className='right'>
               <b>Ticket sales System</b>
               <br /><span> :from the 2018 Autumn FE exam</span>
               <br /><span>with RubyonRails, PostgreSQL, Heroku</span>
               <ul>
-                <li><Link href='/posts/[id]' as='/posts/20190829-fe-exam'><a>Blog: Reproduce ticket sales system in FE exam</a></Link></li>
+                <li>
+                  <Link href='/posts/20190829-fe-exam/'>
+                    <a>Blog: Reproduce ticket sales system in FE exam</a>
+                  </Link>
+                </li>
                 <li><a href='https://github.com/oriverk/ConcertTicket' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
-                <li><a href='https://www.jitec.ipa.go.jp/1_04hanni_sukiru/mondai_kaitou_2018h30_2/2018h30a_fe_pm_qs.pdf' target='_blank' rel='noopener noreferrer'>IPA FE exam</a></li>
+                <li>
+                  <a href='https://www.jitec.ipa.go.jp/1_04hanni_sukiru/mondai_kaitou_2018h30_2/2018h30a_fe_pm_qs.pdf' target='_blank' rel='noopener noreferrer'>IPA FE exam</a>
+                </li>
               </ul>
             </div>
           </div>
         </article>
       </section>
-      <style jsx>
-        {containerStyle}
-      </style>
+      <style jsx>{commonStyle}</style>
     </>  
   );
 }

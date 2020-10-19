@@ -1,5 +1,3 @@
-import React from 'react'
-// import Link from 'next/link'
 import { connectPoweredBy, connectSearchBox, connectStateResults } from 'react-instantsearch-dom'
 
 // const Hits = (props) => {
@@ -22,9 +20,9 @@ import { connectPoweredBy, connectSearchBox, connectStateResults } from 'react-i
 // }
 // export const CustomHits = connectHits(Hits)
 
-const PoweredBy = () => {
+const PoweredBy: React.FC = () => {
   return (
-    <React.Fragment>
+    <>
       <div>
         <a href='https://www.algolia.com' target='_blank' rel='noopener noreferrer'>
           <img loading="lazy"
@@ -42,13 +40,13 @@ const PoweredBy = () => {
           margin: 0 auto;
         }
       `}</style>
-    </React.Fragment>
+    </>
   )
 }
 export const CustomPoweredBy = connectPoweredBy(PoweredBy)
 
 const SearchBox = ({ currentRefinement, refine }) => (
-  <React.Fragment>
+  <>
     <div>
       <form noValidate action='' role='search'>
         <input
@@ -77,7 +75,7 @@ const SearchBox = ({ currentRefinement, refine }) => (
         border-radius: .5rem;
       }
     `}</style>
-  </React.Fragment>
+  </>
 )
 export const CustomSearchBox = connectSearchBox(SearchBox)
 
@@ -90,7 +88,7 @@ const StateResults = ({ searchResults }) => {
     )
   } else {
     return (
-      <React.Fragment>
+      <>
         <div>No Results Found.</div>
         <style jsx>{`
           div{
@@ -100,7 +98,7 @@ const StateResults = ({ searchResults }) => {
             height: 100%;
           }
         `}</style>
-      </React.Fragment>
+      </>
     )
   }
 }

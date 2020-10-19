@@ -1,47 +1,36 @@
-import React from 'react'
+import css from 'styled-jsx/css'
 
-export function Image({ src, alt, imgStyle }: {
+const style = css`
+.cardImg {
+  height: 100%;
+  border-radius: .5rem .5rem 0 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+`
+
+type Props = {
   src?: string,
-  alt: string,
+  alt?: string,
   imgStyle?: React.CSSProperties
-}) {
-  return (
-    <React.Fragment>
-      <OptimizedImages src={src} alt={alt} imgStyle={imgStyle}/>
-    </React.Fragment>
-  )
+  className?: string
 }
 
-function OptimizedImages({ src, alt, imgStyle }: {
-  src?: string,
-  alt: string,
-  imgStyle?: React.CSSProperties
-}) {
-  // https://dev.to/joserfelix/how-to-make-a-static-blog-with-next-js-2bd6
-  const replaced = src.replace(/^.?\/assets\/?/, '') || 'imageIsMissing.png'
-  // => processed = '/home/example.jpg'
-
-  const responsiveImage = require(`@public/assets/${replaced}?resize`)
-  const responsiveImageWebp = require(`@public/assets/${replaced}?resize&format=webp`)
-
+// external image => do not optimize
+export const CustomImg: React.FC<Props> = ({ src = '/assets/ImageIsMissing.png', alt = 'no alt', className }) => {
+  const Src = src.replace(/^.?\/assets\/?/, '')
+  const webp = require(`@public/assets/${Src}?resize&format=webp`)
+  const image = require(`@public/assets/${Src}?resize`)
   return (
-    <React.Fragment>
+    <>
       <picture>
-        <source
-          srcSet={responsiveImageWebp.srcSet}
-          type='image/webp'
-          style={imgStyle}
-          />
-        <img
-          src={responsiveImage.src}
-          srcSet={responsiveImage.srcSet}
-          alt={alt || 'no image'}
-          style={imgStyle}
-          width={responsiveImage.width}
-          height={responsiveImage.height}
-          loading='lazy'
-        />
+        <source srcSet={webp.srcSet} type='image/webp' className={className} />
+        <img src={image.src} srcSet={image.srcSet} width={image.width} height={image.height} className={className} alt={alt}/>
       </picture>
-    </React.Fragment>
+      <style jsx>{style}</style>
+    </>
   )
 }
