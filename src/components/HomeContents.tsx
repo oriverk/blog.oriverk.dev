@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
-import { CustomImg, CustomAmpImg } from './general/Image'
+import { CustomImg } from './general/Image'
 
 import { HomeIcons } from './IconsWrapper'
 
