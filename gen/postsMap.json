@@ -1,15 +1,15 @@
 [
   {
-    "id": "20200922-algolia-search",
-    "title": "Algoliaでサイト内検索を実装する",
-    "create": "2020-09-22",
-    "update": "",
+    "id": "20201019-nextjs-amp",
+    "title": "Next.js製のサイトを途中からAMP化する",
+    "create": "2020-10-19",
+    "update": "2020-10-20",
     "tags": [
-      "algolia",
+      "amp",
       "nextjs",
-      "react"
+      "typescript"
     ],
-    "content": " First Algolia Algolia API sitemap mxl postsMap json postsMap json content page algolia algolia community algolia Conditional Requests"
+    "content": " introduction Too Long Didn t Read slug tsx getStaticPaths dynamic route Hybrid AMP https oriverk dev AMP playground amp component drawer sidebar amp playground playground AMP Accelerated Mobile Pages Google Twitter AMP Websites Stories Ads Email AMP AMP Websites reference amp dev - AMP HTML AMP format sample Next js AMP Next js AMP AMP AMP HTML export const config amp true hybrid amp script AMP First Page nextjs react client side amp optimizer Hybrid AMP Page HTML AMP AMP amp-optimizer amp-only hybrid useAmp React Hooks true false Hybrid AMP sample code Main _document jsx gtag image amp amp-img swipeable side-bar algolia algolia community amp algolia onclick amp-state setup amp-validator amp amp-validator google web store - AMP Validator modify components for amp style amp-custom css styled-jsx amp amp-img width `` head amp d ts AMP typescript amp d ts ` Property amp-img does not exist on type JSX IntrinsicElements ` stack overflow custom types Next js amp-image gist amp d ts amp-img next-optimized-images fallback React React issue# Next js issue # # # attribute code of amp-img amp-image-lightbox lightbox amp-image-lightbox amp-img on id amp-image-lightbox amp-image-lightbox code of amp-image-lightbox amp-image-slider photoshop div d ts code of amp-image-slider amp-carousel amp-carousel controls autoplay loop d ts amp-carousel others TOC Last References amp playground playground amp amp dev Vercel Next js - AMP Support mizchi dev - next js AMP mode Full AMP Recruit - Web AMP Next js AMP Web Stories AMP Stories TypeScript React How to add attributes to HTML element in TypeScript HTML "
   },
   {
     "id": "20200921-optimized-images",
