@@ -1,7 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { useAmp } from 'next/amp'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { BlogLayout } from '../../components/BlogLayout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
@@ -10,10 +9,6 @@ import blogConfig from '../../../blog.config'
 import { PostIcons } from '../../components/IconsWrapper'
 import { Date } from '../../components/general/Date'
 import { CustomImg } from '../../components/general/Image'
-
-export const config = {
-  amp: false
-}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getAllPostIds()
@@ -43,7 +38,6 @@ type PostProps = {
 }
 
 export default function Post({ postData }: { postData: PostProps }) {
-  const isAmp = useAmp()
   const url = `${blogConfig.baseUrl}/posts/${postData.id}/`
   const pageTags = postData.tags.join(' ') || 'react nextjs'
   const ogImage = postData.image ? blogConfig.baseUrl + postData.image : blogConfig.baseUrl + blogConfig.ogImage
@@ -57,31 +51,27 @@ export default function Post({ postData }: { postData: PostProps }) {
           <meta property='og:title' content={`${postData.title} | ${blogConfig.baseName}`} />
           <meta property='og:description' content={pageTags} />
           <meta property='og:image' content={ogImage} />
-          <meta property='og:url' content={ isAmp ? url + '?amp=1' : url } />
-          {isAmp || (
-            <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
-          ) }
+          <meta property='og:url' content={ url } />
+          <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
         </Head>
         <article className='content'>
-        <PostIcons title={postData.title} id={postData.id} tags={postData.tags} isAmp={isAmp} />
+        <PostIcons title={postData.title} id={postData.id} tags={postData.tags} />
           <h1>{postData.title}</h1>
           <div>
             <div>post on <Date dateString={postData.create} /></div>
             <div className='tags'>
               {postData.tags.map((tag) => (
-                <Link key={tag} href={ isAmp ? `/tags/${tag}/?amp=1` : `/tags/${tag}/`}>
+                <Link key={tag} href={ `/tags/${tag}/`}>
                   <a className='tag'>{tag}</a>
                 </Link>
               ))}</div>
           </div>
-          {/* {postData.image && (
+          {postData.image && (
             <a href={postData.image} target='_blank' rel='noopener noreferrer'>
               <CustomImg src={postData.image} alt='post cover image' />
             </a>
-          )} */}
-          {isAmp || (
-            <div dangerouslySetInnerHTML={{ __html: postData.content }} className='markdown' />
           )}
+          <div dangerouslySetInnerHTML={{ __html: postData.content }} className='markdown' />
         </article>
       </BlogLayout>
       <style jsx>{`

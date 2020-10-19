@@ -1,7 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { useAmp } from 'next/amp'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { getTags, getTagPosts } from '../../lib/posts'
 import { BlogLayout } from '../../components/BlogLayout'
@@ -9,10 +8,6 @@ import { CustomImg, CustomAmpImg } from '../../components/general/Image'
 import { Date } from '../../components/general/Date'
 import { TagIcons } from '../../components/IconsWrapper'
 import blogConfig from '../../../blog.config'
-
-export const config = {
-  amp: false
-}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths: string[] = getTags().map((tag) => {
@@ -48,7 +43,6 @@ type Props = {
 }
 
 export default function Tag({ tag, postsData }: Props) {
-  const isAmp = useAmp()
   const ogImage = blogConfig.baseUrl + blogConfig.ogImage
   const url = `${blogConfig.baseUrl}/tags/${tag}/`
 
@@ -62,23 +56,18 @@ export default function Tag({ tag, postsData }: Props) {
           <meta property='og:title' content={`${tag} | ${blogConfig.baseName}`} />
           <meta property='og:description' content={blogConfig.baseDesc} />
           <meta property='og:image' content={ogImage} />
-          <meta property='og:url' content={ isAmp ? url + '?amp=1' : url } />
+          <meta property='og:url' content={ url } />
         </Head>
-        <TagIcons isAmp={isAmp} />
+        <TagIcons />
         <article className='content'>
           <h1>{`${tag} Posts`}</h1>
           <div className='posts'>
             {postsData.map(({ id, title, create, update, tags, image }) => (
               <div className='postCard' key={id}>
-                <Link href={ isAmp ? `/posts/${id}/?amp=1` : `/posts/${id}/`}>
+                <Link href={ `/posts/${id}/`}>
                   <a className='postLink'>
                     <div className='imgOuter'>
-                      {isAmp ? (
-                        <CustomAmpImg src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
-                      ) :
-                        (
-                        <CustomImg src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
-                      )}
+                      <CustomImg src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
                     </div>
                     <div className='postDesc'>
                       {update ? (
@@ -92,7 +81,7 @@ export default function Tag({ tag, postsData }: Props) {
                 </Link>
                 <div className='tags'>
                   {tags.map((tag) => (
-                    <Link href={ isAmp ? `/tags/${tag}/?amp=1` : `/tags/${tag}/`} key={tag}>
+                    <Link href={ `/tags/${tag}/`} key={tag}>
                       <a className='tag' key={tag}>{tag}</a>
                     </Link>
                   ))}

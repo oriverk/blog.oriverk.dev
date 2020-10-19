@@ -64,7 +64,6 @@ const BlogIconsStyle = css`
 
 type Props = {
   openSearch?: any,
-  isAmp?: boolean
 }
 
 export const HomeIcons = ({ openSearch }: Props) => {
@@ -128,16 +127,16 @@ export const HomeIcons = ({ openSearch }: Props) => {
   )
 }
 
-export const PostsIcons = ({ isAmp }: Props) => {
+export const PostsIcons = () => {
   return (
     <React.Fragment>
       <div className='icons'>
-        <Link href={ isAmp ? '/tags/?amp=1' : '/tags/' }>
+        <Link href='/tags/'>
           <a className='icon tags' key='tags' aria-label='tags page link'>
             <IconContext.Provider value={{ className: 'react-icons' }}><MdLocalOffer /></IconContext.Provider>
           </a>
         </Link>
-        <Link href={ isAmp ? '/?amp=1' : '/' }>
+        <Link href='/'>
           <a className='icon home' key='home' aria-label='home link'>
             <IconContext.Provider value={{ className: 'react-icons' }}><MdHome /></IconContext.Provider>
           </a>
@@ -149,13 +148,12 @@ export const PostsIcons = ({ isAmp }: Props) => {
 }  
 
 type PostProps = {
-  isAmp?: boolean,
   id: string,
   title: string,
   tags?: string[]
 }
 
-export const PostIcons = ({ isAmp, title, id, tags }: PostProps ) => {
+export const PostIcons = ({ title, id, tags }: PostProps ) => {
   const [more, setMore] = React.useState(false)
   const tag = tags ? tags.join(',') : 'React, Next.js'
   const twitter = `https://twitter.com/share?text=${title}&hashtags=${tag}&url=${blogConfig.baseUrl}/posts/${id}/`
@@ -163,26 +161,26 @@ export const PostIcons = ({ isAmp, title, id, tags }: PostProps ) => {
   return (
     <React.Fragment>
       <div className='icons'>
-        <Link href={ isAmp ? '/tags/?amp=1' : '/tags/' }>
+        <Link href='/tags/'>
           <a className='icon tags' key='tags' aria-expanded={more} aria-label='tags page link'>
             <IconContext.Provider value={{ className: 'react-icons' }}><MdLocalOffer /></IconContext.Provider>
           </a>
         </Link>
-        <Link href={ isAmp ? '/posts/?amp=1' : '/posts/' }>
+        <Link href='/posts/'>
           <a className='icon posts' key='posts' aria-label='posts page link'>
             <IconContext.Provider value={{ className: 'react-icons' }}><MdCreate /></IconContext.Provider>
           </a>
         </Link>
-        <Link href={ isAmp ? '/?amp=1' : '/' }>
+        <Link href='/'>
           <a className='icon home' key='home' aria-expanded={more} aria-label='home link'>
             <IconContext.Provider value={{ className: 'react-icons' }}><MdHome /></IconContext.Provider>
           </a>
         </Link>
-        <a className='icon Hatena' key='hatena' aria-expanded={more} href={ isAmp ? hatena + '?amp=1' : hatena }  
+        <a className='icon Hatena' key='hatena' aria-expanded={more} href={ hatena }  
           aria-label='hatena share link' target='_blank' rel='noopener noreferrer'>
           <HatenaSvg class='homeIconSvg' />
         </a>
-        <a className='icon twitter' key='twitter' href={ isAmp ? twitter + '?amp=1' : twitter }
+        <a className='icon twitter' key='twitter' href={ twitter }
           aria-label='twitter share link' target='_blank' rel='noopener noreferrer'>
           <IconContext.Provider value={{ className: 'react-icons' }}><FaTwitter /></IconContext.Provider>
         </a>
@@ -200,16 +198,16 @@ export const PostIcons = ({ isAmp, title, id, tags }: PostProps ) => {
   )
 }  
 
-export const TagsIcons = ({ isAmp }: Props)  => {
+export const TagsIcons = ()  => {
   return (
     <React.Fragment>
       <div className='icons'>
-        <Link href={ isAmp ? '/posts/?amp=1' : '/posts/' }>
+        <Link href='/posts/'>
           <a className='icon posts' key='posts' aria-label='posts page link'>
             <IconContext.Provider value={{ className: 'react-icons' }}><MdCreate /></IconContext.Provider>
           </a>
         </Link>
-        <Link href={ isAmp ? '/?amp=1' : '/' }>
+        <Link href='/'>
           <a className='icon home' key='home' aria-label='home link'>
             <IconContext.Provider value={{ className: 'react-icons' }}><MdHome /></IconContext.Provider>
           </a>
@@ -220,22 +218,22 @@ export const TagsIcons = ({ isAmp }: Props)  => {
   )
 }  
 
-export const TagIcons = ({ isAmp }: Props)  => {
+export const TagIcons = ()  => {
   const [more, setMore] = React.useState(false)
   return (
     <React.Fragment>
       <div className='icons'>
-        <Link href={ isAmp ? '/posts/?amp=1' : '/posts/' }>
+        <Link href='/posts/'>
           <a className='icon posts' key='posts' aria-label='posts page link'>
             <IconContext.Provider value={{ className: 'react-icons' }}><MdCreate /></IconContext.Provider>
           </a>
         </Link>
-        <Link href={ isAmp ? '/tags/?amp=1' : '/tags/' }>
+        <Link href='/tags/'>
           <a className='icon tags' key='tags' aria-expanded={more} aria-label='tags page link'>
             <IconContext.Provider value={{ className: 'react-icons' }}><MdLocalOffer /></IconContext.Provider>
           </a>
         </Link>
-        <Link href={ isAmp ? '/?amp=1' : '/' }>
+        <Link href='/'>
           <a className='icon home' key='home' aria-expanded={more} aria-label='home link'>
             <IconContext.Provider value={{ className: 'react-icons' }}><MdHome /></IconContext.Provider>
           </a>

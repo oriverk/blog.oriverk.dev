@@ -1,16 +1,11 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { useAmp } from 'next/amp'
 import { getTags } from '../../lib/posts'
 import { BlogLayout } from '../../components/BlogLayout'
 import { TagsIcons } from '../../components/IconsWrapper'
 import blogConfig from '../../../blog.config'
 import { GetStaticProps } from 'next'
-
-export const config = {
-  amp: 'hybrid'
-}
 
 export const getStaticProps: GetStaticProps = async () => {
   const tags: string[] = getTags()
@@ -22,27 +17,24 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export default function Tag ({ tags }: { tags: string[] }) {
-  const isAmp = useAmp()
-  const ogImage = blogConfig.baseUrl + blogConfig.ogImage
-  const url = blogConfig.baseUrl + '/tags/'
   return (
     <React.Fragment>
-      <BlogLayout isAmp={isAmp}>
+      <BlogLayout>
         <Head>
           <title>Tags | {blogConfig.shortName}</title>
           <meta name='title' content={`Tags | ${blogConfig.baseName}`} />
           <meta name='description' content={blogConfig.desc} />
           <meta property='og:title' content={`Tags | ${blogConfig.baseName}`} />
           <meta property='og:description' content={blogConfig.desc} />
-          <meta property='og:image' content={ogImage} />
-          <meta property='og:url' content={ isAmp ? url + '?amp=1' : url } />
+          <meta property='og:image' content={blogConfig.baseUrl + blogConfig.ogImage} />
+          <meta property='og:url' content={ blogConfig.baseUrl + '/tags/' } />
         </Head>
-        <TagsIcons isAmp={isAmp} />
+        <TagsIcons />
         <article className='content'>
           <h1>Blog Tags</h1>
           <div className='tags'>
             {tags.map((tag) => (
-              <Link href={ isAmp ? `/tags/${tag}/?amp=1` : `/tags/${tag}/` } key={tag}>
+              <Link href={ `/tags/${tag}/` } key={tag}>
                 <a className='tag'>{tag}</a>
               </Link>
             ))}
