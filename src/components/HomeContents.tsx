@@ -50,30 +50,24 @@ const containerStyle = css`
 
 type Props = {
   openSearch?: React.ReactNode
-  isAmp?: boolean
 }
 
 type CustomLinkImg = {
   src?: string
   alt?: string
-  isAmp?: boolean
 }
 
-function CustomLinkImg({ src, alt, isAmp }: CustomLinkImg) {
+function CustomLinkImg({ src, alt }: CustomLinkImg) {
   return (
     <React.Fragment>
       <a href={src} target='_blank' rel='noopener noreferrer'>
-        {isAmp ? (
-          <CustomAmpImg src={src} alt={alt} />
-        ) : (
-          <CustomImg src={src} alt={alt} />
-        )}
+        <CustomImg src={src} alt={alt} />
       </a>
     </React.Fragment>
   )
 }
 
-export function Top({ openSearch, isAmp }: Props) {
+export function Top({ openSearch }: Props) {
   return (
     <React.Fragment>
       <section id='top'>
@@ -81,9 +75,7 @@ export function Top({ openSearch, isAmp }: Props) {
           <div className='title'>
             <h1 className='topTitle'>Kawano Yudai</h1>
             <h2 className='sub'>B.Agr.</h2>
-            {/* {!isAmp && ( */}
-              <HomeIcons openSearch={openSearch} isAmp={isAmp} />
-            {/* )} */}
+              <HomeIcons openSearch={openSearch} />
           </div>
         </div>
       </section>
@@ -150,14 +142,14 @@ export function Top({ openSearch, isAmp }: Props) {
   )
 }
 
-export function About({ isAmp }: Props) {
+export function About() {
   return (
     <>
       <section id='about'>
         <h2>About</h2>
         <div className='container'>
           <div className='left'>
-            <CustomLinkImg isAmp={isAmp}
+            <CustomLinkImg
               src='/assets/home/LongRidge700.jpg' alt='scenary from Long Ridge Lookout in Adelaide' />
           </div>
           <div className='right'>
@@ -181,7 +173,7 @@ export function About({ isAmp }: Props) {
   );
 }
 
-export function History({ isAmp }: Props) {
+export function History() {
   return (
     <>
       <section id='history'>
@@ -190,7 +182,7 @@ export function History({ isAmp }: Props) {
           <h3>Experience</h3>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg isAmp={isAmp}
+              <CustomLinkImg
                 src='/assets/home/sunrise.jpg' alt='no image' />
             </div>
             <div className='right'>
@@ -204,7 +196,7 @@ export function History({ isAmp }: Props) {
           <h3>Education</h3>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg isAmp={isAmp}
+              <CustomLinkImg
                 src='/assets/home/weeding700.jpg' alt='weeding robot motion picture' />
             </div>
             <div className='right'>
@@ -215,7 +207,7 @@ export function History({ isAmp }: Props) {
           </div>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg isAmp={isAmp}
+              <CustomLinkImg
                 src='/assets/home/miyazakiUniv.jpg' alt='logo of Miyazaki University' />
             </div>
             <div className='right'>
@@ -233,7 +225,7 @@ export function History({ isAmp }: Props) {
   )
 }
 
-export function Works({ isAmp }: Props) {
+export function Works() {
   return (
     <>
       <section id='works'>
@@ -241,7 +233,7 @@ export function Works({ isAmp }: Props) {
         <article>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg isAmp={isAmp}
+              <CustomLinkImg
                 src='/assets/home/20200915prtsc1000.jpg' alt='screenshot of this site' />
             </div>
             <div className='right'>
@@ -250,7 +242,7 @@ export function Works({ isAmp }: Props) {
               <br /><span>with Reactand Typescript</span>
               <ul>
                 <li>
-                  <Link href={isAmp ? '/posts/20200526-next-portfolio/?amp=1' : '/posts/20200526-next-portfolio/'} >
+                  <Link href='/posts/20200526-next-portfolio/' >
                     <a>Blog: Created portfolio site with Next.js</a>
                   </Link>
                 </li>
@@ -260,7 +252,7 @@ export function Works({ isAmp }: Props) {
           </div>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg isAmp={isAmp}
+              <CustomLinkImg
                 src='/assets/posts/202003/miyazaki-oss1.jpg' alt='screenshot of miyazaki corona taskforce site' />
             </div>
             <div className='right'>
@@ -269,7 +261,7 @@ export function Works({ isAmp }: Props) {
               <br /><span>with Vue.js, TypeScript</span>
               <ul>
                 <li>
-                  <Link href={isAmp ? '/posts/20200329-joined-corona-oss/?amp=1' : '/posts/20200329-joined-corona-oss/'}>
+                  <Link href='/posts/20200329-joined-corona-oss/'>
                     <a>Blog: Joined OSS for COVID-19 site of Miyazaki</a>
                   </Link>
                 </li>
@@ -280,7 +272,7 @@ export function Works({ isAmp }: Props) {
           </div>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg isAmp={isAmp}
+              <CustomLinkImg
                 src='/assets/home/codr700.jpg' alt='screenshot of code share web app' />
             </div>
             <div className='right'>
@@ -289,7 +281,7 @@ export function Works({ isAmp }: Props) {
               <br /><span>with RubyonRails, PostgreSQL, AWS S3</span>
               <ul>
                 <li>
-                  <Link href={isAmp ? '/posts/20191129-post-code2twitter/?amp=1' : '/posts/20191129-post-code2twitter/'}>
+                  <Link href='/posts/20191129-post-code2twitter/'>
                     <a>Blog: Wanna Share code on Twitter</a>
                   </Link>
                 </li>
@@ -299,7 +291,7 @@ export function Works({ isAmp }: Props) {
           </div>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg isAmp={isAmp}
+              <CustomLinkImg
                 src='/assets/home/githubPages1st700.jpg' alt='screenshot of my 1st githubpages' />
             </div>
             <div className='right'>
@@ -314,7 +306,7 @@ export function Works({ isAmp }: Props) {
           </div>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg isAmp={isAmp}
+              <CustomLinkImg
                 src='/assets/home/sunrise.jpg' alt='no image' />
             </div>
             <div className='right'>
@@ -323,7 +315,7 @@ export function Works({ isAmp }: Props) {
               <br /><span>with RubyonRails, PostgreSQL, Heroku</span>
               <ul>
                 <li>
-                  <Link href={isAmp ? '/posts/20190829-fe-exam/?amp=1' : '/posts/20190829-fe-exam/'}>
+                  <Link href='/posts/20190829-fe-exam/'>
                     <a>Blog: Reproduce ticket sales system in FE exam</a>
                   </Link>
                 </li>

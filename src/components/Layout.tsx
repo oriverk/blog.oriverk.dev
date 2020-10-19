@@ -6,10 +6,9 @@ import { AlgoliaSearch } from './search/AlgoliaSearch'
 
 type Props = {
   children: React.ReactNode
-  isAmp?: boolean
 }
 
-export function Layout({ children, isAmp }: Props) {
+export function Layout({ children }: Props) {
   const [state, setState] = React.useState({
     left: false,
     right: false
@@ -32,23 +31,6 @@ export function Layout({ children, isAmp }: Props) {
   }
 
   // drawer width is defined at _app.jsx
-  if (isAmp) {
-    return (
-      <React.Fragment>
-        <main>
-          {/* <Top isAmp /> */}
-          {children}
-        </main>
-        <style jsx>{`
-          main{
-            flex: 1;
-            width: 100%;
-          }
-        `}</style>
-      </React.Fragment>
-    )
-  }
-
   return (
     <React.Fragment>
       <SwipeableDrawer anchor='left' open={state['left']}

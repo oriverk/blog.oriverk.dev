@@ -67,14 +67,14 @@ type Props = {
   isAmp?: boolean
 }
 
-export const HomeIcons = ({ openSearch, isAmp }: Props) => {
+export const HomeIcons = ({ openSearch }: Props) => {
   return (
     <React.Fragment>
       <div>
         <a className='icon' key='search' onClick={openSearch} aria-label='search post'>
           <IconContext.Provider value={{ className: 'react-icons' }}><MdSearch /></IconContext.Provider>
         </a>
-        <Link href={ isAmp ? '/posts/?amp=1' : '/posts/' }>
+        <Link href='/posts/'>
           <a className='icon' key='posts' aria-label='posts page link'>
             <IconContext.Provider value={{ className: 'react-icons' }}><MdCreate /></IconContext.Provider>
           </a>
