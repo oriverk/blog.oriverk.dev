@@ -14,15 +14,13 @@ const { resolve } = require('path')
 
 const nextConfig = {
   webpack: (config) => {
-    // next-optimized-images
     config.resolve.alias['@public/assets'] = resolve(__dirname, 'public/assets')
     return config
   },
+  trailingSlash: true,
 }
 
 const nextPwaConfig = {
-  // Force a trailing slash, the default value is no trailing slash (false)
-  trailingSlash: true,
   pwa: {
     disable: process.env.NODE_ENV === 'development',
     dest: 'public'

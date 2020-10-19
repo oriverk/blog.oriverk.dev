@@ -27,13 +27,8 @@ export const CustomImg: React.FC<Props> = ({ src = '/assets/ImageIsMissing.png',
   return (
     <>
       <picture>
-        <source
-          srcSet={webp.srcSet} type='image/webp' className={className}
-        />
-        <img
-          src={image.src} srcSet={image.srcSet} width={image.width} height={image.height} className={className}
-          alt={alt} loading='lazy'
-        />
+        <source srcSet={webp.srcSet} type='image/webp' className={className} />
+        <img src={image.src} srcSet={image.srcSet} width={image.width} height={image.height} className={className} alt={alt}/>
       </picture>
       <style jsx>{style}</style>
     </>
