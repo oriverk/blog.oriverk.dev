@@ -1,4 +1,3 @@
-import React from 'react'
 import Link from 'next/link'
 import { Hits, Panel } from 'react-instantsearch-dom'
 // import { Hit as HitType, SearchState, AllSearchResults, AlgoliaError, }
@@ -18,8 +17,8 @@ const Hit = (props) => {
   const tags = hit.tags
   const date = hit.update || hit.create
   return (
-    <React.Fragment>
-      <Link href='/posts/[id]' as={`/posts/${hit.id}`} passHref>
+    <>
+      <Link href={`/posts/${hit.id}`} passHref>
         <a key={hit.id} className='result'>
           <Date dateString={date} />
           <div className='tags'>
@@ -51,14 +50,14 @@ const Hit = (props) => {
           color: #EEE;
         }
       `}</style>
-    </React.Fragment>
+    </>
   )
 }
 
 export const SearchResults = (props) => {
   const { error } = props
   return (
-    <React.Fragment>
+    <>
       <Panel>
         <CustomPoweredBy />
         <div className='hits'>
@@ -81,6 +80,6 @@ export const SearchResults = (props) => {
           overflow: hidden scroll;
         }
       `}</style>
-    </React.Fragment>
+    </>
   )
 }

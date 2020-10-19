@@ -1,14 +1,10 @@
-import React from 'react'
+import { useState } from 'react'
 import { SwipeableDrawer } from '@material-ui/core'
 import { LeftSwipeDrawer } from './DrawerLists'
 import { AlgoliaSearch } from './search/AlgoliaSearch'
 
-type Props = {
-  children: React.ReactNode
-}
-
-export function BlogLayout({ children }: Props) {
-  const [state, setState] = React.useState({
+export const BlogLayout: React.FC = ({ children }) => {
+  const [state, setState] = useState({
     left: false,
     right: false
   })
@@ -31,7 +27,7 @@ export function BlogLayout({ children }: Props) {
   
   // drawer width is defined at _app.jsx
   return (
-    <React.Fragment>
+    <>
       <SwipeableDrawer anchor='left' open={state['left']}
         onClose={toggleDrawer('left', false)} onOpen={toggleDrawer('left', true)}
       >
@@ -51,7 +47,6 @@ export function BlogLayout({ children }: Props) {
       <main>
         {children}
       </main>
-      {/* <nav className="nav"></nav> */}
       <style jsx>{`
         /* general */
         {/* .searchButtonContainer{
@@ -98,6 +93,6 @@ export function BlogLayout({ children }: Props) {
           z-index: 100;
         } */}
       `}</style>
-    </React.Fragment>
+    </>
   )
 }

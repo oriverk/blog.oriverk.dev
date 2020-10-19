@@ -1,11 +1,9 @@
-import React from 'react'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
 import { CustomImg } from './general/Image'
-
 import { HomeIcons } from './IconsWrapper'
 
-const containerStyle = css`
+const style = css`
   section {
     padding: 0 5%;
     flex-grow: 1;
@@ -52,24 +50,22 @@ type Props = {
   openSearch?: React.ReactNode
 }
 
-type CustomLinkImg = {
+type LinkImg = {
   src?: string
   alt?: string
 }
 
-function CustomLinkImg({ src, alt }: CustomLinkImg) {
+const CustomLinkImg: React.FC<LinkImg> = ({ src, alt }) => {
   return (
-    <React.Fragment>
-      <a href={src} target='_blank' rel='noopener noreferrer'>
-        <CustomImg src={src} alt={alt} />
-      </a>
-    </React.Fragment>
+    <a href={src} target='_blank' rel='noopener noreferrer'>
+      <CustomImg src={src} alt={alt} />
+    </a>
   )
 }
 
-export function Top({ openSearch }: Props) {
+export const Top: React.FC<Props> = ({ openSearch }) => {
   return (
-    <React.Fragment>
+    <>
       <section id='top'>
         <div className='topWrapper'>
           <div className='title'>
@@ -138,11 +134,11 @@ export function Top({ openSearch }: Props) {
           }
         }
       `}</style>
-    </React.Fragment>
+    </>
   )
 }
 
-export function About() {
+export const About: React.FC = () => {
   return (
     <>
       <section id='about'>
@@ -166,14 +162,12 @@ export function About() {
           margin: 0 auto .5rem;
         }
       `}</style>
-      <style jsx>
-        {containerStyle}
-      </style>
+      <style jsx>{style}</style>
     </>    
   );
 }
 
-export function History() {
+export const History: React.FC = () => {
   return (
     <>
       <section id='history'>
@@ -182,8 +176,7 @@ export function History() {
           <h3>Experience</h3>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg
-                src='/assets/home/sunrise.jpg' alt='no image' />
+              <CustomLinkImg src='/assets/home/sunrise.jpg' alt='no image' />
             </div>
             <div className='right'>
               <span>2017/04 - 2018/08</span>
@@ -196,8 +189,7 @@ export function History() {
           <h3>Education</h3>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg
-                src='/assets/home/weeding700.jpg' alt='weeding robot motion picture' />
+              <CustomLinkImg src='/assets/home/weeding700.jpg' alt='weeding robot motion picture' />
             </div>
             <div className='right'>
               <span>2015/04 - 2017/03</span>
@@ -207,8 +199,7 @@ export function History() {
           </div>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg
-                src='/assets/home/miyazakiUniv.jpg' alt='logo of Miyazaki University' />
+              <CustomLinkImg src='/assets/home/miyazakiUniv.jpg' alt='logo of Miyazaki University' />
             </div>
             <div className='right'>
               <span>2013/04 - 2017/03 :</span>
@@ -218,14 +209,12 @@ export function History() {
           </div>
         </article>
       </section>
-      <style jsx>
-        {containerStyle}
-      </style>
+      <style jsx>{style}</style>
     </>
   )
 }
 
-export function Works() {
+export const Works: React.FC = () => {
   return (
     <>
       <section id='works'>
@@ -233,8 +222,7 @@ export function Works() {
         <article>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg
-                src='/assets/home/20200915prtsc1000.jpg' alt='screenshot of this site' />
+              <CustomLinkImg src='/assets/home/20200915prtsc1000.jpg' alt='screenshot of this site' />
             </div>
             <div className='right'>
               <b>This portfolio site as resume and tech blog</b>
@@ -252,8 +240,7 @@ export function Works() {
           </div>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg
-                src='/assets/posts/202003/miyazaki-oss1.jpg' alt='screenshot of miyazaki corona taskforce site' />
+              <CustomLinkImg src='/assets/posts/202003/miyazaki-oss1.jpg' alt='screenshot of miyazaki corona taskforce site' />
             </div>
             <div className='right'>
               <b>Miyazaki COVID-19 Task Force site</b>
@@ -272,8 +259,7 @@ export function Works() {
           </div>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg
-                src='/assets/home/codr700.jpg' alt='screenshot of code share web app' />
+              <CustomLinkImg src='/assets/home/codr700.jpg' alt='screenshot of code share web app' />
             </div>
             <div className='right'>
               <b>Coder0</b>
@@ -291,23 +277,21 @@ export function Works() {
           </div>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg
-                src='/assets/home/githubPages1st700.jpg' alt='screenshot of my 1st githubpages' />
+              <CustomLinkImg src='/assets/home/githubPages1st700.jpg' alt='screenshot of my 1st githubpages' />
             </div>
             <div className='right'>
               <b>GithubPages</b>
               <br /><span>:My 1st GithubPages</span>
               <br /><span>with Ruby, Jekyll</span>
               <ul>
-                <li><Link href='/posts/[id]' as='/posts/20190818-use-jekyll'><a>Blog: Build GithubPages with Jekyll</a></Link></li>
+                <li><Link href='/posts/20190818-use-jekyll'><a>Blog: Build GithubPages with Jekyll</a></Link></li>
                 <li><a href='https://github.com/oriverk/oriverk.github.io' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
               </ul>
             </div>
           </div>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg
-                src='/assets/home/sunrise.jpg' alt='no image' />
+              <CustomLinkImg src='/assets/home/sunrise.jpg' alt='no image' />
             </div>
             <div className='right'>
               <b>Ticket sales System</b>
@@ -328,9 +312,7 @@ export function Works() {
           </div>
         </article>
       </section>
-      <style jsx>
-        {containerStyle}
-      </style>
+      <style jsx>{style}</style>
     </>  
   );
 }

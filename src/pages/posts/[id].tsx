@@ -1,4 +1,3 @@
-import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { GetStaticProps, GetStaticPaths } from 'next'
@@ -21,14 +20,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postData = await getPostData(params.id as string)
   // await is only for remark
+  const id = postData.id
+  const title = postData.title
+  const create = postData.create
+  const tags = postData.tags
+  const image = postData.image
+  const content = postData.content
   return {
     props: {
-      postData,
+      id, title, create, tags, image, content
     },
   }
 }
 
-type PostProps = {
+type Props = {
   id: string,
   title: string,
   create: string,
@@ -37,41 +42,40 @@ type PostProps = {
   content: string
 }
 
-export default function Post({ postData }: { postData: PostProps }) {
-  const url = `${blogConfig.baseUrl}/posts/${postData.id}/`
-  const pageTags = postData.tags.join(' ') || 'react nextjs'
-  const ogImage = postData.image ? blogConfig.baseUrl + postData.image : blogConfig.baseUrl + blogConfig.ogImage
+const Component: React.FC<Props> = ({ id, title, create, tags, image, content })  => {
+  const pageTags = tags.join(' ') || 'react nextjs'
+  const ogImage = image ? blogConfig.baseUrl + image : blogConfig.baseUrl + blogConfig.ogImage
   return (
-    <React.Fragment>
+    <>
       <BlogLayout>
         <Head>
-          <title>{`${postData.title} | ${blogConfig.shortName}`}</title>
-          <meta name='title' content={`${postData.title} | ${blogConfig.baseName}`} />
+          <title>{`${title} | ${blogConfig.shortName}`}</title>
+          <meta name='title' content={`${title} | ${blogConfig.baseName}`} />
           <meta name='description' content={pageTags} />
-          <meta property='og:title' content={`${postData.title} | ${blogConfig.baseName}`} />
+          <meta property='og:title' content={`${title} | ${blogConfig.baseName}`} />
           <meta property='og:description' content={pageTags} />
           <meta property='og:image' content={ogImage} />
-          <meta property='og:url' content={ url } />
+          <meta property='og:url' content={`${blogConfig.baseUrl}/posts/${id}/` } />
           <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
         </Head>
         <article className='content'>
-        <PostIcons title={postData.title} id={postData.id} tags={postData.tags} />
-          <h1>{postData.title}</h1>
+        <PostIcons title={title} id={id} tags={tags} />
+          <h1>{title}</h1>
           <div>
-            <div>post on <Date dateString={postData.create} /></div>
+            <div>post on <Date dateString={create} /></div>
             <div className='tags'>
-              {postData.tags.map((tag) => (
+              {tags.map((tag) => (
                 <Link key={tag} href={ `/tags/${tag}/`}>
                   <a className='tag'>{tag}</a>
                 </Link>
               ))}</div>
           </div>
-          {postData.image && (
-            <a href={postData.image} target='_blank' rel='noopener noreferrer'>
-              <CustomImg src={postData.image} alt='post cover image' />
+          {image && (
+            <a href={image} target='_blank' rel='noopener noreferrer'>
+              <CustomImg src={image} alt='post cover image' />
             </a>
           )}
-          <div dangerouslySetInnerHTML={{ __html: postData.content }} className='markdown' />
+          <div dangerouslySetInnerHTML={{ __html: content }} className='markdown' />
         </article>
       </BlogLayout>
       <style jsx>{`
@@ -108,6 +112,8 @@ export default function Post({ postData }: { postData: PostProps }) {
           background-color: #424242;
         }
       `}</style>
-    </React.Fragment>
+    </>
   )
 }
+
+export default Component

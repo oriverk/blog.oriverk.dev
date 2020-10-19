@@ -1,6 +1,4 @@
-import React from 'react'
-
-type ImageProps = {
+type Props = {
   src?: string,
   alt?: string,
   imgStyle?: React.CSSProperties
@@ -8,12 +6,12 @@ type ImageProps = {
 }
 
 // external image => do not optimize
-export function CustomImg({ src = '/assets/ImageIsMissing.png', alt = 'no alt', className }: ImageProps) {
+export const CustomImg: React.FC<Props> = ({ src = '/assets/ImageIsMissing.png', alt = 'no alt', className }) => {
   const Src = src.replace(/^.?\/assets\/?/, '')
   const webp = require(`@public/assets/${Src}?resize&format=webp`)
   const image = require(`@public/assets/${Src}?resize`)
   return (
-    <React.Fragment>
+    <>
       <picture>
         <source
           srcSet={webp.srcSet} type='image/webp' className={className}
@@ -34,6 +32,6 @@ export function CustomImg({ src = '/assets/ImageIsMissing.png', alt = 'no alt', 
           left: 0;
         }
       `}</style>
-    </React.Fragment>
+    </>
   )
 }

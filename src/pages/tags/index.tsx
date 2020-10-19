@@ -1,4 +1,3 @@
-import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { getTags } from '../../lib/posts'
@@ -16,9 +15,13 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-export default function Tag ({ tags }: { tags: string[] }) {
+type Props = {
+  tags: string[]
+}
+
+const Component: React.FC<Props> = ({tags}) => {
   return (
-    <React.Fragment>
+    <>
       <BlogLayout>
         <Head>
           <title>Tags | {blogConfig.shortName}</title>
@@ -66,6 +69,8 @@ export default function Tag ({ tags }: { tags: string[] }) {
           background-color: #424242;
         }
       `}</style>
-    </React.Fragment>
+    </>
   )
 }
+
+export default Component

@@ -1,4 +1,3 @@
-import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { GetStaticProps, GetStaticPaths } from 'next'
@@ -42,12 +41,9 @@ type Props = {
   }[]
 }
 
-export default function Tag({ tag, postsData }: Props) {
-  const ogImage = blogConfig.baseUrl + blogConfig.ogImage
-  const url = `${blogConfig.baseUrl}/tags/${tag}/`
-
+const Component: React.FC<Props> = ({ tag, postsData }) => {
   return (
-    <React.Fragment>
+    <>
       <BlogLayout>
         <Head>
           <title>{`${tag} | ${blogConfig.baseName}`}</title>
@@ -55,8 +51,8 @@ export default function Tag({ tag, postsData }: Props) {
           <meta name='description' content={blogConfig.desc} />
           <meta property='og:title' content={`${tag} | ${blogConfig.baseName}`} />
           <meta property='og:description' content={blogConfig.baseDesc} />
-          <meta property='og:image' content={ogImage} />
-          <meta property='og:url' content={ url } />
+          <meta property='og:image' content={blogConfig.baseUrl + blogConfig.ogImage} />
+          <meta property='og:url' content={`${blogConfig.baseUrl}/tags/${tag}/` } />
         </Head>
         <TagIcons />
         <article className='content'>
@@ -166,6 +162,8 @@ export default function Tag({ tag, postsData }: Props) {
           }
         }
       `}</style>
-    </React.Fragment>
+    </>
   )
 }
+
+export default Component

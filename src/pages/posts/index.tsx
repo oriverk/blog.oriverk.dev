@@ -1,4 +1,3 @@
-import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { BlogLayout } from '../../components/BlogLayout'
@@ -18,9 +17,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-export default function Posts ({
-  postsData
-}: {
+type Props = {
   postsData: {
     id: string
     title: string
@@ -28,11 +25,12 @@ export default function Posts ({
     update?: string
     tags?: string[]
     image?: string
-  }[],
-}) {
-  const ogImage = blogConfig.baseUrl + blogConfig.ogImage
+  }[]
+}
+
+const Component = ({ postsData }: Props) => {
   return (
-    <React.Fragment>
+    <>
       <BlogLayout>
         <Head>
           <title>Blog | {blogConfig.shortName}</title>
@@ -40,7 +38,7 @@ export default function Posts ({
           <meta name='description' content={blogConfig.desc} />
           <meta property='og:title' content={`Blog | ${blogConfig.baseName}`} />
           <meta property='og:description' content={blogConfig.desc} />
-          <meta property='og:image' content={ogImage} />
+          <meta property='og:image' content={blogConfig.baseUrl + blogConfig.ogImage} />
           <meta property='og:url' content={ blogConfig.baseUrl + '/posts/' } />
         </Head>
         <article className='content'>
@@ -158,6 +156,8 @@ export default function Posts ({
           }
         }
       `}</style>
-    </React.Fragment>
+    </>
   )
 }
+
+export default Component

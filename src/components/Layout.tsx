@@ -1,15 +1,11 @@
-import React from 'react'
+import { useState } from 'react'
 import { SwipeableDrawer } from '@material-ui/core'
 import { LeftSwipeDrawer } from './DrawerLists'
 import { AlgoliaSearch } from './search/AlgoliaSearch'
 // import { Top } from './HomeContents'
 
-type Props = {
-  children: React.ReactNode
-}
-
-export function Layout({ children }: Props) {
-  const [state, setState] = React.useState({
+export const Layout: React.FC = ({ children }) => {
+  const [state, setState] = useState({
     left: false,
     right: false
   })
@@ -32,7 +28,7 @@ export function Layout({ children }: Props) {
 
   // drawer width is defined at _app.jsx
   return (
-    <React.Fragment>
+    <>
       <SwipeableDrawer anchor='left' open={state['left']}
         onClose={toggleDrawer('left', false)} onOpen={toggleDrawer('left', true)}
       >
@@ -69,6 +65,6 @@ export function Layout({ children }: Props) {
           width: 100%;
         }
       `}</style>
-    </React.Fragment>
+    </>
   )
 }

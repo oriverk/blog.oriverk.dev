@@ -1,8 +1,6 @@
-import React from 'react'
-
-export const LeftSwipeDrawer = () => {
+export const LeftSwipeDrawer: React.FC = () => {
   return (
-    <React.Fragment>
+    <>
       <div>
         <div className='desc'>
           <p>Kawano Yudai</p>
@@ -22,6 +20,6 @@ export const LeftSwipeDrawer = () => {
           text-align: center;
         }
       `}</style>
-    </React.Fragment>
+    </>
   )
 }
