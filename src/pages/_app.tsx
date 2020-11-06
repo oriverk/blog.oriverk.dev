@@ -83,84 +83,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           font-weight: 700;
         }
 
-        code {
-          display: inline-block;
-          margin: .1rem .3rem;
-          padding: 0 .4rem;
-          background-color: #555;
-          color: #EEE;
-        }
-
-        pre {
-          border: .8px solid grey;
-          border-radius: 0.25rem;
-          display: block;
-          white-space: pre;
-          background-color: #1E1E1E;
-          width: 100%;
-          max-width: 1000px;
-          margin: 1rem 0;
-          overflow: auto;
-        }
-
         source, img {
           width: 100%;
           height: auto;
           object-fit: cover;
-        }
-
-        blockquote {
-          color: #BBB;
-          border-left: 5px solid #BBB;
-          margin: 1rem 0;
-          padding: .5rem 0 .5rem .5rem;
-        }
-
-        .react-icons, .homeIconSvg{
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          fill: #424242;
-          width: 1.25rem;
-          height: 1.25rem;
-        }
-
-        .heading-link{
-          color: #EEE;
-          border-bottom: .1rem solid #50CAF9;
-        }
-        .heading-link:hover{
-          color: #50CAF9;
-        }
-        .heading-link:hover::before{
-          color: #50CAF9;
-        }
-
-        h2 > .heading-link{
-          font-size: 1.5rem;
-        }
-        h2 > .heading-link::before{
-          content: '## ';
-        }
-        h3 > .heading-link{
-          font-size: 1.17rem;
-        }
-        h3 > .heading-link::before{
-          content: '### ';
-        }
-        h4 > .heading-link{
-          font-size: 1rem;
-        }
-        h4 > .heading-link::before{
-          content: '#### ';
-        }
-
-        @media ( min-width: 960px ){
-          .react-icons, .homeIconSvg{
-            width: 1.5rem;
-            height: 1.5rem;
-          }
         }
       `}</style>
     </>
