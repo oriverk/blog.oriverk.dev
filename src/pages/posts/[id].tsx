@@ -67,6 +67,63 @@ h1{
 .tag:hover, .tag:active{
   background-color: #424242;
 }
+
+:global(.heading-link){
+  color: #EEE;
+  border-bottom: .1rem solid #50CAF9;
+}
+:global(.heading-link):hover{
+  color: #50CAF9;
+}
+:global(.heading-link):hover::before{
+  color: #50CAF9;
+}
+
+:global(h2 > .heading-link){
+  font-size: 1.5rem;
+}
+:global(h2 > .heading-link)::before{
+  content: '## ';
+}
+:global(h3 > .heading-link){
+  font-size: 1.17rem;
+}
+:global(h3 > .heading-link)::before{
+  content: '### ';
+}
+:global(h4 > .heading-link){
+  font-size: 1rem;
+}
+:global(h4 > .heading-link)::before{
+  content: '#### ';
+}
+
+code :global(.markdown.content) {
+  display: inline-block;
+  margin: .1rem .3rem;
+  padding: 0 .4rem;
+  background-color: #555;
+  color: #EEE;
+}
+
+pre :global(.markdown.content){
+  border: .8px solid grey;
+  border-radius: 0.25rem;
+  display: block;
+  white-space: pre;
+  background-color: #1E1E1E;
+  width: 100%;
+  max-width: 1000px;
+  margin: 1rem 0;
+  overflow: auto;
+}
+
+blockquote :global(.markdown.content){
+  color: #BBB;
+  border-left: 5px solid #BBB;
+  margin: 1rem 0;
+  padding: .5rem 0 .5rem .5rem;
+}
 `
 
 type Props = {
@@ -94,7 +151,7 @@ const Component: React.FC<Props> = ({ id, title, create, tags, image, content })
           <meta property='og:url' content={`${blogConfig.baseUrl}/posts/${id}/` } />
           <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
         </Head>
-        <article className='content'>
+        <article className='markdown content'>
         <PostIcons title={title} id={id} tags={tags} />
           <h1>{title}</h1>
           <div>
