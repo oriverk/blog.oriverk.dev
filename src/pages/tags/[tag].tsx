@@ -3,7 +3,7 @@ import Link from 'next/link'
 import css from 'styled-jsx/css'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { getTags, getTagPosts } from '../../lib/posts'
-import { BlogLayout } from '../../components/BlogLayout'
+import { Layout } from '../../components/Layout'
 import { CustomImg } from '../../components/general/Image'
 import { Date } from '../../components/general/Date'
 import { TagIcons } from '../../components/IconsWrapper'
@@ -121,7 +121,7 @@ type Props = {
 const Component: React.FC<Props> = ({ tag, postsData }) => {
   return (
     <>
-      <BlogLayout>
+      <Layout>
         <Head>
           <title>{`${tag} | ${blogConfig.baseName}`}</title>
           <meta name='title' content={`${tag} | ${blogConfig.baseName}`} />
@@ -163,7 +163,7 @@ const Component: React.FC<Props> = ({ tag, postsData }) => {
             ))}
           </div>
         </article>
-      </BlogLayout>
+      </Layout>
       <style jsx>{style}</style>
     </>
   )
