@@ -1,7 +1,7 @@
 import { indexName, searchClient } from './SearchClients'
 import { Configure, InstantSearch } from 'react-instantsearch-dom'
-import { CustomSearchBox } from './Connector'
-import { SearchResults } from './SearchResults'
+import { CustomSearchBox } from './widget/SearchBox'
+import { SearchResults } from './widget/SearchResults'
 
 export const AlgoliaSearch: React.FC = () => {
   return (
