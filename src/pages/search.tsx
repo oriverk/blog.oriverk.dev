@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import css from 'styled-jsx/css';
-import { SearchLayout } from '../components/SearchLaytout';
+import { BlogLayout } from '../components/BlogLayout';
 import blogConfig from '../../blog.config';
 import { AlgoliaSearch } from '../components/search/AlgoliaSearch'
 
@@ -19,7 +19,7 @@ const style = css`
 
 const Component: React.FC = () => {
   return (
-    <SearchLayout>
+    <BlogLayout>
       <Head >
         <title>{blogConfig.baseName}</title>
         <meta name='title' content={blogConfig.baseName} />
@@ -36,7 +36,7 @@ const Component: React.FC = () => {
         </div>
       </article>
       <style jsx>{style}</style>
-    </SearchLayout>
+    </BlogLayout>
   )
 }
 
