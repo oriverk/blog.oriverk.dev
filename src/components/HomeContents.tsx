@@ -3,10 +3,6 @@ import css from 'styled-jsx/css'
 import { CustomImg } from './general/Image'
 import { HomeIcons } from './IconsWrapper'
 
-type Props = {
-  openSearch?: React.ReactNode
-}
-
 type LinkImg = {
   src?: string
   alt?: string
@@ -80,7 +76,7 @@ section {
 }
 `
 
-export const Top: React.FC<Props> = ({ openSearch }) => {
+export const Top: React.FC = () => {
   return (
     <>
       <section id='top'>
@@ -88,7 +84,7 @@ export const Top: React.FC<Props> = ({ openSearch }) => {
           <div className='title'>
             <h1 className='topTitle'>Kawano Yudai</h1>
             <h2 className='sub'>B.Agr.</h2>
-              <HomeIcons openSearch={openSearch} />
+              <HomeIcons />
           </div>
         </div>
       </section>
