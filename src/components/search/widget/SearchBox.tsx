@@ -54,7 +54,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 const SearchBox = ({ currentRefinement, refine }) => {
   const router = useRouter()
-
+  
   function handleOnChange(e) {
     e.preventDefault();
     refine(e.currentTarget.value)
@@ -64,7 +64,6 @@ const SearchBox = ({ currentRefinement, refine }) => {
         undefined,
         { shallow: true }
       )
-      console.dir(router)
     } else {
       router.push(router.pathname, undefined, { shallow: true })
     }
