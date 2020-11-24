@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
-import { BlogLayout } from '../../components/BlogLayout'
+import { Layout } from '../../components/Layout'
 import { CustomImg } from '../../components/general/Image'
 import blogConfig from '../../../blog.config'
 import { getSortedPostsData } from '../../lib/posts'
@@ -114,7 +114,7 @@ type Props = {
 const Component = ({ postsData }: Props) => {
   return (
     <>
-      <BlogLayout>
+      <Layout>
         <Head>
           <title>Blog | {blogConfig.shortName}</title>
           <meta name='title' content={`Blog | ${blogConfig.baseName}`} />
@@ -157,7 +157,7 @@ const Component = ({ postsData }: Props) => {
             ))}
           </div>
         </article>
-      </BlogLayout>
+      </Layout>
       <style jsx>{style}</style>
     </>
   )

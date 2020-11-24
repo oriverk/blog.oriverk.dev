@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
 import { getTags } from '../../lib/posts'
-import { BlogLayout } from '../../components/BlogLayout'
+import { Layout } from '../../components/Layout'
 import { TagsIcons } from '../../components/IconsWrapper'
 import blogConfig from '../../../blog.config'
 import { GetStaticProps } from 'next'
@@ -49,7 +49,7 @@ type Props = {
 const Component: React.FC<Props> = ({tags}) => {
   return (
     <>
-      <BlogLayout>
+      <Layout>
         <Head>
           <title>Tags | {blogConfig.shortName}</title>
           <meta name='title' content={`Tags | ${blogConfig.baseName}`} />
@@ -70,7 +70,7 @@ const Component: React.FC<Props> = ({tags}) => {
             ))}
           </div>
         </article>
-      </BlogLayout>
+      </Layout>
       <style jsx>{style}</style>
     </>
   )

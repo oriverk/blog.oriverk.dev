@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
 import { GetStaticProps, GetStaticPaths } from 'next'
-import { BlogLayout } from '../../components/BlogLayout'
+import { Layout } from '../../components/Layout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 // import { getFetchPath } from '../../components/HeaderImg'
 import blogConfig from '../../../blog.config'
@@ -140,7 +140,7 @@ const Component: React.FC<Props> = ({ id, title, create, tags, image, content })
   const ogImage = image ? blogConfig.baseUrl + image : blogConfig.baseUrl + blogConfig.ogImage
   return (
     <>
-      <BlogLayout>
+      <Layout>
         <Head>
           <title>{`${title} | ${blogConfig.shortName}`}</title>
           <meta name='title' content={`${title} | ${blogConfig.baseName}`} />
@@ -170,7 +170,7 @@ const Component: React.FC<Props> = ({ id, title, create, tags, image, content })
           )}
           <div dangerouslySetInnerHTML={{ __html: content }} className='markdown' />
         </article>
-      </BlogLayout>
+      </Layout>
       <style jsx>{style}</style>
     </>
   )
