@@ -107,29 +107,27 @@ const columnStyle = css`
 }
 `
 
-type Props = {
-  openSearch?: any,
-}
-
-export const HomeIcons: React.FC<Props> = ({ openSearch }) => {
+export const HomeIcons: React.FC = () => {
   return (
-    <>
+    <IconContext.Provider value={{ className: 'react-icons' }}>
       <div>
-        <a className='icon' key='search' onClick={openSearch} aria-label='search post'>
-          <IconContext.Provider value={{ className: 'react-icons' }}><MdSearch /></IconContext.Provider>
-        </a>
+        <Link href='/search/'>
+          <a className='icon' key='search' aria-label='search posts'>
+            <MdSearch />
+          </a>
+        </Link>
         <Link href='/posts/'>
           <a className='icon' key='posts' aria-label='posts page link'>
-            <IconContext.Provider value={{ className: 'react-icons' }}><MdCreate /></IconContext.Provider>
+            <MdCreate />
           </a>
         </Link>
         <a className='icon github' key='github' href={`https://github.com/${blogConfig.sns.github}`}
           aria-label='github account link' target='_blank' rel='noopener noreferrer'>
-          <IconContext.Provider value={{ className: 'react-icons' }}><FaGithub /></IconContext.Provider>
+          <FaGithub />
         </a>
         <a className='icon linkedin' key='linkedin' href={`https://www.linkedin.com/in/${blogConfig.sns.linkedin}`}
           aria-label='linkedin accountlink' target='_blank' rel='noopener noreferrer'>
-          <IconContext.Provider value={{ className: 'react-icons' }}><FaLinkedin /></IconContext.Provider>
+          <FaLinkedin />
         </a>
         <a className='icon wantedly' key='wantedly' href={`https://www.wantedly.com/users/${blogConfig.sns.wantedly}`}
           aria-label='wantedly account link' target='_blank' rel='noopener noreferrer'>
@@ -137,33 +135,38 @@ export const HomeIcons: React.FC<Props> = ({ openSearch }) => {
         </a>
         <a className='icon twitter' key='twitter' href={`https://twitter.com/${blogConfig.sns.twitter}`}  
           aria-label='twitter account link' target='_blank' rel='noopener noreferrer'>
-          <IconContext.Provider value={{ className: 'react-icons' }}><FaTwitter /></IconContext.Provider>
+          <FaTwitter />
         </a>
       </div>
       <style jsx>{commonStyle}</style>
       <style jsx>{homeStyle}</style>
-    </>
+    </IconContext.Provider>
   )
 }
 
-export const PostsIcons: React.FC<Props> = ({ openSearch }) => {
+export const PostsIcons: React.FC = () => {
   return (
-    <>
+    <IconContext.Provider value={{ className: 'react-icons' }}>
       <div className='icons'>
+        <Link href='/search/'>
+          <a className='icon' key='search' aria-label='search posts'>
+            <MdSearch />
+          </a>
+        </Link>
         <Link href='/tags/'>
           <a className='icon tags' key='tags' aria-label='tags page link'>
-            <IconContext.Provider value={{ className: 'react-icons' }}><MdLocalOffer /></IconContext.Provider>
+            <MdLocalOffer />
           </a>
         </Link>
         <Link href='/'>
           <a className='icon home' key='home' aria-label='home link'>
-            <IconContext.Provider value={{ className: 'react-icons' }}><MdHome /></IconContext.Provider>
+            <MdHome />
           </a>
         </Link>
       </div>
       <style jsx>{commonStyle}</style>
       <style jsx>{columnStyle}</style>
-    </>
+    </IconContext.Provider>
   )
 }  
 
@@ -179,21 +182,27 @@ export const PostIcons: React.FC<PostProps> = ({ title, id, tags }) => {
   const twitter = `https://twitter.com/share?text=${title}&hashtags=${tag}&url=${blogConfig.baseUrl}/posts/${id}/`
   const hatena = `https://b.hatena.ne.jp/entry/${blogConfig.baseUrl}/posts/${id}/`
   return (
-    <>
+    <IconContext.Provider value={{ className: 'react-icons' }}>
+      
       <div className='icons'>
+        <Link href='/search/'>
+          <a className='icon' key='search' aria-label='search posts'>
+            <MdSearch />
+          </a>
+        </Link>
         <Link href='/tags/'>
           <a className='icon tags' key='tags' aria-expanded={more} aria-label='tags page link'>
-            <IconContext.Provider value={{ className: 'react-icons' }}><MdLocalOffer /></IconContext.Provider>
+            <MdLocalOffer />
           </a>
         </Link>
         <Link href='/posts/'>
           <a className='icon posts' key='posts' aria-label='posts page link'>
-            <IconContext.Provider value={{ className: 'react-icons' }}><MdCreate /></IconContext.Provider>
+            <MdCreate />
           </a>
         </Link>
         <Link href='/'>
           <a className='icon home' key='home' aria-expanded={more} aria-label='home link'>
-            <IconContext.Provider value={{ className: 'react-icons' }}><MdHome /></IconContext.Provider>
+            <MdHome />
           </a>
         </Link>
         <a className='icon Hatena' key='hatena' aria-expanded={more} href={ hatena }  
@@ -202,76 +211,87 @@ export const PostIcons: React.FC<PostProps> = ({ title, id, tags }) => {
         </a>
         <a className='icon twitter' key='twitter' href={ twitter }
           aria-label='twitter share link' target='_blank' rel='noopener noreferrer'>
-          <IconContext.Provider value={{ className: 'react-icons' }}><FaTwitter /></IconContext.Provider>
+          <FaTwitter />
         </a>
         <a className='icon close' key='close' aria-label='close link icons'
           onClick={() => setMore(false)} aria-expanded={more} >
-          <IconContext.Provider value={{ className: 'react-icons' }}><MdClose /></IconContext.Provider>
+          <MdClose />
         </a>
         <a className='icon more' key='more' aria-label='expand link icons'
           onClick={() => setMore(true)} aria-expanded={!more} >
-          <IconContext.Provider value={{ className: 'react-icons' }}><MdMoreHoriz /></IconContext.Provider>
+          <MdMoreHoriz />
         </a>
       </div>
       <style jsx>{commonStyle}</style>
       <style jsx>{columnStyle}</style>
-    </>    
+    </IconContext.Provider>
   )
 }  
 
 export const TagsIcons: React.FC = () => {
   return (
-    <>
+    <IconContext.Provider value={{ className: 'react-icons' }}>
       <div className='icons'>
+        <Link href='/search/'>
+          <a className='icon' key='search' aria-label='search posts'>
+            <MdSearch />
+          </a>
+        </Link>
         <Link href='/posts/'>
           <a className='icon posts' key='posts' aria-label='posts page link'>
-            <IconContext.Provider value={{ className: 'react-icons' }}><MdCreate /></IconContext.Provider>
+            <MdCreate />
           </a>
         </Link>
         <Link href='/'>
           <a className='icon home' key='home' aria-label='home link'>
-            <IconContext.Provider value={{ className: 'react-icons' }}><MdHome /></IconContext.Provider>
+            <MdHome />
           </a>
         </Link>
       </div>
       <style jsx>{commonStyle}</style>
       <style jsx>{columnStyle}</style>
-    </>    
+    </IconContext.Provider>
   )
 }  
 
 export const TagIcons: React.FC = ()  => {
   const [more, setMore] = useState(false)
   return (
-    <>
+    <IconContext.Provider value={{ className: 'react-icons' }}>
+      
       <div className='icons'>
+        <Link href='/search/'>
+          <a className='icon' key='search' aria-label='search posts'>
+            <MdSearch />
+          </a>
+        </Link>
         <Link href='/posts/'>
           <a className='icon posts' key='posts' aria-label='posts page link'>
-            <IconContext.Provider value={{ className: 'react-icons' }}><MdCreate /></IconContext.Provider>
+            <MdCreate />
           </a>
         </Link>
         <Link href='/tags/'>
           <a className='icon tags' key='tags' aria-expanded={more} aria-label='tags page link'>
-            <IconContext.Provider value={{ className: 'react-icons' }}><MdLocalOffer /></IconContext.Provider>
+            <MdLocalOffer />
           </a>
         </Link>
         <Link href='/'>
           <a className='icon home' key='home' aria-expanded={more} aria-label='home link'>
-            <IconContext.Provider value={{ className: 'react-icons' }}><MdHome /></IconContext.Provider>
+            <MdHome />
           </a>
         </Link>
         <a className='icon close' key='close'  
           aria-expanded={more} onClick={() => setMore(false)} aria-label='close link icons'>
-          <IconContext.Provider value={{ className: 'react-icons' }}><MdClose /></IconContext.Provider>
+          <MdClose />
         </a>
         <a className='icon more' key='more'
           aria-expanded={!more} onClick={() => setMore(true)} aria-label='expand link icons'>
-          <IconContext.Provider value={{ className: 'react-icons' }}><MdMoreHoriz /></IconContext.Provider>
+          <MdMoreHoriz />
         </a>
       </div>
       <style jsx>{commonStyle}</style>
       <style jsx>{columnStyle}</style>
-    </>    
+    </IconContext.Provider>
   )
 }  
 
