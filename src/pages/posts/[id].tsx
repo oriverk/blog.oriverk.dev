@@ -1,14 +1,13 @@
-import Head from 'next/head'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { Layout } from '../../components/Layout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 // import { getFetchPath } from '../../components/HeaderImg'
-import blogConfig from '../../../blog.config'
 import { PostIcons } from '../../components/IconsWrapper'
 import { Date } from '../../components/general/Date'
 import { CustomImg } from '../../components/general/Image'
+import { CustomHead } from '../../components/general/Head'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getAllPostIds()
@@ -137,20 +136,13 @@ type Props = {
 
 const Component: React.FC<Props> = ({ id, title, create, tags, image, content })  => {
   const pageTags = tags.join(' ') || 'react nextjs'
-  const ogImage = image ? blogConfig.baseUrl + image : blogConfig.baseUrl + blogConfig.ogImage
   return (
     <>
       <Layout>
-        <Head>
-          <title>{`${title} | ${blogConfig.shortName}`}</title>
-          <meta name='title' content={`${title} | ${blogConfig.baseName}`} />
-          <meta name='description' content={pageTags} />
-          <meta property='og:title' content={`${title} | ${blogConfig.baseName}`} />
-          <meta property='og:description' content={pageTags} />
-          <meta property='og:image' content={ogImage} />
-          <meta property='og:url' content={`${blogConfig.baseUrl}/posts/${id}/` } />
+        <CustomHead pageUrl={`/posts/${id}/`} pageTitle={title}
+          pageDescription={pageTags} pageImage={image} >
           <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
-        </Head>
+        </CustomHead>
         <article className='markdown content'>
         <PostIcons title={title} id={id} tags={tags} />
           <h1>{title}</h1>

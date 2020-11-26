@@ -1,20 +1,11 @@
 import Router from 'next/router'
-import Head from 'next/head'
 import { AppProps } from 'next/app'
 import * as gtag from '../lib/gtag'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   Router.events.on('routeChangeComplete', (url: string) => gtag.pageview(url))
-
   return (
     <>
-      <Head>
-        <meta name='format-detection' content='email=no,telephone=no,address=no' />
-        <link rel='apple-touch-icon' sizes='180x180' href='/assets/human512x512.png' />
-        <link rel='icon' type='image/png' sizes='32x32' href='/favicon/favicon-32x32.png' />
-        <link rel='icon' type='image/png' sizes='16x16' href='/favicon/favicon-16x16.png' />
-        <link rel='manifest' crossOrigin='use-credentials' href='/manifest.json' />
-      </Head>
       <Component {...pageProps} />
       <style jsx global>{`
         ::-webkit-scrollbar {

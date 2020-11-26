@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
 import { GetStaticProps, GetStaticPaths } from 'next'
@@ -7,7 +6,7 @@ import { Layout } from '../../components/Layout'
 import { CustomImg } from '../../components/general/Image'
 import { Date } from '../../components/general/Date'
 import { TagIcons } from '../../components/IconsWrapper'
-import blogConfig from '../../../blog.config'
+import { CustomHead } from '../../components/general/Head'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths: string[] = getTags().map((tag) => {
@@ -122,15 +121,7 @@ const Component: React.FC<Props> = ({ tag, postsData }) => {
   return (
     <>
       <Layout>
-        <Head>
-          <title>{`${tag} | ${blogConfig.baseName}`}</title>
-          <meta name='title' content={`${tag} | ${blogConfig.baseName}`} />
-          <meta name='description' content={blogConfig.desc} />
-          <meta property='og:title' content={`${tag} | ${blogConfig.baseName}`} />
-          <meta property='og:description' content={blogConfig.baseDesc} />
-          <meta property='og:image' content={blogConfig.baseUrl + blogConfig.ogImage} />
-          <meta property='og:url' content={`${blogConfig.baseUrl}/tags/${tag}/` } />
-        </Head>
+        <CustomHead pageUrl={`/tags/${tag}/`} pageTitle={`${tag} Posts`} pageDescription={`${tag} Posts`} />
         <TagIcons />
         <article className='content'>
           <h1>{`${tag} Posts`}</h1>

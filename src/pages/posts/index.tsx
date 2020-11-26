@@ -1,13 +1,12 @@
-import Head from 'next/head'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
 import { Layout } from '../../components/Layout'
 import { CustomImg } from '../../components/general/Image'
-import blogConfig from '../../../blog.config'
 import { getSortedPostsData } from '../../lib/posts'
 import { PostsIcons } from '../../components/IconsWrapper'
 import { Date } from '../../components/general/Date'
 import { GetStaticProps } from 'next'
+import { CustomHead } from '../../components/general/Head'
 
 export const getStaticProps: GetStaticProps = async () => {
   const postsData = getSortedPostsData()
@@ -115,15 +114,7 @@ const Component = ({ postsData }: Props) => {
   return (
     <>
       <Layout>
-        <Head>
-          <title>Blog | {blogConfig.shortName}</title>
-          <meta name='title' content={`Blog | ${blogConfig.baseName}`} />
-          <meta name='description' content={blogConfig.desc} />
-          <meta property='og:title' content={`Blog | ${blogConfig.baseName}`} />
-          <meta property='og:description' content={blogConfig.desc} />
-          <meta property='og:image' content={blogConfig.baseUrl + blogConfig.ogImage} />
-          <meta property='og:url' content={ blogConfig.baseUrl + '/posts/' } />
-        </Head>
+        <CustomHead pageUrl='posts' pageTitle='Posts' pageDescription='Posts index' />
         <article className='content'>
         <PostsIcons />
           <h1>Blog Posts</h1>

@@ -1,11 +1,10 @@
-import Head from 'next/head'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
 import { getTags } from '../../lib/posts'
 import { Layout } from '../../components/Layout'
 import { TagsIcons } from '../../components/IconsWrapper'
-import blogConfig from '../../../blog.config'
 import { GetStaticProps } from 'next'
+import { CustomHead } from '../../components/general/Head'
 
 export const getStaticProps: GetStaticProps = async () => {
   const tags: string[] = getTags()
@@ -50,15 +49,7 @@ const Component: React.FC<Props> = ({tags}) => {
   return (
     <>
       <Layout>
-        <Head>
-          <title>Tags | {blogConfig.shortName}</title>
-          <meta name='title' content={`Tags | ${blogConfig.baseName}`} />
-          <meta name='description' content={blogConfig.desc} />
-          <meta property='og:title' content={`Tags | ${blogConfig.baseName}`} />
-          <meta property='og:description' content={blogConfig.desc} />
-          <meta property='og:image' content={blogConfig.baseUrl + blogConfig.ogImage} />
-          <meta property='og:url' content={ blogConfig.baseUrl + '/tags/' } />
-        </Head>
+        <CustomHead pageUrl='/tags/' pageTitle='Tags' pageDescription='Posts Tags index' />
         <TagsIcons />
         <article className='content'>
           <h1>Blog Tags</h1>

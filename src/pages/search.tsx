@@ -1,8 +1,7 @@
-import Head from 'next/head';
 import css from 'styled-jsx/css';
 import { Layout } from '../components/Layout';
-import blogConfig from '../../blog.config';
 import { AlgoliaSearch } from '../components/search/AlgoliaSearch'
+import { CustomHead } from '../components/general/Head'
 
 const style = css`
 .content {
@@ -20,15 +19,7 @@ const style = css`
 const Component: React.FC = () => {
   return (
     <Layout>
-      <Head >
-        <title>{blogConfig.baseName}</title>
-        <meta name='title' content={blogConfig.baseName} />
-        <meta name='description' content={blogConfig.desc} />
-        <meta property='og:title' content={blogConfig.baseName} />
-        <meta property='og:description' content={blogConfig.desc} />
-        <meta property='og:image' content={blogConfig.baseUrl + blogConfig.ogImage} />
-        <meta property='og:url' content={blogConfig.baseUrl + '/'} />
-      </Head>
+      <CustomHead pageUrl='/search/' pageTitle='Search posts' pageDescription='Search posts in English' />
       <article className='content'>
         <h1>Search posts</h1>
         <div className='search'>
