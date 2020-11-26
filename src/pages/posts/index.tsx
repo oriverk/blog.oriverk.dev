@@ -17,10 +17,8 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-const style = css`
+export const postCardStyle = css`
 .content {
-  width: 97%;
-  margin: 0 auto 1rem;
   padding: 3%;
 }
 
@@ -29,71 +27,82 @@ const style = css`
   gap: 1rem;
 }
 
-.postCard{
-  padding-bottom: .7rem;
+.postCard {
+  display: flex;
+  flex-direction: column;
   background-color: #424242;
   border-radius: .5rem;
-  max-width: 35rem;
-  height: 100%;
-  border: 1px solid rgba(0,0,0,0);
-}
-.postCard:hover{
-  border: 1px solid #50CAF9;
+  max-width: 40rem;
 }
 
-.postLink{
-  display: block;
+.postLink {
+  flex-grow: 1;
   color: #EEE;
   text-decoration: none;
+  border-top: 1px solid rgba(0,0,0,0);
+  border-left: 1px solid rgba(0,0,0,0);
+  border-right: 1px solid rgba(0,0,0,0);
+  border-bottom: 1px solid #EEE;
 }
 
-.imgOuter{
+.postLink:hover {
+  border: 1px solid #50CAF9;
+  border-radius: .5rem .5rem 0 0;
+}
+
+.imgOuter {
   position: relative;
   width: 100%;
 }
-.imgOuter:before{
+
+.imgOuter:before {
   content: '';
   display: block;
-  /* 3:2 */
   padding-top: 66%;
 }
 
-.postDesc{
+:global(.cardImg) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  border-radius: .5rem .5rem 0 0;
+}
+
+.postDesc {
   padding: .5rem;
 }
 
-h2{
+h2 {
   margin: .5rem auto 0;
   font-size: 1.15rem;
 }
 
-.tag{
-  text-decoration: none;
-  display: inline-block;
-  font-size: .9rem;
-  border-radius: 2rem;
-  border: 1px solid #50CAF9;
-  padding: 0.1rem .8rem;
-  margin: 0.5rem .5rem 0;
-  color: #EEE;
+.tags {
+  margin: .5rem 0;
 }
-.tag:hover, .tag:active{
-  background-color: #424242;
+
+.tag{
+  display: inline-block;
+  margin: .4rem .5rem;
+  padding: .1rem .8rem;
+  border: 1px solid #50CAF9;
+  border-radius: 2rem;
+  color: #EEE;
+  font-size: .9rem;
+  text-decoration: none;
 }
 
 @media( min-width: 760px ){
-  .content{
-    width: 90%;
-  }
   .posts {
     display: grid;
     gap: 1.5rem;
     grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
   }
-  .postCard{
-    padding-bottom: 1rem;
-  }
-  h2{
+  
+  h2 {
     font-size: 1.25rem;
   }
 }
@@ -146,7 +155,7 @@ const Component: React.FC<Props> = ({ postsData }: Props) => (
         ))}
       </div>
     </article>
-    <style jsx>{style}</style>
+    <style jsx>{postCardStyle}</style>
   </Layout>
 )
 

@@ -17,7 +17,6 @@ const CustomLinkImg: React.FC<LinkImg> = ({ src, alt }) =>(
 const style = css`
 section {
   height: 100vh;
-  width: 100%;
   margin-bottom: 2rem;
   position: relative;
   background-color: #212121;
@@ -26,10 +25,9 @@ section {
   background-image: url('/assets/home/sunrisePortrait650x867.webp');
 }
 
-.topWrapper{
+.topWrapper {
   position: relative;
-  width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -42,33 +40,35 @@ section {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .topTitle {
   font-weight: 500;
   font-size: 3.5rem;
   margin: 0 auto;
 }
+
 .sub {
   font-size: 1.5rem
 }
 
 @media( min-width: 600px){
-  section{
+  section {
     background-image: url('/assets/home/sunrisePortrait960x1280.webp')
   }
 }
 @media (min-width: 960px){
-  section{
+  section {
     height: 100vh;
     background-image: url('/assets/home/sunrisePortrait1280x1707.webp')
   }
 }
 @media(min-width: 1280px){
-  section{
+  section {
     background-image: url('/assets/home/sunrise2000x1333.webp')
   }
 }
 @media(min-width: 1980px){
-  section{
+  section {
     background-image: url('/assets/home/sunrise3500x2333.webp')
   }
 }
@@ -92,16 +92,18 @@ export const Top: React.FC = () => (
 const commonStyle = css`
   section {
     padding: 0 5%;
-    flex-grow: 1;
     max-width: 1000px;
     margin: 0 auto 2rem;
   }
+
   article {
     margin-bottom: 1rem;
   }
+
   h2, h3 {
     text-align: center;
   }
+
   .container {
     width: 100%;
     display: flex;
@@ -109,23 +111,25 @@ const commonStyle = css`
     margin: .5rem 0 2rem;
     padding-bottom: 1rem;
   }
-  .container:not(:last-child){
+
+  .container:not(:last-child) {
     border-bottom: 1px solid grey;
   }
-  .left, .right {
-    width: 100%;
-  }
-  @media( min-width: 1280px ){
+  
+  @media( min-width: 1280px ) {
     .container {
       flex-direction: row;
     }
-    .container:not(:last-child){
+
+    .container:not(:last-child) {
       padding-bottom: 2rem;
     }
+
     .left {
       width: 40%;
       margin-right: 5%;
     }
+
     .right {
       width: 55%;
     }

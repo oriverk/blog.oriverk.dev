@@ -35,11 +35,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 const style = css`
 .content {
-  width: 100%;
   max-width: 1000px;
   margin: 0 auto 1rem;
   padding: 5%;
-  flex-grow: 1;
 }
 
 h1{

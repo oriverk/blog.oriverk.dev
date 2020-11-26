@@ -17,14 +17,13 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const style = css`
   .content {
-    width: 100%;
     max-width: 1000px;
     margin: 0 auto 1rem;
     padding: 5%;
     flex-grow: 1;
   }
 
-  .tag{
+  .tag {
     display: inline-block;
     min-width: 4rem;
     text-align: center;

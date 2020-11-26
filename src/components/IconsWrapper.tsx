@@ -29,12 +29,12 @@ const commonStyle = css`
 .icon{
   position: relative;
   text-decoration: none;
+  border: 1px solid #303030;
   border-radius: 50%;
   width: 2rem;
   height: 2rem;
   margin: .5rem;
   background-color: #EEE;
-  border-radius: 50%;
 }
 
 .icon:active{
@@ -76,12 +76,7 @@ const commonStyle = css`
 
 const homeStyle = css`
 .icon {
-  position: relative;
   display: inline-block;
-  text-decoration: none;
-  margin: .5rem;
-  background-color: #EEE;
-  border-radius: 50%;
 }
 `
 
@@ -94,7 +89,6 @@ const columnStyle = css`
 
 @media( min-width: 960px ){
   .icons{
-    display: flex;
     flex-direction: column;
     left: 91%;
     bottom: 3rem;
