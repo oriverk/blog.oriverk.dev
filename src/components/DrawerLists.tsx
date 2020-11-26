@@ -13,17 +13,15 @@ const style = css`
 }
 `
 
-export const LeftSwipeDrawer: React.FC = () => {
-  return (
-    <>
-      <div>
-        <div className='desc'>
-          <p>Kawano Yudai</p>
-          <p>with React, TypeScript</p>
-          <p>This uses Google Analytics</p>
-        </div>
+export const LeftSwipeDrawer: React.FC = () => (
+  <>
+    <div>
+      <div className='desc'>
+        <p>Kawano Yudai</p>
+        <p>with React, TypeScript</p>
+        <p>This uses Google Analytics</p>
       </div>
-      <style jsx>{style}</style>
-    </>
-  )
-}
+    </div>
+    <style jsx>{style}</style>
+  </>
+)

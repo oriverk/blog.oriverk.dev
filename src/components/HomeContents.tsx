@@ -8,13 +8,11 @@ type LinkImg = {
   alt?: string
 }
 
-const CustomLinkImg: React.FC<LinkImg> = ({ src, alt }) => {
-  return (
-    <a href={src} target='_blank' rel='noopener noreferrer'>
-      <CustomImg src={src} alt={alt} />
-    </a>
-  )
-}
+const CustomLinkImg: React.FC<LinkImg> = ({ src, alt }) =>(
+  <a href={src} target='_blank' rel='noopener noreferrer'>
+    <CustomImg src={src} alt={alt} />
+  </a>
+)
 
 const style = css`
 section {
@@ -76,22 +74,20 @@ section {
 }
 `
 
-export const Top: React.FC = () => {
-  return (
-    <>
-      <section id='top'>
-        <div className='topWrapper'>
-          <div className='title'>
-            <h1 className='topTitle'>Kawano Yudai</h1>
-            <h2 className='sub'>B.Agr.</h2>
-              <HomeIcons />
-          </div>
+export const Top: React.FC = () => (
+  <>
+    <section id='top'>
+      <div className='topWrapper'>
+        <div className='title'>
+          <h1 className='topTitle'>Kawano Yudai</h1>
+          <h2 className='sub'>B.Agr.</h2>
+            <HomeIcons />
         </div>
-      </section>
-      <style jsx>{style}</style>
-    </>
-  )
-}
+      </div>
+    </section>
+    <style jsx>{style}</style>
+  </>
+)
 
 const commonStyle = css`
   section {
@@ -136,181 +132,175 @@ const commonStyle = css`
   }
 `
 
-export const About: React.FC = () => {
-  return (
-    <>
-      <section id='about'>
-        <h2>About</h2>
+export const About: React.FC = () => (
+  <>
+    <section id='about'>
+      <h2>About</h2>
+      <div className='container'>
+        <div className='left'>
+          <CustomLinkImg
+            src='/assets/home/LongRidge700.jpg' alt='scenary from Long Ridge Lookout in Adelaide' />
+        </div>
+        <div className='right'>
+          <p>My name is Kawano Yudai.</p>
+          <p>I graduated from Miyazaki Universiy as Bachelor of Agriculture.</p>
+          <p>In agricultural engineering lablatory I studied crop row detecting tech by image processing with C++ and OpenCV.</p>
+          <p>After egg company, I stayed at Australia as working holiday. Then I studied Ruby and other tech like database, website system.</p>
+          <p>So, I'm interested in both nature and machinery</p>
+        </div>
+      </div>
+    </section>
+    <style jsx>{`
+      p {
+        margin: 0 auto .5rem;
+      }
+    `}</style>
+    <style jsx>{commonStyle}</style>
+  </>    
+)
+
+export const History: React.FC = () => (
+  <>
+    <section id='history'>
+      <h2>History</h2>
+      <article>
+        <h3>Experience</h3>
         <div className='container'>
           <div className='left'>
-            <CustomLinkImg
-              src='/assets/home/LongRidge700.jpg' alt='scenary from Long Ridge Lookout in Adelaide' />
+            <CustomLinkImg src='/assets/home/sunrise.jpg' alt='no image' />
           </div>
           <div className='right'>
-            <p>My name is Kawano Yudai.</p>
-            <p>I graduated from Miyazaki Universiy as Bachelor of Agriculture.</p>
-            <p>In agricultural engineering lablatory I studied crop row detecting tech by image processing with C++ and OpenCV.</p>
-            <p>After egg company, I stayed at Australia as working holiday. Then I studied Ruby and other tech like database, website system.</p>
-            <p>So, I'm interested in both nature and machinery</p>
+            <span>2017/04 - 2018/08</span>
+            <br /><b>Egg company in Miyazaki</b>
+            <br /><span>Production Management</span>
           </div>
         </div>
-      </section>
-      <style jsx>{`
-        p {
-          margin: 0 auto .5rem;
-        }
-      `}</style>
-      <style jsx>{commonStyle}</style>
-    </>    
-  );
-}
+      </article>
+      <article>
+        <h3>Education</h3>
+        <div className='container'>
+          <div className='left'>
+            <CustomLinkImg src='/assets/home/weeding700.jpg' alt='weeding robot motion picture' />
+          </div>
+          <div className='right'>
+            <span>2015/04 - 2017/03</span>
+            <br /><b>Agricultural Production System Enginnering Lab.</b>
+            <br /><span>Agricultural crop row detecting tech by image processing</span>
+          </div>
+        </div>
+        <div className='container'>
+          <div className='left'>
+            <CustomLinkImg src='/assets/home/miyazakiUniv.jpg' alt='logo of Miyazaki University' />
+          </div>
+          <div className='right'>
+            <span>2013/04 - 2017/03 :</span>
+            <br /><b>Faculty of Agriculture <wbr />in Miyazaki Univ.</b>
+            <br /><span>Majored in Botanics and Agricultural Mechanics</span>
+          </div>
+        </div>
+      </article>
+    </section>
+    <style jsx>{commonStyle}</style>
+  </>
+)
 
-export const History: React.FC = () => {
-  return (
-    <>
-      <section id='history'>
-        <h2>History</h2>
-        <article>
-          <h3>Experience</h3>
-          <div className='container'>
-            <div className='left'>
-              <CustomLinkImg src='/assets/home/sunrise.jpg' alt='no image' />
-            </div>
-            <div className='right'>
-              <span>2017/04 - 2018/08</span>
-              <br /><b>Egg company in Miyazaki</b>
-              <br /><span>Production Management</span>
-            </div>
+export const Works: React.FC = () =>(
+  <>
+    <section id='works'>
+      <h2>Works</h2>
+      <article>
+        <div className='container'>
+          <div className='left'>
+            <CustomLinkImg src='/assets/home/20200915prtsc1000.jpg' alt='screenshot of this site' />
           </div>
-        </article>
-        <article>
-          <h3>Education</h3>
-          <div className='container'>
-            <div className='left'>
-              <CustomLinkImg src='/assets/home/weeding700.jpg' alt='weeding robot motion picture' />
-            </div>
-            <div className='right'>
-              <span>2015/04 - 2017/03</span>
-              <br /><b>Agricultural Production System Enginnering Lab.</b>
-              <br /><span>Agricultural crop row detecting tech by image processing</span>
-            </div>
+          <div className='right'>
+            <b>This portfolio site as resume and tech blog</b>
+            <br /><span> :to learn modern JS</span>
+            <br /><span>with Reactand Typescript</span>
+            <ul>
+              <li>
+                <Link href='/posts/20200526-next-portfolio/' >
+                  <a>Blog: Created portfolio site with Next.js</a>
+                </Link>
+              </li>
+              <li><a href='https://github.com/oriverk/next-portfolio' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
+            </ul>
           </div>
-          <div className='container'>
-            <div className='left'>
-              <CustomLinkImg src='/assets/home/miyazakiUniv.jpg' alt='logo of Miyazaki University' />
-            </div>
-            <div className='right'>
-              <span>2013/04 - 2017/03 :</span>
-              <br /><b>Faculty of Agriculture <wbr />in Miyazaki Univ.</b>
-              <br /><span>Majored in Botanics and Agricultural Mechanics</span>
-            </div>
+        </div>
+        <div className='container'>
+          <div className='left'>
+            <CustomLinkImg src='/assets/posts/202003/miyazaki-oss1.jpg' alt='screenshot of miyazaki corona taskforce site' />
           </div>
-        </article>
-      </section>
-      <style jsx>{commonStyle}</style>
-    </>
-  )
-}
-
-export const Works: React.FC = () => {
-  return (
-    <>
-      <section id='works'>
-        <h2>Works</h2>
-        <article>
-          <div className='container'>
-            <div className='left'>
-              <CustomLinkImg src='/assets/home/20200915prtsc1000.jpg' alt='screenshot of this site' />
-            </div>
-            <div className='right'>
-              <b>This portfolio site as resume and tech blog</b>
-              <br /><span> :to learn modern JS</span>
-              <br /><span>with Reactand Typescript</span>
-              <ul>
-                <li>
-                  <Link href='/posts/20200526-next-portfolio/' >
-                    <a>Blog: Created portfolio site with Next.js</a>
-                  </Link>
-                </li>
-                <li><a href='https://github.com/oriverk/next-portfolio' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
-              </ul>
-            </div>
+          <div className='right'>
+            <b>Miyazaki COVID-19 Task Force site</b>
+            <br /><span>( OSS website )</span>
+            <br /><span>with Vue.js, TypeScript</span>
+            <ul>
+              <li>
+                <Link href='/posts/20200329-joined-corona-oss/'>
+                  <a>Blog: Joined OSS for COVID-19 site of Miyazaki</a>
+                </Link>
+              </li>
+              <li><a href='https://github.com/oriverk/covid19' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
+              <li><a href='https://covid19-miyazaki.netlify.app/' target='_blank' rel='noopener noreferrer' >The site on Netlify</a></li>
+            </ul>
           </div>
-          <div className='container'>
-            <div className='left'>
-              <CustomLinkImg src='/assets/posts/202003/miyazaki-oss1.jpg' alt='screenshot of miyazaki corona taskforce site' />
-            </div>
-            <div className='right'>
-              <b>Miyazaki COVID-19 Task Force site</b>
-              <br /><span>( OSS website )</span>
-              <br /><span>with Vue.js, TypeScript</span>
-              <ul>
-                <li>
-                  <Link href='/posts/20200329-joined-corona-oss/'>
-                    <a>Blog: Joined OSS for COVID-19 site of Miyazaki</a>
-                  </Link>
-                </li>
-                <li><a href='https://github.com/oriverk/covid19' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
-                <li><a href='https://covid19-miyazaki.netlify.app/' target='_blank' rel='noopener noreferrer' >The site on Netlify</a></li>
-              </ul>
-            </div>
+        </div>
+        <div className='container'>
+          <div className='left'>
+            <CustomLinkImg src='/assets/home/codr700.jpg' alt='screenshot of code share web app' />
           </div>
-          <div className='container'>
-            <div className='left'>
-              <CustomLinkImg src='/assets/home/codr700.jpg' alt='screenshot of code share web app' />
-            </div>
-            <div className='right'>
-              <b>Coder0</b>
-              <br /><span> :to share code with syntax-highlight</span>
-              <br /><span>with RubyonRails, PostgreSQL, AWS S3</span>
-              <ul>
-                <li>
-                  <Link href='/posts/20191129-post-code2twitter/'>
-                    <a>Blog: Wanna Share code on Twitter</a>
-                  </Link>
-                </li>
-                <li><a href='https://github.com/oriverk/Codr' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
-              </ul>
-            </div>
+          <div className='right'>
+            <b>Coder0</b>
+            <br /><span> :to share code with syntax-highlight</span>
+            <br /><span>with RubyonRails, PostgreSQL, AWS S3</span>
+            <ul>
+              <li>
+                <Link href='/posts/20191129-post-code2twitter/'>
+                  <a>Blog: Wanna Share code on Twitter</a>
+                </Link>
+              </li>
+              <li><a href='https://github.com/oriverk/Codr' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
+            </ul>
           </div>
-          <div className='container'>
-            <div className='left'>
-              <CustomLinkImg src='/assets/home/githubPages1st700.jpg' alt='screenshot of my 1st githubpages' />
-            </div>
-            <div className='right'>
-              <b>GithubPages</b>
-              <br /><span>:My 1st GithubPages</span>
-              <br /><span>with Ruby, Jekyll</span>
-              <ul>
-                <li><Link href='/posts/20190818-use-jekyll'><a>Blog: Build GithubPages with Jekyll</a></Link></li>
-                <li><a href='https://github.com/oriverk/oriverk.github.io' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
-              </ul>
-            </div>
+        </div>
+        <div className='container'>
+          <div className='left'>
+            <CustomLinkImg src='/assets/home/githubPages1st700.jpg' alt='screenshot of my 1st githubpages' />
           </div>
-          <div className='container'>
-            <div className='left'>
-              <CustomLinkImg src='/assets/home/sunrise.jpg' alt='no image' />
-            </div>
-            <div className='right'>
-              <b>Ticket sales System</b>
-              <br /><span> :from the 2018 Autumn FE exam</span>
-              <br /><span>with RubyonRails, PostgreSQL, Heroku</span>
-              <ul>
-                <li>
-                  <Link href='/posts/20190829-fe-exam/'>
-                    <a>Blog: Reproduce ticket sales system in FE exam</a>
-                  </Link>
-                </li>
-                <li><a href='https://github.com/oriverk/ConcertTicket' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
-                <li>
-                  <a href='https://www.jitec.ipa.go.jp/1_04hanni_sukiru/mondai_kaitou_2018h30_2/2018h30a_fe_pm_qs.pdf' target='_blank' rel='noopener noreferrer'>IPA FE exam</a>
-                </li>
-              </ul>
-            </div>
+          <div className='right'>
+            <b>GithubPages</b>
+            <br /><span>:My 1st GithubPages</span>
+            <br /><span>with Ruby, Jekyll</span>
+            <ul>
+              <li><Link href='/posts/20190818-use-jekyll'><a>Blog: Build GithubPages with Jekyll</a></Link></li>
+              <li><a href='https://github.com/oriverk/oriverk.github.io' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
+            </ul>
           </div>
-        </article>
-      </section>
-      <style jsx>{commonStyle}</style>
-    </>  
-  );
-}
+        </div>
+        <div className='container'>
+          <div className='left'>
+            <CustomLinkImg src='/assets/home/sunrise.jpg' alt='no image' />
+          </div>
+          <div className='right'>
+            <b>Ticket sales System</b>
+            <br /><span> :from the 2018 Autumn FE exam</span>
+            <br /><span>with RubyonRails, PostgreSQL, Heroku</span>
+            <ul>
+              <li>
+                <Link href='/posts/20190829-fe-exam/'>
+                  <a>Blog: Reproduce ticket sales system in FE exam</a>
+                </Link>
+              </li>
+              <li><a href='https://github.com/oriverk/ConcertTicket' target='_blank' rel='noopener noreferrer' >Github repositry</a></li>
+              <li>
+                <a href='https://www.jitec.ipa.go.jp/1_04hanni_sukiru/mondai_kaitou_2018h30_2/2018h30a_fe_pm_qs.pdf' target='_blank' rel='noopener noreferrer'>IPA FE exam</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </section>
+    <style jsx>{commonStyle}</style>
+  </>  
+);

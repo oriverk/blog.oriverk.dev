@@ -117,47 +117,43 @@ type Props = {
   }[]
 }
 
-const Component: React.FC<Props> = ({ tag, postsData }) => {
-  return (
-    <>
-      <Layout>
-        <CustomHead pageUrl={`/tags/${tag}/`} pageTitle={`${tag} Posts`} pageDescription={`${tag} Posts`} />
-        <TagIcons />
-        <article className='content'>
-          <h1>{`${tag} Posts`}</h1>
-          <div className='posts'>
-            {postsData.map(({ id, title, create, update, tags, image }) => (
-              <div className='postCard' key={id}>
-                <Link href={ `/posts/${id}/`}>
-                  <a className='postLink'>
-                    <div className='imgOuter'>
-                      <CustomImg src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
-                    </div>
-                    <div className='postDesc'>
-                      {update ? (
-                        <div>updated on <Date dateString={update} /></div>
-                      ) : (
-                          <div>posted on <Date dateString={create} /></div>
-                        )}
-                      <h2>{title}</h2>
-                    </div>
-                  </a>
-                </Link>
-                <div className='tags'>
-                  {tags.map((tag) => (
-                    <Link href={ `/tags/${tag}/`} key={tag}>
-                      <a className='tag' key={tag}>{tag}</a>
-                    </Link>
-                  ))}
-                </div>
+const Component: React.FC<Props> = ({ tag, postsData }) => (
+    <Layout>
+      <CustomHead pageUrl={`/tags/${tag}/`} pageTitle={`${tag} Posts`} pageDescription={`${tag} Posts`} />
+      <TagIcons />
+      <article className='content'>
+        <h1>{`${tag} Posts`}</h1>
+        <div className='posts'>
+          {postsData.map(({ id, title, create, update, tags, image }) => (
+            <div className='postCard' key={id}>
+              <Link href={ `/posts/${id}/`}>
+                <a className='postLink'>
+                  <div className='imgOuter'>
+                    <CustomImg src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
+                  </div>
+                  <div className='postDesc'>
+                    {update ? (
+                      <div>updated on <Date dateString={update} /></div>
+                    ) : (
+                        <div>posted on <Date dateString={create} /></div>
+                      )}
+                    <h2>{title}</h2>
+                  </div>
+                </a>
+              </Link>
+              <div className='tags'>
+                {tags.map((tag) => (
+                  <Link href={ `/tags/${tag}/`} key={tag}>
+                    <a className='tag' key={tag}>{tag}</a>
+                  </Link>
+                ))}
               </div>
-            ))}
-          </div>
-        </article>
-      </Layout>
+            </div>
+          ))}
+        </div>
+      </article>
       <style jsx>{style}</style>
-    </>
-  )
-}
+    </Layout>
+)
 
 export default Component

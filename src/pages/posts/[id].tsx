@@ -137,34 +137,32 @@ type Props = {
 const Component: React.FC<Props> = ({ id, title, create, tags, image, content })  => {
   const pageTags = tags.join(' ') || 'react nextjs'
   return (
-    <>
-      <Layout>
-        <CustomHead pageUrl={`/posts/${id}/`} pageTitle={title}
-          pageDescription={pageTags} pageImage={image} >
-          <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
-        </CustomHead>
-        <article className='markdown content'>
-        <PostIcons title={title} id={id} tags={tags} />
-          <h1>{title}</h1>
-          <div>
-            <div>post on <Date dateString={create} /></div>
-            <div className='tags'>
-              {tags.map((tag) => (
-                <Link key={tag} href={ `/tags/${tag}/`}>
-                  <a className='tag'>{tag}</a>
-                </Link>
-              ))}</div>
-          </div>
-          {image && (
-            <a href={image} target='_blank' rel='noopener noreferrer'>
-              <CustomImg src={image} alt='post cover image' />
-            </a>
-          )}
-          <div dangerouslySetInnerHTML={{ __html: content }} className='markdown' />
-        </article>
-      </Layout>
+    <Layout>
+      <CustomHead pageUrl={`/posts/${id}/`} pageTitle={title}
+        pageDescription={pageTags} pageImage={image} >
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
+      </CustomHead>
+      <article className='markdown content'>
+      <PostIcons title={title} id={id} tags={tags} />
+        <h1>{title}</h1>
+        <div>
+          <div>post on <Date dateString={create} /></div>
+          <div className='tags'>
+            {tags.map((tag) => (
+              <Link key={tag} href={ `/tags/${tag}/`}>
+                <a className='tag'>{tag}</a>
+              </Link>
+            ))}</div>
+        </div>
+        {image && (
+          <a href={image} target='_blank' rel='noopener noreferrer'>
+            <CustomImg src={image} alt='post cover image' />
+          </a>
+        )}
+        <div dangerouslySetInnerHTML={{ __html: content }} className='markdown' />
+      </article>
       <style jsx>{style}</style>
-    </>
+    </Layout>
   )
 }
 

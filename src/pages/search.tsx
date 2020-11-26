@@ -16,19 +16,17 @@ const style = css`
 }
 `
 
-const Component: React.FC = () => {
-  return (
-    <Layout>
-      <CustomHead pageUrl='/search/' pageTitle='Search posts' pageDescription='Search posts in English' />
-      <article className='content'>
-        <h1>Search posts</h1>
-        <div className='search'>
-          <AlgoliaSearch />
-        </div>
-      </article>
-      <style jsx>{style}</style>
-    </Layout>
-  )
-}
+const Component: React.FC = () => (
+  <Layout>
+    <CustomHead pageUrl='/search/' pageTitle='Search posts' pageDescription='Search posts in English' />
+    <article className='content'>
+      <h1>Search posts</h1>
+      <div className='search'>
+        <AlgoliaSearch />
+      </div>
+    </article>
+    <style jsx>{style}</style>
+  </Layout>
+)
 
 export default Component

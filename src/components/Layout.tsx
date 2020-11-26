@@ -7,16 +7,14 @@ div {
 }
 `
 
-export const Layout: React.FC = ({ children }) => {
-  return (
-    <>
-      <div>
-        <main>
-          {children}
-        </main>
-        <Footer />
-      </div>
-      <style jsx>{style}</style>
-    </>
-  )
-}
+export const Layout: React.FC = ({ children }) => (
+  <>
+    <div>
+      <main>
+        {children}
+      </main>
+      <Footer />
+    </div>
+    <style jsx>{style}</style>
+  </>
+)

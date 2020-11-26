@@ -45,26 +45,22 @@ type Props = {
   tags: string[]
 }
 
-const Component: React.FC<Props> = ({tags}) => {
-  return (
-    <>
-      <Layout>
-        <CustomHead pageUrl='/tags/' pageTitle='Tags' pageDescription='Posts Tags index' />
-        <TagsIcons />
-        <article className='content'>
-          <h1>Blog Tags</h1>
-          <div className='tags'>
-            {tags.map((tag) => (
-              <Link href={ `/tags/${tag}/` } key={tag}>
-                <a className='tag'>{tag}</a>
-              </Link>
-            ))}
-          </div>
-        </article>
-      </Layout>
-      <style jsx>{style}</style>
-    </>
-  )
-}
+const Component: React.FC<Props> = ({ tags })  => (
+  <Layout>
+    <CustomHead pageUrl='/tags/' pageTitle='Tags' pageDescription='Posts Tags index' />
+    <TagsIcons />
+    <article className='content'>
+      <h1>Blog Tags</h1>
+      <div className='tags'>
+        {tags.map((tag) => (
+          <Link href={ `/tags/${tag}/` } key={tag}>
+            <a className='tag'>{tag}</a>
+          </Link>
+        ))}
+      </div>
+    </article>
+    <style jsx>{style}</style>
+  </Layout>
+)
 
 export default Component
