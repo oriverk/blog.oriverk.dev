@@ -54,7 +54,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         }
 
         #__next{
-          display: flex;
+          /* display: flex; */
+          /* flex-direction: column; */
         }
 
         h1 {

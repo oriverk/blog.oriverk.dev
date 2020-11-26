@@ -1,7 +1,8 @@
 import css from 'styled-jsx/css'
+import { Footer } from '../components/general/Footer'
 
 const style = css`
-main{
+div {
   width: 100%;
 }
 `
@@ -9,9 +10,12 @@ main{
 export const Layout: React.FC = ({ children }) => {
   return (
     <>
-      <main>
-        {children}
-      </main>
+      <div>
+        <main>
+          {children}
+        </main>
+        <Footer />
+      </div>
       <style jsx>{style}</style>
     </>
   )
