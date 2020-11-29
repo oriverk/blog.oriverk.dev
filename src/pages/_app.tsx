@@ -42,6 +42,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           line-height: 1.43;
           letter-spacing: 0.01071em;
           background-color: #303030;
+
+          overflow-y: scroll;
         }
 
         #__next{

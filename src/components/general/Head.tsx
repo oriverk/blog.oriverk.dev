@@ -3,7 +3,7 @@ import blogConfig from '../../../blog.config'
 
 type Props = {
   noindex?: boolean,
-  pageUrl: string,
+  pageUrl?: string,
   pageTitle?: string,
   pageDescription?: string,
   pageImage?: string
