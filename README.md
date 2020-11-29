@@ -17,6 +17,8 @@
 ## Site URL
 **https://oriverk.dev**
 
+and you can search posts of this blog from https://oriverk.dev/search/
+
 ## Usage
 **please use `yarn` instead of `npm`.**
 **Attention. This repo uses mjs to generate some file, so you need nodejs v13 at least! (But Vercel support only LTS ver. So be carefull)**
@@ -42,21 +44,3 @@ You can check out [the Next.js GitHub repository](https://github.com/oriverk/nex
 - [Github](https://github.com/oriverk)
 - [Twitter](https://twitter.com/not_you_die)
 - [Qiita](https://qiita.com/OriverK)
-
-
-## To do
-- [x] implement `/tags/[tag]` page
-- [ ] render fine name above the code-block
-- [ ] improve Syntax-Highlight
-- [ ] integrate CSS( module.css or styled-jsx ...)
-- [x] implement sitemap.xml
-- [x] implement RSS, Atom, Sitemap
-- [ ] implement AMP : [next/amp](https://nextjs.org/docs/api-reference/next/amp)
-- [x] TypeScript
-- [x] implement PWA
-- [x] Google Analytics
-- [x] Custom dmain
-- [x] implement Search function
-- [ ] implement toc for post page
-- [ ] implement dynamic og:image generation for post
-- [ ] implement i18n
