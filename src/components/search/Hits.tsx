@@ -2,7 +2,7 @@ import Link from 'next/link'
 import css from 'styled-jsx/css'
 import { connectHits } from 'react-instantsearch-dom'
 import { HitsProvided, Hit } from 'react-instantsearch-core'
-import { Date } from '../general/Date'
+import { Date } from '../common/Date'
 import { postCardStyle } from '../../pages/posts/index'
 
 const hiddenStyle = css`

@@ -2,10 +2,10 @@ import Link from 'next/link'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { getTags, getTagPosts } from '../../lib/posts'
 import { Layout } from '../../components/Layout'
-import { CustomImg } from '../../components/general/Image'
-import { Date } from '../../components/general/Date'
+import { CustomImg } from '../../components/common/Image'
+import { Date } from '../../components/common/Date'
 import { TagIcons } from '../../components/IconsWrapper'
-import { CustomHead } from '../../components/general/Head'
+import { CustomHead } from '../../components/common/Head'
 import { postCardStyle } from '../posts/index'
 
 export const getStaticPaths: GetStaticPaths = async () => {

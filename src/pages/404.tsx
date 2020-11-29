@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import css from 'styled-jsx/css'
 import { Layout } from '../components/Layout'
-import { CustomHead } from '../components/general/Head'
+import { CustomHead } from '../components/common/Head'
 
 const style = css`
 article {

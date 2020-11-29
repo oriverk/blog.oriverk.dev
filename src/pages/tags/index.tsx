@@ -4,7 +4,7 @@ import { getTags } from '../../lib/posts'
 import { Layout } from '../../components/Layout'
 import { TagsIcons } from '../../components/IconsWrapper'
 import { GetStaticProps } from 'next'
-import { CustomHead } from '../../components/general/Head'
+import { CustomHead } from '../../components/common/Head'
 
 export const getStaticProps: GetStaticProps = async () => {
   const tags: string[] = getTags()

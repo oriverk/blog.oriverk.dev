@@ -1,4 +1,4 @@
-import { Footer } from '../components/general/Footer'
+import { Footer } from './common/Footer'
 
 export const Layout: React.FC = ({ children }) => (
   <div>

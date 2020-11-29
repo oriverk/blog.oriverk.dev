@@ -5,9 +5,9 @@ import { Layout } from '../../components/Layout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 // import { getFetchPath } from '../../components/HeaderImg'
 import { PostIcons } from '../../components/IconsWrapper'
-import { Date } from '../../components/general/Date'
-import { CustomImg } from '../../components/general/Image'
-import { CustomHead } from '../../components/general/Head'
+import { Date } from '../../components/common/Date'
+import { CustomImg } from '../../components/common/Image'
+import { CustomHead } from '../../components/common/Head'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getAllPostIds()

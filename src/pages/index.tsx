@@ -1,6 +1,6 @@
 import { Layout } from '../components/Layout'
 import { Top, About, History, Works } from '../components/HomeContents'
-import { CustomHead } from '../components/general/Head'
+import { CustomHead } from '../components/common/Head'
 
 const Component: React.FC = () => (
   <Layout>

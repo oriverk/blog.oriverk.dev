@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import css from 'styled-jsx/css';
 import { Layout } from '../components/Layout';
-import { CustomHead } from '../components/general/Head'
+import { CustomHead } from '../components/common/Head'
 
 import { Configure, InstantSearch } from 'react-instantsearch-dom'
 import { indexName, searchClient } from '../components/search/SearchClients'

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import css from 'styled-jsx/css'
-import { CustomImg } from './general/Image'
+import { CustomImg } from './common/Image'
 import { HomeIcons } from './IconsWrapper'
 
 type LinkImg = {

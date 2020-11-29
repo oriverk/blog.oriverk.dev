@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import css from 'styled-jsx/css'
 import { Layout } from '../../components/Layout'
-import { CustomImg } from '../../components/general/Image'
+import { CustomImg } from '../../components/common/Image'
 import { getSortedPostsData } from '../../lib/posts'
 import { PostsIcons } from '../../components/IconsWrapper'
-import { Date } from '../../components/general/Date'
+import { Date } from '../../components/common/Date'
 import { GetStaticProps } from 'next'
-import { CustomHead } from '../../components/general/Head'
+import { CustomHead } from '../../components/common/Head'
 
 export const getStaticProps: GetStaticProps = async () => {
   const postsData = getSortedPostsData()
