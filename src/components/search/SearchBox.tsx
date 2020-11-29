@@ -1,16 +1,14 @@
 import { useRouter } from 'next/router'
 import css from 'styled-jsx/css'
 import { connectSearchBox } from 'react-instantsearch-dom'
+import { SearchBoxProvided } from 'react-instantsearch-core';
 import { IconContext } from 'react-icons'
 import { MdSearch } from 'react-icons/md'
 
 const style = css`
-div{
-  margin: 0 auto 1.5rem;
-}
-
 form {
   display: inline-flex;
+  margin-bottom: 1.5rem;
   border-bottom: .15rem solid #EEE;
   width: 100%;
 }
@@ -36,10 +34,14 @@ button[type='submit'] {
   appearance: none;
 }
 
-:global(.react-icons){
+:global(.react-icons) {
   fill: #EEE;
   width: 2rem;
   height: 2rem;
+}
+
+button:disabled > :global(.react-icons){
+  fill: gray;
 }
 
 /* clears the ‘X’ from Internet Explorer */
@@ -52,40 +54,49 @@ input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration { display: none; }
 `
 
-const SearchBox = ({ currentRefinement, refine }) => {
+const SearchBox: React.FC<SearchBoxProvided> = ({
+  currentRefinement,
+  refine
+}) => {
   const router = useRouter()
-  
+
   function handleOnChange(e) {
-    e.preventDefault();
     refine(e.currentTarget.value)
+    // serachResults to URL
     if (e.currentTarget.value) {
       router.push(
-        { pathname: router.pathname, query: { q: e.currentTarget.value } },
+        { pathname: router.pathname, query: { q: encodeURI(e.currentTarget.value) } },
         undefined,
         { shallow: true }
       )
     } else {
-      router.push(router.pathname, undefined, { shallow: true })
+      router.push(
+        { pathname: router.pathname },
+        undefined,
+        { shallow: true })
     }
   }
 
   return (
     <>
-      <div>
-        <form noValidate action='' role='search' onSubmit={e => { e.preventDefault(); }}>
-          <input
-            placeholder='Search posts in English...'
-            type='search'
-            value={currentRefinement}
-            onChange={e => { handleOnChange(e) }}
-            onSubmit={e => { e.preventDefault(); }}
-            autoFocus
-          />
-          <button type='submit' disabled={!currentRefinement}>
-            <IconContext.Provider value={{ className: 'react-icons' }}><MdSearch /></IconContext.Provider>
-          </button>
-        </form>
-      </div>
+      <form noValidate action='' role='search' onSubmit={e => { e.preventDefault(); }}>
+        <input
+          placeholder='Search posts in English...'
+          type='search'
+          value={currentRefinement}
+          onChange={e => {
+            e.preventDefault();
+            handleOnChange(e)
+          }}
+          onSubmit={e => e.preventDefault()}
+          autoFocus
+        />
+        <button type='submit' disabled={!currentRefinement}>
+          <IconContext.Provider value={{ className: 'react-icons' }}>
+            <MdSearch />
+          </IconContext.Provider>
+        </button>
+      </form>
       <style jsx>{style}</style>
     </>
   )

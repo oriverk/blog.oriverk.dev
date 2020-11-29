@@ -13,13 +13,17 @@ export default class MyDocument extends Document {
     return (
       <Html lang='en'>
         <Head>
+          <meta name='format-detection' content='email=no,telephone=no,address=no' />
           <meta name='theme-color' content={blogConfig.themeColor} />
-          <meta content='developer, ruby, react' name='keywords' />
+          <meta content='developer, react, nextjs, typescript' name='keywords' />
           <meta property='og:type' content='website' />
           <meta property='og:site_name' content={blogConfig.baseName} />
           <meta property='og:locale' content={blogConfig.lang} />
           <meta content='summary_large_image' name='twitter:card' />
           <meta content={blogConfig.sns.twitter} name='twitter:site' />
+          <link rel='icon' type='image/png' sizes='32x32' href='/favicon/favicon-32x32.png' />
+          <link rel='icon' type='image/png' sizes='16x16' href='/favicon/favicon-16x16.png' />
+          <link rel='apple-touch-icon' sizes='180x180' href='/assets/human512x512.png' />
           <link rel='manifest' crossOrigin='use-credentials' href='/manifest.json' />
           <link rel='alternate' type='application/rss+xml' title={blogConfig.baseName} href='/rss.xml' />
           <link rel='alternate' type='application/atom+xml' title={blogConfig.baseName} href='/atom.xml' />

@@ -1,14 +1,13 @@
-import Head from 'next/head'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { Layout } from '../../components/Layout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 // import { getFetchPath } from '../../components/HeaderImg'
-import blogConfig from '../../../blog.config'
 import { PostIcons } from '../../components/IconsWrapper'
-import { Date } from '../../components/general/Date'
-import { CustomImg } from '../../components/general/Image'
+import { Date } from '../../components/common/Date'
+import { CustomImg } from '../../components/common/Image'
+import { CustomHead } from '../../components/common/Head'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getAllPostIds()
@@ -36,11 +35,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 const style = css`
 .content {
-  width: 100%;
   max-width: 1000px;
   margin: 0 auto 1rem;
   padding: 5%;
-  flex-grow: 1;
 }
 
 h1{
@@ -137,42 +134,33 @@ type Props = {
 
 const Component: React.FC<Props> = ({ id, title, create, tags, image, content })  => {
   const pageTags = tags.join(' ') || 'react nextjs'
-  const ogImage = image ? blogConfig.baseUrl + image : blogConfig.baseUrl + blogConfig.ogImage
   return (
-    <>
-      <Layout>
-        <Head>
-          <title>{`${title} | ${blogConfig.shortName}`}</title>
-          <meta name='title' content={`${title} | ${blogConfig.baseName}`} />
-          <meta name='description' content={pageTags} />
-          <meta property='og:title' content={`${title} | ${blogConfig.baseName}`} />
-          <meta property='og:description' content={pageTags} />
-          <meta property='og:image' content={ogImage} />
-          <meta property='og:url' content={`${blogConfig.baseUrl}/posts/${id}/` } />
-          <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
-        </Head>
-        <article className='markdown content'>
-        <PostIcons title={title} id={id} tags={tags} />
-          <h1>{title}</h1>
-          <div>
-            <div>post on <Date dateString={create} /></div>
-            <div className='tags'>
-              {tags.map((tag) => (
-                <Link key={tag} href={ `/tags/${tag}/`}>
-                  <a className='tag'>{tag}</a>
-                </Link>
-              ))}</div>
-          </div>
-          {image && (
-            <a href={image} target='_blank' rel='noopener noreferrer'>
-              <CustomImg src={image} alt='post cover image' />
-            </a>
-          )}
-          <div dangerouslySetInnerHTML={{ __html: content }} className='markdown' />
-        </article>
-      </Layout>
+    <Layout>
+      <CustomHead pageUrl={`/posts/${id}/`} pageTitle={title}
+        pageDescription={pageTags} pageImage={image} >
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
+      </CustomHead>
+      <article className='markdown content'>
+      <PostIcons title={title} id={id} tags={tags} />
+        <h1>{title}</h1>
+        <div>
+          <div>post on <Date dateString={create} /></div>
+          <div className='tags'>
+            {tags.map((tag) => (
+              <Link key={tag} href={ `/tags/${tag}/`}>
+                <a className='tag'>{tag}</a>
+              </Link>
+            ))}</div>
+        </div>
+        {image && (
+          <a href={image} target='_blank' rel='noopener noreferrer'>
+            <CustomImg src={image} alt='post cover image' />
+          </a>
+        )}
+        <div dangerouslySetInnerHTML={{ __html: content }} className='markdown' />
+      </article>
       <style jsx>{style}</style>
-    </>
+    </Layout>
   )
 }
 
