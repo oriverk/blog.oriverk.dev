@@ -20,27 +20,13 @@ const nextPwaConfig = {
 }
 
 const nextOptimizedImagesConfig = {
-  inlineImageLimit: 8192,
-  imagesFolder: 'images',
-  imagesName: '[name]-[hash].[ext]',
-  handleImages: ['jpeg', 'png', 'webp'],
-  removeOriginalExtension: true,
   optimizeImages: process.env.NODE_ENV !== 'development',
-  optimizeImagesInDev: false,
-  mozjpeg: {
-    quality: 85,
-  },
-  optipng: {
-    optimizationLevel: 3,
-  },
+  optimizeImagesInDev: true,
+  removeOriginalExtension: true,
   responsive: {
+    disable: process.env.NODE_ENV === 'development',
     adapter: require('responsive-loader/sharp'),
     sizes: [640, 960, 1200, 1800],
-    disable: process.env.NODE_ENV === 'development'
-  },
-  webp: {
-    preset: 'default',
-    quality: 85,
   },
 }
 
