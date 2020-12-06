@@ -1,4 +1,4 @@
-# related issueds
+# related issues
 Fixes #
 
 # Changes proposed in this pull request
@@ -6,3 +6,5 @@ Fixes #
 -
 -
 
+## the background (as memo)
+- 
