@@ -2,13 +2,8 @@ const withPlugins = require('next-compose-plugins')
 
 const withPWA = require('next-pwa')
 const optimizedImages = require('next-optimized-images')
-const { resolve } = require('path')
 
 const nextConfig = {
-  webpack: (config) => {
-    config.resolve.alias['@public/assets'] = resolve(__dirname, 'public/assets')
-    return config
-  },
   trailingSlash: true,
 }
 
