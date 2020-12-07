@@ -28,13 +28,13 @@ const commonStyle = css`
 
 .icon{
   position: relative;
-  text-decoration: none;
-  border: 1px solid #303030;
-  border-radius: 50%;
+  margin: .5rem;
   width: 2rem;
   height: 2rem;
-  margin: .5rem;
-  background-color: #EEE;
+  border-radius: 50%;
+  border: 1px solid var(--colorBackgroundDefault);
+  background-color: var(--colorTextDefault);
+  text-decoration: none;
 }
 
 .icon:active{
@@ -52,9 +52,9 @@ const commonStyle = css`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  fill: #424242;
   width: 1.25rem;
   height: 1.25rem;
+  fill: var(--colorBAckgroundDefault);
 }
 
 @media( min-width: 960px ){
@@ -83,8 +83,8 @@ const homeStyle = css`
 const columnStyle = css`
 .icons {
   position: fixed;
-  bottom: .5rem;
   right: .5rem;
+  bottom: .5rem;
 }
 
 @media( min-width: 960px ){

@@ -7,8 +7,8 @@ div {
 }
 
 img {
-  height: 1.2rem;
   width: auto;
+  height: 1.2rem;
 }
 `
 

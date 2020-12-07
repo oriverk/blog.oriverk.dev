@@ -30,24 +30,24 @@ export const postCardStyle = css`
 .postCard {
   display: flex;
   flex-direction: column;
-  background-color: #424242;
-  border-radius: .5rem;
   max-width: 40rem;
+  border-radius: .5rem;
+  background-color: var(--colorBackgroundPaper);
 }
 
 .postLink {
   flex-grow: 1;
-  color: #EEE;
-  text-decoration: none;
   border-top: 1px solid rgba(0,0,0,0);
   border-left: 1px solid rgba(0,0,0,0);
   border-right: 1px solid rgba(0,0,0,0);
   border-bottom: 1px solid #EEE;
+  text-decoration: none;
+  color: var(--colorTextDefault);
 }
 
 .postLink:hover {
-  border: 1px solid #50CAF9;
   border-radius: .5rem .5rem 0 0;
+  border: 1px solid var(--colorTextLink);
 }
 
 .imgOuter {
@@ -56,8 +56,8 @@ export const postCardStyle = css`
 }
 
 .imgOuter:before {
-  content: '';
   display: block;
+  content: '';
   padding-top: 66%;
 }
 
@@ -88,11 +88,11 @@ h2 {
   display: inline-block;
   margin: .4rem .5rem;
   padding: .1rem .8rem;
-  border: 1px solid #50CAF9;
+  border: 1px solid var(--colorTextLink);
   border-radius: 2rem;
-  color: #EEE;
-  font-size: .9rem;
   text-decoration: none;
+  font-size: .9rem;
+  color: var(--colorTextDefault);
 }
 
 @media( min-width: 760px ){
@@ -128,7 +128,6 @@ const Component: React.FC<Props> = ({ postsData }: Props) => (
       <div className='posts'>
         {postsData.map(({ id, title, create, update, tags, image }) => (
           <div className='postCard' key={id}>
-            {/* <Link href='/posts/[id]' as={`/posts/${id}`} key={id}> */}
             <Link key={id} href={ `/posts/${id}/`}>
               <a className='postLink'>
                 <div className='imgOuter'>

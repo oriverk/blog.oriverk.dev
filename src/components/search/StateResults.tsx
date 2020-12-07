@@ -6,7 +6,7 @@ const style = css`
 div {
   padding: .5rem;
   text-align: center;
-  color: #EEE;
+  color: var(--colorTextDefault);
 }
 `
 

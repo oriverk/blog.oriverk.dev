@@ -14,7 +14,7 @@ form {
 }
 
 input[type='search'] {
-  color: #EEE;
+  color: var(--colorTextDefault);
   font-size: 1rem;
   height: 3rem;
   width: 100%;
@@ -35,13 +35,13 @@ button[type='submit'] {
 }
 
 :global(.react-icons) {
-  fill: #EEE;
+  fill: var(--colorTextDefault);
   width: 2rem;
   height: 2rem;
 }
 
 button:disabled > :global(.react-icons){
-  fill: gray;
+  fill: var(--colorTextDisable);
 }
 
 /* clears the ‘X’ from Internet Explorer */

@@ -35,15 +35,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 const style = css`
 .content {
-  max-width: 1000px;
   margin: 0 auto 1rem;
   padding: 5%;
+  max-width: 1000px;
 }
 
 h1{
   font-size: 1.5rem;
-  text-decoration: underline #50CAF9;
-  color: #D9D9D9;
+  text-decoration: underline var(--colorTextLink);
+  color: var(--colorTextDefault);
 }
 
 .tags{
@@ -51,29 +51,28 @@ h1{
 }
 
 .tag{
-  text-decoration: none;
   display: inline-block;
-  font-size: .9rem;
-  border-radius: 2rem;
-  border: 1px solid #50CAF9;
-  padding: 0.1rem 1rem;
   margin: .5rem;
+  padding: 0.1rem 1rem;
   margin-bottom: 0;
-  color: #EEE;
+  border: 1px solid var(--colorTextLink);
+  border-radius: 2rem;
+  text-decoration: none;
+  font-size: .9rem;
+  color: var(--colorTextDefault);
 }
 .tag:hover, .tag:active{
-  background-color: #424242;
+  background-color: var(--colorBackgroundPaper);
 }
 
 :global(.heading-link){
-  color: #EEE;
-  border-bottom: .1rem solid #50CAF9;
+  color: var(--colorTextDefault);
+  border-bottom: .1rem solid var(--colorTextLink);
 }
-:global(.heading-link):hover{
-  color: #50CAF9;
-}
-:global(.heading-link):hover::before{
-  color: #50CAF9;
+
+:global(.heading-link):hover,
+:global(.heading-link):hover::before {
+  color: var(--colorTextLink)
 }
 
 :global(h2 > .heading-link){
@@ -99,27 +98,25 @@ code :global(.markdown.content) {
   display: inline-block;
   margin: .1rem .3rem;
   padding: 0 .4rem;
-  background-color: #555;
-  color: #EEE;
+  background-color: var(--colorBackgroundPaper);
+  color: var(--colorTextDefault);
 }
 
 pre :global(.markdown.content){
-  border: .8px solid grey;
-  border-radius: 0.25rem;
   display: block;
-  white-space: pre;
-  background-color: #1E1E1E;
+  margin: 1rem 0;
   width: 100%;
   max-width: 1000px;
-  margin: 1rem 0;
   overflow: auto;
+  white-space: pre;
+  background-color: var(--colorBackgroundPaper);
 }
 
 blockquote :global(.markdown.content){
-  color: #BBB;
-  border-left: 5px solid #BBB;
   margin: 1rem 0;
   padding: .5rem 0 .5rem .5rem;
+  border-left: 5px solid var(--colorTextDefault);
+  color: var(--colorTextDefault);
 }
 `
 

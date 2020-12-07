@@ -16,9 +16,9 @@ const style = css`
 }
 
 .search {
+  margin: 0 auto;
   width: 100%;
   max-width: 1000px;
-  margin: 0 auto;
 }
 `
 

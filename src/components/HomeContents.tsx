@@ -16,10 +16,10 @@ const CustomLinkImg: React.FC<LinkImg> = ({ src, alt }) =>(
 
 const style = css`
 section {
-  height: 100vh;
-  margin-bottom: 2rem;
   position: relative;
-  background-color: #212121;
+  margin-bottom: 2rem;
+  height: 100vh;
+  background-color: var(--colorBackgroundDefault);
   background-size: cover;
   background-position: center;
   background-image: url('/assets/home/sunrisePortrait650x867.webp');
@@ -32,19 +32,19 @@ section {
 }
 
 .title {
-  width: 100%;
-  padding: 5%;
-  text-align: center;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: 5%;
+  width: 100%;
+  text-align: center;
 }
 
 .topTitle {
+  margin: 0 auto;
   font-weight: 500;
   font-size: 3.5rem;
-  margin: 0 auto;
 }
 
 .sub {
@@ -91,9 +91,9 @@ export const Top: React.FC = () => (
 
 const commonStyle = css`
   section {
+    margin: 0 auto 2rem;
     padding: 0 5%;
     max-width: 1000px;
-    margin: 0 auto 2rem;
   }
 
   article {
@@ -105,7 +105,6 @@ const commonStyle = css`
   }
 
   .container {
-    width: 100%;
     display: flex;
     flex-direction: column;
     margin: .5rem 0 2rem;
