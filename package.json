@@ -10,9 +10,11 @@
     "build": "next build",
     "start": "next start",
     "feeds": "node script/genPostsMap.js && node script/genFeeds.js",
-    "bs": "next build && next start"
+    "bs": "next build && next start",
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^10.0.3",
     "algoliasearch": "^4.3.0",
     "date-fns": "^2.13.0",
     "gray-matter": "^4.0.2",
