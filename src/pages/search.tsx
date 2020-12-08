@@ -11,6 +11,10 @@ import { CustomPoweredBy } from '../components/search/PoweredBy'
 import { CustomHits } from '../components/search/Hits'
 
 const style = css`
+h1 {
+  text-align: center;
+}
+
 .content {
   padding: 3%;
 }

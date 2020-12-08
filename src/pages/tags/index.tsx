@@ -23,6 +23,10 @@ const style = css`
     max-width: 1000px;
   }
 
+  h1 {
+    text-align: center;
+  }
+
   .tag {
     display: inline-block;
     margin: .5rem;

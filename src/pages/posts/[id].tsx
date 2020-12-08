@@ -41,6 +41,7 @@ const style = css`
 }
 
 h1{
+  text-align: center;
   font-size: 1.5rem;
   text-decoration: underline var(--colorTextLink);
   color: var(--colorTextDefault);
@@ -53,8 +54,8 @@ h1{
 .tag{
   display: inline-block;
   margin: .5rem;
-  padding: 0.1rem 1rem;
   margin-bottom: 0;
+  padding: 0.1rem 1rem;
   border: 1px solid var(--colorTextLink);
   border-radius: 2rem;
   text-decoration: none;
@@ -107,7 +108,7 @@ pre :global(.markdown.content){
   margin: 1rem 0;
   width: 100%;
   max-width: 1000px;
-  overflow: auto;
+  overflow-x: auto;
   white-space: pre;
   background-color: var(--colorBackgroundPaper);
 }

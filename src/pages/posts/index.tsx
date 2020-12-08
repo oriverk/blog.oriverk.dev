@@ -22,6 +22,10 @@ export const postCardStyle = css`
   padding: 3%;
 }
 
+h1 {
+    text-align: center;
+  }
+
 .posts {
   display: grid;
   gap: 1rem;
@@ -37,10 +41,8 @@ export const postCardStyle = css`
 
 .postLink {
   flex-grow: 1;
-  border-top: 1px solid rgba(0,0,0,0);
-  border-left: 1px solid rgba(0,0,0,0);
-  border-right: 1px solid rgba(0,0,0,0);
-  border-bottom: 1px solid #EEE;
+  border: 1px solid rgba(0,0,0,0);
+  border-bottom: 1px solid var(--colorTextDefault);
   text-decoration: none;
   color: var(--colorTextDefault);
 }

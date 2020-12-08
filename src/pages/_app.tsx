@@ -12,7 +12,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         :root {
           --colorTextDefault: ${DARK_MODE.text.default};
           --colorTextLink: ${DARK_MODE.text.link};
-          --colorTextDisable: ${DARK_MODE.text.gray};
+          --colorTextGray: ${DARK_MODE.text.gray};
           --colorBackgroundDefault ${DARK_MODE.background.default};
           --colorBackgroundPaper: ${DARK_MODE.background.paper};
         }
@@ -27,18 +27,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         
         /*スクロールバーの動く部分*/
         ::-webkit-scrollbar-thumb {
-          background-color: #999;
-          border-radius: .3rem;
+          background-color: var(--colorTextGray);
         }
 
         body {
           margin: 0;
           font-family: 'Hiragino Sans', 'Meiryo', sans-serif;
           color: var(--colorTextDefault);
-          font-weight: 400;
-          font-size: 0.874rem;
-          line-height: 1.43;
-          letter-spacing: 0.01071em;
           background-color: var(--colorBackgroundDefault);
         }
 
@@ -47,9 +42,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           /* flex-direction: column; */
         }
 
-        h1 {
-          text-align: center;
-        }
 
         div, p, a, li, b{
           font-size: 1rem;
@@ -60,17 +52,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           padding-left: 1.5rem;
         }
 
-        ul li{
-          padding-bottom: 1rem;
-        }
-
         a{
-          color: var(--colorTextLink);
           text-decoration: none;
-        }
-
-        strong, b {
-          font-weight: 700;
+          color: var(--colorTextLink);
         }
 
         source, img {

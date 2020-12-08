@@ -41,7 +41,7 @@ button[type='submit'] {
 }
 
 button:disabled > :global(.react-icons){
-  fill: var(--colorTextDisable);
+  fill: var(--colorTextGray);
 }
 
 /* clears the ‘X’ from Internet Explorer */
