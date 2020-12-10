@@ -2,12 +2,34 @@ import Router from 'next/router'
 import { AppProps } from 'next/app'
 import * as gtag from '../lib/gtag'
 import { DARK_MODE, LIGHT_MODE } from '../style/color'
+import { useState, useEffect, createContext } from 'react'
+import { setLocalStorageTheme, getTheme } from '../context/theme'
+
+export type Themes = 'light' | 'dark'
+export const ThemeContext = createContext<{ theme: Themes; toggleTheme: () => void }>(
+  {} as any
+)
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const [theme, setTheme] = useState<Themes>(null)
+  useEffect(() => {
+    const currentTheme = getTheme() as Themes
+    setTheme(currentTheme)
+  }, [theme, setTheme])
+
+  const toggleTheme = () => {
+    const currentTheme = getTheme()
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light'
+    setLocalStorageTheme(newTheme)
+    setTheme(newTheme)
+  }
+  
   Router.events.on('routeChangeComplete', (url: string) => gtag.pageview(url))
   return (
     <>
-      <Component {...pageProps} />
+      <ThemeContext.Provider value={{theme, toggleTheme}}>
+        <Component {...pageProps} />
+      </ThemeContext.Provider>
       <style jsx global>{`
         :root {
           --colorTextDefault: ${DARK_MODE.text.default};
@@ -15,6 +37,16 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           --colorTextGray: ${DARK_MODE.text.gray};
           --colorBackgroundDefault ${DARK_MODE.background.default};
           --colorBackgroundPaper: ${DARK_MODE.background.paper};
+          --colorHoge: green;
+        }
+
+        [data-theme=light] {
+          --colorTextDefault: ${LIGHT_MODE.text.default};
+          --colorTextLink: ${LIGHT_MODE.text.link};
+          --colorTextGray: ${LIGHT_MODE.text.gray};
+          --colorBackgroundDefault ${LIGHT_MODE.background.default};
+          --colorBackgroundPaper: ${LIGHT_MODE.background.paper};
+          --colorHoge: red;
         }
 
         *, *::before, *::after{
