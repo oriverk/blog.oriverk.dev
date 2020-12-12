@@ -36,6 +36,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           --colorWhite: #FFF;
           --colorBlack: #111;
           --transitionTimeFunc: 0.25s linear;
+          --zIndexIcons: 2;
 
           --colorTextDefault: ${DARK_MODE.text.default};
           --colorTextLink: ${DARK_MODE.text.link};

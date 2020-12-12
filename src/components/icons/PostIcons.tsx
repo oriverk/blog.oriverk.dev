@@ -1,11 +1,73 @@
 import blogConfig from 'blog.config'
 import { useState } from 'react'
 import Link from 'next/link'
+import css from 'styled-jsx/css'
 import { IconContext } from 'react-icons'
-import { HatenaSvg } from './index'
 import { FaTwitter } from 'react-icons/fa'
 import { MdCreate, MdSearch, MdHome, MdLocalOffer, MdMoreHoriz, MdClose } from 'react-icons/md'
-import { commonStyle, columnStyle } from './iconsStyle'
+
+const style = css`
+.icons {
+  display: flex;
+  flex-direction: row;
+  z-index: var(--zIndexIcons);
+  position: fixed;
+  right: .5rem;
+  bottom: .5rem;
+}
+
+.icon {
+  position: relative;
+  margin: .5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 1px solid var(--colorBackgroundDefault);
+  background-color: var(--colorTextDefault);
+  transition: all var(--transitionTimeFunc);
+  text-decoration: none;
+}
+.icon:active {
+  width: 1.9rem;
+  height: 1.9rem;
+}
+.icon[aria-expanded='false'] {
+  display: none;
+}
+
+:global(.react-icons) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: var(--colorBackgroundDefault);
+  transition: fill var(--transitionTimeFunc);
+}
+
+@media( min-width: 960px ){
+  .icons {
+    flex-direction: column;
+    left: 91%;
+    bottom: 3rem;
+  }
+
+  .icon {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+  .icon:active {
+    width: 2.15rem;
+    height: 2.15rem;
+  }
+
+  :global(.react-icons) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+`
 
 type PostProps = {
   id: string,
@@ -17,7 +79,6 @@ export const PostIcons: React.FC<PostProps> = ({ title, id, tags }) => {
   const [more, setMore] = useState(false)
   const tag = tags ? tags.join(',') : 'React, Next.js'
   const twitter = `https://twitter.com/share?text=${title}&hashtags=${tag}&url=${blogConfig.baseUrl}/posts/${id}/`
-  const hatena = `https://b.hatena.ne.jp/entry/${blogConfig.baseUrl}/posts/${id}/`
   return (
     <IconContext.Provider value={{ className: 'react-icons' }}>
       <div className='icons'>
@@ -41,10 +102,6 @@ export const PostIcons: React.FC<PostProps> = ({ title, id, tags }) => {
             <MdHome />
           </a>
         </Link>
-        <a className='icon Hatena' key='hatena' aria-expanded={more} href={hatena}
-          aria-label='hatena share link' target='_blank' rel='noopener noreferrer'>
-          <HatenaSvg className='homeIconSvg' />
-        </a>
         <a className='icon twitter' key='twitter' href={twitter}
           aria-label='twitter share link' target='_blank' rel='noopener noreferrer'>
           <FaTwitter />
@@ -58,8 +115,7 @@ export const PostIcons: React.FC<PostProps> = ({ title, id, tags }) => {
           <MdMoreHoriz />
         </a>
       </div>
-      <style jsx>{commonStyle}</style>
-      <style jsx>{columnStyle}</style>
+      <style jsx>{style}</style>
     </IconContext.Provider>
   )
 }  

@@ -1,10 +1,67 @@
-import blogConfig from 'blog.config'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
 import { IconContext } from 'react-icons'
-import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'
-import { MdCreate, MdSearch, MdHome, MdLocalOffer, MdMoreHoriz, MdClose } from 'react-icons/md'
-import { commonStyle, columnStyle } from './iconsStyle'
+import { MdSearch, MdHome, MdLocalOffer } from 'react-icons/md'
+
+const style = css`
+.icons{
+  display: flex;
+  flex-direction: row;
+  z-index: var(--zIndexIcons);
+  position: fixed;
+  right: .5rem;
+  bottom: .5rem;
+}
+
+.icon{
+  position: relative;
+  margin: .5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 1px solid var(--colorBackgroundDefault);
+  background-color: var(--colorTextDefault);
+  transition: all var(--transitionTimeFunc);
+  text-decoration: none;
+}
+.icon:active{
+  width: 1.9rem;
+  height: 1.9rem;
+}
+
+:global(.react-icons) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: var(--colorBackgroundDefault);
+  transition: fill var(--transitionTimeFunc);
+}
+
+@media( min-width: 960px ){
+  .icons{
+    flex-direction: column;
+    left: 91%;
+    bottom: 3rem;
+  }
+
+  .icon {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+  .icon:active {
+    width: 2.15rem;
+    height: 2.15rem;
+  }
+  
+  :global(.react-icons) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+`
 
 export const PostsIcons: React.FC = () => (
   <IconContext.Provider value={{ className: 'react-icons' }}>
@@ -25,7 +82,6 @@ export const PostsIcons: React.FC = () => (
         </a>
       </Link>
     </div>
-    <style jsx>{commonStyle}</style>
-    <style jsx>{columnStyle}</style>
+    <style jsx>{style}</style>
   </IconContext.Provider>
 )
