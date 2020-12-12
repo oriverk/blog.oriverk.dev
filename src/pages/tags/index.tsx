@@ -2,7 +2,7 @@ import Link from 'next/link'
 import css from 'styled-jsx/css'
 import { getTags } from '../../lib/posts'
 import { Layout } from '../../components/Layout'
-import { TagsIcons } from '../../components/IconsWrapper'
+import { TagsIcons } from '../../components/icons/index'
 import { GetStaticProps } from 'next'
 import { CustomHead } from '../../components/common/Head'
 

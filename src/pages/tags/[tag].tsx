@@ -4,7 +4,7 @@ import { getTags, getTagPosts } from '../../lib/posts'
 import { Layout } from '../../components/Layout'
 import { CustomImg } from '../../components/common/Image'
 import { Date } from '../../components/common/Date'
-import { TagIcons } from '../../components/IconsWrapper'
+import { TagIcons } from '../../components/icons/index'
 import { CustomHead } from '../../components/common/Head'
 import { postCardStyle } from '../posts/index'
 
