@@ -35,21 +35,29 @@ h1 {
   display: flex;
   flex-direction: column;
   max-width: 40rem;
+  box-shadow: 0px 8px 16px -2px rgba(10,10,10,0.1), 2px 3px 3px 0 rgba(66,66,66,0.1);
   border-radius: .5rem;
   background-color: var(--colorBackgroundPaper);
+  transition: background-color var(--transitionTimeFunc);
+}
+.postCard:hover, .postCard:active {
+  box-shadow: none;
+  transition: box-shadow var(--transitionTimeFunc);
 }
 
 .postLink {
   flex-grow: 1;
-  border: 1px solid rgba(0,0,0,0);
-  border-bottom: 1px solid var(--colorTextDefault);
+  border-radius: .5rem .5rem 0 0;
+  border: 1.5px solid rgba(0,0,0,0);
+  border-bottom: 1.5px solid var(--colorTextDefault);
   text-decoration: none;
   color: var(--colorTextDefault);
+  transition: color var(--transitionTimeFunc);
 }
-
 .postLink:hover {
-  border-radius: .5rem .5rem 0 0;
-  border: 1px solid var(--colorTextLink);
+  border: 1.5px solid var(--colorTextLink);
+  border-bottom: 1.5px solid var(--colorTextLink);
+  filter: brightness(92%);
 }
 
 .imgOuter {
@@ -90,11 +98,15 @@ h2 {
   display: inline-block;
   margin: .4rem .5rem;
   padding: .1rem .8rem;
-  border: 1px solid var(--colorTextLink);
+  border: 1px solid var(--colorTextDefault);
   border-radius: 2rem;
   text-decoration: none;
   font-size: .9rem;
   color: var(--colorTextDefault);
+}
+.tag:hover, .tag:active {
+  border: 1px solid var(--colorTextLink);
+  filter: brightness(92%);
 }
 
 @media( min-width: 760px ){

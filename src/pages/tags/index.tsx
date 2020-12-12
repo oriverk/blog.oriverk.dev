@@ -17,7 +17,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const style = css`
   .content {
-    flex-grow: 1;
     margin: 0 auto 1rem;
     padding: 5%;
     max-width: 1000px;
@@ -33,13 +32,14 @@ const style = css`
     padding: .1rem .8rem;
     min-width: 4rem;
     border-radius: 2rem;
-    border: 1px solid var(--colorTextLink);
+    border: 1.5px solid var(--colorTextDefault);
     text-align: center;
     text-decoration: none;
     font-size: 1rem;
     color: var(--colorTextDefault);
   }
   .tag:hover, .tag:active{
+    border: 1.5px solid var(--colorTextLink);
     background-color: var(--colorBackgroundDefault);
   }
 `

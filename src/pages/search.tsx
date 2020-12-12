@@ -17,6 +17,7 @@ h1 {
 
 .content {
   padding: 3%;
+  height: 100%;
 }
 
 .search {

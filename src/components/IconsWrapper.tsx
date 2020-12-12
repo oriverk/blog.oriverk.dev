@@ -34,6 +34,7 @@ const commonStyle = css`
   border-radius: 50%;
   border: 1px solid var(--colorBackgroundDefault);
   background-color: var(--colorTextDefault);
+  transition: all var(--transitionTimeFunc);
   text-decoration: none;
 }
 
@@ -54,7 +55,8 @@ const commonStyle = css`
   transform: translate(-50%, -50%);
   width: 1.25rem;
   height: 1.25rem;
-  fill: var(--colorBAckgroundDefault);
+  fill: var(--colorBackgroundDefault);
+  transition: fill var(--transitionTimeFunc);
 }
 
 @media( min-width: 960px ){

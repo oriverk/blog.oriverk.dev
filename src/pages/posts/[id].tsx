@@ -51,12 +51,12 @@ h1{
   margin-bottom: 1rem;
 }
 
-.tag{
+.tag {
   display: inline-block;
   margin: .5rem;
   margin-bottom: 0;
   padding: 0.1rem 1rem;
-  border: 1px solid var(--colorTextLink);
+  border: 1.5px solid var(--colorTextDefault);
   border-radius: 2rem;
   text-decoration: none;
   font-size: .9rem;
@@ -64,15 +64,17 @@ h1{
 }
 .tag:hover, .tag:active{
   background-color: var(--colorBackgroundPaper);
+  border: 1.5px solid var(--colorTextLink);
 }
 
 :global(.heading-link){
+  text-decoration: solid underline var(--colorTextLink);
   color: var(--colorTextDefault);
-  border-bottom: .1rem solid var(--colorTextLink);
 }
 
 :global(.heading-link):hover,
 :global(.heading-link):hover::before {
+  text-decoration: underline;
   color: var(--colorTextLink)
 }
 

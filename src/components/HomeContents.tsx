@@ -8,13 +8,13 @@ type LinkImg = {
   alt?: string
 }
 
-const CustomLinkImg: React.FC<LinkImg> = ({ src, alt }) =>(
+const CustomLinkImg: React.FC<LinkImg> = ({ src, alt }) => (
   <a href={src} target='_blank' rel='noopener noreferrer'>
     <CustomImg src={src} alt={alt} />
   </a>
 )
 
-const style = css`
+const topStyle = css`
 section {
   position: relative;
   margin-bottom: 2rem;
@@ -39,6 +39,7 @@ section {
   padding: 5%;
   width: 100%;
   text-align: center;
+  color: var(--colorWhite);
 }
 
 .topTitle {
@@ -79,13 +80,13 @@ export const Top: React.FC = () => (
     <section id='top'>
       <div className='topWrapper'>
         <div className='title'>
-          <h1 className='topTitle'>Kawano Yudai</h1>
-          <h2 className='sub'>B.Agr.</h2>
-            <HomeIcons />
+          <div className='topTitle'>Kawano Yudai</div>
+          <div className='sub'>B.Agr.</div>
+          <HomeIcons />
         </div>
       </div>
     </section>
-    <style jsx>{style}</style>
+    <style jsx>{topStyle}</style>
   </>
 )
 
@@ -112,7 +113,7 @@ const commonStyle = css`
   }
 
   .container:not(:last-child) {
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid var(--colorTextGray);
   }
   
   @media( min-width: 1280px ) {
@@ -159,7 +160,7 @@ export const About: React.FC = () => (
       }
     `}</style>
     <style jsx>{commonStyle}</style>
-  </>    
+  </>
 )
 
 export const History: React.FC = () => (
@@ -207,7 +208,7 @@ export const History: React.FC = () => (
   </>
 )
 
-export const Works: React.FC = () =>(
+export const Works: React.FC = () => (
   <>
     <section id='works'>
       <h2>Works</h2>
@@ -305,5 +306,5 @@ export const Works: React.FC = () =>(
       </article>
     </section>
     <style jsx>{commonStyle}</style>
-  </>  
+  </>
 );

@@ -4,7 +4,12 @@ import blogConfig from '../../../blog.config'
 const style = css`
 footer {
   margin: 0 1.5%;
+  padding-bottom: 1rem;
   text-align: center;
+}
+
+footer > p:last-child {
+  margin-bottom: 0;
 }
 `
 
