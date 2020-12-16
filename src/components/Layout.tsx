@@ -1,31 +1,17 @@
-import { useContext } from 'react'
-import Link from 'next/link'
-import { ThemeContext } from '../pages/_app' 
+import { Header } from '../components/common/Header'
 import { Footer } from './common/Footer'
-import blogConfig from 'blog.config'
 
 export const Layout: React.FC = ({ children }) => {
-  const { theme, toggleTheme } = useContext(ThemeContext)
   return (
     <>
-      <div>
-        <header>
-          <h1 className='baseName'>
-            <Link href='/'>
-              <a>{blogConfig.baseName}</a>
-            </Link>
-          </h1>
-          <button onClick={() => toggleTheme()}>
-            {theme === 'light' ? '🌞' : '🌙'}
-          </button>
-        </header>
+      <div className='root'>
         <main>
           {children}
         </main>
         <Footer />
       </div>
       <style jsx>{`
-        div {
+        .root {
           min-height: 100vh;
           background-color: var(--colorBackgroundDefault);
           color: var(--colorTextDefault);
