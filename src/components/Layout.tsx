@@ -1,10 +1,18 @@
-import { Header } from '../components/common/Header'
+// import { Header } from '../components/common/Header'
+import { Header } from './common/Header'
 import { Footer } from './common/Footer'
 
-export const Layout: React.FC = ({ children }) => {
+type Props = {
+  isHome?: boolean
+}
+
+export const Layout: React.FC<Props> = ({ children, isHome }) => {
   return (
     <>
       <div className='root'>
+        {!isHome && (
+          <Header />
+        )}
         <main>
           {children}
         </main>

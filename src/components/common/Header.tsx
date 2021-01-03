@@ -1,98 +1,59 @@
-import { useRouter } from 'next/router'
-import Link from 'next/link'
+import { useContext } from 'react'
 import css from 'styled-jsx/css'
-import { CustomImg, CustomImgProps } from './../common/Image'
-import { HomeIcons } from '../../components/icons'
 
+import { ThemeContext } from '../../hooks/theme'
 
 const style = css`
 .header {
   position: relative;
+  width: 100%;
   height: 30vh;
 }
 
-:global(.headerImg) {
-  object-fit: cover;
-  height: 100%;
-  filter: brightness(90%);
+.icons {
+  text-align: right;
+  padding-right: 3%;
 }
 
-.headerContent {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.title {
-  margin: 1rem;
-  text-align: center;
-  color: var(--colorTextDefault);
-}
-
-.titleLink {
-  color: var(--colorTextDefault);
-}
-.titleLink:hover {
+.icon {
+  position: relative;
+  margin: .5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 1px solid var(--colorBackgroundDefault);
+  background-color: var(--colorTextDefault);
+  transition: all var(--transitionTimeFunc);
   text-decoration: none;
-  color: var(--colorTextGray);
+}
+.icon:active{
+  width: 1.9rem;
+  height: 1.9rem;
+}
+
+@media( min-width: 960px ){
+  .icon {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+  .icon:active {
+    width: 2.15rem;
+    height: 2.15rem;
+  }
 }
 `
 
-// type ImgProps = Omit<CustomImgProps, 'className'> // same with below
-type ImgProps = Pick<CustomImgProps, 'src' | 'alt'>
-
-type HeaderProps = {
-  className?: string,
-  pageLink?: string,
-  title?: string,
-  subTitle?: string,
-}
-
-const Icons: React.FC = () => {
-  const path = useRouter().pathname
-  const isRoot = path === '/'
-
-  if (isRoot) {
-    return <HomeIcons />
-  } else {
-    return null
-  }
-}
-
-export const Header: React.FC<HeaderProps & ImgProps> = (
-  {
-    children,
-    className,
-    pageLink,
-    src = '/assets/home/sunrise.jpg',
-    alt = '',
-    title = 'Kawano Yudai',
-    subTitle = 'B.Agr'
-  }
-) => {
-  
-  
+export const Header: React.FC = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext)
   return (
     <>
-      <div className={className}>
-        <div className='header'>
-          <CustomImg src={src} alt={alt} className='headerImg' />
-          <div className='headerContent'>
-            <div className='title'>
-              <h1>
-                <Link href={pageLink}>
-                  <a className='titleLink'>{title}</a>
-                </Link>
-              </h1>
-              <div className='subTitle'>
-                {subTitle}
-              </div>
-            </div>
-            <Icons />
-          </div>
+      <header>
+        <div className='icons'>
+          <button className='icon' key='theme' onClick={() => toggleTheme()} aria-label='change theme'>
+            {theme === 'light' ? '🌞' : '🌙'}
+          </button>
         </div>
-      </div>
+      </header>
       <style jsx>{style}</style>
     </>
   )

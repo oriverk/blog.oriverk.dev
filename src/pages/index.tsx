@@ -1,7 +1,7 @@
 import css from 'styled-jsx/css'
 import { Layout } from '../components/Layout'
 import { CustomHead } from '../components/common/Head'
-import { Header } from '../components/common/Header'
+// import { Header } from '../components/common/HeaderHoge'
 import { Top, About, History, Works } from '../components/HomeContents'
 
 const style = css`
@@ -9,7 +9,7 @@ const style = css`
 `
 
 const Component: React.FC = () => (
-  <Layout>
+  <Layout isHome>
     <CustomHead pageUrl='/' pageTitle='Home' pageDescription="Home | Kawano Yudai's site" />
     {/* <Header className='kkk'
       pageLink='/'
