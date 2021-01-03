@@ -1,35 +1,32 @@
-import Router from 'next/router'
+import { useState, useEffect } from 'react'
 import { AppProps } from 'next/app'
+import Router from 'next/router'
+
 import * as gtag from '../lib/gtag'
 import { DARK_MODE, LIGHT_MODE } from '../style/color'
-import { useState, useEffect, createContext } from 'react'
-import { setLocalStorageTheme, getTheme } from '../hooks/theme'
-
-export type Themes = 'light' | 'dark'
-export const ThemeContext = createContext<{ theme: Themes; toggleTheme: () => void }>(
-  {} as any
-)
+import { Themes, getTheme, setLocalStorageTheme, ThemeContext } from '../hooks/theme'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const [theme, setTheme] = useState<Themes>(null)
+
   useEffect(() => {
     const currentTheme = getTheme() as Themes
     setTheme(currentTheme)
-  }, [theme, setTheme])
+    setLocalStorageTheme(currentTheme)
+    document.body.setAttribute('data-theme', currentTheme)
+  }, [theme])
 
   const toggleTheme = () => {
-    const currentTheme = getTheme()
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light'
+    const newTheme = theme === 'light' ? 'dark' : 'light'
     setLocalStorageTheme(newTheme)
     setTheme(newTheme)
-    document.body.setAttribute('data-theme', newTheme)
   }
   
   Router.events.on('routeChangeComplete', (url: string) => gtag.pageview(url))
   return (
     <>
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
-          <Component {...pageProps} />
+        <Component {...pageProps} />
       </ThemeContext.Provider>
       <style jsx global>{`
         :root {
