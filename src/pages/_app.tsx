@@ -3,7 +3,7 @@ import { AppProps } from 'next/app'
 import * as gtag from '../lib/gtag'
 import { DARK_MODE, LIGHT_MODE } from '../style/color'
 import { useState, useEffect, createContext } from 'react'
-import { setLocalStorageTheme, getTheme } from '../context/theme'
+import { setLocalStorageTheme, getTheme } from '../hooks/theme'
 
 export type Themes = 'light' | 'dark'
 export const ThemeContext = createContext<{ theme: Themes; toggleTheme: () => void }>(
