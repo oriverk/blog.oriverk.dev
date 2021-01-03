@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { AppProps } from 'next/app'
 import Router from 'next/router'
+import { IconContext } from 'react-icons'
 
 import * as gtag from '../lib/gtag'
 import { DARK_MODE, LIGHT_MODE } from '../style/color'
@@ -26,7 +27,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
-        <Component {...pageProps} />
+        <IconContext.Provider value={{ className: 'react-icons' }}>
+          <Component {...pageProps} />
+        </IconContext.Provider>
       </ThemeContext.Provider>
       <style jsx global>{`
         :root {
@@ -86,6 +89,23 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         p > code,
         pre > code {
           font-size: 1rem;
+        }
+
+        .react-icons, .wantedlySvg {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 1.25rem;
+          height: 1.25rem;
+          fill: var(--colorBackgroundDefault);
+          transition: fill var(--transitionTimeFunc);
+        }
+        @media( min-width: 960px ){
+          .react-icons {
+            width: 1.5rem;
+            height: 1.5rem;
+          }
         }
       `}</style>
     </>

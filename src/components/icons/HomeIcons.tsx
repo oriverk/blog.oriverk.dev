@@ -1,12 +1,12 @@
-import blogConfig from 'blog.config'
 import { useContext } from 'react'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
-import { ThemeContext } from '../../hooks/theme'
-import { IconContext } from 'react-icons'
-import { WantedlySvg } from './index'
-import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'
 import { MdCreate, MdSearch } from 'react-icons/md'
+import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'
+
+import blogConfig from 'blog.config'
+import { WantedlySvg } from './index'
+import { ThemeContext } from '../../hooks/theme'
 
 const style = css`
 .icons {
@@ -34,18 +34,6 @@ const style = css`
   height: 1.9rem;
 }
 
-:global(.react-icons),
-:global(.wantedlySvg) {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 1.25rem;
-  height: 1.25rem;
-  fill: var(--colorBackgroundDefault);
-  transition: fill var(--transitionTimeFunc);
-}
-
 @media( min-width: 960px ){
   .icon {
     width: 2.25rem;
@@ -55,18 +43,13 @@ const style = css`
     width: 2.15rem;
     height: 2.15rem;
   }
-  :global(.react-icons),
-  :global(.homeIconSvg){
-    width: 1.5rem;
-    height: 1.5rem;
-  }
 }
 `
 
 export const HomeIcons: React.FC = () => {
   const { theme, toggleTheme } = useContext(ThemeContext)
   return (
-    <IconContext.Provider value={{ className: 'react-icons' }}>
+    <>
       <div className='icons'>
         <button className='icon' key='theme' onClick={()=> toggleTheme()} aria-label='change theme'>
           {theme === 'light' ? '🌞' : '🌙'}   
@@ -99,6 +82,6 @@ export const HomeIcons: React.FC = () => {
         </a>
       </div>
       <style jsx>{style}</style>
-    </IconContext.Provider>
+    </>
   )
 }

@@ -1,10 +1,10 @@
-import blogConfig from 'blog.config'
 import { useState } from 'react'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
-import { IconContext } from 'react-icons'
 import { FaTwitter } from 'react-icons/fa'
 import { MdCreate, MdSearch, MdHome, MdLocalOffer, MdMoreHoriz, MdClose } from 'react-icons/md'
+
+import blogConfig from 'blog.config'
 
 const style = css`
 .icons {
@@ -35,17 +35,6 @@ const style = css`
   display: none;
 }
 
-:global(.react-icons) {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 1.25rem;
-  height: 1.25rem;
-  fill: var(--colorBackgroundDefault);
-  transition: fill var(--transitionTimeFunc);
-}
-
 @media( min-width: 960px ){
   .icons {
     flex-direction: column;
@@ -61,11 +50,6 @@ const style = css`
     width: 2.15rem;
     height: 2.15rem;
   }
-
-  :global(.react-icons) {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
 }
 `
 
@@ -80,7 +64,7 @@ export const PostIcons: React.FC<PostProps> = ({ title, id, tags }) => {
   const tag = tags ? tags.join(',') : 'React, Next.js'
   const twitter = `https://twitter.com/share?text=${title}&hashtags=${tag}&url=${blogConfig.baseUrl}/posts/${id}/`
   return (
-    <IconContext.Provider value={{ className: 'react-icons' }}>
+    <>
       <div className='icons'>
         <Link href='/search/'>
           <a className='icon' key='search' aria-label='search posts'>
@@ -116,6 +100,6 @@ export const PostIcons: React.FC<PostProps> = ({ title, id, tags }) => {
         </a>
       </div>
       <style jsx>{style}</style>
-    </IconContext.Provider>
+    </>
   )
 }  

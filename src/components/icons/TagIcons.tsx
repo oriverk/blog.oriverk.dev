@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
-import { IconContext } from 'react-icons'
 import { MdCreate, MdSearch, MdHome, MdLocalOffer, MdMoreHoriz, MdClose } from 'react-icons/md'
 
 const style = css`
@@ -33,17 +32,6 @@ const style = css`
   display: none;
 }
 
-:global(.react-icons) {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 1.25rem;
-  height: 1.25rem;
-  fill: var(--colorBackgroundDefault);
-  transition: fill var(--transitionTimeFunc);
-}
-
 @media( min-width: 960px ){
   .icons{
     flex-direction: column;
@@ -59,18 +47,13 @@ const style = css`
     width: 2.15rem;
     height: 2.15rem;
   }
-
-  :global(.react-icons) {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
 }
 `
 
 export const TagIcons: React.FC = () => {
   const [more, setMore] = useState(false)
   return (
-    <IconContext.Provider value={{ className: 'react-icons' }}>
+    <>
       <div className='icons'>
         <Link href='/search/'>
           <a className='icon' key='search' aria-label='search posts'>
@@ -102,6 +85,6 @@ export const TagIcons: React.FC = () => {
         </a>
       </div>
       <style jsx>{style}</style>
-    </IconContext.Provider>
+    </>
   )
 } 
