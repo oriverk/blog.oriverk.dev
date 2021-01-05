@@ -1,25 +1,25 @@
 import Link from 'next/link'
 import css from 'styled-jsx/css'
 import { CustomImg } from './common/Image'
-import { HomeIcons } from './IconsWrapper'
+import { HomeIcons } from '../components/icons/index'
 
 type LinkImg = {
   src?: string
   alt?: string
 }
 
-const CustomLinkImg: React.FC<LinkImg> = ({ src, alt }) =>(
+const CustomLinkImg: React.FC<LinkImg> = ({ src, alt }) => (
   <a href={src} target='_blank' rel='noopener noreferrer'>
     <CustomImg src={src} alt={alt} />
   </a>
 )
 
-const style = css`
+const topStyle = css`
 section {
-  height: 100vh;
-  margin-bottom: 2rem;
   position: relative;
-  background-color: #212121;
+  margin-bottom: 2rem;
+  height: 100vh;
+  background-color: var(--colorBackgroundDefault);
   background-size: cover;
   background-position: center;
   background-image: url('/assets/home/sunrisePortrait650x867.webp');
@@ -32,19 +32,20 @@ section {
 }
 
 .title {
-  width: 100%;
-  padding: 5%;
-  text-align: center;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: 5%;
+  width: 100%;
+  text-align: center;
+  color: var(--colorWhite);
 }
 
 .topTitle {
+  margin: 0 auto;
   font-weight: 500;
   font-size: 3.5rem;
-  margin: 0 auto;
 }
 
 .sub {
@@ -79,21 +80,21 @@ export const Top: React.FC = () => (
     <section id='top'>
       <div className='topWrapper'>
         <div className='title'>
-          <h1 className='topTitle'>Kawano Yudai</h1>
-          <h2 className='sub'>B.Agr.</h2>
-            <HomeIcons />
+          <div className='topTitle'>Kawano Yudai</div>
+          <div className='sub'>B.Agr.</div>
+          <HomeIcons />
         </div>
       </div>
     </section>
-    <style jsx>{style}</style>
+    <style jsx>{topStyle}</style>
   </>
 )
 
 const commonStyle = css`
   section {
+    margin: 0 auto 2rem;
     padding: 0 5%;
     max-width: 1000px;
-    margin: 0 auto 2rem;
   }
 
   article {
@@ -105,7 +106,6 @@ const commonStyle = css`
   }
 
   .container {
-    width: 100%;
     display: flex;
     flex-direction: column;
     margin: .5rem 0 2rem;
@@ -113,7 +113,7 @@ const commonStyle = css`
   }
 
   .container:not(:last-child) {
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid var(--colorTextGray);
   }
   
   @media( min-width: 1280px ) {
@@ -160,7 +160,7 @@ export const About: React.FC = () => (
       }
     `}</style>
     <style jsx>{commonStyle}</style>
-  </>    
+  </>
 )
 
 export const History: React.FC = () => (
@@ -208,7 +208,7 @@ export const History: React.FC = () => (
   </>
 )
 
-export const Works: React.FC = () =>(
+export const Works: React.FC = () => (
   <>
     <section id='works'>
       <h2>Works</h2>
@@ -306,5 +306,5 @@ export const Works: React.FC = () =>(
       </article>
     </section>
     <style jsx>{commonStyle}</style>
-  </>  
+  </>
 );

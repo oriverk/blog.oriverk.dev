@@ -3,7 +3,7 @@ import css from 'styled-jsx/css'
 import { Layout } from '../../components/Layout'
 import { CustomImg } from '../../components/common/Image'
 import { getSortedPostsData } from '../../lib/posts'
-import { PostsIcons } from '../../components/IconsWrapper'
+import { PostsIcons } from '../../components/icons/index'
 import { Date } from '../../components/common/Date'
 import { GetStaticProps } from 'next'
 import { CustomHead } from '../../components/common/Head'
@@ -22,6 +22,10 @@ export const postCardStyle = css`
   padding: 3%;
 }
 
+h1 {
+    text-align: center;
+  }
+
 .posts {
   display: grid;
   gap: 1rem;
@@ -30,24 +34,30 @@ export const postCardStyle = css`
 .postCard {
   display: flex;
   flex-direction: column;
-  background-color: #424242;
-  border-radius: .5rem;
   max-width: 40rem;
+  box-shadow: 0px 8px 16px -2px rgba(10,10,10,0.1), 2px 3px 3px 0 rgba(66,66,66,0.1);
+  border-radius: .5rem;
+  background-color: var(--colorBackgroundPaper);
+  transition: background-color var(--transitionTimeFunc);
+}
+.postCard:hover, .postCard:active {
+  box-shadow: none;
+  transition: box-shadow var(--transitionTimeFunc);
 }
 
 .postLink {
   flex-grow: 1;
-  color: #EEE;
-  text-decoration: none;
-  border-top: 1px solid rgba(0,0,0,0);
-  border-left: 1px solid rgba(0,0,0,0);
-  border-right: 1px solid rgba(0,0,0,0);
-  border-bottom: 1px solid #EEE;
-}
-
-.postLink:hover {
-  border: 1px solid #50CAF9;
   border-radius: .5rem .5rem 0 0;
+  border: 1.5px solid rgba(0,0,0,0);
+  border-bottom: 1.5px solid var(--colorTextDefault);
+  text-decoration: none;
+  color: var(--colorTextDefault);
+  transition: color var(--transitionTimeFunc);
+}
+.postLink:hover {
+  border: 1.5px solid var(--colorTextLink);
+  border-bottom: 1.5px solid var(--colorTextLink);
+  filter: brightness(92%);
 }
 
 .imgOuter {
@@ -56,8 +66,8 @@ export const postCardStyle = css`
 }
 
 .imgOuter:before {
-  content: '';
   display: block;
+  content: '';
   padding-top: 66%;
 }
 
@@ -88,11 +98,15 @@ h2 {
   display: inline-block;
   margin: .4rem .5rem;
   padding: .1rem .8rem;
-  border: 1px solid #50CAF9;
+  border: 1px solid var(--colorTextDefault);
   border-radius: 2rem;
-  color: #EEE;
-  font-size: .9rem;
   text-decoration: none;
+  font-size: .9rem;
+  color: var(--colorTextDefault);
+}
+.tag:hover, .tag:active {
+  border: 1px solid var(--colorTextLink);
+  filter: brightness(92%);
 }
 
 @media( min-width: 760px ){
@@ -128,7 +142,6 @@ const Component: React.FC<Props> = ({ postsData }: Props) => (
       <div className='posts'>
         {postsData.map(({ id, title, create, update, tags, image }) => (
           <div className='postCard' key={id}>
-            {/* <Link href='/posts/[id]' as={`/posts/${id}`} key={id}> */}
             <Link key={id} href={ `/posts/${id}/`}>
               <a className='postLink'>
                 <div className='imgOuter'>

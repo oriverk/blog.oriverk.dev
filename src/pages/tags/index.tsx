@@ -2,7 +2,7 @@ import Link from 'next/link'
 import css from 'styled-jsx/css'
 import { getTags } from '../../lib/posts'
 import { Layout } from '../../components/Layout'
-import { TagsIcons } from '../../components/IconsWrapper'
+import { TagsIcons } from '../../components/icons/index'
 import { GetStaticProps } from 'next'
 import { CustomHead } from '../../components/common/Head'
 
@@ -17,26 +17,30 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const style = css`
   .content {
-    max-width: 1000px;
     margin: 0 auto 1rem;
     padding: 5%;
-    flex-grow: 1;
+    max-width: 1000px;
+  }
+
+  h1 {
+    text-align: center;
   }
 
   .tag {
     display: inline-block;
-    min-width: 4rem;
-    text-align: center;
-    color: #EEE;
-    font-size: 1rem;
-    text-decoration: none;
     margin: .5rem;
     padding: .1rem .8rem;
+    min-width: 4rem;
     border-radius: 2rem;
-    border: 1px solid #50CAF9;
+    border: 1.5px solid var(--colorTextDefault);
+    text-align: center;
+    text-decoration: none;
+    font-size: 1rem;
+    color: var(--colorTextDefault);
   }
   .tag:hover, .tag:active{
-    background-color: #424242;
+    border: 1.5px solid var(--colorTextLink);
+    background-color: var(--colorBackgroundDefault);
   }
 `
 

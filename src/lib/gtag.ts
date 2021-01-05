@@ -1,4 +1,4 @@
-import { Event } from '../Types/GoogleAnalytics/Event'
+import { Event } from '../types/GoogleAnalytics/Event'
 
 export const GA_TRACKING_ID = 'UA-131793403-5'
 

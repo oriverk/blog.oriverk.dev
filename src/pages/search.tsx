@@ -11,14 +11,19 @@ import { CustomPoweredBy } from '../components/search/PoweredBy'
 import { CustomHits } from '../components/search/Hits'
 
 const style = css`
+h1 {
+  text-align: center;
+}
+
 .content {
   padding: 3%;
+  height: 100%;
 }
 
 .search {
+  margin: 0 auto;
   width: 100%;
   max-width: 1000px;
-  margin: 0 auto;
 }
 `
 

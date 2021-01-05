@@ -40,8 +40,8 @@ export default class MyDocument extends Document {
               gtag('js', new Date());
               gtag('config', '${GA_TRACKING_ID}');
             `,
-            }}
-          />  
+          }}
+          />
         </body>
       </Html>
     )

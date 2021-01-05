@@ -1,49 +1,45 @@
-import Router from 'next/router'
 import { AppProps } from 'next/app'
-import * as gtag from '../lib/gtag'
+import Router from 'next/router'
+import { IconContext } from 'react-icons'
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+import * as gtag from '../lib/gtag'
+import { DARK_MODE, LIGHT_MODE } from '../style/color'
+import { ThemeProvider } from '../hooks/theme'
+
+export default function MyApp({ Component, pageProps }: AppProps) {  
   Router.events.on('routeChangeComplete', (url: string) => gtag.pageview(url))
+
   return (
     <>
-      <Component {...pageProps} />
+      <ThemeProvider>
+        <IconContext.Provider value={{ className: 'react-icons' }}>
+          <Component {...pageProps} />
+        </IconContext.Provider>
+      </ThemeProvider>
       <style jsx global>{`
-        ::-webkit-scrollbar {
-          width: .3rem;
-        }
-        
-        /*スクロールバーの動く部分*/
-        ::-webkit-scrollbar-thumb {
-          background-color: #999;
-          border-radius: .3rem;
+        :root {
+          --colorWhite: #FFF;
+          --colorBlack: #111;
+          --transitionTimeFunc: 0.25s linear;
+          --zIndexIcons: 2;
+
+          --colorTextDefault: ${DARK_MODE.text.default};
+          --colorTextLink: ${DARK_MODE.text.link};
+          --colorTextGray: ${DARK_MODE.text.gray};
+          --colorBackgroundDefault ${DARK_MODE.background.default};
+          --colorBackgroundPaper: ${DARK_MODE.background.paper};
         }
 
-        html {
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-        }
-
-        *{
-          font-family: 'Hiragino Sans', 'Meiryo', sans-serif;
-          --drawerWidth: 250px;
-          --swipeDrawerWidth: 90vw;
-          --bottomNavHeight: 55px;
+        [data-theme=light] {
+          --colorTextDefault: ${LIGHT_MODE.text.default};
+          --colorTextLink: ${LIGHT_MODE.text.link};
+          --colorTextGray: ${LIGHT_MODE.text.gray};
+          --colorBackgroundDefault ${LIGHT_MODE.background.default};
+          --colorBackgroundPaper: ${LIGHT_MODE.background.paper};
         }
 
         *, *::before, *::after{
           box-sizing: border-box;
-        }
-
-        body {
-          margin: 0;
-          color: #EEE;
-          font-weight: 400;
-          font-size: 0.874rem;
-          line-height: 1.43;
-          letter-spacing: 0.01071em;
-          background-color: #303030;
-
-          overflow-y: scroll;
         }
 
         #__next{
@@ -51,12 +47,17 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           /* flex-direction: column; */
         }
 
-        h1 {
-          text-align: center;
+        body {
+          margin: 0;
         }
 
-        div, p, a, li, b{
-          font-size: 1rem;
+        a {
+          text-decoration: none;
+          color: var(--colorTextLink);
+        }
+        
+        a:hover, a:active {
+          text-decoration: underline;
         }
 
         ul, ol {
@@ -64,23 +65,32 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           padding-left: 1.5rem;
         }
 
-        ul li{
-          padding-bottom: 1rem;
-        }
-
-        a{
-          color: #50CAF9;
-          text-decoration: none;
-        }
-
-        strong, b {
-          font-weight: 700;
-        }
-
         source, img {
           width: 100%;
           height: auto;
           object-fit: cover;
+        }
+
+        p > code,
+        pre > code {
+          font-size: 1rem;
+        }
+
+        .react-icons, .wantedlySvg, .search-icon {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 1.25rem;
+          height: 1.25rem;
+          fill: var(--colorBackgroundDefault);
+          transition: fill var(--transitionTimeFunc);
+        }
+        @media( min-width: 960px ){
+          .react-icons {
+            width: 1.5rem;
+            height: 1.5rem;
+          }
         }
       `}</style>
     </>

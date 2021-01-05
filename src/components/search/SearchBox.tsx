@@ -14,7 +14,7 @@ form {
 }
 
 input[type='search'] {
-  color: #EEE;
+  color: var(--colorTextDefault);
   font-size: 1rem;
   height: 3rem;
   width: 100%;
@@ -34,14 +34,18 @@ button[type='submit'] {
   appearance: none;
 }
 
-:global(.react-icons) {
-  fill: #EEE;
+:global(.search-icon) {
+  position: static;
+  transform: none;
+  top: 0;
+  left: 0;
+  fill: var(--colorTextDefault);
   width: 2rem;
   height: 2rem;
 }
 
-button:disabled > :global(.react-icons){
-  fill: gray;
+button:disabled > :global(.search-icon){
+  fill: var(--colorTextGray);
 }
 
 /* clears the ‘X’ from Internet Explorer */
@@ -92,7 +96,7 @@ const SearchBox: React.FC<SearchBoxProvided> = ({
           autoFocus
         />
         <button type='submit' disabled={!currentRefinement}>
-          <IconContext.Provider value={{ className: 'react-icons' }}>
+          <IconContext.Provider value={{ className: 'search-icon' }}>
             <MdSearch />
           </IconContext.Provider>
         </button>
