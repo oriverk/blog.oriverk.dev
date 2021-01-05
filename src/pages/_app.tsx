@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { AppProps } from 'next/app'
 import Router from 'next/router'
 import { IconContext } from 'react-icons'

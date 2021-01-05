@@ -51,7 +51,6 @@ export const HomeIcons: React.FC = () => {
   return (
     <>
       <div className='icons'>
-        {/* @ts-ignore */}
         <button className='icon' key='theme' onClick={()=> toggleTheme(theme)} aria-label='change theme'>
           {theme === 'light' ? '🌞' : '🌙'}   
         </button>

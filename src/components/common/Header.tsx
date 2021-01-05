@@ -48,7 +48,6 @@ export const Header: React.FC = () => {
     <>
       <header>
         <div className='icons'>
-          {/* @ts-ignore */}
           <button className='icon' key='theme' onClick={() => toggleTheme(theme)} aria-label='change theme'>
             {theme === 'light' ? '🌞' : '🌙'}
           </button>

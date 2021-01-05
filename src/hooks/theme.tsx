@@ -1,25 +1,28 @@
 import { useState, useEffect, createContext, useContext } from 'react'
 
+type Themes = 'light' | 'dark'
 const themeModes = ['light', 'dark']
-const defaultTheme = themeModes[1]
+const defaultTheme = themeModes[1] as Themes
 
-const ThemeContext = createContext({
-  theme: '',
-  toggleTheme: () => {}
-})
+type ContextProps = {
+  theme: Themes,
+  toggleTheme: (currentTheme: Themes) => void
+}
+
+const ThemeContext = createContext<Partial<ContextProps>>({})
 
 const getLocalTheme = () => {
   try {
     const localTheme = localStorage && localStorage.getItem('theme')
     if (localTheme && themeModes.includes(localTheme)) {
-      return localTheme
+      return localTheme as Themes
     }
   } catch (error) {
     console.warn("Can't access local storage: ", error.message)
   }
 }
 
-const getTheme = () => {
+const getTheme = ():Themes => {
   const localTheme = getLocalTheme()
   if (localTheme) {
     return localTheme
@@ -30,10 +33,10 @@ const getTheme = () => {
   }
 }
 
-const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(null)
+const ThemeProvider: React.FC = ({ children }) => {
+  const [theme, setTheme] = useState<Themes | null>(null)
 
-  function toggleTheme(currentTheme) {
+  function toggleTheme(currentTheme: Themes) {
     const newTheme = currentTheme === 'light' ? 'dark' : 'light'
     setTheme(newTheme)
   }
