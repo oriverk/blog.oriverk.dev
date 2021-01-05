@@ -76,7 +76,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           font-size: 1rem;
         }
 
-        .react-icons, .wantedlySvg {
+        .react-icons, .wantedlySvg, .search-icon {
           position: absolute;
           top: 50%;
           left: 50%;

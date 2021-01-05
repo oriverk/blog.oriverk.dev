@@ -34,13 +34,17 @@ button[type='submit'] {
   appearance: none;
 }
 
-:global(.react-icons) {
+:global(.search-icon) {
+  position: static;
+  transform: none;
+  top: 0;
+  left: 0;
   fill: var(--colorTextDefault);
   width: 2rem;
   height: 2rem;
 }
 
-button:disabled > :global(.react-icons){
+button:disabled > :global(.search-icon){
   fill: var(--colorTextGray);
 }
 
@@ -92,7 +96,7 @@ const SearchBox: React.FC<SearchBoxProvided> = ({
           autoFocus
         />
         <button type='submit' disabled={!currentRefinement}>
-          <IconContext.Provider value={{ className: 'react-icons' }}>
+          <IconContext.Provider value={{ className: 'search-icon' }}>
             <MdSearch />
           </IconContext.Provider>
         </button>
