@@ -1,7 +1,6 @@
-import { useContext } from 'react'
 import css from 'styled-jsx/css'
 
-import { ThemeContext } from '../../hooks/theme'
+import { useThemeContext } from '../../hooks/theme'
 
 const style = css`
 .header {
@@ -44,12 +43,13 @@ const style = css`
 `
 
 export const Header: React.FC = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext)
+  const { theme, toggleTheme } = useThemeContext()
   return (
     <>
       <header>
         <div className='icons'>
-          <button className='icon' key='theme' onClick={() => toggleTheme()} aria-label='change theme'>
+          {/* @ts-ignore */}
+          <button className='icon' key='theme' onClick={() => toggleTheme(theme)} aria-label='change theme'>
             {theme === 'light' ? '🌞' : '🌙'}
           </button>
         </div>

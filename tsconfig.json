@@ -31,6 +31,6 @@
     "**/*.ts",
     "**/*.tsx",
     "src/components/*.tsx",
-    "src/components/**/*.tsx",
+    "src/components/**/*.tsx", "src/hooks/theme.jsx",
   ]
 }

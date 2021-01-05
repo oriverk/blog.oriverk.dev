@@ -5,32 +5,18 @@ import { IconContext } from 'react-icons'
 
 import * as gtag from '../lib/gtag'
 import { DARK_MODE, LIGHT_MODE } from '../style/color'
-import { Themes, getTheme, setLocalStorageTheme, ThemeContext } from '../hooks/theme'
+import { ThemeProvider } from '../hooks/theme'
 
-export default function MyApp({ Component, pageProps }: AppProps) {
-  const [theme, setTheme] = useState<Themes>(null)
-
-  useEffect(() => {
-    const currentTheme = getTheme() as Themes
-    setTheme(currentTheme)
-    setLocalStorageTheme(currentTheme)
-    document.body.setAttribute('data-theme', currentTheme)
-  }, [theme])
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light'
-    setLocalStorageTheme(newTheme)
-    setTheme(newTheme)
-  }
-  
+export default function MyApp({ Component, pageProps }: AppProps) {  
   Router.events.on('routeChangeComplete', (url: string) => gtag.pageview(url))
+
   return (
     <>
-      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <ThemeProvider>
         <IconContext.Provider value={{ className: 'react-icons' }}>
           <Component {...pageProps} />
         </IconContext.Provider>
-      </ThemeContext.Provider>
+      </ThemeProvider>
       <style jsx global>{`
         :root {
           --colorWhite: #FFF;

@@ -1,4 +1,3 @@
-import { useContext } from 'react'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
 import { MdCreate, MdSearch } from 'react-icons/md'
@@ -6,7 +5,8 @@ import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'
 
 import blogConfig from 'blog.config'
 import { WantedlySvg } from './index'
-import { ThemeContext } from '../../hooks/theme'
+import { useThemeContext } from '../../hooks/theme'
+
 
 const style = css`
 .icons {
@@ -47,11 +47,12 @@ const style = css`
 `
 
 export const HomeIcons: React.FC = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext)
+  const { theme, toggleTheme } = useThemeContext()
   return (
     <>
       <div className='icons'>
-        <button className='icon' key='theme' onClick={()=> toggleTheme()} aria-label='change theme'>
+        {/* @ts-ignore */}
+        <button className='icon' key='theme' onClick={()=> toggleTheme(theme)} aria-label='change theme'>
           {theme === 'light' ? '🌞' : '🌙'}   
         </button>
         <Link href='/search/'>
