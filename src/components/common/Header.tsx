@@ -1,5 +1,6 @@
 import css from 'styled-jsx/css'
 
+import { useLocaleContext } from '../../hooks/locale'
 import { useThemeContext } from '../../hooks/theme'
 
 const style = css`
@@ -44,10 +45,14 @@ const style = css`
 
 export const Header: React.FC = () => {
   const { theme, toggleTheme } = useThemeContext()
+  const { locale, toggleLocale } = useLocaleContext()
   return (
     <>
       <header>
         <div className='icons'>
+          <button className='icon' key='locale' onClick={() => toggleLocale(locale)}>
+            {locale}
+          </button>
           <button className='icon' key='theme' onClick={() => toggleTheme(theme)} aria-label='change theme'>
             {theme === 'light' ? '🌞' : '🌙'}
           </button>

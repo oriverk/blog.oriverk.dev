@@ -5,6 +5,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')
 
 const nextConfig = {
   trailingSlash: true,
+  i18n: {
+    locales: ['en', 'ja'],
+    defaultLocale: 'en',
+  },
 }
 
 module.exports = withPlugins(
