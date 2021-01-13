@@ -24,7 +24,7 @@ export const Footer: React.FC = () => (
       </p>
       <p>
         This site uses Google Analytics. And this source is{' '}
-        <a href='https://github.com/oriverk' target='_blank' rel='noopener noreferrer'>
+        <a href='https://github.com/oriverk/oriverk.dev' target='_blank' rel='noopener noreferrer'>
           here
         </a>.
       </p>
