@@ -1,13 +1,15 @@
-import Link from 'next/link'
-import css from 'styled-jsx/css'
-import { getTags } from '../../lib/posts'
-import { Layout } from '../../components/Layout'
-import { TagsIcons } from '../../components/icons/index'
 import { GetStaticProps } from 'next'
-import { CustomHead } from '../../components/common/Head'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import css from 'styled-jsx/css'
 
-export const getStaticProps: GetStaticProps = async () => {
-  const tags: string[] = getTags()
+import { Layout } from '../../components/Layout'
+import { CustomHead } from '../../components/common/Head'
+import { TagsIcons } from '../../components/icons/index'
+import { PostDataType, getTags } from '../../lib/posts'
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const tags: string[] = getTags(locale)
   return {
     props: {
       tags
@@ -44,26 +46,27 @@ const style = css`
   }
 `
 
-type Props = {
-  tags: string[]
-}
+type TagsProps = Pick<PostDataType, 'tags'>
 
-const Component: React.FC<Props> = ({ tags })  => (
-  <Layout>
-    <CustomHead pageUrl='/tags/' pageTitle='Tags' pageDescription='Posts Tags index' />
-    <TagsIcons />
-    <article className='content'>
-      <h1>Blog Tags</h1>
-      <div className='tags'>
-        {tags.map((tag) => (
-          <Link href={ `/tags/${tag}/` } key={tag}>
-            <a className='tag'>{tag}</a>
-          </Link>
-        ))}
-      </div>
-    </article>
-    <style jsx>{style}</style>
-  </Layout>
-)
+const Component: React.FC<TagsProps> = ({ tags }) => {
+  const { locale } = useRouter()
+  return (
+    <Layout>
+      <CustomHead pageUrl={`/${locale}/tags/`} pageTitle='Tags' pageDescription='Posts Tags index' />
+      <TagsIcons />
+      <article className='content'>
+        <h1>Blog Tags</h1>
+        <div className='tags'>
+          {tags.map((tag) => (
+            <Link href={`/tags/${tag}/`} locale={locale} key={tag}>
+              <a className='tag'>{tag}</a>
+            </Link>
+          ))}
+        </div>
+      </article>
+      <style jsx>{style}</style>
+    </Layout>
+  )
+}
 
 export default Component

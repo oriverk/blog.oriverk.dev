@@ -1,26 +1,27 @@
-import Link from 'next/link'
 import { GetStaticProps, GetStaticPaths } from 'next'
-import { getTags, getTagPosts } from '../../lib/posts'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+
 import { Layout } from '../../components/Layout'
+import { CustomHead } from '../../components/common/Head'
 import { CustomImg } from '../../components/common/Image'
 import { Date } from '../../components/common/Date'
 import { TagIcons } from '../../components/icons/index'
-import { CustomHead } from '../../components/common/Head'
+import { getTagsLocales, getTagPosts, PostDataType } from '../../lib/posts'
+
 import { postCardStyle } from '../posts/index'
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths: string[] = getTags().map((tag) => {
-    return `/tags/${tag}/`
-  })
+export const getStaticPaths: GetStaticPaths = async ({ locales, defaultLocale }) => {
+  const paths = getTagsLocales(locales as string[])
   return {
     paths,
     fallback: false
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params, locale, locales, defaultLocale }) => {
   const tag = params.tag as string
-  const postsData = getTagPosts(tag as string)
+  const postsData = getTagPosts(tag, locale)
   return {
     props: {
       tag,
@@ -29,55 +30,51 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 }
 
-type Props = {
+type TagPostsProps = {
   tag: string,
-  postsData: {
-    id: string,
-    title: string,
-    create: string,
-    update: string,
-    tags?: string[],
-    image?: string
-  }[]
+  postsData: Omit<PostDataType, 'content'>[]
 }
 
-const Component: React.FC<Props> = ({ tag, postsData }) => (
-  <Layout>
-    <CustomHead pageUrl={`/tags/${tag}/`} pageTitle={`${tag} Posts`} pageDescription={`${tag} Posts`} />
-    <TagIcons />
-    <article className='content'>
-      <h1>{`${tag} Posts`}</h1>
-      <div className='posts'>
-        {postsData.map(({ id, title, create, update, tags, image }) => (
-          <div className='postCard' key={id}>
-            <Link href={ `/posts/${id}/`}>
-              <a className='postLink'>
-                <div className='imgOuter'>
-                  <CustomImg src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
-                </div>
-                <div className='postDesc'>
-                  {update ? (
-                    <div>updated on <Date dateString={update} /></div>
-                  ) : (
-                      <div>posted on <Date dateString={create} /></div>
-                    )}
-                  <h2>{title}</h2>
-                </div>
-              </a>
-            </Link>
-            <div className='tags'>
-              {tags.map((tag) => (
-                <Link href={ `/tags/${tag}/`} key={tag}>
-                  <a className='tag' key={tag}>{tag}</a>
-                </Link>
-              ))}
+const Component: React.FC<TagPostsProps> = ({ tag, postsData }) => {
+  const { locale } = useRouter()
+  return (
+    <Layout>
+      <CustomHead pageUrl={`/${locale}/tags/${tag}/`} pageTitle={`${tag} Posts`} pageDescription={`${tag} Posts`} />
+      <TagIcons />
+      <article className='content'>
+        <h1>{`${tag} Posts`}</h1>
+        <div className='posts'>
+          {postsData.map(({ id, title, create, update, tags, image }) => (
+            <div className='postCard' key={id}>
+              <Link href={ `/posts/${id}/`} locale={locale}>
+                <a className='postLink'>
+                  <div className='imgOuter'>
+                    <CustomImg src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
+                  </div>
+                  <div className='postDesc'>
+                    {update ? (
+                      <div>updated on <Date dateString={update} locale={locale} /></div>
+                      ) : (
+                        <div>posted on <Date dateString={create} locale={locale} /></div>
+                        )}
+                    <h2>{title}</h2>
+                  </div>
+                </a>
+              </Link>
+              <div className='tags'>
+                {tags.map((tag) => (
+                  <Link href={ `/tags/${tag}/`} locale={locale} key={tag}>
+                    <a className='tag' key={tag}>{tag}</a>
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </article>
-    <style jsx>{postCardStyle}</style>
-  </Layout>
-)
+          ))}
+        </div>
+      </article>
+      <style jsx>{postCardStyle}</style>
+    </Layout>
+  )
+}
 
 export default Component

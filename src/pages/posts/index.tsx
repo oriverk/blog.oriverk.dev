@@ -1,15 +1,18 @@
-import Link from 'next/link'
-import css from 'styled-jsx/css'
-import { Layout } from '../../components/Layout'
-import { CustomImg } from '../../components/common/Image'
-import { getSortedPostsData } from '../../lib/posts'
-import { PostsIcons } from '../../components/icons/index'
-import { Date } from '../../components/common/Date'
 import { GetStaticProps } from 'next'
-import { CustomHead } from '../../components/common/Head'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import css from 'styled-jsx/css'
 
-export const getStaticProps: GetStaticProps = async () => {
-  const postsData = getSortedPostsData()
+import { Layout } from '../../components/Layout'
+import { CustomHead } from '../../components/common/Head'
+import { CustomImg } from '../../components/common/Image'
+import { PostsIcons } from '../../components/icons'
+import { Date } from '../../components/common/Date'
+import { getSortedPostsData, PostDataType } from '../../lib/posts'
+
+
+export const getStaticProps: GetStaticProps = async ({ locale, locales, defaultLocale, preview, previewData }) => {
+  const postsData = getSortedPostsData(locale)
   return {
     props: {
       postsData,
@@ -122,54 +125,51 @@ h2 {
 }
 `
 
-type Props = {
-  postsData: {
-    id: string
-    title: string
-    create: string
-    update?: string
-    tags?: string[]
-    image?: string
-  }[]
+type PostsProps = {
+  postsData: Omit<PostDataType, 'content'>[]
 }
 
-const Component: React.FC<Props> = ({ postsData }: Props) => (
-  <Layout>
-    <CustomHead pageUrl='posts' pageTitle='Posts' pageDescription='Posts index' />
-    <article className='content'>
-    <PostsIcons />
-      <h1>Blog Posts</h1>
-      <div className='posts'>
-        {postsData.map(({ id, title, create, update, tags, image }) => (
-          <div className='postCard' key={id}>
-            <Link key={id} href={ `/posts/${id}/`}>
-              <a className='postLink'>
-                <div className='imgOuter'>
-                  <CustomImg src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
-                </div>
-                <div className='postDesc'>
-                  {update ? (
-                    <div>updated on <Date dateString={update} /></div>
-                  ) : (
-                      <div>posted on <Date dateString={create} /></div>
-                    )}
-                  <h2>{title}</h2>
-                </div>
-              </a>
-            </Link>
-            <div className='tags'>
-              {tags.map((tag) => (
-                <Link key={tag} href={ `/tags/${tag}/`}>
-                  <a className='tag' key={tag}>{tag}</a>
-                </Link>
-              ))}
+const Component: React.FC<PostsProps> = ({ postsData }) => {
+  const { locale } = useRouter()
+  return (
+    <Layout>
+      <CustomHead pageUrl={`/${locale}/posts`} pageTitle='Posts' pageDescription='Posts index' />
+      <article className='content'>
+        <PostsIcons />
+        <h1>Blog Posts</h1>
+        <div className='posts'>
+          {postsData.map(({ id, title, create, update, tags, image }) => (
+            <div className='postCard' key={id}>
+              <Link key={id} href={`/posts/${id}/`} locale={locale}>
+                <a className='postLink'>
+                  <div className='imgOuter'>
+                    <CustomImg src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
+                  </div>
+                  <div className='postDesc'>
+                    {update ? (
+                      <div>updated on <Date dateString={update} locale={locale} /></div>
+                    ) : (
+                        <div>posted on <Date dateString={create} locale={locale} /></div>
+                      )
+                    }
+                    <h2>{title}</h2>
+                  </div>
+                </a>
+              </Link>
+              <div className='tags'>
+                {tags.map((tag) => (
+                  <Link key={tag} href={`/tags/${tag}/`} locale={locale}>
+                    <a className='tag' key={tag}>{tag}</a>
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </article>
-    <style jsx>{postCardStyle}</style>
-  </Layout>
-)
+          ))}
+        </div>
+      </article>
+      <style jsx>{postCardStyle}</style>
+    </Layout>
+  )
+}
 
 export default Component
