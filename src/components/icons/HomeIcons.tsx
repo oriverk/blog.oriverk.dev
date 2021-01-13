@@ -6,7 +6,7 @@ import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'
 import blogConfig from 'blog.config'
 import { WantedlySvg } from './index'
 import { useThemeContext } from '../../hooks/theme'
-
+import { useLocaleContext } from '../../hooks/locale'
 
 const style = css`
 .icons {
@@ -29,6 +29,12 @@ const style = css`
   transition: all var(--transitionTimeFunc);
   text-decoration: none;
 }
+
+button.icon.toggle {
+  font-size: 1rem;
+  color: var(--colorBackgroundDefault);
+}
+
 .icon:active{
   width: 1.9rem;
   height: 1.9rem;
@@ -48,18 +54,22 @@ const style = css`
 
 export const HomeIcons: React.FC = () => {
   const { theme, toggleTheme } = useThemeContext()
+  const { currentLocale, toggleLocale } = useLocaleContext()
   return (
     <>
       <div className='icons'>
-        <button className='icon' key='theme' onClick={()=> toggleTheme(theme)} aria-label='change theme'>
+        <button className='icon toggle' key='locale' onClick={() => toggleLocale(currentLocale)} aria-label='change locale'>
+          {currentLocale}
+        </button>
+        <button className='icon toggle' key='theme' onClick={()=> toggleTheme(theme)} aria-label='change theme'>
           {theme === 'light' ? '🌞' : '🌙'}   
         </button>
-        <Link href='/search/'>
+        <Link href='/search/' locale={currentLocale}>
           <a className='icon' key='search' aria-label='search posts'>
             <MdSearch />
           </a>
         </Link>
-        <Link href='/posts/'>
+        <Link href='/posts/' locale={currentLocale}>
           <a className='icon' key='posts' aria-label='posts page link'>
             <MdCreate />
           </a>

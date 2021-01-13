@@ -31,6 +31,11 @@ const style = css`
   height: 1.9rem;
 }
 
+button.icon.toggle {
+  font-size: 1rem;
+  color: var(--colorBackgroundDefault);
+}
+
 @media( min-width: 960px ){
   .icon {
     width: 2.25rem;
@@ -45,15 +50,15 @@ const style = css`
 
 export const Header: React.FC = () => {
   const { theme, toggleTheme } = useThemeContext()
-  const { locale, toggleLocale } = useLocaleContext()
+  const { currentLocale, toggleLocale } = useLocaleContext()
   return (
     <>
       <header>
         <div className='icons'>
-          <button className='icon' key='locale' onClick={() => toggleLocale(locale)}>
-            {locale}
+          <button className='icon toggle' key='locale' onClick={() => toggleLocale(currentLocale)} aria-label='change locale'>
+            {currentLocale}
           </button>
-          <button className='icon' key='theme' onClick={() => toggleTheme(theme)} aria-label='change theme'>
+          <button className='icon toggle' key='theme' onClick={() => toggleTheme(theme)} aria-label='change theme'>
             {theme === 'light' ? '🌞' : '🌙'}
           </button>
         </div>
