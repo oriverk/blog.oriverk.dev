@@ -9,6 +9,7 @@ import { CustomImg } from '../../components/common/Image'
 import { PostIcons } from '../../components/icons'
 import { Date } from '../../components/common/Date'
 import { getAllPostIds, getPostData, PostDataType } from '../../lib/posts'
+import { useTranslation } from '../../hooks/translation'
 
 export const getStaticPaths: GetStaticPaths = async ({ locales, defaultLocale }) => {
   const paths = getAllPostIds(locales)
@@ -125,6 +126,8 @@ type PostProps = {
 const Component: React.FC<PostProps> = ({ postData }) => {
   const { locale } = useRouter()
   const { id, title, create, update, tags, image, content } = postData
+  const createdAt = useTranslation('POST_CREATED_AT')
+  const updatedAt = useTranslation('POST_UPDATED_AT')
   const pageTags = tags.join(' ') || 'react nextjs'
   return (
     <Layout>
@@ -137,9 +140,9 @@ const Component: React.FC<PostProps> = ({ postData }) => {
         <h1>{title}</h1>
         <div>
           {update ? (
-            <div>updated on <Date dateString={update} locale={locale} /></div>
+            <div>{updatedAt}{' '}<Date dateString={update} locale={locale} /></div>
           ) : (
-              <div>posted on <Date dateString={create} locale={locale} /></div>
+              <div>{createdAt}{' '}<Date dateString={create} locale={locale} /></div>
             )
           }
           <div className='tags'>

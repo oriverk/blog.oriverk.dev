@@ -1,7 +1,9 @@
 import { useRouter } from 'next/router'
 import css from 'styled-jsx/css';
+
 import { Layout } from '../components/Layout';
 import { CustomHead } from '../components/common/Head'
+import { useTranslation } from '../hooks/translation'
 
 import { Configure, InstantSearch } from 'react-instantsearch-dom'
 import { indexName, searchClient } from '../components/search/SearchClients'
@@ -32,6 +34,8 @@ const Component: React.FC = () => {
   const qs = router.query.q as string
   const urlToSearchState = decodeURI(qs || '')
 
+  const searchTitle = useTranslation('SEARCH_TITLE')
+
   return (
     <Layout>
       <CustomHead
@@ -39,7 +43,7 @@ const Component: React.FC = () => {
         pageTitle='Search posts'
         pageDescription={qs ? `Search results for ${qs}` : 'Search Posts'} />
       <article className='content'>
-        <h1>Search posts</h1>
+        <h1>{searchTitle}</h1>
         <div className='search'>
           <InstantSearch
             indexName={indexName}

@@ -9,6 +9,7 @@ import { CustomImg } from '../../components/common/Image'
 import { PostsIcons } from '../../components/icons'
 import { Date } from '../../components/common/Date'
 import { getSortedPostsData, PostDataType } from '../../lib/posts'
+import { useTranslation } from '../../hooks/translation'
 
 
 export const getStaticProps: GetStaticProps = async ({ locale, locales, defaultLocale, preview, previewData }) => {
@@ -131,12 +132,15 @@ type PostsProps = {
 
 const Component: React.FC<PostsProps> = ({ postsData }) => {
   const { locale } = useRouter()
+  const postsTitle = useTranslation('POSTS_TITLE')
+  const createdAt = useTranslation('POST_CREATED_AT')
+  const updatedAt = useTranslation('POST_UPDATED_AT')
   return (
     <Layout>
       <CustomHead pageUrl={`/${locale}/posts`} pageTitle='Posts' pageDescription='Posts index' />
       <article className='content'>
         <PostsIcons />
-        <h1>Blog Posts</h1>
+        <h1>{postsTitle}</h1>
         <div className='posts'>
           {postsData.map(({ id, title, create, update, tags, image }) => (
             <div className='postCard' key={id}>
@@ -147,9 +151,9 @@ const Component: React.FC<PostsProps> = ({ postsData }) => {
                   </div>
                   <div className='postDesc'>
                     {update ? (
-                      <div>updated on <Date dateString={update} locale={locale} /></div>
-                    ) : (
-                        <div>posted on <Date dateString={create} locale={locale} /></div>
+                        <div>{updatedAt}{' '}<Date dateString={update} locale={locale} /></div>
+                      ) : (
+                        <div>{createdAt}{' '}<Date dateString={create} locale={locale} /></div>
                       )
                     }
                     <h2>{title}</h2>

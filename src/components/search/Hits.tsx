@@ -1,9 +1,12 @@
 import Link from 'next/link'
 import css from 'styled-jsx/css'
+
+import { postCardStyle } from '../../pages/posts/index'
+import { Date } from '../common/Date'
+import { useTranslation } from '../../hooks/translation'
+
 import { connectHits } from 'react-instantsearch-dom'
 import { HitsProvided, Hit } from 'react-instantsearch-core'
-import { Date } from '../common/Date'
-import { postCardStyle } from '../../pages/posts/index'
 
 const hiddenStyle = css`
 .hidden {
@@ -23,6 +26,8 @@ type Props = {
 const Hits: React.FC<HitsProvided<Hit<Props>>> = ({
   hits,
 }) => {
+  const createdAt = useTranslation('POST_CREATED_AT')
+  const updatedAt = useTranslation('POST_UPDATED_AT')
   // before search, below tags become undefined.
   // console.log(hits[0].tags)
   return (
@@ -37,9 +42,9 @@ const Hits: React.FC<HitsProvided<Hit<Props>>> = ({
                 </div> */}
                 <div className='postDesc'>
                   {hit.update ? (
-                    <div>updated on <Date dateString={hit.update} /></div>
+                    <div>{updatedAt}{' '}<Date dateString={hit.update} /></div>
                     ) : (
-                      <div>posted on <Date dateString={hit.create} /></div>
+                      <div>{createdAt}{' '}<Date dateString={hit.create} /></div>
                       )}
                   <h2>{hit.title}</h2>
                 </div>
