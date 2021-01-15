@@ -8,8 +8,16 @@ type Props = {
 }
 
 export const Date: React.FC<Props> = ({ dateString, locale }) => {
+  // let lang: string
+  // if (!locale.split('-')) {
+  //   lang = locale
+  // } else {
+  //   lang = locale.split('-')[0]
+  // }
+  const lang = locale.split('-')[0]
   const date = parseISO(dateString)
-  if (locale && locale === 'ja') {
+
+  if (lang && lang === 'ja') {
     return (
       <time dateTime={dateString}>
         {format(date, 'yyyy年LLLd日', { locale: ja })}
@@ -21,4 +29,14 @@ export const Date: React.FC<Props> = ({ dateString, locale }) => {
       {format(date, 'LLL d, yyyy', { locale: enUs })}
     </time>
   )
+}
+
+export function getI18nDate(dateString: string, locale: string) {
+  const lang = locale.split('-')[0]
+  const date = parseISO(dateString)
+
+  if (lang === 'ja') {
+    return format(date, 'yyyy年LLLd日', { locale: ja })
+  }
+  return format(date, 'LLL d, yyyy', { locale: enUs })
 }
