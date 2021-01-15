@@ -6,9 +6,6 @@ tags: [nextjs]
 image: '/assets/posts/202009/opti4.jpg'
 ---
 
-# first
-2020年9月17日からios14の配信が始まりましたね。Windows、Android & Chromeユーザなので、普段はiosリリースに気にもかけないのですが、今回からsafariがWebpに対応した様で。。。(後で書き直す
-
 今回は、例えばjpgやpngをwebpに変換し、レスポンシブやLow Quality Image Placeholderに対応すると言った、最適化をした事を書きたい。
 
 # next-optimized-images

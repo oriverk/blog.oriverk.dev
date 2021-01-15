@@ -9,10 +9,7 @@ image: '/assets/posts/201905/cebu1.jpg'
 
 from [Qiita: プログラミングを2か月間、日本人エンジニアの下でマンツーマンで学んできた](https://qiita.com/OriverK/items/30d8941c7799c9aa6dfd)
 
-Webエンジニアに転職するために、独りで勉強を進めていましたが、
-独学のデメリットを埋めるべく、[Value Space of Cebu](http://value-space.net/)に参加してきました。
-
-尚、この投稿は、参加経緯や2か月間の感想等になります。
+Webエンジニアに転職するために、独りで勉強を進めていましたが、独学のデメリットを埋めるべく、[Value Space of Cebu](http://value-space.net/)に参加してきました。参加経緯や2か月間の感想等を書き留めたいと思います。
 
 ## 私について
 - 2017年3月　農学学士　卒業

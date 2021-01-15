@@ -7,7 +7,7 @@ image: '/assets/posts/202010/hybridError.png'
 ---
 
 ## too long to read
-In Next.js under hybrid amp, getStaticPaths and getStaticProps (dynamic route) donot work well because of some problem around params query(maybe).
+2020年10月現在、Next.js AMP Hybrid モードと getStaticPaths 等の dynamic router の併用には問題を多く抱えている模様。。
 
 ## Introduction
 ### Environment
