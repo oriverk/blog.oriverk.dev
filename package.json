@@ -9,6 +9,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "map": "node script/genPostsMap.js",
+    "locales": "node script/genPostsMapLocales.js",
     "feeds": "node script/genPostsMap.js && node script/genFeeds.js",
     "bs": "next build && next start",
     "analyze": "ANALYZE=true next build"
