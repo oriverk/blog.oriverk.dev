@@ -4,7 +4,7 @@ import blogConfig from '../../blog.config'
 export default {
   ERROR_404: {
     'en': '404 error: Page Not Found',
-    'ja': '404エラー： ページが見つかりませんでした。'
+    'ja': '404エラー： ページが見つかりません。'
   },
   BACK_TO_TOP: {
     'en': 'Please go back to top page.',
@@ -27,12 +27,12 @@ export default {
     'ja': '投稿一覧'
   },
   POST_CREATED_AT: {
-    'en': 'posted at',
-    'ja': '投稿日: '
+    'en': `posted at {timestamp}`,
+    'ja': '{timestamp}に投稿'
   },
   POST_UPDATED_AT: {
-    'en': 'updated at',
-    'ja': '更新日:'
+    'en': 'updated at {timestamp}',
+    'ja': '{timestamp}に更新'
   },
   SEARCH_TITLE: {
     'en': 'Search Posts',
@@ -43,8 +43,8 @@ export default {
     'ja': '日本語または英語で検索してください'
   },
   SEARCH_SOME_RESULTS_FOUND: {
-    'en': 'results found.',
-    'ja': '件の投稿が見つかりました。'
+    'en': '{count} results found.',
+    'ja': '{count}件の投稿が見つかりました。'
   },
   SEARCH_NO_RESULT_FOUND: {
     'en': 'No result found.',

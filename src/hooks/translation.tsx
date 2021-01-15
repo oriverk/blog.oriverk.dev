@@ -1,31 +1,52 @@
-import { useMemo } from 'react'
 import { useRouter } from 'next/router'
 
-import i18n from '../i18n'
+import literal from '../i18n'
 
-export function useTranslation(key: string, args: string | any = {}): string {
+type InterpolationProps = {
+  text?: string,
+  query?: {},
+  config?: {
+    interpolation: {
+      prefix: string
+      suffix: string
+    }
+  }
+}
+
+function doInterpolation(text: string, query: {}) {
+  // text is already translated for locale
+  if (!text || !query) { return text || '' }
+
+  const prefix = '{'
+  const suffix = '}'
+
+  return Object.keys(query).reduce((all, key) => {
+    const regex = new RegExp(
+      `${prefix}\s*${key}\s*${suffix}`,
+      'gm'
+    )
+    all = all.replace(regex, `${query[key]}`)
+    return all
+  }, text)
+}
+
+export function useTranslation(key: string, args?: {}) {
   const { locale } = useRouter()
-  const lang = locale.split('-')
-  // try {
-  //   return i18n[key][lang]
-  // } catch (error) {
-  //   if (i18n[key]) {
-  //     console.log('Translations for any locale are not found. ', error.message)
-  //   } else if (i18n[key][lang]) {
-  //     console.log(`Translation fro ${locale} is not found. `, error.message)
-  //   }
-  // }
+  const lang = locale.split('-')[0]
+  // return useMemo(() => {
+  if (!literal[key]) {
+    throw new Error(
+      `translation (key: ${key}, locale: ${locale}) is not found.`
+    );
+  }
+  if (!literal[key][lang]) {
+    throw new Error(
+      `translation (key: ${key}, locale: ${locale}) is not found.`
+    );
+  }
 
-  return useMemo(() => {
-    if (!i18n[key])
-      throw new Error(
-        `translation (key: ${key}, locale: ${locale}) is not found.`
-      );
-    if (!i18n[key][lang])
-      throw new Error(
-        `translation (key: ${key}, locale: ${locale}) is not found.`
-      );
-
-    return i18n[key][lang]
-  }, [key, locale, JSON.stringify(args)]);
+  const translated = literal[key][lang] // 'updated at {updated}'
+  const interpolated = doInterpolation(translated, args) // 'updated at 2020年5月11日'
+  return interpolated
+  // }, [key, locale, JSON.stringify(args)]);
 }
