@@ -2,7 +2,7 @@
 create: '2020-01-28'
 update: '2020-03-17'
 author: Kawano Yudai
-title: 'Build Database environment on Ubuntu'
+title: 'Ubuntu: Build Database environment'
 tags: [postgresql, mysql]
 ---
 

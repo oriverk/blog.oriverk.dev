@@ -2,7 +2,7 @@
 create: '2020-02-03'
 update: '2020-07-30'
 author: Kawano Yudai
-title: 'Build Go environment on ubuntu'
+title: 'Ubuntu: Golang の環境構築'
 tags: [ubuntu, go]
 ---
 
@@ -12,6 +12,8 @@ from [Gist: oriverk/InstallLanguage2Ubuntu.md](https://gist.github.com/oriverk/5
 
 Use goenv to install Go.
 goenv is package management tool which based on rbenv
+
+Golangをインストールするために、goenv という rbenv と同様のパッケージ管理ツールを使います。
 
 ```sh
 git clone https://github.com/syndbg/goenv.git ~/.goenv

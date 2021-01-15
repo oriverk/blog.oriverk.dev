@@ -11,7 +11,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang='en'>
+      <Html>
         <Head>
           <meta name='format-detection' content='email=no,telephone=no,address=no' />
           <meta name='theme-color' content={blogConfig.themeColor} />

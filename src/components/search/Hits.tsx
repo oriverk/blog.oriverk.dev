@@ -1,9 +1,13 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import css from 'styled-jsx/css'
+
+import { postCardStyle } from '../../pages/posts/index'
+import { Date, getI18nDate } from '../common/Date'
+import { useTranslation } from '../../hooks/translation'
+
 import { connectHits } from 'react-instantsearch-dom'
 import { HitsProvided, Hit } from 'react-instantsearch-core'
-import { Date } from '../common/Date'
-import { postCardStyle } from '../../pages/posts/index'
 
 const hiddenStyle = css`
 .hidden {
@@ -23,6 +27,7 @@ type Props = {
 const Hits: React.FC<HitsProvided<Hit<Props>>> = ({
   hits,
 }) => {
+  const { locale } = useRouter()
   // before search, below tags become undefined.
   // console.log(hits[0].tags)
   return (
@@ -37,10 +42,11 @@ const Hits: React.FC<HitsProvided<Hit<Props>>> = ({
                 </div> */}
                 <div className='postDesc'>
                   {hit.update ? (
-                    <div>updated on <Date dateString={hit.update} /></div>
+                      <div>{useTranslation('POST_UPDATED_AT', { timestamp: getI18nDate(hit.update, locale) })}</div>
                     ) : (
-                      <div>posted on <Date dateString={hit.create} /></div>
-                      )}
+                      <div>{useTranslation('POST_CREATED_AT', { timestamp: getI18nDate(hit.create, locale) })}</div>
+                    )
+                  }
                   <h2>{hit.title}</h2>
                 </div>
               </a>

@@ -20,33 +20,37 @@ import squeeze from 'remark-squeeze-paragraphs' // plugin to remove empty (or wh
 
 import { alignHeading } from './mdParser'
 
-const docsDirectory = path.join(process.cwd(), 'src/docs')
+function getDocDir(locale: string): string {
+  return path.join(process.cwd(), 'src/docs/' + locale)
+}
 
-function getAllPostsAllData() {
-  const fileNames = fs.readdirSync(docsDirectory)
-  const allPostsAllData = fileNames.map(name => {
+export type PostDataType = {
+  id: string;
+  title: string;
+  create: string;
+  update: string;
+  tags: string[];
+  image: string;
+  content: string;
+}
+
+function getAllPostData(locale: string): PostDataType[] {
+  const docsDir = getDocDir(locale)
+  const fileNames = fs.readdirSync(docsDir)
+  const allPostData = fileNames.map(name => {
     const id = name.replace(/\.mdx?$/, '')
-    const fullPath = path.join(docsDirectory, name)
+    const fullPath = path.join(docsDir, name)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const matterResult = matter(fileContents)
 
-    const title: string = matterResult.data.title || ''
-    const tags: string[] = matterResult.data.tags.map((t: string) => t.toLowerCase()).sort() || ''
-    const create: string = matterResult.data.create || ''
-    const update: string = matterResult.data.update || ''
-    const image: string = matterResult.data.image || ''
-    const content: string = matterResult.content || ''
-    return {
-      id,
-      title,
-      create,
-      update,
-      tags,
-      image,
-      content
-    }
+    const { title = '', create = '', update = '', image = '' } = matterResult.data as PostDataType
+    const content = matterResult.content || ''
+    const tags: string[] = matterResult.data.tags.map((tag: string) => tag.toLowerCase()).sort() || []
+
+    return { id, title, create, update, tags, image, content }
   })
-  return allPostsAllData.sort((a, b) => {
+  
+  return allPostData.sort((a, b) => {
     if (a.create < b.create) {
       return 1
     } else {
@@ -56,53 +60,41 @@ function getAllPostsAllData() {
 }
 
 // posts/index
-export function getSortedPostsData() {
-  const allPostsAllData = getAllPostsAllData()
-  const sortedPostsData = allPostsAllData.map(postData => {
-    const id = postData.id
-    const title = postData.title
-    const create = postData.create
-    const update = postData.update
-    var tags: string[] = postData.tags
+export function getSortedPostsData(locale: string): Omit<PostDataType, 'content'>[] {
+  const allPostData = getAllPostData(locale)
+  const sortedData = allPostData.map(postData => {
+    const { id, title, create, update, image } = postData
+
+    let tags: string[] = postData.tags
     if (tags.includes('ruby') && tags.includes('rails')) {
-      tags = tags.filter(t => t !== 'ruby')
+      tags = tags.filter(tag => tag !== 'ruby')
     }
-    const image = postData.image
-    return {
-      id,
-      title,
-      create,
-      update,
-      tags,
-      image
-    }
+
+    return { id, title, create, update, tags, image }
   })
-  return sortedPostsData
+  return sortedData
 }
 
 // posts/[id].tsx getStaticPaths
-export function getAllPostIds() {
-  const allPostsAllData = getAllPostsAllData()
-  return allPostsAllData.map(postData => {
-    return {
-      params: {
-        id: postData.id
-      }
-    }
+export function getAllPostIds(locales: string[]) {
+  let paths: { params: { id: string }; locale: string }[] = [];
+  locales.map((locale) => {
+    const data = getAllPostData(locale)
+    data.map((datum) => {
+      const { id } = datum
+      paths.push({ params: { id }, locale });
+    })
   })
+  return paths
 }
 
 // posts/[id].tsx getStaticProps
-export async function getPostData(id: string) {
-  // ↑async is for remark.
-  const allPostsAllData = getAllPostsAllData()
-  const postData = allPostsAllData.find( post => post.id === id )
-  const title = postData.title
-  const create = postData.create
-  const update = postData.update
-  const tags = postData.tags
-  const image = postData.image
-  
+export async function getPostData(id: string, locale: string): Promise<PostDataType> {
+  const allPostData = getAllPostData(locale)
+  const postData = allPostData.find(post => post.id === id)
+
+  const { title, create, update, tags, image } = postData
+
   const processor = await remark()
     .use(squeeze)
     .use(alignHeading)
@@ -117,7 +109,7 @@ export async function getPostData(id: string) {
     .use(highlight)
     .use(html, { sanitize: false })
     .process(postData.content)
-  
+
   // const processor1 = unified().use(toMdast).use(frontmatter).use(alignHeading).use(link2heading)   
 
   // console.log('-parsed---------------------- ')
@@ -126,18 +118,10 @@ export async function getPostData(id: string) {
   // console.log('=transformed================')
   // const transformed = processor1.runSync(parsed);
   // console.log(inspect(transformed));
-  
+
   const content = processor.toString()
-  
-  return {
-    id,
-    title,
-    create,
-    update,
-    tags,
-    image,
-    content
-  }
+
+  return { id, title, create, update, tags, image, content }
 }
 
 // function countDuplicateTags (arr) {
@@ -150,31 +134,39 @@ export async function getPostData(id: string) {
 // {'ruby':5, 'js': 2, ...}
 
 // tags/index.tsx
-export function getTags() {
-  const allPostsAllData = getAllPostsAllData()
+export function getTags(locale: string): string[] {
+  const allPostData = getAllPostData(locale)
   let tags: string[] = []
-  allPostsAllData.forEach((post) => {
+  allPostData.forEach((post) => {
     tags = tags.concat(post.tags)
   })
   const setTags = [...new Set(tags)]
   return setTags.sort()
 }
 
+export function getTagsLocales(locales: string[]) {
+  let paths: { params: { tag: string }; locale: string }[] = []
+  locales.map((locale) => {
+    const tags = getTags(locale)
+    tags.map((tag) => {
+      paths.push({ params: { tag }, locale })
+    })
+  })
+  return paths
+}
+
 // tags/[tag].tsx
-export function getTagPosts(tag: string) {
-  const sortedAllPostsData = getAllPostsAllData()
-  const tagPostsData = sortedAllPostsData.filter((post) => post.tags.includes(tag))
+export function getTagPosts(tag: string, locale: string): Omit<PostDataType, 'content'>[] {
+  const allPostData = getAllPostData(locale)
+  const tagPostsData = allPostData.filter((post) => post.tags.includes(tag))
   const postsData = tagPostsData.map((post) => {
-    const id = post.id
-    const title = post.title
-    const create = post.create
-    const update = post.update
-    var tags: string[] = post.tags
+    const { id, title, create, update, image } = post
+
+    let tags: string[] = post.tags
     if (tags.includes('ruby') && tags.includes('rails')) {
-      tags = tags.filter(t => t !== 'ruby')
+      tags = tags.filter(tag => tag !== 'ruby')
     }
-    const image = post.image
-    return { id, title, create, update, tags, image}
+    return { id, title, create, update, tags, image }
   })
   return postsData
 }

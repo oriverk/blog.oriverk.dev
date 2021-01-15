@@ -2,7 +2,7 @@
 create: '2020-02-03'
 update: '2020-07-30'
 author: Kawano Yudai
-title: 'Build Ruby environment on Ubuntu'
+title: 'Ubuntu: Ruby の環境構築'
 tags: [ubuntu, ruby, rails]
 ---
 

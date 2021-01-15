@@ -1,7 +1,7 @@
 ---
 create: '2020-09-21'
 update: ''
-title: 'Next.js内のnext-optimized-imagesによる画像自動最適化'
+title: 'Next.js: how to use next-optimized-images library'
 tags: [nextjs]
 image: '/assets/posts/202009/opti4.jpg'
 ---

@@ -2,7 +2,7 @@
 create: '2020-02-03'
 update: '2020-07-30'
 author: Kawano Yudai
-title: 'Build Rust environment on Ubuntu'
+title: 'Ubuntu: Rust の環境構築'
 tags: [ubuntu, rust]
 ---
 

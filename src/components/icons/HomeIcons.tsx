@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import css from 'styled-jsx/css'
 import { MdCreate, MdSearch } from 'react-icons/md'
 import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'
@@ -6,7 +7,7 @@ import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'
 import blogConfig from 'blog.config'
 import { WantedlySvg } from './index'
 import { useThemeContext } from '../../hooks/theme'
-
+import { useLocaleContext } from '../../hooks/locale'
 
 const style = css`
 .icons {
@@ -29,6 +30,12 @@ const style = css`
   transition: all var(--transitionTimeFunc);
   text-decoration: none;
 }
+
+button.icon.toggleLocale {
+  font-size: 1rem;
+  color: var(--colorBackgroundDefault);
+}
+
 .icon:active{
   width: 1.9rem;
   height: 1.9rem;
@@ -47,19 +54,24 @@ const style = css`
 `
 
 export const HomeIcons: React.FC = () => {
+  const { locale } = useRouter()
   const { theme, toggleTheme } = useThemeContext()
+  const { toggleLocale } = useLocaleContext()
   return (
     <>
       <div className='icons'>
+        <button className='icon toggleLocale' key='locale' onClick={() => toggleLocale(locale)} aria-label='change locale'>
+          {locale}
+        </button>
         <button className='icon' key='theme' onClick={()=> toggleTheme(theme)} aria-label='change theme'>
           {theme === 'light' ? '🌞' : '🌙'}   
         </button>
-        <Link href='/search/'>
+        <Link href='/search/' locale={locale}>
           <a className='icon' key='search' aria-label='search posts'>
             <MdSearch />
           </a>
         </Link>
-        <Link href='/posts/'>
+        <Link href='/posts/' locale={locale}>
           <a className='icon' key='posts' aria-label='posts page link'>
             <MdCreate />
           </a>

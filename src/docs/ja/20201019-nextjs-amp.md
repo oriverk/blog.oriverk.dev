@@ -1,5 +1,5 @@
 ---
-title: Next.js製のサイトを途中からAMP化する
+title: Next.js 製サイトに AMP を適用する
 create: '2020-10-19'
 update: '2020-10-20'
 tags: [nextjs, typescript, amp]    

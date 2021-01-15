@@ -2,7 +2,7 @@
 create: '2020-02-03'
 update: '2020-07-30'
 author: Kawano Yudai
-title: 'Build Java environment on ubuntu'
+title: 'Ubuntu: Build Java environment'
 tags: [ubuntu, java]
 ---
 

@@ -2,6 +2,8 @@ import css from 'styled-jsx/css'
 import { connectStateResults } from 'react-instantsearch-dom'
 import { SearchState, AllSearchResults, AlgoliaError } from "react-instantsearch-core"
 
+import { useTranslation } from '../../hooks/translation'
+
 const style = css`
 div {
   padding: .5rem;
@@ -24,12 +26,15 @@ const StateResults: React.FC<Props> = ({
   const hasResults = searchResults && searchResults.nbHits !== 0
   const nbHits = searchResults && searchResults.nbHits
   // I don't like Ternary operation(三項演算子) but this way needs few codes.
+  const searchError = useTranslation('SEARCH_ERROR')
+  const resultsFound = useTranslation('SEARCH_SOME_RESULTS_FOUND',{count: nbHits})
+  const noResultsFound = useTranslation('SEARCH_NO_RESULT_FOUND')
   return (
     <>
       {
-        error ? (<div>An error occured: {error.message}</div>)
-          : hasResults ? (<div>{nbHits} results found.</div>)
-          : (<div>No result found.</div>)
+        error ? (<div>{searchError}: {error.message}</div>)
+          : hasResults ? (<div>{resultsFound}</div>)
+          : (<div>{noResultsFound}</div>)
       }
       <style jsx>{style}</style>
     </>

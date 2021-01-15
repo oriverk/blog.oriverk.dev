@@ -1,35 +1,30 @@
-import Link from 'next/link'
-import css from 'styled-jsx/css'
 import { GetStaticProps, GetStaticPaths } from 'next'
-import { Layout } from '../../components/Layout'
-import { getAllPostIds, getPostData } from '../../lib/posts'
-// import { getFetchPath } from '../../components/HeaderImg'
-import { PostIcons } from '../../components/icons/index'
-import { Date } from '../../components/common/Date'
-import { CustomImg } from '../../components/common/Image'
-import { CustomHead } from '../../components/common/Head'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import css from 'styled-jsx/css'
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getAllPostIds()
+import { Layout } from '../../components/Layout'
+import { CustomHead } from '../../components/common/Head'
+import { CustomImg } from '../../components/common/Image'
+import { PostIcons } from '../../components/icons'
+import { Date, getI18nDate } from '../../components/common/Date'
+import { getAllPostIds, getPostData, PostDataType } from '../../lib/posts'
+import { useTranslation } from '../../hooks/translation'
+
+export const getStaticPaths: GetStaticPaths = async ({ locales, defaultLocale }) => {
+  const paths = getAllPostIds(locales)
   return {
     paths,
     fallback: false
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const postData = await getPostData(params.id as string)
-  // await is only for remark
-  const id = postData.id
-  const title = postData.title
-  const create = postData.create
-  const tags = postData.tags
-  const image = postData.image
-  const content = postData.content
+export const getStaticProps: GetStaticProps = async ({ params, locale, locales, defaultLocale }) => {
+  const postData = await getPostData(params.id as string, locale)
   return {
     props: {
-      id, title, create, tags, image, content
-    },
+      postData
+    }
   }
 }
 
@@ -123,17 +118,16 @@ blockquote :global(.markdown.content){
 }
 `
 
-type Props = {
-  id: string,
-  title: string,
-  create: string,
-  tags?: string[],
-  image?: string,
-  content: string
+
+type PostProps = {
+  postData: Partial<PostDataType>
 }
 
-const Component: React.FC<Props> = ({ id, title, create, tags, image, content })  => {
+const Component: React.FC<PostProps> = ({ postData }) => {
+  const { locale } = useRouter()
+  const { id, title, create, update, tags, image, content } = postData
   const pageTags = tags.join(' ') || 'react nextjs'
+  
   return (
     <Layout>
       <CustomHead pageUrl={`/posts/${id}/`} pageTitle={title}
@@ -141,13 +135,18 @@ const Component: React.FC<Props> = ({ id, title, create, tags, image, content })
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
       </CustomHead>
       <article className='markdown content'>
-      <PostIcons title={title} id={id} tags={tags} />
+        <PostIcons title={title} id={id} tags={tags} />
         <h1>{title}</h1>
         <div>
-          <div>post on <Date dateString={create} /></div>
+          {update ? (
+              <div>{useTranslation('POST_UPDATED_AT', { timestamp: getI18nDate(update, locale) })}</div>
+            ) : (
+              <div>{useTranslation('POST_CREATED_AT', { timestamp: getI18nDate(create, locale) })}</div>
+            )
+          }
           <div className='tags'>
             {tags.map((tag) => (
-              <Link key={tag} href={ `/tags/${tag}/`}>
+              <Link key={tag} href={`/tags/${tag}/`} locale={locale}>
                 <a className='tag'>{tag}</a>
               </Link>
             ))}</div>

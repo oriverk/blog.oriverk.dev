@@ -5,17 +5,20 @@ import { IconContext } from 'react-icons'
 import * as gtag from '../lib/gtag'
 import { DARK_MODE, LIGHT_MODE } from '../style/color'
 import { ThemeProvider } from '../hooks/theme'
+import { LocaleProvider } from '../hooks/locale'
 
 export default function MyApp({ Component, pageProps }: AppProps) {  
   Router.events.on('routeChangeComplete', (url: string) => gtag.pageview(url))
 
   return (
     <>
-      <ThemeProvider>
-        <IconContext.Provider value={{ className: 'react-icons' }}>
-          <Component {...pageProps} />
-        </IconContext.Provider>
-      </ThemeProvider>
+      <LocaleProvider>
+        <ThemeProvider>
+          <IconContext.Provider value={{ className: 'react-icons' }}>
+            <Component {...pageProps} />
+          </IconContext.Provider>
+        </ThemeProvider>
+      </LocaleProvider>
       <style jsx global>{`
         :root {
           --colorWhite: #FFF;

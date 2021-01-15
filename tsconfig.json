@@ -29,8 +29,6 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "src/components/*.tsx",
-    "src/components/**/*.tsx", "src/hooks/theme.tsx",
+    "**/*.tsx"
   ]
 }

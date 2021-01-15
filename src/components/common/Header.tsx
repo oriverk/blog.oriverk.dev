@@ -1,5 +1,7 @@
+import { useRouter } from 'next/router'
 import css from 'styled-jsx/css'
 
+import { useLocaleContext } from '../../hooks/locale'
 import { useThemeContext } from '../../hooks/theme'
 
 const style = css`
@@ -30,6 +32,11 @@ const style = css`
   height: 1.9rem;
 }
 
+button.icon.toggleLocale {
+  font-size: 1rem;
+  color: var(--colorBackgroundDefault);
+}
+
 @media( min-width: 960px ){
   .icon {
     width: 2.25rem;
@@ -43,12 +50,17 @@ const style = css`
 `
 
 export const Header: React.FC = () => {
+  const { locale } = useRouter()
   const { theme, toggleTheme } = useThemeContext()
+  const { toggleLocale } = useLocaleContext()
   return (
     <>
       <header>
         <div className='icons'>
-          <button className='icon' key='theme' onClick={() => toggleTheme(theme)} aria-label='change theme'>
+          <button className='icon toggleLocale' key='locale' onClick={() => toggleLocale(locale)} aria-label='change locale'>
+            {locale}
+          </button>
+          <button className='icon toggle' key='theme' onClick={() => toggleTheme(theme)} aria-label='change theme'>
             {theme === 'light' ? '🌞' : '🌙'}
           </button>
         </div>

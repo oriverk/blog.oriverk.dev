@@ -3,8 +3,16 @@ const withPWA = require('next-pwa')
 const withOptimizedImages = require('next-optimized-images')
 const withBundleAnalyzer = require('@next/bundle-analyzer')
 
+const i18n = require('./i18n.config')
+
 const nextConfig = {
   trailingSlash: true,
+  i18n: {
+    locales: i18n.locales,
+    defaultLocale: i18n.defaultLocale,
+    // locales: ['en', 'ja'],
+    // defaultLocale: 'en',
+  },
 }
 
 module.exports = withPlugins(

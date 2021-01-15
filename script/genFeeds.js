@@ -3,15 +3,21 @@ const fs = require('fs')
 const blogConfig = require(
   `${path.join(process.cwd(),'blog.config.js')}`
 )
+const i18nConfig = require(
+  `${path.join(process.cwd(), 'i18n.config.js')}`
+)
+const { locales, defaultLocale } = i18nConfig
+
 const posts = JSON.parse(fs.readFileSync(
   path.join(process.cwd(), 'gen/postsMap.json'), 'utf8'
 ))
 
 // SiteMap
 const fixed = [
-  { url: blogConfig.baseUrl, update: '2020-06-26' },
-  { url: `${blogConfig.baseUrl}/posts`, update: '2020-06-30' },
-  { url: `${blogConfig.baseUrl}/tags`, update: '2020-06-26' }
+  { pathname: '/', update: '2021-01-01' },
+  { pathname: '/posts', update: '2021-01-01' },
+  { pathname: '/tags', update: '2021-01-01' },
+  { pathname: '/search', update: '2021-01-01' },
 ]
 
 const sitemap = `<?xml version="1.0"?>
@@ -21,17 +27,19 @@ const sitemap = `<?xml version="1.0"?>
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${fixed.map((f) => {
-  return `
+  return locales.map((locale) => {
+    return `
   <url>
-    <loc>${f.url}</loc>
+    <loc>${blogConfig.baseUrl}/${locale}/${f.url}</loc>
     <lastmod>${f.update}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-  </url>`}).join('')}
+  </url>`}).join('')
+})}
 ${posts.map((post) => {
     return `
   <url>
-    <loc>${blogConfig.baseUrl}/posts/${post.id}</loc>
+    <loc>${blogConfig.baseUrl}/${posts.locale}/posts/${post.id}</loc>
     <lastmod>${post.update || post.create}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -58,7 +66,7 @@ ${posts.map((post) => {
   return `
     <item>
       <title>${post.title}</title>
-      <link>${blogConfig.baseUrl}/posts/${post.id}</link>
+      <link>${blogConfig.baseUrl}/${post.locale}/posts/${post.id}</link>
       <description>${post.tags.join(', ')}</description>
       <pubDate>${post.create}</pubDate>
     </item>`}).join('')}
@@ -78,14 +86,15 @@ const atom = `<?xml version='1.0'?>
   <id>${blogConfig.baseUrl}</id>
   <title>${blogConfig.baseName}</title>
   <updated>${new Date()}</updated>
-  <link rel='alternate' type='text/html' href='${blogConfig.baseUrl}' />
+  <link rel='alternate' type='text/html' hreflang='en' href='${blogConfig.baseUrl}/' />
+  <link rel='alternate' type='text/html' hreflang='ja' href='${blogConfig.baseUrl}/ja' />
   <link rel='self' type='application/atom+xml' href='${blogConfig.baseUrl + '/atom.xml'}' />
   ${posts.map((post) => {
   return `
   <entry>
     <id>${post.id}</id>
     <title>${post.title}</title>
-    <link rel='alternate' type='text/html' href='${blogConfig.baseUrl + '/posts/' + post.id}' />
+    <link rel='alternate' type='text/html' href='${blogConfig.baseUrl}/${post.locale}/posts/${post.id}' />
     <updated>${post.update || post.create}</updated>
     <summary>${post.tags.join(', ')}</summary>
   </entry>`}).join('')}

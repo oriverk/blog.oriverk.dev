@@ -2,7 +2,7 @@
 create: '2020-02-03'
 update: '2020-09-15'
 author: Kawano Yudai
-title: 'Build FrontEnd environment on Ubuntu'
+title: 'Ubuntu: フロントエンドの為の環境構築'
 tags: [ubuntu, node]
 ---
 
