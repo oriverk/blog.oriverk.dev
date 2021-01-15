@@ -7,10 +7,9 @@ import { Layout } from '../../components/Layout'
 import { CustomHead } from '../../components/common/Head'
 import { CustomImg } from '../../components/common/Image'
 import { PostsIcons } from '../../components/icons'
-import { Date } from '../../components/common/Date'
+import { Date, getI18nDate } from '../../components/common/Date'
 import { getSortedPostsData, PostDataType } from '../../lib/posts'
 import { useTranslation } from '../../hooks/translation'
-
 
 export const getStaticProps: GetStaticProps = async ({ locale, locales, defaultLocale, preview, previewData }) => {
   const postsData = getSortedPostsData(locale)
@@ -133,8 +132,7 @@ type PostsProps = {
 const Component: React.FC<PostsProps> = ({ postsData }) => {
   const { locale } = useRouter()
   const postsTitle = useTranslation('POSTS_TITLE')
-  const createdAt = useTranslation('POST_CREATED_AT')
-  const updatedAt = useTranslation('POST_UPDATED_AT')
+
   return (
     <Layout>
       <CustomHead pageUrl={`/${locale}/posts`} pageTitle='Posts' pageDescription='Posts index' />
@@ -151,11 +149,18 @@ const Component: React.FC<PostsProps> = ({ postsData }) => {
                   </div>
                   <div className='postDesc'>
                     {update ? (
+                        <div>{useTranslation('POST_UPDATED_AT',{timestamp: getI18nDate(update, locale)})}</div>
+                        // <div>{useTranslation('POST_UPDATED_AT',{timestamp: `<time dateTime='2020-01-01'>2020年1月1日</time>`})}</div> // i wanna improve like this
+                      ) : (
+                        <div>{useTranslation('POST_CREATED_AT',{timestamp: getI18nDate(create, locale)})}</div>
+                      )
+                    }
+                    {/* {update ? (
                         <div>{updatedAt}{' '}<Date dateString={update} locale={locale} /></div>
                       ) : (
                         <div>{createdAt}{' '}<Date dateString={create} locale={locale} /></div>
                       )
-                    }
+                    } */} 
                     <h2>{title}</h2>
                   </div>
                 </a>

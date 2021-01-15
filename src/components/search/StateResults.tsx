@@ -27,13 +27,13 @@ const StateResults: React.FC<Props> = ({
   const nbHits = searchResults && searchResults.nbHits
   // I don't like Ternary operation(三項演算子) but this way needs few codes.
   const searchError = useTranslation('SEARCH_ERROR')
-  const resultsFound = useTranslation('SEARCH_SOME_RESULTS_FOUND')
+  const resultsFound = useTranslation('SEARCH_SOME_RESULTS_FOUND',{count: nbHits})
   const noResultsFound = useTranslation('SEARCH_NO_RESULT_FOUND')
   return (
     <>
       {
         error ? (<div>{searchError}: {error.message}</div>)
-          : hasResults ? (<div>{nbHits + ' ' + resultsFound}</div>)
+          : hasResults ? (<div>{resultsFound}</div>)
           : (<div>{noResultsFound}</div>)
       }
       <style jsx>{style}</style>

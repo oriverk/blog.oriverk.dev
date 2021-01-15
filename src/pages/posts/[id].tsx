@@ -7,7 +7,7 @@ import { Layout } from '../../components/Layout'
 import { CustomHead } from '../../components/common/Head'
 import { CustomImg } from '../../components/common/Image'
 import { PostIcons } from '../../components/icons'
-import { Date } from '../../components/common/Date'
+import { Date, getI18nDate } from '../../components/common/Date'
 import { getAllPostIds, getPostData, PostDataType } from '../../lib/posts'
 import { useTranslation } from '../../hooks/translation'
 
@@ -126,9 +126,8 @@ type PostProps = {
 const Component: React.FC<PostProps> = ({ postData }) => {
   const { locale } = useRouter()
   const { id, title, create, update, tags, image, content } = postData
-  const createdAt = useTranslation('POST_CREATED_AT')
-  const updatedAt = useTranslation('POST_UPDATED_AT')
   const pageTags = tags.join(' ') || 'react nextjs'
+  
   return (
     <Layout>
       <CustomHead pageUrl={`/posts/${id}/`} pageTitle={title}
@@ -140,9 +139,9 @@ const Component: React.FC<PostProps> = ({ postData }) => {
         <h1>{title}</h1>
         <div>
           {update ? (
-            <div>{updatedAt}{' '}<Date dateString={update} locale={locale} /></div>
-          ) : (
-              <div>{createdAt}{' '}<Date dateString={create} locale={locale} /></div>
+              <div>{useTranslation('POST_UPDATED_AT', { timestamp: getI18nDate(update, locale) })}</div>
+            ) : (
+              <div>{useTranslation('POST_CREATED_AT', { timestamp: getI18nDate(create, locale) })}</div>
             )
           }
           <div className='tags'>
