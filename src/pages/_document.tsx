@@ -3,6 +3,7 @@ import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/do
 import { GA_TRACKING_ID } from '../lib/gtag'
 import blogConfig from '../../blog.config'
 
+// changeable meta data in Head is located at /src/components/common/Head.tsx
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx)
@@ -18,7 +19,6 @@ export default class MyDocument extends Document {
           <meta content='developer, react, nextjs, typescript' name='keywords' />
           <meta property='og:type' content='website' />
           <meta property='og:site_name' content={blogConfig.baseName} />
-          <meta property='og:locale' content={blogConfig.lang} />
           <meta content='summary_large_image' name='twitter:card' />
           <meta content={blogConfig.sns.twitter} name='twitter:site' />
           <link rel='icon' type='image/png' sizes='32x32' href='/favicon/favicon-32x32.png' />

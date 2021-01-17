@@ -11,7 +11,7 @@ const LocaleContext = createContext<Partial<ContextProps>>({})
 const LocaleProvider: React.FC = ({ children }) => {
   const router = useRouter()
   const { asPath, locale, locales, defaultLocale } = router
-  const [value, setLocale] = useState<Locales>(null)
+  const [value, setLocale] = useState<Locales>(locale as Locales)
   
   function getNextLocale(currentLocale: string) {
     // when locales = [a, b, c], newLocale changes b -> c -> a -> b -> ...
@@ -32,10 +32,17 @@ const LocaleProvider: React.FC = ({ children }) => {
   useEffect(() => {
     if (!localStorage || localStorage.getItem('locale') === null) {
       localStorage.setItem('locale', locale)
+      console.dir(router)
+      router.push(asPath, asPath, { locale: locale })
       return
     }
     localStorage.setItem('locale', value)
-    router.push(asPath, asPath, { locale: value })
+    try {
+      router.push(asPath, asPath, { locale: value })
+      
+    } catch (error) {
+      console.log(error.message)
+    }
   }, [value])
   
   return (

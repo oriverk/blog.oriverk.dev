@@ -1,5 +1,7 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import blogConfig from '../../../blog.config'
+import i18nConfig from '../../../i18n.config'
 
 type Props = {
   noindex?: boolean,
@@ -17,6 +19,7 @@ export const CustomHead: React.FC<Props> = ({
   pageDescription,
   pageImage,
 }) => {
+  const { locale } = useRouter()
   const ogImage = pageImage ? blogConfig.baseUrl + pageImage : blogConfig.baseUrl + blogConfig.ogImage
   return (
     <Head>
@@ -26,8 +29,9 @@ export const CustomHead: React.FC<Props> = ({
       <meta name='description' content={pageDescription || blogConfig.desc} />
       <meta property='og:title' content={`${pageTitle} | ${blogConfig.baseName}`} />
       <meta property='og:description' content={pageDescription || blogConfig.desc} />
+      <meta property='og:locale' content={locale} />
       <meta property='og:image' content={ogImage} />
-      <meta property='og:url' content={blogConfig.baseUrl + pageUrl} />
+      <meta property='og:url' content={`${blogConfig.baseUrl}${pageUrl}`} />
       {children}
     </Head>
   )

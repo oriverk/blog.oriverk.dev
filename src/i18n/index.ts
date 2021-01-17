@@ -42,6 +42,10 @@ export default {
     'en': 'Search Posts in English or Japanese',
     'ja': '日本語または英語で検索してください'
   },
+  SEARCH_RESULTS_FOR: {
+    'en': 'Search Results for {searchState}',
+    'ja': '{searchState}の検索結果'
+  },
   SEARCH_SOME_RESULTS_FOUND: {
     'en': '{count} results found.',
     'ja': '{count}件の投稿が見つかりました。'
