@@ -1,8 +1,9 @@
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import css from 'styled-jsx/css'
 
-import { useLocaleContext } from '../../hooks/locale'
 import { useThemeContext } from '../../hooks/theme'
+import { getNextLocale } from '../../hooks/locale'
 
 const style = css`
 .header {
@@ -12,6 +13,9 @@ const style = css`
 }
 
 .icons {
+  display: flex;
+  position: absolute;
+  right: 0;
   text-align: right;
   padding-right: 3%;
 }
@@ -32,8 +36,13 @@ const style = css`
   height: 1.9rem;
 }
 
-button.icon.toggleLocale {
+.icon.toggleLocaleIcon {
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
   font-size: 1rem;
+  font-weight: bold;
   color: var(--colorBackgroundDefault);
 }
 
@@ -50,16 +59,21 @@ button.icon.toggleLocale {
 `
 
 export const Header: React.FC = () => {
-  const { locale } = useRouter()
+  const { locale, locales, asPath } = useRouter()
+  const nextLocale = getNextLocale(locale, locales)
   const { theme, toggleTheme } = useThemeContext()
-  const { toggleLocale } = useLocaleContext()
+
+  function handleOnClick() {
+    localStorage.setItem('locale', nextLocale)
+  }
+
   return (
     <>
       <header>
         <div className='icons'>
-          <button className='icon toggleLocale' key='locale' onClick={() => toggleLocale(locale)} aria-label='change locale'>
-            {locale}
-          </button>
+          <Link href={asPath} locale={nextLocale} prefetch={false}>
+            <a onClick={() => handleOnClick()} className='icon toggleLocaleIcon'>{locale}</a>
+          </Link>
           <button className='icon toggle' key='theme' onClick={() => toggleTheme(theme)} aria-label='change theme'>
             {theme === 'light' ? '🌞' : '🌙'}
           </button>
