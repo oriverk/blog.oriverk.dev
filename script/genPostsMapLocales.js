@@ -8,6 +8,7 @@ const i18nConfig = require(
   `${path.join(process.cwd(), 'i18n.config.js')}`
   )
 const locales = i18nConfig.locales
+const langs = locales.map((locale) => { return locale.split('-')[0] })
 
 function getNecessayContents(content) {
   const notAscii = /[^\x00 -\x7F]/gim   // = 全角
@@ -23,11 +24,11 @@ function getNecessayContents(content) {
   return removed
 }
 
-function getAllPostsData(locale) {
+function getPostsDataLocale(locale) {
   const docsDir = path.join(process.cwd(), `src/docs/${locale}`)
   const fileNames = fs.readdirSync(docsDir)
 
-  const allPostsData = fileNames.map((name) => {
+  const postsData = fileNames.map((name) => {
     const id = name.replace(/\.mdx?$/, '')
     const fullPath = path.join(docsDir, name)
     const contents = fs.readFileSync(fullPath, 'utf8')
@@ -37,51 +38,44 @@ function getAllPostsData(locale) {
     const tags = matterResult.data.tags.map(t => t.toLowerCase()).sort() || ''
     const content = getNecessayContents(matterResult.content)
 
-    return { id, title, create, update, tags, content }
+    return { locale, id, title, create, update, tags, content }
   })
-  return allPostsData
+  return postsData.sort((a, b) => {
+    if (a.create < b.create) {
+      return 1
+    } else {
+      return -1
+    }
+  })
 }
 
-function getAllPostsLocales(locales) {
-  let paths = []
-  locales.map((locale) => {
-    const data = getAllPostsData(locale)
-    data.map((datum) => {
-      const {id, create } = datum
-      // paths.push({parmas:{...datum}, locale})
-      paths.push({ locale, ...datum })
-    })
-  })
-  return paths
-}
+function genPostsMapLocale(locale) {
+  const postsDataLocale = getPostsDataLocale(locale)
+  const previousPostsMap = JSON.parse(fs.readFileSync(
+    path.join(process.cwd(), `gen/postsMap.${locale}.json`), 'utf8'
+  ))
 
-const sortedData = getAllPostsLocales(locales).sort((a, b) => {
-  if (a.create < b.create) {
-    return 1
-  } else {
-    return -1
+  try {
+    assert.deepStrictEqual(postsDataLocale, previousPostsMap, 'these data are different')
+  } catch (err) {
+    try {
+      fs.writeFileSync(
+        path.join(process.cwd(), `gen/postsMap.${locale}.json`),
+        JSON.stringify(postsDataLocale, undefined, 2)
+        , 'utf-8'
+      )
+      console.log(`succeed in saving data as new postsMap.${locale}.json`)
+    } catch (err) {
+      console.error(err)
+      console.log(`failed to save data as new postsMap.${locale}.json`)
+    }
   }
+}
+
+langs.map((lang) => {
+  genPostsMapLocale(lang)
 })
 
-const postsMap = JSON.parse(fs.readFileSync(
-  path.join(process.cwd(), 'gen/postsMap.json'), 'utf8'
-))
-
-try {
-  assert.deepStrictEqual(sortedData, postsMap,'these data are different')
-} catch (err) {
-  try {
-    fs.writeFileSync(
-      path.join(process.cwd(), 'gen/postsMapLocales.json'),
-      JSON.stringify(sortedData, undefined, 2)
-      , 'utf-8'
-    )
-    console.log('succeed in saving data as new postsMap.json')
-  } catch (err) {
-    console.error(err)
-    console.log('failed to save data as new postsMap.json')
-  }
-}
 
 // postPages.json
 // {
