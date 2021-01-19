@@ -1,50 +1,30 @@
-import { useState, useEffect, createContext, useContext } from 'react'
+import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-type Locales = 'en' | 'ja'
-type ContextProps = {
-  toggleLocale: (currentLocale: string) => void
+function getNextLocale(currentLocale: string, locales: string[]): string {
+  // when locales = [a, b, c], newLocale changes b -> c -> a -> b -> ...
+  const indexOfLocale = locales.indexOf(currentLocale)
+  return locales[(indexOfLocale + 1) % locales.length]
 }
-
-const LocaleContext = createContext<Partial<ContextProps>>({})
 
 const LocaleProvider: React.FC = ({ children }) => {
   const router = useRouter()
-  const { asPath, locale, locales, defaultLocale } = router
-  const [value, setLocale] = useState<Locales>(null)
-  
-  function getNextLocale(currentLocale: string) {
-    // when locales = [a, b, c], newLocale changes b -> c -> a -> b -> ...
-    if (locales.indexOf(currentLocale) === -1) {
-      return locale as Locales || defaultLocale as Locales
-    }
-    const indexOfLocale = locales.indexOf(currentLocale)
-    return locales[(indexOfLocale + 1) % locales.length] as Locales
-  }
-
-  function toggleLocale(currentLocale: string) {
-    const nextLocale = getNextLocale(currentLocale)
-    if (locale !== nextLocale) {
-      setLocale(nextLocale)
-    }
-  }
+  const { asPath, locale } = router
 
   useEffect(() => {
-    if (!localStorage || localStorage.getItem('locale') === null) {
+    const getItem = localStorage.getItem('locale')
+    if (!getItem) {
       localStorage.setItem('locale', locale)
-      return
+    } else if (getItem !== locale) {
+      router.push(asPath, asPath, { locale: getItem })
     }
-    localStorage.setItem('locale', value)
-    router.push(asPath, asPath, { locale: value })
-  }, [value])
+  }, [])
   
   return (
-    <LocaleContext.Provider value={{ toggleLocale } as ContextProps}>
+    <>
       {children}
-    </LocaleContext.Provider>
+    </>
   )
 }
 
-const useLocaleContext = () => useContext(LocaleContext)
-
-export { LocaleProvider, useLocaleContext }
+export { LocaleProvider, getNextLocale }

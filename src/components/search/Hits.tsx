@@ -35,7 +35,7 @@ const Hits: React.FC<HitsProvided<Hit<Props>>> = ({
       <div className='posts'>
         {hits.map((hit) => (
           <div className='postCard' key={hit.id}>
-            <Link href={`/posts/${hit.id}/`}>
+            <Link href={`/posts/${hit.id}/`} prefetch={false}>
               <a className='postLink' key={hit.id}>
                 {/* <div className='imgOuter'>
                   <CustomImg src={hit.image || '/assets/home/sunrise.jpg'} alt={hit.title} className='cardImg' />
@@ -53,7 +53,7 @@ const Hits: React.FC<HitsProvided<Hit<Props>>> = ({
             </Link>
             <div className='tags'>
               {hit.tags.map((tag) => (
-                <Link href={`/tags/${tag}/`} key={tag}>
+                <Link href={`/tags/${tag}/`} key={tag} prefetch={false}>
                   <a className='tag'>
                     {tag}
                   </a>

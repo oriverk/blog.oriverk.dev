@@ -130,7 +130,7 @@ const Component: React.FC<PostProps> = ({ postData }) => {
   
   return (
     <Layout>
-      <CustomHead pageUrl={`/posts/${id}/`} pageTitle={title}
+      <CustomHead pageUrl={`/${locale}/posts/${id}/`} pageTitle={title}
         pageDescription={pageTags} pageImage={image} >
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
       </CustomHead>

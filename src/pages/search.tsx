@@ -31,17 +31,19 @@ h1 {
 
 const Component: React.FC = () => {
   const router = useRouter()
+  const { locale, asPath } = router
   const qs = router.query.q as string
   const urlToSearchState = decodeURI(qs || '')
 
   const searchTitle = useTranslation('SEARCH_TITLE')
+  const searchResultsFor = useTranslation('SEARCH_RESULTS_FOR', { searchState: urlToSearchState })
 
   return (
     <Layout>
       <CustomHead
-        pageUrl={router.asPath}
-        pageTitle='Search posts'
-        pageDescription={qs ? `Search results for ${qs}` : 'Search Posts'} />
+        pageUrl={`/${locale}${asPath}`}
+        pageTitle={searchTitle}
+        pageDescription={qs ? searchResultsFor : searchTitle} />
       <article className='content'>
         <h1>{searchTitle}</h1>
         <div className='search'>

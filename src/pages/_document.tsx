@@ -2,7 +2,11 @@ import React from 'react'
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
 import { GA_TRACKING_ID } from '../lib/gtag'
 import blogConfig from '../../blog.config'
+import i18nConfig from '../../i18n.config'
+const { locales, defaultLocale } = i18nConfig
+const langs = locales.map((locale) => { return locale.split('-')[0] }) || [defaultLocale]
 
+// changeable meta data in Head is located at /src/components/common/Head.tsx
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx)
@@ -18,16 +22,16 @@ export default class MyDocument extends Document {
           <meta content='developer, react, nextjs, typescript' name='keywords' />
           <meta property='og:type' content='website' />
           <meta property='og:site_name' content={blogConfig.baseName} />
-          <meta property='og:locale' content={blogConfig.lang} />
           <meta content='summary_large_image' name='twitter:card' />
           <meta content={blogConfig.sns.twitter} name='twitter:site' />
           <link rel='icon' type='image/png' sizes='32x32' href='/favicon/favicon-32x32.png' />
           <link rel='icon' type='image/png' sizes='16x16' href='/favicon/favicon-16x16.png' />
           <link rel='apple-touch-icon' sizes='180x180' href='/assets/human512x512.png' />
           <link rel='manifest' crossOrigin='use-credentials' href='/manifest.json' />
-          <link rel='alternate' type='application/rss+xml' title={blogConfig.baseName} href='/rss.xml' />
-          <link rel='alternate' type='application/atom+xml' title={blogConfig.baseName} href='/atom.xml' />
-          <link rel='alternate' type='application/rss+xml' title={blogConfig.baseName} href='/sitemap.xml' />
+          {langs.map((lang) => (
+            <link rel='alternate' type='application/rss+xml' title={`${blogConfig.baseName} Language: ${lang.toUpperCase()}`} href={`/rss.${lang}.xml`} />
+          ))}
+          <link rel='sitemap' type='application/xml' href='/sitemap.xml' />
         </Head>
         <body>
           <Main />

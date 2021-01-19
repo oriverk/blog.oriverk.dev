@@ -8,7 +8,7 @@ const Component: React.FC = () => {
   const { locale } = useRouter()
   return (
     <Layout isHome>
-      <CustomHead pageUrl={`/${locale}`} pageTitle='Home' pageDescription="Home | Kawano Yudai's site" />
+      <CustomHead pageUrl={`/${locale}/`} pageTitle='Home' pageDescription="Home | Kawano Yudai's site" />
       <Top />
       <About />
       <History />

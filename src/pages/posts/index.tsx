@@ -131,14 +131,13 @@ type PostsProps = {
 
 const Component: React.FC<PostsProps> = ({ postsData }) => {
   const { locale } = useRouter()
-  const postsTitle = useTranslation('POSTS_TITLE')
 
   return (
     <Layout>
-      <CustomHead pageUrl={`/${locale}/posts`} pageTitle='Posts' pageDescription='Posts index' />
+      <CustomHead pageUrl={`/${locale}/posts/`} pageTitle={useTranslation('POSTS_TITLE')} pageDescription='Posts index' />
       <article className='content'>
         <PostsIcons />
-        <h1>{postsTitle}</h1>
+        <h1>{useTranslation('POSTS_TITLE')}</h1>
         <div className='posts'>
           {postsData.map(({ id, title, create, update, tags, image }) => (
             <div className='postCard' key={id}>

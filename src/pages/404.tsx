@@ -19,7 +19,7 @@ const Component: React.FC = () => {
   const backToTop = useTranslation('BACK_TO_TOP')
   return (
     <Layout>
-      <CustomHead pageUrl={`/${locale}/404/`} pageTitle='404' pageDescription='404 - Page Not Found.' />
+      <CustomHead pageUrl={`/${locale}/404/`} pageTitle='404' pageDescription={pageNotFound} />
       <article>
         <div>
           <h1>{pageNotFound}</h1>

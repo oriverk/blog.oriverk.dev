@@ -7,7 +7,7 @@ import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'
 import blogConfig from 'blog.config'
 import { WantedlySvg } from './index'
 import { useThemeContext } from '../../hooks/theme'
-import { useLocaleContext } from '../../hooks/locale'
+import { getNextLocale } from '../../hooks/locale'
 
 const style = css`
 .icons {
@@ -31,8 +31,10 @@ const style = css`
   text-decoration: none;
 }
 
-button.icon.toggleLocale {
+.icon.toggleLocaleIcon {
+  text-decoration: none;
   font-size: 1rem;
+  font-weight: bold;
   color: var(--colorBackgroundDefault);
 }
 
@@ -54,15 +56,20 @@ button.icon.toggleLocale {
 `
 
 export const HomeIcons: React.FC = () => {
-  const { locale } = useRouter()
+  const { asPath, locale, locales } = useRouter()
+  const nextLocale = getNextLocale(locale, locales)
   const { theme, toggleTheme } = useThemeContext()
-  const { toggleLocale } = useLocaleContext()
+
+  function handleOnClick() {
+    localStorage.setItem('locale', nextLocale)
+  }
+
   return (
     <>
       <div className='icons'>
-        <button className='icon toggleLocale' key='locale' onClick={() => toggleLocale(locale)} aria-label='change locale'>
-          {locale}
-        </button>
+        <Link href={asPath} locale={nextLocale} prefetch={false}>
+          <a onClick={() => handleOnClick()} className='icon toggleLocaleIcon'>{locale}</a>
+        </Link>
         <button className='icon' key='theme' onClick={()=> toggleTheme(theme)} aria-label='change theme'>
           {theme === 'light' ? '🌞' : '🌙'}   
         </button>
