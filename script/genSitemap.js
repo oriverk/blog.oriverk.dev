@@ -68,8 +68,7 @@ function genPostsUrls(locales) {
 function genSitemap(locales) {
   const fixed = genFixedUrls(locales)
   const posts = genPostsUrls(locales)
-  const sitemap = `
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  const sitemap = `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
