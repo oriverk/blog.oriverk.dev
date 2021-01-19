@@ -1,8 +1,7 @@
 {
   "name":"Kawano Yudai's site",
   "short_name":"Kawano Yudai",
-  "vercel": "https://oriverk.dev",
-  "start_url": "/",
+  "start_url": ".",
   "display":"standalone",
   "background_color":"#212121",
   "theme_color":"#212121",
