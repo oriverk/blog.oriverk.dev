@@ -29,9 +29,9 @@ export default class MyDocument extends Document {
           <link rel='apple-touch-icon' sizes='180x180' href='/assets/human512x512.png' />
           <link rel='manifest' crossOrigin='use-credentials' href='/manifest.json' />
           {langs.map((lang) => (
-            <link rel='alternate' type='application/rss+xml' title={`blogConfig.baseName Language:${lang}`} href={`/rss.${lang}.xml`} />
+            <link rel='alternate' type='application/rss+xml' title={`${blogConfig.baseName} Language: ${lang.toUpperCase()}`} href={`/rss.${lang}.xml`} />
           ))}
-          <link rel='alternate' type='application/rss+xml' title={blogConfig.baseName} href='/sitemap.xml' />
+          <link rel='sitemap' type='application/xml' href='/sitemap.xml' />
         </Head>
         <body>
           <Main />
