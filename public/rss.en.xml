@@ -1,0 +1,235 @@
+
+<?xml version='1.0'?>
+  <rss version='2.0'>
+  <channel>
+    <title>Kawano Yudai's site</title>
+    <link>https://oriverk.dev/rss.en.xml</link>
+    <description>This site is for my portfolio and made with React, Next.js</description>
+    <language>en</language>
+    <lastBuildDate>Tue Jan 19 2021 06:37:55 GMT+0000 (Coordinated Universal Time)</lastBuildDate>
+  </channel>
+  <item>
+    <title>Next.js: getStaticPaths and Hybrid AMP don't seem to get along</title>
+    <link>https://oriverk.dev/falseposts/20201020-dynamic-route-not-working</link>
+    <guid>falseposts/20201020-dynamic-route-not-working</guid>
+    <pubDate>2020-10-20</pubDate>
+    <description>amp, nextjs</description>
+  </item>
+  <item>
+    <title>Apply AMP to Next.js website from the middle</title>
+    <link>https://oriverk.dev/falseposts/20201019-nextjs-amp</link>
+    <guid>falseposts/20201019-nextjs-amp</guid>
+    <pubDate>2020-10-19</pubDate>
+    <description>amp, nextjs, typescript</description>
+  </item>
+  <item>
+    <title>Next.js: how to use next-optimized-images library</title>
+    <link>https://oriverk.dev/falseposts/20200921-optimized-images</link>
+    <guid>falseposts/20200921-optimized-images</guid>
+    <pubDate>2020-09-21</pubDate>
+    <description>nextjs</description>
+  </item>
+  <item>
+    <title>Created my site with Next.js</title>
+    <link>https://oriverk.dev/falseposts/20200526-next-portfolio</link>
+    <guid>falseposts/20200526-next-portfolio</guid>
+    <pubDate>2020-05-26</pubDate>
+    <description>nextjs, react, remark, typescript</description>
+  </item>
+  <item>
+    <title>joined OSS to create COVID19 task force website in Miyazaki</title>
+    <link>https://oriverk.dev/falseposts/20200329-joined-corona-oss</link>
+    <guid>falseposts/20200329-joined-corona-oss</guid>
+    <pubDate>2020-03-29</pubDate>
+    <description>typescript, vue</description>
+  </item>
+  <item>
+    <title>made major changes to my Githubpages</title>
+    <link>https://oriverk.dev/falseposts/20200204-update-githubpages</link>
+    <guid>falseposts/20200204-update-githubpages</guid>
+    <pubDate>2020-02-04</pubDate>
+    <description>githubpages, jekyll</description>
+  </item>
+  <item>
+    <title>Ubuntu: Build Rust environment</title>
+    <link>https://oriverk.dev/falseposts/20200203-setup-rust-ubuntu</link>
+    <guid>falseposts/20200203-setup-rust-ubuntu</guid>
+    <pubDate>2020-02-03</pubDate>
+    <description>rust, ubuntu</description>
+  </item>
+  <item>
+    <title>Ubuntu: Build Ruby environment</title>
+    <link>https://oriverk.dev/falseposts/20200203-setup-ruby-ubuntu</link>
+    <guid>falseposts/20200203-setup-ruby-ubuntu</guid>
+    <pubDate>2020-02-03</pubDate>
+    <description>rails, ruby, ubuntu</description>
+  </item>
+  <item>
+    <title>Ubuntu: Build Java environment</title>
+    <link>https://oriverk.dev/falseposts/20200203-setup-java-ubuntu</link>
+    <guid>falseposts/20200203-setup-java-ubuntu</guid>
+    <pubDate>2020-02-03</pubDate>
+    <description>java, ubuntu</description>
+  </item>
+  <item>
+    <title>Ubuntu: Build Go environment</title>
+    <link>https://oriverk.dev/falseposts/20200203-setup-go-ubuntu</link>
+    <guid>falseposts/20200203-setup-go-ubuntu</guid>
+    <pubDate>2020-02-03</pubDate>
+    <description>go, ubuntu</description>
+  </item>
+  <item>
+    <title>Ubuntu: Build FrontEnd environment</title>
+    <link>https://oriverk.dev/falseposts/20200203-setup-frontend-ubuntu</link>
+    <guid>falseposts/20200203-setup-frontend-ubuntu</guid>
+    <pubDate>2020-02-03</pubDate>
+    <description>node, ubuntu</description>
+  </item>
+  <item>
+    <title>Build Ubuntu environment with VM and Vagrant</title>
+    <link>https://oriverk.dev/falseposts/20200128-setup-ubuntu-vm</link>
+    <guid>falseposts/20200128-setup-ubuntu-vm</guid>
+    <pubDate>2020-01-28</pubDate>
+    <description>ubuntu, vm</description>
+  </item>
+  <item>
+    <title>Ubuntu: Build Database environment</title>
+    <link>https://oriverk.dev/falseposts/20200128-setup-database-ubuntu</link>
+    <guid>falseposts/20200128-setup-database-ubuntu</guid>
+    <pubDate>2020-01-28</pubDate>
+    <description>mysql, postgresql</description>
+  </item>
+  <item>
+    <title>Changed style to my githubpages</title>
+    <link>https://oriverk.dev/falseposts/20200110-update-githubpages</link>
+    <guid>falseposts/20200110-update-githubpages</guid>
+    <pubDate>2020-01-10</pubDate>
+    <description>githubpages, jekyll</description>
+  </item>
+  <item>
+    <title>Just for font-size confirmation</title>
+    <link>https://oriverk.dev/falseposts/20200106-fontsize-test</link>
+    <guid>falseposts/20200106-fontsize-test</guid>
+    <pubDate>2020-01-06</pubDate>
+    <description></description>
+  </item>
+  <item>
+    <title>Created code share app for Twitter with RubyonRails</title>
+    <link>https://oriverk.dev/falseposts/20191129-post-code2twitter</link>
+    <guid>falseposts/20191129-post-code2twitter</guid>
+    <pubDate>2019-11-29</pubDate>
+    <description>aws, rails, ruby</description>
+  </item>
+  <item>
+    <title>make a copy system from a FE exam, IPA with RubyonRails</title>
+    <link>https://oriverk.dev/falseposts/20190829-fe-exam</link>
+    <guid>falseposts/20190829-fe-exam</guid>
+    <pubDate>2019-08-29</pubDate>
+    <description>rails, ruby</description>
+  </item>
+  <item>
+    <title>How to use Jekyll in GithubPages</title>
+    <link>https://oriverk.dev/falseposts/20190818-use-jekyll</link>
+    <guid>falseposts/20190818-use-jekyll</guid>
+    <pubDate>2019-08-18</pubDate>
+    <description>githubpages, jekyll</description>
+  </item>
+  <item>
+    <title>Day 18: What is Transaction like?</title>
+    <link>https://oriverk.dev/falseposts/20190403-what-transaction</link>
+    <guid>falseposts/20190403-what-transaction</guid>
+    <pubDate>2019-04-03</pubDate>
+    <description>mysql, ruby</description>
+  </item>
+  <item>
+    <title>Day 16：add administrator only with Devise</title>
+    <link>https://oriverk.dev/falseposts/20190329-add-devise-admin</link>
+    <guid>falseposts/20190329-add-devise-admin</guid>
+    <pubDate>2019-03-29</pubDate>
+    <description>devise, rails, ruby</description>
+  </item>
+  <item>
+    <title>Day 15： How to publish apps on Heroku</title>
+    <link>https://oriverk.dev/falseposts/20190328-use-heroku</link>
+    <guid>falseposts/20190328-use-heroku</guid>
+    <pubDate>2019-03-28</pubDate>
+    <description>heroku, rails, ruby</description>
+  </item>
+  <item>
+    <title>Day 13： make a website with Login func of Devise.</title>
+    <link>https://oriverk.dev/falseposts/20190324-app-with-devise</link>
+    <guid>falseposts/20190324-app-with-devise</guid>
+    <pubDate>2019-03-24</pubDate>
+    <description>devise, rails, ruby</description>
+  </item>
+  <item>
+    <title>Day 10 ~ 12：first time to use Git</title>
+    <link>https://oriverk.dev/falseposts/20190320-what-git</link>
+    <guid>falseposts/20190320-what-git</guid>
+    <pubDate>2019-03-20</pubDate>
+    <description>git</description>
+  </item>
+  <item>
+    <title>Day 10: input data into DB and output to websites</title>
+    <link>https://oriverk.dev/falseposts/20190320-input-data2db</link>
+    <guid>falseposts/20190320-input-data2db</guid>
+    <pubDate>2019-03-20</pubDate>
+    <description>mysql, rails, ruby</description>
+  </item>
+  <item>
+    <title>Note about Ruby Reference</title>
+    <link>https://oriverk.dev/falseposts/20190318-read-ruby-reference</link>
+    <guid>falseposts/20190318-read-ruby-reference</guid>
+    <pubDate>2019-03-18</pubDate>
+    <description>ruby</description>
+  </item>
+  <item>
+    <title>Day 9 ~ 14： create an app to operate students data</title>
+    <link>https://oriverk.dev/falseposts/20190317-manipulate-student-data</link>
+    <guid>falseposts/20190317-manipulate-student-data</guid>
+    <pubDate>2019-03-17</pubDate>
+    <description>mysql, rails, ruby</description>
+  </item>
+  <item>
+    <title>Day 6, 7： MySQL operations</title>
+    <link>https://oriverk.dev/falseposts/20190313-manipulate-mysql</link>
+    <guid>falseposts/20190313-manipulate-mysql</guid>
+    <pubDate>2019-03-13</pubDate>
+    <description>mysql</description>
+  </item>
+  <item>
+    <title>Day 5： first time to use Bootstrap</title>
+    <link>https://oriverk.dev/falseposts/20190311-what-bootstrap</link>
+    <guid>falseposts/20190311-what-bootstrap</guid>
+    <pubDate>2019-03-11</pubDate>
+    <description>bootstrap, rails, ruby</description>
+  </item>
+  <item>
+    <title>Day 3：HTTP method, CRUD and SQL</title>
+    <link>https://oriverk.dev/falseposts/20190311-httpmethod-crud-sql</link>
+    <guid>falseposts/20190311-httpmethod-crud-sql</guid>
+    <pubDate>2019-03-11</pubDate>
+    <description>crud, restful</description>
+  </item>
+  <item>
+    <title>Day 2 ~ 13： study with the Ruby certification exam</title>
+    <link>https://oriverk.dev/falseposts/20190316-ruby-exam</link>
+    <guid>falseposts/20190316-ruby-exam</guid>
+    <pubDate>2019-03-06</pubDate>
+    <description>ruby</description>
+  </item>
+  <item>
+    <title>Day 2 ~ 8： make website without Rails Scaffold</title>
+    <link>https://oriverk.dev/falseposts/20190306-without-scaffold</link>
+    <guid>falseposts/20190306-without-scaffold</guid>
+    <pubDate>2019-03-06</pubDate>
+    <description>rails, ruby</description>
+  </item>
+  <item>
+    <title>Day 1: Linux, Shellscript and Permission</title>
+    <link>https://oriverk.dev/falseposts/20190305-shellscript-permission</link>
+    <guid>falseposts/20190305-shellscript-permission</guid>
+    <pubDate>2019-03-05</pubDate>
+    <description>linux, shellscript</description>
+  </item>
+  </rss>
