@@ -1,5 +1,8 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import i18nConfig from '../../i18n.config'
+const { locales, defaultLocale } = i18nConfig
+const configLangs = locales.map((locale) => { return locale.split('-')[0] }) || defaultLocale
 
 function getNextLocale(currentLocale: string, locales: string[]): string {
   // when locales = [a, b, c], newLocale changes b -> c -> a -> b -> ...
@@ -13,10 +16,10 @@ const LocaleProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     const getItem = localStorage.getItem('locale')
-    if (!getItem) {
+    if (!configLangs.includes(getItem)) {
       localStorage.setItem('locale', locale)
     } else if (getItem !== locale) {
-      router.push(asPath, asPath, { locale: getItem })
+      router.push(asPath, asPath, {locale: getItem})
     }
   }, [])
   
