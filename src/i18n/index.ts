@@ -38,9 +38,9 @@ export default {
     'en': 'Search Posts',
     'ja': '投稿検索'
   },
-  SEARCH_FORM_PLACEHOLDER: {
-    'en': 'Search Posts in English or Japanese',
-    'ja': '日本語または英語で検索してください'
+  SEARCH_IN_ENGLISH: {
+    'en': 'Search Posts in English.',
+    'ja': '英語で検索してください。'
   },
   SEARCH_RESULTS_FOR: {
     'en': 'Search Results for {searchState}',

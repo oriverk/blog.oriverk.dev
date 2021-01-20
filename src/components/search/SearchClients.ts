@@ -1,8 +1,6 @@
 import algoliasearch from 'algoliasearch/lite'
 import blogConfig from '../../../blog.config'
 
-export const indexName = blogConfig.algolia.indexName
-
 const algoliaClient = algoliasearch(
   blogConfig.algolia.appId,
   blogConfig.algolia.searchOnlyApiKey

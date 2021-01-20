@@ -2,11 +2,10 @@ import { useRouter } from 'next/router'
 import css from 'styled-jsx/css'
 import { IconContext } from 'react-icons'
 import { MdSearch } from 'react-icons/md'
-
-import { useTranslation } from '../../hooks/translation'
-
 import { connectSearchBox } from 'react-instantsearch-dom'
 import { SearchBoxProvided } from 'react-instantsearch-core';
+
+import { useTranslation } from '../../hooks/translation'
 
 const style = css`
 form {
@@ -84,12 +83,11 @@ const SearchBox: React.FC<SearchBoxProvided> = ({
     }
   }
 
-  const placeholder = useTranslation('SEARCH_FORM_PLACEHOLDER')
   return (
     <>
       <form noValidate action='' role='search' onSubmit={e => { e.preventDefault(); }}>
         <input
-          placeholder={placeholder + '...'}
+          placeholder={useTranslation('SEARCH_IN_ENGLISH')}
           type='search'
           value={currentRefinement}
           onChange={e => {

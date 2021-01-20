@@ -1,12 +1,13 @@
 import { useRouter } from 'next/router'
 import css from 'styled-jsx/css';
+import { Configure, InstantSearch } from 'react-instantsearch-dom'
 
-import { Layout } from '../components/Layout';
+import blogConfig from '../../blog.config'
+import { Layout } from '../components/Layout'
 import { CustomHead } from '../components/common/Head'
 import { useTranslation } from '../hooks/translation'
 
-import { Configure, InstantSearch } from 'react-instantsearch-dom'
-import { indexName, searchClient } from '../components/search/SearchClients'
+import { searchClient } from '../components/search/SearchClients'
 import { CustomSearchBox } from '../components/search/SearchBox'
 import { CustomStateResults } from '../components/search/StateResults'
 import { CustomPoweredBy } from '../components/search/PoweredBy'
@@ -32,20 +33,22 @@ h1 {
 const Component: React.FC = () => {
   const router = useRouter()
   const { locale, asPath } = router
+
+  const algoliaIndices = blogConfig.algolia.indexName
+  const lang = locale.split('-')[0]
+  const indexName = algoliaIndices[`${lang}`]
+
   const qs = router.query.q as string
   const urlToSearchState = decodeURI(qs || '')
-
-  const searchTitle = useTranslation('SEARCH_TITLE')
-  const searchResultsFor = useTranslation('SEARCH_RESULTS_FOR', { searchState: urlToSearchState })
 
   return (
     <Layout>
       <CustomHead
         pageUrl={`/${locale}${asPath}`}
-        pageTitle={searchTitle}
-        pageDescription={qs ? searchResultsFor : searchTitle} />
+        pageTitle={useTranslation('SEARCH_TITLE')}
+        pageDescription={qs ? useTranslation('SEARCH_RESULTS_FOR', { searchState: urlToSearchState }) : useTranslation('SEARCH_TITLE')} />
       <article className='content'>
-        <h1>{searchTitle}</h1>
+        <h1>{useTranslation('SEARCH_TITLE')}</h1>
         <div className='search'>
           <InstantSearch
             indexName={indexName}
