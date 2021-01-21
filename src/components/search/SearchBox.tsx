@@ -3,11 +3,11 @@ import { useRouter } from 'next/router'
 import css from 'styled-jsx/css'
 import { IconContext } from 'react-icons'
 import { MdSearch } from 'react-icons/md'
-import { useDebounce } from 'use-debounce'
+import {useDebounce } from '../../hooks/useDebounce'
 
 import { useTranslation } from '../../hooks/translation'
 
-import { connectSearchBox, CurrentRefinements } from 'react-instantsearch-dom'
+import { connectSearchBox } from 'react-instantsearch-dom'
 import { SearchBoxProvided } from 'react-instantsearch-core';
 
 const style = css`
@@ -65,8 +65,7 @@ const SearchBox: React.FC<SearchBoxProvided> = ({
   const router = useRouter()
 
   const [inputValue, setInputValue] = useState('')
-  const [debouncedQuery] = useDebounce(inputValue, 300)
-  const [debouncedValue] = useDebounce(inputValue, 400)
+  const debouncedValue = useDebounce(inputValue, 400)
   refine(debouncedValue)
 
   function changeQuery2Path(query: any) {    
@@ -85,8 +84,8 @@ const SearchBox: React.FC<SearchBoxProvided> = ({
   }
 
   useEffect(() => {
-    changeQuery2Path(debouncedQuery)
-  }, [debouncedQuery])
+    changeQuery2Path(debouncedValue)
+  }, [debouncedValue])
   
   const placeholder = useTranslation('SEARCH_IN_ENGLISH')
   return (
