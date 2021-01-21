@@ -1,11 +1,14 @@
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import css from 'styled-jsx/css'
 import { IconContext } from 'react-icons'
 import { MdSearch } from 'react-icons/md'
-import { connectSearchBox } from 'react-instantsearch-dom'
-import { SearchBoxProvided } from 'react-instantsearch-core';
+import { useDebounce } from 'use-debounce'
 
 import { useTranslation } from '../../hooks/translation'
+
+import { connectSearchBox, CurrentRefinements } from 'react-instantsearch-dom'
+import { SearchBoxProvided } from 'react-instantsearch-core';
 
 const style = css`
 form {
@@ -30,14 +33,13 @@ input[type='search'] {
 button[type='submit'] {
   background-color: transparent;
   border: none;
-  cursor: pointer;
   outline: none;
+  cursor: pointer;
   padding: 0;
-  appearance: none;
 }
 
 :global(.search-icon) {
-  position: static;
+  position: relative;
   transform: none;
   top: 0;
   left: 0;
@@ -50,9 +52,6 @@ button:disabled > :global(.search-icon){
   fill: var(--colorTextGray);
 }
 
-/* clears the ‘X’ from Internet Explorer */
-input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
-input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
 /* clears the ‘X’ from Chrome */
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
@@ -61,17 +60,19 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 `
 
 const SearchBox: React.FC<SearchBoxProvided> = ({
-  currentRefinement,
   refine
 }) => {
   const router = useRouter()
 
-  function handleOnChange(e) {
-    refine(e.currentTarget.value)
-    // serachResults to URL
-    if (e.currentTarget.value) {
+  const [inputValue, setInputValue] = useState('')
+  const [debouncedQuery] = useDebounce(inputValue, 300)
+  const [debouncedValue] = useDebounce(inputValue, 400)
+  refine(debouncedValue)
+
+  function changeQuery2Path(query: any) {    
+    if (query) {
       router.push(
-        { pathname: router.pathname, query: { q: encodeURI(e.currentTarget.value) } },
+        { pathname: router.pathname, query: { q: encodeURI(query) } },
         undefined,
         { shallow: true }
       )
@@ -83,21 +84,26 @@ const SearchBox: React.FC<SearchBoxProvided> = ({
     }
   }
 
+  useEffect(() => {
+    changeQuery2Path(debouncedQuery)
+  }, [debouncedQuery])
+  
+  const placeholder = useTranslation('SEARCH_IN_ENGLISH')
   return (
     <>
       <form noValidate action='' role='search' onSubmit={e => { e.preventDefault(); }}>
         <input
-          placeholder={useTranslation('SEARCH_IN_ENGLISH')}
+          placeholder={placeholder + '...'}
           type='search'
-          value={currentRefinement}
+          value={inputValue}
           onChange={e => {
             e.preventDefault();
-            handleOnChange(e)
+            setInputValue(e.target.value)
           }}
           onSubmit={e => e.preventDefault()}
           autoFocus
         />
-        <button type='submit' disabled={!currentRefinement}>
+        <button type='submit' disabled={!inputValue}>
           <IconContext.Provider value={{ className: 'search-icon' }}>
             <MdSearch />
           </IconContext.Provider>

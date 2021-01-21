@@ -18,7 +18,6 @@ export const searchClient = {
         })),
       })
     }
-
     return algoliaClient.search(requests);
   },
 }

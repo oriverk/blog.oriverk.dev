@@ -41,6 +41,7 @@
     "remark-toc": "^7.0.0",
     "remove-markdown": "^0.3.0",
     "responsive-loader": "^2.0.2",
+    "use-debounce": "^5.2.0",
     "webp-loader": "^0.6.0"
   },
   "devDependencies": {
