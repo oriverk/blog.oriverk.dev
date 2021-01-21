@@ -1,13 +1,12 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import css from 'styled-jsx/css'
-
-import { postCardStyle } from '../../pages/posts/index'
-import { Date, getI18nDate } from '../common/Date'
-import { useTranslation } from '../../hooks/translation'
-
 import { connectHits } from 'react-instantsearch-dom'
 import { HitsProvided, Hit } from 'react-instantsearch-core'
+
+import { postCardStyle } from '../../pages/posts/index'
+import { getI18nDate } from '../common/Date'
+import { useTranslation } from '../../hooks/translation'
 
 const hiddenStyle = css`
 .hidden {

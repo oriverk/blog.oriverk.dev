@@ -15,8 +15,11 @@ module.exports = {
     linkedin: "kawanoyudai"
   },
   algolia: {
-    indexName: "prod_blogOriverkdev",
     appId: "WOHC62BVSP",
-    searchOnlyApiKey: "c858d2926cafc635503658417e963722"
+    searchOnlyApiKey: "c858d2926cafc635503658417e963722",
+    indexName: {
+      en: "prod_en_blogOriverkdev",
+      ja: "prod_ja_blogOriverkdev"
+    }
   }
 }
