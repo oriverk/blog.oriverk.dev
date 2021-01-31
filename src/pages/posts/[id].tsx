@@ -8,8 +8,10 @@ import { CustomHead } from '../../components/common/Head'
 import { CustomImg } from '../../components/common/Image'
 import { PostIcons } from '../../components/icons'
 import { Date, getI18nDate } from '../../components/common/Date'
-import { getAllPostIds, getPostData, PostDataType } from '../../lib/posts'
+import { getAllPostIds, getPostData } from '../../lib/posts'
 import { useTranslation } from '../../hooks/translation'
+
+import { PostDataType } from '../../types/posts'
 
 export const getStaticPaths: GetStaticPaths = async ({ locales, defaultLocale }) => {
   const paths = getAllPostIds(locales)

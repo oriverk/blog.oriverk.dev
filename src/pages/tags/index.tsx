@@ -6,7 +6,9 @@ import css from 'styled-jsx/css'
 import { Layout } from '../../components/Layout'
 import { CustomHead } from '../../components/common/Head'
 import { TagsIcons } from '../../components/icons/index'
-import { PostDataType, getTags } from '../../lib/posts'
+import { getTags } from '../../lib/posts'
+
+import { PostDataType } from '../../types/posts'
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const tags: string[] = getTags(locale)

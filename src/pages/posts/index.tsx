@@ -8,8 +8,10 @@ import { CustomHead } from '../../components/common/Head'
 import { CustomImg } from '../../components/common/Image'
 import { PostsIcons } from '../../components/icons'
 import { Date, getI18nDate } from '../../components/common/Date'
-import { getSortedPostsData, PostDataType } from '../../lib/posts'
+import { getSortedPostsData} from '../../lib/posts'
 import { useTranslation } from '../../hooks/translation'
+
+import { PostDataType } from '../../types/posts'
 
 export const getStaticProps: GetStaticProps = async ({ locale, locales, defaultLocale, preview, previewData }) => {
   const postsData = getSortedPostsData(locale)
