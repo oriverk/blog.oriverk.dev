@@ -31,7 +31,7 @@ export default class MyDocument extends Document {
           {langs.map((lang) => (
             <link rel='alternate' type='application/rss+xml' title={`${blogConfig.baseName} Language: ${lang.toUpperCase()}`} href={`/rss.${lang}.xml`} key={lang}/>
           ))}
-          <link rel='sitemap' type='application/xml' href='/sitemap.xml' />
+          <link rel='sitemap' type='text/xml' href='/sitemap.xml' />
         </Head>
         <body>
           <Main />
