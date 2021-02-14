@@ -7,8 +7,9 @@ import { CustomHead } from '../../components/common/Head'
 import { CustomImg } from '../../components/common/Image'
 import { Date } from '../../components/common/Date'
 import { TagIcons } from '../../components/icons/index'
-import { getTagsLocales, getTagPosts, PostDataType } from '../../lib/posts'
+import { getTagsLocales, getTagPosts } from '../../lib/posts'
 
+import { PostDataType } from '../../types/posts'
 import { postCardStyle } from '../posts/index'
 
 export const getStaticPaths: GetStaticPaths = async ({ locales, defaultLocale }) => {

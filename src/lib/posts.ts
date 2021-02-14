@@ -20,18 +20,10 @@ import squeeze from 'remark-squeeze-paragraphs' // plugin to remove empty (or wh
 
 import { alignHeading } from './mdParser'
 
+import { PostDataType } from '../types/posts'
+
 function getDocDir(locale: string): string {
   return path.join(process.cwd(), 'src/docs/' + locale)
-}
-
-export type PostDataType = {
-  id: string;
-  title: string;
-  create: string;
-  update: string;
-  tags: string[];
-  image: string;
-  content: string;
 }
 
 function getAllPostData(locale: string): PostDataType[] {

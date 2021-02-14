@@ -9,7 +9,7 @@ const i18nConfig = require(
 const { locales, defaultLocale } = i18nConfig
 
 const langs = locales.map((locale) => { return locale.split('-')[0] })
-const defaultLang = defaultLocale.split('-') || langs[0]
+const defaultLang = defaultLocale.split('-')[0] || langs[0]
 
 
 const item = (post, locale) => {
