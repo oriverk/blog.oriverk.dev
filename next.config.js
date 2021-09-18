@@ -6,7 +6,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')
 const i18n = require('./i18n.config')
 
 const nextConfig = {
-  future: { webpack5: true },
   trailingSlash: true,
   i18n: {
     locales: i18n.locales,
