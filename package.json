@@ -38,9 +38,7 @@
     "remark-slug": "^7.0.0",
     "remark-squeeze-paragraphs": "^5.0.0",
     "remark-toc": "^8.0.0",
-    "remove-markdown": "^0.3.0",
-    "responsive-loader": "^2.0.2",
-    "webp-loader": "^0.6.0"
+    "remove-markdown": "^0.3.0"
   },
   "devDependencies": {
     "@types/gtag.js": "^0.0.7",
