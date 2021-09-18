@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import blogConfig from '../../../blog.config'
-import i18nConfig from '../../../i18n.config'
+// import i18nConfig from '../../../i18n.config'
 
 type Props = {
   noindex?: boolean,

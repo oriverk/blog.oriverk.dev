@@ -5,9 +5,11 @@ import css from 'styled-jsx/css'
 
 import { Layout } from '../../components/Layout'
 import { CustomHead } from '../../components/common/Head'
-import { CustomImg } from '../../components/common/Image'
 import { PostsIcons } from '../../components/icons'
-import { Date, getI18nDate } from '../../components/common/Date'
+import {
+  // Date,
+  getI18nDate
+} from '../../components/common/Date'
 import { getSortedPostsData} from '../../lib/posts'
 import { useTranslation } from '../../hooks/translation'
 
@@ -131,7 +133,7 @@ type PostsProps = {
   postsData: Omit<PostDataType, 'content'>[]
 }
 
-const Component: React.FC<PostsProps> = ({ postsData }) => {
+const Component: React.VFC<PostsProps> = ({ postsData }) => {
   const { locale } = useRouter()
 
   return (
@@ -146,7 +148,7 @@ const Component: React.FC<PostsProps> = ({ postsData }) => {
               <Link key={id} href={`/posts/${id}/`} locale={locale}>
                 <a className='postLink'>
                   <div className='imgOuter'>
-                    <CustomImg src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
+                    <img src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
                   </div>
                   <div className='postDesc'>
                     {update ? (

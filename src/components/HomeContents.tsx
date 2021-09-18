@@ -1,20 +1,18 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import css from 'styled-jsx/css'
+import Image from 'next/image'
 
-import { CustomImg } from './common/Image'
 import { HomeIcons } from '../components/icons/index'
 
-type LinkImg = {
-  src: string
-  alt: string
-}
-
-const CustomLinkImg: React.FC<Partial<LinkImg>> = ({ src, alt }) => (
-  <a href={src} target='_blank' rel='noopener noreferrer'>
-    <CustomImg src={src} alt={alt} />
-  </a>
-)
+import longRidgeImage from '../../public/assets/home/LongRidge700.jpg'
+import sunriseImage from '../../public/assets/home/sunrise.jpg'
+import weedingImage from '../../public/assets/home/weeding700.jpg'
+import univImage from '../../public/assets/home/miyazakiUniv.jpg'
+import githubpagesImage from '../../public/assets/home/githubPages1st700.jpg'
+import codrImage from '../../public/assets/home/codr700.jpg'
+import miyazakiOss1Image from '../../public/assets/posts/202003/miyazaki-oss1.jpg'
+import prtscImage from '../../public/assets/home/20200915prtsc1000.jpg'
 
 const topStyle = css`
 section {
@@ -77,7 +75,7 @@ section {
 }
 `
 
-export const Top: React.FC = () => (
+export const Top: React.VFC = () => (
   <>
     <section id='top'>
       <div className='topWrapper'>
@@ -138,14 +136,14 @@ const commonStyle = css`
   }
 `
 
-export const About: React.FC = () => (
+export const About: React.VFC = () => (
   <>
     <section id='about'>
       <h2>About</h2>
       <div className='container'>
         <div className='left'>
-          <CustomLinkImg
-            src='/assets/home/LongRidge700.jpg' alt='scenary from Long Ridge Lookout in Adelaide' />
+          <Image
+            src={longRidgeImage} alt='scenary from Long Ridge Lookout in Adelaide' />
         </div>
         <div className='right'>
           <p>My name is Kawano Yudai.</p>
@@ -165,7 +163,7 @@ export const About: React.FC = () => (
   </>
 )
 
-export const History: React.FC = () => (
+export const History: React.VFC = () => (
   <>
     <section id='history'>
       <h2>History</h2>
@@ -173,7 +171,7 @@ export const History: React.FC = () => (
         <h3>Experience</h3>
         <div className='container'>
           <div className='left'>
-            <CustomLinkImg src='/assets/home/sunrise.jpg' alt='no image' />
+            <Image src={sunriseImage} alt='no image' />
           </div>
           <div className='right'>
             <span>2017/04 - 2018/08</span>
@@ -186,7 +184,7 @@ export const History: React.FC = () => (
         <h3>Education</h3>
         <div className='container'>
           <div className='left'>
-            <CustomLinkImg src='/assets/home/weeding700.jpg' alt='weeding robot motion picture' />
+            <Image src={weedingImage} alt='weeding robot motion picture' />
           </div>
           <div className='right'>
             <span>2015/04 - 2017/03</span>
@@ -196,7 +194,7 @@ export const History: React.FC = () => (
         </div>
         <div className='container'>
           <div className='left'>
-            <CustomLinkImg src='/assets/home/miyazakiUniv.jpg' alt='logo of Miyazaki University' />
+            <Image src={univImage} alt='logo of Miyazaki University' />
           </div>
           <div className='right'>
             <span>2013/04 - 2017/03 :</span>
@@ -210,7 +208,7 @@ export const History: React.FC = () => (
   </>
 )
 
-export const Works: React.FC = () => {
+export const Works: React.VFC = () => {
   const { locale } = useRouter()
   return (
     <>
@@ -219,7 +217,7 @@ export const Works: React.FC = () => {
         <article>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg src='/assets/home/20200915prtsc1000.jpg' alt='screenshot of this site' />
+              <Image src={prtscImage} alt='screenshot of this site' />
             </div>
             <div className='right'>
               <b>This portfolio site as resume and tech blog</b>
@@ -237,7 +235,7 @@ export const Works: React.FC = () => {
           </div>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg src='/assets/posts/202003/miyazaki-oss1.jpg' alt='screenshot of miyazaki corona taskforce site' />
+              <Image src={miyazakiOss1Image} alt='screenshot of miyazaki corona taskforce site' />
             </div>
             <div className='right'>
               <b>Miyazaki COVID-19 Task Force site</b>
@@ -256,7 +254,7 @@ export const Works: React.FC = () => {
           </div>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg src='/assets/home/codr700.jpg' alt='screenshot of code share web app' />
+              <Image src={codrImage} alt='screenshot of code share web app' />
             </div>
             <div className='right'>
               <b>Coder0</b>
@@ -274,7 +272,7 @@ export const Works: React.FC = () => {
           </div>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg src='/assets/home/githubPages1st700.jpg' alt='screenshot of my 1st githubpages' />
+              <Image src={githubpagesImage} alt='screenshot of my 1st githubpages' />
             </div>
             <div className='right'>
               <b>GithubPages</b>
@@ -288,7 +286,7 @@ export const Works: React.FC = () => {
           </div>
           <div className='container'>
             <div className='left'>
-              <CustomLinkImg src='/assets/home/sunrise.jpg' alt='no image' />
+              <Image src={sunriseImage} alt='no image' />
             </div>
             <div className='right'>
               <b>Ticket sales System</b>

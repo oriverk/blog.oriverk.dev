@@ -50,7 +50,7 @@ const style = css`
 
 type TagsProps = Pick<PostDataType, 'tags'>
 
-const Component: React.FC<TagsProps> = ({ tags }) => {
+const Component: React.VFC<TagsProps> = ({ tags }) => {
   const { locale } = useRouter()
   return (
     <Layout>

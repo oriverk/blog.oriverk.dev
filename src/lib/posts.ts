@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter' // front matter parser
-import remark from 'remark'
+import { remark } from 'remark'
 import html from 'remark-html' // plugin to serialize Markdown as HTML.
 import katex from 'remark-html-katex' // plugin to transform inlineMath and math nodes with KaTeX for remark-html.
 import math from 'remark-math' //plugins to support math! use $$ \n\n $$

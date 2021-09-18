@@ -46,7 +46,7 @@ const style = css`
 }
 `
 
-export const PostsIcons: React.FC = () => (
+export const PostsIcons: React.VFC = () => (
   <>
     <div className='icons'>
       <Link href='/search/'>

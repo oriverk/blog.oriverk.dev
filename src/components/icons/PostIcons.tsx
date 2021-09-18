@@ -59,7 +59,7 @@ type PostProps = {
   tags?: string[]
 }
 
-export const PostIcons: React.FC<PostProps> = ({ title, id, tags }) => {
+export const PostIcons: React.VFC<PostProps> = ({ title, id, tags }) => {
   const [more, setMore] = useState(false)
   const tag = tags ? tags.join(',') : 'React, Next.js'
   const twitter = `https://twitter.com/share?text=${title}&hashtags=${tag}&url=${blogConfig.baseUrl}/posts/${id}/`

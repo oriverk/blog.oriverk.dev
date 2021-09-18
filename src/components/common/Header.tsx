@@ -58,7 +58,7 @@ const style = css`
 }
 `
 
-export const Header: React.FC = () => {
+export const Header: React.VFC = () => {
   const { locale, locales, asPath } = useRouter()
   const nextLocale = getNextLocale(locale, locales)
   const { theme, toggleTheme } = useThemeContext()

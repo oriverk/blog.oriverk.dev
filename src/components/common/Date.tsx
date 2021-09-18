@@ -7,7 +7,7 @@ type Props = {
   locale?: string
 }
 
-export const Date: React.FC<Props> = ({ dateString, locale }) => {
+export const Date: React.VFC<Props> = ({ dateString, locale }) => {
   // let lang: string
   // if (!locale.split('-')) {
   //   lang = locale

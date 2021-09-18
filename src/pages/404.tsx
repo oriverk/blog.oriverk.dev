@@ -13,7 +13,7 @@ article {
 }
 `
 
-const Component: React.FC = () => {
+const Component: React.VFC = () => {
   const { locale } = useRouter()
   const pageNotFound = useTranslation('ERROR_404')
   const backToTop = useTranslation('BACK_TO_TOP')

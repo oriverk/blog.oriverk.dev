@@ -23,7 +23,7 @@ type Props = {
   image?: string,
 }
 
-const Hits: React.FC<HitsProvided<Hit<Props>>> = ({
+const Hits: React.VFC<HitsProvided<Hit<Props>>> = ({
   hits,
 }) => {
   const { locale } = useRouter()

@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 
 import { Layout } from '../../components/Layout'
 import { CustomHead } from '../../components/common/Head'
-import { CustomImg } from '../../components/common/Image'
 import { Date } from '../../components/common/Date'
 import { TagIcons } from '../../components/icons/index'
 import { getTagsLocales, getTagPosts } from '../../lib/posts'
@@ -36,7 +35,7 @@ type TagPostsProps = {
   postsData: Omit<PostDataType, 'content'>[]
 }
 
-const Component: React.FC<TagPostsProps> = ({ tag, postsData }) => {
+const Component: React.VFC<TagPostsProps> = ({ tag, postsData }) => {
   const { locale } = useRouter()
   return (
     <Layout>
@@ -50,7 +49,7 @@ const Component: React.FC<TagPostsProps> = ({ tag, postsData }) => {
               <Link href={ `/posts/${id}/`} locale={locale}>
                 <a className='postLink'>
                   <div className='imgOuter'>
-                    <CustomImg src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
+                    <img src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
                   </div>
                   <div className='postDesc'>
                     {update ? (

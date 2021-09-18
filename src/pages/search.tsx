@@ -30,7 +30,7 @@ h1 {
 }
 `
 
-const Component: React.FC = () => {
+const Component: React.VFC = () => {
   const router = useRouter()
   const { locale, asPath } = router
 

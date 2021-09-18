@@ -49,7 +49,7 @@ const style = css`
 }
 `
 
-export const TagsIcons: React.FC = () => (
+export const TagsIcons: React.VFC = () => (
   <>
     <div className='icons'>
       <Link href='/search/'>

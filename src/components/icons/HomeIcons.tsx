@@ -55,7 +55,7 @@ const style = css`
 }
 `
 
-export const HomeIcons: React.FC = () => {
+export const HomeIcons: React.VFC = () => {
   const { asPath, locale, locales } = useRouter()
   const nextLocale = getNextLocale(locale, locales)
   const { theme, toggleTheme } = useThemeContext()

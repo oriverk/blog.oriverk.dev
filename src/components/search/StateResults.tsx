@@ -18,7 +18,7 @@ type Props = {
   searchResults: AllSearchResults
 }
 
-const StateResults: React.FC<Props> = ({
+const StateResults: React.VFC<Props> = ({
   // searchState,
   error,
   searchResults

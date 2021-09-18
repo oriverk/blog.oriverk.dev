@@ -59,7 +59,7 @@ input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration { display: none; }
 `
 
-const SearchBox: React.FC<SearchBoxProvided> = ({
+const SearchBox: React.VFC<SearchBoxProvided> = ({
   refine
 }) => {
   const router = useRouter()

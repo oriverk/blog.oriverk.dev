@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
-import { CustomImg, CustomImgProps } from './Image'
 import { HomeIcons } from '../icons'
 
 
@@ -40,7 +39,10 @@ const style = css`
 `
 
 // type ImgProps = Omit<CustomImgProps, 'className'> // same with below
-type ImgProps = Pick<CustomImgProps, 'src' | 'alt'>
+type ImgProps = {
+  src: string;
+  alt: string
+}
 
 type HeaderProps = {
   className?: string,
@@ -60,9 +62,8 @@ const Icons: React.FC = () => {
   }
 }
 
-export const Header: React.FC<HeaderProps & ImgProps> = (
+export const Header: React.VFC<HeaderProps & ImgProps> = (
   {
-    children,
     className,
     pageLink,
     src = '/assets/home/sunrise.jpg',
@@ -77,7 +78,7 @@ export const Header: React.FC<HeaderProps & ImgProps> = (
     <>
       <div className={className}>
         <div className='header'>
-          <CustomImg src={src} alt={alt} className='headerImg' />
+          <img src={src} alt={alt} className='headerImg' />
           <div className='headerContent'>
             <div className='title'>
               <h1>

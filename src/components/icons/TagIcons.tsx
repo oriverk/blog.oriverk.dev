@@ -50,7 +50,7 @@ const style = css`
 }
 `
 
-export const TagIcons: React.FC = () => {
+export const TagIcons: React.VFC = () => {
   const [more, setMore] = useState(false)
   return (
     <>

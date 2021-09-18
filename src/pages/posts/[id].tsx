@@ -5,9 +5,11 @@ import css from 'styled-jsx/css'
 
 import { Layout } from '../../components/Layout'
 import { CustomHead } from '../../components/common/Head'
-import { CustomImg } from '../../components/common/Image'
 import { PostIcons } from '../../components/icons'
-import { Date, getI18nDate } from '../../components/common/Date'
+import {
+  // Date,
+  getI18nDate
+} from '../../components/common/Date'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 import { useTranslation } from '../../hooks/translation'
 
@@ -125,7 +127,7 @@ type PostProps = {
   postData: Partial<PostDataType>
 }
 
-const Component: React.FC<PostProps> = ({ postData }) => {
+const Component: React.VFC<PostProps> = ({ postData }) => {
   const { locale } = useRouter()
   const { id, title, create, update, tags, image, content } = postData
   const pageTags = tags.join(' ') || 'react nextjs'
@@ -155,7 +157,7 @@ const Component: React.FC<PostProps> = ({ postData }) => {
         </div>
         {image && (
           <a href={image} target='_blank' rel='noopener noreferrer'>
-            <CustomImg src={image} alt='post cover image' />
+            <img src={image} alt='post cover image' />
           </a>
         )}
         <div dangerouslySetInnerHTML={{ __html: content }} className='markdown' />

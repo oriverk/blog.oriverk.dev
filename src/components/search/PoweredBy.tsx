@@ -12,7 +12,7 @@ img {
 }
 `
 
-const PoweredBy: React.FC = () => (
+const PoweredBy: React.VFC = () => (
   <>
     <div>
       <a href='https://www.algolia.com' target='_blank' rel='noopener noreferrer'>
