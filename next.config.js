@@ -12,6 +12,9 @@ const nextConfig = {
     // locales: ['en', 'ja'],
     // defaultLocale: 'en',
   },
+  images: {
+    domains: ['res.cloudinary.com'],
+  },
 }
 
 module.exports = withPlugins(

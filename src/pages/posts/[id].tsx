@@ -11,7 +11,7 @@ import {
   getI18nDate
 } from '../../components/common/Date'
 import { getAllPostIds, getPostData } from '../../lib/posts'
-import { useTranslation } from '../../hooks/translation'
+// import { useTranslation } from '../../hooks/translation'
 
 import { PostDataType } from '../../types/posts'
 
@@ -142,12 +142,13 @@ const Component: React.VFC<PostProps> = ({ postData }) => {
         <PostIcons title={title} id={id} tags={tags} />
         <h1>{title}</h1>
         <div>
-          {update ? (
+          {/* {update ? (
               <div>{useTranslation('POST_UPDATED_AT', { timestamp: getI18nDate(update, locale) })}</div>
             ) : (
               <div>{useTranslation('POST_CREATED_AT', { timestamp: getI18nDate(create, locale) })}</div>
             )
-          }
+          } */}
+          <div>updated at {getI18nDate(update, locale)}</div>
           <div className='tags'>
             {tags.map((tag) => (
               <Link key={tag} href={`/tags/${tag}/`} locale={locale}>
@@ -155,11 +156,13 @@ const Component: React.VFC<PostProps> = ({ postData }) => {
               </Link>
             ))}</div>
         </div>
-        {image && (
-          <a href={image} target='_blank' rel='noopener noreferrer'>
-            <img src={image} alt='post cover image' />
-          </a>
-        )}
+        {/* {image && (
+          <div className='post-top-image'>
+            <a href={image} target='_blank' rel='noopener noreferrer'>
+              <Image src={image} layout="fill" objectFit="contain" alt='post cover image' />
+            </a>
+          </div>
+        )} */}
         <div dangerouslySetInnerHTML={{ __html: content }} className='markdown' />
       </article>
       <style jsx>{style}</style>

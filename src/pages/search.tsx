@@ -5,7 +5,7 @@ import { Configure, InstantSearch } from 'react-instantsearch-dom'
 import blogConfig from '../../blog.config'
 import { Layout } from '../components/Layout'
 import { CustomHead } from '../components/common/Head'
-import { useTranslation } from '../hooks/translation'
+// import { useTranslation } from '../hooks/translation'
 
 import { searchClient } from '../components/search/SearchClients'
 import { CustomSearchBox } from '../components/search/SearchBox'
@@ -45,10 +45,13 @@ const Component: React.VFC = () => {
     <Layout>
       <CustomHead
         pageUrl={`/${locale}${asPath}`}
-        pageTitle={useTranslation('SEARCH_TITLE')}
-        pageDescription={qs ? useTranslation('SEARCH_RESULTS_FOR', { searchState: urlToSearchState }) : useTranslation('SEARCH_TITLE')} />
+        // pageTitle={useTranslation('SEARCH_TITLE')}
+        pageTitle={'SEARCH_TITLE'}
+        // pageDescription={qs ? useTranslation('SEARCH_RESULTS_FOR', { searchState: urlToSearchState }) : useTranslation('SEARCH_TITLE')}
+      />
       <article className='content'>
-        <h1>{useTranslation('SEARCH_TITLE')}</h1>
+        {/* <h1>{useTranslation('SEARCH_TITLE')}</h1> */}
+        <h1>{'SEARCH_TITLE'}</h1>
         <div className='search'>
           <InstantSearch
             indexName={indexName}

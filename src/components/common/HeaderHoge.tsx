@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import Image from 'next/image'
 import css from 'styled-jsx/css'
 import { HomeIcons } from '../icons'
 
@@ -78,7 +79,7 @@ export const Header: React.VFC<HeaderProps & ImgProps> = (
     <>
       <div className={className}>
         <div className='header'>
-          <img src={src} alt={alt} className='headerImg' />
+          <Image src={src} alt={alt} layout="fill" objectFit="cover" className='headerImg' />
           <div className='headerContent'>
             <div className='title'>
               <h1>

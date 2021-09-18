@@ -10,6 +10,8 @@
     "build": "next build",
     "start": "next start",
     "bs": "next build && next start",
+    "lint": "next lint",
+    "fix": "next lint --fix",
     "postsmap": "node script/genPostsMapLocales.js && node script/genFeedLocales.js",
     "algolia": "node script/push2Algolia.js",
     "analyze": "ANALYZE=true next build"

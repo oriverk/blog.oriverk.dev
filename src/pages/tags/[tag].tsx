@@ -1,5 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 
 import { Layout } from '../../components/Layout'
@@ -49,7 +50,7 @@ const Component: React.VFC<TagPostsProps> = ({ tag, postsData }) => {
               <Link href={ `/posts/${id}/`} locale={locale}>
                 <a className='postLink'>
                   <div className='imgOuter'>
-                    <img src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
+                    <Image layout="fill" src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
                   </div>
                   <div className='postDesc'>
                     {update ? (

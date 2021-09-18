@@ -146,11 +146,11 @@ export const About: React.VFC = () => (
             src={longRidgeImage} alt='scenary from Long Ridge Lookout in Adelaide' />
         </div>
         <div className='right'>
-          <p>My name is Kawano Yudai.</p>
-          <p>I graduated from Miyazaki Universiy as Bachelor of Agriculture.</p>
-          <p>In agricultural engineering lablatory I studied crop row detecting tech by image processing with C++ and OpenCV.</p>
-          <p>After egg company, I stayed at Australia as working holiday. Then I studied Ruby and other tech like database, website system.</p>
-          <p>So, I'm interested in both nature and machinery</p>
+          <p>
+            {
+              "My name is Kawano Yudai.\nI graduated from Miyazaki Universiy as Bachelor of Agriculture.\nIn agricultural engineering lablatory I studied crop row detecting tech by image processing with C++ and OpenCV.\nAfter egg company, I stayed at Australia as working holiday. Then I studied Ruby and other tech like database, website system.\nSo, I'm interested in both nature and machinery"
+            }
+          </p>
         </div>
       </div>
     </section>
