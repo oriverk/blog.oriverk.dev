@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import { Layout } from '../../components/Layout'
 import { CustomHead } from '../../components/common/Head'
 import { Date } from '../../components/common/Date'
-import { TagIcons } from '../../components/icons/index'
+// import { TagIcons } from '../../components/icons/index'
 import { getTagsLocales, getTagPosts } from '../../lib/posts'
 
 import { PostDataType } from '../../types/posts'
@@ -41,7 +41,7 @@ const Component: React.VFC<TagPostsProps> = ({ tag, postsData }) => {
   return (
     <Layout>
       <CustomHead pageUrl={`/${locale}/tags/${tag}/`} pageTitle={`${tag} Posts`} pageDescription={`${tag} Posts`} />
-      <TagIcons />
+      {/* <TagIcons /> */}
       <article className='content'>
         <h1>{`${tag} Posts`}</h1>
         <div className='posts'>

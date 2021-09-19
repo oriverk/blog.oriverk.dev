@@ -6,7 +6,7 @@ import css from 'styled-jsx/css'
 
 import { Layout } from '../../components/Layout'
 import { CustomHead } from '../../components/common/Head'
-import { PostsIcons } from '../../components/icons'
+// import { PostsIcons } from '../../components/icons'
 import {
   // Date,
   getI18nDate
@@ -142,7 +142,7 @@ const Component: React.VFC<PostsProps> = ({ postsData }) => {
       {/* <CustomHead pageUrl={`/${locale}/posts/`} pageTitle={useTranslation('POSTS_TITLE')} pageDescription='Posts index' /> */}
       <CustomHead pageUrl={`/${locale}/posts/`} pageTitle={'POSTS_TITLE'} pageDescription='Posts index' />
       <article className='content'>
-        <PostsIcons />
+        {/* <PostsIcons /> */}
         {/* <h1>{useTranslation('POSTS_TITLE')}</h1> */}
         <h1>{'POSTS_TITLE'}</h1>
         <div className='posts'>
@@ -161,7 +161,7 @@ const Component: React.VFC<PostsProps> = ({ postsData }) => {
                         <div>{useTranslation('POST_CREATED_AT',{timestamp: getI18nDate(create, locale)})}</div>
                       )
                     } */}
-                    <div>updated at {getI18nDate(update, locale)}</div>
+                    {/* <div>updated at {getI18nDate(update, locale)}</div> */}
                     {/* {update ? (
                         <div>{updatedAt}{' '}<Date dateString={update} locale={locale} /></div>
                       ) : (

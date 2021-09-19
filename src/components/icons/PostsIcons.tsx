@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import css from 'styled-jsx/css'
-import { MdSearch, MdHome, MdLocalOffer } from 'react-icons/md'
+// import { MdSearch, MdHome, MdLocalOffer } from 'react-icons/md'
 
 const style = css`
 .icons{
@@ -49,7 +49,7 @@ const style = css`
 export const PostsIcons: React.VFC = () => (
   <>
     <div className='icons'>
-      <Link href='/search/'>
+      {/* <Link href='/search/'>
         <a className='icon' key='search' aria-label='search posts'>
           <MdSearch />
         </a>
@@ -63,7 +63,7 @@ export const PostsIcons: React.VFC = () => (
         <a className='icon home' key='home' aria-label='home link'>
           <MdHome />
         </a>
-      </Link>
+      </Link> */}
     </div>
     <style jsx>{style}</style>
   </>

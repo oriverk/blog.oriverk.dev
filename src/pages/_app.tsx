@@ -1,6 +1,5 @@
 import { AppProps } from 'next/app'
-import Router from 'next/router'
-import { IconContext } from 'react-icons'
+// import { IconContext } from 'react-icons'
 
 import GoogleAnalytics from 'src/components/GoogleAnalytics'
 import { DARK_MODE, LIGHT_MODE } from '../style/color'
@@ -16,9 +15,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <GoogleAnalytics />
       <LocaleProvider>
         <ThemeProvider>
-          <IconContext.Provider value={{ className: 'react-icons' }}>
+          {/* <IconContext.Provider value={{ className: 'react-icons' }}> */}
             <Component {...pageProps} />
-          </IconContext.Provider>
+          {/* </IconContext.Provider> */}
         </ThemeProvider>
       </LocaleProvider>
       <style jsx global>{`

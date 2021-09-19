@@ -5,7 +5,7 @@ import css from 'styled-jsx/css'
 
 import { Layout } from '../../components/Layout'
 import { CustomHead } from '../../components/common/Head'
-import { TagsIcons } from '../../components/icons/index'
+// import { TagsIcons } from '../../components/icons/index'
 import { getTags } from '../../lib/posts'
 
 import { PostDataType } from '../../types/posts'
@@ -55,7 +55,7 @@ const Component: React.VFC<TagsProps> = ({ tags }) => {
   return (
     <Layout>
       <CustomHead pageUrl={`/${locale}/tags/`} pageTitle='Tags' pageDescription='Posts Tags index' />
-      <TagsIcons />
+      {/* <TagsIcons /> */}
       <article className='content'>
         <h1>Blog Tags</h1>
         <div className='tags'>

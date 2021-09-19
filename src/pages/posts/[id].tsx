@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -5,13 +6,15 @@ import css from 'styled-jsx/css'
 
 import { Layout } from '../../components/Layout'
 import { CustomHead } from '../../components/common/Head'
-import { PostIcons } from '../../components/icons'
+// import { PostIcons } from '../../components/icons'
 import {
   // Date,
   getI18nDate
 } from '../../components/common/Date'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 // import { useTranslation } from '../../hooks/translation'
+
+import 'zenn-content-css';
 
 import { PostDataType } from '../../types/posts'
 
@@ -24,10 +27,10 @@ export const getStaticPaths: GetStaticPaths = async ({ locales, defaultLocale })
 }
 
 export const getStaticProps: GetStaticProps = async ({ params, locale, locales, defaultLocale }) => {
-  const postData = await getPostData(params.id as string, locale)
+  // const postData = getPostData(params.id as string, locale)
   return {
     props: {
-      postData
+      // postData
     }
   }
 }
@@ -66,7 +69,7 @@ h1{
   border: 1.5px solid var(--colorTextLink);
 }
 
-:global(.heading-link){
+/* :global(.heading-link){
   text-decoration: solid underline var(--colorTextLink);
   color: var(--colorTextDefault);
 }
@@ -119,7 +122,7 @@ blockquote :global(.markdown.content){
   padding: .5rem 0 .5rem .5rem;
   border-left: 5px solid var(--colorTextDefault);
   color: var(--colorTextDefault);
-}
+} */
 `
 
 
@@ -129,18 +132,22 @@ type PostProps = {
 
 const Component: React.VFC<PostProps> = ({ postData }) => {
   const { locale } = useRouter()
-  const { id, title, create, update, tags, image, content } = postData
-  const pageTags = tags.join(' ') || 'react nextjs'
+  // const { id, title, create, update, tags, image, content } = postData
+  // const pageTags = tags.join(' ') || 'react nextjs'
+
+  useEffect(() => {
+    import('zenn-embed-elements');
+  });
   
   return (
     <Layout>
-      <CustomHead pageUrl={`/${locale}/posts/${id}/`} pageTitle={title}
+      {/* <CustomHead pageUrl={`/${locale}/posts/${id}/`} pageTitle={title}
         pageDescription={pageTags} pageImage={image} >
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css' />
-      </CustomHead>
+      </CustomHead> */}
       <article className='markdown content'>
-        <PostIcons title={title} id={id} tags={tags} />
-        <h1>{title}</h1>
+        {/* <PostIcons title={title} id={id} tags={tags} /> */}
+        {/* <h1>{title}</h1> */}
         <div>
           {/* {update ? (
               <div>{useTranslation('POST_UPDATED_AT', { timestamp: getI18nDate(update, locale) })}</div>
@@ -148,13 +155,13 @@ const Component: React.VFC<PostProps> = ({ postData }) => {
               <div>{useTranslation('POST_CREATED_AT', { timestamp: getI18nDate(create, locale) })}</div>
             )
           } */}
-          <div>updated at {getI18nDate(update, locale)}</div>
+          {/* <div>updated at {getI18nDate(update, locale)}</div>
           <div className='tags'>
             {tags.map((tag) => (
               <Link key={tag} href={`/tags/${tag}/`} locale={locale}>
                 <a className='tag'>{tag}</a>
               </Link>
-            ))}</div>
+            ))}</div> */}
         </div>
         {/* {image && (
           <div className='post-top-image'>
@@ -163,7 +170,7 @@ const Component: React.VFC<PostProps> = ({ postData }) => {
             </a>
           </div>
         )} */}
-        <div dangerouslySetInnerHTML={{ __html: content }} className='markdown' />
+        {/* <div dangerouslySetInnerHTML={{ __html: content }} className='markdown' /> */}
       </article>
       <style jsx>{style}</style>
     </Layout>

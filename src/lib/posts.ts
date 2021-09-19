@@ -18,6 +18,8 @@ import squeeze from 'remark-squeeze-paragraphs' // plugin to remove empty (or wh
 // import toMdast from 'remark-parse' // parses markdown ton mdast
 // import toHast from 'mdast-util-to-hast'
 
+import zennMarkdownHtml from 'zenn-markdown-html';
+
 import { alignHeading } from './mdParser'
 
 import { PostDataType } from '../types/posts'
@@ -81,26 +83,26 @@ export function getAllPostIds(locales: string[]) {
 }
 
 // posts/[id].tsx getStaticProps
-export async function getPostData(id: string, locale: string): Promise<PostDataType> {
+export function getPostData(id: string, locale: string) {
   const allPostData = getAllPostData(locale)
   const postData = allPostData.find(post => post.id === id)
 
   const { title, create, update, tags, image } = postData
 
-  const processor = await remark()
-    .use(squeeze)
-    .use(alignHeading)
-    .use(slug)
-    .use(link2heading, {
-      behavior: 'wrap',
-      linkProperties: { class: "heading-link" },
-    }) // Note that this module must be included after `remark-slug`.
-    .use(breaks)
-    .use(math)
-    .use(katex)
-    .use(highlight)
-    .use(html, { sanitize: false })
-    .process(postData.content)
+  // const processor = await remark()
+  //   .use(squeeze)
+  //   .use(alignHeading)
+  //   .use(slug)
+  //   .use(link2heading, {
+  //     behavior: 'wrap',
+  //     linkProperties: { class: "heading-link" },
+  //   }) // Note that this module must be included after `remark-slug`.
+  //   .use(breaks)
+  //   .use(math)
+  //   .use(katex)
+  //   .use(highlight)
+  //   .use(html, { sanitize: false })
+  //   .process(postData.content)
 
   // const processor1 = unified().use(toMdast).use(frontmatter).use(alignHeading).use(link2heading)   
 
@@ -111,7 +113,8 @@ export async function getPostData(id: string, locale: string): Promise<PostDataT
   // const transformed = processor1.runSync(parsed);
   // console.log(inspect(transformed));
 
-  const content = processor.toString()
+  // const content = processor.toString()
+  const content = zennMarkdownHtml(postData.content)
 
   return { id, title, create, update, tags, image, content }
 }

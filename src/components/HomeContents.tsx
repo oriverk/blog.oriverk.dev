@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import css from 'styled-jsx/css'
 import Image from 'next/image'
 
-import { HomeIcons } from '../components/icons/index'
+// import { HomeIcons } from '../components/icons/index'
 
 import longRidgeImage from '../../public/assets/home/LongRidge700.jpg'
 import sunriseImage from '../../public/assets/home/sunrise.jpg'
@@ -82,7 +82,7 @@ export const Top: React.VFC = () => (
         <div className='title'>
           <div className='topTitle'>Kawano Yudai</div>
           <div className='sub'>B.Agr.</div>
-          <HomeIcons />
+          {/* <HomeIcons /> */}
         </div>
       </div>
     </section>

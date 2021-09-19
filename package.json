@@ -26,7 +26,6 @@
     "next-pwa": "^5.0.5",
     "react": "^17.0.1",
     "react-dom": "17.0.2",
-    "react-icons": "^4.2.0",
     "react-instantsearch-dom": "^6.10.0",
     "remark": "^14.0.1",
     "remark-autolink-headings": "^7.0.1",
@@ -38,7 +37,10 @@
     "remark-slug": "^7.0.0",
     "remark-squeeze-paragraphs": "^5.0.0",
     "remark-toc": "^8.0.0",
-    "remove-markdown": "^0.3.0"
+    "remove-markdown": "^0.3.0",
+    "zenn-content-css": "^0.1.95",
+    "zenn-embed-elements": "^0.1.95",
+    "zenn-markdown-html": "^0.1.95"
   },
   "devDependencies": {
     "@types/gtag.js": "^0.0.7",
@@ -46,6 +48,9 @@
     "@types/react": "^17.0.2",
     "@types/react-instantsearch-dom": "^6.3.0",
     "dotenv": "^10.0.0",
+    "eslint": "7.32.0",
+    "eslint-config-next": "11.1.2",
+    "prettier": "^2.4.1",
     "sharp": "^0.29.1",
     "typescript": "^4.2.2"
   }

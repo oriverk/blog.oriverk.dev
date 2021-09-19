@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import css from 'styled-jsx/css'
-import { MdCreate, MdSearch } from 'react-icons/md'
-import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'
+// import { MdCreate, MdSearch } from 'react-icons/md'
+// import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'
 
 import blogConfig from 'blog.config'
 import { WantedlySvg } from './index'
@@ -73,7 +73,7 @@ export const HomeIcons: React.VFC = () => {
         <button className='icon' key='theme' onClick={()=> toggleTheme(theme)} aria-label='change theme'>
           {theme === 'light' ? '🌞' : '🌙'}   
         </button>
-        <Link href='/search/' locale={locale}>
+        {/* <Link href='/search/' locale={locale}>
           <a className='icon' key='search' aria-label='search posts'>
             <MdSearch />
           </a>
@@ -98,7 +98,7 @@ export const HomeIcons: React.VFC = () => {
         <a className='icon twitter' key='twitter' href={`https://twitter.com/${blogConfig.sns.twitter}`}
           aria-label='twitter account link' target='_blank' rel='noopener noreferrer'>
           <FaTwitter />
-        </a>
+        </a> */}
       </div>
       <style jsx>{style}</style>
     </>

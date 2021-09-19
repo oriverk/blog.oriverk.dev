@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
-import { FaTwitter } from 'react-icons/fa'
-import { MdCreate, MdSearch, MdHome, MdLocalOffer, MdMoreHoriz, MdClose } from 'react-icons/md'
+// import { FaTwitter } from 'react-icons/fa'
+// import { MdCreate, MdSearch, MdHome, MdLocalOffer, MdMoreHoriz, MdClose } from 'react-icons/md'
 
 import blogConfig from 'blog.config'
 
@@ -66,7 +66,7 @@ export const PostIcons: React.VFC<PostProps> = ({ title, id, tags }) => {
   return (
     <>
       <div className='icons'>
-        <Link href='/search/'>
+        {/* <Link href='/search/'>
           <a className='icon' key='search' aria-label='search posts'>
             <MdSearch />
           </a>
@@ -97,7 +97,7 @@ export const PostIcons: React.VFC<PostProps> = ({ title, id, tags }) => {
         <a className='icon more' key='more' aria-label='expand link icons'
           onClick={() => setMore(true)} aria-expanded={!more} >
           <MdMoreHoriz />
-        </a>
+        </a> */}
       </div>
       <style jsx>{style}</style>
     </>
