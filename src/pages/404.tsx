@@ -4,7 +4,7 @@ import css from 'styled-jsx/css'
 
 import { Layout } from '../components/Layout'
 import { CustomHead } from '../components/common/Head'
-import { useTranslation } from '../hooks/translation'
+// import { useTranslation } from '../hooks/translation'
 
 const style = css`
 article {
@@ -13,10 +13,12 @@ article {
 }
 `
 
-const Component: React.FC = () => {
+const Component: React.VFC = () => {
   const { locale } = useRouter()
-  const pageNotFound = useTranslation('ERROR_404')
-  const backToTop = useTranslation('BACK_TO_TOP')
+  // const pageNotFound = useTranslation('ERROR_404')
+  const pageNotFound = 'ERROR_404'
+  // const backToTop = useTranslation('BACK_TO_TOP')
+  const backToTop = 'BACK_TO_TOP'
   return (
     <Layout>
       <CustomHead pageUrl={`/${locale}/404/`} pageTitle='404' pageDescription={pageNotFound} />

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import css from 'styled-jsx/css'
-import { IconContext } from 'react-icons'
-import { MdSearch } from 'react-icons/md'
+// import { IconContext } from 'react-icons'
+// import { MdSearch } from 'react-icons/md'
 import {useDebounce } from '../../hooks/useDebounce'
 
 import { useTranslation } from '../../hooks/translation'
@@ -59,7 +59,7 @@ input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration { display: none; }
 `
 
-const SearchBox: React.FC<SearchBoxProvided> = ({
+const SearchBox: React.VFC<SearchBoxProvided> = ({
   refine
 }) => {
   const router = useRouter()
@@ -103,9 +103,9 @@ const SearchBox: React.FC<SearchBoxProvided> = ({
           autoFocus
         />
         <button type='submit' disabled={!inputValue}>
-          <IconContext.Provider value={{ className: 'search-icon' }}>
+          {/* <IconContext.Provider value={{ className: 'search-icon' }}>
             <MdSearch />
-          </IconContext.Provider>
+          </IconContext.Provider> */}
         </button>
       </form>
       <style jsx>{style}</style>

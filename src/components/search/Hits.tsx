@@ -6,7 +6,7 @@ import { HitsProvided, Hit } from 'react-instantsearch-core'
 
 import { postCardStyle } from '../../pages/posts/index'
 import { getI18nDate } from '../common/Date'
-import { useTranslation } from '../../hooks/translation'
+// import { useTranslation } from '../../hooks/translation'
 
 const hiddenStyle = css`
 .hidden {
@@ -23,7 +23,7 @@ type Props = {
   image?: string,
 }
 
-const Hits: React.FC<HitsProvided<Hit<Props>>> = ({
+const Hits: React.VFC<HitsProvided<Hit<Props>>> = ({
   hits,
 }) => {
   const { locale } = useRouter()
@@ -40,12 +40,13 @@ const Hits: React.FC<HitsProvided<Hit<Props>>> = ({
                   <CustomImg src={hit.image || '/assets/home/sunrise.jpg'} alt={hit.title} className='cardImg' />
                 </div> */}
                 <div className='postDesc'>
-                  {hit.update ? (
-                      <div>{useTranslation('POST_UPDATED_AT', { timestamp: getI18nDate(hit.update, locale) })}</div>
+                  {/* {hit.update ? (
+                    <div>{useTranslation('POST_UPDATED_AT', { timestamp: getI18nDate(hit.update, locale) })}</div>
                     ) : (
                       <div>{useTranslation('POST_CREATED_AT', { timestamp: getI18nDate(hit.create, locale) })}</div>
                     )
-                  }
+                  } */}
+                  {hit.update ? "UPDATED_AT" : "CREATED_AT"}
                   <h2>{hit.title}</h2>
                 </div>
               </a>

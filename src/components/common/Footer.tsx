@@ -15,7 +15,7 @@ footer > p:last-child {
 }
 `
 
-export const Footer: React.FC = () => {
+export const Footer: React.VFC = () => {
   const useGoogleAnalytics = useTranslation('USE_GOOGLE_ANALYTICS')
   const souceCode = useTranslation('SOURCE_CODE_IS')
   const here = useTranslation('SOURCE_CODE_IS_HERE')

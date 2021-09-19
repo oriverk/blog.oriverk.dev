@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
-import { FaTwitter } from 'react-icons/fa'
-import { MdCreate, MdSearch, MdHome, MdLocalOffer, MdMoreHoriz, MdClose } from 'react-icons/md'
+// import { FaTwitter } from 'react-icons/fa'
+// import { MdCreate, MdSearch, MdHome, MdLocalOffer, MdMoreHoriz, MdClose } from 'react-icons/md'
 
 import blogConfig from 'blog.config'
 
@@ -59,14 +59,14 @@ type PostProps = {
   tags?: string[]
 }
 
-export const PostIcons: React.FC<PostProps> = ({ title, id, tags }) => {
+export const PostIcons: React.VFC<PostProps> = ({ title, id, tags }) => {
   const [more, setMore] = useState(false)
   const tag = tags ? tags.join(',') : 'React, Next.js'
   const twitter = `https://twitter.com/share?text=${title}&hashtags=${tag}&url=${blogConfig.baseUrl}/posts/${id}/`
   return (
     <>
       <div className='icons'>
-        <Link href='/search/'>
+        {/* <Link href='/search/'>
           <a className='icon' key='search' aria-label='search posts'>
             <MdSearch />
           </a>
@@ -97,7 +97,7 @@ export const PostIcons: React.FC<PostProps> = ({ title, id, tags }) => {
         <a className='icon more' key='more' aria-label='expand link icons'
           onClick={() => setMore(true)} aria-expanded={!more} >
           <MdMoreHoriz />
-        </a>
+        </a> */}
       </div>
       <style jsx>{style}</style>
     </>

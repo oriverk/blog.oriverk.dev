@@ -1,15 +1,18 @@
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import css from 'styled-jsx/css'
 
 import { Layout } from '../../components/Layout'
 import { CustomHead } from '../../components/common/Head'
-import { CustomImg } from '../../components/common/Image'
-import { PostsIcons } from '../../components/icons'
-import { Date, getI18nDate } from '../../components/common/Date'
+// import { PostsIcons } from '../../components/icons'
+import {
+  // Date,
+  getI18nDate
+} from '../../components/common/Date'
 import { getSortedPostsData} from '../../lib/posts'
-import { useTranslation } from '../../hooks/translation'
+// import { useTranslation } from '../../hooks/translation'
 
 import { PostDataType } from '../../types/posts'
 
@@ -131,31 +134,34 @@ type PostsProps = {
   postsData: Omit<PostDataType, 'content'>[]
 }
 
-const Component: React.FC<PostsProps> = ({ postsData }) => {
+const Component: React.VFC<PostsProps> = ({ postsData }) => {
   const { locale } = useRouter()
 
   return (
     <Layout>
-      <CustomHead pageUrl={`/${locale}/posts/`} pageTitle={useTranslation('POSTS_TITLE')} pageDescription='Posts index' />
+      {/* <CustomHead pageUrl={`/${locale}/posts/`} pageTitle={useTranslation('POSTS_TITLE')} pageDescription='Posts index' /> */}
+      <CustomHead pageUrl={`/${locale}/posts/`} pageTitle={'POSTS_TITLE'} pageDescription='Posts index' />
       <article className='content'>
-        <PostsIcons />
-        <h1>{useTranslation('POSTS_TITLE')}</h1>
+        {/* <PostsIcons /> */}
+        {/* <h1>{useTranslation('POSTS_TITLE')}</h1> */}
+        <h1>{'POSTS_TITLE'}</h1>
         <div className='posts'>
           {postsData.map(({ id, title, create, update, tags, image }) => (
             <div className='postCard' key={id}>
               <Link key={id} href={`/posts/${id}/`} locale={locale}>
                 <a className='postLink'>
                   <div className='imgOuter'>
-                    <CustomImg src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
+                    <Image src={image || '/assets/home/sunrise.jpg'} alt={title} layout="fill" className='cardImg' />
                   </div>
                   <div className='postDesc'>
-                    {update ? (
+                    {/* {update ? (
                         <div>{useTranslation('POST_UPDATED_AT',{timestamp: getI18nDate(update, locale)})}</div>
                         // <div>{useTranslation('POST_UPDATED_AT',{timestamp: `<time dateTime='2020-01-01'>2020年1月1日</time>`})}</div> // i wanna improve like this
                       ) : (
                         <div>{useTranslation('POST_CREATED_AT',{timestamp: getI18nDate(create, locale)})}</div>
                       )
-                    }
+                    } */}
+                    {/* <div>updated at {getI18nDate(update, locale)}</div> */}
                     {/* {update ? (
                         <div>{updatedAt}{' '}<Date dateString={update} locale={locale} /></div>
                       ) : (

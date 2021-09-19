@@ -1,22 +1,23 @@
 import { AppProps } from 'next/app'
-import Router from 'next/router'
-import { IconContext } from 'react-icons'
+// import { IconContext } from 'react-icons'
 
-import * as gtag from '../lib/gtag'
+import GoogleAnalytics from 'src/components/GoogleAnalytics'
 import { DARK_MODE, LIGHT_MODE } from '../style/color'
 import { ThemeProvider } from '../hooks/theme'
 import { LocaleProvider } from '../hooks/locale'
+import usePageView from 'src/hooks/usePageView'
 
 export default function MyApp({ Component, pageProps }: AppProps) {  
-  Router.events.on('routeChangeComplete', (url: string) => gtag.pageview(url))
-
+  usePageView()
+  
   return (
     <>
+      <GoogleAnalytics />
       <LocaleProvider>
         <ThemeProvider>
-          <IconContext.Provider value={{ className: 'react-icons' }}>
+          {/* <IconContext.Provider value={{ className: 'react-icons' }}> */}
             <Component {...pageProps} />
-          </IconContext.Provider>
+          {/* </IconContext.Provider> */}
         </ThemeProvider>
       </LocaleProvider>
       <style jsx global>{`

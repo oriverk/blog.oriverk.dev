@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import css from 'styled-jsx/css'
-import { MdCreate, MdSearch, MdHome, MdLocalOffer, MdMoreHoriz, MdClose } from 'react-icons/md'
+// import { MdCreate, MdSearch, MdHome, MdLocalOffer, MdMoreHoriz, MdClose } from 'react-icons/md'
 
 const style = css`
 .icons{
@@ -50,12 +50,12 @@ const style = css`
 }
 `
 
-export const TagIcons: React.FC = () => {
+export const TagIcons: React.VFC = () => {
   const [more, setMore] = useState(false)
   return (
     <>
       <div className='icons'>
-        <Link href='/search/'>
+        {/* <Link href='/search/'>
           <a className='icon' key='search' aria-label='search posts'>
             <MdSearch />
           </a>
@@ -82,7 +82,7 @@ export const TagIcons: React.FC = () => {
         <a className='icon more' key='more'
           aria-expanded={!more} onClick={() => setMore(true)} aria-label='expand link icons'>
           <MdMoreHoriz />
-        </a>
+        </a> */}
       </div>
       <style jsx>{style}</style>
     </>

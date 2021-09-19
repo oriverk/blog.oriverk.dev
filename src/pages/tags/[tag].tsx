@@ -1,12 +1,12 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 
 import { Layout } from '../../components/Layout'
 import { CustomHead } from '../../components/common/Head'
-import { CustomImg } from '../../components/common/Image'
 import { Date } from '../../components/common/Date'
-import { TagIcons } from '../../components/icons/index'
+// import { TagIcons } from '../../components/icons/index'
 import { getTagsLocales, getTagPosts } from '../../lib/posts'
 
 import { PostDataType } from '../../types/posts'
@@ -36,12 +36,12 @@ type TagPostsProps = {
   postsData: Omit<PostDataType, 'content'>[]
 }
 
-const Component: React.FC<TagPostsProps> = ({ tag, postsData }) => {
+const Component: React.VFC<TagPostsProps> = ({ tag, postsData }) => {
   const { locale } = useRouter()
   return (
     <Layout>
       <CustomHead pageUrl={`/${locale}/tags/${tag}/`} pageTitle={`${tag} Posts`} pageDescription={`${tag} Posts`} />
-      <TagIcons />
+      {/* <TagIcons /> */}
       <article className='content'>
         <h1>{`${tag} Posts`}</h1>
         <div className='posts'>
@@ -50,7 +50,7 @@ const Component: React.FC<TagPostsProps> = ({ tag, postsData }) => {
               <Link href={ `/posts/${id}/`} locale={locale}>
                 <a className='postLink'>
                   <div className='imgOuter'>
-                    <CustomImg src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
+                    <Image layout="fill" src={image || '/assets/home/sunrise.jpg'} alt={title} className='cardImg' />
                   </div>
                   <div className='postDesc'>
                     {update ? (
