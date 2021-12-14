@@ -1,5 +1,7 @@
 import React from 'react'
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
+import { extractCss } from 'goober'
+
 import { GA_TRACKING_ID } from '../lib/gtag'
 import blogConfig from '../../blog.config'
 import i18nConfig from '../../i18n.config'
@@ -7,16 +9,23 @@ const { locales, defaultLocale } = i18nConfig
 const langs = locales.map((locale) => { return locale.split('-')[0] }) || [defaultLocale]
 
 // changeable meta data in Head is located at /src/components/common/Head.tsx
-export default class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps }
+export default class MyDocument extends Document<{ css: string }> {
+  static async getInitialProps({ renderPage }: DocumentContext) {
+    const page = await renderPage()
+    // Extrach the css for each page render
+    const css = extractCss()
+    return { ...page, css }
   }
 
   render() {
     return (
       <Html>
         <Head>
+          <style
+            id={'_goober'}
+            // And defined it in here
+            dangerouslySetInnerHTML={{ __html: ' ' + this.props.css }}
+          />
           <meta name='format-detection' content='email=no,telephone=no,address=no' />
           <meta name='theme-color' content={blogConfig.themeColor} />
           <meta content='developer, react, nextjs, typescript' name='keywords' />
