@@ -1,38 +1,34 @@
-const withPlugins = require('next-compose-plugins')
-const withPWA = require('next-pwa')
-const withBundleAnalyzer = require('@next/bundle-analyzer')
+const withPlugins = require('next-compose-plugins');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+const runtimeCaching = require('next-pwa/cache');
+const withPWA = require('next-pwa')({
+  pwa: {
+    disable: process.env.NODE_ENV === 'development',
+    dest: 'public',
+    runtimeCaching,
+  },
+});
 
-const i18n = require('./i18n.config')
-
-const nextConfig = {
+// const { defaultConfig } = require("next/dist/server/config-shared");
+const defaultConfig = {
   trailingSlash: true,
-  i18n: {
-    locales: i18n.locales,
-    defaultLocale: i18n.defaultLocale,
-    // locales: ['en', 'ja'],
-    // defaultLocale: 'en',
-  },
+  optimizeFonts: true,
+  reactStrictMode: true,
   images: {
-    domains: ['res.cloudinary.com'],
+    deviceSizes: [320, 420, 768, 1024, 1200],
+    iconSizes: [],
+    domains: [],
+    path: '/_next/image',
+    loader: 'default',
   },
-}
+  webpack: (config) => ({
+    ...config,
+    externals: [...config.externals, 'sharp'],
+  }),
+};
 
-module.exports = withPlugins(
-  [
-    [
-      withBundleAnalyzer, {
-        enabled: process.env.ANALYZE === 'true',
-      }
-    ],
-    [
-      withPWA, {
-        pwa: {
-          disable: process.env.NODE_ENV === 'development',
-          dest: 'public'
-        }
-      }
-    ],
-  ],
-  nextConfig
-)
+const plugins = [withBundleAnalyzer, withPWA];
 
+module.exports = withPlugins(plugins, defaultConfig);
