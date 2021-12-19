@@ -1,17 +1,9 @@
 import { styled } from 'goober'
 
-interface Props {
-  className?: string
-}
-
-const Component: React.FC<Props> = (props) => {
-  const { className, children } = props
-  return <main className={className}>{children}</main>
-}
-
-const StyledComponent = styled(Component)`
+const StyledComponent = styled('main')`
   padding: 1rem;
-  flex-grow: 1;
+  flex: 1;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
