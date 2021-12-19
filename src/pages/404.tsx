@@ -1,36 +1,33 @@
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import css from 'styled-jsx/css'
+import { styled } from 'goober'
+import { Layout } from '../components/layouts'
 
-import { Layout } from '../components/Layout'
-import { CustomHead } from '../components/common/Head'
-// import { useTranslation } from '../hooks/translation'
-
-const style = css`
-article {
-  padding: 5%;
-  text-align: center;
+interface Props {
+  className?: string;
 }
-`
 
-const Component: React.VFC = () => {
-  const { locale } = useRouter()
-  // const pageNotFound = useTranslation('ERROR_404')
-  const pageNotFound = 'ERROR_404'
-  // const backToTop = useTranslation('BACK_TO_TOP')
-  const backToTop = 'BACK_TO_TOP'
+const Component: React.VFC<Props> = (props) => {
+  const { className } = props
   return (
     <Layout>
-      <CustomHead pageUrl={`/${locale}/404/`} pageTitle='404' pageDescription={pageNotFound} />
-      <article>
-        <div>
-          <h1>{pageNotFound}</h1>
-          <p><Link href='/' locale={locale}><a>{backToTop}</a></Link></p>
-        </div>
-      </article>
-      <style jsx>{style}</style>
+      <section className={className}>
+        <h1>pageNotFound</h1>
+        <Link href="/">
+          <a>
+            Go back to Top
+          </a>
+        </Link>
+      </section>
     </Layout>
   )
 }
 
-export default Component
+const StyledCompoent = styled(Component)`
+  text-align: center;
+`
+
+const ContainerComponent: React.VFC = () => <StyledCompoent />
+
+const PageComponent = ContainerComponent
+
+export default PageComponent
