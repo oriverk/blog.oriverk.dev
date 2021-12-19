@@ -2,14 +2,6 @@ const withPlugins = require('next-compose-plugins');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
-const runtimeCaching = require('next-pwa/cache');
-const withPWA = require('next-pwa')({
-  pwa: {
-    disable: process.env.NODE_ENV === 'development',
-    dest: 'public',
-    runtimeCaching,
-  },
-});
 
 // const { defaultConfig } = require("next/dist/server/config-shared");
 const defaultConfig = {
@@ -29,6 +21,6 @@ const defaultConfig = {
   }),
 };
 
-const plugins = [withBundleAnalyzer, withPWA];
+const plugins = [withBundleAnalyzer];
 
 module.exports = withPlugins(plugins, defaultConfig);
