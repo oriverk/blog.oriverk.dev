@@ -11,8 +11,11 @@
     "lint:prettier": "prettier --check {src,pages}/**/*",
     "lint:eslint": "eslint {src,pages}/**/*",
     "fix": "run-s fix:prettier fix:eslint",
+    "fix:md": "run-s fix:markdownlint fix:textlint",
     "fix:prettier": "prettier --write {src,pages}/**/*",
     "fix:eslint": "eslint --fix {src,pages}/**/*",
+    "fix:markdownlint": "markdownlint -f docs/*",
+    "fix:textlint": "textlint -f docs/*",
     "postsmap": "node script/genPostsMapLocales.js && node script/genFeedLocales.js",
     "algolia": "node script/push2Algolia.js",
     "prepare": "husky install"
@@ -46,9 +49,14 @@
     "eslint-config-prettier": "^8.3.0",
     "goober": "^2.1.1",
     "husky": "^7.0.0",
+    "markdownlint-cli": "^0.30.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1",
     "sharp": "^0.29.3",
+    "textlint": "^12.1.0",
+    "textlint-rule-preset-ja-spacing": "^2.2.0",
+    "textlint-rule-preset-ja-technical-writing": "^7.0.0",
+    "textlint-rule-spellcheck-tech-word": "^5.0.0",
     "typescript": "^4.4.4"
   }
 }
