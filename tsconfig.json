@@ -19,9 +19,12 @@
     "downlevelIteration": true,
     "jsx": "preserve",
     "paths": {
-      "@src/*": [
-        "./src/*"
-      ]
+      "@src/*": ["./src/*"],
+      "types/*": ["./src/types/*"],
+      "utils/*": ["./src/utils/*"],
+      "hooks/*": ["./src/hooks/*"],
+      "styles/*": ["./src/styles/*"],
+      "components/*": ["./src/components/*"],
     },
     "incremental": true
   },
