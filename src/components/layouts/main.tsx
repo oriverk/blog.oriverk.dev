@@ -6,7 +6,6 @@ const StyledComponent = styled('main')`
   overflow: hidden;
   display: flex;
   justify-content: center;
-  align-items: center;
 `
 
 const ContainerComponent: React.FC = (props) => <StyledComponent {...props} />

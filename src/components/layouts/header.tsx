@@ -2,7 +2,9 @@ import { styled } from 'goober'
 import Link from 'next/link'
 
 import NamedIcon from '../named-icon'
-import { CottageIcon, TagIcon } from '../icons'
+import { CottageIcon, TagIcon, SearchIcon } from '../icons'
+
+const sitePath = process.env.NEXT_PUBLIC_SITE_PATH || ''
 
 interface Props {
   className?: string
@@ -16,12 +18,21 @@ const Component: React.VFC<Props> = (props) => {
           <a>blog</a>
         </Link>
         <div className="right">
-          <a href="#about">
-            <NamedIcon name="Tag" variant="none" width={16} height={16} fontSize={3}>
-              <TagIcon label="go to tags page" size={8} color="var(--color-gray)" />
-            </NamedIcon>
-          </a>
-          <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+          <Link href='/search'>
+            <a>
+              <NamedIcon name="Search" variant="none" width={16} height={16} fontSize={3}>
+                <SearchIcon label="search posts" size={8} color="var(--color-gray)" />
+              </NamedIcon>
+            </a>
+          </Link>
+          <Link href='/tag'>
+            <a>
+              <NamedIcon name="Tag" variant="none" width={16} height={16} fontSize={3}>
+                <TagIcon label="go to tags page" size={8} color="var(--color-gray)" />
+              </NamedIcon>
+            </a>
+          </Link>
+          <a href={sitePath} target="_blank" rel="noopener noreferrer">
             <NamedIcon name="Home" variant="none" width={16} height={16} fontSize={3}>
               <CottageIcon label="go to home page" size={8} color="var(--color-gray)" />
             </NamedIcon>
