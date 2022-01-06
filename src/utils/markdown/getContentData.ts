@@ -2,7 +2,7 @@ import * as fs from 'fs'
 import * as path from 'path'
 import format from 'date-fns/format'
 
-import type { FrontMatterType } from '../../types/markdown'
+import type { FrontMatterType } from 'types/markdown'
 import { serializeMdx } from './serializeMdx'
 import { getTableOfContents } from './getTableOfContents'
 

@@ -1,7 +1,7 @@
 import { styled } from 'goober'
 import Link from 'next/link'
 import { DateFormatter } from './date-formatter'
-import { FrontMatterType } from '../types/markdown'
+import { FrontMatterType } from 'types/markdown'
 
 interface PassedProps extends Pick<FrontMatterType, 'title' | 'tags'>{
   slug: string;

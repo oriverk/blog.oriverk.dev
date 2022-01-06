@@ -1,8 +1,8 @@
 import { styled } from 'goober'
 import Link from 'next/link'
 
-import NamedIcon from '../named-icon'
-import { CottageIcon, TagIcon, SearchIcon } from '../icons'
+import NamedIcon from 'components/named-icon'
+import { CottageIcon, TagIcon, SearchIcon } from 'components/icons'
 
 const sitePath = process.env.NEXT_PUBLIC_SITE_PATH || ''
 

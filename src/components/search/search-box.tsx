@@ -4,7 +4,7 @@ import { connectSearchBox } from 'react-instantsearch-dom'
 import { SearchBoxProvided } from 'react-instantsearch-core'
 import { styled } from 'goober'
 
-import { SearchIcon } from '../icons'
+import { SearchIcon } from 'components/icons'
 
 interface PassedProps extends SearchBoxProvided {
   placeholder?: string;

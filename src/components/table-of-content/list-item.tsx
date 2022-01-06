@@ -1,5 +1,5 @@
 import { styled } from 'goober'
-import type { HeadingType } from '../../types/markdown'
+import type { HeadingType } from 'types/markdown'
 
 interface PassedProps extends HeadingType {
   activeId?: string;

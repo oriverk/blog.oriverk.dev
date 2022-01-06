@@ -1,7 +1,7 @@
 // see https://github.com/hashicorp/next-mdx-remote/issues/53#issuecomment-725906664
 import slugger from 'github-slugger'
 
-import type { HeadingType } from '../../types/markdown'
+import type { HeadingType } from 'types/markdown'
 
 export function getTableOfContents(mdContent: string): HeadingType[] {
   const regexp = new RegExp(/^(### |## )(.*)\n/, 'gm')

@@ -1,7 +1,7 @@
 import { styled } from 'goober'
 
-import type { HeadingType } from '../../types/markdown'
-import { useScrollSpy } from '../../hooks/useScrollSpy'
+import type { HeadingType } from 'types/markdown'
+import { useScrollSpy } from 'hooks/useScrollSpy'
 import { ListItem } from './list-item'
 
 interface PassedProps {

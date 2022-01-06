@@ -1,7 +1,7 @@
 import { styled } from 'goober'
 import { connectPoweredBy } from 'react-instantsearch-dom'
 
-import { AlgoliaIcon } from '../icons'
+import { AlgoliaIcon } from 'components/icons'
 
 interface Props {
   className?: string;

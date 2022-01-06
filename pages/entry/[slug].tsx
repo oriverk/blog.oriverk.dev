@@ -1,11 +1,11 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { styled } from 'goober'
 
-import type { PostType } from '@src/types/markdown'
-import { getPostsData } from '../../src/utils/markdown/getContentData'
-import { Layout } from "../../src/components/layouts"
-import { MarkdownContent } from '../../src/components/markdown'
-import { DateFormatter } from '../../src/components/date-formatter'
+import type { PostType } from 'types/markdown'
+import { getPostsData } from 'utils/markdown/getContentData'
+import { Layout } from "components/layouts"
+import { MarkdownContent } from 'components/markdown'
+import { DateFormatter } from 'components/date-formatter'
 
 const ContentWrapper = styled('div')`
   max-width: var(--max-width);

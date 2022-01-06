@@ -1,8 +1,8 @@
 import { HitsProvided, Hit } from 'react-instantsearch-core'
 import { connectHits } from 'react-instantsearch-dom'
-import { PostCard } from '../post-card'
+import { PostCard } from 'components/post-card'
 import { CustomPoweredBy } from '.'
-import { PostType, FrontMatterType } from '../../types/markdown'
+import { PostType, FrontMatterType } from 'types/markdown'
 
 interface HitProps extends Pick<FrontMatterType, 'title' | 'create' | 'update' | 'tags'> {
   id: PostType['fileName'];
