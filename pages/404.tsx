@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { styled } from 'goober'
-import { Layout } from '../components/layouts'
+import { Layout } from '../src/components/layouts'
 
 interface Props {
   className?: string;

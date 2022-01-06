@@ -2,8 +2,8 @@ import { useRouter } from 'next/router'
 import { Configure, InstantSearch } from 'react-instantsearch-dom'
 import { styled } from 'goober'
 
-import { Layout } from '../components/layouts'
-import { searchClient, CustomSearchBox, CustomStateResults, CustomHits } from '../components/search'
+import { Layout } from '../src/components/layouts'
+import { searchClient, CustomSearchBox, CustomStateResults, CustomHits } from '../src/components/search'
 
 const PostsWrapper = styled('div')`
   padding: 1rem;

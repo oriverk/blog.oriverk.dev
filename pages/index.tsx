@@ -1,10 +1,10 @@
 import { GetStaticProps } from 'next'
 import { styled } from 'goober'
 
-import type { PostType } from '../types/markdown'
-import { getPostsData } from '../utils/markdown/getContentData'
-import { Layout } from '../components/layouts'
-import { PostCard } from '../components/post-card'
+import type { PostType } from '../src/types/markdown'
+import { getPostsData } from '../src/utils/markdown/getContentData'
+import { Layout } from '../src/components/layouts'
+import { PostCard } from '../src/components/post-card'
 
 const PostsWrapper = styled('div')`
   padding: 1rem;

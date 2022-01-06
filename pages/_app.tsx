@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app'
 import { setup } from 'goober'
 import { prefix } from 'goober/prefixer'
 
-import { GlobalStyles } from '../styles/goober'
+import { GlobalStyles } from '../src/styles/goober'
 
 // goober's needs to know how to render the `styled` nodes.
 // So to let it know, we run the `setup` function with the
