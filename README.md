@@ -1,46 +1,29 @@
-<div align='center'>
-  <img src='https://user-images.githubusercontent.com/44029144/82922646-d08c3280-9fb4-11ea-8cc0-3d4c5b03c723.gif' alt='screen shot of this site'>
-</div>
+# README.md
 
-<h2 align="center">My portfolio site with tech blog</h2>
+## Techs
 
-<p align="center">
-  <a href="https://ja.reactjs.org/">
-    <img src="https://user-images.githubusercontent.com/44029144/83879483-a4bd3980-a778-11ea-94eb-8c04c8fb406e.jpg"
-          style="margin-right: .5%; max-width: 178px; max-height: 100px; width: 40%;" />
-  <a href="https://nextjs.org/">
-    <img src="https://user-images.githubusercontent.com/44029144/83879519-b69edc80-a778-11ea-9094-8081f547f15d.jpg"
-          style="margin-left: .5%; max-width: 190px; max-height: 100px; width: 40%;" />
-  </a>
-</p>
-
-## Site URL
-**https://oriverk.dev**
-
-and you can search posts of this blog from https://oriverk.dev/search/
-
-## Usage
-**please use `yarn` instead of `npm`.**
-**Attention. This repo uses mjs to generate some file, so you need nodejs v13 at least! (But Vercel support only LTS ver. So be carefull)**
-
-```bash
-yarn install
-yarn dev
-
-yarn build
-yarn start
-```
-
-You can give it try to use npm. Actually I prohibited the use of `npm` with `package.json` and `.npmrc`.
-
-## Learn More
-To lean what this site is like, the following post is good.
-
-- [Qiita: Next.jsでポートフォリオサイトを作成した](https://oriverk.dev/posts/20200526-next-portfolio) 
-
-You can check out [the Next.js GitHub repository](https://github.com/oriverk/next-portfolio)
+- React
+  - Next.js
+  - TypeScript
+- CSS in JS: goober
+- hosting: Vercel
 
 ## Author
+
 - [Github](https://github.com/oriverk)
 - [Twitter](https://twitter.com/not_you_die)
 - [Qiita](https://qiita.com/OriverK)
+
+## Env variables
+
+`.env` under the root dir.
+
+| Name | Description | Reference |
+| --- | --- | --- |
+| NEXT_PUBLIC_SITE_PATH | for portfolio site | [github: oriverk/site](https://github.com/oriverk/site) |
+| NEXT_PUBLIC_BLOG_PATH | for portfolio blog | [github: oriverk/oriverk.dev](https://github.com/oriverk/oriverk.dev) |
+| NEXT_PUBLIC_GOOGLE_ANALYTICS_ID | Google Analytics ID |  |
+NEXT_PUBLIC_ALGOLIA_INDEX | Algolia index name |  |
+| NEXT_PUBLIC_ALGOLIA_APP_ID | Algolia API key | [algolia/doc/tools](https://www.algolia.com/doc/tools/crawler/apis/configuration/app-id/) |
+| NEXT_PUBLIC_ALGOLIA_SEARCH_KEY | Algolia Search-only API key | [algolia/doc/guides](https://www.algolia.com/doc/guides/security/api-keys/#search-only-api-key) |
+| ALGOLIA_ADMIN_KEY | Algolia Admin API key | [algolia/doc/guides](https://www.algolia.com/doc/guides/security/api-keys/#admin-api-key) |
