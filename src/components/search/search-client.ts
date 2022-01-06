@@ -1,12 +1,9 @@
 import algoliasearch from 'algoliasearch/lite'
 
-const appId = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || '';
-const searchKey = process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY || '';
+const appId = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || ''
+const searchKey = process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY || ''
 
-const algoliaClient = algoliasearch(
-  appId,
-  searchKey
-)
+const algoliaClient = algoliasearch(appId, searchKey)
 
 export const searchClient = {
   search(requests: any) {
@@ -20,6 +17,6 @@ export const searchClient = {
         })),
       })
     }
-    return algoliaClient.search(requests);
-  }
+    return algoliaClient.search(requests)
+  },
 }

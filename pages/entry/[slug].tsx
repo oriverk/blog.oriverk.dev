@@ -3,7 +3,7 @@ import { styled } from 'goober'
 
 import type { PostType } from 'types/markdown'
 import { getPostsData } from 'utils/markdown/getContentData'
-import { Layout } from "components/layouts"
+import { Layout } from 'components/layouts'
 import { MarkdownContent } from 'components/markdown'
 import { DateFormatter } from 'components/date-formatter'
 
@@ -16,7 +16,7 @@ const FlexWrapper = styled('div')`
   display: flex;
 `
 
-const Page: React.VFC<Omit<PostType, "fileName">> = (props) => {
+const Page: React.VFC<Omit<PostType, 'fileName'>> = (props) => {
   const { mdxSource, frontMatter } = props
   const { title, create, update, tags, headings, editUrl } = frontMatter
 
@@ -31,8 +31,7 @@ const Page: React.VFC<Omit<PostType, "fileName">> = (props) => {
             <>
               <a href={`/tag/#${tag}`} key={tag}>
                 {'#' + tag}
-              </a>
-              {' '}
+              </a>{' '}
             </>
           ))}
         </p>
@@ -54,24 +53,24 @@ export default Page
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { posts } = await getPostsData()
-  const paths = posts.map(post => {
+  const paths = posts.map((post) => {
     return {
       params: {
-        slug: post.fileName
-      }
+        slug: post.fileName,
+      },
     }
   })
 
   return {
     paths,
-    fallback: false
-  } 
+    fallback: false,
+  }
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as Record<string, string | string[]>
   const { posts } = await getPostsData()
-  const post = posts.find(post => post.fileName === slug)
+  const post = posts.find((post) => post.fileName === slug)
 
   if (!post) {
     throw new Error(`No content found for ${slug}`)
@@ -81,7 +80,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      mdxSource, frontMatter
-    }
+      mdxSource,
+      frontMatter,
+    },
   }
 }

@@ -2,7 +2,7 @@ import { H2, H3, H4 } from './headings'
 import { Table } from './table'
 import { Pre } from './pre'
 import { InlineCode } from './inline-code'
-import { CodeBlock } from "./codeblock"
+import { CodeBlock } from './codeblock'
 import { Image } from './image'
 
 export const MDXComponents = {

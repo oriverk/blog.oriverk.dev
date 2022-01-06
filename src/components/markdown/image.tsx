@@ -10,12 +10,12 @@ function isImgur(src: string) {
 }
 
 interface PassedProps {
-  src: string;
-  alt: string;
+  src: string
+  alt: string
 }
 
 interface Props extends PassedProps {
-  className?: string;
+  className?: string
 }
 
 const Component: React.VFC<Props> = (props) => {
@@ -24,25 +24,20 @@ const Component: React.VFC<Props> = (props) => {
 
   return (
     <picture className={className}>
-      <img loading='lazy'
-        decoding='async'
-        src={imgSrc}
-        alt={alt}
-      />
+      <img loading="lazy" decoding="async" src={imgSrc} alt={alt} />
     </picture>
   )
 }
 
 const StyledComponent = styled(Component)`
-  & > source, img {
+  & > source,
+  img {
     border: 1px solid gray;
     background-color: white;
     max-width: 100%;
   }
 `
 
-const ContainerComponent: React.VFC<PassedProps> = (props) => (
-  <StyledComponent {...props} />
-)
+const ContainerComponent: React.VFC<PassedProps> = (props) => <StyledComponent {...props} />
 
 export const Image = ContainerComponent

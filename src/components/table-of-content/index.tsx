@@ -5,11 +5,11 @@ import { useScrollSpy } from 'hooks/useScrollSpy'
 import { ListItem } from './list-item'
 
 interface PassedProps {
-  headings: HeadingType[];
+  headings: HeadingType[]
 }
 
 interface Props extends PassedProps {
-  className?: string;
+  className?: string
 }
 
 const Component: React.VFC<Props> = (props) => {
@@ -17,8 +17,8 @@ const Component: React.VFC<Props> = (props) => {
   const activeId = useScrollSpy(
     headings.map(({ id }) => `[id="${id}"]`),
     {
-      rootMargin: "0% 0% -24% 0%",
-    },
+      rootMargin: '0% 0% -24% 0%',
+    }
   )
 
   return (
@@ -27,9 +27,7 @@ const Component: React.VFC<Props> = (props) => {
       <ol>
         {headings.map((headingProps) => {
           const { id } = headingProps
-          return (
-            <ListItem activeId={activeId} {...headingProps} key={id} />
-          )
+          return <ListItem activeId={activeId} {...headingProps} key={id} />
         })}
       </ol>
     </nav>
@@ -53,19 +51,17 @@ const StyledComponent = styled(Component)`
   & > h2 {
     font-weight: bold;
     font-size: small;
-    color: var(--color-gray)
+    color: var(--color-gray);
   }
 
   & > ol {
-    letter-spacing: .25rem;
+    letter-spacing: 0.25rem;
     margin: 0;
     margin-top: 1rem;
     list-style: none;
   }
 `
 
-const ContainerComponent: React.VFC<PassedProps> = (props) => (
-  <StyledComponent {...props} />
-)
+const ContainerComponent: React.VFC<PassedProps> = (props) => <StyledComponent {...props} />
 
 export const TableOfContent = ContainerComponent

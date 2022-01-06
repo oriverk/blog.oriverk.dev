@@ -10,9 +10,7 @@ export async function serializeMdx(source: string) {
     scope: data,
     mdxOptions: {
       remarkPlugins: [],
-      rehypePlugins: [
-        rehypeSlug,
-      ],
+      rehypePlugins: [rehypeSlug],
     },
     target: 'esnext',
   }

@@ -18,14 +18,14 @@ const Component: React.VFC<Props> = (props) => {
           <a>blog</a>
         </Link>
         <div className="right">
-          <Link href='/search'>
+          <Link href="/search">
             <a>
               <NamedIcon name="Search" variant="none" width={16} height={16} fontSize={3}>
                 <SearchIcon label="search posts" size={8} color="var(--color-gray)" />
               </NamedIcon>
             </a>
           </Link>
-          <Link href='/tag'>
+          <Link href="/tag">
             <a>
               <NamedIcon name="Tag" variant="none" width={16} height={16} fontSize={3}>
                 <TagIcon label="go to tags page" size={8} color="var(--color-gray)" />

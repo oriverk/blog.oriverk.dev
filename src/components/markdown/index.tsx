@@ -8,11 +8,11 @@ interface PassedProps {
 }
 
 interface Props extends PassedProps {
-  className?: string;
+  className?: string
 }
 
 const Component: React.VFC<Props> = (props) => {
-  const { className, mdxSource } = props;
+  const { className, mdxSource } = props
 
   return (
     <div className={className}>
@@ -23,18 +23,20 @@ const Component: React.VFC<Props> = (props) => {
 
 const StyledComponent = styled(Component)`
   max-width: var(--max-width);
-  ul, ol {
+  ul,
+  ol {
     margin: 1rem 0 1rem 1rem;
     li {
-      padding: .5rem 0 0 .5rem;
-      ul, ol {
+      padding: 0.5rem 0 0 0.5rem;
+      ul,
+      ol {
         margin: 0;
         padding: 0;
         margin-left: 1rem;
       }
     }
   }
-  
+
   table {
     tr {
       th {
@@ -44,14 +46,16 @@ const StyledComponent = styled(Component)`
     tr:nth-child(2n) {
       background-color: #0d1117;
     }
-    td, th {
-      padding: .5rem .9rem;
+    td,
+    th {
+      padding: 0.5rem 0.9rem;
       border: 1px solid var(--color-gray);
       white-space: normal;
     }
   }
 
-  strong::before, strong::after {
+  strong::before,
+  strong::after {
     content: '**';
   }
 
@@ -59,14 +63,14 @@ const StyledComponent = styled(Component)`
     margin: 2rem 0;
     border-color: var(--color-gray);
   }
-  
+
   blockquote {
     margin: 1rem 0;
-    padding: 2px 0 2px .8rem;
+    padding: 2px 0 2px 0.8rem;
     border-left: 3px solid var(--color-gray);
 
     blockquote {
-      margin: .5rem;
+      margin: 0.5rem;
       margin-left: 0;
     }
 
@@ -77,8 +81,6 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const ContainerComponent: React.VFC<PassedProps> = (props) => (
-  <StyledComponent {...props} />
-)
+const ContainerComponent: React.VFC<PassedProps> = (props) => <StyledComponent {...props} />
 
-export const MarkdownContent = ContainerComponent;
+export const MarkdownContent = ContainerComponent

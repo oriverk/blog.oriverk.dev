@@ -7,47 +7,40 @@ import { styled } from 'goober'
 import { SearchIcon } from 'components/icons'
 
 interface PassedProps extends SearchBoxProvided {
-  placeholder?: string;
+  placeholder?: string
 }
 
 interface Props extends PassedProps {
-  className?: string;
+  className?: string
 }
 
 const Component: React.VFC<Props> = (props) => {
-  const {
-    className,
-    refine, currentRefinement, isSearchStalled,
-    placeholder = '',
-  } = props
+  const { className, refine, currentRefinement, isSearchStalled, placeholder = '' } = props
   const router = useRouter()
 
-  const handleChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    const query = event.currentTarget.value;
+  const handleChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const query = event.currentTarget.value
 
-    refine(query)
-    if (query) {
-      router.push(
-        { pathname: router.pathname, query: { q: encodeURI(query) } },
-        undefined,
-        { shallow: true }
-      )
-    } else {
-      router.push(
-        { pathname: router.pathname },
-        undefined,
-        { shallow: true })
-    }
-  }, [refine, router])
+      refine(query)
+      if (query) {
+        router.push({ pathname: router.pathname, query: { q: encodeURI(query) } }, undefined, { shallow: true })
+      } else {
+        router.push({ pathname: router.pathname }, undefined, { shallow: true })
+      }
+    },
+    [refine, router]
+  )
 
   return (
     <div className={className}>
       <span>
         <SearchIcon label="search posts" size={8} color="var(--color-gray)" />
       </span>
-      <input type='search'
-        autoComplete='off'
-        autoCorrect='off'
+      <input
+        type="search"
+        autoComplete="off"
+        autoCorrect="off"
         spellCheck={false}
         maxLength={64}
         placeholder={placeholder}
@@ -91,8 +84,6 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const ContainerComponent: React.VFC<PassedProps> = (props) => (
-  <StyledComponent {...props} />
-)
+const ContainerComponent: React.VFC<PassedProps> = (props) => <StyledComponent {...props} />
 
 export const CustomSearchBox = connectSearchBox(ContainerComponent)

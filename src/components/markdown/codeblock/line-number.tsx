@@ -1,11 +1,11 @@
 import { styled } from 'goober'
 
 interface PassedProps {
-  number: number;
+  number: number
 }
 
 interface Props extends PassedProps {
-  className?: string;
+  className?: string
 }
 
 const Component: React.VFC<Props> = (props) => {
@@ -22,8 +22,6 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const ContainerComponent: React.VFC<PassedProps> = (props) => (
-  <StyledComponent {...props} />
-)
+const ContainerComponent: React.VFC<PassedProps> = (props) => <StyledComponent {...props} />
 
-export const LineNumber = ContainerComponent;
+export const LineNumber = ContainerComponent

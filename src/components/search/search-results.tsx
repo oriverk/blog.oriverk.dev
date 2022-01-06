@@ -1,15 +1,15 @@
 import { connectStateResults } from 'react-instantsearch-dom'
-import { SearchState, AllSearchResults, AlgoliaError } from "react-instantsearch-core"
+import { SearchState, AllSearchResults, AlgoliaError } from 'react-instantsearch-core'
 import { styled } from 'goober'
 
 interface PassedProps {
-  error: AlgoliaError;
-  searchState: SearchState;
-  searchResults: AllSearchResults;
+  error: AlgoliaError
+  searchState: SearchState
+  searchResults: AllSearchResults
 }
 
 interface Props extends PassedProps {
-  className?: string;
+  className?: string
 }
 
 const Component: React.VFC<Props> = (props) => {
@@ -18,11 +18,7 @@ const Component: React.VFC<Props> = (props) => {
   const nbHits = searchResults && searchResults.nbHits
 
   if (error) {
-    return (
-      <div className={className + ' error'}>
-        SEARCH_ERROR: {error.message}
-      </div>
-    )
+    return <div className={className + ' error'}>SEARCH_ERROR: {error.message}</div>
   }
 
   if (!searchState.query?.length) {
@@ -36,11 +32,7 @@ const Component: React.VFC<Props> = (props) => {
       </div>
     )
   } else {
-    return (
-      <div className={className}>
-        No results for {searchState.query}
-      </div>
-    )
+    return <div className={className}>No results for {searchState.query}</div>
   }
 }
 
@@ -52,8 +44,6 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const ContainerComponent: React.VFC<PassedProps> = (props) => (
-  <StyledComponent {...props} />
-)
+const ContainerComponent: React.VFC<PassedProps> = (props) => <StyledComponent {...props} />
 
 export const CustomStateResults = connectStateResults(ContainerComponent)

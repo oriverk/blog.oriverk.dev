@@ -14,27 +14,25 @@ const PostsWrapper = styled('div')`
 `
 
 interface PostsProps {
-  posts: Omit<PostType, 'mdxSource'>[];
-  tags: FrontMatterType['tags'];
+  posts: Omit<PostType, 'mdxSource'>[]
+  tags: FrontMatterType['tags']
 }
 
 const Page: React.VFC<PostsProps> = (props) => {
   const { posts, tags } = props
-  
+
   return (
     <Layout>
       <PostsWrapper>
         <h1>Posts Index</h1>
-        {tags.map(tag => {
-          const tagPosts = posts.filter(post => post.frontMatter.tags.includes(tag))
+        {tags.map((tag) => {
+          const tagPosts = posts.filter((post) => post.frontMatter.tags.includes(tag))
           return (
             <>
               <H2 id={tag}>{tag}</H2>
               {tagPosts.map(({ fileName, frontMatter }) => {
                 const { title, create, tags } = frontMatter
-                return (
-                  <PostCard slug={fileName} title={title} date={create} tags={tags} key={fileName} />
-                )
+                return <PostCard slug={fileName} title={title} date={create} tags={tags} key={fileName} />
               })}
             </>
           )
@@ -49,19 +47,19 @@ export default Page
 export const getStaticProps: GetStaticProps = async () => {
   const { posts, allTags } = await getPostsData()
 
-  const returnData = posts.map(post => {
+  const returnData = posts.map((post) => {
     const { frontMatter, fileName } = post
     const { headings, published, editUrl, ...rest } = frontMatter
     return {
       frontMatter: { ...rest },
-      fileName
+      fileName,
     }
   })
 
   return {
     props: {
       posts: returnData,
-      tags: allTags
-    }
+      tags: allTags,
+    },
   }
 }

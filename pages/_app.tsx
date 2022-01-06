@@ -10,7 +10,7 @@ import { GlobalStyles } from 'styles/goober'
 // `createElement` function and prefixer function.
 setup(React.createElement, prefix)
 
-export default function MyApp({ Component, pageProps }: AppProps) {  
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <GlobalStyles />

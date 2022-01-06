@@ -4,7 +4,7 @@ import { styled } from 'goober'
 import { Layout } from 'components/layouts'
 
 interface Props {
-  className?: string;
+  className?: string
 }
 
 const Component: React.VFC<Props> = (props) => {
@@ -14,9 +14,7 @@ const Component: React.VFC<Props> = (props) => {
       <section className={className}>
         <h1>pageNotFound</h1>
         <Link href="/">
-          <a>
-            Go back to Top
-          </a>
+          <a>Go back to Top</a>
         </Link>
       </section>
     </Layout>

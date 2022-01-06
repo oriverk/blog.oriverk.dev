@@ -1,22 +1,20 @@
 import { styled } from 'goober'
 
 interface PassedProps {
-  id: string;
-  children: string;
+  id: string
+  children: string
 }
 
 interface Props extends PassedProps {
-  className?: string;
+  className?: string
 }
 
 const Component: React.VFC<Props> = (props) => {
   const { className, id, children } = props
-  
+
   return (
     <h4 id={id} className={className}>
-      <a href={`#${props.id}`}>
-        {children}
-      </a>
+      <a href={`#${props.id}`}>{children}</a>
     </h4>
   )
 }

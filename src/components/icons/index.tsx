@@ -8,6 +8,4 @@ import { TagIcon } from './tag'
 import { SearchIcon } from './search'
 import { AlgoliaIcon } from './algolia'
 
-export {
-  GithubIcon, TwitterIcon, PenIcon, ContactIcon, RSSIcon, CottageIcon, TagIcon, SearchIcon, AlgoliaIcon
-}
+export { GithubIcon, TwitterIcon, PenIcon, ContactIcon, RSSIcon, CottageIcon, TagIcon, SearchIcon, AlgoliaIcon }

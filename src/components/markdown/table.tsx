@@ -2,7 +2,7 @@ import { styled } from 'goober'
 
 const Component: React.FC = (props: any) => {
   const { className, ...rest } = props
-  
+
   return (
     <div className={className}>
       <table {...rest} />

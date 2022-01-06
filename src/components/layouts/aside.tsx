@@ -1,17 +1,15 @@
 import { styled } from 'goober'
 
 interface PassedProps {
-  width: string;
-  top: string;
+  width: string
+  top: string
 }
 
 interface Props extends PassedProps {
-  className?: string;
+  className?: string
 }
 
-const Component: React.FC<Props> = (props) => (
-  <aside {...props} />
-)
+const Component: React.FC<Props> = (props) => <aside {...props} />
 
 const StyledComponent = styled(Component)`
   @media screen and (min-width: 48em) {
@@ -29,9 +27,6 @@ const StyledComponent = styled(Component)`
   flex-direction: column;
 `
 
-const ContainerComponent: React.FC<PassedProps> = (props) => (
-  <StyledComponent {...props} />
-)
+const ContainerComponent: React.FC<PassedProps> = (props) => <StyledComponent {...props} />
 
 export const Aside = ContainerComponent
-
