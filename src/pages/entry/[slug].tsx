@@ -5,13 +5,11 @@ import type { PostType } from '@src/types/markdown'
 import { getPostsData } from '../../utils/markdown/getContentData'
 import { Layout } from "../../components/layouts"
 import { MarkdownContent } from '../../components/markdown'
-
 import { DateFormatter } from '../../components/date-formatter'
-// import { TableOfContent } from '../../components/table-of-content'
 
 const ContentWrapper = styled('div')`
   max-width: var(--max-width);
-  padding: 1rem;
+  width: 100%;
 `
 
 const FlexWrapper = styled('div')`
@@ -31,7 +29,7 @@ const Page: React.VFC<Omit<PostType, "fileName">> = (props) => {
           {' / '}
           {tags.map((tag) => (
             <>
-              <a href={`/tags/#${tag}`} key={tag}>
+              <a href={`/tag/#${tag}`} key={tag}>
                 {'#' + tag}
               </a>
               {' '}
@@ -47,9 +45,6 @@ const Page: React.VFC<Omit<PostType, "fileName">> = (props) => {
           <MarkdownContent mdxSource={mdxSource} />
           {/* <TableOfContent headings={headings} /> */}
         </FlexWrapper>
-        <div>
-          
-        </div>
       </ContentWrapper>
     </Layout>
   )

@@ -1,38 +1,35 @@
 import { GetStaticProps } from 'next'
-import Link from 'next/link'
+import { styled } from 'goober'
 
 import type { PostType } from '../types/markdown'
 import { getPostsData } from '../utils/markdown/getContentData'
 import { Layout } from '../components/layouts'
+import { PostCard } from '../components/post-card'
+
+const PostsWrapper = styled('div')`
+  padding: 1rem;
+  max-width: var(--max-width);
+  width: 100%;
+`
 
 interface PostsProps {
   posts: Omit<PostType, 'mdxSource'>[]
-  allTags: string[]
 }
 
 const Page: React.VFC<PostsProps> = (props) => {
-  const { posts, allTags } = props
+  const { posts } = props
   
   return (
     <Layout>
-      <div className='main'>
+      <PostsWrapper>
         <h1>Posts Index</h1>
-        <ul>
-          {posts.map(({fileName, frontMatter}) => {
-            const { title, create, tags } = frontMatter
-            return (
-              // <ArticleCard slug={fileName} title={title} date={create} tags={tags} key={fileName} />
-              <li key={fileName}>
-                <Link href={`/entry/${fileName}`}>
-                  <a>
-                    {title}
-                  </a>
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
-      </div>
+        {posts.map(({ fileName, frontMatter }) => {
+          const { title, create, tags } = frontMatter
+          return (
+            <PostCard slug={fileName} title={title} date={create} tags={tags} key={fileName} />
+          )
+        })}
+      </PostsWrapper>
     </Layout>
   )
 }
@@ -40,11 +37,11 @@ const Page: React.VFC<PostsProps> = (props) => {
 export default Page
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { posts, allTags } = await getPostsData()
+  const { posts } = await getPostsData()
 
   const returnData = posts.map(post => {
     const { frontMatter, fileName } = post
-    const { headings, editUrl, ...rest } = frontMatter
+    const { headings, published, editUrl, ...rest } = frontMatter
     return {
       frontMatter: { ...rest },
       fileName
@@ -54,7 +51,6 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       posts: returnData,
-      allTags
     }
   }
 }
