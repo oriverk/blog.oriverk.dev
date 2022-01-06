@@ -1,14 +1,16 @@
 import algoliasearch from 'algoliasearch/lite'
-import blogConfig from '../../../blog.config'
+
+const appId = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || '';
+const searchKey = process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY || '';
 
 const algoliaClient = algoliasearch(
-  blogConfig.algolia.appId,
-  blogConfig.algolia.searchOnlyApiKey
+  appId,
+  searchKey
 )
 
 export const searchClient = {
-  search(requests) {
-    if (requests.every(({ params }) => !params.query)) {
+  search(requests: any) {
+    if (requests.every(({ params }: { params: any }) => !params.query)) {
       return Promise.resolve({
         results: requests.map(() => ({
           hits: [],
@@ -19,5 +21,5 @@ export const searchClient = {
       })
     }
     return algoliaClient.search(requests);
-  },
+  }
 }
