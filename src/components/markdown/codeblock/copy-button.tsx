@@ -3,7 +3,6 @@ import { styled } from 'goober'
 
 interface PasssedProps {
   code: string;
-  top: number;
 }
 
 interface Props extends PasssedProps {
@@ -18,20 +17,12 @@ const Component: React.VFC<Props> = ({ className, code }) => {
       className={className}
       onClick={() => copyToClipboard(code)}
     >
-      {(!state.error && state.value) ? 'Copied' : 'Copy'}
+      {(!state.error && state.value) ? 'Copied!' : 'Copy'}
     </button>
   )
 }
 
-const StyledComponent = styled(Component)`
-  height: 1.5rem;
-  position: absolute;
-  top: ${({ top }) => `${(top || 0) / 4}rem`};
-  right: 1.25rem;
-  z-index: 1;
-  background: var(--color-miku);
-  font-size: small;
-`
+const StyledComponent = styled(Component)``
 
 const ContainerComponent: React.VFC<PasssedProps> = (props) => (
   <StyledComponent {...props} />

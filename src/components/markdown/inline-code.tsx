@@ -18,5 +18,5 @@ interface Props {
 }
 
 export const InlineCode: React.VFC<Props> = (props) => {
-  return <StyledComponent {...props} />
+  return <StyledComponent {...props} translate='no' />
 }

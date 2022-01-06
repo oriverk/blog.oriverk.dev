@@ -14,7 +14,7 @@ const Component: React.VFC<Props> = (props) => {
   
   return (
     <h2 id={id} className={className}>
-      <a href={`#${props.id}`}>
+      <a href={`#${id}`}>
         {children}
       </a>
     </h2>

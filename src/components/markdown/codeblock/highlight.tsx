@@ -1,8 +1,15 @@
+import { styled } from 'goober'
 import BaseHighlight, {
   defaultProps,
   Language,
   PrismTheme,
 } from "prism-react-renderer"
+import { LineNumber } from './line-number'
+
+const StyledDiv = styled('div')`
+  overflow-x: auto;
+  margin: .5rem 0;
+`
 
 interface HighlightProps {
   codeString: string
@@ -23,23 +30,27 @@ const Highlight: React.VFC<HighlightProps> = (props) => {
       {...rest}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <>
-          <pre className={className} style={style}>
-            {tokens.map((line, i) => {
+        <StyledDiv className='highlight'>
+          <pre className={className}>
+            <code translate="no">
+              {tokens.map((line, i) => {
               const lineProps = getLineProps({ line, key: i })
               return (
-                <div style={{padding: '0 1.25rem'}}
+                <div
                   {...lineProps}
                   key={i}
                 >
+                  {/* <LineNumber>{i + 1}</LineNumber> */}
+                  <LineNumber number={i+1} />
                   {line.map((token, key) => (
                     <span {...getTokenProps({ token, key })} key={key}/>
                   ))}
                 </div>
               )
             })}
+            </code>
           </pre>
-        </>
+        </StyledDiv>
       )}
     </BaseHighlight>
   )

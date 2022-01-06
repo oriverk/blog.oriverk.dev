@@ -22,19 +22,27 @@ const Component: React.VFC<Props> = (props) => {
 }
 
 const StyledComponent = styled(Component)`
+  max-width: var(--max-width);
   ul, ol {
-    margin: 1.5rem 0 0 1.25rem;
+    margin: 1rem 0 1rem 1rem;
     li {
-      padding-bottom: 4px;
+      padding: .5rem 0 0 .5rem;
+      ul, ol {
+        margin: 0;
+        padding: 0;
+        margin-left: 1rem;
+      }
     }
   }
   
   table {
     tr {
-      background-color: #0d1117;
+      th {
+        background-color: #0d1117;
+      }
     }
     tr:nth-child(2n) {
-      background-color: var(--color-background);
+      background-color: #0d1117;
     }
     td, th {
       padding: .5rem .9rem;
@@ -43,15 +51,29 @@ const StyledComponent = styled(Component)`
     }
   }
 
+  strong::before, strong::after {
+    content: '**';
+  }
+
   hr {
-    margin: 2.5rem 0;
+    margin: 2rem 0;
     border-color: var(--color-gray);
   }
+  
   blockquote {
     margin: 1rem 0;
     padding: 2px 0 2px .8rem;
     border-left: 3px solid var(--color-gray);
-    font-size: 1rem;
+
+    blockquote {
+      margin: .5rem;
+      margin-left: 0;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1rem;
+    }
   }
 `
 

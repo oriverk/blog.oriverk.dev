@@ -1,14 +1,16 @@
 import { H2, H3, H4 } from './headings'
 import { Table } from './table'
-import { InlineCode } from "./inline-code"
 import { Pre } from './pre'
+import { InlineCode } from './inline-code'
 import { CodeBlock } from "./codeblock"
+import { Image } from './image'
 
 export const MDXComponents = {
-  h2: (props: any) => <H2 {...props} />,
-  h3: (props: any) => <H3 {...props} />,
-  h4: (props: any) => <H4 {...props} />,
-  code: InlineCode,
+  h2: H2,
+  h3: H3,
+  h4: H4,
+  inlineCode: InlineCode,
+  img: Image,
   pre: (props: any) => {
     if (typeof props.children === 'string') return <Pre {...props} />
     return <CodeBlock {...props} />
