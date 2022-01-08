@@ -3,10 +3,13 @@ import Head from 'next/head'
 import type { AppProps } from 'next/app'
 import { setup } from 'goober'
 import { prefix } from 'goober/prefixer'
+import NextHeadSeo from 'next-head-seo'
 
 import { GlobalStyles } from 'styles/goober'
 
 import packageJson from '../package.json'
+
+const blogPath = process.env.NEXT_PUBLIC_BLOG_PATH || ''
 
 // goober's needs to know how to render the `styled` nodes.
 // So to let it know, we run the `setup` function with the
@@ -25,12 +28,18 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon180x.png" />
         <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
         <meta name="theme-color" content="#00e1ee" />
-        <meta content={JSON.stringify(packageJson.keywords)} name="keywords" />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content={packageJson.name} />
-        <meta content="summary_large_image" name="twitter:card" />
-        <meta content="not_you_die" name="twitter:site" />
+        <meta content={packageJson.keywords.join(', ')} name="keywords" />
       </Head>
+      <NextHeadSeo
+        og={{
+          image: `${blogPath}/sugarloaf-adelaide.png`,
+          type: 'article',
+          siteName: packageJson.name,
+        }}
+        twitter={{
+          card: 'summary_large_image'
+        }}
+      />
       <GlobalStyles />
       <Component {...pageProps} />
     </>

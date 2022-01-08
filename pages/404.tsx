@@ -10,7 +10,10 @@ interface Props {
 const Component: React.VFC<Props> = (props) => {
   const { className } = props
   return (
-    <Layout>
+    <Layout
+      title='404: Page not found'
+      path='/404/'
+    >
       <section className={className}>
         <h1>pageNotFound</h1>
         <Link href="/">

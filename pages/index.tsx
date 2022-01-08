@@ -20,7 +20,10 @@ const Page: React.VFC<PostsProps> = (props) => {
   const { posts } = props
 
   return (
-    <Layout>
+    <Layout
+      title='home'
+      path='/'
+    >
       <PostsWrapper>
         <h1>Posts Index</h1>
         {posts.map(({ fileName, frontMatter }) => {

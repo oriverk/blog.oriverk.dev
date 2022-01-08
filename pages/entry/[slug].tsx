@@ -16,12 +16,15 @@ const FlexWrapper = styled('div')`
   display: flex;
 `
 
-const Page: React.VFC<Omit<PostType, 'fileName'>> = (props) => {
-  const { mdxSource, frontMatter } = props
+const Page: React.VFC<PostType> = (props) => {
+  const { fileName, mdxSource, frontMatter } = props
   const { title, create, update, tags, headings, editUrl } = frontMatter
 
   return (
-    <Layout>
+    <Layout
+      title={title}
+      path={`/entry/${fileName}/`}
+    >
       <ContentWrapper>
         <h1>{title}</h1>
         <p>
@@ -76,10 +79,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     throw new Error(`No content found for ${slug}`)
   }
 
-  const { frontMatter, mdxSource } = post
+  const { fileName, frontMatter, mdxSource } = post
 
   return {
     props: {
+      fileName,
       mdxSource,
       frontMatter,
     },

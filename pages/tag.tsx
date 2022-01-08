@@ -22,9 +22,12 @@ const Page: React.VFC<PostsProps> = (props) => {
   const { posts, tags } = props
 
   return (
-    <Layout>
+    <Layout
+      title='tag posts'
+      path='/tag/'
+    >
       <PostsWrapper>
-        <h1>Posts Index</h1>
+        <h1>Tag Posts Index</h1>
         {tags.map((tag) => {
           const tagPosts = posts.filter((post) => post.frontMatter.tags.includes(tag))
           return (

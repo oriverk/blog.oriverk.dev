@@ -2,7 +2,12 @@
   "name": "blog.oriverk.dev",
   "private": true,
   "description": "tech blog for portfolio",
-  "keywords": ["React", "Next.js", "TypeScript", "goober"],
+  "keywords": [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "goober"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -38,6 +43,7 @@
     "gray-matter": "^4.0.2",
     "next": "^12.0.7",
     "next-compose-plugins": "^2.2.1",
+    "next-head-seo": "^0.1.3",
     "next-mdx-remote": "^3.0.8",
     "prism-react-renderer": "^1.2.1",
     "react": "^17.0.2",
