@@ -124,5 +124,3 @@ end
 [一次データ:Does Page Load Time Really Affect Bounce Rate? pingdom](https://royal.pingdom.com/page-load-time-really-affect-bounce-rate/)
 
 上の一次データによると、ページ読み込み時間 3 秒までは直帰率は 10％弱だが、5 秒で 38%、7 秒で 50%を超える
-
-**サイトページをいかに軽し、見せたいものの読み込み速度を上げることは重要**

@@ -2,10 +2,12 @@
 create: '2020-09-21'
 title: 'Next.js: next-optimized-images を使った画像自動最適化'
 tags: [nextjs]
-published: false
+published: true
 ---
 
-今回は、例えば jpg や png を webp に変換し、レスポンシブや Low Quality Image Placeholder に対応すると言った、最適化をした事を書きたい。
+※ nextjs 画像最適化のための `next/image` の `Image` component が登場して以来、該当ライブラリは開発を停止しています。
+
+今回は画像を webp 等に変換し、レスポンシブや Low Quality Image Placeholder に対応するといった、画像最適化について書く。
 
 ## next-optimized-images
 
@@ -43,7 +45,6 @@ yarn add npm imagemin-mozjpeg imagemin-optipng
 ```jsx
 // next.config.js
 const withPlugins = require('next-compose-plugins')
-const withPWA = require('next-pwa')　// 今回は関係ない
 const optimizedImages = require('next-optimized-images')
 
 const nextOptimizedImagesConfig = {
@@ -60,7 +61,6 @@ const nextOptimizedImagesConfig = {
 
 module.exports = withPlugins(
   [
-    [ withPWA, nextPwaConfig ], // 今回は関係ない
     [ optimizedImages, nextOptimizedImagesConfig ],
   ],
 )
@@ -74,7 +74,7 @@ module.exports = withPlugins(
 
 画像は`<img src={require(../../example.jpg)} />`の様に指定するが、md 内で指定する時などは面倒なので、`next.js.config`にパスのエイリアスを追加する。
 
-![compiled with warning](/assets/posts/202009/opti1.jpg)
+[![Image from Gyazo](https://i.gyazo.com/3535f5fafcfa51c59bfbc3c4aa7443b0.jpg)](https://gyazo.com/3535f5fafcfa51c59bfbc3c4aa7443b0)
 
 原因は webpack にある模様
 
@@ -105,11 +105,10 @@ module.exports = withPlugins(
 #### convert to webp
 
 ```sh
-<!-- use webp-loader for image optimization to webp -->
 yarn add webp-loader
 ```
 
-また、imagemin-mozjpeg や imagemin-optipng 等は`href={require('../example.jpg')}`の様にすればプラグインが適用化されるが、その他は query params で指定する必要がある。
+また、imagemin-mozjpeg や imagemin-optipng 等は`href={require('../example.jpg')}`の様にすればプラグインが適用化される。が、その他は query params で指定する必要がある。
 
 ```jsx
 export default () => (
@@ -130,7 +129,7 @@ resize を可能にする responsive-loarder は jimp と sharp が別に必要�
 
 > Requires the optional package responsive-loader (npm install responsive-loader) and either jimp (node implementation, slower) or sharp (binary, faster)
 
-画像をリンクする際は`require('./images/my-image.jpg?resize&sizes[]=300&sizes[]=600&sizes[]=1000')`の様に指定できるが、下の様に`responsive:sized:[]`と画像サイズ幅を global resize property として指定できる。
+画像をリンクする際は`require('./images/my-image.jpg?resize&sizes[]=300&sizes[]=600&sizes[]=1000')`の様に指定できる。が、下の様に`responsive:sized:[]`と画像サイズ幅を global resize property として指定できる。
 
 ```jsx
 // next.config.js
@@ -169,11 +168,11 @@ export default () => (
 );
 ```
 
-![html of responsive image](/assets/posts/202009/opti2.jpg)
+[![Image from Gyazo](https://i.gyazo.com/0bdb837e29a2159837fe6c20cf5351b4.png)](https://gyazo.com/0bdb837e29a2159837fe6c20cf5351b4)
 
 #### webp-loader と responsive-loader
 
-現在の next-opti は issue を抱えていて、例えば webp 変換の webp-loader と複数サイズ画像生成の responsive-loader の query parmas を`example.jpg?webp?resize`の様に連ねて書くと動かない。根本的な解決は[next-opti v3](https://github.com/cyrilwanner/next-optimized-images/issues/120)で解決する模様。
+現状の next-opti は webp-loader と responsive-loader を`example.jpg?webp?resize`の様に連ねて書くと動かない。根本的な解決は[next-opti v3](https://github.com/cyrilwanner/next-optimized-images/issues/120)で解決する模様。
 
 2 つを同時に動かすサンプルコード
 
@@ -190,11 +189,11 @@ export default function () {
 }
 ```
 
-![both responsive-loader and webp-loader are working](/assets/posts/202009/opti3.jpg)
+[![Image from Gyazo](https://i.gyazo.com/cde029304a9aecb8696ad97fcead94dd.png)](https://gyazo.com/cde029304a9aecb8696ad97fcead94dd)
 
 ##### 自分の場合
 
-next.config.js の中で、`responsive:{sizes: [640, 960, 1200, 1800],}`としてあるので、[https://oriver.dev](https://oriverk.dev)では下の様に component を作って利用している。(一部略)
+next.config.js の中で、`responsive:{sizes: [640, 960, 1200, 1800],}`としてあるので component を作って利用している。
 
 ```jsx
 // src/components/general/OptimizedImages.tsx
@@ -233,13 +232,13 @@ export default function () {
 }
 ```
 
-![low quality image placeholder of ice breaker ship Shirase](/assets/posts/202009/opti4.jpg)
+[![Image from Gyazo](https://i.gyazo.com/a9a47caa8f1fd54b6f429790cc6dd5c3.jpg)](https://gyazo.com/a9a47caa8f1fd54b6f429790cc6dd5c3)
 
-豪に居た時に撮影した、西豪州フリーマントルに停泊する砕氷艦しらせの画像に適用してみた。lqip(左)の方は 10×7px の 925b に縮小されており、パフォーマンス的には問題が無さそう。[更に filter:blur(10px) 辺りを掛けると更に良さそう。](https://github.com/zouhir/lqip-loader/issues/5)
+砕氷艦しらせの画像に適用してみた。lqip(左)の方は 10×7px の 925b に縮小されており、パフォーマンス的には問題が無さそう。[更に filter:blur(10px) 辺りを掛けると更に良さそう。](https://github.com/zouhir/lqip-loader/issues/5)
 
 #### lqip-loaderを使ったprogressive image loading の実装
 
-早い話が medium 風の画像表示をやってみる。まずは useState を使って、lazy load の画像が load されたら、lqpi の opacity を 0 にする方法。
+medium 風の画像表示をやってみる。まずは useState を使って、lazy load の画像が load されたら、lqpi の opacity を 0 にする。
 
 ```jsx
 import React, { useState } from 'react'

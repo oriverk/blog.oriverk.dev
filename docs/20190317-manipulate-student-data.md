@@ -210,7 +210,7 @@ join メソッドは、配列の各要素を文字列に変換し、引数 sep �
 
 Students の show ページの、前回までの状態
 
-![image](/assets/posts/201903/student2.webp)
+[![Image from Gyazo](https://i.gyazo.com/7d3266587cb423757ceceaab6069c6a7.png)](https://gyazo.com/7d3266587cb423757ceceaab6069c6a7)
 
 ### 生徒データと関連付けするときは
 
@@ -426,9 +426,9 @@ end
 
 ## 編集後
 
-![image](/assets/posts/201903/student3.webp)
+[![Image from Gyazo](https://i.gyazo.com/3b9010f3af09b7dd99161985f9b93a98.png)](https://gyazo.com/3b9010f3af09b7dd99161985f9b93a98)
 
-![image](/assets/posts/201903/student4.webp)
+[![Image from Gyazo](https://i.gyazo.com/fb02c2b644bd053ac9f22ca5ce5229fc.png)](https://gyazo.com/fb02c2b644bd053ac9f22ca5ce5229fc)
 
 ## pagination by kaminari
 
@@ -467,12 +467,12 @@ view を編集
 </div>
 ```
 
-![image](/assets/posts/201903/student5.webp)
+[![Image from Gyazo](https://i.gyazo.com/bed8312b4ca888f1b5e82b2e4af74975.png)](https://gyazo.com/bed8312b4ca888f1b5e82b2e4af74975)
 
 ### ExamResultのindexページ編集
 
-app/controllers/exam_result_controller.rb の index アクションと
-app/view/exam_results/index.html.erb を同様に編集
+`app/controllers/exam_result_controller.rb` の index アクションと
+`app/view/exam_results/index.html.erb` を同様に編集
 
 ### ページャの見た目を変える
 

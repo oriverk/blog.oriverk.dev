@@ -49,7 +49,8 @@ Web エンジニアに転職するために、独りで勉強を進めていま�
 
 ##### Ruby認定試験を用いた勉強
 
-- 参照：[Ruby認定試験のアウトプット](https://qiita.com/search?utf8=%E2%9C%93&sort=&q=OriverK+Ruby%E8%AA%8D%E5%AE%9A%E8%A9%A6%E9%A8%93)
+- 参照
+  - [Ruby認定試験のアウトプット](https://qiita.com/search?utf8=%E2%9C%93&sort=&q=OriverK+Ruby%E8%AA%8D%E5%AE%9A%E8%A9%A6%E9%A8%93)
 
 以下は例(以下省略)
 
@@ -63,13 +64,13 @@ File.open("data") do |io|
 end
 ```
 
-![image](/assets/posts/201905/cebu2.png)
+[![Image from Gyazo](https://i.gyazo.com/84c7b1d51df4cec44a4298acf7b711fe.png)](https://gyazo.com/84c7b1d51df4cec44a4298acf7b711fe)
 
 ##### Scaffoldなしの掲示板
 
 Bootstrap や DB を組み合わせ、生徒データ情報一覧になりました。
 
-![image](/assets/posts/201905/cebu3.png)
+[![image](/assets/posts/201905/cebu3.png)](https://gyazo.com/5595e1e3a293e00950881e397abfb26f)
 
 ##### MySQL
 
@@ -89,7 +90,7 @@ Bootstrap や DB を組み合わせ、生徒データ情報一覧になりまし
 - [18日目：トランザクションって](https://qiita.com/OriverK/items/2359c9159b55c74f15d1)
 - [21日目：H30秋基本情報技術者試験の問3データベース](https://qiita.com/OriverK/items/6efe454be2d6be84ceb5)
 
-![image](/assets/posts/201905/cebu5.png)
+[![Image from Gyazo](https://i.gyazo.com/00c8ae6b51340e331c0d517f0051279a.png)](https://gyazo.com/00c8ae6b51340e331c0d517f0051279a)
 
 JS 等、追加で勉強しなければと感じています。
 

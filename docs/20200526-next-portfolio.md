@@ -462,11 +462,11 @@ export async function getPostData(id) {
 
 #### meta
 
-![image](/assets/posts/202005/next5.webp)
+[![Image from Gyazo](https://i.gyazo.com/ffd26e4f2d9de2d3bde34bbd6f0ed08b.png)](https://gyazo.com/ffd26e4f2d9de2d3bde34bbd6f0ed08b)
 
 以前に[rubyとjekyllで作ったgithubpages](https://oriverk.github.io/blog/confirm-font-size)と比較して、syntax-highlight が粗いので改善が必要
 
-![image](/assets/posts/202005/next6.png)
+[![Image from Gyazo](https://i.gyazo.com/d606404dd05463c96bf9d16d8c6d8478.png)](https://gyazo.com/d606404dd05463c96bf9d16d8c6d8478)
 
 ```sh
 # front-matter

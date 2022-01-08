@@ -139,7 +139,7 @@ css ライブラリには `styled-jsx` を使ってます。非 amp の時の様
 
 [AMPはtypescript用の組込型が無い](https://nextjs.org/docs/advanced-features/amp-support/typescript)ので、自分で`amp.d.ts`を作る必要がある。実際に`<amp-img>`とすると`Property 'amp-img' does not exist on type 'JSX.IntrinsicElements'.`と出る。
 
-![alt](/assets/posts/202010/ampError.png)
+[![Image from Gyazo](https://i.gyazo.com/7957a2c68ea932ab562c6a1ff25c0f02.png)](https://gyazo.com/7957a2c68ea932ab562c6a1ff25c0f02)
 
 なので、[このstack overflow](https://stackoverflow.com/questions/50585952/typescript-and-google-amp-property-amp-img-does-not-exist-on-type-jsx-intrin/50601125#50601125)を見ながら、custom types を追加してくれと、Next.js 公式はドキュメントで言っている。。
 
@@ -289,7 +289,7 @@ declare module "react" {
 }
 ```
 
-![image](/assets/posts/202010/pikachu.jpg)
+[![Image from Gyazo](https://i.gyazo.com/6e8a5fa9d5b5c601fbc3cd24ecda3383.jpg)](https://gyazo.com/6e8a5fa9d5b5c601fbc3cd24ecda3383)
 
 <!-- <details><summary>code of amp-image-slider</summary><div> -->
 
@@ -326,7 +326,7 @@ const AmpImageSlider = () => {
 
 amp-carousel も実際に触ってみたが、controls や autoplay、loop に空文字を渡せるように.d.ts に定義する以外は真新しいものは無かったので割愛。ただ、`amp-carousel`に指定できる属性が多く、属性だけで見た目や動作などを大きく変えられるので、弄って遊ぶだけでも面白かった。
 
-![image](/assets/posts/202010/carousel.jpg)
+[![Image from Gyazo](https://i.gyazo.com/a5bc479d0d7d570a9385d2923ef7301e.jpg)](https://gyazo.com/a5bc479d0d7d570a9385d2923ef7301e)
 
 ### others
 

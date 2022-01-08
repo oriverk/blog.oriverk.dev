@@ -32,7 +32,7 @@ from [Qiita: Twitterにコードを身えばよく投稿したい](https://qiita
 
 ### 作成要件
 
-![image](/assets/posts/201911/twitter2.png)
+[![Image from Gyazo](https://i.gyazo.com/2491cbf2135a0973110d0ba0727d9da7.png)](https://gyazo.com/2491cbf2135a0973110d0ba0727d9da7)
 
 - マークダウン投稿、シンタックスハイライト
   - gem: redcarpet, rouge

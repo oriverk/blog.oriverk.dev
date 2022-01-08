@@ -155,9 +155,6 @@ bundle exec jekyll server
 
 - 参照: [Google Analytics for Jekyll](https://desiredpersona.com/google-analytics-jekyll/)
 
-1. get google analytics tracking
-2. touch google-analytics.html
-
 ```html
 <!-- google-analytics.html -->
 {% if jekyll.environment == 'production' and site.google_analytics %}
@@ -174,7 +171,7 @@ bundle exec jekyll server
 {% endif %}
 ```
 
-3. `_include/head.html`に書き加える。
+`_include/head.html`に書き加える。
 
 ```html
 <!-- _include/head.html -->
@@ -183,7 +180,7 @@ bundle exec jekyll server
 </head>
 ```
 
-4. `_config.yml`にトラッキング ID を書き加える
+1. `_config.yml`にトラッキング ID を書き加える
 トラッキング ID は、UA-　から始まる ID。
 
 ```yml
@@ -200,7 +197,7 @@ github に上げて完了。
 - [Supporting Twitter Cards with Jekyll](http://davidensinger.com/2013/04/supporting-twitter-cards-with-jekyll/)
 - [Twitter Cards on Jekyll](https://www.brianbunke.com/blog/2017/09/06/twitter-cards-on-jekyll/)
 
-1. `_include/twitter-card.html`を作成
+`_include/twitter-card.html`を作成
 
 ```html
 <!-- _include/twitter-card.html -->
@@ -224,7 +221,7 @@ github に上げて完了。
 {% endif %}
 ```
 
-2. `_include/head.html`内に書き加える
+`_include/head.html`内に書き加える
 
 ```html
 <!-- _include/head.html -->
@@ -233,12 +230,11 @@ github に上げて完了。
 </haed>
 ```
 
-3. Git に push し、[Twitter Card Validator](https://cards-dev.twitter.com/validator) で確認
+Git に push し、[Twitter Card Validator](https://cards-dev.twitter.com/validator) で確認
 
 ### sidebar-nav-link
 
-![image](/assets/posts/201908/jekyll2.webp)
-
+[![Image from Gyazo](https://i.gyazo.com/aa38f41cc183d8e25de273d3020d4257.png)](https://gyazo.com/aa38f41cc183d8e25de273d3020d4257)
 こんな感じで、サイドバーに nav-link 付け足したい。
 
 ## デザインを大幅修正した件

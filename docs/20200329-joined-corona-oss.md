@@ -28,8 +28,7 @@ Referrence
 
 ## environment setup
 
-- [Github: リポジトリのREADME.md中の開発者向け情報->環境構築の手順](https://github.com/covid19-miyazaki/covid19#%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%81%AE%E6%89%8B%E9%A0%86)
-- [oriverk.dev: Build FrontEnd environment on Ubuntu](https://oriverk.dev/posts/202003-setup-frontend-ubuntu)
+- [Github: README.md #環境構築の手順](https://github.com/covid19-miyazaki/covid19#%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%81%AE%E6%89%8B%E9%A0%86)
 
 ```sh
 # set up git
@@ -49,7 +48,7 @@ yarn install
 yarn dev
 ```
 
-![image](/assets/posts/202003/miyazaki-oss.webp)
+[![Image from Gyazo](https://i.gyazo.com/e40d6a2e1fd9dd16649a336872b0a5c3.png)](https://gyazo.com/e40d6a2e1fd9dd16649a336872b0a5c3)
 
 ## What I did
 
@@ -60,7 +59,7 @@ Vue 何もわからないので、まず自然言語の表示の修正をする�
 
 1. `CODE_OF_CONDUCT.md`の修正
 
-![image](/assets/posts/202003/miyazaki-oss2.webp)
+[![Image from Gyazo](https://i.gyazo.com/e7577913f218da5a781a6f4699aedc14.png)](https://gyazo.com/e7577913f218da5a781a6f4699aedc14)
 
 東京都 ver から宮崎県 ver にした際の地域表記変更の漏れであり、1 文字の修正だった。
 
@@ -84,11 +83,11 @@ PR の機会は初めてだったので、下を参照しながら行った。
 
 やってることは同じなので割愛。こんな感じで書いた。
 
-![image](/assets/posts/202003/miyazaki-oss3.webp)
+[![Image from Gyazo](https://i.gyazo.com/1480a19fa3af7648fbcdf41aa9a94676.png)](https://gyazo.com/1480a19fa3af7648fbcdf41aa9a94676)
 
 無事に pull request が merge され、OSS 活動(?)の実績解除となりました。
 
-![image](/assets/posts/202003/miyazaki-oss4.webp)
+[![Image from Gyazo](https://i.gyazo.com/bcc2f8881f27c70d04aebc1d81f249e7.png)](https://gyazo.com/bcc2f8881f27c70d04aebc1d81f249e7)
 
 ## What I wanna do
 
