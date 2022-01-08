@@ -18,6 +18,7 @@
     "isolatedModules": true,
     "downlevelIteration": true,
     "jsx": "preserve",
+    "baseUrl": ".",
     "paths": {
       "@src/*": ["./src/*"],
       "types/*": ["./src/types/*"],
