@@ -25,14 +25,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/icon16.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon/icon32x.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon180x.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/icon180x.png" />
         <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
         <meta name="theme-color" content="#00e1ee" />
         <meta content={packageJson.keywords.join(', ')} name="keywords" />
       </Head>
       <NextHeadSeo
         og={{
-          image: `${blogPath}/sugarloaf-adelaide.png`,
+          image: `${blogPath}/assets/sugarloaf-adelaide.png`,
           type: 'article',
           siteName: packageJson.name,
         }}
