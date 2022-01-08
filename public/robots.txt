@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://oriverk.dev/sitemap.xml
-Host: https://oriverk.dev
+Sitemap: https://blog.oriverk.dev/sitemap.xml
+Host: https://blog.oriverk.dev
