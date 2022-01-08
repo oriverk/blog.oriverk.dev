@@ -51,7 +51,6 @@
     "react-instantsearch-dom": "^6.10.0",
     "react-use": "^17.3.1",
     "rehype-slug": "^5.0.0",
-    "remark-unwrap-images": "^3.0.1",
     "remove-markdown": "^0.3.0"
   },
   "devDependencies": {
