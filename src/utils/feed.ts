@@ -24,7 +24,7 @@ export async function generateFeedXml(): Promise<string> {
         <link>${blogPath}/entry/${fileName}/</link>
         <guid>entry/${fileName}</guid>
         <pubDate>${frontMatter.update || frontMatter.create}</pubDate>
-        <description>${JSON.stringify(frontMatter.tags)}</description>
+        <description>${frontMatter.tags.join(', ')}</description>
       </item>
     `
   })
