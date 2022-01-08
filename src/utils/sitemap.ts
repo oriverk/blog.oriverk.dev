@@ -3,35 +3,34 @@ import { getPostsData } from 'utils/markdown/getContentData'
 const blogPath = process.env.NEXT_PUBLIC_BLOG_PATH || ''
 
 export async function generateSitemapXml(): Promise<string> {
-  let xml = `<?xml version="1.0" encoding="UTF-8"?>`
-  xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`
+  let xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <urlset 
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xhtml="http://www.w3.org/1999/xhtml"
+      xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
+      xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+      xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+    >
+  `
 
   xml += `
     <url>
       <loc>${blogPath}/</loc>
-      <lastmod>${new Date()}</lastmod>
     </url>
     <url>
       <loc>${blogPath}/tag/</loc>
-      <lastmod>${new Date()}</lastmod>
     </url>
     <url>
       <loc>${blogPath}/search/</loc>
-      <lastmod>${new Date()}</lastmod>
-    </url>
-    <url>
-      <loc>${blogPath}/404/</loc>
-      <lastmod>${new Date()}</lastmod>
     </url>
   `
 
   const { posts } = await getPostsData()
 
-  posts.forEach(({ fileName, frontMatter }) => {
+  posts.forEach(({ fileName }) => {
     xml += `
       <url>
         <loc>${blogPath}/entry/${fileName}/</loc>
-        <lastmod>${frontMatter.update || frontMatter.create}</lastmod>
       </url>
     `
   })
