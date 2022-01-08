@@ -1,7 +1,17 @@
 {
-  "name": "next-portfolio",
-  "version": "2.5.0",
+  "name": "blog.oriverk.dev",
   "private": true,
+  "description": "tech blog for portfolio",
+  "keywords": ["React", "Next.js", "TypeScript", "goober"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oriverk/oriverk.dev.git"
+  },
+  "bugs": {
+    "url": "https://github.com/oriverk/oriverk.dev/issues"
+  },
+  "homepage": "https://github.com/oriverk.dev/site#readme",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -16,8 +26,7 @@
     "fix:eslint": "eslint --fix {src,pages}/**/*",
     "fix:markdownlint": "markdownlint -f docs/*",
     "fix:textlint": "textlint -f docs/*",
-    "postsmap": "node script/genPostsMapLocales.js && node script/genFeedLocales.js",
-    "algolia": "node script/push2Algolia.js",
+    "algolia": "node script/genPostsMap.js && node script/push2Algolia.js",
     "prepare": "husky install"
   },
   "dependencies": {
