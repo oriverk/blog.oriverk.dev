@@ -1,7 +1,6 @@
 import { styled } from 'goober'
 
 const StyledComponent = styled('main')`
-  padding: 1rem;
   flex: 1;
   overflow: hidden;
   display: flex;

@@ -38,7 +38,7 @@ const Component: React.VFC<Props> = (props) => {
         <SearchIcon label="search posts" size={8} color="var(--color-gray)" />
       </span>
       <input
-        type="search"
+        type="text"
         autoComplete="off"
         autoCorrect="off"
         spellCheck={false}

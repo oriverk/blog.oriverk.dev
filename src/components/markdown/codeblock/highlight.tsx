@@ -4,7 +4,7 @@ import BaseHighlight, { defaultProps, Language, PrismTheme } from 'prism-react-r
 import { LineNumber } from './line-number'
 
 const StyledDiv = styled('div')`
-  overflow-x: auto;
+  overflow-x: scroll;
   margin: 0.5rem 0;
   font-size: 1rem;
 `

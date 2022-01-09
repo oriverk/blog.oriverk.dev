@@ -22,7 +22,6 @@ const Component: React.VFC<Props> = (props) => {
 }
 
 const StyledComponent = styled(Component)`
-  max-width: var(--max-width);
   ul,
   ol {
     margin: 1rem 0 1rem 1rem;
