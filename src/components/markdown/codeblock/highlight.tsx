@@ -1,3 +1,4 @@
+import { useState, useCallback } from 'react'
 import { styled } from 'goober'
 import BaseHighlight, { defaultProps, Language, PrismTheme } from 'prism-react-renderer'
 import { LineNumber } from './line-number'
@@ -5,6 +6,7 @@ import { LineNumber } from './line-number'
 const StyledDiv = styled('div')`
   overflow-x: auto;
   margin: 0.5rem 0;
+  font-size: 1rem;
 `
 
 interface HighlightProps {
@@ -26,10 +28,11 @@ const Highlight: React.VFC<HighlightProps> = (props) => {
             <code translate="no">
               {tokens.map((line, i) => {
                 const lineProps = getLineProps({ line, key: i })
+                const code = codeString.split('\n')[i]
+                
                 return (
                   <div {...lineProps} key={i}>
-                    {/* <LineNumber>{i + 1}</LineNumber> */}
-                    <LineNumber number={i + 1} />
+                    {showLines ? <LineNumber number={i + 1} code={code} /> : null}
                     {line.map((token, key) => (
                       <span {...getTokenProps({ token, key })} key={key} />
                     ))}

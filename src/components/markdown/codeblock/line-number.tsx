@@ -2,6 +2,7 @@ import { styled } from 'goober'
 
 interface PassedProps {
   number: number
+  code: string
 }
 
 interface Props extends PassedProps {
@@ -9,15 +10,23 @@ interface Props extends PassedProps {
 }
 
 const Component: React.VFC<Props> = (props) => {
-  const { className, number } = props
-  return <span className={className} data-line-number={number} />
+  const { className, number, code } = props
+
+  return (
+    <div className={className}>
+      <span data-line-number={number} />
+    </div>
+  )
 }
 
 const StyledComponent = styled(Component)`
+  display: inline-block;
   margin-right: 1rem;
+  text-align: right;
+  width: 2rem;
   color: dimgray;
-
-  &::before {
+  font-size: 1rem;
+  & > span::before {
     content: attr(data-line-number);
   }
 `
