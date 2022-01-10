@@ -2,8 +2,7 @@ import { styled } from 'goober'
 import { FrontMatterType } from 'types/markdown'
 import { DateFormatter, DateFormatterProps } from 'components/date-formatter'
 
-
-interface PassedProps extends DateFormatterProps{
+interface PassedProps extends DateFormatterProps {
   title: string
   tags: FrontMatterType['tags']
   editUrl: FrontMatterType['editUrl']
@@ -15,7 +14,7 @@ interface Props extends PassedProps {
 
 const Component: React.VFC<Props> = (props) => {
   const { className, title, dateString, tags, editUrl } = props
-  
+
   return (
     <div className={className}>
       <h1>{title}</h1>
@@ -33,8 +32,8 @@ const Component: React.VFC<Props> = (props) => {
       </p>
       <p>
         <a href={editUrl} target="_blank" rel="noopener noreferrer">
-        GitHub で編集する
-      </a>
+          GitHub で編集する
+        </a>
       </p>
     </div>
   )
@@ -45,13 +44,11 @@ const StyledComponent = styled(Component)`
     text-align: center;
   }
   & > p {
-    margin: .5rem;
+    margin: 0.5rem;
     text-align: center;
   }
 `
 
-const ContainerComponent: React.VFC<PassedProps> = (props) => (
-  <StyledComponent {...props} />
-)
+const ContainerComponent: React.VFC<PassedProps> = (props) => <StyledComponent {...props} />
 
 export const PostHero = ContainerComponent

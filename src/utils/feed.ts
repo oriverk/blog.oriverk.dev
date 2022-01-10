@@ -35,7 +35,7 @@ export async function generateFeedXml(): Promise<string> {
     `
   })
 
-  xml+= `</rss>`
+  xml += `</rss>`
 
   return xml
 }

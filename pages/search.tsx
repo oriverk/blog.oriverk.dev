@@ -23,10 +23,7 @@ const Component: React.VFC = () => {
   const urlToSearchState = decodeURI(qs || '')
 
   return (
-    <Layout
-      title='search posts'
-      path='/search/'
-    >
+    <Layout title="search posts" path="/search/">
       <PostsWrapper>
         <H1>Search</H1>
         <InstantSearch indexName={algoliaIndex} searchClient={searchClient}>

@@ -37,7 +37,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           siteName: packageJson.name,
         }}
         twitter={{
-          card: 'summary_large_image'
+          card: 'summary_large_image',
         }}
       />
       <GlobalStyles />

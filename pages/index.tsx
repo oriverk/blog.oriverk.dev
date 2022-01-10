@@ -24,10 +24,7 @@ const Page: React.VFC<PostsProps> = (props) => {
   const { posts } = props
 
   return (
-    <Layout
-      title='home'
-      path='/'
-    >
+    <Layout title="home" path="/">
       <PostsWrapper>
         <H1>Posts Index</H1>
         {posts.map(({ fileName, frontMatter }) => {

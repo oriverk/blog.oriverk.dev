@@ -30,8 +30,8 @@ const Component: React.VFC<Props> = (props) => {
           <>
             &nbsp;
             <Link href={`/tag/#${tag}`} key={tag}>
-            <a>{`#${tag}`}</a>
-          </Link>
+              <a>{`#${tag}`}</a>
+            </Link>
           </>
         ))}
       </p>

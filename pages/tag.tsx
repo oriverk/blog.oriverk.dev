@@ -26,10 +26,7 @@ const Page: React.VFC<PostsProps> = (props) => {
   const { posts, tags } = props
 
   return (
-    <Layout
-      title='tag posts'
-      path='/tag/'
-    >
+    <Layout title="tag posts" path="/tag/">
       <PostsWrapper>
         <H1>Tag Posts Index</H1>
         {tags.map((tag) => {

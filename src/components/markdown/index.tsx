@@ -26,7 +26,7 @@ const StyledComponent = styled(Component)`
   ol {
     margin: 1rem 0 1rem 1rem;
     li {
-      padding: .5rem 0 0;
+      padding: 0.5rem 0 0;
       ul,
       ol {
         margin: 0 0 0 1rem;

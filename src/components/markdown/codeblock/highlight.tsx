@@ -29,7 +29,7 @@ const Highlight: React.VFC<HighlightProps> = (props) => {
               {tokens.map((line, i) => {
                 const lineProps = getLineProps({ line, key: i })
                 const code = codeString.split('\n')[i]
-                
+
                 return (
                   <div {...lineProps} key={i}>
                     {showLines ? <LineNumber number={i + 1} code={code} /> : null}

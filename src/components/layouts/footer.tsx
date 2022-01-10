@@ -18,8 +18,8 @@ const Component: React.VFC<Props> = (props) => {
           This site is built with&nbsp;
           <a href={nextjs} target="_blank" rel="noopener noreferrer">
             Next.js
-          </a>&nbsp;
-          and hosting on&nbsp;
+          </a>
+          &nbsp; and hosting on&nbsp;
           <a href={vercel} target="_blank" rel="noopener noreferrer">
             Vercel
           </a>

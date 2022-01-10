@@ -22,17 +22,9 @@ const Page: React.VFC<PostType> = (props) => {
   const dateString = update || create
 
   return (
-    <Layout
-      title={title}
-      path={`/entry/${fileName}/`}
-    >
+    <Layout title={title} path={`/entry/${fileName}/`}>
       <ContentWrapper>
-        <PostHero
-          title={title}
-          dateString={dateString}
-          tags={tags}
-          editUrl={editUrl}
-        />
+        <PostHero title={title} dateString={dateString} tags={tags} editUrl={editUrl} />
         <FlexWrapper>
           <MarkdownContent mdxSource={mdxSource} />
           {/* <TableOfContent headings={headings} /> */}
