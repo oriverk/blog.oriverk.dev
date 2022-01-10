@@ -11,15 +11,14 @@ export interface CustomSeoProps {
 
 const blogPath = process.env.NEXT_PUBLIC_BLOG_PATH || ''
 
-
 export const CustomSeo: React.FC<CustomSeoProps> = (props) => {
   const domain = blogPath.replace('https://', '')
 
   const {
     path,
     title = domain,
-    description = "description",
-    ogImagePath = "/sugarloaf-adelaide.png",
+    description = 'description',
+    ogImagePath = '/sugarloaf-adelaide.png',
     noindex,
     noTitleTemplate,
   } = props

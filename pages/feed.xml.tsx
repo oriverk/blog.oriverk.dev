@@ -5,7 +5,7 @@ import { generateFeedXml } from 'utils/feed'
 const Page: React.VFC = () => null
 export default Page
 
-export const getServerSideProps= async (ctx: GetServerSidePropsContext) => {
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const { res } = ctx
 
   const xml = await generateFeedXml()

@@ -4,7 +4,7 @@ import BaseHighlight, { defaultProps, Language, PrismTheme } from 'prism-react-r
 import { LineNumber } from './line-number'
 
 const StyledDiv = styled('div')`
-  overflow-x: scroll;
+  overflow-x: auto;
   margin: 0.5rem 0;
   font-size: 1rem;
 `
@@ -29,7 +29,7 @@ const Highlight: React.VFC<HighlightProps> = (props) => {
               {tokens.map((line, i) => {
                 const lineProps = getLineProps({ line, key: i })
                 const code = codeString.split('\n')[i]
-                
+
                 return (
                   <div {...lineProps} key={i}>
                     {showLines ? <LineNumber number={i + 1} code={code} /> : null}

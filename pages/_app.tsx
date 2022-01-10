@@ -21,8 +21,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="format-detection" content="email=no,telephone=no,address=no" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/icon16.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon/icon32x.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon/icon180x.png" />
@@ -37,7 +37,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           siteName: packageJson.name,
         }}
         twitter={{
-          card: 'summary_large_image'
+          card: 'summary_large_image',
         }}
       />
       <GlobalStyles />

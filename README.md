@@ -1,18 +1,23 @@
-# README.md
-
-## Techs
-
-- React
-  - Next.js
-  - TypeScript
-- CSS in JS: goober
-- hosting: Vercel
+# blog.oriverk.dev: README
 
 ## Author
 
 - [Github](https://github.com/oriverk)
 - [Twitter](https://twitter.com/not_you_die)
 - [Qiita](https://qiita.com/OriverK)
+
+## Techs
+
+- [React](https://reactjs.org/)
+  - A JavaScript library for building user interfaces
+- [Next.js](https://nextjs.org/)
+  - The React Framework for Production
+- [TypeScript](https://www.typescriptlang.org/)
+  - TypeScript is JavaScript with syntax for types.
+- [goober](https://goober.rocks/)
+  - A less than 1KB css-in-js solution
+- [Vercel](https://vercel.com/)
+  - for hosting
 
 ## Env variables
 

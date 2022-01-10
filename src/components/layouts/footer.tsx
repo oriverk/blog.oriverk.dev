@@ -15,11 +15,11 @@ const Component: React.VFC<Props> = (props) => {
         <small>@{year} Kawano Yudai.</small>
         <br />
         <p>
-          This site is built with{' '}
+          This site is built with&nbsp;
           <a href={nextjs} target="_blank" rel="noopener noreferrer">
             Next.js
-          </a>{' '}
-          and hosting on{' '}
+          </a>
+          &nbsp; and hosting on&nbsp;
           <a href={vercel} target="_blank" rel="noopener noreferrer">
             Vercel
           </a>
@@ -32,17 +32,23 @@ const Component: React.VFC<Props> = (props) => {
 
 const StyledComponent = styled(Component)`
   padding: 1rem;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   & > div {
     margin: 0 auto;
-    max-width: var(--max-width);
+    text-align: center;
     font-size: 1rem;
     color: var(--color-gray);
+
     small {
       font-size: 1rem;
     }
+
     p {
-      margin-top: 0.5rem;
+      margin: 0.5rem 0 0;
     }
   }
 `

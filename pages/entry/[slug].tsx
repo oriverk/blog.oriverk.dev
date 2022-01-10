@@ -5,7 +5,7 @@ import type { PostType } from 'types/markdown'
 import { getPostsData } from 'utils/markdown/getContentData'
 import { Layout } from 'components/layouts'
 import { MarkdownContent } from 'components/markdown'
-import { DateFormatter } from 'components/date-formatter'
+import { PostHero } from 'components/post-hero'
 
 const ContentWrapper = styled('div')`
   max-width: var(--max-width);
@@ -19,30 +19,12 @@ const FlexWrapper = styled('div')`
 const Page: React.VFC<PostType> = (props) => {
   const { fileName, mdxSource, frontMatter } = props
   const { title, create, update, tags, headings, editUrl } = frontMatter
+  const dateString = update || create
 
   return (
-    <Layout
-      title={title}
-      path={`/entry/${fileName}/`}
-    >
+    <Layout title={title} path={`/entry/${fileName}/`}>
       <ContentWrapper>
-        <h1>{title}</h1>
-        <p>
-          <DateFormatter dateString={create || update} />
-          {' / '}
-          {tags.map((tag) => (
-            <>
-              <a href={`/tag/#${tag}`} key={tag}>
-                {'#' + tag}
-              </a>{' '}
-            </>
-          ))}
-        </p>
-        <p>
-          <a href={editUrl} target="_blank" rel="noopener noreferrer">
-            GitHub で編集する
-          </a>
-        </p>
+        <PostHero title={title} dateString={dateString} tags={tags} editUrl={editUrl} />
         <FlexWrapper>
           <MarkdownContent mdxSource={mdxSource} />
           {/* <TableOfContent headings={headings} /> */}

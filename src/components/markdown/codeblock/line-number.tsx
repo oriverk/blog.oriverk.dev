@@ -23,7 +23,7 @@ const StyledComponent = styled(Component)`
   display: inline-block;
   margin-right: 1rem;
   text-align: right;
-  width: 2rem;
+  width: 1.5rem;
   color: dimgray;
   font-size: 1rem;
   & > span::before {

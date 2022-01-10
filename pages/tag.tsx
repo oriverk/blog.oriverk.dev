@@ -13,6 +13,10 @@ const PostsWrapper = styled('div')`
   width: 100%;
 `
 
+const H1 = styled('h1')`
+  text-align: center;
+`
+
 interface PostsProps {
   posts: Omit<PostType, 'mdxSource'>[]
   tags: FrontMatterType['tags']
@@ -22,12 +26,9 @@ const Page: React.VFC<PostsProps> = (props) => {
   const { posts, tags } = props
 
   return (
-    <Layout
-      title='tag posts'
-      path='/tag/'
-    >
+    <Layout title="tag posts" path="/tag/">
       <PostsWrapper>
-        <h1>Tag Posts Index</h1>
+        <H1>Tag Posts Index</H1>
         {tags.map((tag) => {
           const tagPosts = posts.filter((post) => post.frontMatter.tags.includes(tag))
           return (

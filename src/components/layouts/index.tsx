@@ -17,10 +17,10 @@ export const Layout: React.FC<CustomSeoProps> = (props) => {
     <>
       <CustomSeo {...restSeoProps} />
       <StyledComponent>
-      <Header />
-      <Main>{children}</Main>
-      <Footer />
-    </StyledComponent>
+        <Header />
+        <Main>{children}</Main>
+        <Footer />
+      </StyledComponent>
     </>
   )
 }

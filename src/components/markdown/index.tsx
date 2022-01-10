@@ -26,12 +26,11 @@ const StyledComponent = styled(Component)`
   ol {
     margin: 1rem 0 1rem 1rem;
     li {
-      padding: 0.5rem 0 0 0.5rem;
+      padding: 0.5rem 0 0;
       ul,
       ol {
-        margin: 0;
+        margin: 0 0 0 1rem;
         padding: 0;
-        margin-left: 1rem;
       }
     }
   }
