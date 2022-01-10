@@ -1,10 +1,10 @@
 import { parseISO, format } from 'date-fns'
 
-interface Props {
+export interface DateFormatterProps {
   dateString: string
 }
 
-export const DateFormatter: React.VFC<Props> = (props) => {
+export const DateFormatter: React.VFC<DateFormatterProps> = (props) => {
   const { dateString } = props
   const date = parseISO(dateString)
 
