@@ -1,0 +1,103 @@
+---
+title: Markdown記法一覧
+create: '2021-12-14'
+tags: [markdown, test]
+description: テスト記事
+published: true
+---
+
+Markdown 記法の確認用。md ファイルを汎用的に使いまわせる様に、可能な限り GitHub Flavored Markdown に準拠したい。
+
+```js:index.js
+function hello (){
+  console.log('hello')
+}
+```
+
+## 見出し heading
+
+```md
+# 見出し h1
+
+## 見出し h2
+
+### 見出し h3
+
+#### 見出し h4
+```
+
+## リスト
+
+```md
+- Hello!
+- Hola!
+  - Bonjour!
+  * Hi!
+```
+
+- Hello!
+- Hola!
+  - Bonjour!
+  - Hi!
+
+### 番号付きリスト
+
+```md
+1. First
+2. Second
+```
+
+1. First
+2. Second
+
+## テキストリンク
+
+```md
+[アンカーテキスト](リンクのURL)
+```
+
+[oriverk.dev](https://oriverk.dev)
+
+### bare link
+
+<https://oriverk.dev>
+
+## 画像
+
+```md
+![altテキスト](https://画像のURL)
+```
+
+![twitter @not_you_die logo](https://i.imgur.com/i2pY2j6.png)
+
+### 画像にリンクを貼る
+
+```md
+[![altテキスト](画像のURL)](リンクのURL)
+```
+
+## テーブル
+
+| Head | Head | Head |
+| :--- | :--: | ---: |
+| Text | Text | Text |
+| left | center | right |
+
+## 引用
+
+> quote
+> > quote
+
+## 区切り線
+
+---
+
+## インラインスタイル
+
+_italic_
+
+**太字**
+
+~~打ち消し線~~
+
+インラインで`code`を挿入する

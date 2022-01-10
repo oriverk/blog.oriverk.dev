@@ -1,0 +1,36 @@
+{
+  "plugins": {
+    "@textlint/markdown": {
+      "extensions": [".mdx"]
+    }
+  },
+  "filters": {},
+  "rules": {
+    "preset-ja-spacing": {
+      "ja-space-between-half-and-full-width": {
+        "space": "always",
+        "exceptPunctuation": true
+      },
+      "ja-nakaguro-or-halfwidth-space-between-katakana": true,
+      "ja-no-space-around-parentheses": true,
+      "ja-no-space-between-full-width": true,
+      
+      "ja-space-after-exclamation": true,
+      "ja-space-after-question": true,
+      "ja-space-around-code": false
+    },
+    "preset-ja-technical-writing": {
+      "ja-no-successive-word": false,
+      "max-kanji-continuous-len": {
+        "max": 10
+      },
+      "ja-no-mixed-period": false,
+      "no-doubled-joshi": false,
+      "max-comma": false,
+      "ja-unnatural-alphabet": false,
+      "ja-no-weak-phrase": false
+    },
+    "spellcheck-tech-word": false,
+    "ja-technical-writing/no-exclamation-question-mark": false
+  }
+}
