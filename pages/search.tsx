@@ -11,6 +11,10 @@ const PostsWrapper = styled('div')`
   width: 100%;
 `
 
+const H1 = styled('h1')`
+  text-align: center;
+`
+
 const algoliaIndex = process.env.NEXT_PUBLIC_ALGOLIA_INDEX || ''
 
 const Component: React.VFC = () => {
@@ -24,7 +28,7 @@ const Component: React.VFC = () => {
       path='/search/'
     >
       <PostsWrapper>
-        <h1>Search</h1>
+        <H1>Search</H1>
         <InstantSearch indexName={algoliaIndex} searchClient={searchClient}>
           <Configure hitsPerPage={10} />
           <CustomSearchBox defaultRefinement={urlToSearchState} />

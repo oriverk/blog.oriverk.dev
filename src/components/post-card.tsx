@@ -25,11 +25,14 @@ const Component: React.VFC<Props> = (props) => {
       </h3>
       <p>
         <DateFormatter dateString={date} />
-        {' / '}
+        &nbsp;/
         {tags.map((tag) => (
-          <Link href={`/tag/#${tag}`} key={tag}>
+          <>
+            &nbsp;
+            <Link href={`/tag/#${tag}`} key={tag}>
             <a>{`#${tag}`}</a>
           </Link>
+          </>
         ))}
       </p>
     </section>
@@ -65,10 +68,6 @@ const StyledComponent = styled(Component)`
   }
   p {
     margin: 0.5rem;
-    margin-top: 0;
-    a {
-      margin-left: 0.5rem;
-    }
   }
 `
 

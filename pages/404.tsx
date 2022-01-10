@@ -15,7 +15,7 @@ const Component: React.VFC<Props> = (props) => {
       path='/404/'
     >
       <section className={className}>
-        <h1>pageNotFound</h1>
+        <h1>Page Not Found</h1>
         <Link href="/">
           <a>Go back to Top</a>
         </Link>
@@ -25,7 +25,10 @@ const Component: React.VFC<Props> = (props) => {
 }
 
 const StyledCompoent = styled(Component)`
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `
 
 const ContainerComponent: React.VFC = () => <StyledCompoent />

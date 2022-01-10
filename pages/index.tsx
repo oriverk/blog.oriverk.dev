@@ -12,6 +12,10 @@ const PostsWrapper = styled('div')`
   width: 100%;
 `
 
+const H1 = styled('h1')`
+  text-align: center;
+`
+
 interface PostsProps {
   posts: Omit<PostType, 'mdxSource'>[]
 }
@@ -25,7 +29,7 @@ const Page: React.VFC<PostsProps> = (props) => {
       path='/'
     >
       <PostsWrapper>
-        <h1>Posts Index</h1>
+        <H1>Posts Index</H1>
         {posts.map(({ fileName, frontMatter }) => {
           const { title, create, tags } = frontMatter
           return <PostCard slug={fileName} title={title} date={create} tags={tags} key={fileName} />

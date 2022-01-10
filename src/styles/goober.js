@@ -27,10 +27,6 @@ export const GlobalStyles = createGlobalStyles`
     color: var(--color-white);
   }
 
-  body {
-    margin: 0;
-  }
-
   * {
     box-sizing: border-box;
   }
