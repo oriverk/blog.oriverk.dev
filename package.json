@@ -11,12 +11,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oriverk/oriverk.dev.git"
+    "url": "git+https://github.com/oriverk/blog.oriverk.dev.git"
   },
   "bugs": {
-    "url": "https://github.com/oriverk/oriverk.dev/issues"
+    "url": "https://github.com/oriverk/blog.oriverk.dev/issues"
   },
-  "homepage": "https://github.com/oriverk.dev/site#readme",
+  "homepage": "https://github.com/oriverk/blog.oriverk.dev#readme",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

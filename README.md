@@ -25,8 +25,8 @@
 
 | Name | Description | Reference |
 | --- | --- | --- |
-| NEXT_PUBLIC_SITE_PATH | for portfolio site | [github: oriverk/site](https://github.com/oriverk/site) |
-| NEXT_PUBLIC_BLOG_PATH | for portfolio blog | [github: oriverk/oriverk.dev](https://github.com/oriverk/oriverk.dev) |
+| NEXT_PUBLIC_SITE_PATH | for portfolio site | [github: oriverk/orivek.dev](https://github.com/oriverk/oriverk.dev) |
+| NEXT_PUBLIC_BLOG_PATH | for portfolio blog | [github: oriverk/blog.oriverk.dev](https://github.com/oriverk/blog.oriverk.dev) |
 | NEXT_PUBLIC_GOOGLE_ANALYTICS_ID | Google Analytics ID |  |
 NEXT_PUBLIC_ALGOLIA_INDEX | Algolia index name |  |
 | NEXT_PUBLIC_ALGOLIA_APP_ID | Algolia API key | [algolia/doc/tools](https://www.algolia.com/doc/tools/crawler/apis/configuration/app-id/) |
