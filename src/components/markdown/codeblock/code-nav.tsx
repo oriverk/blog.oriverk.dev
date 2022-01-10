@@ -23,18 +23,12 @@ const Component: React.VFC<Props> = (props) => {
 
 const StyledComponent = styled(Component)`
   display: flex;
-  justify-content: space-between;
 
   & > .filename::before {
     content: attr(data-filename);
     padding: 0.2rem 0.5rem;
     background: dimgray;
     font-size: small;
-  }
-
-  & > button {
-    background: var(--color-miku);
-    font-weight: bold;
   }
 `
 

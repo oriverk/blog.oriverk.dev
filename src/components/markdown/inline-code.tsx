@@ -5,7 +5,7 @@ const StyledComponent = styled('code')`
   margin: 0 0.3rem;
   border-radius: 0.125rem;
   background: rgba(226, 232, 240, 0.16);
-  font-size: 0.9rem;
+  font-size: .9rem;
   color: var(--color-white);
 
   &::before,
