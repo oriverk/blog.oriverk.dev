@@ -12,7 +12,7 @@ export default class MyDocument extends Document<{ css: string }> {
 
   render() {
     return (
-      <Html>
+      <Html lang="ja-JP">
         <Head>
           <style
             id={'_goober'}
