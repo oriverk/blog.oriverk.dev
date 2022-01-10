@@ -18,7 +18,7 @@ export const CustomSeo: React.FC<CustomSeoProps> = (props) => {
     path,
     title = domain,
     description = 'description',
-    ogImagePath = '/sugarloaf-adelaide.png',
+    ogImagePath = '/assets/sugarloaf-adelaide.png',
     noindex,
     noTitleTemplate,
   } = props
