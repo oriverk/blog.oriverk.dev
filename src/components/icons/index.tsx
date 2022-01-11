@@ -7,5 +7,17 @@ import { CottageIcon } from './cottage'
 import { TagIcon } from './tag'
 import { SearchIcon } from './search'
 import { AlgoliaIcon } from './algolia'
+import { OpenInNewIcon } from './open-in-new'
 
-export { GithubIcon, TwitterIcon, PenIcon, ContactIcon, RSSIcon, CottageIcon, TagIcon, SearchIcon, AlgoliaIcon }
+export {
+  GithubIcon,
+  TwitterIcon,
+  PenIcon,
+  ContactIcon,
+  RSSIcon,
+  CottageIcon,
+  TagIcon,
+  SearchIcon,
+  AlgoliaIcon,
+  OpenInNewIcon
+}
