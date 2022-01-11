@@ -52,18 +52,16 @@ published: true
 Posts.index と Post.show ページは jekyll 通りなので割愛。
 コードのハイライトを有効化する為、Rouge を導入した。
 
-```ruby
+```rb
 gem 'rouge'
 ```
 
-```yml
-# _config.yml
+```yml:_config.yml
 # this is defualt setting to use hightlight and endhighlight
 markdown: kramdown
 highlighter: rouge
 
 # modify setting to use code block like Qiita
-# =>
 markdown: kramdown
 kramdown:
    input: GFM

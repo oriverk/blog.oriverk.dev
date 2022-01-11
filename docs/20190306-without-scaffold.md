@@ -71,7 +71,6 @@ rails generate controller Users
 #### routingの設定：ブラウザとコントローラをつなぐ
 
 ```rb:config/routes.rb
-# config/routes.rb
 Rails.application.routes.draw do
   get 'users', action: :index, controller: 'users'
 end
@@ -89,8 +88,7 @@ rails routes
 
 #### controller：modelとviewをつなぐ
 
-```rb
-# app/controllers/users_controller.rb
+```rb:app/controllers/users_controller.rb
 class UsersController < ApplicationController
   def index
     render plain: 'Hello'
@@ -232,8 +230,7 @@ User.find_by(id:2) # get a user with id:2
 
 ### controller
 
-```rb
-# app/controllers/users_controller.rb
+```rb:app/controllers/users_controller.rb
 class UsersController < ApplicationController
   def index
     @users = User.all
@@ -243,8 +240,7 @@ end
 
 ### view
 
-```rb
-# app/view/index.html.erb
+```rb:app/view/index.html.erb
  <body>
     <h1>Users</h1>
     <table>
@@ -278,8 +274,7 @@ end
   </body>
 ```
 
-```rb
-# app/views/layouts/application.html.erb
+```rb:app/views/layouts/application.html.erb
 <!DOCTYPE html>
 <html>
   <head>
@@ -293,8 +288,7 @@ end
 
 ルーティングを変更
 
-```rb
-# app/config/routes.erb
+```rb:app/config/routes.erb
 resources :users
 ```
 
@@ -318,8 +312,7 @@ resources :users
 次に上にある、「users GET    /users(.:format)  users#index」を実装
 UserController の中に show アクションを作成
 
-```rb
-# app/controllers/users_controller.rb
+```rb:app/controllers/users_controller.rb
 class UsersController < ApplicationController
     def index
         @users = User.all
@@ -330,8 +323,7 @@ class UsersController < ApplicationController
 end
 ```
 
-```rb
-# app/views/users/index.html.erb
+```rb:app/views/users/index.html.erb
 # user.nameのラインを下の様に変更
 <td><%= link_to user.name, user_path(user.id) %></td>
 # <% link_to ("A"."/B") %>
@@ -347,8 +339,7 @@ end
 - edit_user_path は users#edit へのリンク
 - user_path は users#show へのリンク
 
-```rb
-# app/views/users/show.html.erb
+```rb:app/views/users/show.html.erb
 <p id="notice"><%= notice %></p>
 <p>
   <strong>Name:</strong>
@@ -366,8 +357,7 @@ end
 
 ### show, edit アクションの定義
 
-```rb
-# app/controllers/users_controller.rb
+```rb:app/controllers/users_controller.rb
 def show
   @user = User.find params[:id]
 end
@@ -377,8 +367,7 @@ def edit
 end
 ```
 
-```rb
-# app/views/users/edit.html.erb
+```html:app/views/users/edit.html.erb
 <%= form_with(model: @user, local: true) do |form| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -410,10 +399,9 @@ end
 
 性別の値 0 or 1 を男性 or 女性で表示させる。
 
-```rb
-# app/models/user.rb
+```rb:app/models/user.rb
 class User < ApplicationRecord
-    enum sex: { male: 0 ,female: 1}
+  enum sex: { male: 0 ,female: 1}
 end
 ```
 
@@ -421,8 +409,7 @@ end
 
 ラジオボタンに変更
 
-```rb
-# app/views/users/edit.html.erb
+```html:app/views/users/edit.html.erb
 <div class"field">
     <%= form.label :sex %>
     <%= form.radio_button :sex, 'male' %>男性
@@ -449,8 +436,7 @@ User.find_by(name: "foo") # confirm
 
 ### users_controller
 
-```rb
-# app/controllers/uupdate.rb
+```rb:app/controllers/uupdate.rb
 def update
     @user = User.find params[:id]
     if @user.update(params.require(:user).permit(:name, :email, :sex, :age, :address, :attendance, :opinion))
@@ -479,15 +465,13 @@ end
 
 ### indexページからのdestroyへのリンク作成
 
-```rb
-# app/views/users/index.html.erb
+```html:app/views/users/index.html.erb
 <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 ```
 
 ### newページ編集
 
-```rb
-# app/views/users/new.html.erb
+```html:app/views/users/new.html.erb
 <h1>New User</h1>
 <%= form_with(model: @user, local: true) do |form| %>
   <% if @user.errors.any? %>
@@ -516,15 +500,13 @@ end
 
 ### indexからnewへのリンク作成
 
-```rb
-# app/views/users/index.html.erb
+```rb:app/views/users/index.html.erb
 <%= link_to 'New User', new_user_path %>
 ```
 
 ### createアクション定義
 
-```rb
-# app/controllers/users_controller.rb
+```rb:app/controllers/users_controller.rb
 def create
     @user = User.new(params.require(:user).permit(:name, :email, :sex, :age, :address, :attendance, :opinion))
     if @user.save
@@ -548,15 +530,13 @@ end
 
 2 アクションに下の共通箇所がある
 
-```rb
-# app/controllers/users_controller.rb
+```rb:app/controllers/users_controller.rb
 @user = User.new(params.require(:user).permit(:name, :email, :sex, :age, :address, :attendance, :opinion))
 ```
 
 リファクタリング後
 
-```rb
-# app/controllers/users_controller.rb
+```rb:app/controllers/users_controller.rb
 def create
   @user = User.new(user_params)
   if @user.save
@@ -593,8 +573,7 @@ end
 
 ### show. edit. updata, destroyの共通化
 
-```rb
-# app/controllers/users_controller.rb
+```rb:app/controllers/users_controller.rb
 # 共通している部分
 @user = User.find params[:id]
 
@@ -612,8 +591,7 @@ class UsersController < ApplicationController
 
 ### アクションのリファクタリング後（全体）
 
-```rb
-# app/controllers/users_controller.rb
+```rb:app/controllers/users_controller.rb
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 

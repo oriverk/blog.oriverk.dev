@@ -12,13 +12,12 @@ from [Qita: 宮崎県COVID-19対策サイトを見つけ、出身者として何
 
 ## Introduction
 
-Referrence
-
-- [宮崎県 新型コロナウイルス 対策サイト](https://covid19-miyazaki.netlify.com/)
-  - [Github covid19-miyazaki/covid19](https://github.com/covid19-miyazaki/covid19)
-- [東京都 新型コロナウイルス 対策サイト](https://stopcovid19.metro.tokyo.lg.jp/)
-  - [tokyo-metropolitan-gov/covid19](https://github.com/tokyo-metropolitan-gov/covid19)
-- [Qiita: 東京都 新型コロナウイルス対策サイトへの貢献方法を解説](https://qiita.com/FPC_COMMUNITY/items/b9cc072813dc2231b2b2)
+- 参照
+  - [宮崎県 新型コロナウイルス 対策サイト](https://covid19-miyazaki.netlify.com/)
+    - [Github covid19-miyazaki/covid19](https://github.com/covid19-miyazaki/covid19)
+  - [東京都 新型コロナウイルス 対策サイト](https://stopcovid19.metro.tokyo.lg.jp/)
+    - [tokyo-metropolitan-gov/covid19](https://github.com/tokyo-metropolitan-gov/covid19)
+  - [Qiita: 東京都 新型コロナウイルス対策サイトへの貢献方法を解説](https://qiita.com/FPC_COMMUNITY/items/b9cc072813dc2231b2b2)
 
 ### Environment
 
@@ -48,7 +47,7 @@ yarn install
 yarn dev
 ```
 
-[![Image from Gyazo](https://i.gyazo.com/e40d6a2e1fd9dd16649a336872b0a5c3.png)](https://gyazo.com/e40d6a2e1fd9dd16649a336872b0a5c3)
+![Image from Gyazo](https://i.gyazo.com/e40d6a2e1fd9dd16649a336872b0a5c3.png)
 
 ## What I did
 
@@ -59,7 +58,7 @@ Vue 何もわからないので、まず自然言語の表示の修正をする�
 
 1. `CODE_OF_CONDUCT.md`の修正
 
-[![Image from Gyazo](https://i.gyazo.com/e7577913f218da5a781a6f4699aedc14.png)](https://gyazo.com/e7577913f218da5a781a6f4699aedc14)
+![Image from Gyazo](https://i.gyazo.com/e7577913f218da5a781a6f4699aedc14.png)
 
 東京都 ver から宮崎県 ver にした際の地域表記変更の漏れであり、1 文字の修正だった。
 
@@ -83,11 +82,11 @@ PR の機会は初めてだったので、下を参照しながら行った。
 
 やってることは同じなので割愛。こんな感じで書いた。
 
-[![Image from Gyazo](https://i.gyazo.com/1480a19fa3af7648fbcdf41aa9a94676.png)](https://gyazo.com/1480a19fa3af7648fbcdf41aa9a94676)
+![Image from Gyazo](https://i.gyazo.com/1480a19fa3af7648fbcdf41aa9a94676.png)
 
 無事に pull request が merge され、OSS 活動(?)の実績解除となりました。
 
-[![Image from Gyazo](https://i.gyazo.com/bcc2f8881f27c70d04aebc1d81f249e7.png)](https://gyazo.com/bcc2f8881f27c70d04aebc1d81f249e7)
+![Image from Gyazo](https://i.gyazo.com/bcc2f8881f27c70d04aebc1d81f249e7.png)
 
 ## What I wanna do
 

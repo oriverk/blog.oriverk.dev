@@ -64,7 +64,7 @@ File.open("data") do |io|
 end
 ```
 
-[![Image from Gyazo](https://i.gyazo.com/84c7b1d51df4cec44a4298acf7b711fe.png)](https://gyazo.com/84c7b1d51df4cec44a4298acf7b711fe)
+![Image from Gyazo](https://i.gyazo.com/84c7b1d51df4cec44a4298acf7b711fe.png)
 
 ##### Scaffoldなしの掲示板
 
@@ -90,7 +90,7 @@ Bootstrap や DB を組み合わせ、生徒データ情報一覧になりまし
 - [18日目：トランザクションって](https://qiita.com/OriverK/items/2359c9159b55c74f15d1)
 - [21日目：H30秋基本情報技術者試験の問3データベース](https://qiita.com/OriverK/items/6efe454be2d6be84ceb5)
 
-[![Image from Gyazo](https://i.gyazo.com/00c8ae6b51340e331c0d517f0051279a.png)](https://gyazo.com/00c8ae6b51340e331c0d517f0051279a)
+![Image from Gyazo](https://i.gyazo.com/00c8ae6b51340e331c0d517f0051279a.png)
 
 JS 等、追加で勉強しなければと感じています。
 

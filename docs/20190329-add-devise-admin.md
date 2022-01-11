@@ -35,8 +35,7 @@ rails g migration AddAdminToStudent admin:boolean
 
 boolean 型と定義する際は、デフォルト値を設定しないといけない。admin のデフォルト値に引数 false を渡し、デフォルトでは admin 権限がない、と指定する。
 
-```rb
-# /db/migrate/20190328011407_add_admin_to_student.rb
+```rb:/db/migrate/20190328011407_add_admin_to_student.rb
 class AddAdminToStudent < ActiveRecord::Migration[5.2]
   def change
     add_column :students, :admin, :boolean,default: false
@@ -64,8 +63,7 @@ admin 属性が追加され、また admin?メソッドを使用できるよう�
 
 admin 以外は、自分のデータしか見られないようにしたい。
 
-```rb
-# users_controller.rb
+```rb:users_controller.rb
  def index
     if current_student.admin?
       @students = Student.page params[:page]
@@ -75,8 +73,7 @@ admin 以外は、自分のデータしか見られないようにしたい。
   end
 ```
 
-```rb
-# app/views/student
+```html:app/views/student.html.erb
  <tbody>
     <% if current_student.admin? %>
       <% @students.each do |student| %>

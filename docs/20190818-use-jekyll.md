@@ -65,8 +65,7 @@ jekyll new oriverk.github.io
 
 まず、Gemfile を編集し、 `gem "github-pages"` をアンコメント。また、今回使用するテーマ hydeout の gem を書き加える。
 
-```rb
-# Gemfile
+```rb:Gemfile
 # uncomment
 gem "github-pages", group: :jekyll_plugins
 # add
@@ -75,8 +74,7 @@ gem "jekyll-theme-hydeout"
 
 次に `_config.yml` を編集する。今回はリモートテーマを使用するので、 theme を`remote_theme`に変更する。更にプラグインも追加しておく。
 
-```yml
-# _config.yml
+```yml:_config.yml
 # theme: mininma
 remote_theme: fongandrew/hydeout
 
@@ -118,7 +116,7 @@ bundle exec jekyll server
 
 `_include` フォルダ内に、 `head.html` ファイルを作成する
 
-```html
+```html:head.html
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -136,7 +134,7 @@ bundle exec jekyll server
 
 ### ページネーション
 
-```yml
+```yml:_config.yml
 # _config.yml
 plugins:
   - jekyll-paginate
@@ -155,7 +153,7 @@ bundle exec jekyll server
 
 - 参照: [Google Analytics for Jekyll](https://desiredpersona.com/google-analytics-jekyll/)
 
-```html
+```html:google-analytics.html
 <!-- google-analytics.html -->
 {% if jekyll.environment == 'production' and site.google_analytics %}
 <script>
@@ -173,18 +171,15 @@ bundle exec jekyll server
 
 `_include/head.html`に書き加える。
 
-```html
-<!-- _include/head.html -->
+```html:_include/head.html.erb
 <head>
   {% include google-analytics.html %}
 </head>
 ```
 
-1. `_config.yml`にトラッキング ID を書き加える
-トラッキング ID は、UA-　から始まる ID。
+`_config.yml`にトラッキング ID を書き加える。トラッキング ID は、UA-　から始まる ID。
 
-```yml
-# _config.yml
+```yml:_config.yml
 google_analytics: UA-〇〇〇〇〇
 ```
 
@@ -193,14 +188,13 @@ github に上げて完了。
 ### Twitterカード追加
 
 - 参照
-- [サルワカ：【2019年版】Twitterカードとは？使い方と設定方法まとめ](https://saruwakakun.com/html-css/reference/twitter-card)
-- [Supporting Twitter Cards with Jekyll](http://davidensinger.com/2013/04/supporting-twitter-cards-with-jekyll/)
-- [Twitter Cards on Jekyll](https://www.brianbunke.com/blog/2017/09/06/twitter-cards-on-jekyll/)
+  - [サルワカ：【2019年版】Twitterカードとは？使い方と設定方法まとめ](https://saruwakakun.com/html-css/reference/twitter-card)
+  - [Supporting Twitter Cards with Jekyll](http://davidensinger.com/2013/04/supporting-twitter-cards-with-jekyll/)
+  - [Twitter Cards on Jekyll](https://www.brianbunke.com/blog/2017/09/06/twitter-cards-on-jekyll/)
 
 `_include/twitter-card.html`を作成
 
-```html
-<!-- _include/twitter-card.html -->
+```html:_include/twitter-card.html.erb
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@not_you_die"/>
 <!-- <meta name="twitter:creator" content="@{{ page.author }}"/> -->
@@ -223,8 +217,7 @@ github に上げて完了。
 
 `_include/head.html`内に書き加える
 
-```html
-<!-- _include/head.html -->
+```html:_include/head.html.erb
 <head>
   {% include twitter-card.html %}
 </haed>
@@ -234,7 +227,8 @@ Git に push し、[Twitter Card Validator](https://cards-dev.twitter.com/valida
 
 ### sidebar-nav-link
 
-[![Image from Gyazo](https://i.gyazo.com/aa38f41cc183d8e25de273d3020d4257.png)](https://gyazo.com/aa38f41cc183d8e25de273d3020d4257)
+![Image from Gyazo](https://i.gyazo.com/aa38f41cc183d8e25de273d3020d4257.png)
+
 こんな感じで、サイドバーに nav-link 付け足したい。
 
 ## デザインを大幅修正した件
@@ -253,8 +247,7 @@ git checkout changeDesign
 
 #### `Gemfile`と`_config.yml`から不要なものを削除
 
-```rb
-# Gemfile
+```rb:Gemfile
 source 'https://rubygems.org'
 
 gem 'github-pages', group: :jekyll_plugins
@@ -280,7 +273,7 @@ gem 'jekyll-coffeescript'
 
 自分の結果
 
-```sh
+```txt
 # ...
 # .
 # ├── _config.yml
@@ -296,8 +289,7 @@ gem 'jekyll-coffeescript'
 
 #### スクロール関連の変更
 
-```scss
-// _layout.scss
+```scss:_layout.scss
 body{
   background-image:url("../taiwan.jpg");
   background-size:cover;

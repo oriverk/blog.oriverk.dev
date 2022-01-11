@@ -2,7 +2,7 @@
 create: '2020-09-22'
 title: 'Algoliaでサイト内検索を実装する'
 tags: [nextjs, algolia]
-published: true
+published: false
 ---
 
 ## First
@@ -17,13 +17,8 @@ published: true
     "title": "Next.js でポートフォリオサイトを作成した",
     "create": "2020-05-26",
     "update": "2020-07-14",
-    "tags": [
-      "next",
-      "react",
-      "remark",
-      "typescript"
-    ],
-    "content": " Ruby Jekyll GihubPages Vue JS JS React from mizchi s blog JavaScript cpp stay home React Next js tutorial docs React Next js GithubPages Qiita Gist Markdonw Github this site React js Next js remarkjs reamrk mdx-js mdx highlight js UI Material-UI mui-org material-ui vm virtualbox vagrant OS Ubuntu bionic node -v v yarn -v yarn create next-app Example from the Next js repo amp amp amp-story amp-first AMP from AMP google analytics with-google-analytics with-google-analytics-amp aws with-aws-amplify with-aws-amplify-typescript api custome server preact Github zeit next js example Default starter app React Next js default yarn dev React Component React Fragment Material-UI material-ui permanent swipeable drawer Grid Material-UI top material-ui examples nextjs Icon from material-ui Icon create src pages index jsx src pages src components Layout jsx Layout jsx ` material-ui` permanent-drawer swipeable-drawer src components Layout jsx pages index jsx React ..."
+    "tags": ["next", "react", "remark", "typescript"],
+    "content": " Ruby Jekyll GihubPages Vue JS JS React from mizchi s blog JavaScript cpp st..."
   },
 ```
 

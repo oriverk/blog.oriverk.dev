@@ -29,7 +29,6 @@ from [Qiita: アプリをネットに公開したく、Herokuを使ってみた�
 [Getting Started on Heroku with Ruby](https://devcenter.heroku.com/articles/getting-started-with-ruby?singlepage=true)
 
 ```sh
-
 #  After signup heroku, then install heroku
 sudo snap install heroku --clasic
 

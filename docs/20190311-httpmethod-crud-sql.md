@@ -24,19 +24,18 @@ from [Qiita: HTTPメソッドとCRUDとSQL](https://qiita.com/OriverK/items/19b9
 
 ## HTTPメソッドの内訳とSQLの関係、CRUDとRESTful
 
-```sh
-# |  HTTPメソッド  | 内容 | CRUD  |MYSql| MySQL|
-# |:-:|:-:|:-:|:-:|:-:|
-# |  GET 　| リソース取得 | CREATE  | 生成| INSERT |
-# |  POST  | リソースデータ追加、小リソース作成 | READ | 読み取り | SELECT |
-# |  PUT/PATCH  | リソース更新作成  | UPDATE  | 更新 | UPDATE |
-# |  DELETE  | リソース削除 | DELETE  | 削除 | DELETE |
-# |:-:|:-:|
-# | HEAD | リソースのヘッダ(メタデータ取得)  |
-# | OPTION | リソースがサポートしているメソッドの取得  |
-# | TRACE | プロキシ動作の確保  |
-# | CONNECT | プロキシ動作のトンネル接続への変更  |
-```
+|  HTTPメソッド  | 内容 | CRUD  |MYSql| MySQL|
+|:-:|:-:|:-:|:-:|:-:|
+|  GET 　| リソース取得 | CREATE  | 生成| INSERT |
+|  POST  | リソースデータ追加、小リソース作成 | READ | 読み取り | SELECT |
+|  PUT/PATCH  | リソース更新作成  | UPDATE  | 更新 | UPDATE |
+|  DELETE  | リソース削除 | DELETE  | 削除 | DELETE |
+|:-:|:-:|
+| HEAD | リソースのヘッダ(メタデータ取得)  |
+| OPTION | リソースがサポートしているメソッドの取得  |
+| TRACE | プロキシ動作の確保  |
+| CONNECT | プロキシ動作のトンネル接続への変更  |
+
 
 ### CRUD
 

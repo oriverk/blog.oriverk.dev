@@ -13,10 +13,8 @@ published: false
 
 ### Environment
 
-```sh
-react: 16.13.1
-Next.js: v9.5.5
-```
+- react: 16.13.1
+- Next.js: v9.5.5
 
 ## introduction
 
@@ -31,7 +29,7 @@ Next.js: v9.5.5
 
 hybrid amp と getStaticPaths / getStaticProps を併用すると、dev / build では動くが、production ではエラーを起こす。エラー文を見る限り、json の中の null が原因の様だが、実際には　hybrid amp 時の　params の変化によるものの様だ。
 
-[![Image from Gyazo](https://i.gyazo.com/47bb6814f3151aabfd84745b8f6acac2.png)](https://gyazo.com/47bb6814f3151aabfd84745b8f6acac2)
+![Image from Gyazo](https://i.gyazo.com/47bb6814f3151aabfd84745b8f6acac2.png)
 
 `tags/[tag]` は動的ルートのページを静的生成し、 例えば `{params: {tag: 'hello'}}` だと `tags/hello/` となる。そして、hybrid amp の際は `{params: {tag: 'hello', amp: 1}}` として、`tags/hello?amp=1` となる事になっている。この url の変化により、getStaticPaths 等がエラーを起こす様だ。なお、`amp: true` は出力するのが amp ページのみなので、url は変わらず、エラーも起きない。
 

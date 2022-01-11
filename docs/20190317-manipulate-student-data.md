@@ -25,8 +25,7 @@ published: true
 
 不具合改善の中で、Vagrantfile で、使用できる RAM のサイズを 8GB に変更
 
-```rb
-# Vagrantfile
+```rb:Vagrantfile
 config.vm.provider "virtualbox" do |vb
   vb.memory = "8192"
 end
@@ -58,15 +57,13 @@ end
 rails new self_univ -d mysql
 ```
 
-```rb
-# Gemfile
+```rb:Gemfile
 gem 'mini_racer', platforms: :ruby
 ```
 
 `bundle install`
 
-```yml
-# qpp/config/database.yml
+```yml:app/config/database.yml
 password:
 ```
 
@@ -210,7 +207,7 @@ join メソッドは、配列の各要素を文字列に変換し、引数 sep �
 
 Students の show ページの、前回までの状態
 
-[![Image from Gyazo](https://i.gyazo.com/7d3266587cb423757ceceaab6069c6a7.png)](https://gyazo.com/7d3266587cb423757ceceaab6069c6a7)
+![Image from Gyazo](https://i.gyazo.com/7d3266587cb423757ceceaab6069c6a7.png)
 
 ### 生徒データと関連付けするときは
 
@@ -256,14 +253,12 @@ end
 
 ### Studentsのindexページの表記を変更
 
-```rb
-# app/models/studetns.rb
+```rb:app/models/studetns.rb
 enum gender: { male: 0 ,female: 1}
 enum age: {"teen": 0, "twenty": 1}
 ```
 
-```rb
-# app/views/_form.html.erb
+```rb:app/views/_form.html.erb
 <div class="field">
   <%= form.label :gender %>
   <%= form.radio_button :gender, 'male' %>男性
@@ -318,8 +313,7 @@ GROUP BY subjects.id, subjects.name
 - 参照
 - [Active Record クエリインターフェイス](https://railsguides.jp/active_record_querying.html#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%8B%E3%82%89%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%99)
 
-```rb
-# app/controllers/studetns_controller.rb
+```rb:app/controllers/studetns_controller.rb
 def show
   @students = 
     Student.joins(:subjects)
@@ -349,8 +343,7 @@ end
 
 ##### showページのviewを編集
 
-```rb
-# app/views/students/show.html.erb
+```rb:app/views/students/show.html.erb
 <table border="1">
   <tr>
     <th>科目名</th>
@@ -385,10 +378,9 @@ end
 
 ### modify index page
 
-※app/views/exam_results/show.html.erb も同様にやる
+※`app/views/exam_results/show.html.erb`も同様にやる
 
-```rb
-# app/views/exam_results/index.html.erb
+```rb:app/views/exam_results/index.html.erb
 # before edit
 # <td><%= exam_result.student %></td>
 # <td><%= exam_result.subject %></td>
@@ -402,8 +394,7 @@ end
 
 - [Action View Form Helpers](https://guides.rubyonrails.org/form_helpers.html#select-boxes-for-dealing-with-models)
 
-```rb
-# app/views/exam_results/_form.html.erb
+```rb:app/views/exam_results/_form.html.erb
 <div class="field">
     <%= form.label :student_id %>
     <%= form.select :student_id, @students %>
@@ -414,8 +405,7 @@ end
 </div>
 ```
 
-```rb
-# app/controllers/exam_results_controller.rb
+```rb:app/controllers/exam_results_controller.rb
 before_action :set_students_subjects, only: [:new, :edit]
 
 def set_students_subjects
@@ -426,9 +416,9 @@ end
 
 ## 編集後
 
-[![Image from Gyazo](https://i.gyazo.com/3b9010f3af09b7dd99161985f9b93a98.png)](https://gyazo.com/3b9010f3af09b7dd99161985f9b93a98)
+![Image from Gyazo](https://i.gyazo.com/3b9010f3af09b7dd99161985f9b93a98.png)
 
-[![Image from Gyazo](https://i.gyazo.com/fb02c2b644bd053ac9f22ca5ce5229fc.png)](https://gyazo.com/fb02c2b644bd053ac9f22ca5ce5229fc)
+![Image from Gyazo](https://i.gyazo.com/fb02c2b644bd053ac9f22ca5ce5229fc.png)
 
 ## pagination by kaminari
 
@@ -437,8 +427,7 @@ student と ExamResult の index ページを、数ページに区切って表�
 
 ### インストール
 
-```rb
-# Gemfile
+```rb:Gemfile
 gem 'kaminari'
 ```
 
@@ -448,8 +437,7 @@ gem 'kaminari'
 
 index アクションを編集
 
-```rb
-# app/controllers/students_controller.rb
+```rb:app/controllers/students_controller.rb
 def index
 　　# 編集前：@students = Student.all
     @students = Student.page(params[:page]).per(20)
@@ -458,8 +446,7 @@ end
 
 view を編集
 
-```rb
-# app/views/students/index.html.erb
+```rb:app/views/students/index.html.erb
 # ファイル先頭行に追加
 <div class="page-header">
 # ファイル最終行に追加
@@ -467,7 +454,7 @@ view を編集
 </div>
 ```
 
-[![Image from Gyazo](https://i.gyazo.com/bed8312b4ca888f1b5e82b2e4af74975.png)](https://gyazo.com/bed8312b4ca888f1b5e82b2e4af74975)
+![Image from Gyazo](https://i.gyazo.com/bed8312b4ca888f1b5e82b2e4af74975.png)
 
 ### ExamResultのindexページ編集
 
@@ -481,12 +468,12 @@ rails g kaminari:views default
 
 # 実行結果
   # create  app/views/kaminari/_next_page.html.erb
-  #     create  app/views/kaminari/_gap.html.erb
-  #     create  app/views/kaminari/_prev_page.html.erb
-  #     create  app/views/kaminari/_last_page.html.erb
-  #     create  app/views/kaminari/_first_page.html.erb
-  #     create  app/views/kaminari/_paginator.html.erb
-  #     create  app/views/kaminari/_page.html.erb
+  # create  app/views/kaminari/_gap.html.erb
+  # create  app/views/kaminari/_prev_page.html.erb
+  # create  app/views/kaminari/_last_page.html.erb
+  # create  app/views/kaminari/_first_page.html.erb
+  # create  app/views/kaminari/_paginator.html.erb
+  # create  app/views/kaminari/_page.html.erb
 ```
 
 ### ページャの設定を変える
@@ -495,7 +482,7 @@ rails g kaminari:views default
 rails g kaminari:config
 
 #実行結果
-create  config/initializers/kaminari_config.rb
+# create  config/initializers/kaminari_config.rb
 # ここで作成されたファイルに設定がある。
 ```
 
@@ -503,8 +490,7 @@ Bootstrap 対応のページャテーマもある。
 
 - [amatsuda/kaminari_themes](https://github.com/amatsuda/kaminari_themes)
 
-```rb
-# config/initializers/kaminari_config.rb
+```rb:config/initializers/kaminari_config.rb
 # frozen_string_literal: true
 Kaminari.configure do |config|
   # config.default_per_page = 25
@@ -531,22 +517,19 @@ end
 
 exam_result も編集は同じ。
 
-```rb
-# app/models/student.rb
+```rb:app/models/student.rb
 paginates_per 30
 ```
 
-```rb
-# app/controllers/students_controller.rb
+```rb:app/controllers/students_controller.rb
 @students = Student.page(params[:page])
 ```
 
-```rb
-# app/views/students/index.html.erb
+```rb:app/views/students/index.html.erb
 # ファイル先頭
 <div class="page-header">
 # ファイル末尾
-<%= paginate @students %>
+  <%= paginate @students %>
 </div>
 ```
 
@@ -554,13 +537,11 @@ paginates_per 30
 
 リンクを作成
 
-```rb
-# app/views/student/index.html.erb
+```rb:app/views/student/index.html.erb
 <td><%= link_to 'New Exam Result', new_exam_result_path(student_id: student.id) %></td>
 ```
 
-```rb
-# app/controllers/exam_results_controller.rb
+```rb:app/controllers/exam_results_controller.rb
 def new
   if params[:student_id]
     @student = Student.find(params[:student_id])
@@ -570,8 +551,7 @@ def new
 end
 ```
 
-```rb
-# app/views/exam_result/_form.html.erb
+```rb:app/views/exam_result/_form.html.erb
 <%= form.select :student_id, options_for_select(@students, @selected_student) %>
 ```
 
@@ -611,8 +591,7 @@ rails g コマンドで、controller 名や model 名を指定する際に、混
 
 `rails g scaffold` 時に "refereces" とミスタイプしていた。
 
-```rb
-# db/migrate/20190326030303_create_club_students.rb
+```rb:db/migrate/20190326030303_create_club_students.rb
 class CreateClubStudents < ActiveRecord::Migration[5.2]
   def change
     create_table :club_students do |t|
@@ -645,8 +624,7 @@ ALTER TABLE ClubStudent MODIFY COLUMN student references
 共通して表示させるので、/app/views/layouts/application.html.erb　を編集する。
 なお、部分テンプレファイル名は『_』アンダースコア始まり
 
-```rb
-# /app/views/layouts/application.html.erb
+```rb:/app/views/layouts/application.html.erb
 <body>
   <%= render :partial => 'shared/header' %>
 </body>
@@ -654,8 +632,7 @@ ALTER TABLE ClubStudent MODIFY COLUMN student references
 
 表示させたいリンクを書きこむ。
 
-```rb
-# /app/views/shared/_header.html.erb
+```rb:/app/views/shared/_header.html.erb
 <%= link_to 'Student list', students_path %> 
 <%= link_to 'subjects list', subjects_path %> 
 <%= link_to 'clubs list', clubs_path %> 
@@ -705,10 +682,9 @@ student の edit ページで更新すると、
 ```
 
 とエラーを吐き、ブラウザの戻るボタンで戻ると更新されている。
-また、エラー原因であると思わる、`StudentController#show`は
+また、エラー原因であると思わる`StudentController#show`は
 
-```rb
-# app/controllers/students_controller.rb
+```rb:app/controllers/students_controller.rb
 def show
   @students = 
     Student.joins(:subjects)
@@ -739,7 +715,7 @@ def show
   - UNSIGNED は、マイナス値が入らないだけでなく、マイナスになる計算もできない。
   - CAST で一時的に型を変える事で回避は可能。
 
-### `Postgresqlにはunsined型は存在しない(最重要)`
+### Postgresqlにはunsined型は存在しない(最重要)
 
 対応するには
 
@@ -752,8 +728,7 @@ def show
 
 前回の大学データに倣って、今回は cast as int に変更した
 
-```rb
-# app/controllers/students_controller.rb
+```rb:app/controllers/students_controller.rb
 # (該当部分だけ抜き出し）
 .select('CAST((exam_results.score / subjects.max_score) * 100 as int) as ratio')
 .select('CAST(AVG(exam_results.score) as int) as avg_score')
@@ -776,8 +751,7 @@ rails g migration AddPasswordToStudents password:string
 
 db/migrate 下にファイルが生成される
 
-```rb
-# /db/migrate/20190327144825_add_password_to_students.rb
+```rb:/db/migrate/20190327144825_add_password_to_students.rb
 class AddPasswordToStudents < ActiveRecord::Migration[5.2]
   def change
     add_column :students, :password, :integer

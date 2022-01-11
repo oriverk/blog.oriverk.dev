@@ -64,14 +64,12 @@ end
 
 ### Studentsのindexページの表記を変更
 
-```rb
-# app/models/studetns.rb
+```rb:app/models/studetns.rb
 enum gender: { male: 0 ,female: 1}
 enum age: {"teen": 0, "twenty": 1}
 ```
 
-```rb
-# app/views/_form.html.erb
+```rb:app/views/_form.html.erb
 <div class="field">
     <%= form.label :gender %>
     <%= form.radio_button :gender, 'male' %>男性
@@ -123,8 +121,7 @@ GROUP BY subjects.id, subjects.name
 
 - 参照: [Active Record クエリインターフェイス](https://railsguides.jp/active_record_querying.html#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%8B%E3%82%89%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%99)
 
-```rb
-# app/controllers/studetns_controller.rb
+```rb:app/controllers/studetns_controller.rb
 def show
     @students = 
       Student.joins(:subjects)
@@ -156,8 +153,7 @@ def show
 
 ##### showページのviewを編集
 
-```rb
-# app/views/students/show.html.erb
+```rb:app/views/students/show.html.erb
 <table border="1">
   <tr>
     <th>科目名</th>

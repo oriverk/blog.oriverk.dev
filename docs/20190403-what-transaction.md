@@ -186,8 +186,7 @@ SELECT * FROM reviews;
 
 user と review との、関連付け
 
-```rb
-# app/models/user.rb
+```rb:app/models/user.rb
 class User < ApplicationRecord
   has_many :reviews
 end
@@ -196,8 +195,7 @@ end
 review モデルに validation 追加
 approved カラムを空欄不可にしておく。
 
-```rb
-# app/models/review.rb
+```rb:app/models/review.rb
 class Review < ApplicationRecord
   belongs_to :user
   validates :approved, presence: true
@@ -257,8 +255,7 @@ ActiveRecord::RecordInvalid (Validation failed: Approved can't be blank)
 
 #### modelファイルを編集して実装
 
-```rb
-# app/models/user.rb
+```rb:app/models/user.rb
 class User < ApplicationRecord
   has_many :reviews
 

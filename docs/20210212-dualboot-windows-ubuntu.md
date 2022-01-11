@@ -80,16 +80,16 @@ sudo install ubuntu-restricted-extras
 sudo install ffmpeg
 ```
 
-コピーライトの関連で、ライセンスに同意していない状態でプリインストールさせるわけには行かないらしい。
+コピーライトの関係でライセンスに同意していない状態でプリインストールできない模様。
 
-the below reference is [here](https://ourcodeworld.com/articles/read/980/unable-to-play-mp4-file-in-ubuntu-18-04-h-264-main-profile-decoder-is-required-to-play-the-file-but-is-not-installed#:~:text=Ubuntu%20excludes%20these%20codecs%20because,their%20licensing%20terms%20and%20conditions.)
+- [reference](https://ourcodeworld.com/articles/read/980/unable-to-play-mp4-file-in-ubuntu-18-04-h-264-main-profile-decoder-is-required-to-play-the-file-but-is-not-installed#:~:text=Ubuntu%20excludes%20these%20codecs%20because,their%20licensing%20terms%20and%20conditions.)
 
 > Unable to play MP4 file in Ubuntu 18.04: H.264 (Main Profile) decoder is required to play the file, but is not installed
 >> Ubuntu excludes these codecs because these video files and other media formats are copy-right protected, so you can't just add these protected technology to your operating systems and programs without agreeing to their licensing terms and conditions.
 
 ## 各種ソフトウェアのインストール
 
-注：基本的に`sudo apt install` で済ましたいと思っています。
+基本的に`sudo apt install` で済ましたいと思っています。
 
 ### 不要ソフトのアンインストール
 
@@ -116,11 +116,11 @@ Ubuntu シングルサインオン？　Google のパスワード管理で十分
 
 ### slack
 
-[ここ](https://slack.com/intl/ja-jp/downloads/linux)に Linux 版が用意されている。.deb を DL してあとは Chrome と一緒。
+- [slack linux版](https://slack.com/intl/ja-jp/downloads/linux)
 
 ### VisualStudioCode
 
-[ここ](https:// "title")から.deb を DL。File＞Preference＞TurnOnSync で設定同期
+- [VisualStudioCode Linux版](https://code.visualstudio.com/download)
 
 ### vim
 
@@ -131,8 +131,6 @@ sudo apt remove nano
 sudo apt install vim
 sudo update-alternatives --config editor
 ```
-
-w
 
 ### Git
 
@@ -145,7 +143,7 @@ git config --global user.email "username@example.com"
 
 ### gyazo
 
-[linux版がgithub](https://github.com/gyazo/Gyazo-for-Linux)にある。
+- [github.com/gyazo/Gyazo-for-Linux](https://github.com/gyazo/Gyazo-for-Linux)
 
 ```sh
 curl -s https://packagecloud.io/install/repositories/gyazo/gyazo-for-linux/script.deb.sh | sudo bash
@@ -164,7 +162,7 @@ sudo apt install solaar
 
 ### howdy(WindowsHello的な顔認証)
 
-github は[こちら](https://github.com/boltgolt/howdy)。
+- [github.com/boltgolt/howdy](https://github.com/boltgolt/howdy)
 
 ```sh
 sudo add-apt-repository ppa:boltgolt/howdy

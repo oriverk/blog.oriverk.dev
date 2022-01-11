@@ -115,6 +115,6 @@ chmod 666 test.sh
 
 ### PermissionとPermitの違い
 
-**プログラムはPermission**
+プログラムは Permission 。
 
 どちらも名詞で『許可』を意味するが、ニュアンスが違う。日本語で説明するとズレるので、英英辞典で確認したい。あと、Permission のスペル注意。

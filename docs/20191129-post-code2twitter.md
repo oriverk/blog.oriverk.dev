@@ -32,7 +32,7 @@ from [Qiita: Twitterにコードを身えばよく投稿したい](https://qiita
 
 ### 作成要件
 
-[![Image from Gyazo](https://i.gyazo.com/2491cbf2135a0973110d0ba0727d9da7.png)](https://gyazo.com/2491cbf2135a0973110d0ba0727d9da7)
+![Image from Gyazo](https://i.gyazo.com/2491cbf2135a0973110d0ba0727d9da7.png)
 
 - マークダウン投稿、シンタックスハイライト
   - gem: redcarpet, rouge
@@ -65,8 +65,7 @@ DB 設定等は割愛
 
 ### Gem
 
-```rb
-# Gemfile
+```rb:Gemfile
 gem 'mini_racer'
 gem 'rails-i18n'
 
@@ -134,8 +133,7 @@ rails g scaffold Post user:references name:string content:text date:datetime
 
 ### ActiveRecord Associations関連付け
 
-```rb
-# /app/model/
+```rb:/app/model
 # user
 has_many :posts
 
@@ -152,8 +150,7 @@ belongs_to :user
 - 基本：`Redcarpet::Markdown.new(renderer, extensions = {}).render(@post.content)`
 オプションや XSS 対策等を追加したく、helper メソッドを作成した。
 
-```rb
-# app/helpers/posts_helper.rb
+```rb:app/helpers/posts_helper.rb
 Module PostsHelper
   require 'rouge/plugins/redcarpet'
   class RougeRedcarpetRenderer < Redcarpet::Render::HTML
@@ -198,12 +195,11 @@ end
 
 ホワイトリスト方式の [sanitizeヘルパー](https://edgeapi.rubyonrails.org/classes/ActionView/Helpers/SanitizeHelper.html#method-i-sanitize)　を使用した。
 
-```rb
-# app/views/posts/index.html.erb
+```rb:app/views/posts/index.html.erb
 # sanitize(html, options = {})
- <div id="capture" class="content">
+  <div id="capture" class="content">
     <%= sanitize(markdown(@post.content), tags: %w(div img h1 h2 h3 h4 h5 strong em a p pre code ), attributes: %w(class href)) %>
-</div>
+  </div>
 ```
 
 ### 投稿内容のデータ化、AWSへの画像保存
@@ -228,8 +224,7 @@ rails active_storage:install
 rails db:migrate
 ```
 
-```rb
-# app/models/post.rb
+```rb:app/models/post.rb
 class Post < ApplicationRecord
 # 今回は1つの投稿につき、1枚の画像なので。
 # 複数なら => has_many_attached :prtscs
@@ -237,8 +232,7 @@ class Post < ApplicationRecord
 end
 ```
 
-```rb
-# app/config/environments/
+```rb:app/config/environments/
 # ファイル保存先変更
 # development.rb
 config.active_storage.service = :local
@@ -248,15 +242,13 @@ config.active_storage.service = :amazon
 
 `rails credentials:edit` で AWS アクセスキーとシークレットキーを追加。
 
-```yaml
-# config/credentials.yml.enc
+```yaml:config/credentials.yml.enc
 aws:
   access_key_id: 
   secret_access_key:
 ```
 
-```yml
-# config/storage.yml
+```yml:config/storage.yml
 test:
   service: Disk
   root: <%= Rails.root.join("tmp/storage") %>
@@ -285,8 +277,7 @@ gem 'mini_magick'
 2. `html2canvas.js`を`app/assets/javascripts`ディレクトリ配下に保存。
 3. html 上に置く script コードを改修
 
-```rb
-# app/views/posts/show.html.erb
+```rb:app/views/posts/show.html.erb
 <%= form_with(model: @post, local: true) do |form| %>
   <%= form.hidden_field :id, value: @post.id %>
   <%= form.hidden_field :prtsc, value: "" %>　# idはpost_prtscになる。
@@ -294,8 +285,7 @@ gem 'mini_magick'
 <% end %>
 ```
 
-```rb
-# app/views/layouts/application.html.erb
+```rb:app/views/layouts/application.html.erb
 <script type="text/javascript">
   html2canvas(document.querySelector("#capture"),{scale:1, width:600}).then(canvas => {
     var base64 = canvas.toDataURL('image/jpeg', 1.0);
@@ -307,11 +297,10 @@ gem 'mini_magick'
 ### Base64デコード
 
 - 参照
-- [python-twitter で BASE64 形式の画像をツイートする](https://qiita.com/maguro_tuna/items/184f63e37f3724f18e33)
-- [base64でエンコードされた画像をActive Storageで保存する](https://qiita.com/ozin/items/5ec81a4b126b8ebf7a96)
+  - [python-twitter で BASE64 形式の画像をツイートする](https://qiita.com/maguro_tuna/items/184f63e37f3724f18e33)
+  - [base64でエンコードされた画像をActive Storageで保存する](https://qiita.com/ozin/items/5ec81a4b126b8ebf7a96)
 
-```rb
-# app/models/post.rb
+```rb:app/models/post.rb
 attr_accessor :img
 
 def parse_base64(img)
@@ -338,8 +327,7 @@ AWS 上での登録、設定、バケット作成等は割愛。
 
 ### ツイート Share Button
 
-```rb
-# app/views/layouts/application.html.erb
+```rb:app/views/layouts/application.html.erb
 <script>
   var base = 'https://twitter.com/intent/tweet?url=';
   var pageUrl = 'https://codr0.herokuapp.com/posts/' + document.getElementById('post_id').value;
@@ -359,14 +347,13 @@ AWS 上での登録、設定、バケット作成等は割愛。
 #### service_url()とurl_for()
 
 - 参照
-- [service_url() from api.rubyonrails](https://api.rubyonrails.org/classes/ActiveStorage/Variant.html#method-i-service_url)
-- [url_for() from rails guide](https://railsguides.jp/active_storage_overview.html#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%99%E3%82%8B)
+  - [service_url() from api.rubyonrails](https://api.rubyonrails.org/classes/ActiveStorage/Variant.html#method-i-service_url)
+  - [url_for() from rails guide](https://railsguides.jp/active_storage_overview.html#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%99%E3%82%8B)
 
 基本的にはどちらも、ActiveStorage に保存したデータの Url を取得するメソッドの様だ。
 どちらもセキュリティの為にリンクの有効期限が短いみたいだが、違いが分からなかった。今回はツイートボタン押下し、Tweet した際に og:image として表示されればいい。
 
-```rb
-# app/views/posts/show.html.erb
+```rb:app/views/posts/show.html.erb
 # 画像がActive StorageでAWS S3に保存されて入れば
 <% if @post.prtsc.attached? %>
   <% set_meta_tags og:{image: @post.prtsc.service_url} %>
@@ -378,12 +365,11 @@ AWS 上での登録、設定、バケット作成等は割愛。
 [TwitterDeveloperAccount](https://developer.twitter.com/content/developer-twitter/ja.html)が必要。割愛。
 
 - 参照
-- [gem 'omniauth-twitter'　github](https://github.com/arunagw/omniauth-twitter)
-- [deviseの使い方（rails5版）](https://qiita.com/cigalecigales/items/f4274088f20832252374)
-- [ominiauth 脆弱性に対するクックパドによるパッチ]](<https://github.com/cookpad/omniauth-rails_csrf_protection>)
+  - [gem 'omniauth-twitter'　github](https://github.com/arunagw/omniauth-twitter)
+  - [deviseの使い方（rails5版）](https://qiita.com/cigalecigales/items/f4274088f20832252374)
+  - [ominiauth 脆弱性に対するクックパドによるパッチ](https://github.com/cookpad/omniauth-rails_csrf_protection)
 
-```rb
-# app/models/user.rb
+```rb:app/models/user.rb
 # 参考ページと同じ基礎的な所は割愛する。
 class User < ApplicationRecord
   def self.from_omniauth(auth)
@@ -426,8 +412,7 @@ Twitter のニックネームが取得できるようになったので、元か
 
 想定ユーザは殆どスマホなのに、PC で作成し、CSS を PC の見た目でやってた。折角 SCSS でやってるので、変数を利用した。
 
-```scss
-#app/assets/stylesheets/scaffold.scss
+```scss:app/assets/stylesheets/scaffold.scss
 // ディスプレイサイズが680pxまでなら。
 $tab: 680px;
 @mixin tab {
@@ -435,12 +420,6 @@ $tab: 680px;
     @content;
   }
 }
-
-// .box {
-//   @include tab {
-//     background-color: blue;
-//   };
-// }
 ```
 
 ## 最後に

@@ -42,8 +42,7 @@ yarn add npm imagemin-mozjpeg imagemin-optipng
 
 <!-- <details><summary>自分のnext.config.js</summary><div> -->
 
-```jsx
-// next.config.js
+```js:next.config.js
 const withPlugins = require('next-compose-plugins')
 const optimizedImages = require('next-optimized-images')
 
@@ -74,7 +73,7 @@ module.exports = withPlugins(
 
 画像は`<img src={require(../../example.jpg)} />`の様に指定するが、md 内で指定する時などは面倒なので、`next.js.config`にパスのエイリアスを追加する。
 
-[![Image from Gyazo](https://i.gyazo.com/3535f5fafcfa51c59bfbc3c4aa7443b0.jpg)](https://gyazo.com/3535f5fafcfa51c59bfbc3c4aa7443b0)
+![Image from Gyazo](https://i.gyazo.com/3535f5fafcfa51c59bfbc3c4aa7443b0.jpg)
 
 原因は webpack にある模様
 
@@ -82,9 +81,7 @@ module.exports = withPlugins(
   - [issue #92: Module parse failed: Unexpected character '�'](https://github.com/cyrilwanner/next-optimized-images/issues/92)
   - [issue #130: Performance issues `npm run dev` hot-reloading](https://github.com/cyrilwanner/next-optimized-images/issues/130)
 
-```jsx
-// next.config.js
-// ...
+```js:next.config.js
 const { resolve } = require('path')
 
 const nextConfig = {
@@ -95,11 +92,7 @@ const nextConfig = {
 }
 
 // ...
-module.exports = withPlugins(
-  [ // ...
-  ],
-  nextConfig
-)
+module.exports = withPlugins([ ... ], nextConfig)
 ```
 
 #### convert to webp
@@ -131,8 +124,7 @@ resize を可能にする responsive-loarder は jimp と sharp が別に必要�
 
 画像をリンクする際は`require('./images/my-image.jpg?resize&sizes[]=300&sizes[]=600&sizes[]=1000')`の様に指定できる。が、下の様に`responsive:sized:[]`と画像サイズ幅を global resize property として指定できる。
 
-```jsx
-// next.config.js
+```js:next.config.js
 // ...
 const nextOptimizedImagesConfig = {
 // ...
@@ -168,7 +160,7 @@ export default () => (
 );
 ```
 
-[![Image from Gyazo](https://i.gyazo.com/0bdb837e29a2159837fe6c20cf5351b4.png)](https://gyazo.com/0bdb837e29a2159837fe6c20cf5351b4)
+![Image from Gyazo](https://i.gyazo.com/0bdb837e29a2159837fe6c20cf5351b4.png)
 
 #### webp-loader と responsive-loader
 
@@ -189,14 +181,13 @@ export default function () {
 }
 ```
 
-[![Image from Gyazo](https://i.gyazo.com/cde029304a9aecb8696ad97fcead94dd.png)](https://gyazo.com/cde029304a9aecb8696ad97fcead94dd)
+![Image from Gyazo](https://i.gyazo.com/cde029304a9aecb8696ad97fcead94dd.png)
 
 ##### 自分の場合
 
 next.config.js の中で、`responsive:{sizes: [640, 960, 1200, 1800],}`としてあるので component を作って利用している。
 
-```jsx
-// src/components/general/OptimizedImages.tsx
+```jsx:src/components/general/OptimizedImages.tsx
 export function OptimizedImages({ src, alt, imgStyle }) {
   const multi = require(`@public/assets/${src}?resize`)
   const multiWebp = require(`@public/assets/${src}?resize&format=webp`)
@@ -232,9 +223,9 @@ export default function () {
 }
 ```
 
-[![Image from Gyazo](https://i.gyazo.com/a9a47caa8f1fd54b6f429790cc6dd5c3.jpg)](https://gyazo.com/a9a47caa8f1fd54b6f429790cc6dd5c3)
+![Image from Gyazo](https://i.gyazo.com/a9a47caa8f1fd54b6f429790cc6dd5c3.jpg)
 
-砕氷艦しらせの画像に適用してみた。lqip(左)の方は 10×7px の 925b に縮小されており、パフォーマンス的には問題が無さそう。[更に filter:blur(10px) 辺りを掛けると更に良さそう。](https://github.com/zouhir/lqip-loader/issues/5)
+lqip(左)の方は 10×7px の 925b に縮小されている。[更に filter:blur(10px) 辺りを掛けると更に良さそう。](https://github.com/zouhir/lqip-loader/issues/5)
 
 #### lqip-loaderを使ったprogressive image loading の実装
 
@@ -256,17 +247,19 @@ export default function () {
         />
       </div>
       <style jsx>{`
-        div{ 
+        div { 
           position: relative; 
         }
 
-        img{
+        img {
           width: 50%;
           height: auto;
         }
-        .lqip{
+        .lqip {
           position: absolute;
-          top: 0;　left: 0;　z-index: 10;
+          top: 0; 
+          left: 0;
+          z-index: 10;
           filter: blur(10px);
           transition: opacity 500ms cubic-bezier(0.4, 0, 1, 1);
         }

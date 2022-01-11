@@ -69,31 +69,23 @@ yarn create next-app next-portfolio
 
 #### Example from the Next.js repo
 
-- amp 類
-  - amp, amp-story, amp-first
-    - 参照: [ビジュアルに訴える AMP ストーリーを作成する from AMP](https://amp.dev/ja/documentation/guides-and-tutorials/start/visual_story/?format=stories)
+- amp, amp-story, amp-first
+  - 参照: [ビジュアルに訴える AMP ストーリーを作成する from AMP](https://amp.dev/ja/documentation/guides-and-tutorials/start/visual_story/?format=stories)
 - google analytics 類
   - with-google-analytics, with-google-analytics-amp
 - aws 類
   - with-aws-amplify, with-aws-amplify-typescript
 - その他: api 類, custome server 類, preact 及び多数
-- 参照：[Github: zeit/next.js/example](https://github.com/zeit/next.js/tree/master/examples)
+- 参照：[Github: vercel/next.js/example](https://github.com/vercel/next.js/tree/master/examples)
 
 #### Default starter appの場合
 
 今回は React Next.js の勉強も兼ねているので、default の方を利用した。
 
-`yarn dev`すると
-
-<!-- <picture>
-  <source srcSet='/assets/posts/202005/next1.webp' type='image/webp' />
-  <img src='/assets/posts/202005/next1.jpg' alt='Hello Next.js' />
-</picture> -->
-
-```sh
+```txt
 # directory
 - public
-  - favicon.ico, zeit.svg
+  - favicon.ico, vercel.svg
 - pages
   - index.js
 - package.json
@@ -102,8 +94,7 @@ yarn create next-app next-portfolio
 - yarn.lock
 ```
 
-```json
-// package.json
+```json:package.json
 {
   "name": "next-portfolio",
   "version": "0.1.0",
@@ -122,39 +113,32 @@ yarn create next-app next-portfolio
 ```
 
 - 参照
-- [React.Component](https://ja.reactjs.org/docs/react-component.html#gatsby-focus-wrapper)
-- [React.Fragment](https://ja.reactjs.org/docs/fragments.html#keyed-fragments)
+  - [React.Component](https://ja.reactjs.org/docs/react-component.html#gatsby-focus-wrapper)
+  - [React.Fragment](https://ja.reactjs.org/docs/fragments.html#keyed-fragments)
 
 ### Material-UI 導入
 
 見た目重視で material-ui を導入し、主にサイドバーの permanent / swipeable drawer と Grid に使用。
 
 - 参照
-- [Material-UI top 日本語ページ](https://material-ui.com/ja/)
+  - [Material-UI top 日本語ページ](https://material-ui.com/ja/)
   - [material-ui/examples/nextjs/](https://github.com/mui-org/material-ui/tree/master/examples/nextjs)
-    - [Icon from material-ui](https://material-ui.com/ja/components/icons/)
-    - [Icon一覧](https://material-ui.com/ja/components/material-icons/)
 
 ```sh
-yarn add @material-ui/core
-yarn add @material-ui/icons
+yarn add @material-ui/core @material-ui/icons
 ```
 
 ### create src/pages/index.jsx
 
-1. `src`ディレクトリを作成し、下に`pages`を収める。
-2. `src/components/Layout.jsx`の作成
+- `src`ディレクトリを作成し、下に`pages`を収める。
+- `src/components/Layout.jsx`の作成
 
 複数ページで共通デザインとなる`Layout.jsx`を作成する。ここでは省略したが、`<aside />`の中には、`material-ui`を利用した permanent-drawer とモバイル用の swipeable-drawer を実装した。
 
 <!-- <details><summary><code>/src/components/Layout.jsx</code></summary><div> -->
 
-```jsx
-// src/components/Layout.jsx
-
-import React from 'react'
+```jsx:src/components/Layout.jsx
 import Link from 'next/link'
-
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Hidden from '@material-ui/core/Hidden'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
@@ -162,6 +146,7 @@ import Drawer from '@material-ui/core/Drawer'
 import DoubleArrowIcon from '@material-ui/icons/DoubleArrow'
 import { List, ListItem, ListItemIcon, ListItemText, Divider } from '@material-ui/core'
 import HomeIcon from '@material-ui/icons/Home'
+
 import { MyDrawerList } from '../components/MyDrawerList'
 
 const drawerWidth = 250
@@ -241,20 +226,17 @@ export function Layout({ children }) {
 
 <!-- </div></details> -->
 
-3. `pages/index.jsx`の作成
+- `pages/index.jsx`の作成
 
 まだ React 等に不慣れなので、`pages/index.js`にサイト 1 ページ目を作りこんで、後から component に分割する方式をとった。
 
 色々試した結果、サイトトップにあたる `pages/index.jsx`は下の様になった。また、`<head><meta/></head>`用のデータは`/public/manifest.json`から持ってくる事にした。
 
-```jsx
-// src/pages/index.jsx
-
-import React from 'react'
+```jsx:src/pages/index.jsx
 import Head from 'next/head'
 import { Layout } from '../components/Layout'
 import { Top, About, History, Works } from '../components/HomeContents'
-const manifest = require('../../public/manifest.json')
+import manifest from '../../public/manifest.json'
 
 export default function Home() {
   return (
@@ -284,15 +266,12 @@ export default function Home() {
 
 <!-- <details><summary><code>/src/components/HomeContetnts.jsx</code></summary><div> -->
 
-```jsx
-// src/components/HomeContetnts.jsx
-
-import React from 'react'
+```jsx:src/components/HomeContents.jsx
 import Link from 'next/link'
 import Grid from '@material-ui/core/Grid'
 
 export function Top() {
-  return ( <section id='top' className='topContainer' />  )
+  return <section id='top' className='topContainer' />
 }
 
 export function About() {
@@ -306,10 +285,7 @@ export function About() {
           </picture>
         </Grid>
         <Grid item md={12} lg={7}>
-          <p>My name is Kawano Yudai.</p>
-          <p>I graduated from Miyazaki Universiy as Bachelor of Agriculture.</p>
-          <p>I belonged to agricultural engineering lablatory and studied crop row detecting tech by image processing with C++ and OpenCV.</p>
-          <p style={{ color: '#F48FB1' }}><em>Now, I'm seeking job as developer. Please contact me from left drawer.</em></p>
+          <p>My name is Hoge.</p>
         </Grid>
       </Grid>
     </section>
@@ -317,11 +293,11 @@ export function About() {
 }
 
 export function Works() {
-  return ( <section id='works' className='content' /> )
+  return <section id='works' className='content' />
 }
 
 export function History() {
-  return ( <section id='history' className='content' /> )
+  return <section id='history' className='content' />
 }
 ```
 
@@ -347,9 +323,9 @@ export function History() {
 #### ダイナミックルーティング
 
 - 参照
-- [Next.js - Pages](https://nextjs.org/docs/basic-features/pages#pages-with-dynamic-routes)
-- [Next.js - Dynamic routes](https://nextjs.org/docs/routing/dynamic-routes)
-- [Docs - next/routes from Next.js](https://nextjs.org/docs/api-reference/next/router)
+  - [Next.js - Pages](https://nextjs.org/docs/basic-features/pages#pages-with-dynamic-routes)
+  - [Next.js - Dynamic routes](https://nextjs.org/docs/routing/dynamic-routes)
+  - [Docs - next/routes from Next.js](https://nextjs.org/docs/api-reference/next/router)
 
 ディレクトリ構成
 
@@ -363,8 +339,7 @@ export function History() {
 
 また、`/pages/posts/[id].jsx`は
 
-```jsx
-// /pages/posts/[id].jsx
+```jsx:/pages/posts/[id].jsx
 import useRouter from 'next/route'
 export default function Post(){
   const router = useRouter()
@@ -383,7 +358,7 @@ export default function Post(){
   <img src='/assets/posts/202005/next2.jpg' alt='dynamic route' />
 </picture> -->
 
-`dynamic route`と`Link( next/link )`を併用する時は、`href`に合わせて`as`も使う。
+`dynamic route`と`Link (next/link)`を併用する時は、`href`に合わせて`as`も使う。
 
 #### getStaticProps, getStaticPaths
 
@@ -405,8 +380,8 @@ export default function Post(){
 - `getStaticPaths`
   - 出力ページ中のリンクが外部データに依存している時に使用
 
-実装は下を参照しながらしました。タグの方は自分で用意しましたが。
-[Next.jsのチュートリアルのこのページ](https://nextjs.org/learn/basics/dynamic-routes/implement-getstaticpaths)
+- 参考
+  - [Next.jsのチュートリアルのこのページ](https://nextjs.org/learn/basics/dynamic-routes/implement-getstaticpaths)
 
 <!-- <picture>
   <img src='/assets/posts/202005/next3.png' alt='posts index' />
@@ -430,13 +405,13 @@ tags ページのスタイルが未だ…
 
 構文木について、しっかり学ばねばと思いました。
 
-```jsx:/src/lib/posts.jsx
-// /src/lib/posts.jsx
+```js:/src/lib/posts.js
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
+
 export async function getPostData(id) {  
   const fullPath = path.join(postsDirectory, `${id}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
@@ -462,28 +437,25 @@ export async function getPostData(id) {
 
 #### meta
 
-[![Image from Gyazo](https://i.gyazo.com/ffd26e4f2d9de2d3bde34bbd6f0ed08b.png)](https://gyazo.com/ffd26e4f2d9de2d3bde34bbd6f0ed08b)
+![Image from Gyazo](https://i.gyazo.com/ffd26e4f2d9de2d3bde34bbd6f0ed08b.png)
 
 以前に[rubyとjekyllで作ったgithubpages](https://oriverk.github.io/blog/confirm-font-size)と比較して、syntax-highlight が粗いので改善が必要
 
-[![Image from Gyazo](https://i.gyazo.com/d606404dd05463c96bf9d16d8c6d8478.png)](https://gyazo.com/d606404dd05463c96bf9d16d8c6d8478)
+![Image from Gyazo](https://i.gyazo.com/d606404dd05463c96bf9d16d8c6d8478.png)
 
-```sh
-# front-matter
+```txt:frontmatter
 ---
 date: '2020-05-26'
 author: Kawano Yudai
 title: 'Qiita: Next.jsでポートフォリオサイトを作成した'
 tags: [Qiita, React, Next.js]
 image: '/assets/posts/202003/miyazaki-oss1.jpg'
-slide: false
 ---
 ```
 
 #### SNSシェアボタン
 
-```jsx
-// ./src/pages/posts/[id].jsx
+```jsx:/src/pages/posts/[id].jsx
 <button className='twitter'>
   <a href={`https://twitter.com/share?text=${postData.title}&hashtags=react,nextjs&url=https://next-portfolio-blue.now.sh/posts/${postData.id}&related=not_you_die`}
     target='_blank' rel='noopener noreferrer'><TwitterIcon /></a>
@@ -549,8 +521,7 @@ GoogleAnalytics 側で ID を取得し、`_app.jsx`と`_document.jsx`を上コ�
 
 最初に使った `next-offline` は更新が遅く、また experimental な部分を利用していた等の理由から、`next-pwa`に移行した。example から分かるように、非常にシンプルになった。
 
-```js
-// next.config.js
+```js:next.config.js
 const withPWA = require("next-pwa");
 
 module.exports = withPWA({
@@ -633,8 +604,7 @@ post の情報を集約した postPages.json を作成した。ファイル更�
 
 postsMap generator script
 
-```mjs
-// script/genPagesMap.mjs
+```mjs:script/genPagesMap.mjs
 import path from 'path'
 import fs from 'fs'
 import matter from 'gray-matter'
@@ -692,7 +662,7 @@ fs.writeFileSync(
 
 sitemap.xml の基本構成
 
-```xml
+```xml:sitemap.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -706,10 +676,7 @@ sitemap.xml の基本構成
 
 **xmlはファイル頭に空白行が入ると、`<?xml ?>`の宣言が無いと言ってエラーを吐く**
 
-sitemap.xml generator script
-
-```mjs
-// script/genSiteMap.mjs
+```mjs:script/genSiteMap.mjs
 import path from 'path'
 import fs from 'fs'
 
@@ -762,7 +729,7 @@ RSS 2.0 と Atom 1.0 に対応する。
 
 RSS 2.0 フォーマット
 
-```xml
+```xml:rss.xml
 <?xml version='1.0' encoding='UTF-8'?>
 <rss version='2.0'>
  <channel>
@@ -781,7 +748,7 @@ RSS 2.0 フォーマット
 
 Atom 1.0 フォーマット
 
-```xml
+```xml:atom.xml
 <?xml version='1.0' encoding='UTF-8'?>
 <feed xmlns='http://www.w3.org/2005/Atom' xml:lang='ja'>
  <id>tag:example.comfeed/</id>
@@ -803,8 +770,7 @@ RSS と Atom のジェネレーターコードは、基本的に sitemap.xml と
 
 RSS 2.0 ジェネレータ
 
-```mjs
-// script/genRss.mjs
+```mjs:script/genRss.mjs
 import path from 'path'
 import fs from 'fs'
 
@@ -840,10 +806,7 @@ fs.writeFileSync(path.join(process.cwd(),'public/rss.xml'), rss)
 
 Atom 1.0 ジェネレーター
 
-Atom のユニーク id をどうしようかと考えましたが、適当に。
-
-```mjs
-// script/genRss.mjs
+```mjs:script/genRss.mjs
 import path from 'path'
 import fs from 'fs-extra'
 

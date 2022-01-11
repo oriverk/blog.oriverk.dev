@@ -139,14 +139,13 @@ css ライブラリには `styled-jsx` を使ってます。非 amp の時の様
 
 [AMPはtypescript用の組込型が無い](https://nextjs.org/docs/advanced-features/amp-support/typescript)ので、自分で`amp.d.ts`を作る必要がある。実際に`<amp-img>`とすると`Property 'amp-img' does not exist on type 'JSX.IntrinsicElements'.`と出る。
 
-[![Image from Gyazo](https://i.gyazo.com/7957a2c68ea932ab562c6a1ff25c0f02.png)](https://gyazo.com/7957a2c68ea932ab562c6a1ff25c0f02)
+![Image from Gyazo](https://i.gyazo.com/7957a2c68ea932ab562c6a1ff25c0f02.png)
 
 なので、[このstack overflow](https://stackoverflow.com/questions/50585952/typescript-and-google-amp-property-amp-img-does-not-exist-on-type-jsx-intrin/50601125#50601125)を見ながら、custom types を追加してくれと、Next.js 公式はドキュメントで言っている。。
 
 取り敢えず、[amp-image](https://amp.dev/ja/documentation/components/amp-img/?format=websites)を対応してみる。
 
-```typescript
-// amp.d.ts
+```typescript:amp.d.ts
 declare namespace JSX {
   type ReactAmp = React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLElement>,
@@ -163,14 +162,7 @@ declare namespace JSX {
     height?: string;
     sizes?: string;
     heights?: string;
-    layout?:
-      | "fill"
-      | "fixed"
-      | "fixed-height"
-      | "flex-item"
-      | "intrinsic"
-      | "nodisplay"
-      | "responsive";
+    layout?: "fill" | "fixed" | "fixed-height" | "flex-item" | "intrinsic" | "nodisplay" | "responsive";
     fallback?: "";
 
     on?: string; // amp-image-lightbox
@@ -184,7 +176,9 @@ declare namespace JSX {
 }
 ```
 
-余談：[とあるgist](https://gist.github.com/azu/2dec148bcec2ea8a34c894aee51b3571)や[とあるamp.d.ts](https://github.com/SYMBIO/next-devstack/blob/761fcc46904f5dca0bb1b457f6e387fe007c023a/src/types/amp.d.ts)を見かけた。
+- 一部参考にしたもの
+  - [とあるgist](https://gist.github.com/azu/2dec148bcec2ea8a34c894aee51b3571)
+  - [とあるamp.d.ts](https://github.com/SYMBIO/next-devstack/blob/761fcc46904f5dca0bb1b457f6e387fe007c023a/src/types/amp.d.ts)を見かけた。
 
 #### amp-img
 
@@ -200,25 +194,13 @@ const AmpImg = () => {
   const image = require("@public/assets/shirase.jpg?resize");
   const webp = require("@public/assets/shirase.jpg?resize&format=webp");
   return (
-    <>
-      <amp-img
-        alt="shirase"
-        layout="responsive"
-        width={webp.width}
-        height={webp.height}
-        src={webp.src}
-        srcset={webp.srcSet}
+      <amp-img alt="shirase" layout="responsive"
+        width={webp.width} height={webp.height}　src={webp.src}　srcset={webp.srcSet}
       >
-        <amp-img
-          fallback=""
-          alt="shirase"
-          width={image.width}
-          height={image.height}
-          src={image.src}
-          srcset={image.srcSet}
+        <amp-img fallback="" alt="shirase"
+          width={image.width} height={image.height} src={image.src} srcset={image.srcSet}
         ></amp-img>
       </amp-img>
-    </>
   );
 };
 ```
@@ -229,7 +211,7 @@ const AmpImg = () => {
 
 画像ポップアップの lightbox。amp-image-lightbox を書き加え、amp-img に on 属性等を書き足すだけで動く。また id さえ合致して置けば、1 ページに 1 つの amp-image-lightbox で動く。
 
-[リンク: amp-image-lightbox](https://amp.dev/ja/documentation/components/amp-image-lightbox/?format=websites)
+- [amp-image-lightbox](https://amp.dev/ja/documentation/components/amp-image-lightbox/?format=websites)
 
 <!-- <details><summary>code of amp-image-lightbox</summary><div> -->
 
@@ -238,36 +220,22 @@ const AmpImageLightbox = () => {
   const shirase = require("@public/assets/shirase.jpg?resize");
   const pikachu = require("@public/assets/pikachu.jpg?resize");
   return (
-    <>
-      <amp-image-lightbox id="lightbox1" layout="nodisplay" />
-      <figure>
-        <amp-img
-          on="tap:lightbox1"
-          role="button"
-          tabindex="0"
-          layout="responsive"
-          className="shirase"
-          width={shirase.width}
-          height={shirase.height}
-          src={shirase.src}
-        ></amp-img>
-        <figcaption>JSDF Antarctic IceBreaker Shirase</figcaption>
-      </figure>
-      <div>
-        <amp-img
-          on="tap:lightbox1"
-          role="button"
-          tabindex="0"
-          layout="responsive"
-          className="pikachu"
-          aria-describedby="imageDescription"
-          width={pikachu.width}
-          height={pikachu.height}
-          src={pikachu.src}
-        ></amp-img>
-        <div id="imageDescription">A wild pikachu in WA.</div>
-      </div>
-    </>
+    <amp-image-lightbox id="lightbox1" layout="nodisplay" />
+    <figure>
+      <amp-img
+        on="tap:lightbox1" role="button" tabindex="0" layout="responsive"
+        className="shirase" width={shirase.width} height={shirase.height} src={shirase.src}
+      ></amp-img>
+      <figcaption>JSDF Antarctic IceBreaker Shirase</figcaption>
+    </figure>
+    <div>
+      <amp-img
+        on="tap:lightbox1" role="button" tabindex="0" layout="responsive"
+        className="pikachu" aria-describedby="imageDescription"
+        width={pikachu.width} height={pikachu.height} src={pikachu.src}
+      ></amp-img>
+      <div id="imageDescription">A wild pikachu in WA.</div>
+    </div>
   );
 };
 ```
@@ -278,8 +246,7 @@ const AmpImageLightbox = () => {
 
 中央のスライダーを動かして、画像を比較できる。個人的には Photoshop での画像修正のビフォーアフターを見せる箇所の奴。画像ラベルには通常の div 要素にはない属性を必要とし、.d.ts で拡張することにした。
 
-```typescript
-// index.d.ts
+```typescript:index.d.ts
 import { AriaAttributes, DOMAttributes } from "react";
 declare module "react" {
   interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
@@ -289,7 +256,7 @@ declare module "react" {
 }
 ```
 
-[![Image from Gyazo](https://i.gyazo.com/6e8a5fa9d5b5c601fbc3cd24ecda3383.jpg)](https://gyazo.com/6e8a5fa9d5b5c601fbc3cd24ecda3383)
+![Image from Gyazo](https://i.gyazo.com/6e8a5fa9d5b5c601fbc3cd24ecda3383.jpg)
 
 <!-- <details><summary>code of amp-image-slider</summary><div> -->
 
@@ -301,16 +268,10 @@ const AmpImageSlider = () => {
     <>
       <amp-image-slider layout="responsive" width="100" height="200">
         <amp-img
-          src={lqip.src}
-          alt="lqip"
-          width={pikachu.width}
-          height={pikachu.height}
+          src={lqip.src} alt="lqip" width={pikachu.width} height={pikachu.height}
         ></amp-img>
         <amp-img
-          src={pikachu.src}
-          alt="pikachu"
-          width={pikachu.width}
-          height={pikachu.height}
+          src={pikachu.src} alt="pikachu" width={pikachu.width} height={pikachu.height}
         ></amp-img>
         <div first="">this is pikachu lqip</div>
         <div second="">this is pikachu</div>
@@ -326,7 +287,7 @@ const AmpImageSlider = () => {
 
 amp-carousel も実際に触ってみたが、controls や autoplay、loop に空文字を渡せるように.d.ts に定義する以外は真新しいものは無かったので割愛。ただ、`amp-carousel`に指定できる属性が多く、属性だけで見た目や動作などを大きく変えられるので、弄って遊ぶだけでも面白かった。
 
-[![Image from Gyazo](https://i.gyazo.com/a5bc479d0d7d570a9385d2923ef7301e.jpg)](https://gyazo.com/a5bc479d0d7d570a9385d2923ef7301e)
+![Image from Gyazo](https://i.gyazo.com/a5bc479d0d7d570a9385d2923ef7301e.jpg)
 
 ### others
 

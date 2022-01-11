@@ -43,19 +43,19 @@ rails db:migrate
 
 ### modify routing
 
-```rb
-# app/confing/routes.rb
-# 追加
+追加
+
+```rb:app/confing/routes.rb
 resources :students
 root to: 'students#index'
 ```
 
 ### modify views
 
-```rb
-# app/views/student.html.erb
-# 今回不要なExamResultNewのリンク削除
-# ログアウトリンクの作成
+今回不要なExamResultNewのリンク削除
+ログアウトリンクの作成
+
+```rb:app/views/student.html.erb
 <% @students.each do |student| %>
   <tr>
     <td><%= student.try(:name) %></td>
@@ -73,8 +73,7 @@ root to: 'students#index'
 
 ### modify controller
 
-```rb
-# app/controllers/student_controller.rb
+```rb:app/controllers/student_controller.rb
 class StudentsController < ApplicationController
   before_action :authenticate_student!
 end
