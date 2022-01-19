@@ -1,6 +1,5 @@
 import * as fs from 'fs'
 import * as path from 'path'
-import format from 'date-fns/format'
 
 import type { FrontMatterType } from 'types/markdown'
 import { serializeMdx } from './serializeMdx'
@@ -14,19 +13,18 @@ async function getPostData(fileName: string) {
   const filePath = path.join(POSTS_PATH, fileName)
   const source = fs.readFileSync(filePath).toString()
   const { frontMatter, mdxSource } = await serializeMdx(source)
-  const { title, create, update, tags = [], published = true } = frontMatter as Partial<FrontMatterType>
+  const { title, create, update, tags = [], published = true } = frontMatter as FrontMatterType
 
   const headings = source ? getTableOfContents(source) : []
-  const lastCommit = format(new Date(), 'yyyy-MM-dd')
 
   return {
     fileName: fileName.replace(/\.mdx?$/, ''),
     frontMatter: {
       title: title || 'title is missing.',
-      create: create || format(new Date(), 'yyyy-MM-dd'),
+      create: create,
       tags: tags || [],
       headings,
-      update: update || lastCommit,
+      update: update || create,
       published,
       editUrl: GithubDocPath + fileName,
     },
@@ -39,11 +37,10 @@ export async function getPostsData() {
 
   const promise = postFileNames.map(async (fileName) => getPostData(fileName))
   const posts = (await Promise.all(promise))
-    .filter((post) => post.frontMatter.published)
-    .sort((post1, post2) => (post1.frontMatter.create > post2.frontMatter.create ? -1 : 1))
+    .filter(({ frontMatter }) => frontMatter.create && frontMatter.published)
+    .sort((post1, post2) => (post1.frontMatter.create! > post2.frontMatter.create! ? -1 : 1))
 
   const tags = posts
-    .filter((post) => post.frontMatter.published)
     .map((post) => post.frontMatter.tags)
     .flat()
   const newSetTags = Array.from(new Set(tags)).sort()
