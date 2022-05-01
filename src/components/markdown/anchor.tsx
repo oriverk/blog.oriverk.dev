@@ -3,11 +3,7 @@ import Link from 'next/link'
 const blogPath = process.env.NEXT_PUBLIC_BLOG_PATH || ''
 
 function isExternal(href: string) {
-  if (href.startsWith(blogPath) || href.startsWith('/')) {
-    return false
-  } else {
-    return true
-  }
+  return !(href.startsWith(blogPath) || href.startsWith("/"))
 }
 
 interface AnchorProps {

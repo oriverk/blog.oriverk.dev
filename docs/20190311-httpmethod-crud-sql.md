@@ -36,7 +36,6 @@ from [Qiita: HTTPメソッドとCRUDとSQL](https://qiita.com/OriverK/items/19b9
 | TRACE | プロキシ動作の確保  |
 | CONNECT | プロキシ動作のトンネル接続への変更  |
 
-
 ### CRUD
 
 - CREATE, READ, UPDATE, DELETE の 4 つの単語のイニシャルを並べたもの

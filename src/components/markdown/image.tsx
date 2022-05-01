@@ -2,11 +2,7 @@ import { styled } from 'goober'
 
 function isImgur(src: string) {
   const RE = /\.(webp|png|jpe?g)$/gi
-  if (src.startsWith('https://i.imgur.com') && !RE.test(src)) {
-    return true
-  } else {
-    return false
-  }
+  return src.startsWith('https://i.imgur.com') && !RE.test(src)
 }
 
 interface PassedProps {
