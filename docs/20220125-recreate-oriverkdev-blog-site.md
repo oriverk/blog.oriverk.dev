@@ -12,7 +12,6 @@ published: false
 
 2020 年頭に宮崎県版 COVID-19 対策サイトの活動の中で Vue.js に触れたこと、[Next.js が SSG 等を公開](https://nextjs.org/blog/next-9-3)した事をきっかけに、以前のサイトをつくりました。
 
-
 - JS 関連
   - React, Next.js, TypeScript
 - Material-UI
