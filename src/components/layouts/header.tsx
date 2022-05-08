@@ -10,7 +10,7 @@ interface Props {
   className?: string
 }
 
-const Component: React.VFC<Props> = (props) => {
+const Component = (props: Props) => {
   return (
     <header {...props}>
       <nav>
@@ -72,6 +72,6 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const ContainerComponent: React.VFC = () => <StyledComponent />
+const ContainerComponent: React.FC = () => <StyledComponent />
 
 export const Header = ContainerComponent

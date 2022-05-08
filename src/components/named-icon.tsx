@@ -8,13 +8,14 @@ interface PassedProps {
   fontSize: number
   width: number
   height: number
+  children: React.ReactNode;
 }
 
 interface Props extends PassedProps {
-  className?: string
+  className?: string;
 }
 
-const Component: React.FC<Props> = (props) => {
+const Component = (props: Props) => {
   const { className, children, name } = props
   return (
     <div className={className}>

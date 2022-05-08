@@ -9,7 +9,7 @@ interface Props extends PassedProps {
   className?: string
 }
 
-const Component: React.FC<Props> = (props) => {
+const Component = (props: Props) => {
   const { className, id, children } = props
 
   return (

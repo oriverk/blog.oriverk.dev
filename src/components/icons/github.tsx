@@ -5,7 +5,7 @@ interface Props extends SvgIconProps {
   className?: string
 }
 
-const Component: React.VFC<Props> = (props) => {
+const Component = (props: Props) => {
   const { title, label, color: fill, ...restProps } = props
 
   return (
@@ -22,7 +22,7 @@ const StyledComponent = styled(Component)`
   height: ${(props) => props.size / 4 + 'rem'};
 `
 
-const ContainerComponent: React.VFC<Partial<SvgIconProps>> = (props) => {
+const ContainerComponent: React.FC<Partial<SvgIconProps>> = (props) => {
   const { color = '#FFF', size = 4, role = 'presentation', ...rest } = props
   const modified = { color, size, role, ...rest }
 

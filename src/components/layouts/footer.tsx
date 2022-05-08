@@ -8,7 +8,7 @@ const year = new Date().getFullYear()
 const nextjs = 'https://nextjs.org/'
 const vercel = 'https://vercel.com/'
 
-const Component: React.VFC<Props> = (props) => {
+const Component = (props: Props) => {
   return (
     <footer {...props}>
       <div>
@@ -53,6 +53,6 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const ContainerComponent: React.VFC = () => <StyledComponent />
+const ContainerComponent: React.FC = () => <StyledComponent />
 
 export const Footer = ContainerComponent

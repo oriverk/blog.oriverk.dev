@@ -7,7 +7,7 @@ interface Props {
   className?: string
 }
 
-const Component: React.VFC<Props> = (props) => {
+const Component: React.FC<Props> = (props) => {
   const { className } = props
   return (
     <Layout title="404: Page not found" path="/404/">
@@ -28,7 +28,7 @@ const StyledCompoent = styled(Component)`
   align-items: center;
 `
 
-const ContainerComponent: React.VFC = () => <StyledCompoent />
+const ContainerComponent: React.FC = () => <StyledCompoent />
 
 const PageComponent = ContainerComponent
 

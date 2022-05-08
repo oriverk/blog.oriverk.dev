@@ -10,7 +10,7 @@ interface PassedProps {
   children: any
 }
 
-export const CodeBlock: React.VFC = (props: any) => {
+export const CodeBlock: React.FC = (props: any) => {
   const { className, children } = props.children.props as PassedProps
   const [language, filename] = className?.replace(/language-/, '').split(':') as [Language, string]
   const rawCode = children.trim()

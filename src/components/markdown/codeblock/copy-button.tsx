@@ -9,7 +9,7 @@ interface Props extends PasssedProps {
   className?: string
 }
 
-const Component: React.VFC<Props> = ({ className, code }) => {
+const Component = ({ className, code }: Props) => {
   const [state, copyToClipboard] = useCopyToClipboard()
 
   return (
@@ -25,6 +25,6 @@ const StyledComponent = styled(Component)`
   padding: 0.2rem 0.5rem;
 `
 
-const ContainerComponent: React.VFC<PasssedProps> = (props) => <StyledComponent {...props} />
+const ContainerComponent: React.FC<PasssedProps> = (props) => <StyledComponent {...props} />
 
 export const CopyButton = ContainerComponent

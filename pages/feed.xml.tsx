@@ -2,7 +2,7 @@ import { GetServerSidePropsContext } from 'next'
 
 import { generateFeedXml } from 'utils/feed'
 
-const Page: React.VFC = () => null
+const Page: React.FC = () => null
 export default Page
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {

@@ -16,7 +16,7 @@ const FlexWrapper = styled('div')`
   display: flex;
 `
 
-const Page: React.VFC<PostType> = (props) => {
+const Page: React.FC<PostType> = (props) => {
   const { fileName, mdxSource, frontMatter } = props
   const { title, create, update, tags, headings, editUrl } = frontMatter
   const dateString = update || create

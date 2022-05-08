@@ -4,7 +4,7 @@ export interface DateFormatterProps {
   dateString: string
 }
 
-export const DateFormatter: React.VFC<DateFormatterProps> = (props) => {
+export const DateFormatter: React.FC<DateFormatterProps> = (props) => {
   const { dateString } = props
   const date = parseISO(dateString)
 

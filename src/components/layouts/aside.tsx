@@ -9,7 +9,7 @@ interface Props extends PassedProps {
   className?: string
 }
 
-const Component: React.FC<Props> = (props) => <aside {...props} />
+const Component = (props: Props) => <aside {...props} />
 
 const StyledComponent = styled(Component)`
   @media screen and (min-width: 48em) {

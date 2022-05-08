@@ -4,7 +4,7 @@ interface Props {
   className?: string
 }
 
-const Component: React.VFC<Props> = (props) => {
+const Component: React.FC<Props> = (props) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="120" height="16" {...props}>
       <g fill="none" fillRule="evenodd">
@@ -29,7 +29,7 @@ const Component: React.VFC<Props> = (props) => {
 
 const StyledComponent = styled(Component)``
 
-const ContainerComponent: React.VFC = () => {
+const ContainerComponent: React.FC = () => {
   return <StyledComponent />
 }
 

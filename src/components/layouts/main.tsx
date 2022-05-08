@@ -1,5 +1,9 @@
 import { styled } from 'goober'
 
+interface Props {
+  children: React.ReactNode;
+}
+
 const StyledComponent = styled('main')`
   flex: 1;
   overflow: hidden;
@@ -7,6 +11,6 @@ const StyledComponent = styled('main')`
   justify-content: center;
 `
 
-const ContainerComponent: React.FC = (props) => <StyledComponent {...props} />
+const ContainerComponent: React.FC<Props> = (props) => <StyledComponent {...props} />
 
 export const Main = ContainerComponent

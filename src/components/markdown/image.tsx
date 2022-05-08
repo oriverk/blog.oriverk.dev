@@ -14,7 +14,7 @@ interface Props extends PassedProps {
   className?: string
 }
 
-const Component: React.FC<Props> = (props) => {
+const Component = (props: Props) => {
   const { className, src, alt = 'image' } = props
   const imgSrc = isImgur(src) ? src + '.png' : src
 

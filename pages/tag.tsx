@@ -22,7 +22,7 @@ interface PostsProps {
   tags: FrontMatterType['tags']
 }
 
-const Page: React.VFC<PostsProps> = (props) => {
+const Page: React.FC<PostsProps> = (props) => {
   const { posts, tags } = props
 
   return (

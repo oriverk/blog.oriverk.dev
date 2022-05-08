@@ -8,7 +8,7 @@ interface HitProps extends Pick<FrontMatterType, 'title' | 'create' | 'update' |
   id: PostType['fileName']
 }
 
-const Hits: React.VFC<HitsProvided<Hit<HitProps>>> = ({ hits }) => {
+const Hits: React.FC<HitsProvided<Hit<HitProps>>> = ({ hits }) => {
   return (
     <>
       {hits.map((hit) => (

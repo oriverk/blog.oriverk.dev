@@ -12,7 +12,7 @@ interface Props extends PassedProps {
   className?: string
 }
 
-const Component: React.VFC<Props> = (props) => {
+const Component = (props: Props) => {
   const { className, error, searchState, searchResults } = props
   const hasResults = searchResults && searchResults.nbHits !== 0
   const nbHits = searchResults && searchResults.nbHits
@@ -44,6 +44,6 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const ContainerComponent: React.VFC<PassedProps> = (props) => <StyledComponent {...props} />
+const ContainerComponent: React.FC<PassedProps> = (props) => <StyledComponent {...props} />
 
 export const CustomStateResults = connectStateResults(ContainerComponent)

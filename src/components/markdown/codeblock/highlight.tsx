@@ -1,4 +1,3 @@
-import { useState, useCallback } from 'react'
 import { styled } from 'goober'
 import BaseHighlight, { defaultProps, Language, PrismTheme } from 'prism-react-renderer'
 import { LineNumber } from './line-number'
@@ -17,7 +16,7 @@ interface HighlightProps {
   showLines?: boolean
 }
 
-const Highlight: React.VFC<HighlightProps> = (props) => {
+const Highlight: React.FC<HighlightProps> = (props) => {
   const { codeString, language, showLines, ...rest } = props
 
   return (

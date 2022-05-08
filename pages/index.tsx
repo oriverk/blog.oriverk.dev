@@ -20,7 +20,7 @@ interface PostsProps {
   posts: Omit<PostType, 'mdxSource'>[]
 }
 
-const Page: React.VFC<PostsProps> = (props) => {
+const Page: React.FC<PostsProps> = (props) => {
   const { posts } = props
 
   return (

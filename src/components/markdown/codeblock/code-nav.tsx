@@ -10,7 +10,7 @@ interface Props extends PassedProps {
   className?: string
 }
 
-const Component: React.VFC<Props> = (props) => {
+const Component = (props: Props) => {
   const { className, filename, rawCode } = props
 
   return (
@@ -32,6 +32,6 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const ContainerComponent: React.VFC<PassedProps> = (props) => <StyledComponent {...props} />
+const ContainerComponent: React.FC<PassedProps> = (props) => <StyledComponent {...props} />
 
 export const CodeNav = ContainerComponent

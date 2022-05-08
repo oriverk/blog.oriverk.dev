@@ -7,7 +7,7 @@ interface Props {
   className?: string
 }
 
-const Component: React.VFC<Props> = (props) => {
+const Component: React.FC<Props> = (props) => {
   const { className } = props
   return (
     <a className={className} href="https://www.algolia.com" target="_blank" rel="noopener noreferrer">
@@ -20,7 +20,7 @@ const StyledComponent = styled(Component)`
   display: inline-flex;
 `
 
-const ContainerComponent: React.VFC = () => {
+const ContainerComponent: React.FC = () => {
   return <StyledComponent />
 }
 

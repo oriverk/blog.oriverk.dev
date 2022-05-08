@@ -11,7 +11,11 @@ const StyledComponent = styled('div')`
   min-height: 100vh;
 `
 
-export const Layout: React.FC<CustomSeoProps> = (props) => {
+interface Props extends CustomSeoProps {
+  children: React.ReactNode;
+}
+
+export const Layout: React.FC<Props> = (props) => {
   const { children, ...restSeoProps } = props
   return (
     <>
