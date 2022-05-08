@@ -1,7 +1,7 @@
 import type { SerializeOptions } from 'next-mdx-remote/dist/types'
 import { serialize } from 'next-mdx-remote/serialize'
 import matter from 'gray-matter'
-import remarkComment from 'remark-comment';
+import remarkComment from 'remark-comment'
 import rehypeSlug from 'rehype-slug'
 
 export async function serializeMdx(source: string) {

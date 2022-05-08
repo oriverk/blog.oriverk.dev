@@ -8,11 +8,11 @@ interface PassedProps {
   fontSize: number
   width: number
   height: number
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 interface Props extends PassedProps {
-  className?: string;
+  className?: string
 }
 
 const Component = (props: Props) => {

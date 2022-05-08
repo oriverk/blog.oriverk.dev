@@ -19,5 +19,5 @@ export {
   TagIcon,
   SearchIcon,
   AlgoliaIcon,
-  OpenInNewIcon
+  OpenInNewIcon,
 }

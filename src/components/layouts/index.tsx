@@ -12,7 +12,7 @@ const StyledComponent = styled('div')`
 `
 
 interface Props extends CustomSeoProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export const Layout: React.FC<Props> = (props) => {

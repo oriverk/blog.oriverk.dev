@@ -1,7 +1,7 @@
 import { styled } from 'goober'
 
 interface Props {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 const StyledComponent = styled('main')`
