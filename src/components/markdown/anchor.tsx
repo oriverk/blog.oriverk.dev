@@ -6,12 +6,12 @@ function isExternal(href: string) {
   return !(href.startsWith(blogPath) || href.startsWith("/"))
 }
 
-interface AnchorProps {
+export interface Props {
   href: string
   children: string | object
 }
 
-export const Anchor: React.VFC<AnchorProps> = (props) => {
+export const Anchor: React.FC<Props> = (props) => {
   const { href, ...restProps } = props
   
   if (isExternal(href)) {

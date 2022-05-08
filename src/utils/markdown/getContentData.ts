@@ -8,6 +8,7 @@ import { getTableOfContents } from './getTableOfContents'
 const POSTS_PATH = path.join(process.cwd(), 'docs')
 const GithubPath = process.env.NEXT_PUBLIC_GITHUB_PATH
 const GithubDocPath = GithubPath + '/blob/main/docs/'
+const isDev = process.env.NODE_ENV === 'development';
 
 async function getPostData(fileName: string) {
   const filePath = path.join(POSTS_PATH, fileName)
@@ -37,7 +38,8 @@ export async function getPostsData() {
 
   const promise = postFileNames.map(async (fileName) => getPostData(fileName))
   const posts = (await Promise.all(promise))
-    .filter(({ frontMatter }) => frontMatter.create && frontMatter.published)
+    .filter(({ frontMatter }) => frontMatter.create)
+    .filter(({ frontMatter }) => (isDev ? true : frontMatter.published))
     .sort((post1, post2) => (post1.frontMatter.create! > post2.frontMatter.create! ? -1 : 1))
 
   const tags = posts

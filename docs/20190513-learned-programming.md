@@ -129,7 +129,5 @@ JS 等、追加で勉強しなければと感じています。
 - 講師: [＠monkey_d_george](https://twitter.com/monkey_d_george)
   - [Value Space of Cebu](http://value-space.net/)
   - [プログラミング道場](https://programming-dojo.com/%E7%A7%81%E3%81%AE%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA/)
-- 私: <https://oriverk.dev>
+- [自サイト](https://oriverk.dev)
   - [Github Acount](https://github.com/oriverk)
-
-注）『転職』といった形で恩を返す？　事が出来ないので、今回の投稿となりました。

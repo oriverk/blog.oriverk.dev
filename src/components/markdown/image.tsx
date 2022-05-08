@@ -5,7 +5,7 @@ function isImgur(src: string) {
   return src.startsWith('https://i.imgur.com') && !RE.test(src)
 }
 
-interface PassedProps {
+export interface PassedProps {
   src: string
   alt: string
 }
@@ -14,7 +14,7 @@ interface Props extends PassedProps {
   className?: string
 }
 
-const Component: React.VFC<Props> = (props) => {
+const Component: React.FC<Props> = (props) => {
   const { className, src, alt = 'image' } = props
   const imgSrc = isImgur(src) ? src + '.png' : src
 
@@ -34,6 +34,6 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const ContainerComponent: React.VFC<PassedProps> = (props) => <StyledComponent {...props} />
+const ContainerComponent: React.FC<PassedProps> = (props) => <StyledComponent {...props} />
 
 export const Image = ContainerComponent

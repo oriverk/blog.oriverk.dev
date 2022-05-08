@@ -14,10 +14,10 @@ const StyledComponent = styled('code')`
   }
 `
 
-interface Props {
+export interface Props {
   children: string
 }
 
-export const InlineCode: React.VFC<Props> = (props) => {
+export const InlineCode: React.FC<Props> = (props) => {
   return <StyledComponent {...props} translate="no" />
 }

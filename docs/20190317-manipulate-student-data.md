@@ -161,7 +161,7 @@ Subject.create(name: '英語', max_score: 200);
 # ...
 ```
 
-### (0..20).map{('あ'..'わ').to_a[rand(26)]}.join
+### `(0..20).map{('あ'..'わ').to_a[rand(26)]}.join`
 
 #### 範囲オブジェクト
 

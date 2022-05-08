@@ -17,7 +17,7 @@ published: true
 
 ### AMP（Accelerated Mobile Pages）
 
-Google と Twitter による開発のキャッシュ等によるモバイル表示高速化技術。AMP Websites,　Stories, Ads, Email の 4 つがあり、検索ページでは AMP 対応サイトは雷⚡マークが表示される。今回は AMP Websites を利用する。
+Google と Twitter による開発のキャッシュ等によるモバイル表示高速化技術。AMP Websites, Stories, Ads, Email の 4 つがあり、検索ページでは AMP 対応サイトは雷⚡マークが表示される。今回は AMP Websites を利用する。
 
 reference: [amp.dev - AMP HTML 仕様](https://amp.dev/ja/documentation/guides-and-tutorials/learn/spec/amphtml/?format=websites)
 <!-- 

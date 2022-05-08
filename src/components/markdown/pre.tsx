@@ -6,4 +6,4 @@ const StyledComponent = styled('div')`
   border-radius: 0.125rem;
 `
 
-export const Pre: React.VFC = (props: any) => <StyledComponent {...props} className="codeblock-container" />
+export const Pre: React.FC = (props: any) => <StyledComponent {...props} className="codeblock-container" />

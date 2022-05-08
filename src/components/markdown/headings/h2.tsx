@@ -1,6 +1,6 @@
 import { styled } from 'goober'
 
-interface PassedProps {
+export interface PassedProps {
   id: string
   children: string
 }
@@ -9,7 +9,7 @@ interface Props extends PassedProps {
   className?: string
 }
 
-const Component: React.VFC<Props> = (props) => {
+const Component: React.FC<Props> = (props) => {
   const { className, id, children } = props
 
   return (

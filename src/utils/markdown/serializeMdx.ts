@@ -1,6 +1,7 @@
 import type { SerializeOptions } from 'next-mdx-remote/dist/types'
 import { serialize } from 'next-mdx-remote/serialize'
 import matter from 'gray-matter'
+import remarkComment from 'remark-comment';
 import rehypeSlug from 'rehype-slug'
 
 export async function serializeMdx(source: string) {
@@ -9,10 +10,9 @@ export async function serializeMdx(source: string) {
   const serializeOptions: SerializeOptions = {
     scope: data,
     mdxOptions: {
-      remarkPlugins: [],
+      remarkPlugins: [remarkComment],
       rehypePlugins: [rehypeSlug],
     },
-    target: 'esnext',
   }
 
   const mdxSource = await serialize(content, serializeOptions)
