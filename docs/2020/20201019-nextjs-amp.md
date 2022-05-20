@@ -182,7 +182,7 @@ declare namespace JSX {
 
 #### amp-img
 
-[以前に画像最適化した際](https://oriverk.dev/posts/20200921-optimized-images)に使った `next-optimized-images` を今回も併用した。
+[以前に画像最適化した際](https://oriverk.dev/entry/2020/20200921-optimized-images)に使った `next-optimized-images` を今回も併用した。
 
 また fallback にはエラー回避の為に、空文字を渡しておいた。これは[Reactの仕様に起因](https://reactjs.org/docs/jsx-in-depth.html#props-default-to-true)していて、[React issue#9230](https://github.com/facebook/react/issues/9230)が一番参考になった。これによる Next.js 側の issue だと、[#8861](https://github.com/vercel/next.js/issues/8861)、[#10000](https://github.com/vercel/next.js/issues/10000)、[#12708](https://github.com/vercel/next.js/issues/12708)がある。attribute が違うだけで、原因は全部同じようだ。
 
