@@ -4,10 +4,20 @@ const matter = require('gray-matter')
 const removeMd = require('remove-markdown')
 const assert = require('assert').strict
 
+function getAllFiles(dir){
+  return fs.readdirSync(dir).reduce((files, file) => {
+    const name = path.join(dir, file);
+    const isDirectory = fs.statSync(name).isDirectory();
+    return isDirectory ? [...files, ...getAllFiles(name)] : [...files, name];
+  },
+    []
+  )
+};
+
 function getNecessayContents(content) {
   const notAscii = /[^\x00-\x7F]/gim // = 全角
   const symbols = /[\.\,\?\|\&\:\(\)\*\+\$\{\}\[\]\/\<\>\=%~'";@]/gim
-  const codeBlock = /```[a-z]*\n?[\s\S]*?\n?```/gim
+  // const codeBlock = /```[a-z]*\n?[\s\S]*?\n?```/gim
   // const codeRemoved = content.replace(codeBlock, ' ')
   const removed = removeMd(content)
     .replace(notAscii, ' ')
@@ -18,12 +28,11 @@ function getNecessayContents(content) {
 }
 
 function getPostsData() {
-  const docsDir = path.join(process.cwd(), `docs`)
-  const fileNames = fs.readdirSync(docsDir)
+  const fileNames = getAllFiles('docs');
 
   const postsData = fileNames.map((name) => {
     const id = name.replace(/\.mdx?$/, '')
-    const fullPath = path.join(docsDir, name)
+    const fullPath = path.join(process.cwd(), name)
     const contents = fs.readFileSync(fullPath, 'utf8')
     const matterResult = matter(contents)
 
@@ -46,9 +55,11 @@ function getPostsData() {
 
 function genPostsMap() {
   const postsData = getPostsData()
-  const previousPostsMap = JSON.parse(fs.readFileSync(
-    path.join(process.cwd(), `gen/postsMap.json`), 'utf8'
-  ))
+  const postsMapPath = path.join(process.cwd(), 'gen/postsMap.json');
+  
+  const previousPostsMap = fs.existsSync(postsMapPath)
+    ? JSON.parse(fs.readFileSync(postsMapPath, 'utf8'))
+    : {};
 
   try {
     assert.deepStrictEqual(postsData, previousPostsMap, 'These data are different')

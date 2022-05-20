@@ -41,7 +41,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = posts.map((post) => {
     return {
       params: {
-        slug: post.fileName,
+        slug: post.fileName.split("/"),
       },
     }
   })
@@ -53,15 +53,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug } = params as Record<string, string | string[]>
+  const { slug } = params as Record<string, string[]>
   const { posts } = await getPostsData()
-  const post = posts.find((post) => post.fileName === slug)
+  const post = posts.find((post) => post.fileName === slug.join("/"))
 
   if (!post) {
     throw new Error(`No content found for ${slug}`)
   }
 
-  const { fileName, frontMatter, mdxSource } = post
+  const { fileName, frontMatter, mdxSource } = post!
 
   return {
     props: {

@@ -10,16 +10,17 @@ const GithubPath = process.env.NEXT_PUBLIC_GITHUB_PATH
 const GithubDocPath = GithubPath + '/blob/main/docs/'
 const isDev = process.env.NODE_ENV === 'development'
 
-async function getPostData(fileName: string) {
-  const filePath = path.join(POSTS_PATH, fileName)
-  const source = fs.readFileSync(filePath).toString()
+async function getPostData(localFilePath: string) {
+  const source = fs.readFileSync(localFilePath).toString()
   const { frontMatter, mdxSource } = await serializeMdx(source)
   const { title, create, update, tags = [], published = true } = frontMatter as FrontMatterType
 
   const headings = source ? getTableOfContents(source) : []
+  let regexp = new RegExp(`${POSTS_PATH}\/|.mdx?$`, 'g');
+  const filePath = localFilePath.replace(regexp, "");
 
   return {
-    fileName: fileName.replace(/\.mdx?$/, ''),
+    fileName: filePath,
     frontMatter: {
       title: title || 'title is missing.',
       create: create,
@@ -27,14 +28,15 @@ async function getPostData(fileName: string) {
       headings,
       update: update || create,
       published,
-      editUrl: GithubDocPath + fileName,
+      editUrl: path.join(GithubDocPath, filePath),
     },
     mdxSource,
   }
 }
 
 export async function getPostsData() {
-  const postFileNames = fs.readdirSync(POSTS_PATH).filter((path) => /\.mdx?$/.test(path))
+  const postFileNames = getAllFiles(POSTS_PATH)
+    .filter((path) => /\.mdx?$/.test(path))
 
   const promise = postFileNames.map(async (fileName) => getPostData(fileName))
   const posts = (await Promise.all(promise))
@@ -47,3 +49,14 @@ export async function getPostsData() {
 
   return { posts, allTags: newSetTags }
 }
+
+
+function getAllFiles(dir: string){
+  return fs.readdirSync(dir).reduce((files: string[], file): string[] => {
+    const name = path.join(dir, file);
+    const isDirectory = fs.statSync(name).isDirectory();
+    return isDirectory ? [...files, ...getAllFiles(name)] : [...files, name];
+  },
+    []
+  )
+};
