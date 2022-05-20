@@ -19,6 +19,7 @@ const Component = (props: Props) => {
   )
 }
 
+// css content: refernce: https://blog.jxck.io/entries/2022-03-06/markdown-style-table-css.html#alternative-text
 const StyledComponent = styled(Component)`
   padding-bottom: 0.2rem;
   margin-bottom: 1.1rem;
@@ -26,7 +27,10 @@ const StyledComponent = styled(Component)`
   border-bottom: 1px solid var(--color-gray);
   & {
     a::before {
+      /* Safari 用のフォールバック */
       content: '## ';
+      /* 読み上げ等に対しては空文字として認識させる */
+      content: '## ' / '';
     }
     a {
       color: var(--color-white);

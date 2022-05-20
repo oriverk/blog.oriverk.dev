@@ -54,7 +54,10 @@ const StyledComponent = styled(Component)`
 
   strong::before,
   strong::after {
+    /* Safari 用のフォールバック */
     content: '**';
+    /* 読み上げ等に対しては空文字として認識させる */
+    content: '**' / '';
   }
 
   hr {

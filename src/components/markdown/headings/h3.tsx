@@ -24,6 +24,7 @@ const StyledComponent = styled(Component)`
   & {
     a::before {
       content: '## ';
+      content: '## ' / '';
     }
     a {
       color: var(--color-white);

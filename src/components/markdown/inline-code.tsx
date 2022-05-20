@@ -11,6 +11,7 @@ const StyledComponent = styled('code')`
   &::before,
   &::after {
     content: '\`';
+    content: '\`' / '';
   }
 `
 

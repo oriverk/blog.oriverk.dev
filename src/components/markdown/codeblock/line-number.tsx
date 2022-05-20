@@ -28,6 +28,7 @@ const StyledComponent = styled(Component)`
   font-size: 1rem;
   & > span::before {
     content: attr(data-line-number);
+    content: attr(data-line-number) / '';
   }
 `
 
