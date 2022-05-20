@@ -1,5 +1,6 @@
 import { styled } from 'goober'
 import Link from 'next/link'
+import * as path from 'path'
 import { DateFormatter } from './date-formatter'
 import { FrontMatterType } from 'types/markdown'
 
@@ -19,7 +20,7 @@ const Component = (props: Props) => {
   return (
     <section className={className} key={key}>
       <h3>
-        <Link href={`/entry/${slug}/`}>
+        <Link href={path.join('/entry', slug)}>
           <a>{title}</a>
         </Link>
       </h3>

@@ -4,7 +4,15 @@ const matter = require('gray-matter')
 const removeMd = require('remove-markdown')
 const assert = require('assert').strict
 
-function getAllFiles(dir){
+require('dotenv').config({ path: '.env.local' })
+
+const POSTS_PATH = path.join(process.cwd(), 'docs')
+
+/**
+ * @param dir ex: /home/oriverk/Codes/oriverk/blog/docs
+ * @returns [/home/oriverk/Codes/oriverk/blog/docs/2022/memo.md]
+ */
+function getAllFiles(dir) {
   return fs.readdirSync(dir).reduce((files, file) => {
     const name = path.join(dir, file);
     const isDirectory = fs.statSync(name).isDirectory();
@@ -15,47 +23,61 @@ function getAllFiles(dir){
 };
 
 function getNecessayContents(content) {
-  const notAscii = /[^\x00-\x7F]/gim // = 全角
-  const symbols = /[\.\,\?\|\&\:\(\)\*\+\$\{\}\[\]\/\<\>\=%~'";@]/gim
-  // const codeBlock = /```[a-z]*\n?[\s\S]*?\n?```/gim
-  // const codeRemoved = content.replace(codeBlock, ' ')
-  const removed = removeMd(content)
-    .replace(notAscii, ' ')
-    .replace(symbols, ' ')
-    .replace(/\s{2,}|\n/gim, ' ')
+  // const notAscii = /[^\x00-\x7F]/gim // = 全角
+  const codeBlock = /^`{3}[a-z]*\n?[\s\S]*?\n?`{3}$/gim
+  const removed = removeMd(content.replace(codeBlock, ' '))
+    // .replace(codeBlock, ' ')
+    .replace(/[\d-\|\.~\/=>"_\n:：\(\)（）　]/g, ' ')
+    .replace(/\s[a-z]{0,2}\s/gi, ' ')
+    .replace(/ {2,}/g, '')
+    .trim()
 
   return removed
 }
 
-function getPostsData() {
-  const fileNames = getAllFiles('docs');
-
-  const postsData = fileNames.map((name) => {
-    const id = name.replace(/\.mdx?$/, '')
-    const fullPath = path.join(process.cwd(), name)
-    const contents = fs.readFileSync(fullPath, 'utf8')
-    const matterResult = matter(contents)
-
-    const { title, create = '', update = '', published = false } = matterResult.data
-    const tags = matterResult.data.tags.map((tag) => tag.toLowerCase()).sort() || ''
-    const content = getNecessayContents(matterResult.content)
-
-    return { id, title, create, update, tags, content, published }
-  })
-    .filter(post => post.published)
+/**
+ * @param localFilePath
+ * ex: /home/oriverk/Codes/oriverk/blog/docs/2022/memo.md
+ * @returns
+ */
+async function getPostData(localFilePath) {
+  const source = fs.readFileSync(localFilePath).toString()
+  const { data, content } = matter(source)
+  const { title, create = '', update = '', published = false, tags } = data;
   
-  return postsData.sort((a, b) => {
-    if (a.create < b.create) {
-      return 1
-    } else {
-      return -1
-    }
-  })
+  let regexp = new RegExp(`${POSTS_PATH}\/|.mdx?$`, 'g')
+  // ex: 2022/20220505-ubuntu2204
+  const id = localFilePath.replace(regexp, '')
+
+  return {
+    id,
+    title,
+    create,
+    update,
+    tags: tags.map(tag => tag.toLowerCase()).sort() || '',
+    content: getNecessayContents(content),
+    published
+  }
 }
 
-function genPostsMap() {
-  const postsData = getPostsData()
-  const postsMapPath = path.join(process.cwd(), 'gen/postsMap.json');
+async function getPostsDataX() {
+  const postFileNames = getAllFiles(POSTS_PATH)
+    .filter((path) => /\.mdx?$/.test(path))
+
+  const promise = postFileNames
+    .map(async (fileName) => getPostData(fileName))
+
+  const posts = (await Promise.all(promise))
+    .filter(({ create }) => create)
+    .filter(({ published }) => published)
+    .sort((post1, post2) => (post1.create > post2.create ? -1 : 1))
+  
+  return posts
+}
+
+async function genPostsMap() {
+  const postsData = await getPostsDataX()
+  const postsMapPath = path.join(process.cwd(), 'script/postsMap.json');
   
   const previousPostsMap = fs.existsSync(postsMapPath)
     ? JSON.parse(fs.readFileSync(postsMapPath, 'utf8'))
@@ -66,7 +88,7 @@ function genPostsMap() {
   } catch (err) {
     try {
       fs.writeFileSync(
-        path.join(process.cwd(), `gen/postsMap.json`),
+        path.join(process.cwd(), `script/postsMap.json`),
         JSON.stringify(postsData, undefined, 2),
         'utf-8'
       )

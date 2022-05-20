@@ -13,14 +13,13 @@ async function pushData2Algolia() {
   const index = client.initIndex(IndexName)
 
   const posts = JSON.parse(fs.readFileSync(
-    path.join(process.cwd(), `gen/postsMap.json`), 'utf8'
+    path.join(process.cwd(), `script/postsMap.json`), 'utf8'
   ))
-  const postsWithObjectID = posts.map((post) => {
-    const objectID = `/entry/${post.id}`
-    return {
-      objectID: objectID,
-      ...post
-    }
+    .map(post => {
+      return {
+        objectID: post.id,
+        ...post
+      }
   })
 
   // just add
@@ -29,7 +28,7 @@ async function pushData2Algolia() {
   // partial update
   // https://www.algolia.com/doc/api-reference/api-methods/partial-update-objects/#partially-update-multiple-objects-using-one-api-call-and-send-extra-http-headers
   try {
-    await index.partialUpdateObjects(postsWithObjectID, { createIfNotExists: true, })
+    await index.partialUpdateObjects(posts, { createIfNotExists: true, })
       .then(({ objectIDs }) => {
         console.log(`post data for was successfull pushed to Algolia!`)
         console.log(objectIDs)
@@ -38,6 +37,16 @@ async function pushData2Algolia() {
     console.log('Error occurred!')
     console.error(error.message)
   }
+
+  // delete
+  // try {
+  //   await index.deleteObjects(posts.map(post => post.objectID)).then(({ objectIDs }) => {
+  //     console.log(objectIDs);
+  //   });
+  // } catch (error){
+  //   console.log('Error occurred!')
+  //   console.error(error.message)
+  // }
 }
 
 pushData2Algolia()
