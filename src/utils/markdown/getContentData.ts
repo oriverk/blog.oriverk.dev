@@ -16,8 +16,8 @@ async function getPostData(localFilePath: string) {
   const { title, create, update, tags = [], published = true } = frontMatter as FrontMatterType
 
   const headings = source ? getTableOfContents(source) : []
-  let regexp = new RegExp(`${POSTS_PATH}\/|.mdx?$`, 'g');
-  const filePath = localFilePath.replace(regexp, "");
+  let regexp = new RegExp(`${POSTS_PATH}\/|.mdx?$`, 'g')
+  const filePath = localFilePath.replace(regexp, '')
 
   return {
     fileName: filePath,
@@ -35,8 +35,7 @@ async function getPostData(localFilePath: string) {
 }
 
 export async function getPostsData() {
-  const postFileNames = getAllFiles(POSTS_PATH)
-    .filter((path) => /\.mdx?$/.test(path))
+  const postFileNames = getAllFiles(POSTS_PATH).filter((path) => /\.mdx?$/.test(path))
 
   const promise = postFileNames.map(async (fileName) => getPostData(fileName))
   const posts = (await Promise.all(promise))
@@ -50,13 +49,10 @@ export async function getPostsData() {
   return { posts, allTags: newSetTags }
 }
 
-
-function getAllFiles(dir: string){
+function getAllFiles(dir: string) {
   return fs.readdirSync(dir).reduce((files: string[], file): string[] => {
-    const name = path.join(dir, file);
-    const isDirectory = fs.statSync(name).isDirectory();
-    return isDirectory ? [...files, ...getAllFiles(name)] : [...files, name];
-  },
-    []
-  )
-};
+    const name = path.join(dir, file)
+    const isDirectory = fs.statSync(name).isDirectory()
+    return isDirectory ? [...files, ...getAllFiles(name)] : [...files, name]
+  }, [])
+}
