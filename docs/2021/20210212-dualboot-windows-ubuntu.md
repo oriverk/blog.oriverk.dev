@@ -89,7 +89,7 @@ sudo install ffmpeg
 
 ## 各種ソフトウェアのインストール
 
-基本的に`sudo apt install` で済ましたいと思っています。
+基本的に`sudo apt install` で済ましたい
 
 ### 不要ソフトのアンインストール
 
@@ -111,8 +111,6 @@ Ubuntu 用に .deb が用意されているので、取り敢えず DL。
 # dl先にて
 sudo apt install ./google-chrome-stable_current_amd64.deb
 ```
-
-Ubuntu シングルサインオン？　Google のパスワード管理で十分です。非 Ubuntu の PC でも Chrome さえ入れれば使えるので。
 
 ### slack
 

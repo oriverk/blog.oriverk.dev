@@ -21,13 +21,9 @@ published: true
 - image optimizer: [cyrilwanner / next-optimized-images](https://github.com/cyrilwanner/next-optimized-images)
 - host on Vercel
 
-|![Image from Gyazo](https://i.gyazo.com/b3a6bea1c281fac879e9d9e0e824523a.jpg)|
-|-:|
-|トップページ|
+![Image from Gyazo](https://i.gyazo.com/b3a6bea1c281fac879e9d9e0e824523a.jpg "トップページ")
 
-|![Image from Gyazo](https://i.gyazo.com/e8558777eac747332b3130719f741adb.png)|
-|-:|
-|投稿一覧|
+![Image from Gyazo](https://i.gyazo.com/e8558777eac747332b3130719f741adb.png "投稿一覧")
 
 ### 現在のサイト
 
@@ -46,17 +42,11 @@ published: true
 
 oriverk.dev と blog.oriverk.dev で分けた理由は、別々の技術・言語でやれる機会が出来るからだけです。
 
-|![oriverk.dev](https://i.imgur.com/H29hzzB.webp)|
-|-:|
-|oriverk.dev|
+![oriverk.dev](https://i.imgur.com/H29hzzB.webp "oriverk.dev")
 
-|![blog.oriverk.dev](https://i.imgur.com/9rMMOeQ.webp)|
-|-:|
-|blog.oriverk.dev|
+![blog.oriverk.dev](https://i.imgur.com/9rMMOeQ.webp "blog.oriverk.dev")
 
-|![blog.oriverk.dev/entry](https://i.imgur.com/2nztEhZ.webp)|
-|-:|
-|blog.oriverk.dev/entry|
+![blog.oriverk.dev/entry](https://i.imgur.com/2nztEhZ.webp "blog.oriverk.dev/entry")
 
 ## 今後
 

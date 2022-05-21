@@ -8,6 +8,7 @@ function isImgur(src: string) {
 export interface PassedProps {
   src: string
   alt: string
+  title: string
 }
 
 interface Props extends PassedProps {
@@ -15,22 +16,37 @@ interface Props extends PassedProps {
 }
 
 const Component = (props: Props) => {
-  const { className, src, alt = 'image' } = props
+  const { className, src, alt = 'image', title = '' } = props
   const imgSrc = isImgur(src) ? src + '.png' : src
 
   return (
-    <picture className={className}>
+    <figure className={className}>
       <img loading="lazy" decoding="async" src={imgSrc} alt={alt} />
-    </picture>
+      {title ? (
+        <figcaption>
+          {title}
+        </figcaption>
+      )
+        : null
+      }
+    </figure>
   )
 }
 
 const StyledComponent = styled(Component)`
-  & > source,
-  img {
-    border: 1px solid gray;
-    background-color: white;
+  border: 1px gray solid;
+  padding: 5px;
+  margin: auto;
+  max-width: 100%;
+  width: 100%;
+  & > img {
     max-width: 100%;
+    width: 100%;
+  }
+
+  & > figcaption {
+    text-align: center;
+    color: lightgray;
   }
 `
 
