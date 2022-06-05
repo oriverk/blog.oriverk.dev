@@ -1,5 +1,6 @@
 import * as fs from 'fs'
 import * as path from 'path'
+import urlJoin from 'url-join'
 
 import type { FrontMatterType } from 'types/markdown'
 import { serializeMdx } from './serializeMdx'
@@ -27,6 +28,7 @@ async function getPostData(localFilePath: string) {
   const filePath = localFilePath.replace(regexp, '')
   // .md | .mdx
   const ext = path.extname(localFilePath)
+  const editUrl = urlJoin(GithubDocPath, `${filePath}${ext}`)
 
   return {
     fileName: filePath,
@@ -37,7 +39,7 @@ async function getPostData(localFilePath: string) {
       headings,
       update: update || create,
       published,
-      editUrl: path.join(GithubDocPath, `${filePath}${ext}`),
+      editUrl,
     },
     mdxSource,
   }
