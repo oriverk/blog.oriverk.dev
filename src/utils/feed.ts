@@ -1,3 +1,4 @@
+import urlJoin from 'url-join'
 import { getPostsData } from 'utils/markdown/getContentData'
 
 const blogPath = process.env.NEXT_PUBLIC_BLOG_PATH || ''
@@ -28,11 +29,12 @@ export async function generateFeedXml(): Promise<string> {
     const datetime = frontMatter.update || frontMatter.create
     const utcString = new Date(datetime).toUTCString()
     const description = frontMatter.tags.join(', ')
+    const link = urlJoin(blogPath, 'entry', fileName, '/')
 
     xml += `
       <item>
         <title>${frontMatter.title}</title>
-        <link>${blogPath}/entry/${fileName}/</link>
+        <link>${link}</link>
         <guid>entry/${fileName}</guid>
         <pubDate>${utcString}</pubDate>
         <description>${description}</description>

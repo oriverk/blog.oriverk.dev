@@ -1,4 +1,5 @@
 import { getPostsData } from 'utils/markdown/getContentData'
+import urlJoin from 'url-join'
 
 const blogPath = process.env.NEXT_PUBLIC_BLOG_PATH || ''
 
@@ -28,9 +29,10 @@ export async function generateSitemapXml(): Promise<string> {
   const { posts } = await getPostsData()
 
   posts.forEach(({ fileName }) => {
+    const path = urlJoin(blogPath, 'entry', fileName, '/')
     xml += `
       <url>
-        <loc>${blogPath}/entry/${fileName}/</loc>
+        <loc>${path}</loc>
       </url>
     `
   })
