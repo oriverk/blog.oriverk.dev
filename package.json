@@ -29,8 +29,8 @@
     "fix:md": "run-s fix:markdownlint fix:textlint",
     "fix:prettier": "prettier --write {src,pages}/**/*",
     "fix:eslint": "eslint --fix {src,pages}/**/*",
-    "fix:markdownlint": "markdownlint -f docs/*",
-    "fix:textlint": "textlint -f docs/*",
+    "fix:markdownlint": "markdownlint -fix docs/**",
+    "fix:textlint": "textlint --fix docs/**",
     "algolia": "node script/genPostsMap.js && node script/push2Algolia.js",
     "prepare": "husky install"
   },

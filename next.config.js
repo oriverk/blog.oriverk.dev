@@ -1,6 +1,9 @@
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
+/** @type {import('next').NextConfig} */
+// @next/bundle-analyzerが本番環境で読み込まれないようにする
+// https://zenn.dev/catnose99/scraps/661d77118aa2af
+const withBundleAnalyzer = process.env.ANALYZE === 'true'
+    ? require('@next/bundle-analyzer')({ enabled: true })
+    : (config) => config;
 
 // const { defaultConfig } = require("next/dist/server/config-shared");
 const defaultConfig = {
