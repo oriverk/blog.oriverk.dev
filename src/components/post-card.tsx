@@ -21,7 +21,7 @@ const Component = (props: Props) => {
     <section className={className} key={key}>
       <h3>
         <Link href={path.join('/entry', slug)}>
-          <a>{title}</a>
+          {title}
         </Link>
       </h3>
       <p>
@@ -31,7 +31,7 @@ const Component = (props: Props) => {
           <>
             &nbsp;
             <Link href={`/tag/#${tag}`} key={tag}>
-              <a>{`#${tag}`}</a>
+              {`#${tag}`}
             </Link>
           </>
         ))}
