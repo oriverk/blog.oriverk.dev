@@ -374,7 +374,7 @@ end
 2. ExamRusult の新規作成ページの UI を変更
 3. gem kaminari でページャー追加
 
-## 実段階
+## 実段階a
 
 ### modify index page
 

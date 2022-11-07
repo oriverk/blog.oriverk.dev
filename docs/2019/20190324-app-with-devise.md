@@ -52,7 +52,7 @@ root to: 'students#index'
 
 ### modify views
 
-今回不要なExamResultNewのリンク削除
+今回不要な ExamResultNew のリンク削除
 ログアウトリンクの作成
 
 ```rb:app/views/student.html.erb

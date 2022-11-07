@@ -10,6 +10,6 @@ published: false
 
 ## 画像
 
-- og画像
+- og 画像
   - アスペクト比は『1：1.91』
-  - サイズは、Facebook、Twitterなら『縦630px×横1200px』
+  - サイズは、Facebook、Twitter なら『縦 630px×横 1200px』

@@ -318,7 +318,7 @@ DROP DATABASE univ;
 
 ## データベースとテーブル作成、データ追加
 
-### データベース作成
+### データベース作成a
 
 ```sql
 CREATE DATABASE univ1;
