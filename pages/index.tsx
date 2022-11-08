@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import { styled } from 'goober'
 
 import type { PostType } from 'types/markdown'
@@ -16,11 +16,11 @@ const H1 = styled('h1')`
   text-align: center;
 `
 
-interface PostsProps {
-  posts: Omit<PostType, 'mdxSource'>[]
+type Props = {
+  posts: PostType[]
 }
 
-const Page: React.FC<PostsProps> = (props) => {
+const Page: NextPage<Props> = (props) => {
   const { posts } = props
 
   return (
@@ -43,9 +43,9 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const returnData = posts.map((post) => {
     const { frontMatter, fileName } = post
-    const { headings, published, editUrl, ...rest } = frontMatter
+    const { published, editUrl, ...rest } = frontMatter
     return {
-      frontMatter: { ...rest },
+      frontMatter: rest,
       fileName,
     }
   })

@@ -4,7 +4,7 @@ import urlJoin from 'url-join'
 
 import type { FrontMatterType } from 'types/markdown'
 import { serializeMdx } from './serializeMdx'
-import { getTableOfContents } from './getTableOfContents'
+// import { getTableOfContents } from './getTableOfContents'
 
 const POSTS_PATH = path.join(process.cwd(), 'docs')
 // https://github.com/oriverk/blog.oriverk.dev
@@ -19,9 +19,9 @@ const isDev = process.env.NODE_ENV === 'development'
  */
 async function getPostData(localFilePath: string) {
   const source = fs.readFileSync(localFilePath).toString()
-  const { frontMatter, mdxSource } = await serializeMdx(source)
-  const { title, create, update, tags = [], published = true } = frontMatter as FrontMatterType
-  const headings = source ? getTableOfContents(source) : []
+  const { compiledSource, frontmatter } = await serializeMdx(source);
+  const { title, create, update, tags = [], published = true } = frontmatter as unknown as FrontMatterType
+  // const headings = source ? getTableOfContents(source) : []
 
   let regexp = new RegExp(`${POSTS_PATH}\/|.mdx?$`, 'g')
   // 2022/20220505-ubuntu2204
@@ -33,15 +33,15 @@ async function getPostData(localFilePath: string) {
   return {
     fileName: filePath,
     frontMatter: {
-      title: title || 'title is missing.',
-      create: create,
-      tags: tags || [],
-      headings,
+      title,
+      create,
+      tags,
       update: update || create,
       published,
       editUrl,
     },
-    mdxSource,
+    compiledSource,
+    // headings,
   }
 }
 
@@ -51,14 +51,13 @@ export async function getPostsData() {
 
   const promise = postFileNames.map(async (fileName) => getPostData(fileName))
   const posts = (await Promise.all(promise))
-    .filter(({ frontMatter }) => frontMatter.create)
     .filter(({ frontMatter }) => (isDev ? true : frontMatter.published))
-    .sort((post1, post2) => (post1.frontMatter.create! > post2.frontMatter.create! ? -1 : 1))
+    .sort((post1, post2) => (post1.frontMatter.create > post2.frontMatter.create ? -1 : 1))
 
-  const tags = posts.map((post) => post.frontMatter.tags).flat()
-  const newSetTags = Array.from(new Set(tags)).sort()
+  const tags = posts.map(({ frontMatter }) => frontMatter.tags).flat();
+  const allTags = Array.from(new Set(tags)).sort();
 
-  return { posts, allTags: newSetTags }
+  return { posts, allTags }
 }
 
 /**

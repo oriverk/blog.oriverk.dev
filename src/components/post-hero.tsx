@@ -1,6 +1,7 @@
 import { styled } from 'goober'
 import { FrontMatterType } from 'types/markdown'
 import { DateFormatter, DateFormatterProps } from 'components/date-formatter'
+import Link from 'next/link'
 
 interface PassedProps extends DateFormatterProps {
   title: string
@@ -24,9 +25,9 @@ const Component = (props: Props) => {
         {tags.map((tag) => (
           <>
             &nbsp;
-            <a href={`/tag/#${tag}/`} key={tag}>
+            <Link href={`/tag/#${tag}`} key={tag}>
               {'#' + tag}
-            </a>
+            </Link>
           </>
         ))}
       </p>

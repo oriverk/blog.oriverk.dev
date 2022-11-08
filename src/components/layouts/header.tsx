@@ -15,22 +15,18 @@ const Component = (props: Props) => {
     <header {...props}>
       <nav>
         <Link href="/">
-          <a>blog</a>
+          blog
         </Link>
         <div className="right">
           <Link href="/search">
-            <a>
-              <NamedIcon name="Search" variant="none" width={16} height={16} fontSize={3}>
-                <SearchIcon label="search posts" size={8} color="var(--color-gray)" />
-              </NamedIcon>
-            </a>
+            <NamedIcon name="Search" variant="none" width={16} height={16} fontSize={3}>
+              <SearchIcon label="search posts" size={8} color="var(--color-gray)" />
+            </NamedIcon>
           </Link>
           <Link href="/tag">
-            <a>
-              <NamedIcon name="Tag" variant="none" width={16} height={16} fontSize={3}>
-                <TagIcon label="go to tags page" size={8} color="var(--color-gray)" />
-              </NamedIcon>
-            </a>
+            <NamedIcon name="Tag" variant="none" width={16} height={16} fontSize={3}>
+              <TagIcon label="go to tags page" size={8} color="var(--color-gray)" />
+            </NamedIcon>
           </Link>
           <a href={sitePath} target="_blank" rel="noopener noreferrer">
             <NamedIcon name="Home" variant="none" width={16} height={16} fontSize={3}>

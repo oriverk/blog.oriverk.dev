@@ -14,7 +14,7 @@ const Component: React.FC<Props> = (props) => {
       <section className={className}>
         <h1>Page Not Found</h1>
         <Link href="/">
-          <a>Go back to Top</a>
+          Go back to Top
         </Link>
       </section>
     </Layout>

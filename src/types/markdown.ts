@@ -1,4 +1,4 @@
-import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
+// import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 interface HeadingType {
   level: 'h2' | 'h3'
@@ -12,7 +12,6 @@ interface FrontMatterType {
   update: string
   description: string
   tags: string[]
-  headings: HeadingType[]
   image?: string
   published?: boolean
   editUrl: string
@@ -21,7 +20,8 @@ interface FrontMatterType {
 interface PostType {
   fileName: string
   frontMatter: FrontMatterType
-  mdxSource: MDXRemoteSerializeResult<Record<string, unknown>>
+  compiledSource: string;
+  // headings: HeadingType[]
 }
 
 export type { HeadingType, FrontMatterType, PostType }

@@ -12,15 +12,13 @@ export interface Props {
 }
 
 export const Anchor: React.FC<Props> = (props) => {
-  const { href, ...restProps } = props
+  const { href } = props
 
   if (isExternal(href)) {
     return <a target="_blank" rel="noopener noreferrer" {...props} />
   } else {
     return (
-      <Link href={href} passHref>
-        <a {...restProps}></a>
-      </Link>
+      <Link passHref {...props} />
     )
   }
 }
