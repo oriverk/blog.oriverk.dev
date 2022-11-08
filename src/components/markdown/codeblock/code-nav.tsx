@@ -1,5 +1,5 @@
 import { styled } from 'goober'
-// import { CopyButton } from './copy-button'
+import { CopyButton } from './copy-button'
 
 interface PassedProps {
   filename?: string
@@ -16,7 +16,7 @@ const Component = (props: Props) => {
   return (
     <div className={className}>
       {filename ? <div className="filename" data-filename={filename} translate="no" /> : <div />}
-      {/* <CopyButton code={rawCode} /> */}
+      <CopyButton code={rawCode} />
     </div>
   )
 }

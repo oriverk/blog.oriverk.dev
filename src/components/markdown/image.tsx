@@ -19,16 +19,20 @@ const Component = (props: Props) => {
   const { className, src, alt = 'image', title = '' } = props
   const imgSrc = isImgur(src) ? src + '.png' : src
 
+  if (!title) {
+    return (
+      <picture>
+        <img className={className} loading="lazy" decoding="async" src={imgSrc} alt={alt} />
+      </picture>
+    )
+  }
+
   return (
     <figure className={className}>
       <img loading="lazy" decoding="async" src={imgSrc} alt={alt} />
-      {title ? (
-        <figcaption>
-          {title}
-        </figcaption>
-      )
-        : null
-      }
+      <figcaption>
+        {title}
+      </figcaption>
     </figure>
   )
 }

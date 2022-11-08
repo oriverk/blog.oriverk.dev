@@ -1,5 +1,5 @@
 // see https://github.com/hashicorp/next-mdx-remote/issues/53#issuecomment-725906664
-import slugger from 'github-slugger'
+import GithubSlugger from 'github-slugger'
 
 import type { HeadingType } from 'types/markdown'
 
@@ -9,6 +9,7 @@ export function getTableOfContents(mdContent: string): HeadingType[] {
   let tableOfContents: HeadingType[] = []
 
   if (headings.length) {
+    const slugger = new GithubSlugger()
     tableOfContents = headings.map((heading) => {
       const headingText = heading[2].trim()
       const headingType = heading[1].trim() === '##' ? 'h2' : 'h3'

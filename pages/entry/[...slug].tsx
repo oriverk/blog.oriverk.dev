@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { styled } from 'goober'
 
 import type { PostType } from 'types/markdown'
@@ -16,9 +16,14 @@ const FlexWrapper = styled('div')`
   display: flex;
 `
 
-const Page: React.FC<PostType> = (props) => {
-  const { fileName, mdxSource, frontMatter } = props
-  const { title, create, update, tags, headings, editUrl } = frontMatter
+type Props = {
+  post: PostType;
+}
+
+const Page: NextPage<Props> = (props) => {
+  const { post } = props
+  const { fileName, frontMatter, compiledSource } = post;
+  const { title, create, update, tags, editUrl } = frontMatter
   const dateString = update || create
 
   return (
@@ -26,7 +31,7 @@ const Page: React.FC<PostType> = (props) => {
       <ContentWrapper>
         <PostHero title={title} dateString={dateString} tags={tags} editUrl={editUrl} />
         <FlexWrapper>
-          <MarkdownContent mdxSource={mdxSource} />
+          <MarkdownContent compiledSource={compiledSource} />
           {/* <TableOfContent headings={headings} /> */}
         </FlexWrapper>
       </ContentWrapper>
@@ -56,18 +61,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as Record<string, string[]>
   const { posts } = await getPostsData()
   const post = posts.find((post) => post.fileName === slug.join('/'))
-
+  
   if (!post) {
     throw new Error(`No content found for ${slug}`)
   }
 
-  const { fileName, frontMatter, mdxSource } = post!
-
   return {
     props: {
-      fileName,
-      mdxSource,
-      frontMatter,
+      post
     },
   }
 }

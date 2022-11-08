@@ -4,7 +4,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { MDXComponents } from './mdx-components'
 
 interface PassedProps {
-  mdxSource: MDXRemoteSerializeResult<Record<string, unknown>>
+  compiledSource: string;
 }
 
 interface Props extends PassedProps {
@@ -12,11 +12,11 @@ interface Props extends PassedProps {
 }
 
 const Component = (props: Props) => {
-  const { className, mdxSource } = props
+  const { className, compiledSource } = props
 
   return (
     <div className={className}>
-      <MDXRemote {...mdxSource} components={MDXComponents} />
+      <MDXRemote compiledSource={compiledSource} components={MDXComponents} />
     </div>
   )
 }
