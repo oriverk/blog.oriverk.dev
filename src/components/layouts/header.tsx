@@ -6,7 +6,7 @@ import { CottageIcon, TagIcon, SearchIcon } from 'components/icons'
 
 const sitePath = process.env.NEXT_PUBLIC_SITE_PATH || ''
 
-interface Props {
+type Props = {
   className?: string
 }
 

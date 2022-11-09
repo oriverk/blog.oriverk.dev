@@ -11,7 +11,7 @@ const StyledComponent = styled('div')`
   min-height: 100vh;
 `
 
-interface Props extends CustomSeoProps {
+type Props = CustomSeoProps & {
   children: React.ReactNode
 }
 

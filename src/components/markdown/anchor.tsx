@@ -6,7 +6,7 @@ function isExternal(href: string) {
   return !(href.startsWith(blogPath) || href.startsWith('/'))
 }
 
-export interface Props {
+type Props = {
   href: string
   children: React.ReactNode
 }

@@ -1,4 +1,4 @@
-import { GetStaticProps, NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import { styled } from 'goober'
 
 import type { FrontMatterType, PostType } from 'types/markdown'

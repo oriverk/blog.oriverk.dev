@@ -1,6 +1,6 @@
 import NextHeadSeo from 'next-head-seo'
 
-export interface CustomSeoProps {
+export type CustomSeoProps = {
   path: string
   title?: string
   description?: string

@@ -1,7 +1,7 @@
-import { GetServerSideProps } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import { generateSitemapXml } from 'utils/sitemap'
 
-const Page: React.FC = () => null
+const Page: NextPage = () => null
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const xml = await generateSitemapXml()

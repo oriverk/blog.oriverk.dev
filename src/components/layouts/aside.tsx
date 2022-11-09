@@ -1,11 +1,11 @@
 import { styled } from 'goober'
 
-interface PassedProps {
+type PassedProps = {
   width: string
   top: string
 }
 
-interface Props extends PassedProps {
+type Props = PassedProps & {
   className?: string
 }
 

@@ -1,23 +1,10 @@
-import { GithubIcon } from './github'
-import { TwitterIcon } from './twitter'
-import { PenIcon } from './pen'
-import { ContactIcon } from './contact'
-import { RSSIcon } from './rss'
-import { CottageIcon } from './cottage'
-import { TagIcon } from './tag'
-import { SearchIcon } from './search'
-import { AlgoliaIcon } from './algolia'
-import { OpenInNewIcon } from './open-in-new'
-
-export {
-  GithubIcon,
-  TwitterIcon,
-  PenIcon,
-  ContactIcon,
-  RSSIcon,
-  CottageIcon,
-  TagIcon,
-  SearchIcon,
-  AlgoliaIcon,
-  OpenInNewIcon,
-}
+export { GithubIcon } from './github'
+export { TwitterIcon } from './twitter'
+export { PenIcon } from './pen'
+export { ContactIcon } from './contact'
+export { RSSIcon } from './rss'
+export { CottageIcon } from './cottage'
+export { TagIcon } from './tag'
+export { SearchIcon } from './search'
+export { AlgoliaIcon } from './algolia'
+export { OpenInNewIcon } from './open-in-new'

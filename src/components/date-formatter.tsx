@@ -1,6 +1,6 @@
 import { parseISO, format } from 'date-fns'
 
-export interface DateFormatterProps {
+export type DateFormatterProps = {
   dateString: string
 }
 

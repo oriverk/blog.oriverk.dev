@@ -1,6 +1,6 @@
 import { styled } from 'goober'
 
-interface Props {
+type Props = {
   className?: string
 }
 

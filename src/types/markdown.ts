@@ -1,12 +1,10 @@
-// import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
-
-interface HeadingType {
+type HeadingType = {
   level: 'h2' | 'h3'
   text: string
   id: string
 }
 
-interface FrontMatterType {
+type FrontMatterType = {
   title: string
   create: string
   update: string
@@ -17,7 +15,7 @@ interface FrontMatterType {
   editUrl: string
 }
 
-interface PostType {
+type PostType = {
   fileName: string
   frontMatter: FrontMatterType
   compiledSource: string;

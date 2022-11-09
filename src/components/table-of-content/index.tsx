@@ -4,11 +4,11 @@ import type { HeadingType } from 'types/markdown'
 import { useScrollSpy } from 'hooks/useScrollSpy'
 import { ListItem } from './list-item'
 
-interface PassedProps {
+type PassedProps = {
   headings: HeadingType[]
 }
 
-interface Props extends PassedProps {
+type Props = PassedProps & {
   className?: string
 }
 

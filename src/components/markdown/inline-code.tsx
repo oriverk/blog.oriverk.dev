@@ -15,7 +15,7 @@ const StyledComponent = styled('code')`
   }
 `
 
-export interface Props {
+type Props = {
   children: string
 }
 

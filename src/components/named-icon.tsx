@@ -1,6 +1,6 @@
 import { styled } from 'goober'
 
-interface PassedProps {
+type PassedProps = {
   variant: 'none' | 'outline'
   borderRadius: number
   name: string
@@ -11,7 +11,7 @@ interface PassedProps {
   children: React.ReactNode
 }
 
-interface Props extends PassedProps {
+type Props = PassedProps & {
   className?: string
 }
 

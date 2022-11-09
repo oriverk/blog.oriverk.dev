@@ -3,6 +3,11 @@
 
 import { useState, useEffect, useRef } from 'react'
 
+/**
+ * @param selectors
+ * @param options
+ * @returns
+ */
 export function useScrollSpy(selectors: string[], options?: IntersectionObserverInit) {
   const [activeId, setActiveId] = useState<string>()
   const observer = useRef<IntersectionObserver | null>(null)
