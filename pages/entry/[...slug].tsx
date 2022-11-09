@@ -17,12 +17,12 @@ const FlexWrapper = styled('div')`
 `
 
 type Props = {
-  post: PostType;
+  post: PostType
 }
 
 const Page: NextPage<Props> = (props) => {
   const { post } = props
-  const { fileName, frontMatter, compiledSource } = post;
+  const { fileName, frontMatter, compiledSource } = post
   const { title, create, update, tags, editUrl } = frontMatter
   const dateString = update || create
 
@@ -61,14 +61,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as Record<string, string[]>
   const { posts } = await getPostsData()
   const post = posts.find((post) => post.fileName === slug.join('/'))
-  
+
   if (!post) {
     throw new Error(`No content found for ${slug}`)
   }
 
   return {
     props: {
-      post
+      post,
     },
   }
 }

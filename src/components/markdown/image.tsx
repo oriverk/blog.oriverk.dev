@@ -30,9 +30,7 @@ const Component = (props: Props) => {
   return (
     <figure className={className}>
       <img loading="lazy" decoding="async" src={imgSrc} alt={alt} />
-      <figcaption>
-        {title}
-      </figcaption>
+      <figcaption>{title}</figcaption>
     </figure>
   )
 }

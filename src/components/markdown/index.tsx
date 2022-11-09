@@ -4,7 +4,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { MDXComponents } from './mdx-components'
 
 interface PassedProps {
-  compiledSource: string;
+  compiledSource: string
 }
 
 interface Props extends PassedProps {

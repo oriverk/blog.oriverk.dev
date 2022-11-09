@@ -20,9 +20,7 @@ const Component = (props: Props) => {
   return (
     <section className={className} key={key}>
       <h3>
-        <Link href={path.join('/entry', slug)}>
-          {title}
-        </Link>
+        <Link href={path.join('/entry', slug)}>{title}</Link>
       </h3>
       <p>
         <DateFormatter dateString={date} />

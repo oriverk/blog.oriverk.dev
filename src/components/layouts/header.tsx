@@ -14,9 +14,7 @@ const Component = (props: Props) => {
   return (
     <header {...props}>
       <nav>
-        <Link href="/">
-          blog
-        </Link>
+        <Link href="/">blog</Link>
         <div className="right">
           <Link href="/search">
             <NamedIcon name="Search" variant="none" width={16} height={16} fontSize={3}>

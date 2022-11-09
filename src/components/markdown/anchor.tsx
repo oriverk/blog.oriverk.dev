@@ -17,8 +17,6 @@ export const Anchor: React.FC<Props> = (props) => {
   if (isExternal(href)) {
     return <a target="_blank" rel="noopener noreferrer" {...props} />
   } else {
-    return (
-      <Link passHref {...props} />
-    )
+    return <Link passHref {...props} />
   }
 }

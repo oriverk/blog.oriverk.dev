@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 type PassedProps = DateFormatterProps & {
   title: string
-} & Pick<FrontMatterType, "tags" | "editUrl">
+} & Pick<FrontMatterType, 'tags' | 'editUrl'>
 
 type Props = PassedProps & {
   className?: string

@@ -14,9 +14,7 @@ const Component: NextPage<Props> = (props) => {
     <Layout title="404: Page not found" path="/404/">
       <section className={className}>
         <h1>Page Not Found</h1>
-        <Link href="/">
-          Go back to Top
-        </Link>
+        <Link href="/">Go back to Top</Link>
       </section>
     </Layout>
   )

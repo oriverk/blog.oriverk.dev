@@ -19,7 +19,7 @@ const isDev = process.env.NODE_ENV === 'development'
  */
 async function getPostData(localFilePath: string) {
   const source = fs.readFileSync(localFilePath).toString()
-  const { compiledSource, frontmatter } = await serializeMdx(source);
+  const { compiledSource, frontmatter } = await serializeMdx(source)
   const { title, create, update, tags = [], published = true } = frontmatter as unknown as FrontMatterType
   // const headings = source ? getTableOfContents(source) : []
 
@@ -46,16 +46,15 @@ async function getPostData(localFilePath: string) {
 }
 
 export async function getPostsData() {
-  const postFileNames = getAllFiles(POSTS_PATH)
-    .filter((path) => /\.mdx?$/.test(path))
+  const postFileNames = getAllFiles(POSTS_PATH).filter((path) => /\.mdx?$/.test(path))
 
   const promise = postFileNames.map(async (fileName) => getPostData(fileName))
   const posts = (await Promise.all(promise))
     .filter(({ frontMatter }) => (isDev ? true : frontMatter.published))
     .sort((post1, post2) => (post1.frontMatter.create > post2.frontMatter.create ? -1 : 1))
 
-  const tags = posts.map(({ frontMatter }) => frontMatter.tags).flat();
-  const allTags = Array.from(new Set(tags)).sort();
+  const tags = posts.map(({ frontMatter }) => frontMatter.tags).flat()
+  const allTags = Array.from(new Set(tags)).sort()
 
   return { posts, allTags }
 }

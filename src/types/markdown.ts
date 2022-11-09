@@ -18,7 +18,7 @@ type FrontMatterType = {
 type PostType = {
   fileName: string
   frontMatter: FrontMatterType
-  compiledSource: string;
+  compiledSource: string
   // headings: HeadingType[]
 }
 

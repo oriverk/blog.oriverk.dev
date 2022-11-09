@@ -13,5 +13,5 @@ export async function serializeMdx(source: string) {
   }
 
   const serializedResult = await serialize(source, serializeOptions)
-  return serializedResult;
+  return serializedResult
 }
