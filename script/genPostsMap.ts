@@ -1,10 +1,8 @@
-const fs = require('fs')
-const path = require('path')
-const matter = require('gray-matter')
-const removeMd = require('remove-markdown')
-const assert = require('assert').strict
-
-require('dotenv').config({ path: '.env.local' })
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
+import removeMd from 'remove-markdown'
+import { strict as assert } from 'node:assert'
 
 const POSTS_PATH = path.join(process.cwd(), 'docs')
 
@@ -12,15 +10,14 @@ const POSTS_PATH = path.join(process.cwd(), 'docs')
  * @param dir ex: /home/oriverk/Codes/oriverk/blog/docs
  * @returns [/home/oriverk/Codes/oriverk/blog/docs/2022/memo.md]
  */
-function getAllFiles(dir) {
-  return fs.readdirSync(dir).reduce((files, file) => {
-    const name = path.join(dir, file);
-    const isDirectory = fs.statSync(name).isDirectory();
-    return isDirectory ? [...files, ...getAllFiles(name)] : [...files, name];
-  },
-    []
-  )
-};
+function getAllFiles(dir: string): string[] {
+  const result = fs.readdirSync(dir).reduce((files: string[], file: string) => {
+    const name = path.join(dir, file)
+    const isDirectory = fs.statSync(name).isDirectory()
+    return isDirectory ? [...files, ...getAllFiles(name)] : [...files, name]
+  }, [])
+  return result
+}
 
 function getNecessayContents(content) {
   // const notAscii = /[^\x00-\x7F]/gim // = 全角
@@ -40,11 +37,11 @@ function getNecessayContents(content) {
  * ex: /home/oriverk/Codes/oriverk/blog/docs/2022/memo.md
  * @returns
  */
-async function getPostData(localFilePath) {
+async function getPostData(localFilePath: string) {
   const source = fs.readFileSync(localFilePath).toString()
   const { data, content } = matter(source)
-  const { title, create = '', update = '', published = false, tags } = data;
-  
+  const { title, create = '', update = '', published = false, tags = [] } = data
+
   let regexp = new RegExp(`${POSTS_PATH}\/|.mdx?$`, 'g')
   // ex: 2022/20220505-ubuntu2204
   const id = localFilePath.replace(regexp, '')
@@ -54,34 +51,29 @@ async function getPostData(localFilePath) {
     title,
     create,
     update,
-    tags: tags.map(tag => tag.toLowerCase()).sort() || '',
+    tags: tags.map((tag: string) => tag.toLowerCase()).sort() || '',
     content: getNecessayContents(content),
-    published
+    published,
   }
 }
 
-async function getPostsDataX() {
-  const postFileNames = getAllFiles(POSTS_PATH)
-    .filter((path) => /\.mdx?$/.test(path))
+async function getPostsData() {
+  const postFileNames = getAllFiles(POSTS_PATH).filter((path) => /\.mdx?$/.test(path))
 
-  const promise = postFileNames
-    .map(async (fileName) => getPostData(fileName))
+  const promise = postFileNames.map(async (fileName) => getPostData(fileName))
 
   const posts = (await Promise.all(promise))
-    .filter(({ create }) => create)
-    .filter(({ published }) => published)
+    .filter(({ create, published }) => create && published)
     .sort((post1, post2) => (post1.create > post2.create ? -1 : 1))
-  
+
   return posts
 }
 
 async function genPostsMap() {
-  const postsData = await getPostsDataX()
-  const postsMapPath = path.join(process.cwd(), 'script/postsMap.json');
-  
-  const previousPostsMap = fs.existsSync(postsMapPath)
-    ? JSON.parse(fs.readFileSync(postsMapPath, 'utf8'))
-    : {};
+  const postsData = await getPostsData()
+  const postsMapPath = path.join(process.cwd(), 'script/postsMap.json')
+
+  const previousPostsMap = fs.existsSync(postsMapPath) ? JSON.parse(fs.readFileSync(postsMapPath, 'utf8')) : {}
 
   try {
     assert.deepStrictEqual(postsData, previousPostsMap, 'These data are different')

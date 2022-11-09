@@ -6,7 +6,7 @@ import { CottageIcon, TagIcon, SearchIcon } from 'components/icons'
 
 const sitePath = process.env.NEXT_PUBLIC_SITE_PATH || ''
 
-interface Props {
+type Props = {
   className?: string
 }
 
@@ -14,9 +14,7 @@ const Component = (props: Props) => {
   return (
     <header {...props}>
       <nav>
-        <Link href="/">
-          blog
-        </Link>
+        <Link href="/">blog</Link>
         <div className="right">
           <Link href="/search">
             <NamedIcon name="Search" variant="none" width={16} height={16} fontSize={3}>

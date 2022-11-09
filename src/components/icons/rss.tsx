@@ -1,7 +1,7 @@
 import { styled } from 'goober'
 import type { SvgIconProps } from '../../types'
 
-interface Props extends SvgIconProps {
+type Props = SvgIconProps & {
   className?: string
 }
 

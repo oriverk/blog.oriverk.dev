@@ -5,13 +5,13 @@ function isImgur(src: string) {
   return src.startsWith('https://i.imgur.com') && !RE.test(src)
 }
 
-export interface PassedProps {
+type PassedProps = {
   src: string
   alt: string
   title: string
 }
 
-interface Props extends PassedProps {
+type Props = PassedProps & {
   className?: string
 }
 
@@ -30,9 +30,7 @@ const Component = (props: Props) => {
   return (
     <figure className={className}>
       <img loading="lazy" decoding="async" src={imgSrc} alt={alt} />
-      <figcaption>
-        {title}
-      </figcaption>
+      <figcaption>{title}</figcaption>
     </figure>
   )
 }

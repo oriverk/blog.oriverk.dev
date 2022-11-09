@@ -1,3 +1,4 @@
+import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { Configure, InstantSearch } from 'react-instantsearch-dom'
 import { styled } from 'goober'
@@ -17,7 +18,7 @@ const H1 = styled('h1')`
 
 const algoliaIndex = process.env.NEXT_PUBLIC_ALGOLIA_INDEX || ''
 
-const Component: React.FC = () => {
+const Component: NextPage = () => {
   const router = useRouter()
   const qs = router.query.q as string
   const urlToSearchState = decodeURI(qs || '')

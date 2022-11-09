@@ -1,11 +1,11 @@
 import { styled } from 'goober'
 import type { HeadingType } from 'types/markdown'
 
-interface PassedProps extends HeadingType {
+type PassedProps = HeadingType & {
   activeId?: string
 }
 
-interface Props extends PassedProps {
+type Props = PassedProps & {
   className?: string
 }
 

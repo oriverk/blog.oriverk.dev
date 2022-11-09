@@ -3,13 +3,11 @@ import { FrontMatterType } from 'types/markdown'
 import { DateFormatter, DateFormatterProps } from 'components/date-formatter'
 import Link from 'next/link'
 
-interface PassedProps extends DateFormatterProps {
+type PassedProps = DateFormatterProps & {
   title: string
-  tags: FrontMatterType['tags']
-  editUrl: FrontMatterType['editUrl']
-}
+} & Pick<FrontMatterType, 'tags' | 'editUrl'>
 
-interface Props extends PassedProps {
+type Props = PassedProps & {
   className?: string
 }
 

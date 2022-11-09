@@ -6,7 +6,7 @@ function isExternal(href: string) {
   return !(href.startsWith(blogPath) || href.startsWith('/'))
 }
 
-export interface Props {
+type Props = {
   href: string
   children: React.ReactNode
 }
@@ -17,8 +17,6 @@ export const Anchor: React.FC<Props> = (props) => {
   if (isExternal(href)) {
     return <a target="_blank" rel="noopener noreferrer" {...props} />
   } else {
-    return (
-      <Link passHref {...props} />
-    )
+    return <Link passHref {...props} />
   }
 }

@@ -4,13 +4,13 @@ import * as path from 'path'
 import { DateFormatter } from './date-formatter'
 import { FrontMatterType } from 'types/markdown'
 
-interface PassedProps extends Pick<FrontMatterType, 'title' | 'tags'> {
+type PassedProps = Pick<FrontMatterType, 'title' | 'tags'> & {
   slug: string
   date: string
   key: React.Key
 }
 
-interface Props extends PassedProps {
+type Props = PassedProps & {
   className?: string
 }
 
@@ -20,9 +20,7 @@ const Component = (props: Props) => {
   return (
     <section className={className} key={key}>
       <h3>
-        <Link href={path.join('/entry', slug)}>
-          {title}
-        </Link>
+        <Link href={path.join('/entry', slug)}>{title}</Link>
       </h3>
       <p>
         <DateFormatter dateString={date} />

@@ -1,3 +1,4 @@
+import type { NextPage } from 'next'
 import Link from 'next/link'
 import { styled } from 'goober'
 
@@ -7,15 +8,13 @@ interface Props {
   className?: string
 }
 
-const Component: React.FC<Props> = (props) => {
+const Component: NextPage<Props> = (props) => {
   const { className } = props
   return (
     <Layout title="404: Page not found" path="/404/">
       <section className={className}>
         <h1>Page Not Found</h1>
-        <Link href="/">
-          Go back to Top
-        </Link>
+        <Link href="/">Go back to Top</Link>
       </section>
     </Layout>
   )
