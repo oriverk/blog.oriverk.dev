@@ -1,38 +1,35 @@
-import { connectStateResults } from 'react-instantsearch-dom'
-import { SearchState, AllSearchResults, AlgoliaError } from 'react-instantsearch-core'
+import { useInstantSearch } from 'react-instantsearch-hooks-web';
 import { styled } from 'goober'
 
-interface PassedProps {
-  error: AlgoliaError
-  searchState: SearchState
-  searchResults: AllSearchResults
-}
-
-interface Props extends PassedProps {
+type Props = {
   className?: string
 }
 
 const Component = (props: Props) => {
-  const { className, error, searchState, searchResults } = props
-  const hasResults = searchResults && searchResults.nbHits !== 0
-  const nbHits = searchResults && searchResults.nbHits
+  const { className } = props;
+  const { results, error, status } = useInstantSearch();
+  const { nbHits, query } = results;
 
   if (error) {
     return <div className={className + ' error'}>SEARCH_ERROR: {error.message}</div>
   }
 
-  if (!searchState.query?.length) {
+  if (status === 'loading' || status === 'stalled') {
+    return <div className={className}>Loading ...</div>
+  }
+
+  if (!query?.length) {
     return <div className={className} />
   }
 
-  if (hasResults) {
+  if (nbHits) {
     return (
       <div className={className}>
-        {nbHits} results were found for {searchState.query}.
+        {nbHits} results were found for {query}.
       </div>
     )
   } else {
-    return <div className={className}>No results for {searchState.query}</div>
+    return <div className={className}>No results for {query}</div>
   }
 }
 
@@ -44,6 +41,6 @@ const StyledComponent = styled(Component)`
   }
 `
 
-const ContainerComponent: React.FC<PassedProps> = (props) => <StyledComponent {...props} />
+const ContainerComponent: React.FC = () => <StyledComponent />
 
-export const CustomStateResults = connectStateResults(ContainerComponent)
+export const CustomSearchResults = ContainerComponent

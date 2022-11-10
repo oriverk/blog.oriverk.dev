@@ -1,22 +1,24 @@
-import { HitsProvided, Hit } from 'react-instantsearch-core'
-import { connectHits } from 'react-instantsearch-dom'
-import { PostCard } from 'components/post-card'
-import { CustomPoweredBy } from '.'
-import { PostType, FrontMatterType } from 'types/markdown'
+import type { UseHitsProps } from 'react-instantsearch-hooks-web';
+import { useHits } from 'react-instantsearch-hooks-web';
 
-interface HitProps extends Pick<FrontMatterType, 'title' | 'create' | 'update' | 'tags'> {
+import type { PostType, FrontMatterType } from 'types/markdown'
+import { PostCard } from 'components/post-card'
+import { CustomPoweredBy } from './powered-by'
+
+type HitProps = Pick<FrontMatterType, 'title' | 'create' | 'update' | 'tags'> & {
   id: PostType['fileName']
 }
 
-const Hits: React.FC<HitsProvided<Hit<HitProps>>> = ({ hits }) => {
+const Hits: React.FC<UseHitsProps<HitProps>> = (props) => {
+  const { hits } = useHits<HitProps>(props);
   return (
     <>
-      {hits.map((hit) => (
-        <PostCard slug={hit.id} title={hit.title} date={hit.update || hit.create} tags={hit.tags} key={hit.id} />
+      {hits.map(({ id, title, update, create, tags }) => (
+        <PostCard slug={id} title={title} date={update || create} tags={tags} key={id} />
       ))}
-      {!!hits.length && <CustomPoweredBy />}
+      <CustomPoweredBy />
     </>
   )
 }
 
-export const CustomHits = connectHits(Hits)
+export const CustomHits = Hits

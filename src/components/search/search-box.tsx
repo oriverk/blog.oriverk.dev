@@ -1,35 +1,37 @@
-import { useCallback } from 'react'
-import { useRouter } from 'next/router'
-import { connectSearchBox } from 'react-instantsearch-dom'
-import { SearchBoxProvided } from 'react-instantsearch-core'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { styled } from 'goober'
+import type { UseSearchBoxProps, SearchBox } from 'react-instantsearch-hooks-web';
+import { useSearchBox } from 'react-instantsearch-hooks-web';
 
 import { SearchIcon } from 'components/icons'
 
-interface PassedProps extends SearchBoxProvided {
+type PassedProps = UseSearchBoxProps & {
   placeholder?: string
 }
 
-interface Props extends PassedProps {
+type Props = PassedProps & {
   className?: string
 }
 
 const Component = (props: Props) => {
-  const { className, refine, currentRefinement, isSearchStalled, placeholder = '' } = props
-  const router = useRouter()
+  const { className, placeholder = "", ...rest } = props
+  const inputRef = useRef<HTMLInputElement>(null)
+  const [inputValue, setInputValue] = useState("")
+  const { query, refine } = useSearchBox(rest);
+
+  useEffect(() => {
+    if (!inputRef.current) return;
+
+    inputRef.current.focus();
+  }, [inputRef])
 
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      const query = event.currentTarget.value
-
-      refine(query)
-      if (query) {
-        router.push({ pathname: router.pathname, query: { q: encodeURI(query) } }, undefined, { shallow: true })
-      } else {
-        router.push({ pathname: router.pathname }, undefined, { shallow: true })
-      }
+      const value = event.currentTarget.value
+      setInputValue(value)
+      refine(value)
     },
-    [refine, router]
+    [refine]
   )
 
   return (
@@ -44,10 +46,10 @@ const Component = (props: Props) => {
         spellCheck={false}
         maxLength={64}
         placeholder={placeholder}
-        value={currentRefinement}
+        value={inputValue}
         onChange={handleChange}
+        ref={inputRef}
       />
-      {isSearchStalled ? 'My search is stalled' : ''}
     </div>
   )
 }
@@ -86,4 +88,4 @@ const StyledComponent = styled(Component)`
 
 const ContainerComponent: React.FC<PassedProps> = (props) => <StyledComponent {...props} />
 
-export const CustomSearchBox = connectSearchBox(ContainerComponent)
+export const CustomSearchBox = ContainerComponent
