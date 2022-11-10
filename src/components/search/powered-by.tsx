@@ -1,16 +1,17 @@
 import { styled } from 'goober'
-import { connectPoweredBy } from 'react-instantsearch-dom'
+import { usePoweredBy } from 'react-instantsearch-hooks-web'
 
 import { AlgoliaIcon } from 'components/icons'
 
-interface Props {
+type Props = {
   className?: string
 }
 
 const Component: React.FC<Props> = (props) => {
   const { className } = props
+  const { url } = usePoweredBy();
   return (
-    <a className={className} href="https://www.algolia.com" target="_blank" rel="noopener noreferrer">
+    <a className={className} href={url} target="_blank" rel="noopener noreferrer">
       <AlgoliaIcon />
     </a>
   )
@@ -24,4 +25,4 @@ const ContainerComponent: React.FC = () => {
   return <StyledComponent />
 }
 
-export const CustomPoweredBy = connectPoweredBy(ContainerComponent)
+export const CustomPoweredBy = ContainerComponent;
