@@ -22,4 +22,9 @@ type PostType = {
   // headings: HeadingType[]
 }
 
-export type { HeadingType, FrontMatterType, PostType }
+type PostCardType = {
+  fileName: PostType["fileName"];
+  frontMatter: Pick<FrontMatterType, "title" | "create" | "update" | "tags">
+}
+
+export type { HeadingType, FrontMatterType, PostType, PostCardType }
