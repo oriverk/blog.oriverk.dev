@@ -1,15 +1,7 @@
-import { styled } from 'goober'
-
 import { CustomSeoProps, CustomSeo } from '../seo'
 import { Header } from './header'
 import { Main } from './main'
 import { Footer } from './footer'
-
-const StyledComponent = styled('div')`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-`
 
 type Props = CustomSeoProps & {
   children: React.ReactNode
@@ -20,11 +12,11 @@ export const Layout: React.FC<Props> = (props) => {
   return (
     <>
       <CustomSeo {...restSeoProps} />
-      <StyledComponent>
+      <div className='flex flex-col mx-auto min-h-screen max-w-sm sm:max-w-2xl md:max-w-3xl'>
         <Header />
         <Main>{children}</Main>
         <Footer />
-      </StyledComponent>
+      </div>
     </>
   )
 }
