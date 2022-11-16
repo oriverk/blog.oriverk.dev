@@ -1,46 +1,25 @@
 import { useInstantSearch } from 'react-instantsearch-hooks-web';
-import { styled } from 'goober'
 
-type Props = {
-  className?: string
-}
-
-const Component = (props: Props) => {
-  const { className } = props;
+export const CustomSearchResults: React.FC = () => {
   const { results, error, status } = useInstantSearch();
   const { nbHits, query } = results;
+  let _className = "p-4 text-center"
+  let text;
 
   if (error) {
-    return <div className={className + ' error'}>SEARCH_ERROR: {error.message}</div>
-  }
-
-  if (status === 'loading' || status === 'stalled') {
-    return <div className={className}>Loading ...</div>
-  }
-
-  if (!query?.length) {
-    return <div className={className} />
-  }
-
-  if (nbHits) {
-    return (
-      <div className={className}>
-        {nbHits} results were found for {query}.
-      </div>
-    )
+    _className = _className + ' text-red'
+    text = `SEARCH_ERROR ${error.message}`
+  } else if (status === "loading" || status === "stalled") {
+    text = "Loading ..."
+  } else if (!query.length) {
+    text = ""
+  } else if (nbHits) {
+    text = `${nbHits} results were found for ${query}.`
   } else {
-    return <div className={className}>No results for {query}</div>
+    text = `No results for ${query}`
   }
+
+  return (
+    <div className={_className}>{text}</div>
+  )
 }
-
-const StyledComponent = styled(Component)`
-  padding: 1rem;
-  text-align: center;
-  &.error {
-    color: red;
-  }
-`
-
-const ContainerComponent: React.FC = () => <StyledComponent />
-
-export const CustomSearchResults = ContainerComponent

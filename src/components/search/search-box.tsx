@@ -1,9 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { styled } from 'goober'
-import type { UseSearchBoxProps, SearchBox } from 'react-instantsearch-hooks-web';
+import type { UseSearchBoxProps } from 'react-instantsearch-hooks-web';
 import { useSearchBox } from 'react-instantsearch-hooks-web';
-
-import { SearchIcon } from 'components/icons'
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 
 type PassedProps = UseSearchBoxProps & {
   placeholder?: string
@@ -13,7 +11,7 @@ type Props = PassedProps & {
   className?: string
 }
 
-const Component = (props: Props) => {
+export const CustomSearchBox = (props: Props) => {
   const { className, placeholder = "", ...rest } = props
   const inputRef = useRef<HTMLInputElement>(null)
   const [inputValue, setInputValue] = useState("")
@@ -35,57 +33,26 @@ const Component = (props: Props) => {
   )
 
   return (
-    <div className={className}>
-      <span>
-        <SearchIcon label="search posts" size={8} color="var(--color-gray)" />
-      </span>
-      <input
-        type="text"
-        autoComplete="off"
-        autoCorrect="off"
-        spellCheck={false}
-        maxLength={64}
-        placeholder={placeholder}
-        value={inputValue}
-        onChange={handleChange}
-        ref={inputRef}
-      />
+    <div className="flex relative">
+      <label htmlFor="検索" className="sr-only">検索</label>
+      <div className="relative w-full">
+        <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+          <MagnifyingGlassIcon aria-hidden="true" className="w-5 h-5 text-gray-400" />
+        </div>
+        <input
+          id="検索"
+          type="text"
+          autoComplete="off"
+          autoCorrect="off"
+          spellCheck={false}
+          maxLength={64}
+          placeholder={placeholder}
+          value={inputValue}
+          onChange={handleChange}
+          ref={inputRef}
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
+      </div>
     </div>
   )
 }
-
-const StyledComponent = styled(Component)`
-  display: flex;
-  position: relative;
-  & > span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-  & > input {
-    padding: 0 1rem 0 2.5rem;
-    position: relative;
-    width: 100%;
-    height: 2.5rem;
-    outline: 2px solid transparent;
-    color: var(--color-white);
-    border: none;
-    border-bottom: 1px solid var(--color-gray);
-    background: inherit;
-    font-size: inherit;
-    transition: box-shadow 200ms;
-  }
-  & > input:focus {
-    border-color: rgb(99, 179, 237);
-    box-shadow: rgb(99 179 237) 0px 1px 0px 0px;
-  }
-`
-
-const ContainerComponent: React.FC<PassedProps> = (props) => <StyledComponent {...props} />
-
-export const CustomSearchBox = ContainerComponent

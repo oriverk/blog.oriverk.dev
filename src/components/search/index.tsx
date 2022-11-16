@@ -10,7 +10,8 @@ import { CustomHits } from './hits'
 
 const algoliaIndex = process.env.NEXT_PUBLIC_ALGOLIA_INDEX || ''
 
-// [Sync your URLs with React InstantSearch Hooks | Algolia](https://www.algolia.com/doc/guides/building-search-ui/going-further/routing-urls/react-hooks/#basic-urls)
+// [Sync your URLs with React InstantSearch Hooks | Algolia]
+// (https://www.algolia.com/doc/guides/building-search-ui/going-further/routing-urls/react-hooks/#basic-urls)
 const routing = {
   router: history(),
   stateMapping: {

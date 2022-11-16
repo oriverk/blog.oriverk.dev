@@ -1,23 +1,32 @@
 import type { UseHitsProps } from 'react-instantsearch-hooks-web';
 import { useHits } from 'react-instantsearch-hooks-web';
 
-import type { PostType, FrontMatterType } from 'types/markdown'
-import { PostCard } from 'components/post-card'
+import type { FrontMatterType } from 'types/markdown'
 import { CustomPoweredBy } from './powered-by'
+import { PostCards } from '../post-cards';
 
-type HitProps = Pick<FrontMatterType, 'title' | 'create' | 'update' | 'tags'> & {
-  id: PostType['fileName']
+type Props = Pick<FrontMatterType, "title" | "create" | "update" | "tags"> & {
+  id: string;
 }
+
+type HitProps = Props
 
 const Hits: React.FC<UseHitsProps<HitProps>> = (props) => {
   const { hits } = useHits<HitProps>(props);
+  const posts = hits
+    .slice()
+    .map(({ id, title, create, update, tags }) => {
+      return {
+        fileName: id,
+        frontMatter: { title, create, update, tags }
+      }
+    })
+
   return (
-    <>
-      {hits.map(({ id, title, update, create, tags }) => (
-        <PostCard slug={id} title={title} date={update || create} tags={tags} key={id} />
-      ))}
+    <div className="flex flex-col gap-4">
+      <PostCards posts={posts} />
       <CustomPoweredBy />
-    </>
+    </div>
   )
 }
 
