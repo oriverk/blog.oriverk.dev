@@ -16,5 +16,5 @@ export const MDXComponents = {
   pre: (props: any) => {
     if (typeof props.children === 'string') return <Pre {...props} />
     return <CodeBlock {...props} />
-  }
+  },
 }

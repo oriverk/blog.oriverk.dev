@@ -1,13 +1,13 @@
 import type { GetStaticProps, NextPage } from 'next'
 
-import type { FrontMatterType, PostType } from 'types/markdown'
-import { getPostsData } from 'utils/markdown/getContentData'
-import { Layout } from 'components/layouts'
+import type { FrontMatterType, PostType } from '@src/types/markdown'
+import { getPostsData } from '@src/utils/markdown/getContentData'
+import { Layout } from '@src/components/layouts'
 import { PostCards } from '@src/components/post-cards'
 
 type H2Props = {
   id: string
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export const H2: React.FC<H2Props> = (props) => {
@@ -15,13 +15,12 @@ export const H2: React.FC<H2Props> = (props) => {
 
   return (
     <h2 id={id} className="mb-3 text-xl">
-      <a href={`#${id}`} className="underline underline-offset-2 decoration-[var(--color-miku)]">
+      <a href={`#${id}`} className="underline decoration-[var(--color-miku)] underline-offset-2">
         # {children}
       </a>
     </h2>
   )
 }
-
 
 type Props = {
   posts: PostType[]
@@ -33,7 +32,7 @@ const Page: NextPage<Props> = (props) => {
 
   return (
     <Layout title="tag posts" path="/tag/">
-      <h1 className='mb-4 text-2xl 2xl:text-3xl text-center'>Tag Posts Index</h1>
+      <h1 className="mb-4 text-center text-2xl 2xl:text-3xl">Tag Posts Index</h1>
       {tags.map((tag) => {
         const tagPosts = posts.filter((post) => post.frontMatter.tags.includes(tag))
         return (

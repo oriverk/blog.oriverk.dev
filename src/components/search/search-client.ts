@@ -23,7 +23,7 @@ export const searchClient: SearchClient = {
           query: '',
           params: '',
         })),
-      });
+      })
     }
 
     return algoliaClient.search(requests)

@@ -1,6 +1,6 @@
 type Props = {
   id: string
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export const H2: React.FC<Props> = (props) => {

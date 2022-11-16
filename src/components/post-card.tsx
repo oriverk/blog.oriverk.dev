@@ -1,21 +1,29 @@
 import Link from 'next/link'
-import urlJoin from 'url-join';
+import urlJoin from 'url-join'
 
-import type { PostCardType } from 'types/markdown'
+import type { PostCardType } from '@src/types/markdown'
 import { DateFormatter } from './date-formatter'
 
 export const PostCard: React.FC<PostCardType> = (props) => {
   const { fileName, frontMatter } = props
-  const { title, create, update, tags } = frontMatter;
-  const date = update || create;
+  const { title, create, update, tags } = frontMatter
+  const date = update || create
 
-  const href = urlJoin('/entry', fileName);
+  const href = urlJoin('/entry', fileName)
   return (
-    <section className="p-1 border border-solid border-gray-400 rounded-lg hover:border-gray-300 flex flex-col justify-between" key={fileName}>
+    <section
+      className="flex flex-col justify-between rounded-lg border border-solid border-gray-400 p-1 hover:border-gray-300"
+      key={fileName}
+    >
       <h3 className="m-2 text-xl">
-        <Link href={href} className="no-underline text-slate-50 hover:text-slate-50 hover:underline hover:decoration-[var(--color-miku)]">{title}</Link>
+        <Link
+          href={href}
+          className="text-slate-50 no-underline hover:text-slate-50 hover:underline hover:decoration-[var(--color-miku)]"
+        >
+          {title}
+        </Link>
       </h3>
-      <p className="p-2 flex flex-wrap">
+      <p className="flex flex-wrap p-2">
         <DateFormatter dateString={date} />
         &nbsp;/
         {tags.map((tag) => (

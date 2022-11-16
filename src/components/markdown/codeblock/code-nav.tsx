@@ -9,11 +9,8 @@ export const CodeNav: React.FC<Props> = (props) => {
   const { filename, rawCode } = props
 
   return (
-    <div className="flex gap-1 -mb-6">
-      {filename
-        ? <div className="filename" data-filename={filename} translate="no" />
-        : <div />
-      }
+    <div className="-mb-6 flex gap-1">
+      {filename ? <div className="filename" data-filename={filename} translate="no" /> : <div />}
       <CopyButton code={rawCode} />
     </div>
   )

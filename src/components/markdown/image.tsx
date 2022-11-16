@@ -12,8 +12,8 @@ type Props = {
 export const Image: React.FC<Partial<Props>> = (props) => {
   const { src, alt = 'image', title = '' } = props
 
-  if (!src) return null;
-  
+  if (!src) return null
+
   const imgSrc = isImgur(src) ? src + '.png' : src
 
   if (!title) {

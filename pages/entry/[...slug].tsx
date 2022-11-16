@@ -1,10 +1,10 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
-import type { PostType } from 'types/markdown'
-import { getPostsData } from 'utils/markdown/getContentData'
-import { Layout } from 'components/layouts'
-import { MarkdownContent } from 'components/markdown'
-import { PostHero } from 'components/post-hero'
+import type { PostType } from '@src/types/markdown'
+import { getPostsData } from '@src/utils/markdown/getContentData'
+import { Layout } from '@src/components/layouts'
+import { MarkdownContent } from '@src/components/markdown'
+import { PostHero } from '@src/components/post-hero'
 
 type Props = {
   post: PostType

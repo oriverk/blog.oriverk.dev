@@ -1,6 +1,6 @@
 import type { GetServerSidePropsContext } from 'next'
 
-import { generateFeedXml } from 'utils/feed'
+import { generateFeedXml } from '@src/utils/feed'
 
 const Page: React.FC = () => null
 export default Page

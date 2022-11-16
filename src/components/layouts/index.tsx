@@ -12,7 +12,7 @@ export const Layout: React.FC<Props> = (props) => {
   return (
     <>
       <CustomSeo {...restSeoProps} />
-      <div className='flex flex-col mx-auto min-h-screen max-w-sm sm:max-w-2xl md:max-w-3xl'>
+      <div className="mx-auto flex min-h-screen max-w-sm flex-col sm:max-w-2xl md:max-w-3xl">
         <Header />
         <Main>{children}</Main>
         <Footer />
