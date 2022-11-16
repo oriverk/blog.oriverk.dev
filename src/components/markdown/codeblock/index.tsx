@@ -5,7 +5,7 @@ import { CodeContainer } from './code-container'
 import Highlight from './highlight'
 import { CodeNav } from './code-nav'
 
-interface PassedProps {
+type PassedProps = {
   className?: string
   children: any
 }

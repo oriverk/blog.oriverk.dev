@@ -1,14 +1,8 @@
-import { styled } from 'goober'
-import BaseHighlight, { defaultProps, Language, PrismTheme } from 'prism-react-renderer'
+import type { Language, PrismTheme } from 'prism-react-renderer'
+import BaseHighlight, { defaultProps } from 'prism-react-renderer'
 import { LineNumber } from './line-number'
 
-const StyledDiv = styled('div')`
-  overflow-x: auto;
-  margin: 0.5rem 0;
-  font-size: 1rem;
-`
-
-interface HighlightProps {
+type HighlightProps = {
   codeString: string
   language: Language
   theme: PrismTheme
@@ -22,7 +16,7 @@ const Highlight: React.FC<HighlightProps> = (props) => {
   return (
     <BaseHighlight code={codeString} language={language} {...defaultProps} {...rest}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <StyledDiv className="highlight">
+        <div className="highlight">
           <pre className={className}>
             <code translate="no">
               {tokens.map((line, i) => {
@@ -40,7 +34,7 @@ const Highlight: React.FC<HighlightProps> = (props) => {
               })}
             </code>
           </pre>
-        </StyledDiv>
+        </div>
       )}
     </BaseHighlight>
   )

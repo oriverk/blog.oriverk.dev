@@ -1,57 +1,33 @@
-import { styled } from 'goober'
-
 function isImgur(src: string) {
   const RE = /\.(webp|png|jpe?g)$/gi
   return src.startsWith('https://i.imgur.com') && !RE.test(src)
 }
 
-type PassedProps = {
+type Props = {
   src: string
   alt: string
   title: string
 }
 
-type Props = PassedProps & {
-  className?: string
-}
+export const Image: React.FC<Partial<Props>> = (props) => {
+  const { src, alt = 'image', title = '' } = props
 
-const Component = (props: Props) => {
-  const { className, src, alt = 'image', title = '' } = props
+  if (!src) return null;
+  
   const imgSrc = isImgur(src) ? src + '.png' : src
 
   if (!title) {
     return (
       <picture>
-        <img className={className} loading="lazy" decoding="async" src={imgSrc} alt={alt} />
+        <img loading="lazy" decoding="async" src={imgSrc} alt={alt} />
       </picture>
     )
   }
 
   return (
-    <figure className={className}>
+    <figure>
       <img loading="lazy" decoding="async" src={imgSrc} alt={alt} />
       <figcaption>{title}</figcaption>
     </figure>
   )
 }
-
-const StyledComponent = styled(Component)`
-  border: 1px gray solid;
-  padding: 5px;
-  margin: auto;
-  max-width: 100%;
-  width: 100%;
-  & > img {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  & > figcaption {
-    text-align: center;
-    color: lightgray;
-  }
-`
-
-const ContainerComponent: React.FC<PassedProps> = (props) => <StyledComponent {...props} />
-
-export const Image = ContainerComponent
