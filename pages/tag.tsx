@@ -1,21 +1,27 @@
 import type { GetStaticProps, NextPage } from 'next'
-import { styled } from 'goober'
 
 import type { FrontMatterType, PostType } from 'types/markdown'
 import { getPostsData } from 'utils/markdown/getContentData'
 import { Layout } from 'components/layouts'
-import { PostCard } from 'components/post-card'
-import { H2 } from 'components/markdown/headings'
+import { PostCards } from '@src/components/post-cards'
 
-const PostsWrapper = styled('div')`
-  padding: 1rem;
-  max-width: var(--max-width);
-  width: 100%;
-`
+type H2Props = {
+  id: string
+  children: React.ReactNode;
+}
 
-const H1 = styled('h1')`
-  text-align: center;
-`
+export const H2: React.FC<H2Props> = (props) => {
+  const { id, children } = props
+
+  return (
+    <h2 id={id} className="mb-3 text-xl">
+      <a href={`#${id}`} className="underline underline-offset-2 decoration-[var(--color-miku)]">
+        # {children}
+      </a>
+    </h2>
+  )
+}
+
 
 type Props = {
   posts: PostType[]
@@ -27,21 +33,16 @@ const Page: NextPage<Props> = (props) => {
 
   return (
     <Layout title="tag posts" path="/tag/">
-      <PostsWrapper>
-        <H1>Tag Posts Index</H1>
-        {tags.map((tag) => {
-          const tagPosts = posts.filter((post) => post.frontMatter.tags.includes(tag))
-          return (
-            <>
-              <H2 id={tag}>{tag}</H2>
-              {tagPosts.map(({ fileName, frontMatter }) => {
-                const { title, create, tags } = frontMatter
-                return <PostCard slug={fileName} title={title} date={create} tags={tags} key={fileName} />
-              })}
-            </>
-          )
-        })}
-      </PostsWrapper>
+      <h1 className='mb-4 text-2xl 2xl:text-3xl text-center'>Tag Posts Index</h1>
+      {tags.map((tag) => {
+        const tagPosts = posts.filter((post) => post.frontMatter.tags.includes(tag))
+        return (
+          <div className="mb-8" key={tag}>
+            <H2 id={tag}>{tag}</H2>
+            <PostCards posts={tagPosts} />
+          </div>
+        )
+      })}
     </Layout>
   )
 }
