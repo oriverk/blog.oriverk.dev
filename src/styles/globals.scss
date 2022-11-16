@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-miku: #00e1ee;
+  }
+
+  .markdown {
+    // /components/markdown/index.tsx
+
+    // css content: refernce
+    // https://blog.jxck.io/entries/2022-03-06/markdown-style-table-css.html#alternative-text
+    h2 > a::before {
+      /* Safari 用のフォールバック */
+      content: '## ';
+      /* 読み上げ等に対しては空文字として認識させる */
+      content: '## ' / '';
+    }
+
+    h3 > a::before {
+      content: '### ';
+      content: '### ' / '';
+    }
+
+    h4 > a::before {
+      content: '#### ';
+      content: '#### ' / '';
+    }
+
+    :not(h2, h3, h4) > a {
+      margin-inline: .4rem;
+      // prose-a:text-slate-50
+      color: rgb(248 250 252 / var(--tw-text-opacity));
+      text-decoration-color: var(--color-miku);
+      text-underline-offset: 2px;
+    }
+
+    :is(h2, h3, h4) > a {
+      text-decoration: none;
+    }
+
+    :is(h2, h3, h4):hover {
+      a::before {
+        color: var(--color-miku);
+      }
+    }
+
+    ul li {
+      list-style: "-- ";
+      &::marker {
+        color: white;
+        font-weight: bold;
+      }
+    }
+
+    strong::before, strong::after {
+      content: '**';
+      content: '**' / '';
+    }
+
+    table {
+      width: auto;
+      border: 1px solid gray;
+
+      tr > th, tr:nth-child(2n) {
+        background-color: rgba(0, 0, 0, .3);
+      }
+
+      th, td {
+        padding: .5rem 1.5rem;
+        font-size: 1rem;
+      }
+    }
+
+    blockquote {
+      padding-inline: 1rem;
+      border-left: none;
+      border: 1px solid gray;
+      border-radius: .5rem;
+
+      & > p::before {
+        content: "> ";
+        content: '> ' / '';
+      }
+      & > blockquote {
+        border: none;
+      }
+      & > blockquote > p::before {
+        content: "> > ";
+        content: '> > ' / '';
+      }
+    }
+
+    figure:has(img), :not(figure) > img {
+      padding: 1rem;
+      border: 1px solid gray;
+      border-radius: .5rem;
+    }
+
+    :is(figure) > img {
+      border: none;
+    }
+
+    figcaption {
+      text-align: center;
+    }
+
+    details {
+      margin-top: .5rem;
+      margin-bottom: 1rem;
+    }
+
+    :not(pre) > code {
+      margin-inline: .4rem;
+    }
+
+    del::before, del::after {
+      content: "~~";
+      content: "~~" / "";
+    }
+
+    em::before, em::after {
+      content: "_";
+      content: "_" / "";
+    }
+
+    .filename::before {
+      content: attr(data-filename);
+      padding: .1rem .8rem;
+      border-radius: .2rem;
+      background: dimgray;
+    }
+
+    .line-number {
+      display: inline-block;
+      margin-right: 1rem;
+      text-align: right;
+      width: 1.5rem;
+      color: dimgray;
+      font-size: 1rem;
+
+      & > span::before {
+        content: attr(data-line-number);
+        content: attr(data-line-number) / '';
+      }
+    }
+  }
+}

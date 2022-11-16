@@ -1,30 +1,14 @@
 import React from 'react'
-import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
-import { extractCss } from 'goober'
+import { Html, Head, Main, NextScript } from 'next/document'
 
-export default class MyDocument extends Document<{ css: string }> {
-  static async getInitialProps({ renderPage }: DocumentContext) {
-    const page = await renderPage()
-    // Extrach the css for each page render
-    const css = extractCss()
-    return { ...page, css }
-  }
+const CustomDocument: React.FC = () => (
+  <Html lang="ja-JP">
+    <Head />
+    <body className='bg-slate-900 text-slate-50'>
+      <Main />
+      <NextScript />
+    </body>
+  </Html>
+)
 
-  render() {
-    return (
-      <Html lang="ja-JP">
-        <Head>
-          <style
-            id={'_goober'}
-            // And defined it in here
-            dangerouslySetInnerHTML={{ __html: ' ' + this.props.css }}
-          />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    )
-  }
-}
+export default CustomDocument;

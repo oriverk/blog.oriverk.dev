@@ -1,20 +1,12 @@
 import React from 'react'
 import Head from 'next/head'
 import type { AppProps } from 'next/app'
-import { setup } from 'goober'
-import { prefix } from 'goober/prefixer'
 import NextHeadSeo from 'next-head-seo'
 
-import { GlobalStyles } from 'styles/goober'
-
 import packageJson from '../package.json'
+import 'styles/globals.scss'
 
 const blogPath = process.env.NEXT_PUBLIC_BLOG_PATH || ''
-
-// goober's needs to know how to render the `styled` nodes.
-// So to let it know, we run the `setup` function with the
-// `createElement` function and prefixer function.
-setup(React.createElement, prefix)
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -40,7 +32,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           card: 'summary_large_image',
         }}
       />
-      <GlobalStyles />
       <Component {...pageProps} />
     </>
   )
