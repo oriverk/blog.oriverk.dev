@@ -1,10 +1,8 @@
-import { styled } from 'goober'
-
 type Props = {
   className?: string
 }
 
-const Component: React.FC<Props> = (props) => {
+export const AlgoliaIcon: React.FC<Props> = (props) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="120" height="16" {...props}>
       <g fill="none" fillRule="evenodd">
@@ -26,11 +24,3 @@ const Component: React.FC<Props> = (props) => {
     </svg>
   )
 }
-
-const StyledComponent = styled(Component)``
-
-const ContainerComponent: React.FC = () => {
-  return <StyledComponent />
-}
-
-export const AlgoliaIcon = ContainerComponent
