@@ -1,34 +1,35 @@
-import { styled } from 'goober'
 import Link from 'next/link'
-import * as path from 'path'
+import urlJoin from 'url-join'
+
+import type { PostCardType } from '@src/types/markdown'
 import { DateFormatter } from './date-formatter'
-import { FrontMatterType } from 'types/markdown'
 
-type PassedProps = Pick<FrontMatterType, 'title' | 'tags'> & {
-  slug: string
-  date: string
-  key: React.Key
-}
+export const PostCard: React.FC<PostCardType> = (props) => {
+  const { fileName, frontMatter } = props
+  const { title, create, update, tags } = frontMatter
+  const date = update || create
 
-type Props = PassedProps & {
-  className?: string
-}
-
-const Component = (props: Props) => {
-  const { className, slug, title, date, tags, key } = props
-
+  const href = urlJoin('/entry', fileName)
   return (
-    <section className={className} key={key}>
-      <h3>
-        <Link href={path.join('/entry', slug)}>{title}</Link>
+    <section
+      className="flex flex-col justify-between rounded-lg border border-solid border-gray-400 p-1 hover:border-gray-300"
+      key={fileName}
+    >
+      <h3 className="m-2 text-xl">
+        <Link
+          href={href}
+          className="text-slate-50 no-underline hover:text-slate-50 hover:underline hover:decoration-[var(--color-miku)]"
+        >
+          {title}
+        </Link>
       </h3>
-      <p>
+      <p className="flex flex-wrap p-2">
         <DateFormatter dateString={date} />
         &nbsp;/
         {tags.map((tag) => (
           <>
             &nbsp;
-            <Link href={`/tag/#${tag}`} key={tag}>
+            <Link href={`/tag/#${tag}`} key={`${fileName}/${tag}`}>
               {`#${tag}`}
             </Link>
           </>
@@ -37,39 +38,3 @@ const Component = (props: Props) => {
     </section>
   )
 }
-
-const StyledComponent = styled(Component)`
-  margin-bottom: 1rem;
-  padding: 0.3rem;
-  border: 1px solid dimgray;
-  border-radius: 0.5rem;
-  &:hover {
-    border-color: gray;
-  }
-  a {
-    color: var(--color-miku);
-    text-decoration: none;
-  }
-  a:hover {
-    color: var(--color-miku);
-    text-decoration: underline;
-  }
-  h3 {
-    margin: 0.5rem;
-    font-size: 1.25rem;
-  }
-  h3 > a {
-    color: var(--color-white);
-  }
-  h3 > a:hover {
-    color: var(--color-white);
-    text-decoration-color: var(--color-miku);
-  }
-  p {
-    margin: 0.5rem;
-  }
-`
-
-const ContainerComponent: React.FC<PassedProps> = (props) => <StyledComponent {...props} />
-
-export const PostCard = ContainerComponent

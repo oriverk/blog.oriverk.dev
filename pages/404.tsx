@@ -1,34 +1,19 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import { styled } from 'goober'
 
-import { Layout } from 'components/layouts'
+import { Layout } from '@src/components/layouts'
 
-interface Props {
-  className?: string
-}
-
-const Component: NextPage<Props> = (props) => {
-  const { className } = props
+const Page: NextPage = () => {
   return (
     <Layout title="404: Page not found" path="/404/">
-      <section className={className}>
-        <h1>Page Not Found</h1>
-        <Link href="/">Go back to Top</Link>
+      <section className="flex flex-col items-center justify-center">
+        <h1 className="text-2xl 2xl:text-3xl">Page Not Found</h1>
+        <Link href="/" className="text-xl 2xl:text-2xl">
+          Go back to Top
+        </Link>
       </section>
     </Layout>
   )
 }
 
-const StyledCompoent = styled(Component)`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
-
-const ContainerComponent: React.FC = () => <StyledCompoent />
-
-const PageComponent = ContainerComponent
-
-export default PageComponent
+export default Page

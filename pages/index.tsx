@@ -1,23 +1,15 @@
 import type { GetStaticProps, NextPage } from 'next'
-import { styled } from 'goober'
 
-import type { PostType } from 'types/markdown'
-import { getPostsData } from 'utils/markdown/getContentData'
-import { Layout } from 'components/layouts'
-import { PostCard } from 'components/post-card'
-
-const PostsWrapper = styled('div')`
-  padding: 1rem;
-  max-width: var(--max-width);
-  width: 100%;
-`
-
-const H1 = styled('h1')`
-  text-align: center;
-`
+import type { FrontMatterType, PostType } from '@src/types/markdown'
+import { getPostsData } from '@src/utils/markdown/getContentData'
+import { Layout } from '@src/components/layouts'
+import { PostCards } from '@src/components/post-cards'
 
 type Props = {
-  posts: PostType[]
+  posts: {
+    fileName: PostType['fileName']
+    frontMatter: Pick<FrontMatterType, 'title' | 'create' | 'update' | 'tags'>
+  }[]
 }
 
 const Page: NextPage<Props> = (props) => {
@@ -25,13 +17,8 @@ const Page: NextPage<Props> = (props) => {
 
   return (
     <Layout title="home" path="/">
-      <PostsWrapper>
-        <H1>Posts Index</H1>
-        {posts.map(({ fileName, frontMatter }) => {
-          const { title, create, tags } = frontMatter
-          return <PostCard slug={fileName} title={title} date={create} tags={tags} key={fileName} />
-        })}
-      </PostsWrapper>
+      <h1 className="mb-4 text-center text-2xl 2xl:text-3xl">Posts Index</h1>
+      <PostCards posts={posts} />
     </Layout>
   )
 }
@@ -44,6 +31,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const returnData = posts.map((post) => {
     const { frontMatter, fileName } = post
     const { published, editUrl, ...rest } = frontMatter
+
     return {
       frontMatter: rest,
       fileName,

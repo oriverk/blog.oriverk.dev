@@ -1,5 +1,5 @@
 import type { GetServerSideProps, NextPage } from 'next'
-import { generateSitemapXml } from 'utils/sitemap'
+import { generateSitemapXml } from '@src/utils/sitemap'
 
 const Page: NextPage = () => null
 

@@ -1,9 +1,7 @@
-import { styled } from 'goober'
+type Props = {
+  children: React.ReactNode
+}
 
-const StyledComponent = styled('div')`
-  margin-top: 2em;
-  margin-bottom: 2em;
-  border-radius: 0.125rem;
-`
-
-export const Pre: React.FC = (props: any) => <StyledComponent {...props} className="codeblock-container" />
+export const Pre: React.FC<Props> = ({ children }) => (
+  <pre className="codeblock-container my-2 rounded-sm">{children}</pre>
+)

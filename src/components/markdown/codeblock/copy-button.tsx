@@ -1,30 +1,26 @@
 import { useCopyToClipboard } from 'react-use'
-import { styled } from 'goober'
+import { CheckIcon, ClipboardIcon } from '@heroicons/react/24/outline'
 
-interface PasssedProps {
+type Props = {
   code: string
 }
 
-interface Props extends PasssedProps {
-  className?: string
-}
-
-const Component = ({ className, code }: Props) => {
-  const [state, copyToClipboard] = useCopyToClipboard()
+export const CopyButton: React.FC<Props> = (props) => {
+  const { code } = props
+  const [{ error, value }, copyToClipboard] = useCopyToClipboard()
+  const isCopied = !error && value
 
   return (
-    <button className={className} onClick={() => copyToClipboard(code)}>
-      {!state.error && state.value ? 'Copied' : 'Copy'}
+    <button
+      className=" rounded-lg p-1.5 text-gray-400 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-700"
+      onClick={() => copyToClipboard(code)}
+      disabled={!!isCopied}
+    >
+      {!isCopied ? (
+        <ClipboardIcon className="h-5 w-5" title="Copy" />
+      ) : (
+        <CheckIcon className="h-5 w-5 text-green-400" title="Copied!" />
+      )}
     </button>
   )
 }
-
-const StyledComponent = styled(Component)`
-  background: var(--color-miku);
-  font-weight: bold;
-  padding: 0.2rem 0.5rem;
-`
-
-const ContainerComponent: React.FC<PasssedProps> = (props) => <StyledComponent {...props} />
-
-export const CopyButton = ContainerComponent

@@ -1,16 +1,5 @@
-import { styled } from 'goober'
-
 type Props = {
   children: React.ReactNode
 }
 
-const StyledComponent = styled('main')`
-  flex: 1;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-`
-
-const ContainerComponent: React.FC<Props> = (props) => <StyledComponent {...props} />
-
-export const Main = ContainerComponent
+export const Main: React.FC<Props> = ({ children }) => <main className="w-full p-4">{children}</main>

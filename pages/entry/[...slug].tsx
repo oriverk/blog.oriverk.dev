@@ -1,20 +1,10 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import { styled } from 'goober'
 
-import type { PostType } from 'types/markdown'
-import { getPostsData } from 'utils/markdown/getContentData'
-import { Layout } from 'components/layouts'
-import { MarkdownContent } from 'components/markdown'
-import { PostHero } from 'components/post-hero'
-
-const ContentWrapper = styled('div')`
-  max-width: var(--max-width);
-  width: 100%;
-`
-
-const FlexWrapper = styled('div')`
-  display: flex;
-`
+import type { PostType } from '@src/types/markdown'
+import { getPostsData } from '@src/utils/markdown/getContentData'
+import { Layout } from '@src/components/layouts'
+import { MarkdownContent } from '@src/components/markdown'
+import { PostHero } from '@src/components/post-hero'
 
 type Props = {
   post: PostType
@@ -28,13 +18,11 @@ const Page: NextPage<Props> = (props) => {
 
   return (
     <Layout title={title} path={`/entry/${fileName}/`}>
-      <ContentWrapper>
-        <PostHero title={title} dateString={dateString} tags={tags} editUrl={editUrl} />
-        <FlexWrapper>
-          <MarkdownContent compiledSource={compiledSource} />
-          {/* <TableOfContent headings={headings} /> */}
-        </FlexWrapper>
-      </ContentWrapper>
+      <PostHero title={title} dateString={dateString} tags={tags} editUrl={editUrl} />
+      <div className="flex">
+        <MarkdownContent compiledSource={compiledSource} />
+        {/* <TableOfContent headings={headings} /> */}
+      </div>
     </Layout>
   )
 }

@@ -1,71 +1,36 @@
-import { styled } from 'goober'
 import Link from 'next/link'
-
-import NamedIcon from 'components/named-icon'
-import { CottageIcon, TagIcon, SearchIcon } from 'components/icons'
+import { HomeIcon, TagIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 
 const sitePath = process.env.NEXT_PUBLIC_SITE_PATH || ''
 
-type Props = {
-  className?: string
-}
+export const Header: React.FC = () => {
+  const _className =
+    'block text-gray-400 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-700 rounded-lg p-2.5'
 
-const Component = (props: Props) => {
   return (
-    <header {...props}>
-      <nav>
-        <Link href="/">blog</Link>
-        <div className="right">
-          <Link href="/search">
-            <NamedIcon name="Search" variant="none" width={16} height={16} fontSize={3}>
-              <SearchIcon label="search posts" size={8} color="var(--color-gray)" />
-            </NamedIcon>
+    <header className="text-center text-2xl">
+      <nav className="my-0 mx-auto flex max-w-3xl items-center justify-between p-4">
+        <Link
+          href="/"
+          className="text-slate-50 transition-colors duration-300 ease-in hover:text-[var(--color-miku)] hover:no-underline"
+        >
+          <div className="py-2.5 px-4">blog</div>
+        </Link>
+        <div className="flex gap-1">
+          <Link href="/search" className={_className} title="search">
+            <MagnifyingGlassIcon className="h-8 w-8 text-gray-400" />
+            <span className="sr-only">投稿を検索する</span>
           </Link>
-          <Link href="/tag">
-            <NamedIcon name="Tag" variant="none" width={16} height={16} fontSize={3}>
-              <TagIcon label="go to tags page" size={8} color="var(--color-gray)" />
-            </NamedIcon>
+          <Link href="/tag" className={_className} title="tags">
+            <TagIcon className="h-8 w-8 text-gray-400" />
+            <span className="sr-only">タグごとに投稿を見る</span>
           </Link>
-          <a href={sitePath} target="_blank" rel="noopener noreferrer">
-            <NamedIcon name="Home" variant="none" width={16} height={16} fontSize={3}>
-              <CottageIcon label="go to home page" size={8} color="var(--color-gray)" />
-            </NamedIcon>
+          <a href={sitePath} target="_blank" rel="noopener noreferrer" className={_className} title={sitePath}>
+            <HomeIcon className="h-8 w-8 text-gray-400" />
+            <span className="sr-only">{sitePath}に移動する</span>
           </a>
         </div>
       </nav>
     </header>
   )
 }
-
-const StyledComponent = styled(Component)`
-  text-align: center;
-  font-size: 1.5rem;
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-    padding: 1rem;
-    max-width: var(--max-width);
-    a {
-      color: var(--color-white);
-      text-decoration: none;
-    }
-    a:hover {
-      color: var(--color-miku);
-      transition: color 0.3s ease;
-    }
-    .right {
-      display: flex;
-      a:hover {
-        transition: background 0.25s ease;
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 0.2rem;
-      }
-    }
-  }
-`
-
-const ContainerComponent: React.FC = () => <StyledComponent />
-
-export const Header = ContainerComponent

@@ -1,35 +1,28 @@
-import { styled } from 'goober'
-import { FrontMatterType } from 'types/markdown'
-import { DateFormatter, DateFormatterProps } from 'components/date-formatter'
+import { FrontMatterType } from '@src/types/markdown'
+import { DateFormatter, DateFormatterProps } from '@src/components/date-formatter'
 import Link from 'next/link'
 
-type PassedProps = DateFormatterProps & {
-  title: string
-} & Pick<FrontMatterType, 'tags' | 'editUrl'>
+type Props = Pick<FrontMatterType, 'title' | 'tags' | 'editUrl'> & DateFormatterProps
 
-type Props = PassedProps & {
-  className?: string
-}
-
-const Component = (props: Props) => {
-  const { className, title, dateString, tags, editUrl } = props
+export const PostHero: React.FC<Props> = (props) => {
+  const { title, tags, editUrl, dateString } = props
 
   return (
-    <div className={className}>
-      <h1>{title}</h1>
-      <p>
+    <div className="text-center">
+      <h1 className="mb-4 break-words text-center text-2xl 2xl:text-3xl">{title}</h1>
+      <p className="m-2 flex flex-wrap justify-center">
         <DateFormatter dateString={dateString} />
         &nbsp;/
         {tags.map((tag) => (
           <>
             &nbsp;
-            <Link href={`/tag/#${tag}`} key={tag}>
+            <Link href={`/tag/#${tag}`} key={tag} className="decoration-red-400">
               {'#' + tag}
             </Link>
           </>
         ))}
       </p>
-      <p>
+      <p className="m-2">
         <a href={editUrl} target="_blank" rel="noopener noreferrer">
           GitHub で編集する
         </a>
@@ -37,17 +30,3 @@ const Component = (props: Props) => {
     </div>
   )
 }
-
-const StyledComponent = styled(Component)`
-  & > h1 {
-    text-align: center;
-  }
-  & > p {
-    margin: 0.5rem;
-    text-align: center;
-  }
-`
-
-const ContainerComponent: React.FC<PassedProps> = (props) => <StyledComponent {...props} />
-
-export const PostHero = ContainerComponent

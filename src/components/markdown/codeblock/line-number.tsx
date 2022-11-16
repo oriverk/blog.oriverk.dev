@@ -1,37 +1,14 @@
-import { styled } from 'goober'
-
-interface PassedProps {
+type Props = {
   number: number
   code: string
 }
 
-interface Props extends PassedProps {
-  className?: string
-}
-
-const Component = (props: Props) => {
-  const { className, number, code } = props
+export const LineNumber: React.FC<Props> = (props) => {
+  const { number } = props
 
   return (
-    <div className={className}>
+    <div className="line-number">
       <span data-line-number={number} />
     </div>
   )
 }
-
-const StyledComponent = styled(Component)`
-  display: inline-block;
-  margin-right: 1rem;
-  text-align: right;
-  width: 1.5rem;
-  color: dimgray;
-  font-size: 1rem;
-  & > span::before {
-    content: attr(data-line-number);
-    content: attr(data-line-number) / '';
-  }
-`
-
-const ContainerComponent: React.FC<PassedProps> = (props) => <StyledComponent {...props} />
-
-export const LineNumber = ContainerComponent
