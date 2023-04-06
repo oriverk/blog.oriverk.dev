@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import type { FC } from 'react';
+import type { FC } from 'react'
 import type { Language, PrismTheme } from 'prism-react-renderer'
 import BaseHighlight, { defaultProps } from 'prism-react-renderer'
 import { LineNumber } from './line-number'

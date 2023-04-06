@@ -1,8 +1,8 @@
-import { type Metadata } from "next"
-import packageJson from "../../package.json"
+import { type Metadata } from 'next'
+import packageJson from '../../package.json'
 
-const blogPath = process.env.NEXT_PUBLIC_BLOG_PATH || "http://localhost:3000"
-const domain = blogPath.replace('https://', '');
+const blogPath = process.env.NEXT_PUBLIC_BLOG_PATH || 'http://localhost:3000'
+const domain = blogPath.replace('https://', '')
 
 export const sharedMetadata: Metadata = {
   // Note: This is the same values as the default value set
@@ -33,9 +33,9 @@ export const sharedMetadata: Metadata = {
       {
         rel: 'apple-touch-icon',
         sizes: '180x180',
-        url: '/favicon/icon180x.png'
-      }
-    ]
+        url: '/favicon/icon180x.png',
+      },
+    ],
   },
   themeColor: '#00e1ee',
   openGraph: {
@@ -46,7 +46,7 @@ export const sharedMetadata: Metadata = {
     images: [
       {
         url: '/assets/sugarloaf-adelaide.png',
-      }
+      },
     ],
     type: 'article',
   },
@@ -56,12 +56,12 @@ export const sharedMetadata: Metadata = {
     description: 'description',
     site: '@not_you_die',
     creator: '@not_you_die',
-    images: ['/assets/sugarloaf-adelaide.png']
+    images: ['/assets/sugarloaf-adelaide.png'],
   },
   alternates: {
     canonical: blogPath,
     types: {
       'application/rss+xml': '/feed.xml',
-    }
-  }
+    },
+  },
 }

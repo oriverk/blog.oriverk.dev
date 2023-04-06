@@ -21,7 +21,7 @@ export async function serializeMdx(source: string) {
   const serializedResult = await compileMDX<FrontMatterType>({
     source,
     options: serializeOptions,
-    components: MDXComponents
+    components: MDXComponents,
   })
   return serializedResult
 }

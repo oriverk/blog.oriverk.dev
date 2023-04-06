@@ -7,7 +7,7 @@ export const Footer: React.FC = () => (
     <div className="mx-0 my-auto text-center text-gray-400">
       <small className="text-sm">@{year} Kawano Yudai.</small>
       <br />
-      <p className="mx-0 mt-2 mb-0">
+      <p className="mx-0 mb-0 mt-2">
         This site is built with&nbsp;
         <a href={nextjs} target="_blank" rel="noopener noreferrer">
           Next.js

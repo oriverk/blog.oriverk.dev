@@ -1,45 +1,46 @@
-import type { FrontMatterType } from '@src/types/markdown';
+import type { FrontMatterType } from '@src/types/markdown'
 import { getPosts } from '@src/utils/markdown/getContentData'
-import { PostCard } from '@src/components/post-card';
+import { PostCard } from '@src/components/post-card'
 
 export const metadata = {
   title: 'Tag Posts',
 }
 
 async function getData() {
-  const { posts, allTags: tags } = await getPosts();
+  const { posts, allTags: tags } = await getPosts()
 
-  const data = tags.map(tag => {
-    const result = posts.filter(post => post.frontmatter.tags.includes(tag))
+  const data = tags.map((tag) => {
+    const result = posts
+      .filter((post) => post.frontmatter.tags.includes(tag))
       .map(({ frontmatter, fileName }) => {
-        const { published, editUrl, image, ...rest } = frontmatter;
+        const { published, editUrl, image, ...rest } = frontmatter
         return {
           frontmatter: { ...rest },
-          fileName
+          fileName,
         }
       })
-    
+
     return {
       tag,
       posts: result,
-    };
+    }
   })
 
-  return data;
+  return data
 }
 
 type TagPostsProps = {
   tagPosts: {
-    tag: string;
+    tag: string
     posts: {
-      frontmatter: Pick<FrontMatterType, "title" | "tags" | "create" | "update">;
-      fileName: string;
+      frontmatter: Pick<FrontMatterType, 'title' | 'tags' | 'create' | 'update'>
+      fileName: string
     }[]
   }
 }
 
-const TagPostCards: React.FC<TagPostsProps> = ({tagPosts}) => {
-  const { tag, posts } = tagPosts;
+const TagPostCards: React.FC<TagPostsProps> = ({ tagPosts }) => {
+  const { tag, posts } = tagPosts
 
   return (
     <section className="mb-3" key={tag}>
@@ -58,16 +59,14 @@ const TagPostCards: React.FC<TagPostsProps> = ({tagPosts}) => {
 }
 
 export default async function Page() {
-  const data = await getData();
+  const data = await getData()
 
   return (
     <>
       <h1 className="mb-4 text-center text-2xl 2xl:text-3xl">Tag Posts Index</h1>
-      {data.map(datum => (
+      {data.map((datum) => (
         <TagPostCards tagPosts={datum} key={datum.tag} />
       ))}
     </>
   )
 }
-
-

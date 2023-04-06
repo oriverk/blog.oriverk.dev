@@ -29,7 +29,7 @@ export async function getPostContent(localFilePath: string) {
 }
 
 export async function getPost(path: string) {
-  const { posts } = await getPosts();
+  const { posts } = await getPosts()
   const post = posts.find((post) => post.fileName === path)
   return post
 }

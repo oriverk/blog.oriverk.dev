@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import type { FC } from 'react';
+import type { FC } from 'react'
 import { useCopyToClipboard } from 'react-use'
 import { CheckIcon, ClipboardIcon } from '@heroicons/react/24/outline'
 

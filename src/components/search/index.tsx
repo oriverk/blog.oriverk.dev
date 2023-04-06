@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import { useRef } from 'react'
 import type { UseSearchBoxProps } from 'react-instantsearch-hooks-web'

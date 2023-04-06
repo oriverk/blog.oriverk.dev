@@ -10,7 +10,7 @@ export const PostHero: React.FC<Props> = (props) => {
   const { className, title, tags, create, update } = props
 
   return (
-    <div className={twMerge("text-center", className)}>
+    <div className={twMerge('text-center', className)}>
       <h1 className="mb-4 break-words text-center text-2xl 2xl:text-3xl">{title}</h1>
       <p className="m-2 flex flex-wrap justify-center">
         <DateFormatter dateString={update || create} />
