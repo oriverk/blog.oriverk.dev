@@ -5,8 +5,8 @@ import type { PostCardType } from '@src/types/markdown'
 import { DateFormatter } from './date-formatter'
 
 export const PostCard: React.FC<PostCardType> = (props) => {
-  const { fileName, frontMatter } = props
-  const { title, create, update, tags } = frontMatter
+  const { fileName, frontmatter } = props
+  const { title, create, update, tags } = frontmatter
   const date = update || create
 
   const href = urlJoin('/entry', fileName)

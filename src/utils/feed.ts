@@ -1,5 +1,5 @@
 import urlJoin from 'url-join'
-import { getPostsData } from 'utils/markdown/getContentData'
+import { getPosts } from 'utils/markdown/getContentData'
 
 const blogPath = process.env.NEXT_PUBLIC_BLOG_PATH || ''
 
@@ -23,17 +23,17 @@ export async function generateFeedXml(): Promise<string> {
     </channel>
   `
 
-  const { posts } = await getPostsData()
+  const { posts } = await getPosts()
 
-  posts.forEach(({ fileName, frontMatter }) => {
-    const datetime = frontMatter.update || frontMatter.create
+  posts.forEach(({ fileName, frontmatter }) => {
+    const datetime = frontmatter.update || frontmatter.create
     const utcString = new Date(datetime).toUTCString()
-    const description = frontMatter.tags.join(', ')
+    const description = frontmatter.tags.join(', ')
     const link = urlJoin(blogPath, 'entry', fileName, '/')
 
     xml += `
       <item>
-        <title>${frontMatter.title}</title>
+        <title>${frontmatter.title}</title>
         <link>${link}</link>
         <guid>entry/${fileName}</guid>
         <pubDate>${utcString}</pubDate>

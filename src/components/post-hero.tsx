@@ -1,17 +1,17 @@
 import { FrontMatterType } from '@src/types/markdown'
-import { DateFormatter, DateFormatterProps } from '@src/components/date-formatter'
+import { DateFormatter } from '@src/components/date-formatter'
 import Link from 'next/link'
 
-type Props = Pick<FrontMatterType, 'title' | 'tags' | 'editUrl'> & DateFormatterProps
+type Props = Pick<FrontMatterType, 'title' | 'tags' | 'create' | 'update'>
 
 export const PostHero: React.FC<Props> = (props) => {
-  const { title, tags, editUrl, dateString } = props
+  const { title, tags, create, update } = props
 
   return (
     <div className="text-center">
       <h1 className="mb-4 break-words text-center text-2xl 2xl:text-3xl">{title}</h1>
       <p className="m-2 flex flex-wrap justify-center">
-        <DateFormatter dateString={dateString} />
+        <DateFormatter dateString={update || create} />
         &nbsp;/
         {tags.map((tag) => (
           <>
@@ -21,11 +21,6 @@ export const PostHero: React.FC<Props> = (props) => {
             </Link>
           </>
         ))}
-      </p>
-      <p className="m-2">
-        <a href={editUrl} target="_blank" rel="noopener noreferrer">
-          GitHub で編集する
-        </a>
       </p>
     </div>
   )

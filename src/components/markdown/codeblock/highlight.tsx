@@ -1,8 +1,11 @@
+"use client";
+
+import type { FC } from 'react';
 import type { Language, PrismTheme } from 'prism-react-renderer'
 import BaseHighlight, { defaultProps } from 'prism-react-renderer'
 import { LineNumber } from './line-number'
 
-type HighlightProps = {
+type Props = {
   codeString: string
   language: Language
   theme: PrismTheme
@@ -10,7 +13,7 @@ type HighlightProps = {
   showLines?: boolean
 }
 
-const Highlight: React.FC<HighlightProps> = (props) => {
+const Highlight: FC<Props> = (props) => {
   const { codeString, language, showLines, ...rest } = props
 
   return (

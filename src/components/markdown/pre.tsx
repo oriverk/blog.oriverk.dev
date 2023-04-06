@@ -1,7 +1,7 @@
-type Props = {
-  children: React.ReactNode
-}
+import type { ComponentPropsWithoutRef, FC } from 'react'
 
-export const Pre: React.FC<Props> = ({ children }) => (
+type Props = ComponentPropsWithoutRef<'pre'>
+
+export const Pre: FC<Props> = ({ children }) => (
   <pre className="codeblock-container my-2 rounded-sm">{children}</pre>
 )

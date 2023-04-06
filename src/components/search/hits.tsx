@@ -16,7 +16,7 @@ const Hits: React.FC<UseHitsProps<HitProps>> = (props) => {
   const posts = hits.slice().map(({ id, title, create, update, tags }) => {
     return {
       fileName: id,
-      frontMatter: { title, create, update, tags },
+      frontmatter: { title, create, update, tags },
     }
   })
 
