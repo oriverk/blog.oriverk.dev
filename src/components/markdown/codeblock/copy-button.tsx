@@ -1,3 +1,6 @@
+'use client'
+
+import type { FC } from 'react'
 import { useCopyToClipboard } from 'react-use'
 import { CheckIcon, ClipboardIcon } from '@heroicons/react/24/outline'
 
@@ -5,7 +8,7 @@ type Props = {
   code: string
 }
 
-export const CopyButton: React.FC<Props> = (props) => {
+export const CopyButton: FC<Props> = (props) => {
   const { code } = props
   const [{ error, value }, copyToClipboard] = useCopyToClipboard()
   const isCopied = !error && value

@@ -1,5 +1,5 @@
-type Props = {
-  children: React.ReactNode
-}
+import type { ComponentPropsWithoutRef, FC } from 'react'
 
-export const InlineCode: React.FC<Props> = ({ children }) => <code translate="no">{children}</code>
+type Props = ComponentPropsWithoutRef<'code'>
+
+export const InlineCode: FC<Props> = ({ children }) => <code translate="no">{children}</code>

@@ -24,7 +24,7 @@ type PostType = {
 
 type PostCardType = {
   fileName: PostType['fileName']
-  frontMatter: Pick<FrontMatterType, 'title' | 'create' | 'update' | 'tags'>
+  frontmatter: Pick<FrontMatterType, 'title' | 'create' | 'update' | 'tags'>
 }
 
 export type { HeadingType, FrontMatterType, PostType, PostCardType }

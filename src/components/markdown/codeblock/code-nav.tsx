@@ -1,3 +1,4 @@
+import type { FC } from 'react'
 import { CopyButton } from './copy-button'
 
 type Props = {
@@ -5,7 +6,7 @@ type Props = {
   rawCode: string
 }
 
-export const CodeNav: React.FC<Props> = (props) => {
+export const CodeNav: FC<Props> = (props) => {
   const { filename, rawCode } = props
 
   return (

@@ -1,9 +1,11 @@
+import type { FC } from 'react'
+
 type Props = {
   number: number
   code: string
 }
 
-export const LineNumber: React.FC<Props> = (props) => {
+export const LineNumber: FC<Props> = (props) => {
   const { number } = props
 
   return (

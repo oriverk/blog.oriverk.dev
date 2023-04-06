@@ -20,19 +20,37 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["./src/*"],
-      "types/*": ["./src/types/*"],
-      "utils/*": ["./src/utils/*"],
-      "hooks/*": ["./src/hooks/*"],
-      "styles/*": ["./src/styles/*"],
-      "components/*": ["./src/components/*"],
+      "@src/*": [
+        "./src/*"
+      ],
+      "types/*": [
+        "./src/types/*"
+      ],
+      "utils/*": [
+        "./src/utils/*"
+      ],
+      "hooks/*": [
+        "./src/hooks/*"
+      ],
+      "styles/*": [
+        "./src/styles/*"
+      ],
+      "components/*": [
+        "./src/components/*"
+      ]
     },
-    "incremental": true
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

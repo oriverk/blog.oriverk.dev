@@ -4,4 +4,5 @@ extends:
   - prettier
 rules: {
   '@next/next/no-img-element': 0,
+  "@next/next/no-html-link-for-pages": ["error", "app"]
 }

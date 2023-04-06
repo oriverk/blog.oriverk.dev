@@ -9,12 +9,12 @@ export const Header: React.FC = () => {
 
   return (
     <header className="text-center text-2xl">
-      <nav className="my-0 mx-auto flex max-w-3xl items-center justify-between p-4">
+      <nav className="mx-auto my-0 flex max-w-3xl items-center justify-between p-4">
         <Link
           href="/"
           className="text-slate-50 transition-colors duration-300 ease-in hover:text-[var(--color-miku)] hover:no-underline"
         >
-          <div className="py-2.5 px-4">blog</div>
+          <div className="px-4 py-2.5">blog</div>
         </Link>
         <div className="flex gap-1">
           <Link href="/search" className={_className} title="search">

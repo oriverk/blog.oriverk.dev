@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://blog.oriverk.dev/sitemap.xml
-Host: https://blog.oriverk.dev
