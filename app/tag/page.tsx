@@ -1,6 +1,6 @@
 import type { FrontMatterType } from '@src/types/markdown';
 import { getPosts } from '@src/utils/markdown/getContentData'
-import { PostCards } from '@src/components/post-cards'
+import { PostCard } from '@src/components/post-card';
 
 export const metadata = {
   title: 'Tag Posts',
@@ -42,13 +42,17 @@ const TagPostCards: React.FC<TagPostsProps> = ({tagPosts}) => {
   const { tag, posts } = tagPosts;
 
   return (
-    <section className="mb-3 text-xl" key={tag}>
+    <section className="mb-3" key={tag}>
       <h2 id={tag} className="mb-3 text-xl">
         <a href={`#${tag}`} className="underline decoration-[var(--color-miku)] underline-offset-2">
           # {tag}
         </a>
       </h2>
-      <PostCards posts={posts} />
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        {posts.map(({ fileName, frontmatter }) => {
+          return <PostCard fileName={fileName} frontmatter={frontmatter} key={fileName} />
+        })}
+      </div>
     </section>
   )
 }

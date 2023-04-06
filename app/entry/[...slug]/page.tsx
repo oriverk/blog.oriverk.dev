@@ -64,7 +64,7 @@ export default async function Page({ params }: { params: Params }) {
 
   return (
     <>
-      <PostHero {...frontmatter} />
+      <PostHero {...frontmatter} className="mb-8" />
       <div className="flex">
         <Markdown>{content}</Markdown>
       </div>

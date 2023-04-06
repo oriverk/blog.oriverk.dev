@@ -1,5 +1,5 @@
 import { getPosts } from "@src/utils/markdown/getContentData"
-import { PostCards } from "@src/components/post-cards";
+import { PostCard } from "@src/components/post-card";
 
 async function getData() {
   const { posts } = await getPosts();
@@ -19,7 +19,11 @@ export default async function Page() {
   return (
     <>
       <h1 className="mb-4 text-center text-2xl 2xl:text-3xl">Posts Index</h1>
-      <PostCards posts={posts} />
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        {posts.map(({ fileName, frontmatter }) => {
+          return <PostCard fileName={fileName} frontmatter={frontmatter} key={fileName} />
+        })}
+      </div>
     </>
   )
 }
