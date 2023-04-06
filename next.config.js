@@ -8,7 +8,7 @@ const withBundleAnalyzer = process.env.ANALYZE === 'true'
 // const { defaultConfig } = require("next/dist/server/config-shared");
 const defaultConfig = {
   experimental: {
-    appDir: true
+    appDir: true,
   },
   trailingSlash: true,
   optimizeFonts: true,
