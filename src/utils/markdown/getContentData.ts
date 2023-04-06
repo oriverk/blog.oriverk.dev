@@ -11,9 +11,8 @@ const isDev = process.env.NODE_ENV === 'development'
  * ex: /home/oriverk/Codes/oriverk/blog/docs/2022/memo.md
  * @returns
  */
-export async function getPost(localFilePath: string) {
-  const path = localFilePath.startsWith(POSTS_PATH) ? localFilePath : getAllFiles(POSTS_PATH).find((path) => path.includes(localFilePath)) || ""
-
+export async function getPostContent(localFilePath: string) {
+  const path = localFilePath
   const source = fs.readFileSync(path).toString()
   const { content, frontmatter } = await serializeMdx(source)
 
@@ -29,10 +28,16 @@ export async function getPost(localFilePath: string) {
   }
 }
 
+export async function getPost(path: string) {
+  const { posts } = await getPosts();
+  const post = posts.find((post) => post.fileName === path)
+  return post
+}
+
 export async function getPosts() {
   const postFileNames = getAllFiles(POSTS_PATH).filter((path) => /\.mdx?$/.test(path))
 
-  const promise = postFileNames.map(async (fileName) => getPost(fileName))
+  const promise = postFileNames.map(async (fileName) => getPostContent(fileName))
   const posts = (await Promise.all(promise))
     .filter(({ frontmatter }) => (isDev ? true : frontmatter.published))
     .sort((post1, post2) => (post1.frontmatter.create > post2.frontmatter.create ? -1 : 1))

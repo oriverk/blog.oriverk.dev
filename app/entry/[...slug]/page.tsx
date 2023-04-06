@@ -1,19 +1,30 @@
+import type { Metadata, ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface';
 import { notFound } from 'next/navigation';
 
 import { getPost, getPosts } from '@src/utils/markdown/getContentData'
 import { Markdown } from '@src/components/markdown'
 import { PostHero } from '@src/components/post-hero'
-import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface';
 
+type Params = {
+  slug: string | string[];
+}
 type Props = {
-  params: { slug: string | string[] };
+  params: Params;
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export async function generateMetadata({ params, searchParams }: Props, parent?: ResolvingMetadata) {
+export async function generateMetadata({ params, searchParams }: Props, parent: ResolvingMetadata): Promise<Metadata> {
   const { slug } = params;
-  const post = await getData({ slug });
-  const { frontmatter } = post!
+  const fileName = typeof slug === "string"
+    ? slug
+    : Array.isArray(slug) ? slug.join("/") : JSON.stringify(slug);
+  
+  const post = await getPost(fileName)
+  if (!post?.frontmatter) {
+    return {}
+  }
+
+  const { frontmatter } = post
   const { title, tags } = frontmatter
   const keywords = tags.length ? tags : (await parent)?.keywords || [];
 
@@ -33,15 +44,16 @@ export async function generateStaticParams() {
   return params
 }
 
-async function getData(params: { slug: string | string[] }) {
-  const fileName = typeof params.slug === "string"
-    ? params.slug
-    : params.slug.join("/");
+async function getData(params: Params) {
+  const { slug } = params;
+  const fileName = typeof slug === "string"
+    ? slug
+    : Array.isArray(slug) ? slug.join("/") : JSON.stringify(slug);
   const post = await getPost(fileName)
   return post
 }
 
-export default async function Page({ params }: { params: { slug: string | string[] } }) {
+export default async function Page({ params }: { params: Params }) {
   const post = await getData(params)
 
   if (!post) {
