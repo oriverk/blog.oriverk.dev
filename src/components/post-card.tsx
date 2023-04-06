@@ -15,14 +15,14 @@ export const PostCard: React.FC<PostCardType> = (props) => {
       className="flex flex-col justify-between rounded-lg border border-solid border-gray-400 p-1 hover:border-gray-300"
       key={fileName}
     >
-      <h3 className="m-2 text-xl">
+      <p className="m-2 text-xl">
         <Link
           href={href}
           className="text-slate-50 no-underline hover:text-slate-50 hover:underline hover:decoration-[var(--color-miku)]"
         >
           {title}
         </Link>
-      </h3>
+      </p>
       <p className="flex flex-wrap p-2">
         <DateFormatter dateString={date} />
         &nbsp;/

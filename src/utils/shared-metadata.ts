@@ -26,7 +26,7 @@ export const sharedMetadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon/icon16.png', sizes: '16x16' },
+      { url: '/favicon/icon16x.png', sizes: '16x16' },
       { url: '/favicon/icon32x.png', sizes: '32x32' },
     ],
     other: [

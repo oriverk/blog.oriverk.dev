@@ -3,7 +3,7 @@ import { getPosts } from '@src/utils/markdown/getContentData'
 import { PostCard } from '@src/components/post-card'
 
 export const metadata = {
-  title: 'Tag Posts',
+  title: 'Tag',
 }
 
 async function getData() {

@@ -21,7 +21,7 @@ export const Header: React.FC = () => {
             <MagnifyingGlassIcon className="h-8 w-8 text-gray-400" />
             <span className="sr-only">投稿を検索する</span>
           </Link>
-          <Link href="/tag" className={_className} title="tags">
+          <Link href="/tag" className={_className} title="tag">
             <TagIcon className="h-8 w-8 text-gray-400" />
             <span className="sr-only">タグごとに投稿を見る</span>
           </Link>
