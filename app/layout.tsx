@@ -1,11 +1,16 @@
+import type { ReactNode } from "react";
 import { Header } from "@src/components/layouts/header";
 import { Main } from "@src/components/layouts/main";
 import { Footer } from "@src/components/layouts/footer";
 
 import "../src/styles/globals.scss"
+import { Metadata } from "next";
+import { sharedMetadata } from "@src/utils/shared-metadata";
+
+export const metadata: Metadata = sharedMetadata;
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export default function RootLayout({ children }: Props) {

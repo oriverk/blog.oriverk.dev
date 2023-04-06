@@ -1,8 +1,5 @@
 import { getPosts } from "@src/utils/markdown/getContentData"
 import { PostCards } from "@src/components/post-cards";
-import { sharedMetadata } from "./shared-metadata";
-
-export const metadata = sharedMetadata;
 
 async function getData() {
   const { posts } = await getPosts();

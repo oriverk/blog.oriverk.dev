@@ -2,6 +2,10 @@ import type { FrontMatterType } from '@src/types/markdown';
 import { getPosts } from '@src/utils/markdown/getContentData'
 import { PostCards } from '@src/components/post-cards'
 
+export const metadata = {
+  title: 'Tag Posts',
+}
+
 async function getData() {
   const { posts, allTags: tags } = await getPosts();
 

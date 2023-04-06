@@ -3,36 +3,25 @@ import { notFound } from 'next/navigation';
 import { getPost, getPosts } from '@src/utils/markdown/getContentData'
 import { Markdown } from '@src/components/markdown'
 import { PostHero } from '@src/components/post-hero'
-// import type { Metadata, ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface';
-// import { sharedMetadata } from 'app/shared-metadata';
+import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface';
 
 type Props = {
-  params: { slug: string };
+  params: { slug: string | string[] };
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
-// export async function generateMetadata(
-//   { params, searchParams }: Props,
-//   parent?: ResolvingMetadata
-// ): Promise<Metadata>{
-//   const slug = params.slug;
-//   const post = await getData({ slug });
-//   const { frontMatter } = post!
-//   const { title, tags } = frontMatter
-//   // https://beta.nextjs.org/docs/api-reference/metadata#generatemetadata-function
-//   const previousImages = (await parent)?.openGraph?.images || [];
-//   const previousKeywords = (await parent)?.keywords || [];
+export async function generateMetadata({ params, searchParams }: Props, parent?: ResolvingMetadata) {
+  const { slug } = params;
+  const post = await getData({ slug });
+  const { frontmatter } = post!
+  const { title, tags } = frontmatter
+  const keywords = tags.length ? tags : (await parent)?.keywords || [];
 
-//   return {
-//     title,
-//     // keywords: [...tags, ...previousKeywords],
-//     // keywords: [...tags, ...sharedMetadata.keywords],
-//     openGraph: {
-//       images: [...previousImages]
-//     },
-//     ...sharedMetadata
-//   }
-// }
+  return {
+    title,
+    keywords,
+  }
+}
 
 export async function generateStaticParams() {
   const { posts } = await getPosts();

@@ -1,5 +1,9 @@
 import { AlgoliaSearch } from '@src/components/search'
 
+export const metadata = {
+  title: 'Search',
+}
+
 export default function Page() {
   return (
     <div className="w-full">

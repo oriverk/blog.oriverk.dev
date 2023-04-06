@@ -1,5 +1,5 @@
 import { type Metadata } from "next"
-import packageJson from "../package.json"
+import packageJson from "../../package.json"
 
 const blogPath = process.env.NEXT_PUBLIC_BLOG_PATH || "http://localhost:3000"
 const domain = blogPath.replace('https://', '');
