@@ -1,0 +1,19 @@
+plugins:
+  '@textlint/markdown':
+    extensions:
+      - .mdx
+filters: {}
+rules:
+  # 康煕部首の検出
+  textlint-rule-no-kangxi-radicals: true
+  # [AWSサービス名のtypo削減用のtextlintルールとルール更新用のスクリプトを公開してみた（npmパッケージ） | DevelopersIO](https://dev.classmethod.jp/articles/create_aws_textlint_rule/)
+  textlint-rule-aws-service-name: true
+  "@proofdict/proofdict":
+    dictURL: https://azu.github.io/proof-dictionary/
+  # [ライティングガイドライン | コンテンツ | SmartHR Design System](https://smarthr.design/products/contents/writing-principles/)
+  textlint-rule-preset-smarthr:
+    ja-space-between-half-and-full-width:
+      space: ["alphabets"]
+  preset-ja-technical-writing:
+    max-kanji-continuous-len:
+      max: 10

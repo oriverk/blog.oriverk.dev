@@ -38,3 +38,5 @@ script/postsMap.json
 
 # github
 /.vscode/setting.json
+
+.cache
