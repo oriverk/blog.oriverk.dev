@@ -19,7 +19,7 @@ published: true
 
 ### デュアルブートにしたきっかけ
 
-元は Windows ユーザでしたが、最近は virtualbox による仮想環境でコードを触っていました。vm に RAM8GB 弱を分け与えていたこともあり特に問題もなくやってましたが、最近になって Chrome が PC が頻繁にフリーズするようになったので、デュアルブートを考えました。
+元は Windows ユーザーでしたが、最近は virtualbox による仮想環境でコードを触っていました。vm に RAM8GB 弱を分け与えていたこともあり特に問題もなくやってましたが、最近になって Chrome がパソコンが頻繁にフリーズするようになったので、デュアルブートを考えました。
 
 ## 本題：Ubuntuの用意
 
@@ -27,21 +27,21 @@ published: true
 
 ### インストールメディア
 
-インストールメディアの作成には[Rufus](https://rufus.ie/ja_JP.html)を使用し、iso イメージと作成先の USB 等のメディアを選択するだけで、非常に簡単容易だった。
+インストールメディアの作成には[Rufus](https://rufus.ie/ja_JP.html)を使用し、iso イメージと作成先の USB などのメディアを選択するだけで、非常に簡単容易だった。
 
-通常だと内蔵 SSD に Ubuntu を作成する際はパーティションを弄る訳だが今回は空っぽの外付け SSD を使うので特に何もしなかった。
+通常だと内蔵 SSD に Ubuntu を作成する際はパーティションを弄るわけだが今回は空っぽの外付け SSD を使うので特に何もしなかった。
 
 再起動して Bios 設定画面で OS ブートに先に作成したインストールメディアを使うように優先順位を設定して、また再起動して、Ubuntu を起動、『Ubuntu を試す』を選択した。
 
 ### Ubuntuのインストール
 
-スワップ領域と言われても余り分からない人間なので、この[いおりのプログラミングめも](http://fanblogs.jp/iorisprogramming/archive/17/0)の記事を参考にした。画像も添えてあって非常にわかりやすかった。なのでこちらでは割愛。
+スワップ領域と言われても余りわからない人間なので、この[いおりのプログラミングめも](http://fanblogs.jp/iorisprogramming/archive/17/0)の記事を参考にした。画像も添えてあって非常にわかりやすかった。なのでこちらでは割愛。
 
 ## Ubuntuのセットアップ
 
 ### キーボード配列の変更
 
-今回は Ubuntu 日本語 Remix を使用したのでインストール直後から日本語を使用できたが、PC のキーボードは US 配列なので、キーボード配列を変更する必要があった。
+今回は Ubuntu 日本語 Remix を使用したのでインストール直後から日本語を使用できたが、パソコンのキーボードは US 配列なので、キーボード配列を変更する必要があった。
 
 設定の『地域と言語』の入力ソースから英語を追加、元々入っている日本語と日本語(Mozc)のうち、日本語は不要だったので削除した。
 
@@ -73,7 +73,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock show-trash true
 sudo timedatectl set-local-rtc true
 ```
 
-### MP4動画等を再生できる様にする
+### MP4動画などを再生できる様にする
 
 ```sh
 sudo install ubuntu-restricted-extras
@@ -98,7 +98,7 @@ sudo install ffmpeg
 ![image](https://i.imgur.com/ozMQiVC.png)
 
 - 削除したもの
-  - ゲーム類: お遊び用 PC じゃないので
+  - ゲーム類: お遊び用パソコンじゃないので
   - 写真・カレンダー・その他バックアップ、LibreOffice 等
     - Google 使うので
   - テキストエディタ類：VSCode を使うので
@@ -171,7 +171,7 @@ sudo apt install v4l-utils
 v4l2-ctl --list-devices
 ```
 
-apt だけでやりたいなら、Release ページで.deb を DL。`howdy [-U user] [-y] command [argument]` な感じでセッティング。分からないときは、[arch linux wiki - howdy](https://wiki.archlinux.org/index.php/Howdy#Add_correct_IR_sensor)に載っている。
+apt だけでやりたいなら、Release ページで.deb を DL。`howdy [-U user] [-y] command [argument]` な感じでセッティング。わからないときは、[arch linux wiki - howdy](https://wiki.archlinux.org/index.php/Howdy#Add_correct_IR_sensor)に載っている。
 
 ### squoosh(画像圧縮)
 

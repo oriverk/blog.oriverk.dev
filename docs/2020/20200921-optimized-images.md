@@ -13,7 +13,7 @@ published: true
 
 以降、next-optimized-images を"next-opti"と略す
 
-画像の最適化方法はタスクランナーの中で画像圧縮プラグインを利用するなど複数あるが、今回は[`cyrilwanner/next-optimized-images`](https://github.com/cyrilwanner/next-optimized-images)を利用する。
+画像の最適化方法はタスクランナーのなかで画像圧縮プラグインを利用するなど複数あるが、今回は[`cyrilwanner/next-optimized-images`](https://github.com/cyrilwanner/next-optimized-images)を利用する。
 
 ### environment
 
@@ -36,9 +36,9 @@ yarn add next-optimized-images
 yarn add npm imagemin-mozjpeg imagemin-optipng
 ```
 
-#### config
+#### Config
 
-パッケージの方に[各プラグインのデフォルト設定値](https://github.com/cyrilwanner/next-optimized-images#example)が含まれているが、`next.config.js`の中で設定を変更できる。下は自分のもので書きやすくするために、[`next-compose-plugins`](https://github.com/cyrilwanner/next-compose-plugins)を入れている。
+パッケージの方に[各プラグインのデフォルト設定値](https://github.com/cyrilwanner/next-optimized-images#example)が含まれているが、`next.config.js`のなかで設定を変更できる。下は自分のもので書きやすくするために、[`next-compose-plugins`](https://github.com/cyrilwanner/next-compose-plugins)を入れている。
 
 <!-- <details><summary>自分のnext.config.js</summary><div> -->
 
@@ -71,7 +71,7 @@ module.exports = withPlugins(
 
 #### href (image path)
 
-画像は`<img src={require(../../example.jpg)} />`の様に指定するが、md 内で指定する時などは面倒なので、`next.js.config`にパスのエイリアスを追加する。
+画像は`<img src={require(../../example.jpg)} />`の様に指定するが、md 内で指定するときなどは面倒なので、`next.js.config`にパスのエイリアスを追加する。
 
 ![Image from Gyazo](https://i.gyazo.com/3535f5fafcfa51c59bfbc3c4aa7443b0.jpg)
 
@@ -185,7 +185,7 @@ export default function () {
 
 ##### 自分の場合
 
-next.config.js の中で、`responsive:{sizes: [640, 960, 1200, 1800],}`としてあるので component を作って利用している。
+next.Config.js のなかで、`responsive:{sizes: [640, 960, 1200, 1800],}`としてあるので component を作って利用している。
 
 ```jsx:src/components/general/OptimizedImages.tsx
 export function OptimizedImages({ src, alt, imgStyle }) {

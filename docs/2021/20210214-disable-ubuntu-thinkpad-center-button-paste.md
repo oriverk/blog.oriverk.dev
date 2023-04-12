@@ -74,7 +74,7 @@ xinput get-button-map 16
 
 #### 設定を永続化する
 
-今設定したものは PC 再起動するともとに戻ってしまうので、永続化する必要がある。なので`/home/[username]/.profile`の末尾にさっきの xinput コマンドを記入し、ログイン時に`.profile`が読み込まれる際に xinput が実行されるようにする。
+今設定したものはパソコン再起動すると元に戻ってしまうので、永続化する必要がある。なので`/home/[username]/.profile`の末尾にさっきの xinput コマンドを記入し、ログイン時に`.profile`が読み込まれる際に xinput が実行されるようにする。
 
 ```sh
 # /home/[username]/.profile

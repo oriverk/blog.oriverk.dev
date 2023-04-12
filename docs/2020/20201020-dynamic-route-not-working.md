@@ -7,7 +7,7 @@ published: false
 
 ## too long to read
 
-2020 年 10 月現在、Next.js AMP Hybrid モードと getStaticPaths 等の dynamic router の併用には問題を多く抱えている模様。
+2020 年 10 月現在、Next.js AMP Hybrid モードと getStaticPaths などの dynamic router の併用には問題を多く抱えている模様。
 
 ## Introduction
 
@@ -31,11 +31,11 @@ hybrid amp と getStaticPaths / getStaticProps を併用すると、dev / build 
 
 ![Image from Gyazo](https://i.gyazo.com/47bb6814f3151aabfd84745b8f6acac2.png)
 
-`tags/[tag]` は動的ルートのページを静的生成し、 例えば `{params: {tag: 'hello'}}` だと `tags/hello/` となる。そして、hybrid amp の際は `{params: {tag: 'hello', amp: 1}}` として、`tags/hello?amp=1` となる事になっている。この url の変化により、getStaticPaths 等がエラーを起こす様だ。なお、`amp: true` は出力するのが amp ページのみなので、url は変わらず、エラーも起きない。
+`tags/[tag]` は動的ルートのページを静的生成し、 例えば `{params: {tag: 'hello'}}` だと `tags/hello/` となる。そして、hybrid amp の際は `{params: {tag: 'hello', amp: 1}}` として、`tags/hello?amp=1` となることになっている。この url の変化により、getStaticPaths などがエラーを起こす様だ。なお、`amp: true` は出力するのが amp ページのみなので、url は変わらず、エラーも起きない。
 
 ### solution
 
-- hybrid 下での getStaticPaths 等を止める
+- hybrid 下での getStaticPaths などを止める
 - hybrid を止め、`amp: true` とする。
 
 ## conclusion

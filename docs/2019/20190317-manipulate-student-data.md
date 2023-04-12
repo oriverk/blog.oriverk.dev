@@ -19,11 +19,11 @@ published: true
   - **Rubyの整数型はinteger**
   - MySQL は int（C++経験上、int の方が馴染み深い）
 - rails db:migrate コマでのエラー
-  - 中間テーブルを先に作ってしまった為。
+  - 中間テーブルを先に作ってしまったため。
   - 中間テーブルは主テーブルの id 等参照するので、作成は一番後。
 - 最適なデータ型を選択できなかった
 
-不具合改善の中で、Vagrantfile で、使用できる RAM のサイズを 8GB に変更
+不具合改善のなかで、Vagrantfile で、使用できる RAM のサイズを 8GB に変更
 
 ```rb:Vagrantfile
 config.vm.provider "virtualbox" do |vb
@@ -129,7 +129,7 @@ class ClubStudent < ApplicationRecord
 end
 ```
 
-## マスタデータ作成
+## マスターデータ作成
 
 ```rb
 # student table
@@ -201,7 +201,7 @@ join メソッドは、配列の各要素を文字列に変換し、引数 sep �
 
 1. 中間テーブルにデータ入力
 2. 性別の 0 or 1 の表記を、male or female に変更
-3. Student の show ページに、生徒ごとの試験結果等、データを出力
+3. Student の show ページに、生徒ごとの試験結果など、データを出力
 
 ## 実段階
 
@@ -561,7 +561,7 @@ student index から'New Exam Result'リンクを押すと、exam_result の new
 
 ## 14日目
 
-今週からは、scaffold で作成した大学データと、gem の devise、Bootstrap 等を組み合わせる。
+今週からは、scaffold で作成した大学データと、gem の devise、Bootstrap などを組み合わせる。
 
 ### What I did
 
@@ -619,7 +619,7 @@ ALTER TABLE ClubStudent MODIFY COLUMN student references
 
 - 参照: [render - rails docs](http://railsdoc.com/references/render)
 
-全てのページのヘッダーに、ログアウトや他の student や clubs 等のリンクを乗せる
+すべてのページのヘッダーに、ログアウトや他の student や clubs などのリンクを乗せる
 
 共通して表示させるので、/app/views/layouts/application.html.erb　を編集する。
 なお、部分テンプレファイル名は『_』アンダースコア始まり
@@ -668,7 +668,7 @@ validates :name, exclusion: { in: %w(部 サークル) }
 # 『含む』ならinclusion
 ```
 
-空白や文字列長、『サークル』という語には、validates が発動するが、『テニスサークル』だと発動しないので、正規表現等を使う必要がある。
+空白や文字列長、『サークル』という語には、validates が発動するが、『テニスサークル』だと発動しないので、正規表現などを使う必要がある。
 
 ## type "unsigned" does not exist (※Postgresql)
 
@@ -713,13 +713,13 @@ def show
 - unsigned を指定すると、正の数しか格納できなくなり、代わりに範囲が 2 倍になる。
 - **unsignedにした値が負になると、エラーを起こす**
   - UNSIGNED は、マイナス値が入らないだけでなく、マイナスになる計算もできない。
-  - CAST で一時的に型を変える事で回避は可能。
+  - CAST で一時的に型を変えることで回避は可能。
 
 ### Postgresqlにはunsined型は存在しない(最重要)
 
 対応するには
 
-- unsigned を int 等の型に置き換える
+- unsigned を int などの型に置き換える
   - 今回は試験点数を扱っていて、int で事足りると思われる。
   - ただ、MySQL で int unsigned だと、範囲が正の方向に 2 倍になっている。
   - **扱う数によっては、intより1つ上ののbigintに変える必要がある**
@@ -742,7 +742,7 @@ devise の関係上、パスワード情報入りのデータでないと、コ�
 
 ### passwordカラムの追加
 
-devise のモデル等がある、Student テーブルに、パスワードカラムを追加した。
+devise のモデルなどがある、Student テーブルに、パスワードカラムを追加した。
 
 ```sh
 # rails generate migration AddカラムToモデル名の複数形 フィールド名と並び

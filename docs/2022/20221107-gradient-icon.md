@@ -8,13 +8,13 @@ published: true
 
 ## はじめに
 
-この投稿は自分用のメモ書きなので、参考を利用することで説明を出来るだけ省き、保存しておきたいコード等をメモ書きすることに徹する。
+この投稿は自分用のメモ書きなので、参考を利用することで説明をできるだけ省き、保存しておきたいコードなどをメモ書きすることに徹する。
 
 ## 普段使っているアイコン画像
 
-GIMP、Blender や Windowns プリインストールのペイントで良い感じの画像生成が自分には出来ないので、Twitter や GitHub 等で使っているアイコンは主に HTML と CSS で生成している。
+GIMP、Blender や Windowns プリインストールのペイントで良い感じの画像生成が自分にはできないので、Twitter や GitHub 等で使っているアイコンは主に HTML と CSS で生成している。
 
-[Easing Gradients](https://larsenwork.com/easing-gradients/#editor)などの CSS ジェネレータで好きな色や形の CSS を取得し、HTML に反映させて、それを画像変換ライブラリ等を使って生成している。（基本的に青系統の色が好き。[ヱヴァンゲリヲン新劇場版：Q](https://www.evangelion.co.jp/3_0/index.html)や初音ミクもこんな色。[Top | Kawano Yudai](https://oriverk.dev/)では`--color-miku: #00e1ee;`と CSS 変数を設定している。（何色なのか分からないので、取り敢えず近い色を使用している初音ミクの名前を借りた。
+[Easing Gradients](https://larsenwork.com/easing-gradients/#editor)などの CSS ジェネレータで好きな色や形の CSS を取得し、HTML に反映させて、それを画像変換ライブラリなどを使って生成している。（基本的に青系統の色が好き。[ヱヴァンゲリヲン新劇場版：Q](https://www.evangelion.co.jp/3_0/index.html)や初音ミクもこんな色。[Top | Kawano Yudai](https://oriverk.dev/)では`--color-miku: #00e1ee;`と CSS 変数を設定している。（何色なのかわからないので、取り敢えず近い色を使用している初音ミクの名前を借りた。
 
 ## HTML と CSS
 
