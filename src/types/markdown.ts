@@ -13,6 +13,7 @@ type FrontMatterType = {
   image?: string
   published?: boolean
   editUrl: string
+  noindex?: boolean
 }
 
 type PostType = {
