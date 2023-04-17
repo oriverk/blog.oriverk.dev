@@ -1,9 +1,10 @@
-import { getPosts } from 'utils/markdown/getContentData'
+import { getPostsFrontmatter } from 'utils/markdown/getContentData'
 import urlJoin from 'url-join'
+import { format } from 'date-fns'
 
 const blogPath = process.env.NEXT_PUBLIC_BLOG_PATH || ''
 
-export async function generateSitemapXml(): Promise<string> {
+export function generateSitemapXml(): string {
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset 
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -14,25 +15,25 @@ export async function generateSitemapXml(): Promise<string> {
     >
   `
 
-  xml += `
-    <url>
-      <loc>${blogPath}/</loc>
-    </url>
-    <url>
-      <loc>${blogPath}/tag/</loc>
-    </url>
-    <url>
-      <loc>${blogPath}/search/</loc>
-    </url>
-  `
-
-  const { posts } = await getPosts()
-
-  posts.forEach(({ fileName }) => {
-    const path = urlJoin(blogPath, 'entry', fileName, '/')
+  const staticUrls = ['', 'entry', 'search', 'tag'].map((path) => urlJoin(blogPath, path, '/'))
+  staticUrls.forEach((url) => {
+    const lastModified = format(new Date(), 'yyyy-MM-dd');
     xml += `
       <url>
-        <loc>${path}</loc>
+        <loc>${url}</loc>
+        <lastmod>${lastModified}</lastmod>
+      </url>
+    `
+  })
+  
+  getPostsFrontmatter().forEach(post => {
+    const { url, create, update } = post;
+    const lastModified = update || create;
+
+    xml += `
+      <url>
+        <loc>${url}</loc>
+        <lastmod>${lastModified}</lastmod>
       </url>
     `
   })
