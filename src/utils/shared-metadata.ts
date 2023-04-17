@@ -5,6 +5,7 @@ const blogPath = process.env.NEXT_PUBLIC_BLOG_PATH || 'http://localhost:3000'
 const domain = blogPath.replace('https://', '')
 
 export const sharedMetadata: Metadata = {
+  metadataBase: new URL(blogPath),
   // Note: This is the same values as the default value set
   // You likely don't need to change this, but it's included for completeness
   viewport: {

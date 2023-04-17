@@ -8,7 +8,7 @@ published: true
 
 ## はじめに
 
-[Ruby + JekyllによるGihubPagesは既にある](https://github.com/oriverk/oriverk.github.io)のですが、宮崎版コロナ対策サイトで Vue に触れ、勉強がてら実際に JS によるサイト作成をする事にしました。
+[Ruby + JekyllによるGihubPagesは既にある](https://github.com/oriverk/oriverk.github.io)のですが、宮崎版コロナ対策サイトで Vue に触れ、勉強がてら実際に JS によるサイト作成をすることにしました。
 
 - JS の現状を知るために参照した主サイト
 - [2020年 React軸で学ぶべき技術 from mizchi's blog](https://mizchi.hatenablog.com/entry/2020/01/04/172041)
@@ -74,8 +74,8 @@ yarn create next-app next-portfolio
 - google analytics 類
   - with-google-analytics, with-google-analytics-amp
 - aws 類
-  - with-aws-amplify, with-aws-amplify-typescript
-- その他: api 類, custome server 類, preact 及び多数
+  - with-aws-Amplify, with-aws-Amplify-typescript
+- その他: api 類, Custom server 類, preact および多数
 - 参照：[Github: vercel/next.js/example](https://github.com/vercel/next.js/tree/master/examples)
 
 #### Default starter appの場合
@@ -230,7 +230,7 @@ export function Layout({ children }) {
 
 まだ React 等に不慣れなので、`pages/index.js`にサイト 1 ページ目を作りこんで、後から component に分割する方式をとった。
 
-色々試した結果、サイトトップにあたる `pages/index.jsx`は下の様になった。また、`<head><meta/></head>`用のデータは`/public/manifest.json`から持ってくる事にした。
+色々試した結果、サイトトップにあたる `pages/index.jsx`は下の様になった。また、`<head><meta/></head>`用のデータは`/public/manifest.json`から持ってくることにした。
 
 ```jsx:src/pages/index.jsx
 import Head from 'next/head'
@@ -358,7 +358,7 @@ export default function Post(){
   <img src='/assets/posts/202005/next2.jpg' alt='dynamic route' />
 </picture> -->
 
-`dynamic route`と`Link (next/link)`を併用する時は、`href`に合わせて`as`も使う。
+`dynamic route`と`Link (next/link)`を併用するときは、`href`に合わせて`as`も使う。
 
 #### getStaticProps, getStaticPaths
 
@@ -376,9 +376,9 @@ export default function Post(){
 - [Static Generation with Data - Next.js Pages](https://nextjs.org/docs/basic-features/pages#static-generation-with-data)
 
 - `getStaticProps`
-  - 出力ページのコンテンツが外部データに依存している時に使用
+  - 出力ページのコンテンツが外部データに依存しているときに使用
 - `getStaticPaths`
-  - 出力ページ中のリンクが外部データに依存している時に使用
+  - 出力ページ中のリンクが外部データに依存しているときに使用
 
 - 参考
   - [Next.jsのチュートリアルのこのページ](https://nextjs.org/learn/basics/dynamic-routes/implement-getstaticpaths)
@@ -395,9 +395,9 @@ tags ページのスタイルが未だ…
 
 #### マークダウン
 
-- 実現したい事
+- 実現したいこと
   - Qiita や Gist 等での投稿を可能な限り手間なく集約したい
-  - `mdxjs/mdx`なら、ファイル中に`import`や`export`等の js を組み込める。
+  - `mdxjs/mdx`なら、ファイル中に`import`や`export`などの js を組み込める。
 - 最終的に利用したもの。
   - [jonschlinkert/ gray-matter](https://github.com/jonschlinkert/gray-matter)
   - processor: [remarkjs/ remark](https://remark.js.org/)
@@ -511,7 +511,7 @@ GoogleAnalytics 側で ID を取得し、`_app.jsx`と`_document.jsx`を上コ�
 
 - 参照：[github - hanford/next-offline](https://github.com/hanford/next-offline)
 
-`next-offline`を利用した。上リポジトリでも記載してあるが、Vercel( Now )の v1 と v2 で動作が違う。但し、現在は v2 オンリーなので、同リポジトリ内にある[packages/now2-example](https://github.com/hanford/next-offline/tree/master/packages/now2-example)の`now.json`と`next.config.json`に倣えばよい。
+`next-offline`を利用した。上リポジトリでも記載してあるが、Vercel( Now )の v1 と v2 で動作が違う。ただし、現在は v2 オンリーなので、同リポジトリ内にある[packages/now2-example](https://github.com/hanford/next-offline/tree/master/packages/now2-example)の`now.json`と`next.config.json`に倣えばよい。
 
 #### PWA
 
@@ -519,7 +519,7 @@ GoogleAnalytics 側で ID を取得し、`_app.jsx`と`_document.jsx`を上コ�
 
 - reference: [shadowwalker / next-pwa](https://github.com/shadowwalker/next-pwa)
 
-最初に使った `next-offline` は更新が遅く、また experimental な部分を利用していた等の理由から、`next-pwa`に移行した。example から分かるように、非常にシンプルになった。
+最初に使った `next-offline` は更新が遅く、また experimental な部分を利用していたなどの理由から、`next-pwa`に移行した。example からわかるように、非常にシンプルになった。
 
 ```js:next.config.js
 const withPWA = require("next-pwa");
@@ -542,9 +542,9 @@ touch tsconfig.json
 yarn add --dev typescript @types/react @types/node
 ```
 
-あとは、Learn 等に従って、ts 化していけば、何となく理解できる。また、`tsconfig.json`で`allowJs:true`にしておけば、もし仮に型が解らんものを含む js ファイルはそのままにしておいて、理解が進んでから完全に ts 化すればいいのでは。
+あとは、Learn 等に従って、ts 化していけば、何となく理解できる。また、`tsconfig.json`で`allowJs:true`にしておけば、もし仮に型がわからんものを含む js ファイルはそのままにしておいて、理解が進んでから完全に ts 化すればいいのでは。
 
-- TS の理解を深める為に、読んだもの
+- TS の理解を深めるために、読んだもの
   - [Qiita: tsconfig.jsonの全オプションを理解する（随時追加中）by @ryokkkke](https://qiita.com/ryokkkke/items/390647a7c26933940470)
   - [Qiita: TypeScriptの型入門 by @uhyo](https://qiita.com/uhyo/items/e2fdef2d3236b9bfe74a)
   - [Qiita: TypeScriptの型推論詳説 by @uhyo](https://qiita.com/uhyo/items/6acb7f4ee73287d5dac0)
@@ -552,7 +552,7 @@ yarn add --dev typescript @types/react @types/node
 
 #### npm-script
 
-[mizchi氏のブログ](https://mizchi.dev/202006211925-support-ogp)等を見てて、npm-script や EsModule 等を知った。ちょうど、`sitemap.mxl`を造る必要があったので、利用することにした。
+[mizchi氏のブログ](https://mizchi.dev/202006211925-support-ogp)などを見てて、npm-script や EsModule などを知った。ちょうど、`sitemap.mxl`を造る必要があったので、利用することにした。
 
 ```sh
 # pagesMap.json => sitmap.mxl
@@ -580,14 +580,14 @@ node -v
 },
 ```
 
-mjs について未だ良く解らん事、作るのが自分用のファイルジェネレーターであることもあって、コードが汚いので…↓
+mjs について未だ良くわからんこと、作るのが自分用のファイルジェネレーターであることもあって、コードが汚いので…↓
 
 ##### pages.json
 
 @2020-06-30
 post の情報を集約した postPages.json を作成した。ファイル更新履歴等はそのうち GitHub から取得できるようにしたい。
 
-- JSON.stringify が良く解らなかったので、読んだもの。
+- JSON.stringify が良くわからなかったので、読んだもの。
   - [JSON.stringifyを改めて調べる。 @qoAop](https://qiita.com/qoAop/items/57d35a41ef9629351c3c)
 
 作りたいファイル構成
@@ -842,7 +842,7 @@ fs.writeFileSync(path.join(process.cwd(), 'public/atom.xml'), atom)
 ##### Algolia search
 
 投稿記事の検索に Algolia を利用した。`postsMap.json`　をデータとして投入した。
-現在のデータ投入は手動で行っているが、後で `postsMap.json`生成時に差分があれば`api`で投入できるようにしたい。
+現在のデータ投入は手動で行なっているが、あとで `postsMap.json`生成時に差分があれば`api`で投入できるようにしたい。
 
 - 参照
   - [algolia](https://www.algolia.com)

@@ -10,14 +10,14 @@ published: true
 
 ### Too Long, Didn't Read
 
-`[slug].tsx`で`getStaticPaths`等を使った dynamic route と、Hybrid AMP を併用することは現状難しいことが判明した。色々考えた結果、[https://oriverk.dev](https://oriverk.dev) の方はコードの自由度を保つため、AMP 技術を組み込まないことにした。その他の playground や趣味ブログで使っていきたい。
+`[slug].tsx`で`getStaticPaths`などを使った dynamic route と、Hybrid AMP を併用することは現状難しいことが判明した。色々考えた結果、[https://oriverk.dev](https://oriverk.dev) の方はコードの自由度を保つため、AMP 技術を組み込まないことにした。その他の playground や趣味ブログで使っていきたい。
 
 - [amp を試す際に作った playground](https://play.oriverk.dev)
 - [上 playground のコード](https://github.com/oriverk/next-ts-amp)
 
 ### AMP（Accelerated Mobile Pages）
 
-Google と Twitter による開発のキャッシュ等によるモバイル表示高速化技術。AMP Websites, Stories, Ads, Email の 4 つがあり、検索ページでは AMP 対応サイトは雷⚡マークが表示される。今回は AMP Websites を利用する。
+Google と Twitter による開発のキャッシュ等によるモバイル表示高速化技術。AMP Websites, Stories, Ads, Email の 4 つがあり、検索ページでは AMP 対応サイトは雷⚡アイコンが表示される。今回は AMP Websites を利用する。
 
 reference: [amp.dev - AMP HTML 仕様](https://amp.dev/ja/documentation/guides-and-tutorials/learn/spec/amphtml/?format=websites)
 <!-- 
@@ -59,13 +59,13 @@ reference: [amp.dev - AMP HTML 仕様](https://amp.dev/ja/documentation/guides-a
 
 ### Next.js と AMP
 
-Next.js は AMP に対応していて、AMP のみの生成と AMP と従来の HTML ページの生成を制御できる。`export const config = { amp: true }`または 'hybrid'としておけば、amp コンポーネント用の script 等の記述が自動で挿入される。
+Next.js は AMP に対応していて、AMP のみの生成と AMP と従来の HTML ページの生成を制御できる。`export const config = { amp: true }`または 'hybrid'としておけば、amp コンポーネント用の script などの記述が自動で挿入される。
 
 #### AMP First Page
 
 - nextjs と react client side のランタイムを持たない
 - amp optimizer で自動最適化
-- ユーザ用の最適化済みページと、検索エンジン用のインデックス可能な非最適化ページを生成
+- ユーザー用の最適化済みページと、検索エンジン用のインデックス可能な非最適化ページを生成
 
 ```jsx
 export const config = { amp: true }
@@ -184,7 +184,7 @@ declare namespace JSX {
 
 [以前に画像最適化した際](https://oriverk.dev/entry/2020/20200921-optimized-images)に使った `next-optimized-images` を今回も併用した。
 
-また fallback にはエラー回避の為に、空文字を渡しておいた。これは[Reactの仕様に起因](https://reactjs.org/docs/jsx-in-depth.html#props-default-to-true)していて、[React issue#9230](https://github.com/facebook/react/issues/9230)が一番参考になった。これによる Next.js 側の issue だと、[#8861](https://github.com/vercel/next.js/issues/8861)、[#10000](https://github.com/vercel/next.js/issues/10000)、[#12708](https://github.com/vercel/next.js/issues/12708)がある。attribute が違うだけで、原因は全部同じようだ。
+また fallback にはエラー回避のために、空文字を渡しておいた。これは[Reactの仕様に起因](https://reactjs.org/docs/jsx-in-depth.html#props-default-to-true)していて、[React issue#9230](https://github.com/facebook/react/issues/9230)が一番参考になった。これによる Next.js 側の issue だと、[#8861](https://github.com/vercel/next.js/issues/8861)、[#10000](https://github.com/vercel/next.js/issues/10000)、[#12708](https://github.com/vercel/next.js/issues/12708)がある。attribute が違うだけで、原因は全部同じようだ。
 
 <!-- <details><summary>code of amp-img</summary><div> -->
 
@@ -209,7 +209,7 @@ const AmpImg = () => {
 
 #### amp-image-lightbox
 
-画像ポップアップの lightbox。amp-image-lightbox を書き加え、amp-img に on 属性等を書き足すだけで動く。また id さえ合致して置けば、1 ページに 1 つの amp-image-lightbox で動く。
+画像ポップアップの lightbox。amp-image-lightbox を書き加え、amp-img に on 属性などを書き足すだけで動く。また id さえ合致して置けば、1 ページに 1 つの amp-image-lightbox で動く。
 
 - [amp-image-lightbox](https://amp.dev/ja/documentation/components/amp-image-lightbox/?format=websites)
 

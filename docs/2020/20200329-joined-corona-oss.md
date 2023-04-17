@@ -8,7 +8,7 @@ published: true
 
 from [Qita: 宮崎県COVID-19対策サイトを見つけ、出身者として何かしたいと思ったから、した。](https://qiita.com/OriverK/items/91429a32e6a8c191a1a6)
 
-出身の宮崎県用の対策サイトが出来、何かできる事は無いかと思ったので、Qiita に記録しつつ、色々やってみた。
+出身の宮崎県用の対策サイトが出来、何かできることは無いかと思ったので、Qiita に記録しつつ、色々やってみた。
 
 ## Introduction
 
@@ -51,7 +51,7 @@ yarn dev
 
 ## What I did
 
-Vue 何もわからないので、まず自然言語の表示の修正をする事にした。
+Vue 何もわからないので、まず自然言語の表示の修正をすることにした。
 
 - 表示言語選択メニューバー: [covid19/nuxt-i18n.config.ts](https://github.com/covid19-miyazaki/covid19/blob/development/nuxt-i18n.config.ts)
 - 他言語表示用 json: [covid19/assets/locales/](https://github.com/covid19-miyazaki/covid19/tree/development/assets/locales)
@@ -76,7 +76,7 @@ git push コピーしてきたURL development
 
 ### はじめてのpull request
 
-PR の機会は初めてだったので、下を参照しながら行った。
+PR の機会ははじめてだったので、下を参照しながら行なった。
 
 - 参照: [東京都 新型コロナウイルス対策サイトへの貢献方法を解説](https://qiita.com/FPC_COMMUNITY/items/b9cc072813dc2231b2b2#%E3%83%97%E3%83%AB%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E9%80%81%E3%82%8B)
 

@@ -14,7 +14,7 @@ from [Qiita: Twitterにコードを身えばよく投稿したい](https://qiita
 
 [twitter](https://twitter.com/ellnore_pad_267/status/1190693466793074689)
 
-### 出来たもの
+### できたもの
 
 - [Codr0：https://codr0.herokuapp.com/](https://codr0.herokuapp.com/)
 - [Github : oriverk/Codr](https://github.com/oriverk/Codr)
@@ -22,7 +22,7 @@ from [Qiita: Twitterにコードを身えばよく投稿したい](https://qiita
 
 ### 作成の過程で収穫物
 
-- ActiveRecord Storage 等の Rails 5.2
+- ActiveRecord Storage などの Rails 5.2
 - Twitter Login 方法と仕組みなど
 - JS の基礎（getElementById や setAttribute、文字カウントなど）
 - AWS S3 関連
@@ -87,7 +87,7 @@ gem 'aws-sdk-s3' # aws s3
 
 ### rails.credentials.yml
 
-当初は.`gitignore`と`dotenv`等を使っていたが、作成途中で Rails 5.2 からの`rails.credentials.yml`を利用した。復号化には`/config/master.key`を利用。
+当初は.`gitignore`と`dotenv`などを使っていたが、作成途中で Rails 5.2 からの`rails.credentials.yml`を利用した。復号化には`/config/master.key`を利用。
 
 ```sh
 # editor setting
@@ -148,7 +148,7 @@ belongs_to :user
 - 参照：[Redcarpet：Github](https://github.com/vmg/redcarpet)
 
 - 基本：`Redcarpet::Markdown.new(renderer, extensions = {}).render(@post.content)`
-オプションや XSS 対策等を追加したく、helper メソッドを作成した。
+オプションや XSS 対策などを追加したく、helper メソッドを作成した。
 
 ```rb:app/helpers/posts_helper.rb
 Module PostsHelper
@@ -213,7 +213,7 @@ Heroku では画像保持がされないので、作成画像を AWS S3 に保�
 
 ### Active Storage
 
-Rail5.2 からの機能で、今までの carrievave や paperclip 等を使わずに、クラウドストレージ等へのアップロードが容易になる。今回は AWS S3 を使った。
+Rail5.2 からの機能で、今までの carrievave や paperclip などを使わずに、クラウドストレージ等へのアップロードが容易になる。今回は AWS S3 を使った。
 
 - 参照: [Active Storage](https://railsguides.jp/active_storage_overview.html)
 
@@ -351,7 +351,7 @@ AWS 上での登録、設定、バケット作成等は割愛。
   - [url_for() from rails guide](https://railsguides.jp/active_storage_overview.html#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%99%E3%82%8B)
 
 基本的にはどちらも、ActiveStorage に保存したデータの Url を取得するメソッドの様だ。
-どちらもセキュリティの為にリンクの有効期限が短いみたいだが、違いが分からなかった。今回はツイートボタン押下し、Tweet した際に og:image として表示されればいい。
+どちらもセキュリティのためにリンクの有効期限が短いみたいだが、違いがわからなかった。今回はツイートボタン押下し、Tweet した際に og:image として表示されればいい。
 
 ```rb:app/views/posts/show.html.erb
 # 画像がActive StorageでAWS S3に保存されて入れば
@@ -410,7 +410,7 @@ Twitter のニックネームが取得できるようになったので、元か
 
 ### メディアクエリ
 
-想定ユーザは殆どスマホなのに、PC で作成し、CSS を PC の見た目でやってた。折角 SCSS でやってるので、変数を利用した。
+想定ユーザーは殆どスマートフォンなのに、パソコンで作成し、CSS をパソコンの見た目でやってた。折角 SCSS でやってるので、変数を利用した。
 
 ```scss:app/assets/stylesheets/scaffold.scss
 // ディスプレイサイズが680pxまでなら。
@@ -424,4 +424,4 @@ $tab: 680px;
 
 ## 最後に
 
-gist 等がコードスクショを og:image で表示してくれたら全て済むのでは
+gist などがコードスクショを og:image で表示してくれたらすべて済むのでは

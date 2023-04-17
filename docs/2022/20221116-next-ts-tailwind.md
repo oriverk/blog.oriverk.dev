@@ -13,7 +13,7 @@ Next.js v13 とまだベータ機能である `app` dir をこのブログにも
 > Warning: CSS-in-JS is currently not supported in Server Components.
 > > [Styling: CSS-in-JS | Next.js](https://beta.nextjs.org/docs/styling/css-in-js)
 
-ただし、`styled-jsx` と `styled-components` は `use client` と明記して更に適切な処理を新たに加えれば Client Components (以下 CC)で動くとも書いてある。CSS は全てのページに渡っている以上は、全てのページが CC で動作するという事になり、それでは Next.js app dir を試す理由がなくなるので、TailwindCSS に移行することにした。（CSS in JS は[oriverk.dev](https://oriverk.dev)の方でも使っている。）
+ただし、`styled-jsx` と `styled-components` は `use client` と明記してさらに適切な処理を新たに加えれば Client Components (以下 CC)で動くとも書いてある。CSS はすべてのページに渡っている以上は、すべてのページが CC で動作するという事になり、それでは Next.js app dir を試す理由がなくなるので、TailwindCSS に移行することにした。（CSS in JS は[oriverk.dev](https://oriverk.dev)の方でも使っている。）
 
 同様の処理で goober やその他の明記されていない CSS in JS ライブラリが動くかどうは別レポジトリで試したい。
 
@@ -187,7 +187,7 @@ npm i -D @tailwindcss/typography sass
 
 `::before` や `::after` の疑似要素や置換要素 `content` などの使い方は、jxck 氏の[blog.jxck.io](https://blog.jxck.io/)を勝手に参考にさせてもらいました。
 
-また、CSS の `:has()`、 `:is()`、 `:not()`といった疑似要素を初めて使いましたが、結構便利でした。
+また、CSS の `:has()`、 `:is()`、 `:not()`といった疑似要素をはじめて使いましたが、結構便利でした。
 
 ```css:/src/styles/globals.scss
 figure:has(img), :not(figure) > img {
@@ -205,7 +205,7 @@ figcaption {
 
 #### Prettier for TailwindCSS
 
-TailwindCSS 推奨のクラス名に並び替えるための Pretteir プラグインを利用した。
+TailwindCSS 推奨のクラス名に並べ替えるための Pretteir プラグインを利用した。
 
 ```shell:terminal
 npm i -D prettier prettier-plugin-tailwindcss

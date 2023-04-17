@@ -13,7 +13,7 @@ published: true
 
 ### 以前のサイト
 
-2020 年頭に宮崎県版 COVID-19 対策サイトの活動の中で Vue.js に触れたこと、[Next.js が SSG 等を公開](https://nextjs.org/blog/next-9-3)した事をきっかけに、以前のサイトをつくりました。
+2020年頭に宮崎県版 COVID-19 対策サイトの活動のなかで Vue.js に触れたこと、[Next.js が SSG 等を公開](https://nextjs.org/blog/next-9-3)したことをきっかけに、以前のサイトをつくりました。
 
 - React, Next.js, TypeScript
 - Material-UI, styled-jsx
@@ -40,7 +40,7 @@ published: true
   - Eslint, Prettier, markdownlint, textlint
   - host on Vercel
 
-oriverk.dev と blog.oriverk.dev で分けた理由は、別々の技術・言語でやれる機会が出来るからだけです。
+oriverk.dev と blog.oriverk.dev で分けた理由は、別々の技術・言語でやれる機会ができるからだけです。
 
 ![oriverk.dev](https://i.imgur.com/H29hzzB.webp "oriverk.dev")
 

@@ -50,7 +50,7 @@ published: true
 ### Syntax-highlighter Rougeの導入
 
 Posts.index と Post.show ページは jekyll 通りなので割愛。
-コードのハイライトを有効化する為、Rouge を導入した。
+コードのハイライトを有効化するため、Rouge を導入した。
 
 ```rb
 gem 'rouge'

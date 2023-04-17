@@ -23,10 +23,11 @@ export async function generateMetadata({ params, searchParams }: Props, parent: 
   }
 
   const { frontmatter } = post
-  const { title, tags } = frontmatter
+  const { title, tags, noindex = false } = frontmatter
   const keywords = tags.length ? tags : (await parent)?.keywords || []
 
   return {
+    robots: noindex ? 'noindex' : undefined,
     title,
     keywords,
   }

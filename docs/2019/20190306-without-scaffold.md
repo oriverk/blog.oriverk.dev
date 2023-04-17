@@ -38,7 +38,7 @@ from Qiita:
 
 1. rails s new qiita_routes -d MySQL
 2. Gemfile の miniracer コメントインして、bundle install
-3. config/database.yml の password 情報編集
+3. Config/database.yml の password 情報編集
 4. rails db:create
 
 ### 前提：知識
@@ -57,7 +57,7 @@ from Qiita:
 #### ページ表示の流れ
 
 **Routing => Controller => Model => View**
-model はデータベース情報が必要な時だけ使用。今回は必要ではないので、とばす。
+model はデータベース情報が必要なときだけ使用。今回は必要ではないので、とばす。
 
 ### 本段階
 
@@ -106,7 +106,7 @@ Rails の controller で render を省略すると、代わりに app/views/コ�
 
 参照: [Ruby on Rails でページを作成する仕組み by @np_misaki氏](https://qiita.com/np_misaki/items/1c5ff951272a91f70e5f)
 
-- config : アプリケーションの設定情報を格納する
+- Config : アプリケーションの設定情報を格納する
 - /routes.rb : ルーティングを設定する
 - /locales : 辞書ファイル(グローバル対応等)
 - /app : アプリケーション開発中にメインで使用するディレクトリ
@@ -123,7 +123,7 @@ Rails の controller で render を省略すると、代わりに app/views/コ�
 - model とは
   - データベースを操作する。
   - app/models 下に配置される
-  - データベースに含まれるテーブル毎に用意され、データの登録・取得・更新・削除などを行う
+  - データベースに含まれるテーブルごとに用意され、データの登録・取得・更新・削除などを行なう
 
 ### model作成コマンド
 
@@ -141,7 +141,7 @@ rails generate model User name:string email:string sex:integer age:integer addre
 rails db:migrate
 ```
 
-### 出来たテーブルをMySQL側で確認してみる
+### できたテーブルをMySQL側で確認してみる
 
 ```sql
 -- mysql
@@ -181,7 +181,7 @@ SHOW CREATE TABLE users;
 -- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 |
 ```
 
-`rails g models`で設定したカラム名が作成されているのが分かる。
+`rails g models`で設定したカラム名が作成されているのがわかる。
 
 ### データベースにfooさんのレコードを追加してみる
 

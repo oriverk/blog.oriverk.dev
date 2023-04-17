@@ -13,7 +13,7 @@ GithubPagesJekyll を利用し、静的ページを作成した。
 ## major update history
 
 - 20190825：GithubPages with jekyll 作成
-  - 目的：自分の情報等を纏めるサイト作成の為
+  - 目的：自分の情報などを纏めるサイト作成の為
   - remote theme：[fongandrew / hydeout](https://github.com/fongandrew/hydeout)
 - 20191206：デザイン等変更
 - 目的：アクセシビリティ改善、デバイスによる見た目差を小さく
@@ -72,7 +72,7 @@ gem "github-pages", group: :jekyll_plugins
 gem "jekyll-theme-hydeout"
 ```
 
-次に `_config.yml` を編集する。今回はリモートテーマを使用するので、 theme を`remote_theme`に変更する。更にプラグインも追加しておく。
+次に `_config.yml` を編集する。今回はリモートテーマを使用するので、 theme を`remote_theme`に変更する。さらにプラグインも追加しておく。
 
 ```yml:_config.yml
 # theme: mininma
@@ -265,10 +265,10 @@ gem 'jekyll-coffeescript'
 
 #### 最低限必要なディレクトリ構造を考える
 
-自分でデザインを構成するには、jekyll と liquid で出来る事を理解する必要があった。
+自分でデザインを構成するには、jekyll と liquid でできることを理解する必要があった。
 
 - `_include`配下のファイルは`{% include footer.html %}`の形で変数展開の様に扱う。
-  - 但し、画像はこの方法では利用できない。svg は ok。
+  - ただし、画像はこの方法では利用できない。svg は ok。
 - _site 中身は`bundle exec jekyll serve`で自動で生成されるので中身は触らない
 
 自分の結果

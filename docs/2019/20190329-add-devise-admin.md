@@ -14,7 +14,7 @@ published: true
   - Ruby：2.51
   - Rails: 5.2.2
     - gem
-      - `devise`: ログイン等の機能用
+      - `devise`: ログインなどの機能用
       - `kaminari: pagination
   - DB: PostgreSQL
 

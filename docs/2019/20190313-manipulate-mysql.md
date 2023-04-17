@@ -38,7 +38,7 @@ published: true
 
 #### 多対多テーブルの問題
 
-DB 上では 1 つのカラムに複数のデータは入れることが出来ない。
+DB 上では 1 つのカラムに複数のデータは入れることができない。
 上の表では、同義のカラム（部活１、部活（2）。）。を増やしているが、
 データベースでは、これを 2 次元で表現できない
 
@@ -108,7 +108,7 @@ updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 - バッククォート：テーブル名に使う
 - シングルクォート：データの文字列に使う
 
-**但し、バッククォートは必須ではない**
+**ただし、バッククォートは必須ではない**
 バッククォートよって、テーブル名やカラム名で使用できないように指定されている予約語（Reserved Words）を使えるようにできる。が、使わない方が良い。
 
 - 参照：[phpMyAdminのSQLに付加される「'」に似た記号「`」は何？](https://php1st.com/1184/)
@@ -413,7 +413,7 @@ FROM exam_results;
 
 ### GROUP BY
 
-科目毎の最大値、最小値、平均値を求め、名前を最大、最小、平均に変更
+科目ごとの最大値、最小値、平均値を求め、名前を最大、最小、平均に変更
 
 ```sql
 SELECT name, 
@@ -433,7 +433,7 @@ GROUP BY name;
 
 ### INNER JOIN
 
-students と exam_results を結合し、生徒毎の、最高得点、最少得点、平均得点を出力
+students と exam_results を結合し、生徒ごとの、最高得点、最少得点、平均得点を出力
 
 ```sql
 SELECT students.name, MAX(score), MIN(score), AVG(score)

@@ -109,14 +109,14 @@ end
 
 ## jsファイルの挿入部分を考える
 
-### 授業の中で言われたこと
+### 授業のなかで言われたこと
 
 - head か body どうかが、ユーザビリティに影響を与える
   - head 内：js ファイルが重い場合は、js ファイルが読み込まれるまで、ページが表示されない。
   - body 内：先にページが表示されて、その後に js ファイルが読み込まれます。
   - HTML 解析前に実行されるべき js ファイルなどは head タグ内に記述するべし
 
-### ページ読み込み時間は、ユーザの直帰率等に影響を及ぼす
+### ページ読み込み時間は、ユーザーの直帰率等に影響を及ぼす
 
 [一次データ:Does Page Load Time Really Affect Bounce Rate? pingdom](https://royal.pingdom.com/page-load-time-really-affect-bounce-rate/)
 
