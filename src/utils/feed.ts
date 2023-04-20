@@ -14,7 +14,7 @@ export function generateFeedXml(): string {
     language: 'ja',
   })
 
-  const statics = ['', 'entry', 'search', 'tag'];
+  const statics = ['', 'search', 'tag'];
   statics.forEach((path) => {
     const url = urlJoin(blogPath, path, '/');
     const lastModified = format(new Date(), 'yyyy-MM-dd');

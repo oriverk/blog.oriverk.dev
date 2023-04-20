@@ -34,7 +34,7 @@ export async function getPostContent(localFilePath: string) {
 
 export function getPostFrontmatter(path: string) {
   let regexp = new RegExp(`${POSTS_PATH}\/|.mdx?$`, 'g')
-  const url = urlJoin(blogPath, '/posts', path.replace(regexp, ''), '/');
+  const url = urlJoin(blogPath, 'entry', path.replace(regexp, ''), '/');
   
   const source = fs.readFileSync(path).toString();
   const { data } = matter(source) as unknown as { data: FrontMatterType };
