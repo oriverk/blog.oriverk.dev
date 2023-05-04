@@ -48,7 +48,7 @@
     }
 
     ul li {
-      list-style: "-- ";
+      list-style: "- ";
       &::marker {
         color: white;
         font-weight: bold;
@@ -141,7 +141,14 @@
       color: dimgray;
       font-size: 1rem;
 
-      & > span::before {
+      & a {
+        color: dimgray;
+        &:hover {
+          color: white;
+        }
+      }
+
+      & span::before {
         content: attr(data-line-number);
         content: attr(data-line-number) / '';
       }
