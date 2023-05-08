@@ -2,6 +2,8 @@ import type { SerializeOptions } from 'next-mdx-remote/dist/types'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
 import remarkComment from 'remark-comment'
+import { nodeTypes } from '@mdx-js/mdx'
+import rehypeRaw from 'rehype-raw'
 import rehypeSlug from 'rehype-slug'
 
 import type { FrontMatterType } from '@src/types/markdown'
@@ -13,7 +15,7 @@ export async function serializeMdx(source: string) {
   const serializeOptions: SerializeOptions = {
     mdxOptions: {
       remarkPlugins: [remarkComment, remarkGfm],
-      rehypePlugins: [rehypeSlug, rehypeAnchor, rehypeFigure],
+      rehypePlugins: [[rehypeRaw, { passThrough: nodeTypes }], rehypeSlug, rehypeAnchor, rehypeFigure],
     },
     parseFrontmatter: true,
   }

@@ -6,7 +6,7 @@ export const Markdown: FC<Props> = (props) => {
   const { children } = props
 
   return (
-    <div className="markdown prose prose-invert mx-auto max-w-sm overflow-x-auto break-words sm:max-w-md md:max-w-2xl lg:max-w-2xl">
+    <div className="markdown max-w-none prose prose-invert prose-p:text-slate-50 prose-li:text-slate-50 mx-auto overflow-x-auto break-words">
       {children}
     </div>
   )
