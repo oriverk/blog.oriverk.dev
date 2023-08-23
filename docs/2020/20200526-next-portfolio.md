@@ -135,8 +135,6 @@ yarn add @material-ui/core @material-ui/icons
 
 複数ページで共通デザインとなる`Layout.jsx`を作成する。ここでは省略したが、`<aside />`の中には、`material-ui`を利用した permanent-drawer とモバイル用の swipeable-drawer を実装した。
 
-<!-- <details><summary><code>/src/components/Layout.jsx</code></summary><div> -->
-
 ```jsx:src/components/Layout.jsx
 import Link from 'next/link'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
@@ -224,8 +222,6 @@ export function Layout({ children }) {
 }
 ```
 
-<!-- </div></details> -->
-
 - `pages/index.jsx`の作成
 
 まだ React 等に不慣れなので、`pages/index.js`にサイト 1 ページ目を作りこんで、後から component に分割する方式をとった。
@@ -264,8 +260,6 @@ export default function Home() {
 }
 ```
 
-<!-- <details><summary><code>/src/components/HomeContetnts.jsx</code></summary><div> -->
-
 ```jsx:src/components/HomeContents.jsx
 import Link from 'next/link'
 import Grid from '@material-ui/core/Grid'
@@ -300,8 +294,6 @@ export function History() {
   return <section id='history' className='content' />
 }
 ```
-
-<!-- </div></details> -->
 
 ### _app.jsx,_document.jsx, 404.jsx
 
@@ -353,11 +345,6 @@ export default function Post(){
 - `localhost:3000/posts/hoge/`にアクセスすると`pages/posts/hoge.jsx`が読み込まれる
 - `localhost:3000/posts/foobar`だと、`pages/posts/foobar.jsx`が読み込まれ、
 
-<!-- <picture>
-  <source srcSet='/assets/posts/202005/next2.webp' type='image/webp' />
-  <img src='/assets/posts/202005/next2.jpg' alt='dynamic route' />
-</picture> -->
-
 `dynamic route`と`Link (next/link)`を併用するときは、`href`に合わせて`as`も使う。
 
 #### getStaticProps, getStaticPaths
@@ -382,16 +369,6 @@ export default function Post(){
 
 - 参考
   - [Next.jsのチュートリアルのこのページ](https://nextjs.org/learn/basics/dynamic-routes/implement-getstaticpaths)
-
-<!-- <picture>
-  <img src='/assets/posts/202005/next3.png' alt='posts index' />
-</picture> -->
-
-tags ページのスタイルが未だ…
-
-<!-- <picture>
-  <img src='/assets/posts/202005/next4.png' alt='tags index' />
-</picture> -->
 
 #### マークダウン
 

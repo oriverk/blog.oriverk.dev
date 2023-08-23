@@ -20,8 +20,6 @@ published: true
 Google と Twitter による開発のキャッシュ等によるモバイル表示高速化技術。AMP Websites, Stories, Ads, Email の 4 つがあり、検索ページでは AMP 対応サイトは雷⚡アイコンが表示される。今回は AMP Websites を利用する。
 
 reference: [amp.dev - AMP HTML 仕様](https://amp.dev/ja/documentation/guides-and-tutorials/learn/spec/amphtml/?format=websites)
-<!-- 
-<details><summary>AMP format sample</summary><div> -->
 
 ```html
 <!doctype html>
@@ -55,8 +53,6 @@ reference: [amp.dev - AMP HTML 仕様](https://amp.dev/ja/documentation/guides-a
 </html>
 ```
 
-<!-- </div></details> -->
-
 ### Next.js と AMP
 
 Next.js は AMP に対応していて、AMP のみの生成と AMP と従来の HTML ページの生成を制御できる。`export const config = { amp: true }`または 'hybrid'としておけば、amp コンポーネント用の script などの記述が自動で挿入される。
@@ -82,8 +78,6 @@ export default Component
 
 なお、amp-only と hybrid の 2 つのモードの区別には、`useAmp()`という React Hooks が用いられる。前者の時は`true`を、後者の時は`false`を返す。
 
-<!-- <details><summary>Hybrid AMP sample code</summary><div> -->
-
 ```typescript
 import { useAmp } from "next/amp";
 
@@ -108,8 +102,6 @@ const Component = () => {
 };
 export default Component;
 ```
-
-<!-- </div></details> -->
 
 ## Main
 
@@ -186,8 +178,6 @@ declare namespace JSX {
 
 また fallback にはエラー回避のために、空文字を渡しておいた。これは[Reactの仕様に起因](https://reactjs.org/docs/jsx-in-depth.html#props-default-to-true)していて、[React issue#9230](https://github.com/facebook/react/issues/9230)が一番参考になった。これによる Next.js 側の issue だと、[#8861](https://github.com/vercel/next.js/issues/8861)、[#10000](https://github.com/vercel/next.js/issues/10000)、[#12708](https://github.com/vercel/next.js/issues/12708)がある。attribute が違うだけで、原因は全部同じようだ。
 
-<!-- <details><summary>code of amp-img</summary><div> -->
-
 ```typescript
 const AmpImg = () => {
   // below is related to next-optimized-images
@@ -205,15 +195,11 @@ const AmpImg = () => {
 };
 ```
 
-<!-- </div></details> -->
-
 #### amp-image-lightbox
 
 画像ポップアップの lightbox。amp-image-lightbox を書き加え、amp-img に on 属性などを書き足すだけで動く。また id さえ合致して置けば、1 ページに 1 つの amp-image-lightbox で動く。
 
 - [amp-image-lightbox](https://amp.dev/ja/documentation/components/amp-image-lightbox/?format=websites)
-
-<!-- <details><summary>code of amp-image-lightbox</summary><div> -->
 
 ```typescript
 const AmpImageLightbox = () => {
@@ -240,8 +226,6 @@ const AmpImageLightbox = () => {
 };
 ```
 
-<!-- </div></details> -->
-
 #### amp-image-slider
 
 中央のスライダーを動かして、画像を比較できる。個人的には Photoshop での画像修正のビフォーアフターを見せる箇所の奴。画像ラベルには通常の div 要素にはない属性を必要とし、.d.ts で拡張することにした。
@@ -257,8 +241,6 @@ declare module "react" {
 ```
 
 ![Image from Gyazo](https://i.gyazo.com/6e8a5fa9d5b5c601fbc3cd24ecda3383.jpg)
-
-<!-- <details><summary>code of amp-image-slider</summary><div> -->
 
 ```typescript
 const AmpImageSlider = () => {
@@ -280,8 +262,6 @@ const AmpImageSlider = () => {
   );
 };
 ```
-
-<!-- </div></details> -->
 
 #### amp-carousel
 

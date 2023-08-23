@@ -8,6 +8,7 @@ export const rehypeAnchor: Plugin = (options: Options = {}) => {
   return (tree: any) => {
     visit(tree, (node: any) => {
       if (is(node, { tagName: 'a' })) {
+        // @ts-ignore
         let props: any = node.properties || (node.properties = {})
 
         props.target = '_blank'

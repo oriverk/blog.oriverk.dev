@@ -40,3 +40,4 @@ script/postsMap.json
 /.vscode/setting.json
 
 .cache
+.contents

@@ -2,7 +2,7 @@
 
 import type { FC } from 'react'
 import type { Language, PrismTheme } from 'prism-react-renderer'
-import BaseHighlight, { defaultProps } from 'prism-react-renderer'
+import { Highlight as PrismHighlight } from 'prism-react-renderer'
 import { LineNumber } from './line-number'
 
 type Props = {
@@ -17,7 +17,7 @@ const Highlight: FC<Props> = (props) => {
   const { codeString, language, showLines, ...rest } = props
 
   return (
-    <BaseHighlight code={codeString} language={language} {...defaultProps} {...rest}>
+    <PrismHighlight code={codeString} language={language} {...rest}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <div className="highlight">
           <pre className={className}>
@@ -39,7 +39,7 @@ const Highlight: FC<Props> = (props) => {
           </pre>
         </div>
       )}
-    </BaseHighlight>
+    </PrismHighlight>
   )
 }
 

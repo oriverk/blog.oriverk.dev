@@ -1,6 +1,9 @@
+import packageJson from "package.json";
+
 const year = new Date().getFullYear()
 const nextjs = 'https://nextjs.org/'
 const vercel = 'https://vercel.com/'
+const nextVersion = packageJson.dependencies.next.replace("^", "");
 
 export const Footer: React.FC = () => (
   <footer className="flex flex-col items-center justify-center p-4">
@@ -10,7 +13,7 @@ export const Footer: React.FC = () => (
       <p className="mx-0 mb-0 mt-2">
         This site is built with&nbsp;
         <a href={nextjs} target="_blank" rel="noopener noreferrer">
-          Next.js@13
+          Next.js@{nextVersion}
         </a>
         &nbsp;and hosting on&nbsp;
         <a href={vercel} target="_blank" rel="noopener noreferrer">
