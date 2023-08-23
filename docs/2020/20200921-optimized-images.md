@@ -40,8 +40,6 @@ yarn add npm imagemin-mozjpeg imagemin-optipng
 
 パッケージの方に[各プラグインのデフォルト設定値](https://github.com/cyrilwanner/next-optimized-images#example)が含まれているが、`next.config.js`のなかで設定を変更できる。下は自分のもので書きやすくするために、[`next-compose-plugins`](https://github.com/cyrilwanner/next-compose-plugins)を入れている。
 
-<!-- <details><summary>自分のnext.config.js</summary><div> -->
-
 ```js:next.config.js
 const withPlugins = require('next-compose-plugins')
 const optimizedImages = require('next-optimized-images')
@@ -64,8 +62,6 @@ module.exports = withPlugins(
   ],
 )
 ```
-
-<!-- </div></details> -->
 
 ### usage
 
