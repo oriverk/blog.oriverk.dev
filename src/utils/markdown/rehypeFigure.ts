@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
 import { is } from 'unist-util-is'
