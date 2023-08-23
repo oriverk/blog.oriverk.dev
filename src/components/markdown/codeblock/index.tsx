@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import type { Language } from 'prism-react-renderer'
-import theme from 'prism-react-renderer/themes/nightOwl'
+import { themes } from 'prism-react-renderer';
 
 import { CodeContainer } from './code-container'
 import Highlight from './highlight'
@@ -19,7 +19,7 @@ export const CodeBlock: FC<Props> = (props) => {
   return (
     <CodeContainer>
       <CodeNav filename={filename || language} rawCode={rawCode} />
-      <Highlight codeString={rawCode} language={language} theme={theme} showLines={true} />
+      <Highlight codeString={rawCode} language={language} theme={themes.nightOwl} showLines={true} />
     </CodeContainer>
   )
 }
