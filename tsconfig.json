@@ -51,7 +51,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "script/getGitHubContents.mjs"  ],
   "exclude": [
     "node_modules",
     "script"
