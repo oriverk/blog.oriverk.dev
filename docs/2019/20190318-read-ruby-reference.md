@@ -163,7 +163,7 @@ x%3 == 0 if "3x" : "hazure"
 
 ### unless
 
-unless は if と反対で、条件式が偽の時に then 以下の式を評価。elsif を指定できない。
+unless は if と反対で、条件式が偽の時に then 次の式を評価。elsif を指定できない。
 
 ### 制御構造(ifなど)の修飾子
 

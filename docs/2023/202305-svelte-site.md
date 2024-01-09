@@ -87,7 +87,7 @@ import Card from '../components/Card.astro';
 
 ## サイトについて
 
-主に以下のような機能をもったサイトにしたいと考えました。
+主に次のような機能をもったサイトにしたいと考えました。
 
 - Static Site である
 - GitHub の Pinned Repos と Contribution Calendar(GitHub 草)を表示できる
@@ -382,7 +382,7 @@ Did you mean to import date-fns/locale/ja/index.js?
 
 #### CSS Logical Media Query error
 
-Media Queries Level 4からの下記の様な書き方は、Svelte においては次のバージョンから使える模様。
+Media Queries Level 4からの次の様な書き方は、Svelte においては次のバージョンから使える模様。
 
 ```css
 @media (max-width: 30em) { ... }
